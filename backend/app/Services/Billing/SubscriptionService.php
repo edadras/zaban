@@ -428,6 +428,30 @@ class SubscriptionService
             ->value('gateway_customer_id');
     }
 
+    /**
+     * Pick the price row for a plan: an exact country match beats the currency
+     * default, and a gateway-specific row beats a generic one.
+     */
+    public function resolvePrice(Plan $plan, ?string $currency = null, ?string $country = null, ?string $gateway = null): ?PlanPrice
+    {
+        $currency = strtoupper($currency ?: BillingConfig::currency());
+
+        $candidates = PlanPrice::where('plan_id', $plan->id)
+            ->where('is_active', true)
+            ->where('currency', $currency)
+            ->get();
+
+        if ($candidates->isEmpty()) {
+            return null;
+        }
+
+        $score = fn (PlanPrice $p) => ($country && $p->country_code === strtoupper($country) ? 2 : 0)
+            + ($gateway && $p->gateway === $gateway ? 1 : 0)
+            + ($p->country_code === null ? 1 : 0);
+
+        return $candidates->sortByDesc($score)->first();
+    }
+
     public function defaultGateway(): string
     {
         return BillingConfig::defaultGateway();
