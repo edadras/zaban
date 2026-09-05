@@ -10,6 +10,8 @@ use App\Models\ExerciseTemplate;
 use App\Models\Lesson;
 use App\Models\VocabularySense;
 use App\Services\Content\DistractorPolicy;
+use App\Services\Content\LessonReadingBuilder;
+use App\Services\Content\PageGlossParser;
 use App\Services\Content\SentenceQuality;
 use App\Services\Content\SourceSentenceMiner;
 use Illuminate\Console\Command;
@@ -39,6 +41,8 @@ class BuildActivities extends Command
      */
     private const WORDS_FOR_A_VOCABULARY_LESSON = 3;
 
+    private ?int $language = null;
+
     /** Distractor candidates by CEFR level id, loaded once. */
     private array $pool = [];
 
@@ -46,6 +50,8 @@ class BuildActivities extends Command
         private SentenceQuality $quality,
         private DistractorPolicy $distractors,
         private SourceSentenceMiner $miner,
+        private LessonReadingBuilder $reading,
+        private PageGlossParser $footnotes,
     ) {
         parent::__construct();
     }
@@ -106,10 +112,12 @@ class BuildActivities extends Command
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }
 
+        $this->harvestFootnoteGlosses();
         $this->deactivateNonTerms();
         $this->linkSourceExercisesToConcepts();
         $this->spreadDifficulty();
         $this->buildFromVocabulary();
+        $this->buildReadingViews();
         $this->classifyLessons();
         $this->deriveWordFamilyPrerequisites();
         $this->markPlacementBank();
@@ -118,6 +126,88 @@ class BuildActivities extends Command
         $this->info('Done. Re-run `php artisan content:readiness` to see the effect.');
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Take the glosses the books print at the foot of each section.
+     *
+     * Only about a quarter of the taught senses arrived with a definition. The
+     * rest were not undefined in the book - they are marked with a superscript
+     * number and explained a few lines below, and the importer was reading the
+     * margin notes but not the footnotes.
+     *
+     * The gap cost more than a blank field. A choice item can only be proven
+     * sound when both the answer and the wrong answers carry a definition, so
+     * every missing gloss was also an item that could not be built, or could
+     * only be built on weaker evidence. This runs before anything is derived so
+     * the rest of the pass gets the benefit.
+     */
+    private function harvestFootnoteGlosses(): void
+    {
+        $this->line('▸ reading the footnote glosses');
+
+        $pages = $this->loadPageText();
+        $terms = $this->loadTaughtTerms();
+        $existing = DB::table('definitions')->distinct()->pluck('vocabulary_sense_id')->flip();
+
+        $senseByLessonTerm = DB::table('lesson_concept')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->where('concepts.conceptable_type', VocabularySense::class)
+            ->select('lesson_concept.lesson_id', 'concepts.label', 'concepts.conceptable_id')
+            ->get()
+            ->groupBy('lesson_id')
+            ->map(fn ($rows) => $rows->pluck('conceptable_id', 'label')->all())
+            ->all();
+
+        $now = now();
+        $rows = [];
+        $added = 0;
+
+        foreach ($pages as $lessonId => $pageText) {
+            $lessonTerms = collect($terms[$lessonId] ?? [])->pluck('term')->all();
+            if ($lessonTerms === []) {
+                continue;
+            }
+
+            $parsed = $this->footnotes->parse($pageText, $lessonTerms);
+
+            foreach ($parsed['glosses'] as $term => $gloss) {
+                $senseId = $senseByLessonTerm[$lessonId][$term] ?? null;
+                if ($senseId === null || $existing->has($senseId)) {
+                    continue;
+                }
+
+                $existing->put($senseId, true);
+                $rows[] = [
+                    'vocabulary_sense_id' => $senseId,
+                    'language_id' => $this->languageId(),
+                    'text' => $gloss,
+                    'generation_method' => 'extracted_footnote',
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+                $added++;
+
+                if (count($rows) >= 500) {
+                    DB::table('definitions')->insertOrIgnore($rows);
+                    $rows = [];
+                }
+            }
+        }
+
+        if ($rows !== []) {
+            DB::table('definitions')->insertOrIgnore($rows);
+        }
+
+        $total = DB::table('definitions')->count();
+        $senses = DB::table('vocabulary_senses')->count();
+        $this->line("   footnote glosses recovered: {$added}");
+        $this->line("   senses now defined: {$total} of {$senses}");
+    }
+
+    private function languageId(): int
+    {
+        return $this->language ??= (int) DB::table('languages')->where('code', 'en')->value('id');
     }
 
     /**
@@ -151,6 +241,101 @@ class BuildActivities extends Command
         }
 
         $this->line('   headings set aside: '.$headings->count().' of '.$labels->count());
+    }
+
+    /**
+     * Rebuild each lesson's reading block from the page in reading order.
+     *
+     * The block was created at import from the pdftohtml runs, which is the
+     * copy with the columns interleaved and every bolded word on a line of its
+     * own. The clean copy has been sitting in `source_pages.text` the whole
+     * time. This replaces the block's contents with paragraphs, and marks where
+     * in them each taught word appears so the reader can tap one and see what it
+     * means without leaving the page.
+     */
+    private function buildReadingViews(): void
+    {
+        $this->line('▸ setting the reading text');
+
+        $pages = $this->loadPageText();
+        $taught = $this->loadTaughtTerms();
+
+        $rebuilt = 0;
+        $glossed = 0;
+        $skipped = 0;
+
+        DB::table('lesson_blocks')
+            ->where('type', 'source_text')
+            ->orderBy('id')
+            ->chunkById(200, function ($blocks) use ($pages, $taught, &$rebuilt, &$glossed, &$skipped) {
+                foreach ($blocks as $block) {
+                    $page = $pages[$block->lesson_id] ?? null;
+                    if ($page === null) {
+                        $skipped++;
+
+                        continue;
+                    }
+
+                    $reading = $this->reading->build($page, $taught[$block->lesson_id] ?? []);
+                    if ($reading === null) {
+                        $skipped++;
+
+                        continue;
+                    }
+
+                    $config = json_decode((string) $block->config, true) ?: [];
+                    $config['reading'] = $reading;
+                    // The flat string stays as the fallback for any client that
+                    // has not been taught to read the structure, but it is now
+                    // the readable text rather than the run dump.
+                    $config['text'] = collect($reading['paragraphs'])->pluck('text')->implode("\n\n");
+
+                    DB::table('lesson_blocks')->where('id', $block->id)->update([
+                        'config' => json_encode($config, JSON_UNESCAPED_UNICODE),
+                        'estimated_seconds' => $reading['estimated_seconds'],
+                        'updated_at' => now(),
+                    ]);
+
+                    $rebuilt++;
+                    $glossed += $reading['glossed_terms'];
+                }
+            });
+
+        $this->line("   reading blocks rebuilt: {$rebuilt}");
+        $this->line('   words linked to their gloss: '.$glossed);
+        if ($skipped > 0) {
+            $this->warn("   left as imported, no page text to read: {$skipped}");
+        }
+    }
+
+    /**
+     * The words each lesson teaches, with their glosses.
+     *
+     * @return array<int, array<int, array{concept_id: int, term: string, gloss: ?string}>>
+     */
+    private function loadTaughtTerms(): array
+    {
+        return DB::table('lesson_concept')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->leftJoin('definitions', function ($j) {
+                $j->on('definitions.vocabulary_sense_id', '=', 'concepts.conceptable_id');
+            })
+            ->where('concepts.conceptable_type', VocabularySense::class)
+            ->where('concepts.is_active', true)
+            ->select([
+                'lesson_concept.lesson_id',
+                'concepts.id as concept_id',
+                'concepts.label as term',
+                'definitions.text as gloss',
+            ])
+            ->get()
+            ->groupBy('lesson_id')
+            ->map(fn ($rows) => $rows->unique('concept_id')->map(fn ($r) => [
+                'concept_id' => (int) $r->concept_id,
+                'term' => $r->term,
+                'gloss' => $r->gloss,
+            ])->values()->all())
+            ->all();
     }
 
     /**

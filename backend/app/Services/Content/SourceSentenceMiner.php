@@ -27,6 +27,9 @@ class SourceSentenceMiner
     /** How far apart two gutter votes can be and still be the same gutter. */
     private const GUTTER_TOLERANCE = 4;
 
+    /** Below this a paragraph is really a stray heading or a page number. */
+    private const MIN_PARAGRAPH_CHARS = 40;
+
     /** A gloss shorter than this could coincide with ordinary wording. */
     private const GLOSS_MIN_CHARS = 12;
 
@@ -120,6 +123,47 @@ class SourceSentenceMiner
     }
 
     /**
+     * The page as paragraphs, in reading order.
+     *
+     * `sentences()` is for mining single lines to build items from; this is for
+     * showing the page to a learner. The lesson block was storing the pdftohtml
+     * runs instead - the printed line numbers on their own lines, every bolded
+     * term split onto a line of its own - so the reading screen showed a column
+     * of fragments where the book has prose.
+     *
+     * @param  array<int, string>  $glosses  the margin notes printed on this page
+     * @return array<int, string>
+     */
+    public function paragraphs(?string $pageText, array $glosses = []): array
+    {
+        $prose = $this->reflow($pageText);
+        if ($prose === '') {
+            return [];
+        }
+
+        $needles = $this->normalisedGlosses($glosses);
+
+        $out = [];
+        foreach (explode("\n", $prose) as $chunk) {
+            $chunk = trim((string) preg_replace('/\s{2,}/u', ' ', $chunk));
+
+            if ($chunk === '' || mb_strlen($chunk) < self::MIN_PARAGRAPH_CHARS) {
+                continue;
+            }
+
+            // A paragraph that swallowed a margin note was assembled across the
+            // gutter; showing it would put the glossary inside the sentence.
+            if ($this->swallowedAGloss($chunk, $needles)) {
+                continue;
+            }
+
+            $out[] = $chunk;
+        }
+
+        return $out;
+    }
+
+    /**
      * The sentences on this page that use the term, shortest first.
      *
      * @return array<int, string>
@@ -153,7 +197,7 @@ class SourceSentenceMiner
      * inline glosses, and the section headings that would otherwise glue
      * themselves to the sentence below.
      */
-    public function reflow(?string $text): string
+    public function reflow(?string $text, bool $keepMarkers = false): string
     {
         $text = (string) preg_replace('/\[[^\]]{0,80}\]/u', ' ', (string) $text);
 
@@ -164,7 +208,7 @@ class SourceSentenceMiner
 
         $prose = [];
         foreach ($columns as $column) {
-            $prose[] = $this->readColumn($column);
+            $prose[] = $this->readColumn($column, $keepMarkers);
         }
 
         // A newline between columns, never a space: the foot of one column
@@ -290,7 +334,7 @@ class SourceSentenceMiner
     }
 
     /** One column of the page, read top to bottom, as prose. */
-    private function readColumn(array $lines): string
+    private function readColumn(array $lines, bool $keepMarkers = false): string
     {
         $out = [];
         $count = count($lines);
@@ -299,7 +343,24 @@ class SourceSentenceMiner
             $line = rtrim($lines[$i]);
             $trimmed = trim($line);
 
-            if ($trimmed === '' || preg_match('/^\d{1,3}$/', $trimmed)) {
+            $isBareNumber = preg_match('/^\d{1,3}$/', $trimmed) === 1;
+
+            // A line holding nothing but a number is the printed line number
+            // in prose, and a footnote marker in a glossary block. Which one
+            // depends on what the caller is reading the page for.
+            if ($keepMarkers && $isBareNumber) {
+                $out[] = $trimmed;
+
+                continue;
+            }
+
+            if ($trimmed === '' || $isBareNumber) {
+                // A blank line is the page's own paragraph break. Dropping it
+                // outright, as this did, welds the page into one slab of text.
+                if ($trimmed === '' && $out !== [] && end($out) !== "\n") {
+                    $out[] = "\n";
+                }
+
                 continue;
             }
 
@@ -319,8 +380,11 @@ class SourceSentenceMiner
 
         $joined = implode(' ', $out);
 
-        // "recruiting1" is the word plus its gloss marker, not a word.
-        $joined = (string) preg_replace('/(\p{L}{2,})\d{1,2}(?=[\s,.;:!?)]|$)/u', '$1', $joined);
+        // "recruiting1" is the word plus its gloss marker, not a word - unless
+        // the marker is the very thing being read for.
+        if (! $keepMarkers) {
+            $joined = (string) preg_replace('/(\p{L}{2,})\d{1,2}(?=[\s,.;:!?)]|$)/u', '$1', $joined);
+        }
 
         // Punctuation that followed a bolded word kept the run's leading space.
         $joined = (string) preg_replace('/\s+([,.;:!?)\x{2019}])/u', '$1', $joined);
