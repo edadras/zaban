@@ -68,6 +68,14 @@ class AdaptiveLearningService
                 ->concat($this->speakingActivities($userId, $slots['speaking']))
                 ->concat($this->explorationActivities($userId, $slots['exploration']));
 
+            // A learner who opens the app must always get something to do. If
+            // every bucket came back empty - a brand-new account, a narrow
+            // ability band, a course with no blocks yet - fall back to the best
+            // available material rather than handing back an empty session.
+            if ($activities->isEmpty()) {
+                $activities = $this->fallbackActivities($userId, max(4, (int) round($minutes * 0.6)));
+            }
+
             // Alternate activity types so the session never feels like a drill
             // list, then persist in that order.
             $ordered = $this->interleave($activities);
@@ -285,10 +293,18 @@ class AdaptiveLearningService
         $seen = LearnerConcept::where('user_id', $userId)->pluck('concept_id');
         $ability = $this->difficulty->abilityFor($userId);
 
-        $concepts = Concept::whereNotIn('id', $seen)
-            ->whereBetween('difficulty', [$ability - 0.9, $ability + 0.9])
-            ->where('is_active', true)
-            ->inRandomOrder()->limit($count)->get();
+        // Widen the band until the catalogue actually yields something; a strict
+        // window silently starves exploration on smaller courses.
+        $concepts = collect();
+        foreach ([0.9, 1.8, 3.5] as $window) {
+            $concepts = Concept::when($seen->isNotEmpty(), fn ($q) => $q->whereNotIn('id', $seen))
+                ->whereBetween('difficulty', [$ability - $window, $ability + $window])
+                ->where('is_active', true)
+                ->inRandomOrder()->limit($count)->get();
+            if ($concepts->isNotEmpty()) {
+                break;
+            }
+        }
 
         return $concepts->map(function (Concept $c) use ($userId) {
             $exercise = $this->pickExerciseForConcept($userId, $c->id);
@@ -302,6 +318,53 @@ class AdaptiveLearningService
                 'reason' => ['driver' => 'new_material', 'label' => $c->label],
             ] : null;
         })->filter()->values();
+    }
+
+    /**
+     * Last-resort material: any published, answerable item near the learner's
+     * ability, widening the band until something is found. Used only when the
+     * ordinary selectors all come back empty.
+     */
+    private function fallbackActivities(int $userId, int $count): Collection
+    {
+        $ability = $this->difficulty->abilityFor($userId);
+        $seen = \App\Models\ExerciseAttempt::where('user_id', $userId)->pluck('exercise_id')->all();
+
+        foreach ([1.0, 2.0, 4.0, 99.0] as $window) {
+            $candidates = Exercise::query()
+                ->join('exercise_concepts', 'exercise_concepts.exercise_id', '=', 'exercises.id')
+                ->whereNull('exercises.deleted_at')
+                ->when($seen, fn ($q) => $q->whereNotIn('exercises.id', $seen))
+                ->whereBetween('exercises.difficulty', [$ability - $window, $ability + $window])
+                ->select('exercises.*', 'exercise_concepts.concept_id')
+                ->distinct()
+                ->limit($count * 3)
+                ->get();
+
+            if ($candidates->isNotEmpty()) {
+                return $candidates
+                    ->unique('id')
+                    ->sortBy(fn (Exercise $e) => abs(
+                        $this->difficulty->successProbability($ability, (float) $e->difficulty) - 0.775
+                    ))
+                    ->take($count)
+                    ->map(fn (Exercise $e) => [
+                        'type' => 'exploration',
+                        'subject_type' => Exercise::class,
+                        'subject_id' => $e->id,
+                        'concept_id' => $e->concept_id,
+                        'priority' => 10.0,
+                        'predicted' => $this->difficulty->successProbability($ability, (float) $e->difficulty),
+                        'reason' => [
+                            'driver' => 'fallback',
+                            'note' => 'no review, weakness or curriculum material was available',
+                            'search_window' => $window,
+                        ],
+                    ])->values();
+            }
+        }
+
+        return collect();
     }
 
     /** Pick the best-fitting exercise for a concept at the learner's ability. */

@@ -1,0 +1,56 @@
+name: zaban
+description: Zaban — adaptive AI language learning client for web, Android and iOS.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State management. Pinned to the Riverpod 2.x API (Notifier / AsyncNotifier);
+  # no riverpod_generator, so providers are plain top-level finals.
+  flutter_riverpod: ^2.6.1
+
+  # Routing
+  go_router: ^14.6.2
+
+  # HTTP
+  dio: ^5.7.0
+
+  # Models / serialisation
+  freezed_annotation: ^3.0.0
+  json_annotation: ^4.9.0
+
+  # Storage
+  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.3.3
+
+  # Media: recording for speech practice, playback for listening blocks.
+  record: ^5.2.0
+  just_audio: ^0.9.42
+  permission_handler: ^11.3.1
+  path_provider: ^2.1.5
+
+  # Misc
+  collection: ^1.19.0
+  intl: ^0.19.0
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.13
+  freezed: ^3.0.0
+  json_serializable: ^6.9.0
+
+flutter:
+  uses-material-design: true
+  # Fonts are intentionally not bundled: the theme falls back to the platform UI
+  # font unless a family is supplied (see README "Typography").
+  assets:
+    - assets/

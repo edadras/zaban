@@ -1,0 +1,301 @@
+# ---------------------------------------------------------------------------
+# Zaban — local development stack.
+#
+# `make up` brings this up; see the Makefile for the everyday commands and
+# README.md for the quickstart. Nothing here is a production topology: the
+# database is single-node with relaxed durability, MinIO stands in for S3, and
+# the source tree is bind-mounted so an edit is live without a rebuild.
+#
+# Layout note that explains several of the mounts below: the Laravel application
+# lives at <repo>/backend, but the content commands resolve their inputs through
+# base_path('..') — ImportCurriculum reads docs/data/curriculum, AuditContent
+# re-reads sources/*.pdf and sources/audio. The container therefore mounts the
+# WHOLE repository at /srv/zaban, not just backend/.
+# ---------------------------------------------------------------------------
+
+# Shared application environment. Values set here win over backend/.env, because
+# Laravel loads .env immutably: a variable already present in the process
+# environment is never overwritten by the file. That is what lets the same .env
+# work on the host (DB_HOST=127.0.0.1) and in the stack (DB_HOST=mysql).
+x-app-env: &app-env
+  APP_ENV: local
+  APP_DEBUG: "true"
+  APP_URL: "http://localhost:8080"
+
+  DB_CONNECTION: mysql
+  DB_HOST: mysql
+  DB_PORT: "3306"
+  DB_DATABASE: "${DB_DATABASE:-zaban}"
+  DB_USERNAME: "${DB_USERNAME:-zaban}"
+  DB_PASSWORD: "${DB_PASSWORD:-secret}"
+
+  REDIS_CLIENT: phpredis
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  REDIS_PASSWORD: "null"
+
+  # Redis rather than the database driver for all three: the queue topology
+  # depends on six independent queues being cheap to poll, and database queues
+  # make that a table scan per worker per second.
+  CACHE_STORE: redis
+  QUEUE_CONNECTION: redis
+  SESSION_DRIVER: redis
+
+  # S3-compatible storage against MinIO. AI_STORAGE_DISK is what
+  # HiggsfieldProvider/EspeakTtsProvider/PlaceholderImageProvider mirror their
+  # output into, so pointing it at s3 exercises the same code path production
+  # uses instead of writing to a container-local directory that vanishes.
+  FILESYSTEM_DISK: s3
+  AI_STORAGE_DISK: s3
+  AWS_ACCESS_KEY_ID: "${MINIO_ROOT_USER:-zaban}"
+  AWS_SECRET_ACCESS_KEY: "${MINIO_ROOT_PASSWORD:-zabansecret}"
+  AWS_DEFAULT_REGION: us-east-1
+  AWS_BUCKET: "${MINIO_BUCKET:-zaban-media}"
+  AWS_ENDPOINT: "http://minio:9000"
+  AWS_URL: "http://localhost:9000/${MINIO_BUCKET:-zaban-media}"
+  AWS_USE_PATH_STYLE_ENDPOINT: "true"
+
+  MAIL_MAILER: log
+
+  # Broadcasting. See the `reverb` service below for what is and is not wired up.
+  BROADCAST_CONNECTION: "${BROADCAST_CONNECTION:-log}"
+  REVERB_APP_ID: "${REVERB_APP_ID:-zaban}"
+  REVERB_APP_KEY: "${REVERB_APP_KEY:-zaban-local-key}"
+  REVERB_APP_SECRET: "${REVERB_APP_SECRET:-zaban-local-secret}"
+  REVERB_HOST: reverb
+  REVERB_PORT: "8080"
+  REVERB_SCHEME: http
+
+  # AI provider chain. Left at the config defaults; supply real credentials in
+  # backend/.env (which is git-ignored) and they flow through unchanged, because
+  # nothing above shadows them.
+  ANTHROPIC_API_KEY: "${ANTHROPIC_API_KEY:-}"
+
+x-app-build: &app-build
+  context: .
+  dockerfile: docker/php/Dockerfile
+  target: dev
+  args:
+    # Match the host user so files written into the bind mount stay editable.
+    UID: "${UID:-1000}"
+    GID: "${GID:-1000}"
+
+x-app-volumes: &app-volumes
+  - .:/srv/zaban
+  - composer-cache:/home/app/.composer
+
+services:
+
+  # ------------------------------------------------------------------ nginx
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: zaban-nginx
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-8080}:80"
+    volumes:
+      # public/ only — nginx must be able to stat the front controller and any
+      # built assets. It never gets a path into storage/.
+      - ./backend/public:/srv/zaban/backend/public:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      app:
+        condition: service_healthy
+    healthcheck:
+      # /up is the health route registered in backend/bootstrap/app.php, so this
+      # proves the whole path works: nginx -> fastcgi -> PHP -> framework boot.
+      test: ["CMD-SHELL", "wget -q --spider http://localhost/up || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # -------------------------------------------------------------------- app
+  app:
+    build: *app-build
+    image: zaban/app:dev
+    container_name: zaban-app
+    restart: unless-stopped
+    environment: *app-env
+    volumes: *app-volumes
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio-init:
+        # Not just "minio is up": the bucket has to exist before the first write.
+        condition: service_completed_successfully
+    healthcheck:
+      # php-fpm has no HTTP endpoint of its own, so check that the FastCGI port
+      # is accepting connections. nginx's own healthcheck covers the rest.
+      test: ["CMD-SHELL", "php -r 'exit(@fsockopen(\"127.0.0.1\", 9000) ? 0 : 1);'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+
+  # ----------------------------------------------------------------- worker
+  worker:
+    build: *app-build
+    image: zaban/app:dev
+    container_name: zaban-worker
+    restart: unless-stopped
+    environment: *app-env
+    volumes: *app-volumes
+    # Six process pools, one per queue. See docker/worker/supervisord.conf for
+    # why they are separate processes rather than one prioritised worker.
+    command: ["supervisord", "-c", "/srv/zaban/docker/worker/supervisord.conf"]
+    depends_on:
+      app:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      # supervisord stays alive even when every worker it manages has died, so
+      # check the programs, not the supervisor.
+      test: ["CMD-SHELL", "supervisorctl -c /srv/zaban/docker/worker/supervisord.conf status | grep -qv RUNNING && exit 1 || exit 0"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # -------------------------------------------------------------- scheduler
+  scheduler:
+    build: *app-build
+    image: zaban/app:dev
+    container_name: zaban-scheduler
+    restart: unless-stopped
+    environment: *app-env
+    volumes: *app-volumes
+    # Exactly one scheduler per environment — two means every daily job fires twice.
+    command: ["/srv/zaban/docker/scheduler/entrypoint.sh"]
+    depends_on:
+      app:
+        condition: service_healthy
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # ------------------------------------------------------------------ mysql
+  mysql:
+    image: mysql:8.0
+    container_name: zaban-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD:-root}"
+      MYSQL_DATABASE: "${DB_DATABASE:-zaban}"
+      MYSQL_USER: "${DB_USERNAME:-zaban}"
+      MYSQL_PASSWORD: "${DB_PASSWORD:-secret}"
+    ports:
+      # Deliberately not 3306: a developer usually has a local MySQL already.
+      - "${DB_PORT_HOST:-3307}:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/zaban.cnf:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      # First boot initialises the data directory, which is slow.
+      start_period: 60s
+
+  # ------------------------------------------------------------------ redis
+  redis:
+    image: redis:7-alpine
+    container_name: zaban-redis
+    restart: unless-stopped
+    # Queues are the reason this must not be a pure cache: an evicted job is a
+    # lost job. appendonly on, and no maxmemory eviction policy.
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec"]
+    ports:
+      - "${REDIS_PORT_HOST:-6380}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+
+  # ------------------------------------------------------------------ minio
+  minio:
+    image: minio/minio:latest
+    container_name: zaban-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ROOT_USER: "${MINIO_ROOT_USER:-zaban}"
+      MINIO_ROOT_PASSWORD: "${MINIO_ROOT_PASSWORD:-zabansecret}"
+    command: ["server", "/data", "--console-address", ":9001"]
+    ports:
+      - "${MINIO_PORT:-9000}:9000"    # S3 API
+      - "${MINIO_CONSOLE_PORT:-9001}:9001"  # web console
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:9000/minio/health/live || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
+
+  # Creates the media bucket, then exits. `app` waits for this to complete
+  # successfully rather than merely for MinIO to be healthy.
+  minio-init:
+    image: minio/mc:latest
+    container_name: zaban-minio-init
+    restart: "no"
+    environment:
+      MINIO_ROOT_USER: "${MINIO_ROOT_USER:-zaban}"
+      MINIO_ROOT_PASSWORD: "${MINIO_ROOT_PASSWORD:-zabansecret}"
+      MINIO_BUCKET: "${MINIO_BUCKET:-zaban-media}"
+    volumes:
+      - ./docker/minio/init.sh:/init.sh:ro
+    entrypoint: ["/bin/sh", "/init.sh"]
+    depends_on:
+      minio:
+        condition: service_healthy
+
+  # ----------------------------------------------------------------- reverb
+  #
+  # Websockets for the live parts of the product — a tutor reply streaming in, a
+  # conversation turn being scored, a long media generation finishing.
+  #
+  # STATUS: laravel/reverb is NOT in backend/composer.json yet, so
+  # `php artisan reverb:start` does not exist and this container would exit
+  # immediately. It is therefore behind the `realtime` profile: the default
+  # `make up` does not start it, and `docker compose --profile realtime up`
+  # starts it once the package is installed. The REVERB_* variables it uses are
+  # already read by the framework's broadcasting config, so nothing else has to
+  # change when the package lands.
+  reverb:
+    build: *app-build
+    image: zaban/app:dev
+    container_name: zaban-reverb
+    profiles: ["realtime"]
+    restart: unless-stopped
+    environment:
+      <<: *app-env
+      BROADCAST_CONNECTION: reverb
+    volumes: *app-volumes
+    command: ["php", "artisan", "reverb:start", "--host=0.0.0.0", "--port=8080"]
+    ports:
+      - "${REVERB_PORT_HOST:-8081}:8080"
+    depends_on:
+      redis:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+
+volumes:
+  mysql-data:
+  redis-data:
+  minio-data:
+  # Keeps `composer install` fast across rebuilds and across the four containers
+  # that share this image.
+  composer-cache:

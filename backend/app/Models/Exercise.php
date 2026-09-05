@@ -71,6 +71,16 @@ class Exercise extends Model
         return $this->hasMany(ExerciseOption::class);
     }
 
+    public function hints(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ExerciseHint::class)->orderBy('level');
+    }
+
+    public function explanations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(ExerciseExplanation::class);
+    }
+
     public function answers(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(ExerciseAnswer::class);
