@@ -25,15 +25,28 @@ from xml.etree import ElementTree
 ROOT = Path('/home/user/zaban')
 CACHE = Path('/tmp/extract')
 
+# (key, cefr span, course label, pdf, audio directory)
+#
+# The course label names the LEVEL, and it must keep naming the level.
+#
+# An earlier pass renamed these to Foundation / Core / Advancing / Mastery,
+# which broke two things at once. Searching the corpus for "elementary" or
+# "advanced" - the words everyone actually uses for these books, and the words
+# in their own filenames - returned nothing, so both looked empty when they were
+# full. Worse, "Advancing" was the upper-intermediate book, so a search for
+# "Advanc" landed confidently on the wrong one.
+#
+# A label that quietly points at a different book than its name suggests is a
+# worse failure than an ugly label, so these track the filenames exactly.
 BOOKS = [
-    ('elementary',  'A1-A2', 'Foundation',
+    ('elementary',  'A1-A2', 'Elementary',
      'sources/elementary_3rd.pdf', 'sources/audio/elementary'),
-    ('pre_int_int', 'A2-B1', 'Core',
+    ('pre_int_int', 'A2-B1', 'Pre-intermediate and Intermediate',
      'sources/pre_intermediate_intermediate_4th.pdf',
      'sources/audio/pre_intermediate_intermediate'),
-    ('upper_int',   'B2', 'Advancing',
+    ('upper_int',   'B2', 'Upper-intermediate',
      'sources/upper_intermediate_4th.pdf', 'sources/audio/upper_intermediate'),
-    ('advanced',    'C1-C2', 'Mastery',
+    ('advanced',    'C1-C2', 'Advanced',
      'sources/advanced_3rd.pdf', 'sources/audio/advanced'),
 ]
 
