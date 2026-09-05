@@ -38,6 +38,38 @@ class AnthropicTextProvider implements TextProviderInterface
         return (bool) $this->apiKey && class_exists(Client::class);
     }
 
+    /**
+     * The user turn: the prompt, and any images it is asking about.
+     *
+     * Images come first so the model has looked at the page before it reads
+     * the instruction about what to do with it.
+     *
+     * @return string|list<array<string,mixed>>
+     */
+    private function content(TextRequest $req): string|array
+    {
+        if ($req->images === []) {
+            return $req->prompt;
+        }
+
+        $blocks = [];
+
+        foreach ($req->images as $image) {
+            $blocks[] = [
+                'type' => 'image',
+                'source' => [
+                    'type' => 'base64',
+                    'media_type' => $image['media_type'] ?? 'image/png',
+                    'data' => $image['data'] ?? '',
+                ],
+            ];
+        }
+
+        $blocks[] = ['type' => 'text', 'text' => $req->prompt];
+
+        return $blocks;
+    }
+
     public function generateText(TextRequest $req): TextResult
     {
         $client = new Client(apiKey: $this->apiKey);
@@ -45,7 +77,7 @@ class AnthropicTextProvider implements TextProviderInterface
         $params = [
             'model' => $req->model ?: $this->model,
             'maxTokens' => min($req->maxTokens ?: $this->maxTokens, 32000),
-            'messages' => [['role' => 'user', 'content' => $req->prompt]],
+            'messages' => [['role' => 'user', 'content' => $this->content($req)]],
             // Judgement tasks (grading, feedback, item writing) benefit from
             // reasoning; the API decides how much.
             'thinking' => ['type' => 'adaptive'],

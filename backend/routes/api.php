@@ -114,6 +114,7 @@ Route::prefix('v1')->group(function () {
  *   routes/api/billing.php - plans, subscription, invoices, coupons, webhooks
  *   routes/api/exam.php    - exam types, attempts, AI examiner
  *   routes/api/speech.php  - recording upload, scoring, pronunciation profile
+ *   routes/api/writing.php - typed writing, photographed paper practice, marking
  *   routes/api/admin.php   - ingestion, review queue, AI cost, users
  */
 /*
@@ -123,7 +124,7 @@ Route::prefix('v1')->group(function () {
 Route::get('v1/media/{media}/stream', [MediaController::class, 'stream'])
     ->name('media.stream');
 
-foreach (['billing', 'exam', 'speech', 'admin'] as $module) {
+foreach (['billing', 'exam', 'speech', 'writing', 'admin'] as $module) {
     $path = base_path("routes/api/{$module}.php");
     if (file_exists($path)) {
         require $path;

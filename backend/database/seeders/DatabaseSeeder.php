@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             PhonemeSeeder::class,
             ExamSeeder::class,
             CastSeeder::class,
+            ProductionPromptSeeder::class,
             ConversationScenarioSeeder::class,
         ]);
 
