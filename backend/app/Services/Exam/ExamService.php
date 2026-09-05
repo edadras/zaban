@@ -44,7 +44,8 @@ class ExamService
     public const RESPONSE_CRITERION = '_response:';
 
     /** Tasks only reach a learner once they have cleared content review. */
-    public const SERVABLE_STATUSES = ['approved', 'published'];
+    /** @deprecated Kept as an alias; Exercise owns the contract. */
+    public const SERVABLE_STATUSES = Exercise::SERVABLE_STATUSES;
 
     /** A section this sitting never covered; scoring projects it from the curriculum. */
     public const STATUS_NOT_ATTEMPTED = 'not_attempted';

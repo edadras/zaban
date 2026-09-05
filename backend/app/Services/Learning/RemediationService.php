@@ -85,6 +85,9 @@ class RemediationService
             ->join('exercise_concepts', 'exercise_concepts.exercise_id', '=', 'exercises.id')
             ->where('exercise_concepts.concept_id', $conceptId)
             ->when($exclude, fn ($q) => $q->whereNotIn('exercises.id', $exclude))
+            // Draft rows are the books' printed instructions, not answerable
+            // items: their numbered parts live on the page, not in the database.
+            ->whereIn('exercises.status', Exercise::SERVABLE_STATUSES)
             ->whereNull('exercises.deleted_at')
             ->select('exercises.*')
             ->distinct();

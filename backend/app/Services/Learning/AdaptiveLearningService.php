@@ -31,14 +31,8 @@ class AdaptiveLearningService
      */
     private const REACH = 1.0;
 
-    /** Starting mix from spec section 51; adjusted per learner below. */
-    private const BASE_WEIGHTS = [
-        'review' => 0.30,
-        'curriculum' => 0.30,
-        'weakness' => 0.20,
-        'speaking' => 0.10,
-        'exploration' => 0.10,
-    ];
+    /** Extra blocks to read so the discarded scene takes do not cost cards. */
+    private const SPARE_SCENES = 4;
 
     public function __construct(
         private CoursePlacementService $courses,
@@ -55,53 +49,72 @@ class AdaptiveLearningService
         ]);
         $minutes = $minutes ?: $this->plannedMinutes($userId);
 
-        $weights = $this->weightsFor($userId, $profile);
-        $slots = $this->allocateSlots($weights, $minutes);
+        $due = $this->srs->dueCount($userId);
+        $slots = SessionShape::slots($minutes, $due, (float) $profile->frustration_index);
 
-        return DB::transaction(function () use ($userId, $profile, $minutes, $weights, $slots) {
+        // The lesson is chosen once and drives two phases: what is studied, and
+        // what is practised straight afterwards. Before this, the curriculum
+        // phase handed over reading material and the questions in the same
+        // session came from the review queue - so the learner was studying one
+        // thing and being tested on another, which is what made the screen feel
+        // like a quiz rather than a lesson.
+        $lesson = $this->nextLesson($userId, $profile);
+
+        return DB::transaction(function () use ($userId, $profile, $minutes, $slots, $lesson, $due) {
             $session = LearningSession::create([
                 'user_id' => $userId,
                 'course_version_id' => $profile->active_course_version_id,
                 'status' => 'active',
                 'kind' => 'daily',
-                'composition' => ['weights' => $weights, 'slots' => $slots],
+                'composition' => [
+                    'slots' => $slots,
+                    'due_reviews' => $due,
+                    'lesson_id' => $lesson?->id,
+                    'lesson' => $lesson?->title,
+                ],
                 'planned_minutes' => $minutes,
                 'started_at' => now(),
             ]);
 
-            $activities = collect()
-                ->concat($this->reviewActivities($userId, $slots['review']))
-                ->concat($this->weaknessActivities($userId, $slots['weakness']))
-                ->concat($this->curriculumActivities($userId, $profile, $slots['curriculum']))
-                ->concat($this->speakingActivities($userId, $slots['speaking']))
-                ->concat($this->explorationActivities($userId, $slots['exploration']));
+            $byPhase = [
+                SessionShape::WARM_UP => $this->warmUpActivities($userId, $slots[SessionShape::WARM_UP]),
+                SessionShape::STUDY => $this->studyActivities($lesson, $slots[SessionShape::STUDY]),
+                SessionShape::PRACTISE => $this->practiseActivities($userId, $lesson, $slots[SessionShape::PRACTISE]),
+                SessionShape::USE => $this->useActivities($userId, $lesson, $slots[SessionShape::USE]),
+                SessionShape::CONSOLIDATE => $this->consolidateActivities($userId, $slots[SessionShape::CONSOLIDATE]),
+            ];
 
             // A learner who opens the app must always get something to do. If
-            // every bucket came back empty - a brand-new account, a narrow
+            // every phase came back empty - a brand-new account, a narrow
             // ability band, a course with no blocks yet - fall back to the best
             // available material rather than handing back an empty session.
-            if ($activities->isEmpty()) {
-                $activities = $this->fallbackActivities($userId, max(4, (int) round($minutes * 0.6)));
+            if (collect($byPhase)->every(fn ($p) => $p->isEmpty())) {
+                $byPhase[SessionShape::PRACTISE] = $this->fallbackActivities(
+                    $userId,
+                    max(4, (int) round($minutes * 0.6)),
+                );
             }
 
-            // Alternate activity types so the session never feels like a drill
-            // list, then persist in that order.
-            $ordered = $this->interleave($activities);
-
             $position = 0;
-            foreach ($ordered as $a) {
-                SessionActivity::create([
-                    'learning_session_id' => $session->id,
-                    'position' => $position++,
-                    'activity_type' => $a['type'],
-                    'subject_type' => $a['subject_type'] ?? null,
-                    'subject_id' => $a['subject_id'] ?? null,
-                    'concept_id' => $a['concept_id'] ?? null,
-                    'selection_reason' => $a['reason'],
-                    'priority_score' => $a['priority'] ?? null,
-                    'predicted_success' => $a['predicted'] ?? null,
-                    'status' => 'pending',
-                ]);
+            foreach (SessionShape::order() as $phase) {
+                $withinPhase = 0;
+                foreach ($byPhase[$phase] ?? [] as $a) {
+                    SessionActivity::create([
+                        'learning_session_id' => $session->id,
+                        'position' => $position++,
+                        'phase' => $phase,
+                        'phase_position' => $withinPhase++,
+                        'activity_type' => $a['type'],
+                        'subject_type' => $a['subject_type'] ?? null,
+                        'subject_id' => $a['subject_id'] ?? null,
+                        'concept_id' => $a['concept_id'] ?? null,
+                        'selection_reason' => $a['reason'],
+                        'rationale' => $a['rationale'] ?? null,
+                        'priority_score' => $a['priority'] ?? null,
+                        'predicted_success' => $a['predicted'] ?? null,
+                        'status' => 'pending',
+                    ]);
+                }
             }
 
             $session->update(['activities_planned' => $position]);
@@ -111,52 +124,245 @@ class AdaptiveLearningService
     }
 
     /**
-     * Shift the mix toward what this learner needs now: a review backlog pulls
-     * weight from new material, and recent frustration shortens and softens the
-     * session rather than pushing harder.
+     * Open on ground the learner already holds.
+     *
+     * Two items at most, and the ones closest to being forgotten - enough to
+     * start moving without the session opening on a wall.
      */
-    private function weightsFor(int $userId, LearnerProfile $profile): array
+    private function warmUpActivities(int $userId, int $count): Collection
     {
-        $w = self::BASE_WEIGHTS;
-        $due = $this->srs->dueCount($userId);
-        $frustration = (float) $profile->frustration_index;
+        return $this->reviewActivities($userId, min($count, 2))
+            ->map(function (array $a) {
+                $a['rationale'] = 'You learned this before — a quick check to start.';
 
-        if ($due > 25) {
-            $w['review'] += 0.15;
-            $w['curriculum'] -= 0.10;
-            $w['exploration'] -= 0.05;
-        } elseif ($due === 0) {
-            $w['review'] = 0.05;
-            $w['curriculum'] += 0.15;
-            $w['exploration'] += 0.10;
-        }
-
-        if ($frustration > 0.5) {
-            // Consolidate instead of advancing.
-            $w['weakness'] += 0.10;
-            $w['review'] += 0.05;
-            $w['curriculum'] -= 0.15;
-        }
-
-        if ($profile->placement_status !== 'completed') {
-            $w['exploration'] += 0.05;
-        }
-
-        $sum = array_sum($w);
-
-        return array_map(fn ($v) => round(max(0, $v) / $sum, 3), $w);
+                return $a;
+            });
     }
 
-    /** Roughly one activity per minute of planned study. */
-    private function allocateSlots(array $weights, int $minutes): array
+    /**
+     * The lesson itself, in the order the page is laid out: the text first, then
+     * the picture, then the words it teaches.
+     */
+    private function studyActivities(?Lesson $lesson, int $count): Collection
     {
-        $total = max(4, (int) round($minutes * 0.9));
-        $slots = [];
-        foreach ($weights as $k => $v) {
-            $slots[$k] = (int) max(0, round($total * $v));
+        if ($lesson === null || $count <= 0) {
+            return collect();
         }
 
-        return $slots;
+        $teaching = ['source_text', 'image_scene', 'flashcard'];
+
+        $blocks = $lesson->blocks()
+            ->whereIn('type', $teaching)
+            ->orderByRaw('FIELD(type, ?, ?, ?)', $teaching)
+            ->orderBy('position')
+            ->limit($count + self::SPARE_SCENES)
+            ->get()
+            // A lesson can carry several takes of its scene. One sets the
+            // picture; three in a row is a gallery, not a lesson.
+            ->groupBy('type')
+            ->map(fn ($group, $type) => $type === 'image_scene' ? $group->take(1) : $group)
+            ->flatten()
+            ->sortBy(fn ($b) => array_search($b->type, $teaching, true) * 1000 + $b->position)
+            ->take($count)
+            ->values();
+
+        return $blocks->map(fn ($block) => [
+            'type' => 'lesson_block',
+            'subject_type' => \App\Models\LessonBlock::class,
+            'subject_id' => $block->id,
+            'concept_id' => $block->config['concept_id'] ?? null,
+            'priority' => 50.0,
+            'rationale' => match ($block->type) {
+                'source_text' => "The lesson: {$lesson->title}.",
+                'image_scene' => 'The scene this lesson is about.',
+                'flashcard' => 'A new word from this lesson.',
+                default => "From {$lesson->title}.",
+            },
+            'reason' => [
+                'driver' => 'curriculum',
+                'lesson_id' => $lesson->id,
+                'lesson' => $lesson->title,
+                'block_type' => $block->type,
+            ],
+        ])->values();
+    }
+
+    /**
+     * Questions on the words the study phase has just introduced.
+     *
+     * This phase did not exist. The curriculum bucket handed over reading
+     * material and stopped there, so nothing in a session ever asked about the
+     * lesson the session had just taught - every question came from the review
+     * queue or the weakness list, about words met on some other day.
+     */
+    private function practiseActivities(int $userId, ?Lesson $lesson, int $count): Collection
+    {
+        if ($lesson === null || $count <= 0) {
+            return collect();
+        }
+
+        $ability = $this->difficulty->abilityFor($userId);
+        $out = collect();
+
+        foreach ($lesson->concepts()->where('concepts.is_active', true)->get() as $concept) {
+            if ($out->count() >= $count) {
+                break;
+            }
+
+            $exercise = $this->pickExerciseForConcept($userId, $concept->id);
+            if (! $exercise) {
+                continue;
+            }
+
+            $out->push([
+                'type' => 'practice',
+                'subject_type' => Exercise::class,
+                'subject_id' => $exercise->id,
+                'concept_id' => $concept->id,
+                'priority' => 60.0,
+                'predicted' => $this->difficulty->successProbability($ability, (float) $exercise->difficulty),
+                'rationale' => "Using \"{$concept->label}\" from this lesson.",
+                'reason' => [
+                    'driver' => 'practice_after_study',
+                    'lesson_id' => $lesson->id,
+                    'label' => $concept->label,
+                ],
+            ]);
+        }
+
+        return $out->values();
+    }
+
+    /**
+     * Hearing it, saying it, and having a conversation in it.
+     *
+     * The roleplay scenarios existed on their own screen and were never part of
+     * a session, so a learner had to know to go and find them.
+     */
+    private function useActivities(int $userId, ?Lesson $lesson, int $count): Collection
+    {
+        if ($count <= 0) {
+            return collect();
+        }
+
+        $out = collect();
+
+        if ($lesson) {
+            $blocks = $lesson->blocks()
+                ->whereIn('type', ['listen_and_choose', 'repeat_after_speaker'])
+                ->orderBy('position')
+                ->limit(max(1, $count - 1))
+                ->get();
+
+            foreach ($blocks as $block) {
+                $out->push([
+                    'type' => $block->type === 'listen_and_choose' ? 'listening' : 'speaking',
+                    'subject_type' => \App\Models\LessonBlock::class,
+                    'subject_id' => $block->id,
+                    'concept_id' => null,
+                    'priority' => 40.0,
+                    'rationale' => $block->type === 'listen_and_choose'
+                        ? 'Hear these words spoken by the book’s own recording.'
+                        : 'Say them yourself and get your pronunciation scored.',
+                    'reason' => [
+                        'driver' => 'use_in_context',
+                        'lesson_id' => $lesson->id,
+                        'block_type' => $block->type,
+                    ],
+                ]);
+            }
+        }
+
+        if ($out->count() < $count) {
+            $out = $out->concat($this->conversationActivity($userId));
+        }
+
+        if ($out->isEmpty()) {
+            $out = $this->speakingActivities($userId, $count)->map(function (array $a) {
+                $a['rationale'] = 'Speaking practice on the sounds you find hardest.';
+
+                return $a;
+            });
+        }
+
+        return $out->take($count)->values();
+    }
+
+    /**
+     * One roleplay pitched at the learner's level, if there is one.
+     */
+    private function conversationActivity(int $userId): Collection
+    {
+        $level = LearnerProfile::where('user_id', $userId)->value('current_cefr_level_id');
+
+        $scenario = DB::table('conversation_scenarios')
+            ->when($level, fn ($q) => $q->where('cefr_level_id', '<=', $level))
+            ->orderByDesc('cefr_level_id')
+            ->inRandomOrder()
+            ->first();
+
+        if (! $scenario) {
+            return collect();
+        }
+
+        return collect([[
+            'type' => 'conversation',
+            'subject_type' => \App\Models\ConversationScenario::class,
+            'subject_id' => $scenario->id,
+            'concept_id' => null,
+            'priority' => 35.0,
+            'rationale' => "Talk it through: {$scenario->title}.",
+            'reason' => [
+                'driver' => 'conversation_practice',
+                'scenario' => $scenario->title,
+            ],
+        ]]);
+    }
+
+    /**
+     * Everything outstanding: what spaced repetition says is due, and what the
+     * mastery model says keeps going wrong.
+     */
+    private function consolidateActivities(int $userId, int $count): Collection
+    {
+        if ($count <= 0) {
+            return collect();
+        }
+
+        $reviewSlots = (int) ceil($count * 0.6);
+
+        $reviews = $this->reviewActivities($userId, $reviewSlots)
+            ->map(function (array $a) {
+                $a['rationale'] = 'Due for review today.';
+
+                return $a;
+            });
+
+        $weakness = $this->weaknessActivities($userId, $count - $reviews->count())
+            ->map(function (array $a) {
+                $a['rationale'] = $a['reason']['strategy'] === 'retest'
+                    ? 'You have missed this one before.'
+                    : 'A different way in, since the last approach did not stick.';
+
+                return $a;
+            });
+
+        $out = $reviews->concat($weakness);
+
+        // A learner with nothing due and nothing weak still gets to meet
+        // something new rather than finishing early.
+        if ($out->count() < $count) {
+            $out = $out->concat(
+                $this->explorationActivities($userId, $count - $out->count())
+                    ->map(function (array $a) {
+                        $a['rationale'] = 'Something new, near where you are now.';
+
+                        return $a;
+                    }),
+            );
+        }
+
+        return $out->take($count)->values();
     }
 
     private function plannedMinutes(int $userId): int
@@ -339,10 +545,11 @@ class AdaptiveLearningService
         $seen = \App\Models\ExerciseAttempt::where('user_id', $userId)->pluck('exercise_id')->all();
 
         foreach ([1.0, 2.0, 4.0, 99.0] as $window) {
-            $candidates = Exercise::query()
-                ->join('exercise_concepts', 'exercise_concepts.exercise_id', '=', 'exercises.id')
-                ->whereNull('exercises.deleted_at')
-                ->when($seen, fn ($q) => $q->whereNotIn('exercises.id', $seen))
+            $candidates = $this->answerable(
+                Exercise::query()
+                    ->join('exercise_concepts', 'exercise_concepts.exercise_id', '=', 'exercises.id')
+                    ->when($seen, fn ($q) => $q->whereNotIn('exercises.id', $seen)),
+            )
                 ->whereBetween('exercises.difficulty', [$ability - $window, $ability + $window])
                 ->select('exercises.*', 'exercise_concepts.concept_id')
                 ->distinct()
@@ -376,15 +583,34 @@ class AdaptiveLearningService
     }
 
     /** Pick the best-fitting exercise for a concept at the learner's ability. */
+    /**
+     * Only items a learner can actually answer on their own.
+     *
+     * The books' own exercise sections import as one row per instruction -
+     * "Answer the questions.", "Match up the pairs to make collocations." -
+     * because the numbered parts beneath them belong to the printed page, not
+     * to the database. They are kept as source material and marked draft. The
+     * selectors were not looking at status, so a session could hand a learner
+     * "Write the related adjectives in the correct columns." with nothing to
+     * write in.
+     */
+    private function answerable($query)
+    {
+        return $query
+            ->whereIn('exercises.status', Exercise::SERVABLE_STATUSES)
+            ->whereNull('exercises.deleted_at');
+    }
+
     public function pickExerciseForConcept(int $userId, int $conceptId, array $excludeIds = []): ?Exercise
     {
         $ability = $this->difficulty->abilityFor($userId);
 
-        $candidates = Exercise::query()
-            ->join('exercise_concepts', 'exercise_concepts.exercise_id', '=', 'exercises.id')
-            ->where('exercise_concepts.concept_id', $conceptId)
-            ->when($excludeIds, fn ($q) => $q->whereNotIn('exercises.id', $excludeIds))
-            ->whereNull('exercises.deleted_at')
+        $candidates = $this->answerable(
+            Exercise::query()
+                ->join('exercise_concepts', 'exercise_concepts.exercise_id', '=', 'exercises.id')
+                ->where('exercise_concepts.concept_id', $conceptId)
+                ->when($excludeIds, fn ($q) => $q->whereNotIn('exercises.id', $excludeIds)),
+        )
             ->select('exercises.*')
             ->distinct()
             ->limit(25)
@@ -460,6 +686,17 @@ class AdaptiveLearningService
             ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
             ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
             ->where('modules.course_version_id', $versionId)
+            // A daily session is built around a lesson that teaches words. The
+            // study-skills pages at the front of each book sort first and teach
+            // none, so they were the first thing every learner saw and left the
+            // practice phase with nothing to ask about. They stay in the course
+            // and stay browsable; they just do not drive a session.
+            //
+            // Stated as an exclusion rather than a requirement so that a corpus
+            // which has not been classified yet still yields lessons instead of
+            // silently yielding none.
+            ->where('lessons.kind', '!=', 'study_skills')
+            ->where('concepts.is_active', true)
             ->whereNull('lessons.deleted_at')
             ->when($completed->isNotEmpty(), fn ($q) => $q->whereNotIn('lessons.id', $completed))
             ->groupBy('lessons.id', 'modules.position', 'units.position', 'lessons.position')
@@ -471,33 +708,5 @@ class AdaptiveLearningService
                 DB::raw('AVG(concepts.difficulty) as difficulty'),
             ])
             ->get();
-    }
-
-    /**
-     * Spread activity types so the same kind never runs three times in a row -
-     * variety is what keeps a session from feeling like a worksheet.
-     */
-    private function interleave(Collection $activities): Collection
-    {
-        $byType = $activities->groupBy('type')->map->values()->all();
-        $out = collect();
-        $lastType = null;
-
-        while (array_filter($byType, fn ($g) => $g->isNotEmpty())) {
-            $candidates = array_filter($byType, fn ($g, $t) => $g->isNotEmpty() && $t !== $lastType, ARRAY_FILTER_USE_BOTH);
-            if (! $candidates) {
-                $candidates = array_filter($byType, fn ($g) => $g->isNotEmpty());
-            }
-            // Take from whichever remaining type has the most left, so nothing
-            // bunches at the end.
-            uasort($candidates, fn ($a, $b) => $b->count() <=> $a->count());
-            $type = array_key_first($candidates);
-
-            $out->push($byType[$type]->shift());
-            $byType[$type] = $byType[$type]->values();
-            $lastType = $type;
-        }
-
-        return $out;
     }
 }

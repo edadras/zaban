@@ -22,6 +22,10 @@ abstract class LearningSession with _$LearningSession {
     @Default(0) int activitiesCompleted,
     @Default(0) int xpEarned,
     SessionComposition? composition,
+
+    /// The named parts of the session, in the order they run. The client
+    /// renders these as headings; it does not decide what they are.
+    @Default(<SessionPhase>[]) List<SessionPhase> plan,
     @Default(<SessionActivity>[]) List<SessionActivity> activities,
   }) = _LearningSession;
 
@@ -43,6 +47,37 @@ abstract class SessionComposition with _$SessionComposition {
       _$SessionCompositionFromJson(json);
 }
 
+/// One named part of a session — "Study", "Practice", "Use it".
+///
+/// A session used to be a flat list, which is why the learning screen read as a
+/// quiz: nothing on screen said that the questions came after the teaching, or
+/// that the teaching had happened at all. The server names the parts and says
+/// what each is for; this is that, verbatim.
+@freezed
+abstract class SessionPhase with _$SessionPhase {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory SessionPhase({
+    required String phase,
+    required String title,
+    @Default('') String purpose,
+    @Default(0) int activities,
+    @Default(0) int completed,
+    @Default(0) int estimatedSeconds,
+  }) = _SessionPhase;
+
+  factory SessionPhase.fromJson(Map<String, dynamic> json) =>
+      _$SessionPhaseFromJson(json);
+}
+
+extension SessionPhaseX on SessionPhase {
+  /// "About 4 min" — the shape of the part, not a stopwatch.
+  String get durationLabel {
+    final minutes = (estimatedSeconds / 60).round();
+    if (minutes <= 1) return 'About a minute';
+    return 'About $minutes min';
+  }
+}
+
 /// One step of the session.
 ///
 /// The API resolves the polymorphic subject for us and inlines it under
@@ -56,11 +91,20 @@ abstract class SessionActivity with _$SessionActivity {
     required int id,
     @Default(0) int position,
 
-    /// review | weakness | remediation | lesson_block | speaking | exploration
+    /// warm_up | study | practise | use | consolidate — which part of the
+    /// session this belongs to.
+    String? phase,
+
+    /// review | weakness | remediation | lesson_block | practice | listening |
+    /// speaking | conversation | exploration
     @JsonKey(name: 'type') @Default('practice') String activityType,
     int? conceptId,
     double? predictedSuccess,
     @Default('pending') String status,
+
+    /// The server's own one-line explanation for this activity, written for
+    /// the learner. Preferred over anything derived on the client.
+    String? rationale,
 
     /// The selection audit trail (`selection_reason` in the database).
     @JsonKey(name: 'why')
@@ -95,20 +139,32 @@ extension SessionActivityX on SessionActivity {
     return LessonBlock.fromJson(payload);
   }
 
-  /// The one-line reason shown under the activity, built from the server's
-  /// `why` payload. Never invented locally.
+  /// The one-line reason shown under the activity.
+  ///
+  /// The server writes this for the learner, so it is used as sent. The
+  /// mapping below is the fallback for sessions composed before phases
+  /// existed, and is built from the server's `why` payload — never invented
+  /// locally.
   String get reasonLabel {
+    final written = rationale;
+    if (written != null && written.isNotEmpty) return written;
+
     final driver = selectionReason['driver'] as String?;
     return switch (driver) {
       'spaced_repetition' => 'Due for review',
       'weakness' => 'You have been getting this wrong',
       'curriculum' => selectionReason['lesson'] as String? ?? 'Next in course',
       'speaking_practice' => 'Speaking practice',
+      'practice_after_study' => 'Using what you just learned',
+      'use_in_context' => 'Using it for real',
+      'conversation_practice' => 'Conversation practice',
       'new_material' => 'Something new',
       _ => switch (activityType) {
           'review' => 'Review',
           'remediation' => 'A different angle on this',
           'speaking' => 'Speaking',
+          'listening' => 'Listening',
+          'conversation' => 'Conversation',
           'exploration' => 'Something new',
           _ => 'Practice',
         },
@@ -118,6 +174,26 @@ extension SessionActivityX on SessionActivity {
 
 extension LearningSessionX on LearningSession {
   bool get isComplete => status == 'completed';
+
+  /// The part an activity belongs to, or null for a session composed before
+  /// phases existed.
+  SessionPhase? phaseOf(SessionActivity activity) {
+    for (final SessionPhase p in plan) {
+      if (p.phase == activity.phase) return p;
+    }
+    return null;
+  }
+
+  /// Where this activity sits inside its own part, 1-based, and how many that
+  /// part holds. Used for "2 of 6 in this part" rather than a running count
+  /// across the whole session.
+  (int, int) positionWithinPhase(SessionActivity activity) {
+    final List<SessionActivity> siblings = activities
+        .where((SessionActivity a) => a.phase == activity.phase)
+        .toList();
+    final int index = siblings.indexWhere((SessionActivity a) => a.id == activity.id);
+    return (index < 0 ? 1 : index + 1, siblings.isEmpty ? 1 : siblings.length);
+  }
 
   List<SessionActivity> get pending =>
       activities.where((SessionActivity a) => !a.isCompleted).toList();

@@ -126,6 +126,13 @@ class DistractorPolicy
             return false;
         }
 
+        // A sentence, not a headword. The books open with units about how to
+        // study, and their section headings - "What does knowing a new word
+        // mean?" - were reaching the catalogue as vocabulary.
+        if (preg_match('/[?!]|\.\s|[.;:]$/u', $t)) {
+            return false;
+        }
+
         return str_word_count($t) <= 4;
     }
 

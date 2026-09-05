@@ -9,7 +9,25 @@ class Exercise extends Model
 {
     use SoftDeletes;
 
+    /**
+     * Statuses an item may be shown to a learner under.
+     *
+     * `approved` is what the deterministic builder writes; `published` is what
+     * the admin review flow writes. Anything else - `draft` above all - is
+     * material we hold but cannot serve: the books' own exercise sections
+     * import as one row per printed instruction ("Answer the questions."),
+     * because their numbered parts belong to the page rather than the database,
+     * and a learner handed one has nothing to answer.
+     */
+    public const SERVABLE_STATUSES = ['approved', 'published'];
+
     protected $table = 'exercises';
+
+    /** @param  \Illuminate\Database\Eloquent\Builder<self>  $query */
+    public function scopeServable($query)
+    {
+        return $query->whereIn('exercises.status', self::SERVABLE_STATUSES);
+    }
 
     protected $fillable = [
         'exercise_template_id',

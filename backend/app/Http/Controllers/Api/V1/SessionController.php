@@ -6,6 +6,7 @@ use App\Models\Exercise;
 use App\Models\LearningSession;
 use App\Models\SessionActivity;
 use App\Services\Learning\AdaptiveLearningService;
+use App\Services\Learning\SessionShape;
 use App\Services\Learning\SpacedRepetitionService;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,9 @@ use Illuminate\Http\Request;
  */
 class SessionController extends ApiController
 {
+    /** Budget for one question, for the estimate shown against a phase. */
+    private const SECONDS_PER_QUESTION = 25;
+
     public function __construct(
         private AdaptiveLearningService $engine,
         private SpacedRepetitionService $srs,
@@ -120,6 +124,23 @@ class SessionController extends ApiController
 
     private function present(LearningSession $session): array
     {
+        $activities = $session->activities->map(fn (SessionActivity $a) => [
+            'id' => $a->id,
+            'position' => $a->position,
+            'phase' => $a->phase,
+            'type' => $a->activity_type,
+            'status' => $a->status,
+            'concept_id' => $a->concept_id,
+            'predicted_success' => $a->predicted_success !== null ? (float) $a->predicted_success : null,
+            // One line the learner can read, saying why this is in front of
+            // them. Without it a session is a list of tasks with no argument.
+            'rationale' => $a->rationale,
+            // The machine-readable version of the same decision, so the
+            // selection model can be audited after the fact.
+            'why' => $a->selection_reason,
+            'subject' => $this->subjectPayload($a),
+        ])->values();
+
         return [
             'id' => $session->id,
             'status' => $session->status,
@@ -128,19 +149,63 @@ class SessionController extends ApiController
             'composition' => $session->composition,
             'activities_planned' => $session->activities_planned,
             'activities_completed' => $session->activities_completed,
-            'activities' => $session->activities->map(fn (SessionActivity $a) => [
-                'id' => $a->id,
-                'position' => $a->position,
-                'type' => $a->activity_type,
-                'status' => $a->status,
-                'concept_id' => $a->concept_id,
-                'predicted_success' => $a->predicted_success !== null ? (float) $a->predicted_success : null,
-                // Exposed so the UI can explain *why* this appeared - and so the
-                // selection model can be audited after the fact.
-                'why' => $a->selection_reason,
-                'subject' => $this->subjectPayload($a),
-            ])->values(),
+            // The session's shape, so the client can show what is coming rather
+            // than revealing it one activity at a time.
+            'plan' => $this->plan($session),
+            'activities' => $activities,
         ];
+    }
+
+    /**
+     * The named parts of this session, in order, with what each one holds.
+     *
+     * Only phases that actually have work are listed - a learner with nothing
+     * due should not be shown an empty "Consolidate" heading.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function plan(LearningSession $session): array
+    {
+        $byPhase = $session->activities->groupBy('phase');
+
+        $plan = [];
+        foreach (SessionShape::order() as $phase) {
+            $items = $byPhase->get($phase, collect());
+            if ($items->isEmpty()) {
+                continue;
+            }
+
+            $plan[] = [
+                'phase' => $phase,
+                'title' => SessionShape::title($phase),
+                'purpose' => SessionShape::purpose($phase),
+                'activities' => $items->count(),
+                'completed' => $items->where('status', 'completed')->count(),
+                'estimated_seconds' => $this->estimateSeconds($items),
+            ];
+        }
+
+        return $plan;
+    }
+
+    /**
+     * Roughly how long a phase takes: a block states its own duration, and a
+     * question is budgeted at the median a learner spends on one.
+     */
+    private function estimateSeconds($activities): int
+    {
+        $blockIds = $activities
+            ->where('subject_type', \App\Models\LessonBlock::class)
+            ->pluck('subject_id')
+            ->filter();
+
+        $blockSeconds = $blockIds->isEmpty()
+            ? 0
+            : (int) \App\Models\LessonBlock::whereIn('id', $blockIds)->sum('estimated_seconds');
+
+        $questions = $activities->count() - $blockIds->count();
+
+        return $blockSeconds + $questions * self::SECONDS_PER_QUESTION;
     }
 
     /** Enough of the subject for the client to render without another round trip. */
@@ -176,6 +241,14 @@ class SessionController extends ApiController
                 'config' => $subject->config,
                 'media_asset_id' => $subject->media_asset_id,
                 'estimated_seconds' => $subject->estimated_seconds,
+            ],
+            \App\Models\ConversationScenario::class => [
+                'kind' => 'conversation_scenario',
+                'id' => $subject->id,
+                'title' => $subject->title,
+                'setting' => $subject->setting,
+                'situation' => $subject->situation,
+                'learner_role' => $subject->learner_role,
             ],
             default => ['kind' => class_basename($a->subject_type), 'id' => $subject->id],
         };

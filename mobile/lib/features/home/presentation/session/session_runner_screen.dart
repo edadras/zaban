@@ -109,16 +109,84 @@ class _ActivityView extends ConsumerWidget {
               bottom: Spacing.xxxl,
             ),
             child: ResponsiveContent(
-              child: _ActivityBody(
-                activity: activity,
-                scope: scope,
-                onSubmit: actions.onSubmitExercise!,
-                onContinue: actions.onContinue,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  _PhaseBanner(session: state.session, activity: activity),
+                  _ActivityBody(
+                    activity: activity,
+                    scope: scope,
+                    onSubmit: actions.onSubmitExercise!,
+                    onContinue: actions.onContinue,
+                  ),
+                ],
               ),
             ),
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Says which part of the session the learner is in, and what it is for.
+///
+/// Without this a session is a stream of tasks: the complaint that started this
+/// work was that the learning screen "just asks questions", which was true both
+/// of the order the activities came in and of the fact that nothing on screen
+/// named what was happening. The text is the server's, not ours.
+class _PhaseBanner extends StatelessWidget {
+  const _PhaseBanner({required this.session, required this.activity});
+
+  final LearningSession session;
+  final SessionActivity activity;
+
+  @override
+  Widget build(BuildContext context) {
+    final SessionPhase? phase = session.phaseOf(activity);
+    if (phase == null) return const SizedBox.shrink();
+
+    final (int at, int of) = session.positionWithinPhase(activity);
+    final colors = context.colors;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: Spacing.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Text(
+                phase.title.toUpperCase(),
+                style: context.text.labelSmall?.copyWith(
+                  color: colors.accent,
+                  letterSpacing: 1.2,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(width: Spacing.sm),
+              Text(
+                '$at of $of',
+                style: context.text.labelSmall?.copyWith(
+                  color: colors.textSecondary,
+                ),
+              ),
+              const Spacer(),
+              Text(
+                phase.durationLabel,
+                style: context.text.labelSmall?.copyWith(
+                  color: colors.textSecondary,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: Spacing.xs),
+          Text(
+            phase.purpose,
+            style: context.text.bodySmall?.copyWith(color: colors.textSecondary),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -32,6 +32,13 @@ class BuildActivities extends Command
 
     private array $templates = [];
 
+    /**
+     * The fewest cards a lesson must yield before a session can be built
+     * around it: below this there is nothing to study and nothing to practise
+     * afterwards.
+     */
+    private const WORDS_FOR_A_VOCABULARY_LESSON = 3;
+
     /** Distractor candidates by CEFR level id, loaded once. */
     private array $pool = [];
 
@@ -64,6 +71,14 @@ class BuildActivities extends Command
         if ($t === '' || mb_strlen($t) < 2) {
             return false;
         }
+
+        // A headword is a word or a short phrase. The section headings of the
+        // "how to study" units at the front of each book were arriving as
+        // vocabulary - "What does knowing a new word mean?" was a flashcard.
+        if (! $this->distractors->isUsableTerm($term)) {
+            return false;
+        }
+
         // Multi-word phrases are always worth teaching, even if they contain
         // function words ("got married", "in charge of").
         if (str_contains($t, ' ')) {
@@ -91,9 +106,11 @@ class BuildActivities extends Command
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }
 
+        $this->deactivateNonTerms();
         $this->linkSourceExercisesToConcepts();
         $this->spreadDifficulty();
         $this->buildFromVocabulary();
+        $this->classifyLessons();
         $this->deriveWordFamilyPrerequisites();
         $this->markPlacementBank();
 
@@ -101,6 +118,77 @@ class BuildActivities extends Command
         $this->info('Done. Re-run `php artisan content:readiness` to see the effect.');
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Stop treating section headings as vocabulary.
+     *
+     * Each book opens with units about how to study - "Using this book",
+     * "Learning vocabulary" - and their headings were extracted as headwords,
+     * so "What does knowing a new word mean?" became a concept with a flashcard
+     * and a place in the knowledge graph, and the front-matter unit that held it
+     * was the first lesson served to anyone starting the book.
+     *
+     * The rows are kept. They came out of the book and the body text they title
+     * is still taught; they are simply no longer taught as words.
+     */
+    private function deactivateNonTerms(): void
+    {
+        $this->line('▸ separating headwords from headings');
+
+        $labels = DB::table('concepts')->pluck('label', 'id');
+
+        $headings = $labels
+            ->reject(fn ($label) => $this->distractors->isUsableTerm((string) $label))
+            ->keys();
+
+        DB::table('concepts')->update(['is_active' => true]);
+
+        if ($headings->isNotEmpty()) {
+            $headings->chunk(1000)->each(
+                fn ($ids) => DB::table('concepts')->whereIn('id', $ids->all())->update(['is_active' => false]),
+            );
+        }
+
+        $this->line('   headings set aside: '.$headings->count().' of '.$labels->count());
+    }
+
+    /**
+     * Say what each lesson is, so the daily session can pick the right one.
+     *
+     * Every lesson was imported as `core`, which told nothing apart. Each book
+     * opens with a section on how to study - "What do you need to learn?", "How
+     * can you help yourself to memorise words?" - real pages of the book, but
+     * pages about learning rather than pages that teach words. They sort first,
+     * so they were the first thing every learner was shown, and since they teach
+     * no vocabulary the session had nothing to practise afterwards.
+     *
+     * A lesson that can put words in front of a learner is `vocabulary`; one
+     * that cannot is `study_skills`. Both stay in the course and both remain
+     * browsable. Only the first kind drives a daily session.
+     */
+    private function classifyLessons(): void
+    {
+        $this->line('▸ classifying lessons');
+
+        // Counted from what the lesson produced, not from what it nominally
+        // holds: a page can list eleven terms and still yield no card, because
+        // none of them came with a gloss or a sentence worth showing. Judging it
+        // on the concept count sent learners to lessons that had nothing to
+        // study and nothing to practise afterwards.
+        $teaching = DB::table('lesson_blocks')
+            ->where('type', 'flashcard')
+            ->groupBy('lesson_id')
+            ->havingRaw('COUNT(*) >= ?', [self::WORDS_FOR_A_VOCABULARY_LESSON])
+            ->pluck('lesson_id');
+
+        DB::table('lessons')->update(['kind' => 'study_skills']);
+        $teaching->chunk(1000)->each(
+            fn ($ids) => DB::table('lessons')->whereIn('id', $ids->all())->update(['kind' => 'vocabulary']),
+        );
+
+        $total = DB::table('lessons')->count();
+        $this->line("   vocabulary lessons: {$teaching->count()} of {$total}");
     }
 
     /**
@@ -309,8 +397,11 @@ class BuildActivities extends Command
         $glosses = $this->loadGlosses();
 
         $limit = (int) $this->option('limit');
-        $lessons = Lesson::with(['concepts' => fn ($q) => $q->with('conceptable'), 'unit'])
-            ->whereHas('concepts')
+        $lessons = Lesson::with([
+            'concepts' => fn ($q) => $q->where('concepts.is_active', true)->with('conceptable'),
+            'unit',
+        ])
+            ->whereHas('concepts', fn ($q) => $q->where('concepts.is_active', true))
             ->orderBy('id');
         if ($limit > 0) {
             $lessons->limit($limit);
@@ -377,6 +468,7 @@ class BuildActivities extends Command
                         if ($stem !== null) {
                             $ex = $this->makeExercise($lesson, $concept, 'fill_blank', $stem,
                                 'Complete the sentence with the missing word.', 'approved', $provenance);
+                            $ex->update(['validation_score' => 1.000]);
                             ExerciseAnswer::updateOrCreate(
                                 ['exercise_id' => $ex->id, 'blank_index' => 0, 'value' => $term],
                                 ['match_mode' => 'normalised', 'is_primary' => true, 'credit' => 1.000],
@@ -396,9 +488,17 @@ class BuildActivities extends Command
                                 $skipped['no_safe_distractors']++;
                             } else {
                                 $proven = $chosen['grade'] === DistractorPolicy::PROVEN;
+
+                                // Both grades are servable - a plausible item is
+                                // good practice. The grade decides what may
+                                // measure a learner, not what may be shown to
+                                // one, so it is recorded rather than hidden
+                                // behind a draft status that also means
+                                // "not answerable at all".
                                 $mcq = $this->makeExercise($lesson, $concept, 'multiple_choice', $stem,
                                     'Choose the word that completes the sentence.',
-                                    $proven ? 'approved' : 'draft', $provenance);
+                                    'approved', $provenance);
+                                $mcq->update(['validation_score' => $proven ? 1.000 : 0.600]);
 
                                 // Deterministic shuffle: the same build produces the
                                 // same paper twice, which is what makes a regression
@@ -716,7 +816,8 @@ class BuildActivities extends Command
         // this bank exists to fix.
         $candidates = DB::table('exercises')
             ->join('exercise_options', 'exercise_options.exercise_id', '=', 'exercises.id')
-            ->where('exercises.status', 'approved')
+            ->whereIn('exercises.status', Exercise::SERVABLE_STATUSES)
+            ->where('exercises.validation_score', '>=', 1.0)
             ->where('exercises.generation_method', 'like', 'derived%')
             ->whereNull('exercises.deleted_at')
             ->groupBy('exercises.id', 'exercises.stem', 'exercises.difficulty', 'exercises.generation_method')
