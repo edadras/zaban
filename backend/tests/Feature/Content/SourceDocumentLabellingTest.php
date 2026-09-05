@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Content;
 
+use Illuminate\Database\ConnectionInterface;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
@@ -22,6 +23,26 @@ use Tests\TestCase;
  */
 class SourceDocumentLabellingTest extends TestCase
 {
+    /**
+     * The corpus lives in the application database, not the scratch database
+     * the rest of the suite drops and rebuilds. Reading it through its own
+     * connection is what lets these tests run under a plain `phpunit`: the
+     * alternative - pointing DB_DATABASE at the corpus for the run - hands the
+     * real database to every RefreshDatabase test in the suite.
+     */
+    private function corpus(): ConnectionInterface
+    {
+        $connection = DB::connection('content');
+
+        try {
+            $connection->getPdo();
+        } catch (\Throwable $e) {
+            $this->markTestSkipped('The content database is not reachable here: '.$e->getMessage());
+        }
+
+        return $connection;
+    }
+
     /** source pdf => the level word its title must contain */
     public static function bookProvider(): array
     {
@@ -36,7 +57,7 @@ class SourceDocumentLabellingTest extends TestCase
     #[DataProvider('bookProvider')]
     public function test_a_book_is_named_after_the_level_it_teaches(string $file, string $level, array $cefr): void
     {
-        $row = DB::table('source_files')
+        $row = $this->corpus()->table('source_files')
             ->join('source_documents', 'source_documents.id', '=', 'source_files.source_document_id')
             ->leftJoin('cefr_levels', 'cefr_levels.id', '=', 'source_documents.cefr_level_id')
             ->where('source_files.original_name', $file)
@@ -62,7 +83,7 @@ class SourceDocumentLabellingTest extends TestCase
 
     public function test_no_two_books_share_a_title(): void
     {
-        $titles = DB::table('source_documents')->pluck('title');
+        $titles = $this->corpus()->table('source_documents')->pluck('title');
 
         if ($titles->isEmpty()) {
             $this->markTestSkipped('No corpus imported in this environment.');
@@ -79,7 +100,7 @@ class SourceDocumentLabellingTest extends TestCase
     {
         // The real failure was "Advancing" answering a search for "Advanc"
         // while being a different book from the one the reader meant.
-        $titles = DB::table('source_documents')->pluck('title');
+        $titles = $this->corpus()->table('source_documents')->pluck('title');
 
         if ($titles->isEmpty()) {
             $this->markTestSkipped('No corpus imported in this environment.');
@@ -101,7 +122,7 @@ class SourceDocumentLabellingTest extends TestCase
         // The report that started this was "two books have zero senses". They
         // did not - but if one ever genuinely does, that should fail loudly
         // rather than be discovered by eye.
-        $rows = DB::table('source_documents')
+        $rows = $this->corpus()->table('source_documents')
             ->select('source_documents.id', 'source_documents.title')
             ->selectRaw('(
                 select count(distinct vocabulary_senses.id)
@@ -135,7 +156,7 @@ class SourceDocumentLabellingTest extends TestCase
      */
     public function test_no_headword_is_typographic_debris(): void
     {
-        $items = DB::table('vocabulary_items')->pluck('headword');
+        $items = $this->corpus()->table('vocabulary_items')->pluck('headword');
 
         if ($items->isEmpty()) {
             $this->markTestSkipped('No corpus imported in this environment.');
@@ -173,12 +194,12 @@ class SourceDocumentLabellingTest extends TestCase
             'lessons' => 'summary',
         ];
 
-        if (DB::table('vocabulary_items')->doesntExist()) {
+        if ($this->corpus()->table('vocabulary_items')->doesntExist()) {
             $this->markTestSkipped('No corpus imported in this environment.');
         }
 
         foreach ($checks as $table => $column) {
-            $rows = DB::table($table)
+            $rows = $this->corpus()->table($table)
                 ->where($column, 'REGEXP', '['.$ligatures.']')
                 ->limit(3)
                 ->pluck($column);

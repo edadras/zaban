@@ -64,6 +64,29 @@ return [
             ]) : [],
         ],
 
+        /*
+         * The imported corpus, read-only, on whatever database actually holds
+         * it. The content-verification tests read through this connection so
+         * they never depend on DB_DATABASE being pointed at the corpus by
+         * hand - an override that, applied to the whole suite, hands the real
+         * database to every RefreshDatabase test.
+         */
+        'content' => [
+            'driver' => 'mysql',
+            'host' => env('CONTENT_DB_HOST', env('DB_HOST', '127.0.0.1')),
+            'port' => env('CONTENT_DB_PORT', env('DB_PORT', '3306')),
+            'database' => env('CONTENT_DB_DATABASE', 'zaban'),
+            'username' => env('CONTENT_DB_USERNAME', env('DB_USERNAME', 'root')),
+            'password' => env('CONTENT_DB_PASSWORD', env('DB_PASSWORD', '')),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),
