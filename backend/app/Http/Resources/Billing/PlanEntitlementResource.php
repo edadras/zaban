@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources\Billing;
 
+use App\Models\PlanEntitlement;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\PlanEntitlement */
+/** @mixin PlanEntitlement */
 class PlanEntitlementResource extends JsonResource
 {
     public function toArray(Request $request): array

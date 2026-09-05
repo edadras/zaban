@@ -30,9 +30,11 @@ abstract class BillingTestCase extends TestCase
 
     protected function setUp(): void
     {
-        $_ENV['DB_CONNECTION'] = 'mysql';
-        $_SERVER['DB_CONNECTION'] = 'mysql';
-        putenv('DB_CONNECTION=mysql');
+        if (($_ENV['DB_CONNECTION'] ?? 'sqlite') === 'sqlite') {
+            $_ENV['DB_CONNECTION'] = 'mysql';
+            $_SERVER['DB_CONNECTION'] = 'mysql';
+            putenv('DB_CONNECTION=mysql');
+        }
 
         parent::setUp();
 
@@ -74,7 +76,7 @@ abstract class BillingTestCase extends TestCase
      */
     protected function plan(array $entitlements = [], array $attributes = [], int $amount = 24900, string $currency = 'TRY'): Plan
     {
-        $plan = Plan::create([
+        $plan = Plan::create($attributes + [
             'code' => 'test-'.Str::lower(Str::random(10)),
             'name' => 'Test Plan',
             'interval' => 'monthly',
@@ -83,7 +85,7 @@ abstract class BillingTestCase extends TestCase
             'position' => 10,
             'is_active' => true,
             'is_public' => true,
-        ] + $attributes);
+        ]);
 
         PlanPrice::create([
             'plan_id' => $plan->id,

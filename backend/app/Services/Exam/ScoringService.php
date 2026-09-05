@@ -62,17 +62,27 @@ class ScoringService
         foreach ($sections as $section) {
             $sectionAttempt = $attempt->sectionAttempts->firstWhere('exam_section_id', $section->id);
 
-            $result = $sectionAttempt
+            $result = $sectionAttempt && $sectionAttempt->status !== ExamService::STATUS_NOT_ATTEMPTED
                 ? $this->scoreSection($attempt, $sectionAttempt->load('section'))
-                : ['score' => null, 'source' => null, 'criteria' => []];
+                : ['score' => null, 'source' => null, 'criteria' => [], 'reason' => 'not_attempted'];
 
             if ($result['score'] === null) {
                 $prior = $this->curriculumPrior($attempt->user_id, $examType, $section);
                 if ($prior !== null) {
-                    $result = ['score' => $prior, 'source' => 'curriculum_prior', 'criteria' => $result['criteria'] ?? []];
+                    $result = [
+                        'score' => $prior,
+                        'source' => 'curriculum_prior',
+                        'criteria' => $result['criteria'] ?? [],
+                    ];
+                    $sectionAttempt?->update([
+                        'estimated_score' => $prior,
+                        'status' => ExamService::STATUS_PROJECTED,
+                    ]);
                 }
             }
 
+            // A projected section is no more measured than an AI-marked one, so
+            // both force the estimate flag on.
             if (in_array($result['source'], ['ai', 'curriculum_prior'], true)) {
                 $usedAi = true;
             }
@@ -126,13 +136,26 @@ class ScoringService
     private function scoreObjectiveSection(ExamSectionAttempt $sectionAttempt, SectionScoring $scoring, Collection $responses): array
     {
         $raw = 0.0;
+        $marked = 0;
         foreach ($responses as $response) {
             $raw += (float) ($response->evidence['raw_score'] ?? $response->score);
+            $marked += (int) ($response->evidence['items_marked'] ?? 0);
         }
 
-        // Unanswered items are worth nothing, exactly as in the real test: the
-        // raw total is measured against the full paper, not against what was seen.
-        $score = $scoring->scoreFromRaw($raw);
+        if ($marked === 0) {
+            $sectionAttempt->update(['status' => 'scoring_unavailable']);
+
+            return ['score' => null, 'source' => null, 'criteria' => [], 'reason' => 'no_markable_items'];
+        }
+
+        $paper = $scoring->rawMax();
+
+        // A practice set is shorter than the paper. Reporting 3 correct as 3 out
+        // of 40 would hand back band 2 for a good performance, so a short set is
+        // projected onto the full paper and flagged as extrapolated in the
+        // result; a complete paper is converted from its raw total unchanged.
+        $effective = $marked < $paper ? ($raw / $marked) * $paper : $raw;
+        $score = $scoring->scoreFromRaw($effective);
 
         $sectionAttempt->update([
             'raw_score' => round($raw, 2),
@@ -140,7 +163,13 @@ class ScoringService
             'status' => 'scored',
         ]);
 
-        return ['score' => $score, 'source' => 'answer_key', 'criteria' => []];
+        return [
+            'score' => $score,
+            'source' => 'answer_key',
+            'criteria' => [],
+            'items_marked' => $marked,
+            'extrapolated' => $marked < $paper,
+        ];
     }
 
     // -------------------------------------------------------------- rubric
@@ -646,6 +675,37 @@ class ScoringService
         }
     }
 
+    /**
+     * How much of each paper was actually marked, so the result screen can say
+     * "estimated from 4 of 40 questions" instead of implying a full sitting.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    private function coverage(ExamAttempt $attempt): array
+    {
+        $attempt->loadMissing('sectionAttempts.section');
+        $out = [];
+
+        foreach ($attempt->sectionAttempts as $sectionAttempt) {
+            $scoring = SectionScoring::for($sectionAttempt->section);
+            if (! $scoring->isObjective()) {
+                continue;
+            }
+
+            $marked = (int) $this->exams->responsesFor($attempt, $sectionAttempt)
+                ->sum(fn (ExamScore $r) => (int) ($r->evidence['items_marked'] ?? 0));
+            $paper = $scoring->rawMax();
+
+            $out[$sectionAttempt->id] = [
+                'items_marked' => $marked,
+                'items_in_full_paper' => $paper,
+                'extrapolated' => $marked > 0 && $marked < $paper,
+            ];
+        }
+
+        return $out;
+    }
+
     private function num(float $value): string
     {
         return rtrim(rtrim(number_format($value, 2, '.', ''), '0'), '.') ?: '0';
@@ -658,10 +718,13 @@ class ScoringService
             ->join('exam_sections', 'exam_sections.id', '=', 'exam_section_attempts.exam_section_id')
             ->join('skills', 'skills.id', '=', 'exam_sections.skill_id')
             ->where('exam_section_attempts.exam_attempt_id', $attempt->id)
-            ->select('skills.code as skill', 'exam_sections.code as section', 'exam_sections.name as section_name',
+            ->select('exam_section_attempts.id', 'skills.code as skill', 'exam_sections.code as section',
+                'exam_sections.name as section_name',
                 'exam_section_attempts.estimated_score', 'exam_section_attempts.raw_score',
                 'exam_section_attempts.status', 'exam_section_attempts.ran_out_of_time')
             ->get();
+
+        $coverage = $this->coverage($attempt);
 
         return $rows->map(fn ($r) => [
             'skill' => $r->skill,
@@ -671,6 +734,7 @@ class ScoringService
             'raw_score' => $r->raw_score !== null ? (float) $r->raw_score : null,
             'status' => $r->status,
             'ran_out_of_time' => (bool) $r->ran_out_of_time,
+            'coverage' => $coverage[$r->id] ?? null,
         ])->all();
     }
 }

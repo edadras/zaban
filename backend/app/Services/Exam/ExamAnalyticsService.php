@@ -40,6 +40,11 @@ class ExamAnalyticsService
         $usedTotal = 0;
 
         foreach ($attempt->sectionAttempts->sortBy(fn (ExamSectionAttempt $sa) => $sa->section->position) as $sectionAttempt) {
+            // Sections this sitting never opened have no clock to report on.
+            if (in_array($sectionAttempt->status, [ExamService::STATUS_NOT_ATTEMPTED, ExamService::STATUS_PROJECTED], true)
+                && ! $sectionAttempt->started_at) {
+                continue;
+            }
             $section = $sectionAttempt->section;
             $allowed = (int) $section->duration_minutes * 60;
             $used = (int) $sectionAttempt->duration_seconds;
@@ -184,11 +189,15 @@ class ExamAnalyticsService
 
         $points = $attempts->map(function (ExamAttempt $attempt) {
             $skills = [];
+            $projected = [];
             foreach ($attempt->sectionAttempts as $sectionAttempt) {
                 $skill = $sectionAttempt->section->skill?->code ?? $sectionAttempt->section->code;
                 $skills[$skill] = $sectionAttempt->estimated_score !== null
                     ? (float) $sectionAttempt->estimated_score
                     : null;
+                if ($sectionAttempt->status === ExamService::STATUS_PROJECTED) {
+                    $projected[] = $skill;
+                }
             }
 
             return [
@@ -200,6 +209,7 @@ class ExamAnalyticsService
                 'cefr' => $this->levelCode($attempt),
                 'is_ai_estimated' => (bool) $attempt->is_ai_estimated,
                 'skills' => $skills,
+                'projected_skills' => $projected,
                 'duration_seconds' => (int) $attempt->duration_seconds,
             ];
         })->values();

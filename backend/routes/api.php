@@ -85,28 +85,23 @@ Route::prefix('v1')->group(function () {
         Route::get('progress/history', [ProgressController::class, 'history']);
         Route::get('progress/trend', [ProgressController::class, 'trend']);
 
-        /*
-         * Routes owned by other modules are registered from their own files so
-         * each area stays self-contained:
-         *   routes/api/billing.php  - plans, subscription, invoices, coupons
-         *   routes/api/exam.php     - exam types, attempts, AI examiner
-         *   routes/api/speech.php   - recording upload, scoring, pronunciation profile
-         *   routes/api/admin.php    - ingestion, review queue, AI cost, users
-         */
-        foreach (['billing', 'exam', 'speech', 'admin'] as $module) {
-            $path = base_path("routes/api/{$module}.php");
-            if (file_exists($path)) {
-                require $path;
-            }
-        }
     });
 });
 
-// Webhooks authenticate by signature, not by session, so they sit outside the
-// authenticated group. Each gateway's controller verifies its own signature.
-Route::prefix('v1/webhooks')->middleware('throttle:webhooks')->group(function () {
-    $path = base_path('routes/api/webhooks.php');
+/*
+ * Module route files are loaded OUTSIDE the authenticated group on purpose:
+ * each declares its own middleware, because some of their routes must stay
+ * public. Billing webhooks in particular authenticate by gateway signature, not
+ * by session, so wrapping them in auth:sanctum would break every delivery.
+ *
+ *   routes/api/billing.php - plans, subscription, invoices, coupons, webhooks
+ *   routes/api/exam.php    - exam types, attempts, AI examiner
+ *   routes/api/speech.php  - recording upload, scoring, pronunciation profile
+ *   routes/api/admin.php   - ingestion, review queue, AI cost, users
+ */
+foreach (['billing', 'exam', 'speech', 'admin'] as $module) {
+    $path = base_path("routes/api/{$module}.php");
     if (file_exists($path)) {
         require $path;
     }
-});
+}

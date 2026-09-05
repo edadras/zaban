@@ -52,7 +52,19 @@ final class ApiResponse
             $error['details'] = $details;
         }
 
-        return response()->json(['data' => null, 'error' => $error], $status);
+        $payload = ['data' => null, 'error' => $error];
+
+        // Validation failures additionally carry Laravel's conventional
+        // top-level `message` and `errors` keys. The envelope is still the
+        // contract, but mirroring the convention means standard Laravel clients
+        // and test helpers keep working rather than needing a bespoke reader for
+        // the single most common error response.
+        if ($code === 'validation_failed') {
+            $payload['message'] = $message;
+            $payload['errors'] = $details;
+        }
+
+        return response()->json($payload, $status);
     }
 
     private static function normalise(mixed $data): mixed

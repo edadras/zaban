@@ -46,6 +46,12 @@ class ExamService
     /** Tasks only reach a learner once they have cleared content review. */
     public const SERVABLE_STATUSES = ['approved', 'published'];
 
+    /** A section this sitting never covered; scoring projects it from the curriculum. */
+    public const STATUS_NOT_ATTEMPTED = 'not_attempted';
+
+    /** A section whose score came from the curriculum rather than from this sitting. */
+    public const STATUS_PROJECTED = 'projected';
+
     /** A practice run is a short targeted set, not the whole paper. */
     private const PRACTICE_TASKS_PER_SECTION = 3;
 
@@ -71,12 +77,16 @@ class ExamService
             throw ExamException::noContent($examType->name);
         }
 
-        if ($mode === self::MODE_SECTION) {
-            if (! $examSectionId || ! $sections->contains('id', $examSectionId)) {
-                throw ExamException::sectionMismatch();
-            }
-            $sections = $sections->where('id', $examSectionId)->values();
+        if ($mode === self::MODE_SECTION && (! $examSectionId || ! $sections->contains('id', $examSectionId))) {
+            throw ExamException::sectionMismatch();
         }
+
+        // Sections outside the chosen mode still get a row: scoring fills them
+        // from the learner's existing level so a single-section rehearsal can
+        // still show a whole-exam picture, clearly marked as projected.
+        $inScope = $mode === self::MODE_SECTION
+            ? [$examSectionId]
+            : $sections->pluck('id')->all();
 
         // An unfinished sitting is resumed rather than duplicated; otherwise a
         // dropped connection quietly loses the learner's work.
@@ -89,7 +99,7 @@ class ExamService
             return $open->load('sectionAttempts.section');
         }
 
-        return DB::transaction(function () use ($userId, $examType, $mode, $sections) {
+        return DB::transaction(function () use ($userId, $examType, $mode, $sections, $inScope) {
             $attempt = ExamAttempt::create([
                 'user_id' => $userId,
                 'exam_type_id' => $examType->id,
@@ -105,7 +115,7 @@ class ExamService
                 ExamSectionAttempt::create([
                     'exam_attempt_id' => $attempt->id,
                     'exam_section_id' => $section->id,
-                    'status' => 'pending',
+                    'status' => in_array($section->id, $inScope, true) ? 'pending' : self::STATUS_NOT_ATTEMPTED,
                 ]);
             }
 
@@ -330,10 +340,17 @@ class ExamService
     public function submittedTaskIds(ExamAttempt $attempt): array
     {
         return ExamScore::where('exam_attempt_id', $attempt->id)
-            ->where('criterion', 'like', self::RESPONSE_CRITERION.'%')
             ->pluck('criterion')
+            // Filtered in PHP rather than with LIKE: the underscore prefix is a
+            // wildcard in SQL, and an attempt has at most a few dozen rows.
+            ->filter(fn (string $c) => self::isResponseCriterion($c))
             ->map(fn (string $c) => (int) substr($c, strlen(self::RESPONSE_CRITERION)))
-            ->all();
+            ->values()->all();
+    }
+
+    public static function isResponseCriterion(string $criterion): bool
+    {
+        return str_starts_with($criterion, self::RESPONSE_CRITERION);
     }
 
     /** @return Collection<int, ExamScore> the submission rows for one section */
@@ -341,9 +358,10 @@ class ExamService
     {
         return ExamScore::where('exam_attempt_id', $attempt->id)
             ->where('exam_section_attempt_id', $sectionAttempt->id)
-            ->where('criterion', 'like', self::RESPONSE_CRITERION.'%')
             ->orderBy('id')
-            ->get();
+            ->get()
+            ->filter(fn (ExamScore $s) => self::isResponseCriterion($s->criterion))
+            ->values();
     }
 
     public function responseFor(ExamAttempt $attempt, int $taskId): ?ExamScore
@@ -506,39 +524,65 @@ class ExamService
      */
     private function recordProductive(ExamAttempt $attempt, ExamSectionAttempt $sectionAttempt, ExamTask $task, array $payload): array
     {
-        $speechAttemptId = isset($payload['speech_attempt_id']) ? (int) $payload['speech_attempt_id'] : null;
+        $ids = array_values(array_filter(array_map(
+            'intval',
+            (array) ($payload['speech_attempt_ids'] ?? array_filter([$payload['speech_attempt_id'] ?? null])),
+        )));
         $text = isset($payload['text']) ? trim((string) $payload['text']) : null;
 
-        if ($speechAttemptId) {
-            $speech = SpeechAttempt::where('id', $speechAttemptId)
+        $common = array_filter([
+            'task_title' => $task->title,
+            'task_instructions' => $task->instructions,
+            'prompt_questions' => isset($payload['questions']) ? array_values((array) $payload['questions']) : null,
+        ], fn ($v) => $v !== null && $v !== []);
+
+        if ($ids) {
+            $speech = SpeechAttempt::whereIn('id', $ids)
                 ->where('user_id', $attempt->user_id)
-                ->first();
-            if (! $speech) {
+                ->orderBy('id')
+                ->get();
+
+            if ($speech->count() !== count($ids)) {
                 throw new ExamException('exam_speech_attempt_not_found', 'That recording does not belong to this learner.', 404);
             }
-            $text = $text ?: $speech->transcript;
 
-            return [
+            $transcript = $text ?: $speech->pluck('transcript')->filter()->implode("\n\n");
+
+            return $common + [
                 'kind' => 'speaking',
-                'speech_attempt_id' => $speech->id,
-                'transcript' => $text,
-                'duration_ms' => $speech->duration_ms,
-                // Real acoustic measurements, kept as evidence for the rubric prompt.
-                'measured' => array_filter([
-                    'pronunciation_score' => $speech->pronunciation_score,
-                    'fluency_score' => $speech->fluency_score,
-                    'speech_rate_wpm' => $speech->speech_rate_wpm,
-                    'pause_count' => $speech->pause_count,
-                    'filler_count' => $speech->filler_count,
-                ], fn ($v) => $v !== null),
+                'speech_attempt_ids' => $speech->pluck('id')->all(),
+                'transcript' => $transcript,
+                'duration_ms' => (int) $speech->sum('duration_ms'),
+                // Real acoustic measurements averaged across the part, kept as
+                // evidence so the rubric prompt is anchored in something measured.
+                'measured' => $this->measuredSignals($speech),
             ];
         }
 
-        return [
+        return $common + [
             'kind' => 'writing',
             'text' => $text,
             'word_count' => $text ? count(preg_split('/\s+/u', $text, -1, PREG_SPLIT_NO_EMPTY) ?: []) : 0,
         ];
+    }
+
+    /**
+     * @param  Collection<int, SpeechAttempt>  $speech
+     * @return array<string, float>
+     */
+    private function measuredSignals(Collection $speech): array
+    {
+        $fields = ['pronunciation_score', 'fluency_score', 'speech_rate_wpm', 'pause_count', 'filler_count'];
+        $out = [];
+
+        foreach ($fields as $field) {
+            $values = $speech->pluck($field)->filter(fn ($v) => $v !== null);
+            if ($values->isNotEmpty()) {
+                $out[$field] = round((float) $values->avg(), 2);
+            }
+        }
+
+        return $out;
     }
 
     /** @param  array<string, mixed>  $record */

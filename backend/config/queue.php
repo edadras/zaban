@@ -73,6 +73,22 @@ return [
             'after_commit' => false,
         ],
 
+        /*
+         * Media generation can legitimately run for many minutes. Laravel's
+         * retry_after is per connection, so leaving these jobs on the default
+         * 90-second window would release and re-run a render that is still in
+         * flight - and every duplicate render is paid for twice. This connection
+         * exists only to give those jobs a retry window longer than their timeout.
+         */
+        'redis-long' => [
+            'driver' => 'redis',
+            'connection' => env('REDIS_QUEUE_CONNECTION', 'default'),
+            'queue' => env('REDIS_QUEUE', 'media'),
+            'retry_after' => (int) env('REDIS_LONG_QUEUE_RETRY_AFTER', 1800),
+            'block_for' => null,
+            'after_commit' => false,
+        ],
+
         'deferred' => [
             'driver' => 'deferred',
         ],

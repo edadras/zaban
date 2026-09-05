@@ -22,9 +22,27 @@ fi
 
 # 2. Dependencies. Bind-mounted source means vendor/ may be empty on a fresh
 #    clone; the production image already has it and skips this.
+#
+#    compose starts the worker and scheduler only once `app` is healthy, so in
+#    the normal flow app has already installed. Starting a single container on
+#    its own (`docker compose up worker`) can still race, so the install is
+#    serialised through a lock on the shared mount when one can be created.
 if [ ! -f vendor/autoload.php ] && [ -f composer.json ]; then
-    echo "entrypoint: installing composer dependencies"
-    composer install --no-interaction --prefer-dist
+    LOCK=/srv/zaban/.composer-install.lock
+    if command -v flock >/dev/null 2>&1 && : >"$LOCK" 2>/dev/null; then
+        (
+            flock 9
+            if [ ! -f vendor/autoload.php ]; then
+                echo "entrypoint: installing composer dependencies"
+                composer install --no-interaction --prefer-dist
+            else
+                echo "entrypoint: dependencies installed by another container"
+            fi
+        ) 9>"$LOCK"
+    else
+        echo "entrypoint: installing composer dependencies (unlocked)"
+        composer install --no-interaction --prefer-dist
+    fi
 fi
 
 # 3. An application key. Without it every encrypted cookie and Sanctum session

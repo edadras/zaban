@@ -33,7 +33,10 @@ help: ## List available targets
 
 .PHONY: up
 up: backend/.env ## Start the stack in the background and wait for it to be healthy
-	$(COMPOSE) up -d --wait
+	@# Waits on the long-running services only. Their depends_on pulls up mysql,
+	@# redis, minio and the one-shot minio-init; naming minio-init here would ask
+	@# --wait to wait for a container that is meant to exit.
+	$(COMPOSE) up -d --wait nginx worker scheduler
 	@echo
 	@echo "  API      http://localhost:$${HTTP_PORT:-8080}"
 	@echo "  health   http://localhost:$${HTTP_PORT:-8080}/up"

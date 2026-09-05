@@ -25,6 +25,10 @@ class GenerateLessonMedia implements ShouldQueue
 
     public function __construct(public int $lessonId, public bool $force = false)
     {
+        // The dedicated connection gives this job a retry window longer than its
+        // own timeout; on the default connection a slow render would be released
+        // mid-flight and paid for twice.
+        $this->onConnection(config('queue.default') === 'redis' ? 'redis-long' : config('queue.default'));
         $this->onQueue('media');
     }
 

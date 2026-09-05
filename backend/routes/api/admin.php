@@ -7,10 +7,11 @@ use App\Http\Controllers\Api\V1\Admin\UserAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
- * Administration. Loaded from routes/api.php inside the authenticated group,
- * then further gated on an admin/editor/reviewer role.
+ * Administration. Loaded from routes/api.php outside the authenticated group,
+ * so it declares its own: authenticated, then gated on an admin/editor/reviewer
+ * role.
  */
-Route::prefix('admin')->middleware('admin')->group(function () {
+Route::prefix('v1/admin')->middleware(['auth:sanctum', 'admin'])->group(function () {
 
     // content ingestion dashboard
     Route::get('ingestion/summary', [IngestionController::class, 'summary']);

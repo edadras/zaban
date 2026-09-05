@@ -464,7 +464,7 @@ class ExamSeeder extends Seeder
         ];
 
         return [
-            'code' => 'cambridge_b2_first',
+            'code' => 'cambridge_b2',
             'name' => 'Cambridge B2 First',
             'description' => 'Cambridge English Qualification at B2. Four papers reported on the Cambridge English '
                 .'Scale from 122 to 190; the overall score is the mean of the four paper scores.',

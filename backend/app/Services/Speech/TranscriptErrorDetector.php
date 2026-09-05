@@ -116,6 +116,19 @@ class TranscriptErrorDetector
             }
 
             if ($row['outcome'] === WordAligner::SUBSTITUTED && $expected !== null && $spoken !== null) {
+                // Two swapped words show up as a crossed pair of substitutions,
+                // which is a word-order problem rather than two wrong words.
+                $partner = $this->findSwapPartner($wordRows, $i, $expected, $spoken);
+                if ($partner !== null) {
+                    $consumed[$partner] = true;
+                    $findings[] = $this->finding('word_order', 'swapped_words',
+                        $row['expected_word'].' '.$wordRows[$partner]['expected_word'],
+                        $row['spoken_word'].' '.$wordRows[$partner]['spoken_word'],
+                        $row['position'], 3,
+                        "\"{$row['expected_word']}\" and \"{$wordRows[$partner]['expected_word']}\" were said in the wrong order.");
+
+                    continue;
+                }
                 $findings[] = $this->substitutionFinding($expected, $spoken, $row);
             }
         }
@@ -251,6 +264,39 @@ class TranscriptErrorDetector
         return abs(strlen($a) - strlen($b)) <= 1
             && strlen($a) >= 3
             && levenshtein($a, $b) <= 1;
+    }
+
+    /**
+     * A later substitution that is this one's mirror image: A became B here and
+     * B became A there.
+     *
+     * @param  array<int,array{expected_word:?string,spoken_word:?string,outcome:string}>  $rows
+     */
+    private function findSwapPartner(array $rows, int $from, string $expected, string $spoken): ?int
+    {
+        $keys = array_keys($rows);
+        $pos = array_search($from, $keys, true);
+        if ($pos === false) {
+            return null;
+        }
+
+        for ($step = 1; $step <= self::REORDER_WINDOW; $step++) {
+            $candidate = $keys[$pos + $step] ?? null;
+            if ($candidate === null) {
+                continue;
+            }
+            $row = $rows[$candidate];
+            if ($row['outcome'] !== WordAligner::SUBSTITUTED
+                || $row['expected_word'] === null || $row['spoken_word'] === null) {
+                continue;
+            }
+            if ($this->tokeniser->normalise($row['expected_word']) === $spoken
+                && $this->tokeniser->normalise($row['spoken_word']) === $expected) {
+                return $candidate;
+            }
+        }
+
+        return null;
     }
 
     /**

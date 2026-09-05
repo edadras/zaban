@@ -325,7 +325,11 @@ class AiOrchestrator
             'status' => $ok ? 'succeeded' : 'failed',
             'error' => $error,
             'finished_at' => now(),
-            'duration_ms' => $log->started_at ? (int) (now()->diffInMilliseconds($log->started_at)) : null,
+            // Carbon 3 returns a signed diff, so the operands must be this way
+            // round: now()->diffInMilliseconds($start) is negative for a past
+            // start, and duration_ms is an unsigned column - which would fail
+            // every single AI write.
+            'duration_ms' => $log->started_at ? (int) round($log->started_at->diffInMilliseconds(now())) : null,
         ] + $fields, fn ($v) => $v !== null));
     }
 
