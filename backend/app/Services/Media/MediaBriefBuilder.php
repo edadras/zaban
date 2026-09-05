@@ -3,6 +3,7 @@
 namespace App\Services\Media;
 
 use App\Models\Character;
+use App\Models\Dialogue;
 use App\Models\CefrLevel;
 use App\Models\Lesson;
 use App\Models\MediaBrief;
@@ -40,7 +41,10 @@ class MediaBriefBuilder
     /** @var array<int,string>|null parts_of_speech id => code, loaded once per build */
     private ?array $posCodes = null;
 
-    public function __construct(private PromptBuilder $prompts) {}
+    public function __construct(
+        private PromptBuilder $prompts,
+        private VideoTreatment $treatment,
+    ) {}
 
     /**
      * @return array<string,int> counts by outcome
@@ -51,6 +55,8 @@ class MediaBriefBuilder
             'character_portrait' => $this->buildCharacterPortraits(),
             'lesson_scene' => $this->buildLessonScenes(),
             'vocabulary_card' => $this->buildVocabularyCards(),
+            'dialogue_video' => $this->buildDialogueVideos(),
+            'lesson_video' => $this->buildLessonVideos(),
         ];
     }
 
@@ -176,6 +182,133 @@ class MediaBriefBuilder
     }
 
     /**
+     * One clip per extracted dialogue.
+     *
+     * These are the strongest case for video in the whole course: a printed
+     * exchange between two people, where the situation IS the lesson. They are
+     * text-to-video rather than image-to-video because a dialogue has no scene
+     * still of its own to animate.
+     */
+    public function buildDialogueVideos(): int
+    {
+        $model = $this->modelFor('video');
+        $levels = $this->levelOrder();
+        $n = 0;
+
+        /*
+         * A dialogue's own title is its lesson's title, which is often a label
+         * rather than a subject - "Expressions", "Nouns and adjectives". The
+         * unit it sits in is what actually says what the language is about, so
+         * both are used to work out where the scene should be filmed.
+         */
+        $subjects = $this->dialogueSubjects();
+
+        Dialogue::with('turns.character')->chunkById(100, function ($dialogues) use ($model, $levels, $subjects, &$n) {
+            foreach ($dialogues as $dialogue) {
+                $cast = $dialogue->turns->pluck('character.name')->filter()->unique()->values()->all();
+
+                $subject = trim(($subjects[$dialogue->source_document_id.':'.$dialogue->source_page] ?? '')
+                    .' '.$dialogue->title);
+
+                $spec = $this->prompts->forModel(
+                    $this->prompts->dialogueVideo(
+                        $this->treatment->settingFor($subject, $dialogue->id),
+                        $cast,
+                        $subject !== '' ? $subject : null,
+                        $this->levelCode($dialogue->cefr_level_id),
+                    ),
+                    $model,
+                );
+
+                $n += $this->upsert(
+                    MediaBrief::KIND_DIALOGUE_VIDEO,
+                    $dialogue,
+                    $model,
+                    $spec,
+                    $this->treatment->priorityFor(VideoTreatment::TIER_DIALOGUE)
+                        + ($levels[$dialogue->cefr_level_id] ?? 9),
+                );
+            }
+        });
+
+        return $n;
+    }
+
+    /**
+     * Unit title per source page, so a dialogue can be placed by what its unit
+     * teaches rather than by what its page happened to be headed.
+     *
+     * @return array<string,string>
+     */
+    private function dialogueSubjects(): array
+    {
+        return DB::table('lessons')
+            ->join('units', 'units.id', '=', 'lessons.unit_id')
+            ->whereNotNull('lessons.source_page')
+            ->orderBy('lessons.source_page')
+            ->get(['lessons.source_document_id', 'lessons.source_page', 'units.title'])
+            ->mapWithKeys(fn ($r) => [$r->source_document_id.':'.$r->source_page => (string) $r->title])
+            ->all();
+    }
+
+    /**
+     * A clip per lesson that earns one, animated from that lesson's own still.
+     *
+     * The dependency on the still is the point. Video models drift far worse
+     * than image models, and a cast of fourteen would be unrecognisable across
+     * a thousand independently generated clips; seeding each one from the scene
+     * image that was already generated and approved keeps the same people, the
+     * same room and the same framing. A video brief is therefore not renderable
+     * until its source image has been imported.
+     */
+    public function buildLessonVideos(): int
+    {
+        $model = $this->modelFor('video');
+        $levels = $this->levelOrder();
+        $n = 0;
+
+        $sceneBriefs = MediaBrief::where('kind', MediaBrief::KIND_LESSON_SCENE)
+            ->pluck('id', 'subject_id');
+
+        Lesson::with(['unit', 'concepts'])->chunkById(200, function ($lessons) use ($model, $levels, $sceneBriefs, &$n) {
+            foreach ($lessons as $lesson) {
+                $treatment = $this->treatment->forLesson($lesson->title, $lesson->unit?->title);
+
+                if ($treatment === null) {
+                    $n += $this->skip(
+                        MediaBrief::KIND_LESSON_VIDEO,
+                        $lesson,
+                        'Teaches the language itself rather than a situation - there is no footage of a suffix.',
+                    );
+
+                    continue;
+                }
+
+                $spec = $this->prompts->forModel(
+                    $this->prompts->lessonVideo(
+                        $lesson,
+                        $treatment['motion'],
+                        $lesson->concepts->pluck('label')->take(6)->all(),
+                        $treatment['seconds'],
+                    ),
+                    $model,
+                );
+
+                $n += $this->upsert(
+                    MediaBrief::KIND_LESSON_VIDEO,
+                    $lesson,
+                    $model,
+                    $spec,
+                    $this->treatment->priorityFor($treatment['tier']) + ($levels[$lesson->cefr_level_id] ?? 9),
+                    $sceneBriefs[$lesson->id] ?? null,
+                );
+            }
+        });
+
+        return $n;
+    }
+
+    /**
      * The sense's own example sentence, which disambiguates it. "single" means
      * one thing on a hotel page and another on a ticket page; the example is
      * what tells the model which.
@@ -205,9 +338,20 @@ class MediaBriefBuilder
      * so re-running the builder after a partial generation run never discards
      * work that has been paid for.
      */
-    private function upsert(string $kind, $subject, string $model, array $spec, int $priority): int
-    {
-        $hash = MediaBrief::hashFor($model, $spec['prompt'], $spec['aspect_ratio'], '2k');
+    private function upsert(
+        string $kind,
+        $subject,
+        string $model,
+        array $spec,
+        int $priority,
+        ?int $sourceBriefId = null,
+    ): int {
+        $seconds = $spec['duration_seconds'] ?? null;
+        $resolution = $seconds ? '1080p' : '2k';
+
+        // Duration is part of what makes this a different render, so a change
+        // to it must put the brief back in the queue like any other.
+        $hash = MediaBrief::hashFor($model, $spec['prompt'], $spec['aspect_ratio'], $resolution.':'.($seconds ?? ''));
 
         $existing = MediaBrief::where('kind', $kind)
             ->where('subject_type', $subject->getMorphClass())
@@ -231,7 +375,9 @@ class MediaBriefBuilder
                 'prompt' => $spec['prompt'],
                 'negative' => $spec['negative'] ?? null,
                 'aspect_ratio' => $spec['aspect_ratio'],
-                'resolution' => '2k',
+                'resolution' => $resolution,
+                'duration_seconds' => $seconds,
+                'source_brief_id' => $sourceBriefId,
                 'priority' => $priority,
                 'status' => MediaBrief::STATUS_PENDING,
                 'skip_reason' => null,

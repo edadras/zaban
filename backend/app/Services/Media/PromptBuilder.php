@@ -154,13 +154,79 @@ class PromptBuilder
         return ['prompt' => $prompt, 'negative' => self::NEGATIVE, 'aspect_ratio' => '1:1'];
     }
 
-    public function dialogueVideo(string $setting, string $summary, ?string $cefr = null, int $seconds = 8): array
+    /**
+     * A dialogue played out as a short scene.
+     *
+     * The clip is deliberately written as behaviour, not speech. These models
+     * move a mouth without forming English phonemes, so a clip that looks like
+     * it is delivering the line teaches the wrong articulation - worse than a
+     * still with accurate audio over it. What the video is for is the
+     * situation: where these people are, what they are doing, how the exchange
+     * feels. The words arrive as audio.
+     */
+    /**
+     * A dialogue played out as a short scene.
+     *
+     * Deliberately written as behaviour, not speech, and deliberately NOT given
+     * the script. Two reasons. These models move a mouth without forming
+     * English phonemes, so a clip that looks like it is delivering the line
+     * teaches the wrong articulation - worse than a still with accurate audio
+     * over it. And the stored dialogue summary is the raw transcript, speaker
+     * labels and numbers included; fed to a video model it comes back as a
+     * scene trying to depict "B: She is 1.85 metres tall", which is not a
+     * picture of anything. What the clip is for is the situation. The words
+     * arrive as audio.
+     *
+     * @param  list<string>  $cast  names of the characters in the exchange, so a
+     *                              recurring pair stays a recurring pair
+     */
+    public function dialogueVideo(string $setting, array $cast = [], ?string $topic = null, ?string $cefr = null, int $seconds = 5): array
     {
+        $people = count($cast) >= 2
+            ? "Two people, {$cast[0]} and {$cast[1]}, talking with each other."
+            : 'Two people talking with each other.';
+
         $prompt = collect([
-            "A short, calm scene set in a {$setting} for an English language lesson.",
-            $summary,
+            "A short, calm observational scene in {$setting}, for an English language lesson.",
+            $people,
+            $topic ? "They are dealing with something to do with {$topic}." : null,
             $this->levelGuidance($cefr),
-            'Natural pacing, steady camera, clear framing of the people speaking.',
+            'Natural body language and gesture; the exchange is readable from behaviour alone.',
+            'Steady camera, gentle movement, unhurried pacing, clear framing.',
+            'Do not emphasise the mouths and do not attempt close-up speech.',
+            'Culturally neutral, age-appropriate, no on-screen text.',
+        ])->filter()->implode(' ');
+
+        return [
+            'prompt' => $prompt,
+            'negative' => self::NEGATIVE,
+            'aspect_ratio' => '16:9',
+            'duration_seconds' => $seconds,
+        ];
+    }
+
+    /**
+     * A lesson scene brought to life, animated from its own still.
+     *
+     * The motion is described rather than invented, and kept small on purpose:
+     * a clip that reframes or restages the scene loses the very thing the still
+     * was built to do, which is hold every target word in view at once.
+     */
+    public function lessonVideo(Lesson $lesson, string $motion, array $targetWords = [], int $seconds = 5): array
+    {
+        $unit = $lesson->unit;
+        $context = trim(($unit?->title ? $unit->title.' - ' : '').$lesson->title);
+        $words = collect($targetWords)->take(6)->implode(', ');
+
+        $level = $lesson->cefr_level_id ? CefrLevel::find($lesson->cefr_level_id) : null;
+
+        $prompt = collect([
+            "Bring this scene gently to life for an English language lesson: {$context}.",
+            $motion,
+            $words !== '' ? "Keep these clearly visible throughout: {$words}." : null,
+            $this->levelGuidance($level?->code),
+            'Preserve the framing, the people and the setting exactly as they are.',
+            'Subtle natural motion only. Steady camera, no cuts, no zoom, no reframing.',
             'Culturally neutral, age-appropriate, no on-screen text.',
         ])->filter()->implode(' ');
 

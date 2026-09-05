@@ -27,6 +27,11 @@ class DialogueTurn extends Model
         ];
     }
 
+    public function character(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Character::class);
+    }
+
     public function dialogue(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Dialogue::class);

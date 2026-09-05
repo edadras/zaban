@@ -46,6 +46,13 @@ return [
                 'image' => env('HIGGSFIELD_IMAGE_MODEL', 'gpt_image_2'),
                 'scene' => env('HIGGSFIELD_SCENE_MODEL', 'gpt_image_2'),
                 'character' => env('HIGGSFIELD_CHARACTER_MODEL', 'nano_banana_pro'),
+                /*
+                 * Video has no unlimited tier on Higgsfield Plus, but does on
+                 * ImagineArt's higher plans - which name the models slightly
+                 * differently (their list says "Seedance 1.5 Pro"). Set this to
+                 * whichever id the account in use actually renders free, or
+                 * every clip is billed.
+                 */
                 'video' => env('HIGGSFIELD_VIDEO_MODEL', 'seedance_2_0'),
                 'audio' => env('HIGGSFIELD_AUDIO_MODEL', 'seed_audio'),
             ],

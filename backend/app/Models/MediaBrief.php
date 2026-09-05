@@ -19,6 +19,10 @@ class MediaBrief extends Model
 
     public const KIND_CHARACTER_PORTRAIT = 'character_portrait';
 
+    public const KIND_DIALOGUE_VIDEO = 'dialogue_video';
+
+    public const KIND_LESSON_VIDEO = 'lesson_video';
+
     public const STATUS_PENDING = 'pending';
 
     public const STATUS_GENERATING = 'generating';
@@ -33,7 +37,8 @@ class MediaBrief extends Model
 
     protected $fillable = [
         'kind', 'subject_type', 'subject_id', 'model', 'prompt', 'negative',
-        'aspect_ratio', 'resolution', 'priority', 'status', 'skip_reason',
+        'aspect_ratio', 'resolution', 'duration_seconds', 'source_brief_id',
+        'priority', 'status', 'skip_reason',
         'request_hash', 'external_job_id', 'result_url', 'media_asset_id',
         'error', 'attempts', 'generated_at',
     ];
@@ -41,6 +46,7 @@ class MediaBrief extends Model
     protected $casts = [
         'priority' => 'integer',
         'attempts' => 'integer',
+        'duration_seconds' => 'integer',
         'generated_at' => 'datetime',
     ];
 
@@ -63,11 +69,36 @@ class MediaBrief extends Model
         return hash('sha256', implode('|', [$model, $prompt, $aspect, $resolution]));
     }
 
-    /** Work still to be sent to a provider, in the order it should be sent. */
+    /**
+     * Work still to be sent to a provider, in the order it should be sent.
+     *
+     * A brief that animates a still is held back until that still exists: sent
+     * early it would have nothing to seed from and would generate a different
+     * room, with different people, from the lesson it belongs to.
+     */
     public function scopeRenderable($query)
     {
         return $query->whereIn('status', [self::STATUS_PENDING, self::STATUS_FAILED])
+            ->where(fn ($q) => $q->whereNull('source_brief_id')
+                ->orWhereIn('source_brief_id', self::query()
+                    ->where('status', self::STATUS_IMPORTED)
+                    ->select('id')))
             ->orderBy('priority')
             ->orderBy('id');
+    }
+
+    /** Planned, but waiting on the still it animates. */
+    public function scopeBlocked($query)
+    {
+        return $query->whereIn('status', [self::STATUS_PENDING, self::STATUS_FAILED])
+            ->whereNotNull('source_brief_id')
+            ->whereNotIn('source_brief_id', self::query()
+                ->where('status', self::STATUS_IMPORTED)
+                ->select('id'));
+    }
+
+    public function sourceBrief(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'source_brief_id');
     }
 }

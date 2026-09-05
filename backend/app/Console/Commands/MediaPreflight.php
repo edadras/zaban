@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Character;
+use App\Models\MediaAsset;
 use App\Models\MediaBrief;
 use Illuminate\Console\Command;
 
@@ -27,6 +28,7 @@ class MediaPreflight extends Command
             $this->castDefined(),
             $this->promptsBound(),
             $this->importPathProven(),
+            $this->videoSeeded(),
         ];
 
         $this->table(
@@ -48,9 +50,14 @@ class MediaPreflight extends Command
         }
 
         $pending = MediaBrief::renderable()->count();
+        $blocked = MediaBrief::blocked()->count();
+        $seconds = (int) MediaBrief::whereNot('status', MediaBrief::STATUS_SKIPPED)->sum('duration_seconds');
 
         $this->newLine();
-        $this->info("Ready. {$pending} image(s) planned and waiting.");
+        $this->info("Ready. {$pending} generation(s) queued now"
+            .($blocked ? ", {$blocked} clip(s) waiting on the stills they animate" : '')
+            .($seconds ? ', '.round($seconds / 60).' minutes of video planned in total' : '')
+            .'.');
         $this->line('The only thing still needed from outside is an account that can render them.');
         $this->newLine();
         $this->line('  php artisan media:manifest --limit=12 --claim   # next batch, provider-ready');
@@ -109,17 +116,46 @@ class MediaPreflight extends Command
         ];
     }
 
+    /**
+     * Every clip that animates a still must name one. A video brief that lost
+     * its seed would render a different room with different people from the
+     * lesson it belongs to - and it would look fine in isolation, which is why
+     * this is checked rather than assumed.
+     */
+    private function videoSeeded(): array
+    {
+        $videos = MediaBrief::whereIn('kind', [MediaBrief::KIND_LESSON_VIDEO])
+            ->whereNot('status', MediaBrief::STATUS_SKIPPED);
+
+        $total = (clone $videos)->count();
+        $unseeded = (clone $videos)->whereNull('source_brief_id')->count();
+
+        return [
+            'name' => 'Clips seeded from their stills',
+            'ok' => $unseeded === 0,
+            'detail' => $total === 0
+                ? 'no lesson clips planned'
+                : "{$total} lesson clip(s), all seeded from the lesson's own scene",
+            'fix' => 'run php artisan media:briefs after the lesson_scene briefs exist',
+        ];
+    }
+
     private function importPathProven(): array
     {
-        $imported = MediaBrief::where('status', MediaBrief::STATUS_IMPORTED)->count();
+        /*
+         * Asked of the stored assets rather than of brief status, because those
+         * are different questions. A brief goes back to pending whenever its
+         * request changes - a reworded prompt, a different model - and that says
+         * nothing about whether downloading, checksumming, storing and linking
+         * has ever actually worked. The asset on disk is the evidence.
+         */
+        $stored = MediaAsset::where('origin', 'generated')->count();
 
         return [
             'name' => 'Import path',
-            // Proven by having actually round-tripped at least one generation,
-            // not by the code merely existing.
-            'ok' => $imported > 0,
-            'detail' => $imported > 0
-                ? "{$imported} generation(s) already stored and linked"
+            'ok' => $stored > 0,
+            'detail' => $stored > 0
+                ? "{$stored} generation(s) stored and linked to content"
                 : 'never exercised against a real generation',
             'fix' => 'import one real generation before committing to a bulk run',
         ];
