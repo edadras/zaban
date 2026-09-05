@@ -23,6 +23,7 @@ class Dialogue extends Model
         'copyright_status',
         'source_document_id',
         'source_page',
+        'source_sequence',
     ];
 
     public function turns(): \Illuminate\Database\Eloquent\Relations\HasMany
