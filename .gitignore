@@ -6,3 +6,7 @@
 /backend/storage/*.key
 /backend/public/build
 /backend/public/hot
+
+# Python
+__pycache__/
+*.pyc

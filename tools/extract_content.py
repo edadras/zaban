@@ -58,6 +58,48 @@ RE_FOOTER = re.compile(r'English Vocabulary in Use', re.I)
 RE_NOISE = re.compile(r'^(?:\d+|[A-H]|Common|mistakes|Language help|Tip|Note|Exercises|'
                       r'Answer key|Follow[- ]up|Study unit)\.?$', re.I)
 
+# Single letters that really are English words. Everything else of length one is
+# a fragment: these books bold the individual letters when spelling out an
+# acronym, so "PIN" yields p, i, n as if each were vocabulary.
+#
+# Case matters for exactly one of them. The pronoun is always written "I", so a
+# lowercase "i" is never a word - it is the middle letter of PIN. Matching it
+# case-insensitively would let that one back in.
+REAL_ONE_LETTER_WORDS = {'a', 'A', 'I'}
+
+
+def is_headword(term):
+    """Could this bold run be a word someone is meant to learn?
+
+    Guards against three kinds of debris the bold-run extraction picks up, all
+    of which reached the database as vocabulary before this existed:
+
+      * pure punctuation and symbols - "…", "›", "•", "(", "£", "?"
+      * single letters from spelled-out acronyms - the p, i, n of PIN
+      * bare figures and references - "1.1", "2%", "2014-2016"
+
+    Deliberately permissive about length beyond that: "an", "be", "go", "TV",
+    "ID" are all real headwords, so only length one is treated as suspect.
+    """
+    term = term.strip()
+
+    if not term:
+        return False
+
+    # Nothing to pronounce, nothing to learn.
+    if not re.search(r'[A-Za-z]', term):
+        return False
+
+    # "+ -ing", "+ prepositions": the books' notation for what a pattern takes,
+    # not a word anyone is asked to learn.
+    if term.startswith('+'):
+        return False
+
+    if len(term) == 1 and term not in REAL_ONE_LETTER_WORDS:
+        return False
+
+    return True
+
 
 def run(cmd):
     return subprocess.run(cmd, capture_output=True, text=True, check=True).stdout
@@ -107,12 +149,37 @@ def load_word_lines(pdf, key):
     return repair
 
 
+# Typographic ligatures the PDFs set as single glyphs. pdftotext emits the
+# glyph itself and often a stray space behind it, so "benefits" arrives as
+# "beneﬁ ts" - a real word, unsearchable and unmatchable.
+LIGATURES = {
+    '\ufb00': 'ff', '\ufb01': 'fi', '\ufb02': 'fl', '\ufb03': 'ffi',
+    '\ufb04': 'ffl', '\ufb05': 'st', '\ufb06': 'st',
+}
+RE_LIGATURE_SPACE = re.compile(r'(f[filfl]{1,2})\s+(?=[a-z])')
+
+
+def unligature(text):
+    """Expand ligature glyphs and close the space they leave behind.
+
+    The trailing space is the part that matters. "beneﬁ ts" expands to
+    "benefi ts", which is still not the word; only closing the gap gives
+    "benefits". Restricted to a following lowercase letter so it cannot glue
+    two genuine words together.
+    """
+    for glyph, plain in LIGATURES.items():
+        text = text.replace(glyph, plain)
+
+    return RE_LIGATURE_SPACE.sub(r'\1', text)
+
+
 def repair_line(text, repair):
     """Restore spacing on a line that lost it, leaving correct lines untouched."""
+    text = unligature(text)
     if not re.search(r'[A-Za-z]{16,}', text):
         return text
     fixed = repair.get(re.sub(r'\s+', '', text))
-    return fixed if fixed else text
+    return unligature(fixed) if fixed else text
 
 
 def load_layout(pdf, key):
@@ -303,8 +370,8 @@ def extract_unit(runs, unit, secs):
         if line != sec['title'] and line != sec['letter']:
             bucket['lines'].append(line)
         for b in r['bold']:
-            b = b.strip(' .,;:')
-            if not b or RE_NOISE.match(b) or len(b) > 60:
+            b = unligature(b).strip(' .,;:')
+            if not b or RE_NOISE.match(b) or len(b) > 60 or not is_headword(b):
                 continue
             if b.lower() in (sec['title'] or '').lower() or b.lower() == unit_title_low:
                 continue

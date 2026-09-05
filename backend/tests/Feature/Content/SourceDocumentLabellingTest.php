@@ -126,4 +126,68 @@ class SourceDocumentLabellingTest extends TestCase
             );
         }
     }
+
+    /**
+     * Vocabulary comes from the bold runs on a page, and typography makes
+     * things bold for reasons that have nothing to do with language. Each class
+     * below reached the vocabulary table as a headword before it was filtered,
+     * several of them carrying definitions.
+     */
+    public function test_no_headword_is_typographic_debris(): void
+    {
+        $items = DB::table('vocabulary_items')->pluck('headword');
+
+        if ($items->isEmpty()) {
+            $this->markTestSkipped('No corpus imported in this environment.');
+        }
+
+        // Bullets, brackets, currency symbols, bare figures: a bullet, a pound
+        // sign, "2%", the cross-reference "1.1".
+        $noLetters = $items->filter(fn ($h) => ! preg_match('/[A-Za-z]/', $h));
+        $this->assertSame([], $noLetters->values()->all(), 'headwords with no letter in them');
+
+        // The p, i, n of a spelled-out PIN. "I" is a word; lowercase "i" is not.
+        $lone = $items->filter(
+            fn ($h) => mb_strlen($h) === 1 && ! in_array($h, ['a', 'A', 'I'], true),
+        );
+        $this->assertSame([], $lone->values()->all(), 'single letters that are not words');
+
+        // "+ -ing" is the books' notation for what a pattern takes.
+        $notation = $items->filter(fn ($h) => str_starts_with($h, '+'));
+        $this->assertSame([], $notation->values()->all(), 'grammar-pattern notation as vocabulary');
+    }
+
+    /**
+     * The PDFs set fi/fl/ff as single glyphs and pdftotext leaves a space
+     * behind them, so "benefits" arrives as "benefi ts" - a real word rendered
+     * unsearchable and unmatchable.
+     */
+    public function test_no_ligature_glyph_survives_into_the_content(): void
+    {
+        $ligatures = 'ﬀﬁﬂﬃﬄ';
+
+        $checks = [
+            'vocabulary_items' => 'headword',
+            'definitions' => 'text',
+            'examples' => 'text',
+            'lessons' => 'summary',
+        ];
+
+        if (DB::table('vocabulary_items')->doesntExist()) {
+            $this->markTestSkipped('No corpus imported in this environment.');
+        }
+
+        foreach ($checks as $table => $column) {
+            $rows = DB::table($table)
+                ->where($column, 'REGEXP', '['.$ligatures.']')
+                ->limit(3)
+                ->pluck($column);
+
+            $this->assertSame(
+                [],
+                $rows->values()->all(),
+                "{$table}.{$column} still contains unexpanded ligature glyphs",
+            );
+        }
+    }
 }

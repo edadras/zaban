@@ -369,7 +369,7 @@ class ImportCurriculum extends Command
     private function importVocabulary(array $v, SourceDocument $doc, array $u, array $sec, string $cefrCode, array &$counts, ?int $lessonId = null): ?int
     {
         $term = trim($v['term']);
-        if ($term === '' || mb_strlen($term) > 190) {
+        if ($term === '' || mb_strlen($term) > 190 || ! $this->isHeadword($term)) {
             return null;
         }
         $normalised = Str::lower($term);
@@ -497,6 +497,45 @@ class ImportCurriculum extends Command
      * Reject fragments left behind by bracket stripping and column bleed - an
      * "example" like "] or a single [" teaches nothing.
      */
+    /**
+     * Could this be a word someone is meant to learn?
+     *
+     * The extractor takes its vocabulary from the bold runs on a page, and
+     * those carry debris the page's typography makes bold for reasons that have
+     * nothing to do with language: bullets and brackets, currency symbols, the
+     * individual letters of a spelled-out acronym (PIN gives p, i, n), and bare
+     * figures like "2%" or the cross-reference "1.1". Twenty-eight of those
+     * reached the vocabulary table as headwords, several carrying definitions.
+     *
+     * The same rule lives in the extractor, which is where it stops them being
+     * written at all. It is repeated here so a re-import of older extraction
+     * output cannot put them back.
+     */
+    private function isHeadword(string $term): bool
+    {
+        // Nothing to pronounce, nothing to learn.
+        if (! preg_match('/[A-Za-z]/', $term)) {
+            return false;
+        }
+
+        // "+ -ing", "+ prepositions": the books' notation for what a pattern
+        // takes, not a word anyone is asked to learn.
+        if (str_starts_with($term, '+')) {
+            return false;
+        }
+
+        /*
+         * Length one is a fragment, with two exceptions. Case matters for the
+         * second: the pronoun is always written "I", so a lowercase "i" is not
+         * a word - it is the middle letter of PIN.
+         */
+        if (mb_strlen($term) === 1) {
+            return in_array($term, ['a', 'A', 'I'], true);
+        }
+
+        return true;
+    }
+
     private function isUsableExample(string $text, string $term): bool
     {
         if (mb_strlen($text) < mb_strlen($term) + 6) {
