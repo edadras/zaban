@@ -151,8 +151,16 @@ class SourceSentenceMiner
                 continue;
             }
 
-            // The running foot: a page number and the book's own title, which
-            // is not something a learner should be asked to read.
+            // Prose has sentences in it. A page's word lists, its table rows
+            // and its glossary column all reflow into something paragraph-
+            // shaped and none of them are anything a learner should be handed
+            // to read: "baguette muffin cupcake croissant Language help" was
+            // being set as the opening paragraph of the Food lesson.
+            if (! preg_match('/[.!?]/u', $chunk)) {
+                continue;
+            }
+
+            // The running foot: a page number and the book's own title.
             if (preg_match('/^\d{1,4}\s+\p{Lu}/u', $chunk)
                 && ! preg_match('/[.!?]$/u', $chunk)) {
                 continue;

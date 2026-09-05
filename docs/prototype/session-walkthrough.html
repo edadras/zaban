@@ -1,0 +1,344 @@
+<title>Zaban Session Walkthrough</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ---------------------------------------------------------------------------
+   Tokens are the Flutter app's own ZabanColors, both palettes, so this page
+   shows the product's colours rather than a second opinion about them.
+   --------------------------------------------------------------------------- */
+:root{
+  --canvas:#F5F5F7; --raised:#FBFBFD; --surface:#FFFFFF; --muted:#EFEFF3;
+  --line:#DEDEE6; --line-soft:#EAEAF0;
+  --accent:#D31026; --accent-soft:#A80D1F; --accent-wash:#FCEBEE;
+  --success:#0E8F5E; --warning:#9A6B00; --info:#2C6BD1; --danger:#C5303F;
+  --ink:#15151B; --ink-2:#4B4B57; --ink-3:#83838F;
+  --shadow:0 1px 2px rgba(20,20,30,.05), 0 8px 24px -12px rgba(20,20,30,.18);
+  --sans:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --canvas:#07070A; --raised:#0C0C11; --surface:#121219; --muted:#17171F;
+    --line:#26262F; --line-soft:#1C1C24;
+    --accent:#FF2D46; --accent-soft:#FF7C88; --accent-wash:#1E0C11;
+    --success:#3DDC97; --warning:#F5B841; --info:#6AA9FF; --danger:#FF4D5E;
+    --ink:#F4F4F7; --ink-2:#A7A7B4; --ink-3:#6C6C7B;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --canvas:#07070A; --raised:#0C0C11; --surface:#121219; --muted:#17171F;
+  --line:#26262F; --line-soft:#1C1C24;
+  --accent:#FF2D46; --accent-soft:#FF7C88; --accent-wash:#1E0C11;
+  --success:#3DDC97; --warning:#F5B841; --info:#6AA9FF; --danger:#FF4D5E;
+  --ink:#F4F4F7; --ink-2:#A7A7B4; --ink-3:#6C6C7B;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--canvas); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 96px}
+
+/* --- masthead ------------------------------------------------------------ */
+.masthead{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between;
+  padding-bottom:20px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+h1{font-size:clamp(28px,4vw,40px);line-height:1.08;margin:8px 0 0;font-weight:800;letter-spacing:-.02em;text-wrap:balance}
+.sub{color:var(--ink-2);margin:10px 0 0;max-width:56ch;font-size:15px}
+.figures{display:flex;gap:22px;flex-wrap:wrap}
+.fig{display:flex;flex-direction:column;gap:2px}
+.fig b{font-family:var(--mono);font-size:20px;font-weight:500;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.fig span{font-size:11px;color:var(--ink-3);letter-spacing:.04em}
+
+/* --- phase rail ---------------------------------------------------------- */
+.rail{display:flex;gap:6px;margin:28px 0 40px;flex-wrap:wrap}
+.rail a{flex:1 1 130px;text-decoration:none;color:inherit;border:1px solid var(--line);
+  border-top:3px solid var(--pc);border-radius:8px;padding:10px 12px;background:var(--raised);
+  display:flex;flex-direction:column;gap:3px;transition:transform .15s ease, border-color .15s ease}
+.rail a:hover{transform:translateY(-2px)}
+.rail a:focus-visible{outline:2px solid var(--pc);outline-offset:2px}
+.rail b{font-size:13px;letter-spacing:.01em}
+.rail span{font-size:11px;color:var(--ink-3);line-height:1.35}
+
+/* --- phase blocks -------------------------------------------------------- */
+.phase{margin:0 0 52px;scroll-margin-top:20px}
+.phead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding-left:14px;border-left:3px solid var(--pc);margin-bottom:6px}
+.phead h2{margin:0;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pc)}
+.phead p{margin:0;font-size:14px;color:var(--ink-2)}
+.pips{display:flex;gap:3px;align-items:center}
+.pip{width:5px;height:5px;border-radius:99px;background:var(--pc);opacity:.28}
+.pip.on{opacity:1}.pip.now{width:14px}
+
+.card{background:var(--raised);border:1px solid var(--line);border-radius:14px;
+  padding:26px;margin-top:14px;box-shadow:var(--shadow)}
+
+/* --- reading ------------------------------------------------------------- */
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;
+  font-size:11.5px;font-family:var(--mono);border:1px solid;line-height:1}
+.chip.t-info{color:var(--info);border-color:color-mix(in srgb,var(--info) 34%,transparent);background:color-mix(in srgb,var(--info) 9%,transparent)}
+.chip.t-mut{color:var(--ink-2);border-color:var(--line);background:transparent}
+.chip.t-acc{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 34%,transparent);background:color-mix(in srgb,var(--accent) 9%,transparent)}
+
+.read{font-family:var(--serif);font-size:19px;line-height:1.72;max-width:66ch;color:var(--ink)}
+.read p{margin:0 0 1.15em}
+.read p:first-of-type{font-size:21px;line-height:1.62}
+.read p:last-child{margin-bottom:0}
+.term{color:var(--accent-soft);font-weight:500;cursor:pointer;
+  border:0;background:none;font:inherit;padding:0;
+  text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent);
+  text-underline-offset:3px;text-decoration-thickness:1.5px}
+.term:hover,.term:focus-visible{background:var(--accent-wash);outline:none;
+  text-decoration-color:var(--accent)}
+.term.plain{color:var(--ink);text-decoration-style:dotted;cursor:default}
+.hint{display:flex;gap:7px;align-items:center;margin-top:18px;font-size:12.5px;color:var(--ink-3)}
+
+/* the gloss, opened in place */
+.gloss{margin-top:16px;border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+  border-radius:12px;background:var(--surface);padding:16px 18px;display:none}
+.gloss.open{display:block}
+.gloss h4{margin:0;font-size:20px;color:var(--accent-soft);font-weight:600;letter-spacing:-.01em}
+.gloss .rule{width:26px;height:2px;background:var(--accent);opacity:.55;margin:8px 0 12px}
+.gloss p{margin:0;font-family:var(--serif);font-size:17px;line-height:1.55}
+
+/* --- cards --------------------------------------------------------------- */
+.deck{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px}
+.fc{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--surface);
+  min-height:96px;display:flex;flex-direction:column;gap:6px}
+.fc b{font-size:17px;letter-spacing:-.01em}
+.fc span{font-family:var(--serif);font-size:15px;color:var(--ink-2);line-height:1.45}
+
+/* --- questions ----------------------------------------------------------- */
+.q + .q{margin-top:14px}
+.stem{font-family:var(--serif);font-size:20px;line-height:1.5;margin:0 0 18px;max-width:60ch}
+.stem em{font-style:normal;color:var(--warning);letter-spacing:.06em}
+.opts{display:flex;flex-direction:column;gap:9px;max-width:520px}
+.opt{display:flex;align-items:center;gap:12px;text-align:left;width:100%;
+  padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);font:inherit;cursor:pointer;transition:border-color .14s ease,background .14s ease}
+.opt:hover:not(:disabled){border-color:color-mix(in srgb,var(--accent) 50%,transparent)}
+.opt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.opt:disabled{cursor:default}
+.key{flex:0 0 28px;height:28px;border-radius:99px;display:grid;place-items:center;
+  border:1px solid var(--line);background:var(--muted);font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.opt.right{border-color:var(--success);background:color-mix(in srgb,var(--success) 12%,transparent)}
+.opt.right .key{background:var(--success);border-color:var(--success);color:#fff}
+.opt.right span{color:var(--success);font-weight:600}
+.opt.wrong{border-color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
+.opt.wrong .key{background:var(--danger);border-color:var(--danger);color:#fff}
+.opt.wrong span{color:var(--danger);font-weight:600}
+
+.verdict{margin-top:16px;border-radius:12px;padding:16px 18px;border:1px solid;display:none}
+.verdict.show{display:block}
+.verdict.ok{border-color:color-mix(in srgb,var(--success) 40%,transparent);background:color-mix(in srgb,var(--success) 9%,transparent)}
+.verdict.no{border-color:color-mix(in srgb,var(--danger) 40%,transparent);background:color-mix(in srgb,var(--danger) 9%,transparent)}
+.verdict h5{margin:0;font-size:15px;font-weight:700}
+.verdict.ok h5{color:var(--success)} .verdict.no h5{color:var(--danger)}
+.teach{margin-top:14px;border:1px solid var(--line);border-radius:10px;background:var(--raised);padding:14px 16px}
+.teach b{font-size:15px}
+.teach .g{font-family:var(--serif);font-size:16px;margin:6px 0 0;line-height:1.5}
+.teach .x{font-family:var(--serif);font-style:italic;font-size:14.5px;color:var(--ink-2);margin:8px 0 0;line-height:1.5}
+
+/* --- conversation -------------------------------------------------------- */
+.talk{display:flex;flex-direction:column;gap:10px;max-width:560px}
+.turn{padding:11px 15px;border-radius:14px;font-family:var(--serif);font-size:16.5px;line-height:1.45;max-width:82%}
+.turn.them{background:var(--muted);border:1px solid var(--line);border-bottom-left-radius:4px;align-self:flex-start}
+.turn.you{background:color-mix(in srgb,var(--success) 14%,transparent);
+  border:1px solid color-mix(in srgb,var(--success) 34%,transparent);border-bottom-right-radius:4px;align-self:flex-end}
+.note{margin-top:16px;font-size:13px;color:var(--ink-3);max-width:60ch;line-height:1.55}
+
+/* --- footer -------------------------------------------------------------- */
+.foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--ink-3);max-width:70ch;line-height:1.6}
+.foot code{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div>
+      <div class="eyebrow">Zaban · learner session</div>
+      <h1 id="ltitle"></h1>
+      <p class="sub" id="lbook"></p>
+    </div>
+    <div class="figures" id="figs"></div>
+  </header>
+
+  <nav class="rail" id="rail" aria-label="Parts of this session"></nav>
+
+  <main id="main"></main>
+
+  <footer class="foot">
+    Every word on this page comes out of the database as it stands now — the
+    lesson, its glosses, the questions and their wrong answers were all built by
+    <code>content:build-activities</code>. Nothing here is written for the demo.
+    Colours are the app's own tokens, so this is the product's palette in both
+    themes rather than a second opinion about it.
+  </footer>
+</div>
+
+<script>
+const D = "{\"lesson\": {\"id\": 1026, \"title\": \"Verbs based on Latin words\", \"book\": \"English Vocabulary \u2014 Upper-intermediate\"}, \"reading\": {\"paragraphs\": [{\"text\": \"Many words in English are formed from Latin roots. These words are often considered fairly formal in English. Here are some examples of the more common Latin roots, with some of the English verbs derived from them.\", \"terms\": []}, {\"text\": \"He conducted the orchestra with great vigour. Nothing would induce me to join their organisation. The railway goes over a high viaduct.\", \"terms\": [{\"concept_id\": 11486, \"term\": \"conducted\", \"start\": 3, \"end\": 12, \"gloss\": \"led\"}, {\"concept_id\": 11487, \"term\": \"induce\", \"start\": 60, \"end\": 66, \"gloss\": \"persuade / lead\"}, {\"concept_id\": 11488, \"term\": \"viaduct\", \"start\": 127, \"end\": 134, \"gloss\": \"a high bridge across a river or valley\"}]}, {\"text\": \"The meeting has been postponed until next week. The President was deposed by his own son. The government have imposed a sizeable tax increase. Beethoven composed some beautiful pieces of music. She deposited some money in her bank account.\", \"terms\": [{\"concept_id\": 11489, \"term\": \"postponed\", \"start\": 21, \"end\": 30, \"gloss\": \"put off to a later date\"}, {\"concept_id\": 11490, \"term\": \"deposed\", \"start\": 66, \"end\": 73, \"gloss\": \"put out of office\"}, {\"concept_id\": 11491, \"term\": \"imposed\", \"start\": 110, \"end\": 117, \"gloss\": \"put into force\"}, {\"concept_id\": 11492, \"term\": \"composed\", \"start\": 153, \"end\": 161, \"gloss\": \"created, put together\"}, {\"concept_id\": 11493, \"term\": \"deposited\", \"start\": 198, \"end\": 207, \"gloss\": \"placed, put in\"}]}, {\"text\": \"How are you going to transport your things to the States? Britain imports cotton and exports wool. Our opinions are supported by a considerable amount of research. Foreigners who commit crimes are usually deported.\", \"terms\": [{\"concept_id\": 11494, \"term\": \"transport\", \"start\": 21, \"end\": 30, \"gloss\": \"send across\"}, {\"concept_id\": 11495, \"term\": \"imports\", \"start\": 66, \"end\": 73, \"gloss\": null}, {\"concept_id\": 11496, \"term\": \"exports\", \"start\": 85, \"end\": 92, \"gloss\": null}, {\"concept_id\": 11497, \"term\": \"supported\", \"start\": 116, \"end\": 125, \"gloss\": \"held up / backed\"}, {\"concept_id\": 11498, \"term\": \"deported\", \"start\": 205, \"end\": 213, \"gloss\": \"taken/sent away to another country\"}]}, {\"text\": \"She was impressed by his presentation. This weather depresses me. She always expresses herself very articulately.\", \"terms\": [{\"concept_id\": 11499, \"term\": \"impressed\", \"start\": 8, \"end\": 17, \"gloss\": \"filled with admiration and respect\"}, {\"concept_id\": 11500, \"term\": \"depresses\", \"start\": 52, \"end\": 61, \"gloss\": null}, {\"concept_id\": 11501, \"term\": \"expresses\", \"start\": 77, \"end\": 86, \"gloss\": \"puts her thoughts into words\"}]}, {\"text\": \"You should respect your parents / the laws of a country. The police officer inspected the mysterious package. Many pioneers travelled west in America to prospect for gold.\", \"terms\": [{\"concept_id\": 11502, \"term\": \"respect\", \"start\": 11, \"end\": 18, \"gloss\": null}, {\"concept_id\": 11503, \"term\": \"inspected\", \"start\": 76, \"end\": 85, \"gloss\": \"looked into / examined\"}, {\"concept_id\": 11504, \"term\": \"prospect\", \"start\": 153, \"end\": 161, \"gloss\": \"look for / search\"}]}, {\"text\": \"I tried the new make of coffee but I soon reverted to my old favourite brand. Can you convert this document to a pdf? The police diverted the traffic because there was a demonstration.\", \"terms\": [{\"concept_id\": 11505, \"term\": \"reverted\", \"start\": 42, \"end\": 50, \"gloss\": \"went back\"}, {\"concept_id\": 11506, \"term\": \"convert\", \"start\": 86, \"end\": 93, \"gloss\": \"change from one form to another\"}, {\"concept_id\": 11507, \"term\": \"diverted\", \"start\": 129, \"end\": 137, \"gloss\": \"sent it a different way\"}]}, {\"text\": \"The examples above are of verbs only. Note that for all the verbs listed, there is usually at least one noun, sometimes a different one for a person and an idea. Here are some examples.\", \"terms\": []}], \"word_count\": 244, \"estimated_seconds\": 163, \"glossed_terms\": 22}, \"cards\": [{\"front\": \"conducted\", \"back\": \"led\", \"example\": \"He conducted the orchestra with great vigour.\"}, {\"front\": \"induce\", \"back\": \"persuade / lead\", \"example\": \"Nothing would induce me to join their organisation.\"}, {\"front\": \"viaduct\", \"back\": \"a high bridge across a river or valley\", \"example\": \"The railway goes over a high viaduct.\"}, {\"front\": \"postponed\", \"back\": \"put off to a later date\", \"example\": \"The meeting has been postponed until next week.\"}, {\"front\": \"deposed\", \"back\": \"put out of office\", \"example\": \"The President was deposed by his own son.\"}, {\"front\": \"imposed\", \"back\": \"put into force\", \"example\": \"The government have imposed a sizeable tax increase.\"}], \"questions\": [{\"stem\": \"He ______ the orchestra with great vigour.\", \"instructions\": \"Choose the word that completes the sentence.\", \"difficulty\": 1.08, \"options\": [{\"text\": \"outcome\", \"correct\": false}, {\"text\": \"convert\", \"correct\": false}, {\"text\": \"expanded\", \"correct\": false}, {\"text\": \"conducted\", \"correct\": true}], \"teaching\": {\"term\": \"conducted\", \"gloss\": \"led\", \"example\": \"He conducted the orchestra with great vigour.\"}}, {\"stem\": \"Nothing would ______ me to join their organisation.\", \"instructions\": \"Choose the word that completes the sentence.\", \"difficulty\": 0.91, \"options\": [{\"text\": \"cruising\", \"correct\": false}, {\"text\": \"in-depth\", \"correct\": false}, {\"text\": \"constituency\", \"correct\": false}, {\"text\": \"induce\", \"correct\": true}], \"teaching\": {\"term\": \"induce\", \"gloss\": \"persuade / lead\", \"example\": \"Nothing would induce me to join their organisation.\"}}, {\"stem\": \"The railway goes over a high ______.\", \"instructions\": \"Choose the word that completes the sentence.\", \"difficulty\": 0.99, \"options\": [{\"text\": \"viaduct\", \"correct\": true}, {\"text\": \"inspected\", \"correct\": false}, {\"text\": \"breakdown\", \"correct\": false}, {\"text\": \"goods\", \"correct\": false}], \"teaching\": {\"term\": \"viaduct\", \"gloss\": \"a high bridge across a river or valley\", \"example\": \"The railway goes over a high viaduct.\"}}], \"scenario\": {\"title\": \"Returning an item\", \"situation\": \"Something you bought is faulty and you want a refund or exchange.\"}, \"stats\": {\"senses\": 12354, \"definitions\": 3692, \"cloze\": 11050, \"placement\": 184}}";
+const DATA = JSON.parse(D);
+
+const PHASES = [
+  {key:'warm_up',     title:'Warm-up',    purpose:'A couple of things you already know, to get going.', c:'var(--info)'},
+  {key:'study',       title:'Study',      purpose:'The lesson itself: the text, the picture and the new words.', c:'var(--accent)'},
+  {key:'practise',    title:'Practice',   purpose:'Use the words you have just met, while they are fresh.', c:'var(--warning)'},
+  {key:'use',         title:'Use it',     purpose:'Listen, say it aloud, hold a conversation.', c:'var(--success)'},
+  {key:'consolidate', title:'Consolidate',purpose:'What is due today, and what you got wrong last time.', c:'var(--ink-3)'},
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+document.getElementById('ltitle').textContent = DATA.lesson.title;
+document.getElementById('lbook').textContent =
+  DATA.lesson.book + ' — one day of study, from the page the book prints to the conversation it prepares you for.';
+
+const s = DATA.stats;
+document.getElementById('figs').innerHTML = [
+  [s.senses.toLocaleString(),      'senses taught'],
+  [s.definitions.toLocaleString(), 'glosses'],
+  [s.cloze.toLocaleString(),       'questions built'],
+  [s.placement,                    'placement items'],
+].map(([n,l]) => `<div class="fig"><b>${n}</b><span>${l}</span></div>`).join('');
+
+document.getElementById('rail').innerHTML = PHASES.map(p =>
+  `<a href="#${p.key}" style="--pc:${p.c}"><b>${p.title}</b><span>${esc(p.purpose)}</span></a>`).join('');
+
+/* ---- one phase block ---------------------------------------------------- */
+function phase(key, at, of, body){
+  const p = PHASES.find(x => x.key === key);
+  const pips = Array.from({length: of}, (_, i) =>
+    `<i class="pip ${i < at ? 'on' : ''} ${i === at-1 ? 'now' : ''}"></i>`).join('');
+  return `<section class="phase" id="${key}" style="--pc:${p.c}">
+    <div class="phead">
+      <h2>${p.title}</h2><div class="pips">${pips}</div><p>${esc(p.purpose)}</p>
+    </div>${body}</section>`;
+}
+
+/* ---- the reading text --------------------------------------------------- */
+function readingHTML(){
+  const r = DATA.reading;
+  const mins = Math.max(1, Math.round(r.estimated_seconds/60));
+  const meta = `<div class="meta">
+      <span class="chip t-info">${mins} min read</span>
+      <span class="chip t-mut">${r.word_count} words</span>
+      <span class="chip t-acc">${r.glossed_terms} words explained</span>
+    </div>`;
+
+  const paras = r.paragraphs.map(p => {
+    // Slice at the character offsets the server sent. Runes, because the
+    // offsets count characters and JS indexes UTF-16 code units.
+    const ch = Array.from(p.text);
+    let out = '', cur = 0;
+    for (const t of p.terms){
+      if (t.start < cur || t.end > ch.length || t.end <= t.start) continue;
+      out += esc(ch.slice(cur, t.start).join(''));
+      const word = esc(ch.slice(t.start, t.end).join(''));
+      out += t.gloss
+        ? `<button class="term" data-term="${esc(t.term)}" data-gloss="${esc(t.gloss)}">${word}</button>`
+        : `<span class="term plain">${word}</span>`;
+      cur = t.end;
+    }
+    out += esc(ch.slice(cur).join(''));
+    return `<p>${out}</p>`;
+  }).join('');
+
+  return `<div class="card">${meta}<div class="read">${paras}</div>
+    <div class="hint">Tap any underlined word to see what it means.</div>
+    <div class="gloss" id="gloss" role="status" aria-live="polite">
+      <h4 id="gw"></h4><div class="rule"></div><p id="gg"></p>
+    </div></div>`;
+}
+
+/* ---- the words it teaches ----------------------------------------------- */
+function cardsHTML(){
+  return `<div class="card"><div class="deck">` + DATA.cards.map(c =>
+    `<div class="fc"><b>${esc(c.front)}</b><span>${esc(c.back || '')}</span></div>`).join('') +
+    `</div></div>`;
+}
+
+/* ---- the questions ------------------------------------------------------ */
+function questionsHTML(){
+  return DATA.questions.map((q, qi) => {
+    const stem = esc(q.stem).replace(/_{3,}/g, '<em>_____</em>');
+    const opts = q.options.map((o, i) =>
+      `<button class="opt" data-q="${qi}" data-i="${i}" data-ok="${o.correct ? 1 : 0}">
+         <span class="key">${String.fromCharCode(65+i)}</span><span>${esc(o.text)}</span>
+       </button>`).join('');
+    const t = q.teaching || {};
+    const teach = (t.gloss || t.example)
+      ? `<div class="teach"><b>${esc(t.term || '')}</b>
+           ${t.gloss ? `<p class="g">${esc(t.gloss)}</p>` : ''}
+           ${t.example ? `<p class="x">${esc(t.example)}</p>` : ''}</div>`
+      : '';
+    return `<div class="card q">
+      <p class="stem">${stem}</p>
+      <div class="opts">${opts}</div>
+      <div class="verdict" id="v${qi}"><h5 id="vh${qi}"></h5>${teach}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ---- the conversation --------------------------------------------------- */
+function talkHTML(){
+  const sc = DATA.scenario;
+  return `<div class="card">
+    <p class="stem" style="margin-bottom:14px">${esc(sc.title)}</p>
+    <p class="note" style="margin:0 0 18px">${esc(sc.situation)}</p>
+    <div class="talk">
+      <div class="turn them">Hello — how can I help you today?</div>
+      <div class="turn you">I bought this last week and it stopped working.</div>
+      <div class="turn them">I'm sorry to hear that. Do you have the receipt with you?</div>
+    </div>
+    <p class="note">Mistakes are not corrected mid-conversation. They are noted
+      and shown at the end, because being corrected every sentence is what stops
+      people speaking.</p>
+  </div>`;
+}
+
+document.getElementById('main').innerHTML =
+  phase('study', 1, 1 + DATA.cards.length, readingHTML() + cardsHTML()) +
+  phase('practise', 1, DATA.questions.length, questionsHTML()) +
+  phase('use', 3, 3, talkHTML());
+
+/* ---- interaction -------------------------------------------------------- */
+const gloss = document.getElementById('gloss');
+document.addEventListener('click', e => {
+  const term = e.target.closest('.term[data-gloss]');
+  if (term){
+    document.getElementById('gw').textContent = term.dataset.term;
+    document.getElementById('gg').textContent = term.dataset.gloss;
+    gloss.classList.add('open');
+    return;
+  }
+
+  const opt = e.target.closest('.opt');
+  if (!opt || opt.disabled) return;
+
+  const qi = opt.dataset.q;
+  const ok = opt.dataset.ok === '1';
+  document.querySelectorAll(`.opt[data-q="${qi}"]`).forEach(b => {
+    b.disabled = true;
+    if (b.dataset.ok === '1') b.classList.add('right');
+  });
+  if (!ok) opt.classList.add('wrong');
+
+  const v = document.getElementById('v' + qi);
+  v.classList.add('show', ok ? 'ok' : 'no');
+  document.getElementById('vh' + qi).textContent = ok ? 'Correct' : 'Not quite';
+  // The word is taught on a miss; a correct answer does not need the lesson
+  // repeated back.
+  const teach = v.querySelector('.teach');
+  if (teach) teach.style.display = ok ? 'none' : 'block';
+});
+</script>
