@@ -73,6 +73,20 @@ final class SectionScoring
         return array_map(fn (array $c) => (string) $c['code'], $this->criteria());
     }
 
+    /**
+     * Relative weight of one task type within its section. IELTS Task 2 counts
+     * twice Task 1; where an exam weights its tasks equally the profile omits
+     * the key and everything defaults to 1.
+     */
+    public function taskWeight(?string $taskTypeCode): float
+    {
+        if (! $taskTypeCode) {
+            return 1.0;
+        }
+
+        return (float) ($this->config['task_weights'][$taskTypeCode] ?? 1.0);
+    }
+
     /** Speaking interview structure, empty for everything else. */
     public function parts(): array
     {

@@ -235,6 +235,8 @@ class ExamSeeder extends Seeder
                         'aggregation' => 'mean',
                         'section_scale' => ['min' => 0, 'max' => 9, 'step' => 0.5],
                         'criterion_scale' => ['min' => 0, 'max' => 9, 'step' => 0.5],
+                        // Task 2 is worth twice Task 1 in the IELTS writing band.
+                        'task_weights' => ['task_1_report' => 1, 'task_2_essay' => 2],
                         'criteria' => [
                             ['code' => 'task_achievement', 'name' => 'Task Achievement / Response', 'weight' => 0.25,
                              'descriptor' => 'How completely and appropriately the response addresses every part of the task, with a clear position and adequately developed, relevant support.'],

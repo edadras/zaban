@@ -74,16 +74,20 @@ class PhonemeSeeder extends Seeder
             // separately instead of marking the whole word right or wrong.
             DB::table('pronunciation_item_phonemes')->where('pronunciation_item_id', $item->id)->delete();
             $rows = [];
+            $stressAssigned = false;
             foreach ($sequence as $position => $symbol) {
                 if (! isset($phonemes[$symbol])) {
                     continue;
                 }
+                // Every word here is stressed on its first syllable, so the first
+                // vowel in the sequence is the stressed one.
+                $stressed = ! $stressAssigned && $this->isVowel($symbol);
+                $stressAssigned = $stressAssigned || $stressed;
                 $rows[] = [
                     'pronunciation_item_id' => $item->id,
                     'phoneme_id' => $phonemes[$symbol],
                     'position' => $position,
-                    // One-syllable words: the single vowel carries the stress.
-                    'is_stressed' => $this->isVowel($symbol),
+                    'is_stressed' => $stressed,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ];
@@ -274,10 +278,11 @@ class PhonemeSeeder extends Seeder
             'coat' => ['k', 'oʊ', 't'],
             'map' => ['m', 'æ', 'p'],
             'nap' => ['n', 'æ', 'p'],
-            'measure' => ['m', 'ɛ', 'ʒ', 'ɝ'],
-            'metre' => ['m', 'i', 't', 'ɝ'],
-            'hair' => ['h', 'ɛ', 'r'],
-            'air' => ['ɛ', 'r'],
+            'lesion' => ['l', 'i', 'ʒ', 'ə', 'n'],
+            'legion' => ['l', 'i', 'dʒ', 'ə', 'n'],
+            'fin' => ['f', 'ɪ', 'n'],
+            'hat' => ['h', 'æ', 't'],
+            'cat' => ['k', 'æ', 't'],
         ];
     }
 
@@ -320,8 +325,9 @@ class PhonemeSeeder extends Seeder
             ['g', 'k', 'goat', 'coat'],
             ['d', 't', 'bad', 'bat'],
             ['m', 'n', 'map', 'nap'],
-            ['ʒ', 't', 'measure', 'metre'],
-            ['h', 'ə', 'hair', 'air'],
+            ['ʒ', 'dʒ', 'lesion', 'legion'],
+            ['f', 'θ', 'fin', 'thin'],
+            ['h', 'k', 'hat', 'cat'],
         ];
     }
 }
