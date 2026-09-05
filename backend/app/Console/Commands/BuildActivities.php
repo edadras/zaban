@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Concept;
+use App\Models\Definition;
 use App\Models\Exercise;
 use App\Models\ExerciseAnswer;
 use App\Models\ExerciseOption;
@@ -112,6 +113,7 @@ class BuildActivities extends Command
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }
 
+        $this->pruneMisAnchoredGlosses();
         $this->harvestFootnoteGlosses();
         $this->deactivateNonTerms();
         $this->linkSourceExercisesToConcepts();
@@ -126,6 +128,53 @@ class BuildActivities extends Command
         $this->info('Done. Re-run `php artisan content:readiness` to see the effect.');
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Set aside the margin notes that were attached to more than one word.
+     *
+     * The importer places a margin gloss by matching an anchor phrase from the
+     * page, and where a page repeats that phrase the same note lands on several
+     * different headwords. One of them may be right; the rest are teaching the
+     * wrong meaning. "drink some coffee" was the definition of "drive".
+     *
+     * Nothing distinguishes the right one from the wrong ones, so all of them
+     * are marked rather than deleted - the text came out of the book and is
+     * worth keeping for review. A word with no definition is a gap; a word with
+     * somebody else's is a lie, and it also feeds the distractor policy, which
+     * decides whether two words mean different things by comparing exactly
+     * these strings.
+     *
+     * Footnote glosses are paired by the book's own numbering and are exact, so
+     * they are not touched.
+     */
+    private function pruneMisAnchoredGlosses(): void
+    {
+        $this->line('▸ setting aside glosses that landed on more than one word');
+
+        $shared = DB::table('definitions')
+            ->join('vocabulary_senses', 'vocabulary_senses.id', '=', 'definitions.vocabulary_sense_id')
+            ->join('vocabulary_items', 'vocabulary_items.id', '=', 'vocabulary_senses.vocabulary_item_id')
+            ->where('definitions.generation_method', 'extracted')
+            ->groupBy('definitions.text')
+            ->havingRaw('COUNT(DISTINCT vocabulary_items.headword) > 1')
+            ->pluck('definitions.text');
+
+        if ($shared->isEmpty()) {
+            $this->line('   none found');
+
+            return;
+        }
+
+        $marked = 0;
+        foreach ($shared->chunk(200) as $chunk) {
+            $marked += DB::table('definitions')
+                ->where('generation_method', 'extracted')
+                ->whereIn('text', $chunk->all())
+                ->update(['generation_method' => Definition::AMBIGUOUS]);
+        }
+
+        $this->line("   ambiguous glosses: {$shared->count()}, rows set aside: {$marked}");
     }
 
     /**
@@ -148,7 +197,11 @@ class BuildActivities extends Command
 
         $pages = $this->loadPageText();
         $terms = $this->loadTaughtTerms();
-        $existing = DB::table('definitions')->distinct()->pluck('vocabulary_sense_id')->flip();
+        // A sense whose only gloss was set aside is treated as undefined, so a
+        // footnote can supply the one the book actually printed against it.
+        $existing = DB::table('definitions')
+            ->where('generation_method', '!=', Definition::AMBIGUOUS)
+            ->distinct()->pluck('vocabulary_sense_id')->flip();
 
         $senseByLessonTerm = DB::table('lesson_concept')
             ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
@@ -199,7 +252,9 @@ class BuildActivities extends Command
             DB::table('definitions')->insertOrIgnore($rows);
         }
 
-        $total = DB::table('definitions')->count();
+        $total = DB::table('definitions')
+            ->where('generation_method', '!=', Definition::AMBIGUOUS)
+            ->count();
         $senses = DB::table('vocabulary_senses')->count();
         $this->line("   footnote glosses recovered: {$added}");
         $this->line("   senses now defined: {$total} of {$senses}");
@@ -318,7 +373,8 @@ class BuildActivities extends Command
         return DB::table('lesson_concept')
             ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
             ->leftJoin('definitions', function ($j) {
-                $j->on('definitions.vocabulary_sense_id', '=', 'concepts.conceptable_id');
+                $j->on('definitions.vocabulary_sense_id', '=', 'concepts.conceptable_id')
+                    ->where('definitions.generation_method', '!=', Definition::AMBIGUOUS);
             })
             ->where('concepts.conceptable_type', VocabularySense::class)
             ->where('concepts.is_active', true)
@@ -625,7 +681,10 @@ class BuildActivities extends Command
                         continue;
                     }
 
-                    $definition = DB::table('definitions')->where('vocabulary_sense_id', $sense->id)->value('text');
+                    $definition = DB::table('definitions')
+                        ->where('vocabulary_sense_id', $sense->id)
+                        ->where('generation_method', '!=', Definition::AMBIGUOUS)
+                        ->value('text');
 
                     // A sentence the importer isolated as an example is the most
                     // trustworthy stem there is, so it is tried first. When the
@@ -848,7 +907,8 @@ class BuildActivities extends Command
             ->join('lessons', 'lessons.id', '=', 'lesson_concept.lesson_id')
             ->join('units', 'units.id', '=', 'lessons.unit_id')
             ->leftJoin('definitions', function ($j) {
-                $j->on('definitions.vocabulary_sense_id', '=', 'concepts.conceptable_id');
+                $j->on('definitions.vocabulary_sense_id', '=', 'concepts.conceptable_id')
+                    ->where('definitions.generation_method', '!=', Definition::AMBIGUOUS);
             })
             ->where('concepts.conceptable_type', VocabularySense::class)
             ->select([
@@ -885,6 +945,7 @@ class BuildActivities extends Command
     {
         $ids = $concepts->pluck('conceptable_id')->all();
         $defs = DB::table('definitions')->whereIn('vocabulary_sense_id', $ids)
+            ->where('generation_method', '!=', Definition::AMBIGUOUS)
             ->pluck('text', 'vocabulary_sense_id')->all();
 
         return $concepts

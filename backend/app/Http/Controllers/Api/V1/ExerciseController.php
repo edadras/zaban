@@ -176,6 +176,7 @@ class ExerciseController extends ApiController
 
         $gloss = DB::table('definitions')
             ->where('vocabulary_sense_id', $concept->conceptable_id)
+            ->where('generation_method', '!=', \App\Models\Definition::AMBIGUOUS)
             ->value('text');
 
         $example = DB::table('examples')

@@ -133,6 +133,12 @@ class DistractorPolicy
             return false;
         }
 
+        // A list, not a headword: "a swim, a coffee" is two things the book
+        // taught side by side, caught by one bold run.
+        if (str_contains($t, ',') || str_contains($t, ';')) {
+            return false;
+        }
+
         return str_word_count($t) <= 4;
     }
 

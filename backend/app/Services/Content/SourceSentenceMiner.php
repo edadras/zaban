@@ -151,6 +151,13 @@ class SourceSentenceMiner
                 continue;
             }
 
+            // The running foot: a page number and the book's own title, which
+            // is not something a learner should be asked to read.
+            if (preg_match('/^\d{1,4}\s+\p{Lu}/u', $chunk)
+                && ! preg_match('/[.!?]$/u', $chunk)) {
+                continue;
+            }
+
             // A paragraph that swallowed a margin note was assembled across the
             // gutter; showing it would put the glossary inside the sentence.
             if ($this->swallowedAGloss($chunk, $needles)) {
