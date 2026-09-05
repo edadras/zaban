@@ -202,7 +202,7 @@ class ImportCurriculum extends Command
         $counts = ['units' => 0, 'lessons' => 0, 'vocab' => 0, 'senses' => 0,
                    'definitions' => 0, 'examples' => 0, 'concepts' => 0,
                    'exercises' => 0, 'audio' => 0, 'pages' => 0, 'segments' => 0,
-                   'chars' => 0];
+                   'chars' => 0, 'images' => 0, 'image_blocks' => 0];
 
         // Every page of the book is stored verbatim first. Whatever the structural
         // parser does or does not recognise, no source text is ever unrepresented.
@@ -242,6 +242,8 @@ class ImportCurriculum extends Command
                 $this->importUnit($u, $modules[$bucket], $doc, $toCode, $counts, $pageIds);
             }
         });
+
+        $this->importImages($key, $doc, $counts);
 
         // Sweep the complete audio inventory. Files whose unit resolved were mapped
         // during unit import; this catches anything left over so no audio is dropped.
@@ -502,6 +504,78 @@ class ImportCurriculum extends Command
         return null;
     }
 
+    /**
+     * Register the book's artwork.
+     *
+     * Full-page scans attach to their source_page so the vision fallback and the
+     * admin reviewer can see the original layout. Spot illustrations attach to the
+     * lessons on that page, because that is the artwork an exercise refers to.
+     */
+    private function importImages(string $bookKey, SourceDocument $doc, array &$counts): void
+    {
+        $manifestPath = base_path('..').'/docs/data/images.json';
+        if (! is_file($manifestPath)) {
+            return;
+        }
+        $manifest = json_decode(file_get_contents($manifestPath), true);
+        $dirKey = match ($bookKey) {
+            'pre_int_int' => 'pre_intermediate_intermediate',
+            'upper_int' => 'upper_intermediate',
+            default => $bookKey,
+        };
+        $images = $manifest[$dirKey]['images'] ?? [];
+        if (! $images) {
+            return;
+        }
+
+        $pdfFile = SourceFile::where('source_document_id', $doc->id)->where('kind', 'pdf')->first();
+        $pages = SourcePage::where('source_file_id', $pdfFile->id)->pluck('id', 'page_number')->all();
+
+        $lessonsByPage = Lesson::where('source_document_id', $doc->id)
+            ->whereNotNull('source_page')
+            ->get()
+            ->groupBy('source_page');
+
+        foreach ($images as $img) {
+            $media = MediaAsset::updateOrCreate(
+                ['disk' => 'local', 'path' => $img['path']],
+                [
+                    'type' => 'image',
+                    'mime' => str_ends_with($img['path'], '.png') ? 'image/png' : 'image/jpeg',
+                    'bytes' => $img['bytes'] ?? null,
+                    'width' => $img['width'] ?? null,
+                    'height' => $img['height'] ?? null,
+                    'origin' => 'ingested',
+                    'copyright_status' => $doc->copyright_status,
+                    'metadata' => ['page' => $img['page'], 'is_page_scan' => $img['is_page_scan']],
+                ],
+            );
+            $counts['images']++;
+
+            if ($img['is_page_scan']) {
+                if ($pageId = $pages[$img['page']] ?? null) {
+                    SourcePage::whereKey($pageId)->update(['page_image_media_asset_id' => $media->id]);
+                }
+
+                continue;
+            }
+
+            // Spot artwork: hang it on every lesson taught from that page, as an
+            // illustration block the lesson renderer can show.
+            foreach ($lessonsByPage->get($img['page'], collect()) as $lesson) {
+                $lesson->blocks()->updateOrCreate(
+                    ['type' => 'image_scene', 'position' => 100 + $img['index']],
+                    [
+                        'media_asset_id' => $media->id,
+                        'config' => ['source_page' => $img['page'], 'origin' => 'book_illustration'],
+                        'estimated_seconds' => 20,
+                    ],
+                );
+                $counts['image_blocks']++;
+            }
+        }
+    }
+
     /** Register every mp3 in the book's inventory, mapped or not. */
     private function registerRemainingAudio(array $data, array &$counts): void
     {
@@ -719,17 +793,17 @@ class ImportCurriculum extends Command
         foreach ($this->stats as $book => $c) {
             $rows[] = [$book, $c['pages'], $c['units'], $c['lessons'], $c['segments'],
                        $c['vocab'], $c['senses'], $c['definitions'], $c['examples'],
-                       $c['exercises'], $c['audio'], number_format($c['chars'])];
+                       $c['exercises'], $c['audio'], $c['images'], number_format($c['chars'])];
         }
         $totals = ['TOTAL'];
-        for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 11; $i++) {
             $totals[] = array_sum(array_column($rows, $i));
         }
         $totals[] = number_format(array_sum(array_map(fn ($c) => $c['chars'], $this->stats)));
         $rows[] = $totals;
         $this->table(
             ['book', 'pages', 'units', 'lessons', 'segments', 'new vocab', 'senses',
-             'defs', 'examples', 'exercises', 'audio', 'source chars'],
+             'defs', 'examples', 'exercises', 'audio', 'images', 'source chars'],
             $rows,
         );
     }
