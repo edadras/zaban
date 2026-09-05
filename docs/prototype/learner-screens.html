@@ -1,0 +1,658 @@
+<title>Zaban Learner Screens</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground: #EFEEF2;
+    --surface: #FFFFFF;
+    --sunk: #E7E6EC;
+    --ink: #15161C;
+    --muted: #5C5E6B;
+    --faint: #8B8D99;
+    --line: #D9D8E0;
+    --accent: #1C39BB;
+    --accent-soft: #E3E7FA;
+    --good: #1B7A5A;
+    --good-soft: #DFF0E9;
+    --warn: #A9720B;
+    --warn-soft: #F7EBD2;
+    --bad: #B23B36;
+    --bad-soft: #F7E2E1;
+    --bezel: #22242E;
+
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --serif: "Literata", Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1017;
+      --surface: #191B24;
+      --sunk: #14161E;
+      --ink: #E8E8EF;
+      --muted: #A0A2B0;
+      --faint: #747684;
+      --line: #2B2E3A;
+      --accent: #8496F7;
+      --accent-soft: #1E2340;
+      --good: #5CC49C;
+      --good-soft: #16302A;
+      --warn: #E0A93C;
+      --warn-soft: #33280F;
+      --bad: #E8776F;
+      --bad-soft: #351D1C;
+      --bezel: #05060A;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground: #0F1017;
+    --surface: #191B24;
+    --sunk: #14161E;
+    --ink: #E8E8EF;
+    --muted: #A0A2B0;
+    --faint: #747684;
+    --line: #2B2E3A;
+    --accent: #8496F7;
+    --accent-soft: #1E2340;
+    --good: #5CC49C;
+    --good-soft: #16302A;
+    --warn: #E0A93C;
+    --warn-soft: #33280F;
+    --bad: #E8776F;
+    --bad-soft: #351D1C;
+    --bezel: #05060A;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  /* ---- masthead ---------------------------------------------------- */
+  .masthead { display: flex; flex-direction: column; gap: 14px; padding-bottom: 34px; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.13em;
+    text-transform: uppercase; color: var(--accent); margin: 0;
+  }
+  h1 {
+    font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 4.4vw, 46px);
+    line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.015em;
+  }
+  .standfirst { margin: 0; max-width: 62ch; color: var(--muted); font-size: 16.5px; }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .fact {
+    font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+    background: var(--surface); border: 1px solid var(--line);
+    padding: 4px 9px; border-radius: 3px;
+  }
+  .fact b { color: var(--ink); font-weight: 500; }
+
+  /* ---- capability sections ------------------------------------------ */
+  .cap {
+    display: grid; grid-template-columns: 320px 1fr; gap: 52px;
+    align-items: start; padding: 56px 0; border-bottom: 1px solid var(--line);
+  }
+  .cap:nth-child(even) .phone-col { order: 2; }
+  @media (max-width: 860px) { .cap { grid-template-columns: 1fr; gap: 32px; } .cap:nth-child(even) .phone-col { order: 0; } }
+
+  .cap-body h2 {
+    font-family: var(--serif); font-weight: 600; font-size: 25px; line-height: 1.2;
+    margin: 0 0 4px; letter-spacing: -0.01em;
+  }
+  .cap-index {
+    font-family: var(--mono); font-size: 11.5px; color: var(--faint);
+    letter-spacing: 0.09em; text-transform: uppercase; margin: 0 0 10px;
+  }
+  .cap-body p { margin: 0 0 14px; color: var(--muted); max-width: 60ch; }
+  .cap-body p strong { color: var(--ink); font-weight: 500; }
+
+  .mechanism {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 5px;
+    padding: 15px 17px; margin-top: 20px;
+  }
+  .mechanism h3 {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--faint); margin: 0 0 10px; font-weight: 500;
+  }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 5px 16px; font-size: 13.5px; }
+  .kv dt { font-family: var(--mono); font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .kv dd { margin: 0; color: var(--ink); }
+
+  /* ---- phone --------------------------------------------------------- */
+  .phone-col { display: flex; justify-content: center; }
+  .phone {
+    width: 300px; background: var(--bezel); border-radius: 30px; padding: 9px;
+    box-shadow: 0 18px 40px -22px rgba(10,12,25,.55);
+  }
+  .screen {
+    background: var(--surface); border-radius: 23px; overflow: hidden;
+    display: flex; flex-direction: column; min-height: 552px;
+  }
+  .status {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 16px 5px; font-family: var(--mono); font-size: 10px; color: var(--faint);
+  }
+  .appbar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 4px 16px 12px; border-bottom: 1px solid var(--line);
+  }
+  .appbar .back { color: var(--faint); font-size: 17px; line-height: 1; }
+  .appbar .title { font-size: 13.5px; font-weight: 600; }
+  .appbar .right { margin-inline-start: auto; font-family: var(--mono); font-size: 11px; color: var(--accent); }
+  .body { padding: 16px; display: flex; flex-direction: column; gap: 13px; flex: 1; }
+
+  /* shared bits inside screens */
+  .label {
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.11em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .q { font-family: var(--serif); font-size: 17px; line-height: 1.35; margin: 0; }
+  .opt {
+    border: 1px solid var(--line); border-radius: 5px; padding: 9px 12px;
+    font-size: 13.5px; display: flex; align-items: center; gap: 9px; background: var(--surface);
+  }
+  .opt .k {
+    font-family: var(--mono); font-size: 10.5px; color: var(--faint);
+    border: 1px solid var(--line); border-radius: 3px; width: 17px; height: 17px;
+    display: grid; place-items: center; flex: none;
+  }
+  .opt.sel { border-color: var(--accent); background: var(--accent-soft); }
+  .opt.sel .k { border-color: var(--accent); color: var(--accent); }
+
+  .meter { height: 5px; border-radius: 3px; background: var(--sunk); overflow: hidden; }
+  .meter span { display: block; height: 100%; background: var(--accent); }
+  .meter.good span { background: var(--good); }
+  .meter.warn span { background: var(--warn); }
+  .meter.bad span { background: var(--bad); }
+
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+  .cta {
+    margin-top: auto; background: var(--accent); color: #fff; text-align: center;
+    border-radius: 5px; padding: 11px; font-size: 13.5px; font-weight: 600;
+  }
+  .cta.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+
+  .pill {
+    font-family: var(--mono); font-size: 10px; padding: 2px 7px; border-radius: 99px;
+    letter-spacing: 0.04em;
+  }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.warn { background: var(--warn-soft); color: var(--warn); }
+  .pill.bad  { background: var(--bad-soft);  color: var(--bad); }
+  .pill.flat { background: var(--sunk); color: var(--muted); }
+
+  /* screen-specific */
+  .ability {
+    background: var(--sunk); border-radius: 5px; padding: 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .scale { position: relative; height: 26px; }
+  .scale .axis { position: absolute; inset-block-start: 11px; inset-inline: 0; height: 2px; background: var(--line); }
+  .scale .band {
+    position: absolute; inset-block-start: 7px; height: 10px; border-radius: 5px;
+    background: var(--accent); opacity: .22;
+  }
+  .scale .est {
+    position: absolute; inset-block-start: 3px; width: 2px; height: 18px; background: var(--accent);
+  }
+  .scale .tick {
+    position: absolute; inset-block-start: 17px; font-family: var(--mono); font-size: 9px;
+    color: var(--faint); transform: translateX(-50%);
+  }
+
+  .wave { display: flex; align-items: center; gap: 2px; height: 42px; }
+  .wave i { display: block; width: 3px; border-radius: 2px; background: var(--accent); opacity: .75; }
+
+  .phon { display: flex; flex-wrap: wrap; gap: 5px; }
+  .phon span {
+    font-family: var(--mono); font-size: 12px; padding: 3px 7px; border-radius: 3px;
+    background: var(--good-soft); color: var(--good);
+  }
+  .phon span.miss { background: var(--bad-soft); color: var(--bad); }
+  .phon span.near { background: var(--warn-soft); color: var(--warn); }
+
+  .page-shot {
+    border: 1px solid var(--line); border-radius: 5px; background: var(--sunk);
+    padding: 13px; position: relative; overflow: hidden;
+  }
+  .hand {
+    font-family: var(--serif); font-size: 13px; line-height: 1.9; color: var(--muted);
+    border-block-end: 1px solid var(--line); padding-block-end: 2px;
+  }
+  .ocr {
+    border: 1px solid var(--line); border-radius: 5px; padding: 10px 11px;
+    font-size: 13px; line-height: 1.55; background: var(--surface);
+  }
+  .ocr mark { background: var(--warn-soft); color: var(--warn); border-radius: 2px; padding: 0 2px; }
+
+  .essay {
+    border: 1px solid var(--line); border-radius: 5px; padding: 11px;
+    font-family: var(--serif); font-size: 13px; line-height: 1.7; background: var(--surface);
+  }
+  .essay u {
+    text-decoration: none; border-block-end: 2px solid var(--bad);
+    background: var(--bad-soft); border-radius: 2px 2px 0 0; padding: 0 1px;
+  }
+  .essay u.v { border-color: var(--warn); background: var(--warn-soft); }
+  .fix {
+    display: flex; gap: 8px; align-items: baseline; font-size: 12px;
+    padding: 7px 9px; border-radius: 4px; background: var(--sunk);
+  }
+  .fix .from { text-decoration: line-through; color: var(--bad); font-family: var(--mono); font-size: 11.5px; }
+  .fix .to { color: var(--good); font-family: var(--mono); font-size: 11.5px; }
+  .fix .why { color: var(--muted); }
+
+  .turn { display: flex; gap: 8px; align-items: flex-start; }
+  .turn .who {
+    font-family: var(--mono); font-size: 10px; color: var(--faint);
+    width: 44px; flex: none; padding-top: 3px;
+  }
+  .turn .said {
+    background: var(--sunk); border-radius: 4px 10px 10px 10px; padding: 7px 10px;
+    font-size: 12.5px; line-height: 1.45;
+  }
+  .turn.me .said { background: var(--accent-soft); border-radius: 10px 4px 10px 10px; }
+
+  .gap {
+    display: inline-block; min-width: 62px; border-block-end: 1.5px solid var(--accent);
+    text-align: center; font-family: var(--mono); font-size: 12.5px; color: var(--accent);
+  }
+
+  footer {
+    padding-top: 34px; color: var(--faint); font-size: 13px;
+    display: flex; flex-wrap: wrap; gap: 6px 18px;
+  }
+  footer .note { font-family: var(--mono); font-size: 11.5px; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cap { animation: rise .5s ease-out both; }
+    @keyframes rise { from { opacity: .001; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Learner client · prototype</p>
+    <h1>The five screens that do the assessing</h1>
+    <p class="standfirst">
+      Everything the learner is judged on happens in one of these. Each screen below is live markup at
+      handset width, filled with the course's own content — real lesson titles, the real recurring cast,
+      the real writing tasks — and paired with the mechanism running behind it.
+    </p>
+    <div class="facts">
+      <span class="fact"><b>362</b> units</span>
+      <span class="fact"><b>1,130</b> lessons</span>
+      <span class="fact"><b>12,416</b> vocabulary senses</span>
+      <span class="fact"><b>80</b> dialogues</span>
+      <span class="fact"><b>14</b> recurring characters</span>
+      <span class="fact"><b>6</b> skills assessed</span>
+    </div>
+  </header>
+
+  <!-- 1 · PLACEMENT ---------------------------------------------------- >
+  -->
+  <section class="cap">
+    <div class="phone-col">
+      <div class="phone"><div class="screen">
+        <div class="status"><span>9:41</span><span>▮▮▮ ⌁ 84%</span></div>
+        <div class="appbar">
+          <span class="back">‹</span>
+          <span class="title">Placement</span>
+          <span class="right num">14 / ~18</span>
+        </div>
+        <div class="body">
+          <div class="ability">
+            <div class="row">
+              <span class="label">Ability estimate</span>
+              <span class="num" style="font-size:12px">θ 0.84 ± 0.37</span>
+            </div>
+            <div class="scale">
+              <div class="axis"></div>
+              <div class="band" style="inset-inline-start:52%; inline-size:16%"></div>
+              <div class="est" style="inset-inline-start:60%"></div>
+              <div class="tick" style="inset-inline-start:8%">A1</div>
+              <div class="tick" style="inset-inline-start:30%">A2</div>
+              <div class="tick" style="inset-inline-start:52%">B1</div>
+              <div class="tick" style="inset-inline-start:74%">B2</div>
+              <div class="tick" style="inset-inline-start:94%">C1</div>
+            </div>
+            <div class="row">
+              <span class="label" style="color:var(--muted)">Stops at SE ≤ 0.32</span>
+              <span class="pill flat">reading · se 0.29 ✓</span>
+            </div>
+          </div>
+
+          <span class="label">Grammar · item 14</span>
+          <p class="q">I&rsquo;ve lived in this city <span class="gap">&nbsp;</span> 2019.</p>
+
+          <div class="opt"><span class="k">A</span> for</div>
+          <div class="opt sel"><span class="k">B</span> since</div>
+          <div class="opt"><span class="k">C</span> from</div>
+          <div class="opt"><span class="k">D</span> during</div>
+
+          <div class="cta">Continue</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="cap-body">
+      <p class="cap-index">01 — Placement</p>
+      <h2>It stops when it knows, not when the questions run out</h2>
+      <p>
+        A fixed 40-question test wastes a beginner's time and under-measures an advanced learner.
+        This one picks each item for <strong>maximum Fisher information</strong> at the learner's current
+        estimate, so every question is the most informative one that could be asked next.
+      </p>
+      <p>
+        Each skill carries its own standard error and stops independently. Reading may settle in nine
+        items while listening needs twenty — so reading stops, and the remaining items go where the
+        uncertainty still is.
+      </p>
+      <div class="mechanism">
+        <h3>Behind it</h3>
+        <dl class="kv">
+          <dt>model</dt><dd>2PL IRT — difficulty, discrimination, guessing</dd>
+          <dt>stop rule</dt><dd>per-skill standard error ≤ 0.32</dd>
+          <dt>estimate</dt><dd>information-weighted across skills</dd>
+          <dt>target</dt><dd>70–85% success — the zone of proximal development</dd>
+          <dt>api</dt><dd><span class="num">POST /v1/placement/{s}/submit</span></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · LISTENING ---------------------------------------------------- -->
+  <section class="cap">
+    <div class="phone-col">
+      <div class="phone"><div class="screen">
+        <div class="status"><span>9:41</span><span>▮▮▮ ⌁ 84%</span></div>
+        <div class="appbar">
+          <span class="back">‹</span>
+          <span class="title">Job interviews</span>
+          <span class="right">B2</span>
+        </div>
+        <div class="body">
+          <span class="label">Listen · dialogue 51</span>
+
+          <div class="row" style="background:var(--sunk); border-radius:5px; padding:11px 12px">
+            <span style="font-size:19px; color:var(--accent)">❙❙</span>
+            <div class="wave" style="flex:1">
+              <i style="height:9px"></i><i style="height:19px"></i><i style="height:31px"></i><i style="height:23px"></i>
+              <i style="height:38px"></i><i style="height:15px"></i><i style="height:27px"></i><i style="height:35px"></i>
+              <i style="height:13px"></i><i style="height:22px"></i><i style="height:30px"></i><i style="height:17px"></i>
+              <i style="height:25px;opacity:.3"></i><i style="height:11px;opacity:.3"></i><i style="height:20px;opacity:.3"></i>
+              <i style="height:14px;opacity:.3"></i><i style="height:28px;opacity:.3"></i><i style="height:9px;opacity:.3"></i>
+            </div>
+            <span class="num" style="font-size:11px; color:var(--muted)">0:19</span>
+          </div>
+
+          <div class="turn">
+            <span class="who">Daniel</span>
+            <span class="said">So, can you talk us through your CV?</span>
+          </div>
+          <div class="turn">
+            <span class="who">Lena</span>
+            <span class="said">Well, I studied Engineering and then took a job as a trainee at F3&nbsp;Telecom.</span>
+          </div>
+
+          <span class="label" style="margin-top:2px">What does Lena want to know about?</span>
+          <div class="opt"><span class="k">A</span> The salary</div>
+          <div class="opt sel"><span class="k">B</span> Professional development</div>
+          <div class="opt"><span class="k">C</span> Her notice period</div>
+
+          <div class="cta">Check</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="cap-body">
+      <p class="cap-index">02 — Listening</p>
+      <h2>Real recordings, and a cast you start to recognise</h2>
+      <p>
+        <strong>1,162 audio files</strong> came out of the source books and are attached to the lessons they
+        belong to. Where a dialogue was printed rather than recorded, it is spoken by the course's own
+        recurring characters — so Daniel is the same Daniel in unit 4 and unit 91.
+      </p>
+      <p>
+        Transcripts stay hidden until the learner has committed to an answer. Revealing them earlier turns
+        a listening exercise into a reading one.
+      </p>
+      <div class="mechanism">
+        <h3>Behind it</h3>
+        <dl class="kv">
+          <dt>audio</dt><dd>1,162 files, mapped to unit and section</dd>
+          <dt>dialogues</dt><dd>80 exchanges, 364 turns, cast-assigned by topic</dd>
+          <dt>delivery</dt><dd>signed URL — a media element cannot hold a token</dd>
+          <dt>api</dt><dd><span class="num">GET /v1/media/{id}/stream</span></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · SPEAKING ----------------------------------------------------- -->
+  <section class="cap">
+    <div class="phone-col">
+      <div class="phone"><div class="screen">
+        <div class="status"><span>9:41</span><span>▮▮▮ ⌁ 83%</span></div>
+        <div class="appbar">
+          <span class="back">‹</span>
+          <span class="title">Pronunciation</span>
+          <span class="right">score 74</span>
+        </div>
+        <div class="body">
+          <span class="label">You said</span>
+          <p class="q" style="font-size:15px">&ldquo;I&rsquo;d like to ask about opportunities for professional development.&rdquo;</p>
+
+          <div>
+            <div class="row" style="margin-bottom:5px">
+              <span class="label">Pronunciation</span><span class="num" style="font-size:12px">71</span>
+            </div>
+            <div class="meter warn"><span style="inline-size:71%"></span></div>
+          </div>
+          <div>
+            <div class="row" style="margin-bottom:5px">
+              <span class="label">Fluency</span><span class="num" style="font-size:12px">83</span>
+            </div>
+            <div class="meter good"><span style="inline-size:83%"></span></div>
+          </div>
+
+          <div style="background:var(--sunk); border-radius:5px; padding:11px">
+            <div class="row" style="margin-bottom:8px">
+              <span class="label">Phoneme detail</span>
+              <span class="num" style="font-size:11px; color:var(--muted)">142 wpm · 3 pauses</span>
+            </div>
+            <div class="phon">
+              <span>/aɪ/</span><span>/d/</span><span class="near">/l/</span><span>/aɪ/</span>
+              <span class="miss">/θ/</span><span>/ə/</span><span class="miss">/v/</span>
+              <span>/ɒ/</span><span class="near">/r/</span><span>/p/</span>
+            </div>
+          </div>
+
+          <div class="fix">
+            <span class="why"><b style="color:var(--bad); font-family:var(--mono)">/v/</b> in <i>development</i> came out as <b style="font-family:var(--mono)">/w/</b> — a common substitution for Persian speakers. Bite your lower lip.</span>
+          </div>
+
+          <div class="cta ghost">Practise this sound</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="cap-body">
+      <p class="cap-index">03 — Speaking</p>
+      <h2>Told which sound, not just that it was wrong</h2>
+      <p>
+        A single number tells a learner nothing they can act on. The recording is transcribed, force-aligned
+        against what they were meant to say, and scored <strong>phoneme by phoneme</strong> — so the feedback
+        names the sound, the word it went wrong in, and what to do with the mouth.
+      </p>
+      <p>
+        Repeated misses build a pronunciation profile, and the profile generates drills. A learner who
+        substitutes <span class="num">/w/</span> for <span class="num">/v/</span> gets that pair back until it holds.
+      </p>
+      <div class="mechanism">
+        <h3>Behind it</h3>
+        <dl class="kv">
+          <dt>pipeline</dt><dd>transcribe → align → score → profile</dd>
+          <dt>measures</dt><dd>pronunciation, fluency, speech rate, pauses, fillers</dd>
+          <dt>privacy</dt><dd>audio deletable on request; scores survive it</dd>
+          <dt>queue</dt><dd>own worker — a learner is waiting on it</dd>
+          <dt>api</dt><dd><span class="num">POST /v1/speech/attempts</span></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · PAPER -------------------------------------------------------- -->
+  <section class="cap">
+    <div class="phone-col">
+      <div class="phone"><div class="screen">
+        <div class="status"><span>9:41</span><span>▮▮▮ ⌁ 82%</span></div>
+        <div class="appbar">
+          <span class="back">‹</span>
+          <span class="title">Check my page</span>
+          <span class="right">step 2 / 3</span>
+        </div>
+        <div class="body">
+          <div class="page-shot">
+            <div class="hand">Last weekend I go to my</div>
+            <div class="hand">cousin house. We are eating</div>
+            <div class="hand">kebab and my aunt make</div>
+            <div class="hand">a very good dessert.</div>
+          </div>
+
+          <div class="row">
+            <span class="label">Read from your page</span>
+            <span class="pill warn">confidence 0.58</span>
+          </div>
+
+          <div class="ocr">
+            Last weekend I go to my cousin house. We are eating kebab and my aunt <mark>make</mark> a very good dessert.
+          </div>
+
+          <p style="margin:0; font-size:12px; color:var(--muted); line-height:1.5">
+            Two words were hard to read. Fix anything that isn&rsquo;t what you wrote — you&rsquo;ll only be
+            marked on what you confirm here.
+          </p>
+
+          <div class="cta">Yes, that&rsquo;s what I wrote</div>
+          <div style="text-align:center; font-size:12px; color:var(--accent)">Edit the text</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="cap-body">
+      <p class="cap-index">04 — Paper practice</p>
+      <h2>The work done on paper stops being invisible</h2>
+      <p>
+        Most learners still do a lot of their practice in a notebook, and until now none of it reached the
+        app. Photograph the page and it is read, then marked by exactly the same grader that marks typed
+        writing — same rubric, same feedback, same evidence toward mastery.
+      </p>
+      <p>
+        <strong>The confirmation step is not a formality.</strong> Handwriting recognition fails precisely on
+        the letters a learner is least sure how to form. What the machine read and what the learner wrote are
+        stored as two different things, and only the second is ever marked — being penalised for the reader's
+        mistake, in the one place you can't argue back, would be worse than not being marked at all.
+      </p>
+      <div class="mechanism">
+        <h3>Behind it</h3>
+        <dl class="kv">
+          <dt>flow</dt><dd>photo → recognise → <b>confirm</b> → mark</dd>
+          <dt>columns</dt><dd><span class="num">recognised_text</span> ≠ <span class="num">text</span></dd>
+          <dt>transcription</dt><dd>errors preserved — correcting them would hide the learner's work</dd>
+          <dt>low confidence</dt><dd>&lt; 0.60 flagged for a careful read, not skimmed</dd>
+          <dt>api</dt><dd><span class="num">POST /v1/writing/attempts/{id}/confirm</span></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · WRITING ------------------------------------------------------ -->
+  <section class="cap">
+    <div class="phone-col">
+      <div class="phone"><div class="screen">
+        <div class="status"><span>9:41</span><span>▮▮▮ ⌁ 81%</span></div>
+        <div class="appbar">
+          <span class="back">‹</span>
+          <span class="title">Last weekend</span>
+          <span class="right">A2 · 62 words</span>
+        </div>
+        <div class="body">
+          <div class="row">
+            <span class="label">Overall</span>
+            <span class="num" style="font-family:var(--serif); font-size:23px; font-weight:600">68</span>
+          </div>
+
+          <div style="display:grid; gap:7px">
+            <div class="row"><span class="label" style="width:96px">Task</span><div class="meter good" style="flex:1"><span style="inline-size:80%"></span></div><span class="num" style="font-size:11px; width:18px">80</span></div>
+            <div class="row"><span class="label" style="width:96px">Coherence</span><div class="meter good" style="flex:1"><span style="inline-size:72%"></span></div><span class="num" style="font-size:11px; width:18px">72</span></div>
+            <div class="row"><span class="label" style="width:96px">Grammar</span><div class="meter bad" style="flex:1"><span style="inline-size:48%"></span></div><span class="num" style="font-size:11px; width:18px">48</span></div>
+            <div class="row"><span class="label" style="width:96px">Vocabulary</span><div class="meter warn" style="flex:1"><span style="inline-size:65%"></span></div><span class="num" style="font-size:11px; width:18px">65</span></div>
+            <div class="row"><span class="label" style="width:96px">Mechanics</span><div class="meter good" style="flex:1"><span style="inline-size:75%"></span></div><span class="num" style="font-size:11px; width:18px">75</span></div>
+          </div>
+
+          <div class="essay">
+            Last weekend I <u>go</u> to my cousin house. We <u>are eating</u> kebab and my aunt <u class="v">make</u> a very good dessert.
+          </div>
+
+          <div class="fix">
+            <span class="from">go</span><span class="to">went</span>
+            <span class="why">past simple — it happened last weekend</span>
+          </div>
+          <div class="fix">
+            <span class="from">are eating</span><span class="to">ate</span>
+            <span class="why">a finished action, not one in progress</span>
+          </div>
+
+          <div class="cta ghost">See all 4 corrections</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="cap-body">
+      <p class="cap-index">05 — Writing</p>
+      <h2>Corrections quote your own words back</h2>
+      <p>
+        Marked on five dimensions — deliberately the four the exam examiner already uses, plus mechanics,
+        so practice feedback and exam feedback speak one language instead of two private vocabularies.
+      </p>
+      <p>
+        <strong>It never returns a rewritten text.</strong> Hand a model an essay and it will happily give you a
+        better essay, and nobody learns from prose they didn't write. Corrections come back as spans that
+        quote the learner exactly, shown in place. A span that can't be found in what they actually wrote is
+        dropped — an uncheckable correction reads as the app inventing mistakes.
+      </p>
+      <div class="mechanism">
+        <h3>Behind it</h3>
+        <dl class="kv">
+          <dt>tasks</dt><dd>15 CEFR-graded prompts, A1 → C2, written and spoken</dd>
+          <dt>this one</dt><dd>A2 · &ldquo;Last weekend&rdquo; · 50–90 words</dd>
+          <dt>marking</dt><dd>temperature 0.15 — the same text must score the same twice</dd>
+          <dt>caching</dt><dd>off — one learner's work is never served from a shared cache</dd>
+          <dt>api</dt><dd><span class="num">POST /v1/writing/attempts</span></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="note">Prototype — live markup at handset width, not screenshots of a running client.</span>
+    <span class="note">Content is the course's own: real lessons, real cast, real prompts.</span>
+  </footer>
+
+</div>
