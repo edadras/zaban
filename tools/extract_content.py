@@ -27,14 +27,14 @@ CACHE = Path('/tmp/extract')
 
 BOOKS = [
     ('elementary',  'A1-A2', 'Foundation',
-     'sources/elementary_3rd.pdf', 'sources/elementary_3rd_audio.zip'),
+     'sources/elementary_3rd.pdf', 'sources/audio/elementary'),
     ('pre_int_int', 'A2-B1', 'Core',
      'sources/pre_intermediate_intermediate_4th.pdf',
-     'sources/pre_intermediate_intermediate_4th_audio.zip'),
+     'sources/audio/pre_intermediate_intermediate'),
     ('upper_int',   'B2', 'Advancing',
-     'sources/upper_intermediate_4th.pdf', 'sources/upper_intermediate_4th_audio.zip'),
+     'sources/upper_intermediate_4th.pdf', 'sources/audio/upper_intermediate'),
     ('advanced',    'C1-C2', 'Mastery',
-     'sources/advanced_3rd.pdf', 'sources/advanced_3rd_audio.zip'),
+     'sources/advanced_3rd.pdf', 'sources/audio/advanced'),
 ]
 
 RE_EXERCISE = re.compile(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+(.*)$', re.M)
@@ -107,7 +107,11 @@ def load_layout(pdf, key):
     txt = CACHE / f'{key}.txt'
     if not txt.exists():
         subprocess.run(['pdftotext', '-layout', str(pdf), str(txt)], check=True)
-    return txt.read_text(encoding='utf-8', errors='replace').split('\f')
+    pages = txt.read_text(encoding='utf-8', errors='replace').split('\f')
+    # the final form feed yields a trailing empty element that is not a page
+    if pages and not pages[-1].strip():
+        pages.pop()
+    return pages
 
 
 def node_text(el):
@@ -255,23 +259,44 @@ def dedupe_vocab(items):
     return out
 
 
+def split_labelled_blocks(page, unit_no):
+    """Every "<unit>.<n>" label on a page owns the text up to the next label.
+
+    Capturing the whole block keeps the numbered items under each rubric, which
+    a rubric-only capture silently discards.
+    """
+    marks = []
+    for m in re.finditer(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+', page, re.M):
+        marks.append((m.start(), int(m.group(1)), int(m.group(2)), m.end()))
+    out = {}
+    for i, (start, u, n, body_at) in enumerate(marks):
+        if u != unit_no:
+            continue
+        end = marks[i + 1][0] if i + 1 < len(marks) else len(page)
+        block = page[body_at:end].rstrip()
+        first, _, rest = block.partition('\n')
+        out[n] = {
+            'instructions': first.strip(),
+            'body': block.strip(),
+        }
+    return out
+
+
 def extract_exercises(layout_pages, unit_no, teaching_page, answer_start):
-    """Exercise instructions live on the page(s) after the teaching page; the
-    matching answers live in the answer-key run at the back."""
+    """Exercise blocks live on the page(s) after the teaching page; the matching
+    answers live in the answer-key run at the back. Both are captured whole."""
     ex, ans = {}, {}
     for i, page in enumerate(layout_pages):
         in_key = answer_start is not None and i >= answer_start
-        if not in_key and not (teaching_page <= i + 1 <= teaching_page + 2):
+        if not in_key and teaching_page and not (teaching_page <= i + 1 <= teaching_page + 2):
             continue
-        for m in RE_EXERCISE.finditer(page):
-            if int(m.group(1)) != unit_no:
-                continue
-            num = int(m.group(2))
-            text = m.group(3).strip()
-            if in_key:
-                ans.setdefault(num, text)
-            else:
-                ex.setdefault(num, text)
+        if not in_key and not teaching_page and answer_start is not None and i >= answer_start:
+            continue
+        blocks = split_labelled_blocks(page, unit_no)
+        for num, blk in blocks.items():
+            target = ans if in_key else ex
+            if num not in target:
+                target[num] = blk
     return ex, ans
 
 
@@ -285,19 +310,35 @@ def find_answer_start(layout_pages):
     return late[0] if late else hits[0]
 
 
-def audio_map(zip_path):
+# Where each book's audio was unpacked to inside the project.
+AUDIO_DIRS = {
+    'elementary': 'sources/audio/elementary',
+    'pre_int_int': 'sources/audio/pre_intermediate_intermediate',
+    'upper_int': 'sources/audio/upper_intermediate',
+    'advanced': 'sources/audio/advanced',
+}
+
+
+def audio_map(_unused, book_key):
+    """Scan the extracted audio tree for this book.
+
+    The mp3 files live in the project under sources/audio/<book>/, so the
+    inventory is read from disk rather than from an archive.
+    """
     by_unit = defaultdict(list)
-    if not zip_path.exists():
+    base = ROOT / AUDIO_DIRS[book_key]
+    if not base.is_dir():
         return by_unit
-    with zipfile.ZipFile(zip_path) as z:
-        names = [n for n in z.namelist() if n.lower().endswith('.mp3')]
     pat = re.compile(r'U_?(\d{1,3})(?:[._]([A-H]|\d{1,2}))?\.mp3$', re.I)
-    for n in names:
-        m = pat.search(n.split('/')[-1])
+    for f in sorted(base.rglob('*.mp3')):
+        m = pat.search(f.name)
         if not m:
             continue
+        rel = f.relative_to(ROOT).as_posix()
         by_unit[int(m.group(1))].append({
-            'path': n,
+            'path': rel,
+            'extracted_path': rel,
+            'exists': True,
             'section': (m.group(2) or '').upper() or None,
         })
     for v in by_unit.values():
@@ -313,15 +354,34 @@ def build(key, cefr, course, pdf_rel, zip_rel):
     repair = load_word_lines(pdf, key)
     answer_start = find_answer_start(layout)
     units_meta = find_units(layout[:answer_start] if answer_start else layout)
-    audio = audio_map(ROOT / zip_rel)
+    audio = audio_map(None, key)
+
+    # Any unit number that owns exercise labels but whose heading the parser could
+    # not read still exists in the book. Register it (flagged for review) so its
+    # exercises, answers and audio are never orphaned.
+    seen_in_exercises = set()
+    for i, page in enumerate(layout[:answer_start] if answer_start else layout):
+        for m in re.finditer(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+', page, re.M):
+            u = int(m.group(1))
+            if 1 <= u <= 200:
+                seen_in_exercises.add(u)
+    for u in sorted((seen_in_exercises | set(audio)) - set(units_meta)):
+        if not (1 <= u <= 200):
+            continue
+        units_meta[u] = {
+            'number': u,
+            'title': f'Unit {u}',
+            'teaching_page': None,
+            'needs_title_review': True,
+        }
 
     units = []
     for n in sorted(units_meta):
         meta = units_meta[n]
-        runs = xml_pages.get(meta['teaching_page'], [])
+        runs = xml_pages.get(meta['teaching_page'], []) if meta['teaching_page'] else []
         secs = sections_on_page(runs)
         per = extract_unit(runs, meta, secs) if secs else {}
-        ex, ans = extract_exercises(layout, n, meta['teaching_page'], answer_start)
+        ex, ans = extract_exercises(layout, n, meta['teaching_page'] or 0, answer_start)
 
         sections = []
         for s in secs:
@@ -342,13 +402,30 @@ def build(key, cefr, course, pdf_rel, zip_rel):
         units.append({
             'number': n,
             'title': meta['title'],
+            'needs_title_review': meta.get('needs_title_review', False),
             'source_page': meta['teaching_page'],
             'sections': sections,
-            'exercises': [{'number': k, 'instructions': v} for k, v in sorted(ex.items())],
-            'answers': [{'number': k, 'text': v} for k, v in sorted(ans.items())],
+            'exercises': [{'number': k, **v} for k, v in sorted(ex.items())],
+            'answers': [{'number': k, 'text': v['body'], 'instructions': v['instructions']}
+                        for k, v in sorted(ans.items())],
             'audio': audio.get(n, []),
             'vocabulary_count': sum(len(s['vocabulary']) for s in sections),
         })
+
+    pages_out = []
+    for i, txt in enumerate(layout):
+        body = '\n'.join(repair_line(ln, repair) for ln in txt.splitlines())
+        pages_out.append({
+            'number': i + 1,
+            'text': body,
+            'char_count': len(body),
+            'is_answer_key': answer_start is not None and i >= answer_start,
+        })
+
+    all_audio = []
+    for unit_no, files in sorted(audio.items()):
+        for a in files:
+            all_audio.append({**a, 'unit': unit_no})
 
     return {
         'key': key, 'cefr': cefr, 'course': course,
@@ -356,6 +433,8 @@ def build(key, cefr, course, pdf_rel, zip_rel):
         'copyright_status': 'owned',
         'pages': len(layout),
         'answer_key_page': (answer_start + 1) if answer_start is not None else None,
+        'pages': pages_out,
+        'audio_inventory': all_audio,
         'units': units,
     }
 

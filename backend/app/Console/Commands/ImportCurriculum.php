@@ -23,6 +23,8 @@ use App\Models\Module;
 use App\Models\Skill;
 use App\Models\SourceDocument;
 use App\Models\SourceFile;
+use App\Models\SourcePage;
+use App\Models\SourceSegment;
 use App\Models\Unit;
 use App\Models\VocabularyItem;
 use App\Models\VocabularySense;
@@ -132,21 +134,46 @@ class ImportCurriculum extends Command
             ],
         );
 
-        foreach ([['pdf', $data['source_pdf']], ['zip', $data['source_audio']]] as [$kind, $rel]) {
-            $abs = base_path('..').'/'.$rel;
-            SourceFile::updateOrCreate(
-                ['source_document_id' => $doc->id, 'path' => $rel],
-                [
-                    'disk' => 'local',
-                    'original_name' => basename($rel),
-                    'kind' => $kind,
-                    'mime' => $kind === 'pdf' ? 'application/pdf' : 'application/zip',
-                    'bytes' => is_file($abs) ? filesize($abs) : 0,
-                    'checksum' => is_file($abs) ? hash_file('sha256', $abs) : '',
-                    'status' => 'processed',
-                ],
-            );
+        // The PDF is a single file; the audio is a directory of mp3s that live in
+        // the project, so it is registered as an audio-pack container row.
+        $pdfRel = $data['source_pdf'];
+        $pdfAbs = base_path('..').'/'.$pdfRel;
+        SourceFile::updateOrCreate(
+            ['source_document_id' => $doc->id, 'path' => $pdfRel],
+            [
+                'disk' => 'local',
+                'original_name' => basename($pdfRel),
+                'kind' => 'pdf',
+                'mime' => 'application/pdf',
+                'bytes' => is_file($pdfAbs) ? filesize($pdfAbs) : 0,
+                'checksum' => is_file($pdfAbs) ? hash_file('sha256', $pdfAbs) : '',
+                'status' => 'processed',
+            ],
+        );
+
+        $audioRel = $data['source_audio'];
+        $audioAbs = base_path('..').'/'.$audioRel;
+        $audioBytes = 0;
+        if (is_dir($audioAbs)) {
+            foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($audioAbs, \FilesystemIterator::SKIP_DOTS)) as $f) {
+                if ($f->isFile()) {
+                    $audioBytes += $f->getSize();
+                }
+            }
         }
+        SourceFile::updateOrCreate(
+            ['source_document_id' => $doc->id, 'path' => $audioRel],
+            [
+                'disk' => 'local',
+                'original_name' => basename($audioRel),
+                'relative_path' => $audioRel,
+                'kind' => 'audio',
+                'mime' => 'inode/directory',
+                'bytes' => $audioBytes,
+                'checksum' => '',
+                'status' => 'processed',
+            ],
+        );
 
         $job = IngestionJob::create([
             'source_document_id' => $doc->id,
@@ -174,9 +201,32 @@ class ImportCurriculum extends Command
 
         $counts = ['units' => 0, 'lessons' => 0, 'vocab' => 0, 'senses' => 0,
                    'definitions' => 0, 'examples' => 0, 'concepts' => 0,
-                   'exercises' => 0, 'audio' => 0];
+                   'exercises' => 0, 'audio' => 0, 'pages' => 0, 'segments' => 0,
+                   'chars' => 0];
 
-        DB::transaction(function () use ($data, $doc, $version, $toCode, &$counts) {
+        // Every page of the book is stored verbatim first. Whatever the structural
+        // parser does or does not recognise, no source text is ever unrepresented.
+        $pdfFile = SourceFile::where('source_document_id', $doc->id)->where('kind', 'pdf')->first();
+        DB::transaction(function () use ($data, $pdfFile, &$counts) {
+            foreach (array_chunk($data['pages'] ?? [], 100) as $chunk) {
+                foreach ($chunk as $pg) {
+                    SourcePage::updateOrCreate(
+                        ['source_file_id' => $pdfFile->id, 'page_number' => $pg['number']],
+                        [
+                            'text' => $pg['text'],
+                            'char_count' => $pg['char_count'],
+                            'used_vision' => false,
+                            'status' => 'processed',
+                        ],
+                    );
+                    $counts['pages']++;
+                    $counts['chars'] += $pg['char_count'];
+                }
+            }
+        });
+        $pageIds = SourcePage::where('source_file_id', $pdfFile->id)->pluck('id', 'page_number')->all();
+
+        DB::transaction(function () use ($data, $doc, $version, $toCode, $pageIds, &$counts) {
             $modules = [];
             foreach ($data['units'] as $u) {
                 $bucket = (int) floor(($u['number'] - 1) / self::UNITS_PER_MODULE);
@@ -189,9 +239,13 @@ class ImportCurriculum extends Command
                     );
                 }
                 $counts['units']++;
-                $this->importUnit($u, $modules[$bucket], $doc, $toCode, $counts);
+                $this->importUnit($u, $modules[$bucket], $doc, $toCode, $counts, $pageIds);
             }
         });
+
+        // Sweep the complete audio inventory. Files whose unit resolved were mapped
+        // during unit import; this catches anything left over so no audio is dropped.
+        $this->registerRemainingAudio($data, $counts);
 
         $doc->update(['status' => 'processed']);
         $job->update(['status' => 'completed', 'finished_at' => now(), 'stats' => $counts]);
@@ -200,12 +254,15 @@ class ImportCurriculum extends Command
         $this->stats[$key] = $counts;
     }
 
-    private function importUnit(array $u, Module $module, SourceDocument $doc, string $cefrCode, array &$counts): void
+    private function importUnit(array $u, Module $module, SourceDocument $doc, string $cefrCode, array &$counts, array $pageIds = []): void
     {
         $unit = Unit::updateOrCreate(
             ['module_id' => $module->id, 'position' => $u['number']],
             [
                 'title' => $u['title'],
+                'description' => ($u['needs_title_review'] ?? false)
+                    ? 'Unit heading could not be read from the source page; title needs review.'
+                    : null,
                 'cefr_level_id' => $this->cefr[$cefrCode],
                 'estimated_minutes' => max(5, count($u['sections']) * 4),
             ],
@@ -222,7 +279,7 @@ class ImportCurriculum extends Command
                 ['unit_id' => $unit->id, 'position' => $position++],
                 [
                     'title' => $sec['title'] ?: "{$u['title']} ({$sec['letter']})",
-                    'summary' => Str::limit(strip_tags($sec['body']), 400),
+                    'summary' => Str::limit(strip_tags($sec['body']), 380),
                     'cefr_level_id' => $this->cefr[$cefrCode],
                     'kind' => 'core',
                     'estimated_minutes' => 4,
@@ -235,6 +292,37 @@ class ImportCurriculum extends Command
                 ],
             );
             $counts['lessons']++;
+
+            // The lesson row carries a short summary for listings; the complete
+            // teaching text is preserved as a segment so nothing is truncated away.
+            $sectionSegment = SourceSegment::updateOrCreate(
+                [
+                    'source_document_id' => $doc->id,
+                    'segment_type' => 'section',
+                    'label' => "U{$u['number']}.{$sec['letter']}",
+                ],
+                [
+                    'source_page_id' => $pageIds[$u['source_page']] ?? null,
+                    'position' => $position,
+                    'text' => $sec['body'],
+                    'cefr_level_id' => $this->cefr[$cefrCode],
+                    'classification_confidence' => 1.000,
+                ],
+            );
+            $counts['segments']++;
+
+            $lesson->blocks()->updateOrCreate(
+                ['type' => 'source_text', 'position' => 0],
+                [
+                    'title' => $sec['title'] ?: null,
+                    'config' => [
+                        'source_segment_id' => $sectionSegment->id,
+                        'text' => $sec['body'],
+                        'glosses' => $sec['glosses'],
+                    ],
+                    'estimated_seconds' => 90,
+                ],
+            );
 
             ContentReview::updateOrCreate(
                 ['reviewable_type' => Lesson::class, 'reviewable_id' => $lesson->id],
@@ -272,7 +360,7 @@ class ImportCurriculum extends Command
 
         $answers = collect($u['answers'])->keyBy('number');
         foreach ($u['exercises'] as $ex) {
-            $this->importExercise($ex, $answers->get($ex['number']), $unit, $doc, $u, $cefrCode, $counts);
+            $this->importExercise($ex, $answers->get($ex['number']), $unit, $doc, $u, $cefrCode, $counts, $pageIds);
         }
     }
 
@@ -414,10 +502,38 @@ class ImportCurriculum extends Command
         return null;
     }
 
+    /** Register every mp3 in the book's inventory, mapped or not. */
+    private function registerRemainingAudio(array $data, array &$counts): void
+    {
+        foreach ($data['audio_inventory'] ?? [] as $a) {
+            $path = $a['extracted_path'] ?? $a['path'];
+            if (MediaAsset::where('disk', 'local')->where('path', $path)->exists()) {
+                continue;
+            }
+            $media = MediaAsset::create([
+                'disk' => 'local',
+                'path' => $path,
+                'type' => 'audio',
+                'mime' => 'audio/mpeg',
+                'origin' => 'ingested',
+                'copyright_status' => 'owned',
+                'metadata' => ['archive_path' => $a['path'], 'unit' => $a['unit'] ?? null,
+                               'section' => $a['section'] ?? null],
+            ]);
+            AudioAsset::create([
+                'media_asset_id' => $media->id,
+                'duration_ms' => 0,
+                'codec' => 'mp3',
+                'transcription_status' => 'pending',
+            ]);
+            $counts['audio']++;
+        }
+    }
+
     private function importAudio(array $a, Unit $unit, ?Lesson $lesson, array &$counts): void
     {
         $media = MediaAsset::firstOrCreate(
-            ['disk' => 'local', 'path' => $a['path']],
+            ['disk' => 'local', 'path' => $a['extracted_path'] ?? $a['path']],
             [
                 'type' => 'audio',
                 'mime' => 'audio/mpeg',
@@ -441,14 +557,18 @@ class ImportCurriculum extends Command
                 [
                     'confidence' => 1.000,
                     'method' => 'filename',
-                    'evidence' => ['file' => basename($a['path']), 'section' => $a['section']],
+                    'evidence' => [
+                        'file' => basename($a['path']),
+                        'section' => $a['section'],
+                        'archive_path' => $a['path'],
+                    ],
                     'review_status' => 'auto_approved',
                 ],
             );
         }
     }
 
-    private function importExercise(array $ex, ?array $answer, Unit $unit, SourceDocument $doc, array $u, string $cefrCode, array &$counts): void
+    private function importExercise(array $ex, ?array $answer, Unit $unit, SourceDocument $doc, array $u, string $cefrCode, array &$counts, array $pageIds = []): void
     {
         $instructions = trim($ex['instructions'] ?? '');
         if ($instructions === '') {
@@ -483,6 +603,42 @@ class ImportCurriculum extends Command
             ],
         );
         $counts['exercises']++;
+
+        // The complete drill - rubric plus every numbered item - is kept as a
+        // segment. The exercise row holds only the rubric, so without this the
+        // items themselves would be lost.
+        SourceSegment::updateOrCreate(
+            [
+                'source_document_id' => $doc->id,
+                'segment_type' => 'exercise',
+                'label' => "{$u['number']}.{$ex['number']}",
+            ],
+            [
+                'source_page_id' => $pageIds[$u['source_page'] + 1] ?? ($pageIds[$u['source_page']] ?? null),
+                'position' => $ex['number'],
+                'text' => $ex['body'] ?? $instructions,
+                'cefr_level_id' => $this->cefr[$cefrCode],
+                'classification_confidence' => 1.000,
+            ],
+        );
+        $counts['segments']++;
+
+        if ($answer && trim($answer['text'] ?? '') !== '') {
+            SourceSegment::updateOrCreate(
+                [
+                    'source_document_id' => $doc->id,
+                    'segment_type' => 'answer_key',
+                    'label' => "{$u['number']}.{$ex['number']}",
+                ],
+                [
+                    'position' => $ex['number'],
+                    'text' => $answer['text'],
+                    'cefr_level_id' => $this->cefr[$cefrCode],
+                    'classification_confidence' => 1.000,
+                ],
+            );
+            $counts['segments']++;
+        }
 
         if ($answer && trim($answer['text'] ?? '') !== '') {
             ExerciseAnswer::updateOrCreate(
@@ -561,16 +717,19 @@ class ImportCurriculum extends Command
         $this->newLine();
         $rows = [];
         foreach ($this->stats as $book => $c) {
-            $rows[] = [$book, $c['units'], $c['lessons'], $c['vocab'], $c['senses'],
-                       $c['definitions'], $c['examples'], $c['concepts'], $c['exercises'], $c['audio']];
+            $rows[] = [$book, $c['pages'], $c['units'], $c['lessons'], $c['segments'],
+                       $c['vocab'], $c['senses'], $c['definitions'], $c['examples'],
+                       $c['exercises'], $c['audio'], number_format($c['chars'])];
         }
         $totals = ['TOTAL'];
-        for ($i = 1; $i <= 9; $i++) {
+        for ($i = 1; $i <= 10; $i++) {
             $totals[] = array_sum(array_column($rows, $i));
         }
+        $totals[] = number_format(array_sum(array_map(fn ($c) => $c['chars'], $this->stats)));
         $rows[] = $totals;
         $this->table(
-            ['book', 'units', 'lessons', 'new vocab', 'senses', 'defs', 'examples', 'concepts', 'exercises', 'audio'],
+            ['book', 'pages', 'units', 'lessons', 'segments', 'new vocab', 'senses',
+             'defs', 'examples', 'exercises', 'audio', 'source chars'],
             $rows,
         );
     }
