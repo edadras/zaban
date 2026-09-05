@@ -20,6 +20,12 @@ final class MediaRequest
         public ?int $seed = null,
         public ?int $userId = null,
         public ?string $referenceImageUrl = null,
+        /**
+         * Provider-side trained identity. When set, the provider anchors the
+         * generation to it so a recurring character stays recognisably the same
+         * person across hundreds of lessons instead of drifting.
+         */
+        public ?string $soulId = null,
         public ?int $durationSeconds = null,
         public ?string $voice = null,
         public array $metadata = [],
@@ -31,7 +37,7 @@ final class MediaRequest
         return hash('sha256', implode('|', [
             $this->feature, $this->prompt, $this->negativePrompt ?? '',
             $this->aspectRatio, $this->model ?? '', (string) $this->seed,
-            $this->referenceImageUrl ?? '', (string) $this->durationSeconds,
+            $this->referenceImageUrl ?? '', $this->soulId ?? '', (string) $this->durationSeconds,
             $this->voice ?? '',
         ]));
     }

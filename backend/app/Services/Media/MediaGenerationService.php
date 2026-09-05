@@ -95,6 +95,78 @@ class MediaGenerationService
             : ['status' => 'failed', 'reason' => $result->error];
     }
 
+    /**
+     * A portrait of a recurring character, anchored to its stable identity so it
+     * is recognisably the same person every time.
+     */
+    public function characterPortrait(\App\Models\Character $character, bool $force = false): array
+    {
+        if ($character->reference_media_asset_id && ! $force) {
+            return ['status' => 'exists', 'media_asset_id' => $character->reference_media_asset_id];
+        }
+
+        $spec = $this->prompts->characterPortrait(
+            $character->name,
+            $character->persona ?? 'a friendly recurring character in a language course',
+            $character->appearance_prompt,
+        );
+
+        $result = $this->ai->character(new MediaRequest(
+            feature: 'character.portrait',
+            prompt: $spec['prompt'],
+            negativePrompt: $spec['negative'],
+            aspectRatio: $spec['aspect_ratio'],
+            referenceImageUrl: $character->referenceImage?->path,
+            soulId: $character->soul_id,
+            metadata: ['character_id' => $character->id],
+            cacheable: true,
+        ));
+
+        if (! $result->ok) {
+            return ['status' => 'failed', 'reason' => $result->error];
+        }
+
+        $asset = MediaAsset::where('path', $result->localPath ?? $result->url)->first();
+        if ($asset) {
+            // The first portrait becomes the reference every later generation is
+            // anchored to, so the cast stays stable even without a Soul id.
+            $character->update(['reference_media_asset_id' => $asset->id]);
+        }
+
+        return ['status' => 'generated', 'media_asset_id' => $asset?->id];
+    }
+
+    /**
+     * A spoken line delivered by a character: their voice, their face.
+     *
+     * This is the cheap route to a talking cast - a still portrait plus
+     * synthesised speech - and it deliberately does not generate video. The
+     * video step is the expensive one and is left to the caller to decide on.
+     */
+    public function characterLine(\App\Models\Character $character, string $text): array
+    {
+        $portrait = $this->characterPortrait($character);
+        if ($portrait['status'] === 'failed') {
+            return $portrait;
+        }
+
+        $audio = $this->ai->audio(new MediaRequest(
+            feature: 'character.line',
+            prompt: $text,
+            voice: $character->voice_id,
+            metadata: ['character_id' => $character->id],
+            // The same character saying the same line is the same asset.
+            cacheable: true,
+        ));
+
+        return [
+            'status' => $audio->ok ? 'generated' : 'failed',
+            'portrait_media_asset_id' => $portrait['media_asset_id'] ?? null,
+            'audio_path' => $audio->localPath,
+            'reason' => $audio->ok ? null : $audio->error,
+        ];
+    }
+
     /** Model pronunciation audio for a term, when no recording exists. */
     public function ensurePronunciationAudio(string $text, ?string $voice = null): array
     {

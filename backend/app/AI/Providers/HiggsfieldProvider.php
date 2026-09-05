@@ -97,6 +97,12 @@ class HiggsfieldProvider implements AiMediaProviderInterface
         if ($r->referenceImageUrl) {
             array_push($cmd, '--image', $r->referenceImageUrl);
         }
+        // Identity anchoring: without this a recurring character drifts between
+        // generations, which is the single most visible quality failure in a
+        // course with a cast.
+        if ($r->soulId) {
+            array_push($cmd, '--soul-id', $r->soulId);
+        }
         if ($kind === 'video' && $r->durationSeconds) {
             array_push($cmd, '--duration', (string) $r->durationSeconds);
         }

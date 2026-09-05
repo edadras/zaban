@@ -70,3 +70,75 @@ over the first months rather than spent at once.
   how you confirm the generate-once policy is actually holding.
 - Media generation runs on its own queue connection with a 1800s retry window,
   because a render released mid-flight is a render paid for twice.
+
+
+---
+
+# Appendix: is 3D a cheaper route than video?
+
+Asked directly: build the characters as 3D models, then film the scenarios with
+them plus synthesised voice. Checked against the live Higgsfield catalogue
+rather than assumed.
+
+## What the 3D pipeline actually offers
+
+It is real and complete: `image_to_3d` and `multi_image_to_3d` (Meshy) lift
+images into textured GLB meshes with optional auto-rigging and animation,
+`3d_rigging` rigs an existing GLB, `sam_3_3d_body` reconstructs a human body
+from a photo, `tripo_3d` goes straight from text, and a Blender-backed scene
+builder assembles and renders scenes. There is a 678-clip animation library.
+
+## Why it is nonetheless the more expensive route here
+
+**No 3D model is in the unlimited tier.** The models carrying unlimited
+generations are images, audio, and several video models. Every 3D step is paid,
+and the parameters say so explicitly: texturing "costs more credits", rigging
+"adds cost", animation "adds cost". One character is four billable steps - mesh,
+texture, rig, animate - and the rendered scene is a further step on top.
+
+**The animation library is body actions, not speech.** The clips are walk, run,
+jump, wave, dance. There are no visemes. A rigged character can gesture; it
+cannot form English mouth shapes.
+
+That last point is decisive for *this* product. A language learner watching a
+dialogue needs to see articulation - it is part of how pronunciation is learned.
+A 3D character with a convincing body idle and a static mouth is pedagogically
+worse than a still photograph with accurate lip-sync, however much better it
+looks in a trailer.
+
+## What the question was really getting at
+
+The instinct behind it is right: a recurring cast is worth having, and the
+reason to want 3D is that a GLB is identical every time while image models
+drift. That problem is real. 3D is just not the cheapest fix for it.
+
+The purpose-built fix is a trained character identity (Higgsfield Soul), which
+anchors every later generation to the same person. `characters` now carries
+`soul_id` and a canonical `reference_media_asset_id`, and both are passed
+through `MediaRequest` into the provider, so a character is reproducible rather
+than merely described. `Character::hasStableIdentity()` reports which of the
+cast are actually pinned.
+
+## The cheap talking-character route
+
+1. One portrait per character - image tier, anchored to the character's identity.
+2. The line as speech - audio tier.
+3. Lip-sync the portrait to the audio - the only step that spends credits.
+
+`MediaGenerationService::characterLine()` does the first two and deliberately
+stops there, because the third is the expensive one and should be a conscious
+decision per scene rather than a default.
+
+## Where 3D would genuinely pay
+
+If the product later grows an interactive environment - a scene the learner
+moves through rather than watches - the arithmetic inverts: the asset is built
+once and rendered by the client for free thereafter. That is a different
+product decision, not a cheaper way to make the same videos.
+
+## What could not be verified here
+
+Per-generation credit prices are not exposed by the catalogue API, so the
+comparison above is structural - which steps are billable and how many there are
+- not a priced quote. Run `media:generate --estimate` after the first real
+generations to get observed cost per image before committing to any volume.
