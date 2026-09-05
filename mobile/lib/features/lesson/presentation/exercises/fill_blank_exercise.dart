@@ -80,13 +80,14 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
       canSubmit: _complete,
       onSubmit: () {
         _timer.stop();
+        final answers = _controllers
+            .map((TextEditingController c) => c.text.trim())
+            .toList();
         widget.onSubmit(
           ExerciseResponse(
-            value: <String, dynamic>{
-              'blanks': _controllers
-                  .map((TextEditingController c) => c.text.trim())
-                  .toList(),
-            },
+            // A single gap is graded as a plain string; multi-gap items send
+            // the answers in order.
+            value: answers.length == 1 ? answers.first : answers,
             responseMs: _timer.elapsedMilliseconds,
           ),
         );

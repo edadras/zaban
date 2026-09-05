@@ -16,28 +16,29 @@ class AppConfig {
     required this.enableNetworkLogging,
   });
 
-  /// Defaults target a Laravel dev server. `10.0.2.2` is how the Android
-  /// emulator reaches the host machine's `localhost`.
+  /// Defaults target a Laravel dev server; see [_defaultBaseUrl].
   factory AppConfig.fromEnvironment() {
-    const defaultUrl = kIsWeb
-        ? 'http://localhost:8000'
-        : (defaultTargetPlatform == TargetPlatform.android
-            ? 'http://10.0.2.2:8000'
-            : 'http://localhost:8000');
-
-    const url = String.fromEnvironment(
-      'ZABAN_API_BASE_URL',
-      defaultValue: '',
-    );
+    const url = String.fromEnvironment('ZABAN_API_BASE_URL', defaultValue: '');
 
     return AppConfig(
-      apiBaseUrl: url.isEmpty ? defaultUrl : url,
+      apiBaseUrl: url.isEmpty ? _defaultBaseUrl() : url,
       connectTimeout: const Duration(seconds: 15),
       receiveTimeout: const Duration(seconds: 30),
       // Speech uploads are the long pole; give them room.
       sendTimeout: const Duration(seconds: 60),
       enableNetworkLogging: kDebugMode,
     );
+  }
+
+  /// `10.0.2.2` is how the Android emulator reaches the host machine's
+  /// localhost; every other platform can use localhost directly.
+  ///
+  /// Not a const: `defaultTargetPlatform` is resolved at runtime.
+  static String _defaultBaseUrl() {
+    if (kIsWeb) return 'http://localhost:8000';
+    return defaultTargetPlatform == TargetPlatform.android
+        ? 'http://10.0.2.2:8000'
+        : 'http://localhost:8000';
   }
 
   final String apiBaseUrl;

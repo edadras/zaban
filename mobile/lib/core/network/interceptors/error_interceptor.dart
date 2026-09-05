@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:zaban/core/error/error_mapper.dart';
 import 'package:zaban/core/network/api_envelope.dart';
 
-/// Normalises every failure into an [ApiException] carried on
+/// Normalises every failure into an ApiException carried on
 /// `DioException.error`, including 2xx responses that still contain an `error`
 /// object (a shape the envelope permits and a proxy can produce).
 class ErrorInterceptor extends Interceptor {

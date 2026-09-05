@@ -70,7 +70,6 @@ class SessionRunnerState {
 /// completion, and closes the session when the list runs out.
 class SessionController extends AsyncNotifier<SessionRunnerState> {
   final Stopwatch _sessionTimer = Stopwatch();
-  Stopwatch _activityTimer = Stopwatch();
 
   @override
   Future<SessionRunnerState> build() async {
@@ -78,7 +77,6 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
     _sessionTimer
       ..reset()
       ..start();
-    _activityTimer = Stopwatch()..start();
 
     // Resume where the server says the learner stopped rather than restarting
     // a partially completed session.
@@ -123,13 +121,10 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
   }
 
   /// Marks the current activity done and moves to the next one.
-  Future<void> advance({bool skipped = false}) async {
+  Future<void> advance() async {
     final current = _state;
     final activity = current.current;
     if (activity == null) return;
-
-    final elapsed = _activityTimer.elapsed.inSeconds;
-    _activityTimer = Stopwatch()..start();
 
     // Move immediately: the learner should never wait on a bookkeeping call.
     state = AsyncData<SessionRunnerState>(
@@ -137,13 +132,21 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
     );
 
     try {
-      final updated = await ref.read(sessionRepositoryProvider).completeActivity(
+      final receipt = await ref.read(sessionRepositoryProvider).completeActivity(
             sessionId: current.session.id,
             activityId: activity.id,
-            skipped: skipped,
-            elapsedSeconds: elapsed,
           );
-      state = AsyncData<SessionRunnerState>(_state.copyWith(session: updated));
+
+      // Keep the local counters in step with the server's receipt so the
+      // progress bar and the ring agree with it.
+      state = AsyncData<SessionRunnerState>(
+        _state.copyWith(
+          session: _state.session.copyWith(
+            status: receipt.sessionStatus,
+            activitiesCompleted: _state.session.activitiesCompleted + 1,
+          ),
+        ),
+      );
     } on Exception catch (error) {
       // The activity is done from the learner's point of view; surface the
       // failure without rewinding them.
@@ -159,24 +162,28 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
     if (current.summary != null) return;
 
     _sessionTimer.stop();
+    final elapsed = _sessionTimer.elapsed.inSeconds;
+
     try {
-      final summary = await ref.read(sessionRepositoryProvider).complete(
+      final closed = await ref.read(sessionRepositoryProvider).complete(
             sessionId: current.session.id,
-            elapsedSeconds: _sessionTimer.elapsed.inSeconds,
+            elapsedSeconds: elapsed,
           );
-      state = AsyncData<SessionRunnerState>(_state.copyWith(summary: summary));
-    } on Exception catch (error) {
-      ref.read(sessionErrorProvider.notifier).state = error;
-      // Fall back to a locally shaped summary so the learner still gets an
-      // ending; the numbers shown are the server's own counters.
       state = AsyncData<SessionRunnerState>(
         _state.copyWith(
-          summary: SessionSummary(
-            sessionId: current.session.id,
-            xpEarned: current.session.xpEarned,
-            activitiesCompleted: current.session.activitiesCompleted,
-            activitiesPlanned: current.session.activitiesPlanned,
-            durationSeconds: _sessionTimer.elapsed.inSeconds,
+          session: closed,
+          summary: SessionSummary.of(closed, durationSeconds: elapsed),
+        ),
+      );
+    } on Exception catch (error) {
+      ref.read(sessionErrorProvider.notifier).state = error;
+      // The learner still gets an ending; the figures are the counters the
+      // session already carried.
+      state = AsyncData<SessionRunnerState>(
+        _state.copyWith(
+          summary: SessionSummary.of(
+            current.session,
+            durationSeconds: elapsed,
           ),
         ),
       );
@@ -191,7 +198,6 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
       _sessionTimer
         ..reset()
         ..start();
-      _activityTimer = Stopwatch()..start();
       return SessionRunnerState(session: session);
     });
   }

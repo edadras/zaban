@@ -17,8 +17,8 @@ class PlacementIntroScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final profile = ref.watch(currentUserProvider)?.profile;
-    final resuming = profile?.placementInProgress ?? false;
+    final learner = ref.watch(currentUserProvider)?.learner;
+    final resuming = learner?.placementInProgress ?? false;
 
     const points = <(IconData, String, String)>[
       (

@@ -1,8 +1,8 @@
 /// The API surface this client depends on.
 ///
-/// Paths are relative to `AppConfig.apiRoot` (`<base>/api/v1`). Keeping them in
-/// one file makes the contract with the Laravel backend reviewable in a single
-/// diff.
+/// Paths are relative to `AppConfig.apiRoot` (`<base>/api/v1`) and mirror
+/// `backend/routes/api.php` and `backend/routes/api/{billing,exam,speech}.php`.
+/// Keeping them in one file makes the contract reviewable in a single diff.
 class ApiEndpoints {
   const ApiEndpoints._();
 
@@ -10,73 +10,102 @@ class ApiEndpoints {
   static const String register = '/auth/register';
   static const String login = '/auth/login';
   static const String logout = '/auth/logout';
-  static const String refresh = '/auth/refresh';
-  static const String me = '/me';
+  static const String me = '/auth/me';
+  static const String forgotPassword = '/auth/forgot-password';
 
-  // ---------------------------------------------------------- onboarding
-  static const String onboardingOptions = '/onboarding/options';
-  static const String onboarding = '/onboarding';
+  /// Sanctum personal access tokens do not expire on their own, so the server
+  /// deliberately has no refresh route: a 401 means the token was revoked and
+  /// the only correct response is to sign in again. The constant stays so the
+  /// interceptor has one place to point at if refresh is ever introduced.
+  static const String refresh = '/auth/refresh';
 
   // ----------------------------------------------------------- placement
   static const String placementStart = '/placement/start';
   static String placementNext(int sessionId) => '/placement/$sessionId/next';
-  static String placementRespond(int sessionId) =>
-      '/placement/$sessionId/respond';
-  static String placementComplete(int sessionId) =>
-      '/placement/$sessionId/complete';
+  static String placementSubmit(int sessionId) =>
+      '/placement/$sessionId/submit';
   static String placementResult(int sessionId) => '/placement/$sessionId/result';
 
   // --------------------------------------------------- home / daily session
-  static const String home = '/home';
-
   /// The composed session. The server decides what is in it; the client only
   /// renders the activities it is handed.
   static const String sessionNext = '/session/next';
+  static const String sessionStart = '/session/start';
   static String session(int id) => '/session/$id';
   static String sessionActivityComplete(int sessionId, int activityId) =>
       '/session/$sessionId/activities/$activityId/complete';
   static String sessionComplete(int id) => '/session/$id/complete';
 
-  // --------------------------------------------------------------- lesson
+  // ------------------------------------------------------ course / lesson
+  static const String courses = '/courses';
+  static String course(int id) => '/courses/$id';
+  static String unit(int id) => '/units/$id';
   static String lesson(int id) => '/lessons/$id';
   static String exercise(int id) => '/exercises/$id';
-  static String exerciseAttempt(int id) => '/exercises/$id/attempt';
+  static String exerciseHint(int id) => '/exercises/$id/hint';
+  static String exerciseSubmit(int id) => '/exercises/$id/submit';
+
+  // --------------------------------------------------------------- review
+  static const String reviewsDue = '/reviews/due';
+  static const String reviewCounts = '/reviews/counts';
+
+  // ------------------------------------------------------------- progress
+  /// Feeds both the dashboard and the home screen — every counter the learner
+  /// sees is computed here.
+  static const String progressDashboard = '/progress/dashboard';
+  static const String progressSkills = '/progress/skills';
+  static const String progressHistory = '/progress/history';
+  static const String progressTrend = '/progress/trend';
 
   // --------------------------------------------------------------- speech
   static const String speechAttempts = '/speech/attempts';
   static String speechAttempt(int id) => '/speech/attempts/$id';
+  static String speechRecording(int id) => '/speech/attempts/$id/recording';
+  static const String pronunciationProfile = '/speech/profile';
+  static const String pronunciationDrills = '/speech/profile/drills';
 
-  // --------------------------------------------------------- conversation
+  // ----------------------------------------------------------------- exam
+  static const String examTypes = '/exams/types';
+  static String examType(int id) => '/exams/types/$id';
+  static const String examAttempts = '/exams/attempts';
+  static String examAttempt(int id) => '/exams/attempts/$id';
+  static String examNextTask(int attemptId) =>
+      '/exams/attempts/$attemptId/next-task';
+  static String examTaskResponse(int attemptId, int taskId) =>
+      '/exams/attempts/$attemptId/tasks/$taskId/response';
+  static String examFinish(int attemptId) => '/exams/attempts/$attemptId/finish';
+  static String examResults(int attemptId) =>
+      '/exams/attempts/$attemptId/results';
+  static const String examProgress = '/exams/progress';
+
+  // -------------------------------------------------------------- billing
+  static const String plans = '/billing/plans';
+  static String plan(String code) => '/billing/plans/$code';
+  static const String subscription = '/billing/subscription';
+  static const String checkout = '/billing/checkout';
+  static const String cancelSubscription = '/billing/subscription/cancel';
+  static const String resumeSubscription = '/billing/subscription/resume';
+  static const String invoices = '/billing/invoices';
+
+  // -------------------------------------------------------------- profile
+  static const String profile = '/profile';
+  static const String settings = '/profile/settings';
+  static const String avatar = '/profile/avatar';
+  static const String requestExport = '/profile/export';
+  static const String requestDeletion = '/profile/delete';
+
+  // ------------------------------------------------- awaiting the backend
+  // These two features are built client-side against the shapes documented in
+  // their models, but the routes do not exist on the server yet. Calls fail
+  // with a normal 404 -> ApiException, which the screens render as an error
+  // rather than crashing.
+  static const String onboardingOptions = '/onboarding/options';
+  static const String onboarding = '/onboarding';
   static const String conversationScenarios = '/conversation/scenarios';
   static const String conversationSessions = '/conversation/sessions';
+  static String conversationSession(int id) => '/conversation/sessions/$id';
   static String conversationTurns(int sessionId) =>
       '/conversation/sessions/$sessionId/turns';
   static String conversationComplete(int sessionId) =>
       '/conversation/sessions/$sessionId/complete';
-
-  // --------------------------------------------------------------- review
-  static const String reviewQueue = '/review/queue';
-  static const String reviewSession = '/review/session';
-
-  // ------------------------------------------------------------- progress
-  static const String progressDashboard = '/progress/dashboard';
-  static const String progressHistory = '/progress/history';
-
-  // ----------------------------------------------------------------- exam
-  static const String examTypes = '/exams/types';
-  static const String examAttempts = '/exams/attempts';
-  static String examAttempt(int id) => '/exams/attempts/$id';
-  static String examSectionSubmit(int attemptId, int sectionId) =>
-      '/exams/attempts/$attemptId/sections/$sectionId/submit';
-  static String examResult(int attemptId) => '/exams/attempts/$attemptId/result';
-
-  // --------------------------------------------------------- subscription
-  static const String plans = '/subscription/plans';
-  static const String subscription = '/subscription';
-  static const String checkout = '/subscription/checkout';
-  static const String cancelSubscription = '/subscription/cancel';
-
-  // -------------------------------------------------------------- profile
-  static const String profile = '/profile';
-  static const String settings = '/settings';
 }

@@ -13,7 +13,12 @@ class FeedbackPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final tone = result.isCorrect ? colors.success : colors.accent;
+    // An open item the grader could not key-match is neither right nor wrong:
+    // it is queued for marking, and saying "incorrect" would be a lie.
+    final pending = result.awaitingReview;
+    final tone = pending
+        ? colors.info
+        : (result.isCorrect ? colors.success : colors.accent);
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0, end: 1),
@@ -38,15 +43,21 @@ class FeedbackPanel extends StatelessWidget {
             Row(
               children: <Widget>[
                 Icon(
-                  result.isCorrect
-                      ? Icons.check_circle_rounded
-                      : Icons.cancel_rounded,
+                  pending
+                      ? Icons.hourglass_bottom_rounded
+                      : result.isCorrect
+                          ? Icons.check_circle_rounded
+                          : Icons.cancel_rounded,
                   color: tone,
                   size: 18,
                 ),
                 const SizedBox(width: Spacing.sm),
                 Text(
-                  result.isCorrect ? 'Correct' : 'Not quite',
+                  pending
+                      ? 'Sent for marking'
+                      : result.isCorrect
+                          ? 'Correct'
+                          : 'Not quite',
                   style: context.text.titleMedium?.copyWith(color: tone),
                 ),
                 const Spacer(),
@@ -57,18 +68,13 @@ class FeedbackPanel extends StatelessWidget {
                   ),
               ],
             ),
-            if (result.feedback != null) ...<Widget>[
+            if (result.message != null) ...<Widget>[
               const SizedBox(height: Spacing.sm),
-              Text(result.feedback!, style: context.text.bodyMedium),
+              Text(result.message!, style: context.text.bodyMedium),
             ],
-            if (!result.isCorrect && result.correctAnswers.isNotEmpty) ...<Widget>[
+            if (!pending && !result.isCorrect && result.expected != null) ...<Widget>[
               const SizedBox(height: Spacing.sm),
-              Text(
-                result.correctAnswers.length == 1
-                    ? 'Answer: ${result.correctAnswers.first}'
-                    : 'Answers: ${result.correctAnswers.join(' · ')}',
-                style: context.text.titleMedium,
-              ),
+              Text('Answer: ${result.expected}', style: context.text.titleMedium),
             ],
             if (result.explanation != null) ...<Widget>[
               const SizedBox(height: Spacing.md),

@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             PhonemeSeeder::class,
             ExamSeeder::class,
+            ConversationScenarioSeeder::class,
         ]);
 
         // User::factory(10)->create();

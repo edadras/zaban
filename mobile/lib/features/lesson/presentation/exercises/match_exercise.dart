@@ -77,15 +77,12 @@ class _MatchExerciseState extends State<MatchExercise> {
         _timer.stop();
         widget.onSubmit(
           ExerciseResponse(
-            value: <String, dynamic>{
-              'pairs': <Map<String, String>>[
-                for (final MapEntry<int, int> entry in _pairs.entries)
-                  <String, String>{
-                    'left': _left[entry.key],
-                    'right': _right[entry.value],
-                  },
-              ],
-            },
+            // Pairs are sent as flat strings so the grader can key-match them;
+            // nested structures are not something it can compare.
+            value: <String>[
+              for (final MapEntry<int, int> entry in _pairs.entries)
+                '${_left[entry.key]} = ${_right[entry.value]}',
+            ],
             responseMs: _timer.elapsedMilliseconds,
           ),
         );

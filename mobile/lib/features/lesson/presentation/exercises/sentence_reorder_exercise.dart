@@ -54,9 +54,8 @@ class _SentenceReorderExerciseState extends State<SentenceReorderExercise> {
         _timer.stop();
         widget.onSubmit(
           ExerciseResponse(
-            value: <String, dynamic>{
-              'order': _chosen.map((int i) => _tokens[i]).toList(),
-            },
+            // The assembled sentence is what the answer key holds.
+            value: _chosen.map((int i) => _tokens[i]).join(' '),
             responseMs: _timer.elapsedMilliseconds,
           ),
         );

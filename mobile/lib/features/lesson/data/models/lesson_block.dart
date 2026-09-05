@@ -20,6 +20,11 @@ abstract class LessonBlock with _$LessonBlock {
     String? title,
     String? instructions,
     @Default(<String, dynamic>{}) Map<String, dynamic> config,
+
+    /// Set when the block is backed by a gradable item. The lesson endpoint
+    /// sends the id only, so the host fetches the exercise when it reaches
+    /// this block; a session activity arrives with it already inlined.
+    int? exerciseId,
     Exercise? exercise,
     MediaRef? media,
     MediaRef? audio,

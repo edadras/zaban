@@ -8,7 +8,8 @@ import 'package:zaban/features/placement/data/models/placement_models.dart';
 /// Talks to the computer-adaptive placement engine.
 ///
 /// The client contributes exactly one thing: the learner's answer. Item
-/// selection, ability estimation and the stopping rule are all server-side.
+/// selection, ability estimation and the stopping rule are all server-side, and
+/// the engine closes the session itself once every dimension has converged.
 class PlacementRepository {
   const PlacementRepository(this._client);
 
@@ -25,25 +26,22 @@ class PlacementRepository {
         decode: Decode.object(PlacementStep.fromJson),
       );
 
-  /// Submits one response. The reply deliberately carries no verdict: showing
-  /// right/wrong during an adaptive test changes how people answer.
-  Future<PlacementStep> respond({
+  /// Submits one response. The reply carries no verdict on purpose: showing
+  /// right/wrong during an adaptive test lets the learner infer the difficulty
+  /// ladder and game it.
+  Future<PlacementStep> submit({
     required int sessionId,
     required int exerciseId,
     required ExerciseResponse response,
   }) =>
       _client.post(
-        ApiEndpoints.placementRespond(sessionId),
+        ApiEndpoints.placementSubmit(sessionId),
         body: <String, dynamic>{
           'exercise_id': exerciseId,
-          ...response.toJson(),
+          'response': response.value,
+          if (response.responseMs != null) 'response_ms': response.responseMs,
         },
         decode: Decode.object(PlacementStep.fromJson),
-      );
-
-  Future<PlacementResult> complete(int sessionId) => _client.post(
-        ApiEndpoints.placementComplete(sessionId),
-        decode: Decode.object(PlacementResult.fromJson),
       );
 
   Future<PlacementResult> result(int sessionId) => _client.get(

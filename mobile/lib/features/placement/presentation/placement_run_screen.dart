@@ -58,14 +58,14 @@ class PlacementRunScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'PLACEMENT · ${state.step.itemsAdministered} answered',
+                        'PLACEMENT · ${state.progress.itemsAdministered} answered',
                         style: context.text.labelSmall,
                       ),
                       const SizedBox(height: Spacing.sm),
                       ClipRRect(
                         borderRadius: Radii.pillRadius,
                         child: LinearProgressIndicator(
-                          value: state.step.progress,
+                          value: state.progress.fraction,
                           minHeight: 6,
                           backgroundColor: context.colors.glassFillStrong,
                           valueColor: AlwaysStoppedAnimation<Color>(

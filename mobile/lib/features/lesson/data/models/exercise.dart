@@ -12,17 +12,21 @@ part 'exercise.g.dart';
 ///
 /// Note what is *absent*: no correct answer and no `is_correct` on the options.
 /// Grading happens server-side; the client submits a response and renders the
-/// [AttemptResult] it gets back.
+/// attempt result it gets back.
 @freezed
 abstract class Exercise with _$Exercise {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory Exercise({
     required int id,
-    required String templateCode,
     required String stem,
+
+    /// `exercise_templates.code`, serialised by the API as `template`.
+    /// Empty when the item has no template row — the renderer then falls back
+    /// to free text rather than guessing an interaction.
+    @JsonKey(name: 'template') @Default('') String templateCode,
     String? instructions,
     String? blockType,
-    String? skillCode,
+    @JsonKey(name: 'skill') String? skillCode,
     String? cefr,
     double? difficulty,
     @Default(<ExerciseOption>[]) List<ExerciseOption> options,

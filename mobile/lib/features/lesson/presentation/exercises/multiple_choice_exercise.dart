@@ -41,7 +41,9 @@ class _MultipleChoiceExerciseState extends State<MultipleChoiceExercise> {
   @override
   Widget build(BuildContext context) {
     final graded = widget.result != null;
-    final correctIds = widget.result?.correctOptionIds ?? const <int>[];
+    // The grader returns the accepted answer as text; the client marks the
+    // matching option rather than deciding correctness itself.
+    final expected = widget.result?.expected?.trim().toLowerCase();
 
     return ExerciseShell(
       exercise: widget.exercise,
@@ -53,7 +55,8 @@ class _MultipleChoiceExerciseState extends State<MultipleChoiceExercise> {
         _timer.stop();
         widget.onSubmit(
           ExerciseResponse(
-            value: <String, dynamic>{'option_id': _selectedId},
+            // The API grades a choice item by option id.
+            value: _selectedId!,
             responseMs: _timer.elapsedMilliseconds,
           ),
         );
@@ -73,12 +76,16 @@ class _MultipleChoiceExerciseState extends State<MultipleChoiceExercise> {
               child: _OptionTile(
                 option: option,
                 selected: option.id == _selectedId,
-                // After grading, the server tells us which option was right;
-                // the client never works it out from the payload.
-                correct: graded && correctIds.contains(option.id),
+                // After grading, the server tells us what the answer was; the
+                // client never works it out from the payload.
+                correct: graded &&
+                    ((expected != null &&
+                            option.text?.trim().toLowerCase() == expected) ||
+                        (widget.result!.isCorrect &&
+                            option.id == _selectedId)),
                 wrong: graded &&
-                    option.id == _selectedId &&
-                    !correctIds.contains(option.id),
+                    !widget.result!.isCorrect &&
+                    option.id == _selectedId,
                 onTap: graded
                     ? null
                     : () => setState(() => _selectedId = option.id),

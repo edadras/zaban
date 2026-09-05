@@ -53,7 +53,13 @@ class ExerciseRenderer extends StatelessWidget {
 
     // Each branch also checks that the payload can actually drive its UI: a
     // "match" item with no pairs is answerable as text, but not as a matcher.
-    if (choiceTypes.contains(type) && exercise.options.isNotEmpty) {
+    //
+    // An item with options but no template code (exam tasks are served that
+    // way) is still unambiguously a choice question.
+    final isChoice = exercise.options.isNotEmpty &&
+        (choiceTypes.contains(type) || type.isEmpty);
+
+    if (isChoice) {
       return MultipleChoiceExercise(
         exercise: exercise,
         onSubmit: onSubmit,

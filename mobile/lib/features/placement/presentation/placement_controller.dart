@@ -20,6 +20,9 @@ class PlacementRunState {
 
   bool get isFinished => result != null;
 
+  PlacementProgress get progress =>
+      step.progress ?? const PlacementProgress();
+
   PlacementRunState copyWith({
     PlacementStep? step,
     bool? submitting,
@@ -33,26 +36,20 @@ class PlacementRunState {
       );
 }
 
-/// Drives the placement test: start, then answer whatever item the engine
-/// hands back until it says it has enough.
+/// Drives the placement test: start, then answer whatever item the engine hands
+/// back until it says it has enough.
 class PlacementController extends AsyncNotifier<PlacementRunState> {
   @override
   Future<PlacementRunState> build() async {
     final repository = ref.watch(placementRepositoryProvider);
-    // `start` is idempotent server-side: an unfinished session is returned
-    // rather than a second one being opened.
     final session = await repository.start();
     final step = await repository.next(session.id);
 
-    if (step.complete && step.item == null) {
-      return PlacementRunState(
-        sessionId: session.id,
-        step: step,
-        result: await repository.complete(session.id),
-      );
-    }
-
-    return PlacementRunState(sessionId: session.id, step: step);
+    return PlacementRunState(
+      sessionId: session.id,
+      step: step,
+      result: step.result,
+    );
   }
 
   Future<void> answer(int exerciseId, ExerciseResponse response) async {
@@ -63,22 +60,31 @@ class PlacementController extends AsyncNotifier<PlacementRunState> {
     final repository = ref.read(placementRepositoryProvider);
 
     try {
-      final step = await repository.respond(
+      final ack = await repository.submit(
         sessionId: current.sessionId,
         exerciseId: exerciseId,
         response: response,
       );
 
-      if (step.complete || step.item == null) {
-        final result = await repository.complete(current.sessionId);
+      if (ack.complete) {
+        // The engine closed the session and returned the profile with the
+        // acknowledgement; nothing more to ask for.
+        final result = ack.result ?? await repository.result(current.sessionId);
         state = AsyncData<PlacementRunState>(
-          current.copyWith(step: step, submitting: false, result: result),
+          current.copyWith(step: ack, submitting: false, result: result),
         );
         return;
       }
 
+      // The acknowledgement carries no item — the next one is a separate
+      // selection, made after this answer has moved the estimate.
+      final next = await repository.next(current.sessionId);
       state = AsyncData<PlacementRunState>(
-        current.copyWith(step: step, submitting: false),
+        current.copyWith(
+          step: next,
+          submitting: false,
+          result: next.result,
+        ),
       );
     } on Exception catch (error, stack) {
       state = AsyncError<PlacementRunState>(error, stack);

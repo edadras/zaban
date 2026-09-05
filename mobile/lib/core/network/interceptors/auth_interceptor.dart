@@ -84,7 +84,13 @@ class AuthInterceptor extends QueuedInterceptor {
   Future<bool> _refresh() async {
     final refreshToken = _tokens.refreshToken;
     final accessToken = _tokens.accessToken;
-    if (refreshToken == null && accessToken == null) return false;
+
+    // Sanctum personal access tokens do not expire, so the API issues no
+    // refresh token and has no refresh route: a 401 means the token was
+    // revoked. Without a refresh token there is nothing to try, and firing a
+    // doomed request on every 401 would only add latency to signing out.
+    if (refreshToken == null) return false;
+    if (accessToken == null) return false;
 
     try {
       final response = await _refreshClient.post<dynamic>(

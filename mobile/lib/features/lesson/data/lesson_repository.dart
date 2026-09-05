@@ -30,7 +30,7 @@ class LessonRepository {
     int? sessionActivityId,
   }) =>
       _client.post(
-        ApiEndpoints.exerciseAttempt(exerciseId),
+        ApiEndpoints.exerciseSubmit(exerciseId),
         body: <String, dynamic>{
           ...response.toJson(),
           if (sessionId != null) 'learning_session_id': sessionId,
@@ -43,8 +43,4 @@ class LessonRepository {
 
 final lessonRepositoryProvider = Provider<LessonRepository>(
   (ref) => LessonRepository(ref.watch(apiClientProvider)),
-);
-
-final lessonProvider = FutureProvider.family<Lesson, int>(
-  (ref, int id) => ref.watch(lessonRepositoryProvider).lesson(id),
 );

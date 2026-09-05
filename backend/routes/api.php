@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\ConversationController;
 use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\ExerciseController;
+use App\Http\Controllers\Api\V1\MediaController;
 use App\Http\Controllers\Api\V1\PlacementController;
 use App\Http\Controllers\Api\V1\ProfileController;
 use App\Http\Controllers\Api\V1\ProgressController;
@@ -79,6 +81,21 @@ Route::prefix('v1')->group(function () {
         Route::get('reviews/due', [ReviewController::class, 'due']);
         Route::get('reviews/counts', [ReviewController::class, 'counts']);
 
+        // AI roleplay conversation. Each turn costs a model call, so it carries
+        // the tighter 'ai' limiter.
+        Route::get('conversation/scenarios', [ConversationController::class, 'scenarios']);
+        Route::post('conversation/start', [ConversationController::class, 'start']);
+        Route::get('conversation/{session}', [ConversationController::class, 'show']);
+        Route::post('conversation/{session}/respond', [ConversationController::class, 'respond'])
+            ->middleware('throttle:ai');
+        Route::post('conversation/{session}/finish', [ConversationController::class, 'finish'])
+            ->middleware('throttle:ai');
+
+        // media resolution: blocks reference assets by id, the client asks for
+        // a short-lived signed playback URL
+        Route::get('media/{media}', [MediaController::class, 'show']);
+        Route::post('media/batch', [MediaController::class, 'batch']);
+
         // progress and analytics
         Route::get('progress/dashboard', [ProgressController::class, 'dashboard']);
         Route::get('progress/skills', [ProgressController::class, 'skills']);
@@ -99,6 +116,13 @@ Route::prefix('v1')->group(function () {
  *   routes/api/speech.php  - recording upload, scoring, pronunciation profile
  *   routes/api/admin.php   - ingestion, review queue, AI cost, users
  */
+/*
+ * Streaming sits outside auth:sanctum because the signature is the
+ * authentication - a media element cannot attach a bearer token.
+ */
+Route::get('v1/media/{media}/stream', [MediaController::class, 'stream'])
+    ->name('media.stream');
+
 foreach (['billing', 'exam', 'speech', 'admin'] as $module) {
     $path = base_path("routes/api/{$module}.php");
     if (file_exists($path)) {

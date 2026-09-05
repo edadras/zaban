@@ -1,0 +1,22 @@
+# Code-generation settings.
+#
+# The API speaks snake_case, the Dart models are camelCase. Setting the rename
+# globally (rather than annotating every model) guarantees the mapping is
+# identical everywhere and cannot drift file by file.
+targets:
+  $default:
+    builders:
+      json_serializable:
+        options:
+          field_rename: snake
+          # Nested Freezed objects must be serialised through their own toJson.
+          explicit_to_json: true
+          create_to_json: true
+          # Absent and null mean the same thing to this API; omit nulls so
+          # partial updates stay partial.
+          include_if_null: false
+          # A payload the client does not model yet must not blow up parsing.
+          disallow_unrecognized_keys: false
+          # Every response field is optional from the client's point of view:
+          # defaults come from the model, not from an exception.
+          checked: false

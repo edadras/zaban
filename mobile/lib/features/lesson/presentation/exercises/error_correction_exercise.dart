@@ -72,11 +72,9 @@ class _ErrorCorrectionExerciseState extends State<ErrorCorrectionExercise> {
         _timer.stop();
         widget.onSubmit(
           ExerciseResponse(
-            value: <String, dynamic>{
-              'correction': _controller.text.trim(),
-              if (_suspectIndex != null) 'error_index': _suspectIndex,
-              if (_suspectIndex != null) 'error_word': _words[_suspectIndex!],
-            },
+            // The rewritten sentence is what gets graded; tapping the suspect
+            // word is a UI aid, not part of the answer.
+            value: _controller.text.trim(),
             responseMs: _timer.elapsedMilliseconds,
           ),
         );

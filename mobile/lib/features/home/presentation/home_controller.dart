@@ -7,9 +7,3 @@ import 'package:zaban/features/home/data/models/home_snapshot.dart';
 final homeSnapshotProvider = FutureProvider<HomeSnapshot>(
   (ref) => ref.watch(homeRepositoryProvider).snapshot(),
 );
-
-/// Badge count for the Review tab. Null until the snapshot loads, so the badge
-/// never flashes a stale number.
-final dueReviewCountProvider = Provider<int?>(
-  (ref) => ref.watch(homeSnapshotProvider).valueOrNull?.dueReviews,
-);

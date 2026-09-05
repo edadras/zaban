@@ -23,8 +23,6 @@ abstract class LearningSession with _$LearningSession {
     @Default(0) int xpEarned,
     SessionComposition? composition,
     @Default(<SessionActivity>[]) List<SessionActivity> activities,
-    DateTime? startedAt,
-    DateTime? completedAt,
   }) = _LearningSession;
 
   factory LearningSession.fromJson(Map<String, dynamic> json) =>
@@ -47,27 +45,31 @@ abstract class SessionComposition with _$SessionComposition {
 
 /// One step of the session.
 ///
-/// The backend resolves the polymorphic subject for us: an activity arrives
-/// with either an [exercise] or a [block] already embedded, so the client does
-/// not need to know how `subject_type` maps onto tables.
+/// The API resolves the polymorphic subject for us and inlines it under
+/// `subject`, tagged with a `kind`. That is why this model keeps the raw map
+/// and exposes typed views of it rather than declaring two nullable fields the
+/// server never sends by those names.
 @freezed
 abstract class SessionActivity with _$SessionActivity {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory SessionActivity({
     required int id,
     @Default(0) int position,
+
     /// review | weakness | remediation | lesson_block | speaking | exploration
-    required String activityType,
-    String? subjectType,
-    int? subjectId,
+    @JsonKey(name: 'type') @Default('practice') String activityType,
     int? conceptId,
-    String? conceptLabel,
-    @Default(<String, dynamic>{}) Map<String, dynamic> selectionReason,
-    double? priorityScore,
     double? predictedSuccess,
     @Default('pending') String status,
-    Exercise? exercise,
-    LessonBlock? block,
+
+    /// The selection audit trail (`selection_reason` in the database).
+    @JsonKey(name: 'why')
+    @Default(<String, dynamic>{})
+    Map<String, dynamic> selectionReason,
+
+    /// `{"kind": "exercise" | "lesson_block", …}`, or null when the subject
+    /// could not be resolved.
+    Map<String, dynamic>? subject,
   }) = _SessionActivity;
 
   factory SessionActivity.fromJson(Map<String, dynamic> json) =>
@@ -77,8 +79,24 @@ abstract class SessionActivity with _$SessionActivity {
 extension SessionActivityX on SessionActivity {
   bool get isCompleted => status == 'completed' || status == 'skipped';
 
+  String? get subjectKind => subject?['kind'] as String?;
+
+  /// The embedded gradable item, when this activity is an exercise.
+  Exercise? get exercise {
+    final payload = subject;
+    if (payload == null || payload['kind'] != 'exercise') return null;
+    return Exercise.fromJson(payload);
+  }
+
+  /// The embedded lesson block, when this activity is a block.
+  LessonBlock? get block {
+    final payload = subject;
+    if (payload == null || payload['kind'] != 'lesson_block') return null;
+    return LessonBlock.fromJson(payload);
+  }
+
   /// The one-line reason shown under the activity, built from the server's
-  /// `selection_reason` payload. Never invented locally.
+  /// `why` payload. Never invented locally.
   String get reasonLabel {
     final driver = selectionReason['driver'] as String?;
     return switch (driver) {
@@ -104,14 +122,29 @@ extension LearningSessionX on LearningSession {
   List<SessionActivity> get pending =>
       activities.where((SessionActivity a) => !a.isCompleted).toList();
 
-  /// 0..1 for the session ring. Uses the server's own counters, falling back to
-  /// the embedded activity list when a partial payload omits them.
+  /// 0..1 for the session ring, from the server's own counters.
   double get progress {
-    final planned = activitiesPlanned > 0 ? activitiesPlanned : activities.length;
+    final planned =
+        activitiesPlanned > 0 ? activitiesPlanned : activities.length;
     if (planned == 0) return 0;
     final done = activitiesCompleted > 0
         ? activitiesCompleted
         : activities.where((SessionActivity a) => a.isCompleted).length;
     return (done / planned).clamp(0.0, 1.0);
   }
+}
+
+/// `POST /session/{id}/activities/{activityId}/complete` — a receipt, not a
+/// whole session.
+@freezed
+abstract class ActivityCompletion with _$ActivityCompletion {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory ActivityCompletion({
+    required int activityId,
+    @Default(0) int remaining,
+    @Default('active') String sessionStatus,
+  }) = _ActivityCompletion;
+
+  factory ActivityCompletion.fromJson(Map<String, dynamic> json) =>
+      _$ActivityCompletionFromJson(json);
 }

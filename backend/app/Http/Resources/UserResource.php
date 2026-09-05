@@ -30,7 +30,13 @@ class UserResource extends JsonResource
                 'weekly_goal_minutes' => $this->settings->weekly_goal_minutes,
                 'preferred_study_time' => $this->settings->preferred_study_time,
                 'theme' => $this->settings->theme,
+                'notifications_email' => (bool) $this->settings->notifications_email,
+                'notifications_push' => (bool) $this->settings->notifications_push,
+                'reminder_enabled' => (bool) $this->settings->reminder_enabled,
                 'speech_consent_given' => (bool) $this->settings->speech_consent_given,
+                'speech_consent_at' => $this->settings->speech_consent_at?->toIso8601String(),
+                'speech_retention_days' => (int) $this->settings->speech_retention_days,
+                'allow_speech_for_model_improvement' => (bool) $this->settings->allow_speech_for_model_improvement,
             ]),
             'learner' => $this->whenLoaded('learnerProfile', fn () => [
                 'cefr_level' => $this->learnerProfile->relationLoaded('cefrLevel')

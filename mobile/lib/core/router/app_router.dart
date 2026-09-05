@@ -14,7 +14,6 @@ import 'package:zaban/features/conversation/presentation/scenarios_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_attempt_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_home_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_result_screen.dart';
-import 'package:zaban/features/home/presentation/home_controller.dart';
 import 'package:zaban/features/home/presentation/home_screen.dart';
 import 'package:zaban/features/home/presentation/session/session_runner_screen.dart';
 import 'package:zaban/features/lesson/presentation/lesson_screen.dart';
@@ -25,6 +24,7 @@ import 'package:zaban/features/placement/presentation/placement_run_screen.dart'
 import 'package:zaban/features/profile/presentation/profile_screen.dart';
 import 'package:zaban/features/profile/presentation/settings_screen.dart';
 import 'package:zaban/features/progress/presentation/progress_screen.dart';
+import 'package:zaban/features/review/data/review_repository.dart';
 import 'package:zaban/features/review/presentation/review_screen.dart';
 import 'package:zaban/features/speech/presentation/speech_practice_screen.dart';
 import 'package:zaban/features/subscription/presentation/plans_screen.dart';
@@ -75,9 +75,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       }
 
       // Signed in: never leave the user sitting on an auth screen.
-      final profile = auth.user?.profile;
+      final learner = auth.user?.learner;
       final onboardingSeen = ref.read(preferencesStoreProvider).onboardingSeen;
-      final needsPlacement = profile?.needsPlacement ?? true;
+      final needsPlacement = learner?.needsPlacement ?? true;
 
       String destinationForSignedIn() {
         if (!onboardingSeen) return AppRoute.onboarding.path;
@@ -279,7 +279,7 @@ class _AppShell extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // The badge is whatever the server said is due; the client never counts it.
-    final dueReviews = ref.watch(dueReviewCountProvider);
+    final dueReviews = ref.watch(dueCountProvider).valueOrNull;
 
     return AdaptiveNavigationShell(
       currentIndex: shell.currentIndex,

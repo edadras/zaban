@@ -14,8 +14,7 @@ import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/core/widgets/trend_sparkline.dart';
 import 'package:zaban/features/progress/data/models/progress_dashboard.dart';
 import 'package:zaban/features/progress/data/progress_repository.dart';
-import 'package:zaban/features/progress/presentation/skill_scale.dart';
-import 'package:zaban/features/progress/presentation/widgets/weak_skill_tile.dart';
+import 'package:zaban/features/progress/presentation/widgets/weak_area_tile.dart';
 
 /// The dashboard: current level, the per-skill shape, time spent, weak spots,
 /// vocabulary learned and how pronunciation is trending.
@@ -30,7 +29,12 @@ class ProgressScreen extends ConsumerWidget {
       child: RefreshIndicator(
         color: context.colors.accent,
         backgroundColor: context.colors.surface,
-        onRefresh: () async => ref.refresh(progressDashboardProvider.future),
+        onRefresh: () async {
+          ref
+            ..invalidate(progressHistoryProvider)
+            ..invalidate(pronunciationTrendProvider);
+          await ref.refresh(progressDashboardProvider.future);
+        },
         child: async.when(
           loading: () => const LoadingView(),
           error: (Object error, StackTrace _) => ListView(
@@ -50,16 +54,24 @@ class ProgressScreen extends ConsumerWidget {
   }
 }
 
-class _Dashboard extends StatelessWidget {
+class _Dashboard extends ConsumerWidget {
   const _Dashboard({required this.data});
 
   final ProgressDashboard data;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colors = context.colors;
-    final hours = (data.studyMinutesTotal / 60).floor();
-    final minutes = data.studyMinutesTotal % 60;
+    final hours = (data.totalStudyMinutes / 60).floor();
+    final minutes = data.totalStudyMinutes % 60;
+    final today = data.today ?? const TodayProgress();
+    final trend = ref.watch(pronunciationTrendProvider);
+    final history = ref.watch(progressHistoryProvider);
+
+    // Only measured skills go on the radar; an unmeasured one would read as a
+    // score of zero rather than "not tested yet".
+    final measured =
+        data.skills.where((SkillProgress s) => s.assessed).toList();
 
     return ListView(
       padding: const EdgeInsets.only(top: Spacing.lg, bottom: Spacing.huge),
@@ -80,17 +92,15 @@ class _Dashboard extends StatelessWidget {
                             style: context.text.displaySmall),
                         const SizedBox(height: Spacing.xs),
                         Text(
-                          '${(data.confidence * 100).round()}% confidence in this estimate',
+                          data.placementStatus == 'completed'
+                              ? 'Measured across ${measured.length} skills'
+                              : 'Finish the placement test for a full profile',
                           style: context.text.bodyMedium,
                         ),
                       ],
                     ),
                   ),
-                  LevelBadge(
-                    code: data.currentCefr ?? '—',
-                    confidence: data.confidence,
-                    large: true,
-                  ),
+                  LevelBadge(code: data.cefrLevel ?? '—', large: true),
                 ],
               ),
               const SizedBox(height: Spacing.xl),
@@ -103,20 +113,31 @@ class _Dashboard extends StatelessWidget {
                       children: <Widget>[
                         Text('SKILL PROFILE', style: context.text.labelSmall),
                         const SizedBox(height: Spacing.lg),
-                        Center(
-                          child: SkillRadar(
-                            size: size.isCompact ? 260 : 300,
-                            axes: <RadarAxis>[
-                              for (final SkillProgress skill in data.skills)
-                                RadarAxis(
-                                  label: skill.name ?? skill.skill,
-                                  value: skill.normalised ??
-                                      SkillScale.normalise(skill.ability),
-                                  caption: skill.cefr,
-                                ),
-                            ],
+                        if (measured.isEmpty)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: Spacing.xl,
+                            ),
+                            child: Text(
+                              'No skill has been measured yet. The placement '
+                              'test fills this in.',
+                              style: context.text.bodyMedium,
+                            ),
+                          )
+                        else
+                          Center(
+                            child: SkillRadar(
+                              size: size.isCompact ? 260 : 300,
+                              axes: <RadarAxis>[
+                                for (final SkillProgress skill in measured)
+                                  RadarAxis(
+                                    label: skill.name ?? skill.code,
+                                    value: skill.normalised,
+                                    caption: skill.cefr,
+                                  ),
+                              ],
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   );
@@ -132,15 +153,16 @@ class _Dashboard extends StatelessWidget {
                         icon: Icons.schedule_rounded,
                       ),
                       StatTile(
-                        label: 'This week',
-                        value: '${data.studyMinutesWeek}',
+                        label: 'Today',
+                        value: '${(today.studySeconds / 60).floor()}',
                         unit: 'min',
-                        icon: Icons.calendar_today_rounded,
+                        caption: 'goal ${today.goalMinutes} min',
+                        icon: Icons.today_rounded,
                       ),
                       StatTile(
                         label: 'Vocabulary',
                         value: '${data.vocabularyLearned}',
-                        caption: '${data.vocabularyMastered} mastered',
+                        caption: '${data.conceptsTracked} tracked',
                         icon: Icons.menu_book_rounded,
                       ),
                       StatTile(
@@ -178,62 +200,92 @@ class _Dashboard extends StatelessWidget {
               const SizedBox(height: Spacing.xxl),
               const SectionHeader(
                 title: 'Pronunciation',
-                eyebrow: 'Recent attempts',
+                eyebrow: 'Your last attempts',
               ),
               GlassPanel(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                      textBaseline: TextBaseline.alphabetic,
+                child: trend.when(
+                  loading: () => const SizedBox(
+                    height: 72,
+                    child: LoadingView(),
+                  ),
+                  error: (Object error, StackTrace _) => Text(
+                    'Pronunciation history is unavailable right now.',
+                    style: context.text.bodyMedium,
+                  ),
+                  data: (List<double> scores) {
+                    final average = scores.isEmpty
+                        ? null
+                        : scores.reduce((double a, double b) => a + b) /
+                            scores.length;
+
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text(
-                          data.pronunciationAverage == null
-                              ? '—'
-                              : '${data.pronunciationAverage!.round()}',
-                          style: context.text.displaySmall?.copyWith(
-                            color: data.pronunciationAverage == null
-                                ? colors.textTertiary
-                                : colors.forScore(
-                                    data.pronunciationAverage! / 100,
-                                  ),
-                          ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: <Widget>[
+                            Text(
+                              average == null ? '—' : '${average.round()}',
+                              style: context.text.displaySmall?.copyWith(
+                                color: average == null
+                                    ? colors.textTertiary
+                                    : colors.forScore(average / 100),
+                              ),
+                            ),
+                            const SizedBox(width: Spacing.xs),
+                            Text(
+                              'average of your recent recordings',
+                              style: context.text.bodyMedium,
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: Spacing.xs),
-                        Text('average score', style: context.text.bodyMedium),
+                        const SizedBox(height: Spacing.md),
+                        TrendSparkline(values: scores, height: 72),
                       ],
-                    ),
-                    const SizedBox(height: Spacing.md),
-                    TrendSparkline(values: data.pronunciationTrend, height: 72),
-                  ],
+                    );
+                  },
                 ),
               ),
-              if (data.weakSkills.isNotEmpty) ...<Widget>[
+              if (data.weakAreas.isNotEmpty) ...<Widget>[
                 const SizedBox(height: Spacing.xxl),
                 const SectionHeader(
                   title: 'Worth working on',
-                  eyebrow: 'Chosen by your tutor',
+                  eyebrow: 'Chosen by the mastery model',
                 ),
-                for (final WeakSkill weak in data.weakSkills)
+                for (final WeakArea area in data.weakAreas)
                   Padding(
                     padding: const EdgeInsets.only(bottom: Spacing.sm),
-                    child: WeakSkillTile(weak: weak),
+                    child: WeakAreaTile(area: area),
                   ),
               ],
-              if (data.dailyMinutes.isNotEmpty) ...<Widget>[
-                const SizedBox(height: Spacing.xxl),
-                const SectionHeader(title: 'Consistency', eyebrow: 'Last month'),
-                GlassPanel(
-                  child: TrendSparkline(
-                    values: data.dailyMinutes
-                        .map((DailyPoint p) => p.minutes.toDouble())
+              if (data.topErrors.isNotEmpty) ...<Widget>[
+                const SizedBox(height: Spacing.xl),
+                const SectionHeader(title: 'Recurring mistakes'),
+                for (final ErrorSummary summary in data.topErrors)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: Spacing.sm),
+                    child: ErrorPatternTile(summary: summary),
+                  ),
+              ],
+              const SizedBox(height: Spacing.xxl),
+              const SectionHeader(title: 'Consistency', eyebrow: 'Last 30 days'),
+              GlassPanel(
+                child: history.when(
+                  loading: () => const SizedBox(height: 84, child: LoadingView()),
+                  error: (Object error, StackTrace _) => Text(
+                    'History is unavailable right now.',
+                    style: context.text.bodyMedium,
+                  ),
+                  data: (List<DailyPoint> points) => TrendSparkline(
+                    values: points
+                        .map((DailyPoint p) => p.studyMinutes.toDouble())
                         .toList(),
                     height: 84,
                   ),
                 ),
-              ],
+              ),
             ],
           ),
         ),

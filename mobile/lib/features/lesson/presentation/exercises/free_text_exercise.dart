@@ -66,7 +66,7 @@ class _FreeTextExerciseState extends State<FreeTextExercise> {
         _timer.stop();
         widget.onSubmit(
           ExerciseResponse(
-            value: <String, dynamic>{'text': _controller.text.trim()},
+            value: _controller.text.trim(),
             responseMs: _timer.elapsedMilliseconds,
           ),
         );

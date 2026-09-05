@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
 import 'package:zaban/features/progress/data/models/progress_dashboard.dart';
 
-/// One weak spot, with the server's own explanation of why it is weak.
-class WeakSkillTile extends StatelessWidget {
-  const WeakSkillTile({required this.weak, super.key});
+/// One weak concept, with the mastery the model assigned it.
+class WeakAreaTile extends StatelessWidget {
+  const WeakAreaTile({required this.area, super.key});
 
-  final WeakSkill weak;
+  final WeakArea area;
 
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
-    final mastery = weak.mastery.clamp(0.0, 1.0);
+    final mastery = area.masteryScore.clamp(0.0, 1.0);
 
     return GlassPanel(
       child: Column(
@@ -25,7 +24,7 @@ class WeakSkillTile extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Text(
-                  weak.label,
+                  area.label ?? 'Concept ${area.conceptId}',
                   style: context.text.titleMedium,
                 ),
               ),
@@ -47,22 +46,47 @@ class WeakSkillTile extends StatelessWidget {
                   AlwaysStoppedAnimation<Color>(colors.forScore(mastery)),
             ),
           ),
-          if (weak.reason != null) ...<Widget>[
-            const SizedBox(height: Spacing.sm),
-            Text(weak.reason!, style: context.text.bodySmall),
-          ],
-          if (weak.actionRoute != null) ...<Widget>[
-            const SizedBox(height: Spacing.sm),
-            Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () => context.push(weak.actionRoute!),
-                child: const Text('Practise this'),
-              ),
-            ),
-          ],
         ],
       ),
     );
   }
+}
+
+/// An unresolved error pattern the remediation service is tracking.
+class ErrorPatternTile extends StatelessWidget {
+  const ErrorPatternTile({required this.summary, super.key});
+
+  final ErrorSummary summary;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+
+    return GlassPanel.compact(
+      child: Row(
+        children: <Widget>[
+          Icon(Icons.error_outline_rounded, size: 16, color: colors.warning),
+          const SizedBox(width: Spacing.md),
+          Expanded(
+            child: Text(
+              summary.label ?? _label(summary.errorType),
+              style: context.text.bodyLarge,
+            ),
+          ),
+          Text(
+            '${summary.occurrences}×',
+            style: context.text.labelMedium,
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _label(String type) => switch (type) {
+        'listening' => 'Listening accuracy',
+        'grammar' => 'Grammar',
+        'pronunciation' => 'Pronunciation',
+        'vocabulary_confusion' => 'Confusable words',
+        _ => type.replaceAll('_', ' '),
+      };
 }
