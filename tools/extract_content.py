@@ -222,6 +222,60 @@ def sections_on_page(runs):
     return uniq
 
 
+def glosses_on_page(page_text):
+    """Pull the bracketed glosses off a page, each with the words before it.
+
+    Glosses cannot be recovered from the reassembled section bodies. Those are
+    built from pdftohtml runs, which split at every font change and, on a
+    two-column page, interleave the columns - so a marginal note like
+    "[NOT He/She born]" arrives as two runs with unrelated text between them and
+    the regex has nothing contiguous to match. That is why the Advanced book
+    captured 99% of its glosses and the other three about 20%: Advanced sets
+    them inline in running prose, where one run holds the whole bracket, while
+    the others set them as margin notes.
+
+    pdftotext -layout keeps reading order, so the bracket survives intact here.
+    The 60 characters before it are returned as an anchor, which is what lets a
+    gloss be attributed back to the section it belongs to.
+
+    @return list[tuple[str, str]] (gloss, preceding text)
+    """
+    out = []
+    for m in RE_GLOSS.finditer(page_text):
+        gloss = ' '.join(m.group(1).split())
+        if len(gloss) < 3:
+            continue
+        before = page_text[max(0, m.start() - 60):m.start()]
+        out.append((gloss, ' '.join(before.split())))
+    return out
+
+
+def attribute_gloss(anchor_text, sections):
+    """Which section does this gloss belong to?
+
+    Decided by the words in front of it: the section whose body shares the most
+    of that anchor's trailing words owns the gloss. A gloss whose anchor matches
+    nothing is returned unattributed rather than guessed at - a definition filed
+    under the wrong headword teaches the wrong thing, which is worse than one
+    that is merely uncategorised.
+    """
+    words = [w.lower().strip('.,;:!?()') for w in anchor_text.split()[-6:]]
+    words = [w for w in words if len(w) > 2]
+
+    if not words or not sections:
+        return None
+
+    best, score = None, 0
+    for sec in sections:
+        body = sec['body'].lower()
+        hits = sum(1 for w in words if w in body)
+        if hits > score:
+            best, score = sec, hits
+
+    # One incidental word in common is not evidence of ownership.
+    return best if score >= 2 else None
+
+
 def extract_unit(runs, unit, secs):
     """Attribute every bold run and body line to the section above it."""
     bounds = [(s['top'], s) for s in secs]
@@ -403,14 +457,31 @@ def build(key, cefr, course, pdf_rel, zip_rel):
                 v['example'] = repair_line(v['example'], repair)
             vocab = dedupe_vocab(b['vocabulary'])
             body = '\n'.join(repair_line(ln, repair) for ln in b['lines'])
-            glosses = [g.strip() for g in RE_GLOSS.findall(body)]
             sections.append({
                 'letter': s['letter'],
                 'title': s['title'],
                 'body': body,
                 'vocabulary': vocab,
-                'glosses': glosses,
+                'glosses': [],
             })
+
+        # Glosses come from the page in reading order, not from the
+        # reassembled bodies - see glosses_on_page for why.
+        page_index = (meta['teaching_page'] or 0) - 1
+        page_text = layout[page_index] if 0 <= page_index < len(layout) else ''
+        unplaced = []
+
+        for gloss, anchor_text in glosses_on_page(page_text):
+            target = attribute_gloss(anchor_text, sections)
+            # The anchor travels with the gloss. Without it the importer has no
+            # way to tell which headword a definition belongs to, and would be
+            # back to guessing from a body whose word order the run-splitting
+            # already destroyed.
+            entry = {'text': gloss, 'anchor': anchor_text}
+            if target is not None:
+                target['glosses'].append(entry)
+            else:
+                unplaced.append(entry)
 
         units.append({
             'number': n,
@@ -422,7 +493,12 @@ def build(key, cefr, course, pdf_rel, zip_rel):
             'answers': [{'number': k, 'text': v['body'], 'instructions': v['instructions']}
                         for k, v in sorted(ans.items())],
             'audio': audio.get(n, []),
+            # Glosses whose anchor matched no section. Kept at unit level rather
+            # than dropped: a definition filed under the wrong headword teaches
+            # the wrong thing, but one thrown away teaches nothing at all.
+            'unplaced_glosses': unplaced,
             'vocabulary_count': sum(len(s['vocabulary']) for s in sections),
+            'gloss_count': sum(len(s['glosses']) for s in sections) + len(unplaced),
         })
 
     pages_out = []
@@ -465,7 +541,7 @@ def main():
         e = sum(len(u['exercises']) for u in data['units'])
         a = sum(len(u['answers']) for u in data['units'])
         au = sum(len(u['audio']) for u in data['units'])
-        g = sum(len(sec['glosses']) for u in data['units'] for sec in u['sections'])
+        g = sum(u.get('gloss_count', 0) for u in data['units'])
         grand[data['key']] = (len(data['units']), s, v, g, e, a, au)
         print(f"{data['key']:14s} units={len(data['units']):>3} sections={s:>4} "
               f"vocab={v:>5} glosses={g:>4} exercises={e:>4} answers={a:>4} audio={au:>4}")

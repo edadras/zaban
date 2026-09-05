@@ -3876,7 +3876,18 @@
       }
      ],
      "glosses": [
-      "something you do often and usually in"
+      {
+       "text": "something you do often and usually in the same way",
+       "anchor": "It’s a good idea to have a routine when you use this book."
+      },
+      {
+       "text": "not less than",
+       "anchor": "• a weekly routine when you study a new unit for at least"
+      },
+      {
+       "text": "study it again",
+       "anchor": "• a daily routine when you revise that unit."
+      }
      ]
     },
     {
@@ -3929,7 +3940,16 @@
        "example": "Write your answers."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "speak it so you can hear it",
+       "anchor": "g. • With a new word or phrase, say it aloud"
+      },
+      {
+       "text": "in your head, not speaking",
+       "anchor": "ar it], and repeat it to yourself silently"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -4014,7 +4034,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 20
+   "unplaced_glosses": [],
+   "vocabulary_count": 20,
+   "gloss_count": 5
   },
   {
    "number": 2,
@@ -4097,8 +4119,18 @@
       }
      ],
      "glosses": [
-      "nothing is in a good",
-      "a description of what"
+      {
+       "text": "nothing is in a good order; syn untidy",
+       "anchor": "is very difficult for me. But my notebook is a mess"
+      },
+      {
+       "text": "don’t remember",
+       "anchor": "I often forget"
+      },
+      {
+       "text": "a description of what something means",
+       "anchor": "into Polish, and sometimes I write an explanation"
+      }
      ]
     },
     {
@@ -4160,7 +4192,14 @@
       }
      ],
      "glosses": [
-      "you need it;\nopp\n•"
+      {
+       "text": "put them together with no order",
+       "anchor": ", clothes in another, etc. Don’t mix them up"
+      },
+      {
+       "text": "you need it; opp unnecessary",
+       "anchor": "down new vocabulary, write a translation if it is necessary"
+      }
      ]
     }
    ],
@@ -4222,7 +4261,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 30
+   "unplaced_glosses": [],
+   "vocabulary_count": 30,
+   "gloss_count": 5
   },
   {
    "number": 3,
@@ -4240,7 +4281,12 @@
        "example": "A bilingual dictionary ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "using two languages",
+       "anchor": "aries do I need? A bilingual dictionary"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -4316,7 +4362,12 @@
        "example": "find the silent letters in these words."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "find a word in a dictionary",
+       "anchor": "n in dictionaries If you look up a word"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -4353,8 +4404,30 @@
       }
      ],
      "glosses": [
-      "done by the government or someone in authority",
-      "do or say things in a particular way"
+      {
+       "text": "explain",
+       "anchor": "ing words’ are words that dictionaries use when they define"
+      },
+      {
+       "text": "give something more attention and importance",
+       "anchor": "me of these are quite common. emphasise"
+      },
+      {
+       "text": "having a relationship with someone or something",
+       "anchor": "ebook. relating to or connected to/with"
+      },
+      {
+       "text": "how much there is of something",
+       "anchor": "onnected with / related to music amount"
+      },
+      {
+       "text": "done by the government or someone in authority",
+       "anchor": "on is a large amount of money. official"
+      },
+      {
+       "text": "do or say things in a particular way",
+       "anchor": "assport is an official document. behave"
+      }
      ]
     }
    ],
@@ -4428,7 +4501,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 25
+   "unplaced_glosses": [],
+   "vocabulary_count": 25,
+   "gloss_count": 8
   },
   {
    "number": 4,
@@ -4578,7 +4653,12 @@
        "example": "a long sentence. Did you also know that a question must end with a question mark?"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "when you stop reading or speaking for a short time",
+       "anchor": "tences have a comma, which often shows a pause"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -4667,7 +4747,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 26
+   "unplaced_glosses": [],
+   "vocabulary_count": 26,
+   "gloss_count": 1
   },
   {
    "number": 5,
@@ -4761,7 +4843,12 @@
        "example": "Caribbean (e.g. Jamaica, Barbados), Scandinavia (Sweden, Norway, Denmark, Finland)."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "Australia and New Zealand",
+       "anchor": "ica, Asia, North America, South America, Australia"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -4855,7 +4942,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 18
+   "unplaced_glosses": [],
+   "vocabulary_count": 18,
+   "gloss_count": 1
   },
   {
    "number": 6,
@@ -5026,8 +5115,26 @@
       }
      ],
      "glosses": [
-      "is made or formed from\nareas in",
-      "big differences\nthe appearance of an area"
+      {
+       "text": "is made or formed from",
+       "anchor": "Geography Switzerland consists of"
+      },
+      {
+       "text": "areas in a country or the world",
+       "anchor": "of [is made or formed from] three main geographical regions"
+      },
+      {
+       "text": "big differences",
+       "anchor": "Alps. Switzerland is a land of contrasts"
+      },
+      {
+       "text": "the appearance of an area of land",
+       "anchor": "sts [big differences], with completely different landscapes"
+      },
+      {
+       "text": "weather conditions",
+       "anchor": "pearance of an area of land]. The climate"
+      }
      ]
     }
    ],
@@ -5089,7 +5196,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 37
+   "unplaced_glosses": [],
+   "vocabulary_count": 37,
+   "gloss_count": 5
   },
   {
    "number": 7,
@@ -5203,7 +5312,32 @@
        "example": "very; also extremely hot/windy"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "appeared",
+       "anchor": "very cloudy this morning, but the sun came out after lunch."
+      },
+      {
+       "text": "bad fog",
+       "anchor": "nch. [appeared] The accident happened in thick fog"
+      },
+      {
+       "text": "a lot of rain; opp light rain",
+       "anchor": "[bad fog]. We had some heavy rain at the weekend."
+      },
+      {
+       "text": "a lot of wind",
+       "anchor": "There was a strong wind when we were on the boat."
+      },
+      {
+       "text": "no clouds",
+       "anchor": "rained in the morning, but the sky was clear by lunchtime."
+      },
+      {
+       "text": "very; also extremely hot/windy",
+       "anchor": "htime. [no clouds] It’s been extremely cold today."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -5259,7 +5393,12 @@
        "example": "then you hear thunder and see lightning, and it’s followed by heavy rain."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "the air feels very warm and wet",
+       "anchor": "s with a thunderstorm. First it becomes very humid"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -5295,7 +5434,16 @@
        "example": "Mild is often used in a positive way to describe weather that is not as cold as usual, e.g."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very hot",
+       "anchor": "ery warm cold freezing"
+      },
+      {
+       "text": "very cold",
+       "anchor": "(also cool) (also chilly)"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -5372,7 +5520,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 44
+   "unplaced_glosses": [],
+   "vocabulary_count": 44,
+   "gloss_count": 9
   },
   {
    "number": 8,
@@ -5458,7 +5608,12 @@
        "example": "Farms in the UK may have sheep, pigs, cows, horses, donkeys, chickens, goats and a bull."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "animals that live with people",
+       "anchor": "nd farm animals In the UK, many people keep pets"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -5522,7 +5677,24 @@
        "example": "giraffe"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "animals that normally live in natural conditions",
+       "anchor": "imals The pictures show a number of wild animals"
+      },
+      {
+       "text": "living free",
+       "anchor": "are lucky, you may see these animals in the wild"
+      },
+      {
+       "text": "not often seen or found",
+       "anchor": "me of these animals, for example tigers, are now quite rare"
+      },
+      {
+       "text": "keep safe",
+       "anchor": "seen or found]. It is important that we protect"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -5578,7 +5750,12 @@
        "example": "shark"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "living things, e.g. animals",
+       "anchor": "D Sea creatures Many different creatures"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -5661,7 +5838,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 42
+   "unplaced_glosses": [],
+   "vocabulary_count": 42,
+   "gloss_count": 6
   },
   {
    "number": 9,
@@ -5795,7 +5974,16 @@
        "example": "People often yawn when they’re tired, and sometimes when they’re bored."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "move it up and down",
+       "anchor": "bad news. People in some countries nod their head"
+      },
+      {
+       "text": "move it from side to side",
+       "anchor": "t up and down] to mean ‘yes’, and shake their head"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -5910,7 +6098,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 38
+   "unplaced_glosses": [],
+   "vocabulary_count": 38,
+   "gloss_count": 2
   },
   {
    "number": 10,
@@ -5968,7 +6158,20 @@
        "example": "] is more polite. It also isn’t polite to say that someone is fat; overweight is"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "nice to look at",
+       "anchor": "and women. WOMEN can be attractive or good-looking"
+      },
+      {
+       "text": "attractive",
+       "anchor": "or good-looking [nice to look at], and we often use pretty"
+      },
+      {
+       "text": "not special or different",
+       "anchor": "ry polite to describe someone as ugly; ordinary"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -6005,7 +6208,18 @@
       }
      ],
      "glosses": [
-      "how tall or short they are\nhow heavy they"
+      {
+       "text": "how tall or short they are",
+       "anchor": "B Size We can talk about a person’s height"
+      },
+      {
+       "text": "how heavy they are",
+       "anchor": "rson’s height [how tall or short they are] and their weight"
+      },
+      {
+       "text": "about; syn approximately",
+       "anchor": "heir weight [how heavy they are], e.g. I’m roughly"
+      }
      ]
     },
     {
@@ -6114,7 +6328,32 @@
        "example": "twentyish."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "Can you describe his appearance?",
+       "anchor": "earance A: What does Sophia’s boyfriend look like?"
+      },
+      {
+       "text": "quite tall",
+       "anchor": "od-looking. A: Is he tall? B: Er, tallish"
+      },
+      {
+       "text": "wide; opp narrow",
+       "anchor": "B: Er, tallish [quite tall], but he’s got broad shoulders"
+      },
+      {
+       "text": "strong, healthy and often good at sports",
+       "anchor": "ders [wide; opp narrow]. He looks very athletic"
+      },
+      {
+       "text": "clean, tidy and stylish",
+       "anchor": "think he does a lot of sport. A: Is he quite smart"
+      },
+      {
+       "text": "the clothes he wears are quite nice",
+       "anchor": "tidy and stylish]? B: Yeah, he dresses quite well"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -6187,7 +6426,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 41
+   "unplaced_glosses": [],
+   "vocabulary_count": 41,
+   "gloss_count": 12
   },
   {
    "number": 11,
@@ -6337,7 +6578,24 @@
        "example": "unfriendly and unpleasant."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "happy to give more money or help than is usual",
+       "anchor": "negative generous"
+      },
+      {
+       "text": "an honest person tells the truth",
+       "anchor": "an is usual] mean honest"
+      },
+      {
+       "text": "able to learn and understand things quickly",
+       "anchor": "dishonest clever, intelligent"
+      },
+      {
+       "text": "relaxed and not worried or frightened",
+       "anchor": "tand things quickly] stupid calm"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -6450,7 +6708,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 39
+   "unplaced_glosses": [],
+   "vocabulary_count": 39,
+   "gloss_count": 4
   },
   {
    "number": 12,
@@ -6572,7 +6832,12 @@
        "example": "anxiety"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "shows his feelings easily",
+       "anchor": "racter, e.g. Timo is a very emotional person."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -6597,7 +6862,22 @@
       }
      ],
      "glosses": [
-      "unhappy, often for a long time, and without"
+      {
+       "text": "happy",
+       "anchor": "feelings Why do people say they feel more cheerful"
+      },
+      {
+       "text": "unhappy",
+       "anchor": "heerful [happy] when the sun shines, and miserable"
+      },
+      {
+       "text": "unhappy, often for a long time, and without hope for the future",
+       "anchor": "fective disorder), which makes them feel depressed"
+      },
+      {
+       "text": "the way we feel at a particular time",
+       "anchor": "rk winters? Can the weather really affect our mood"
+      }
      ]
     },
     {
@@ -6731,7 +7011,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 43
+   "unplaced_glosses": [],
+   "vocabulary_count": 43,
+   "gloss_count": 5
   },
   {
    "number": 13,
@@ -6942,7 +7224,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 0
   },
   {
    "number": 14,
@@ -6996,7 +7280,16 @@
        "example": "we usually describe people as elderly"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "the moment a baby is born",
+       "anchor": "Stage 0 birth"
+      },
+      {
+       "text": "in the middle of their lives",
+       "anchor": "40+ approximately people are middle-aged"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -7044,7 +7337,28 @@
        "example": "My English teacher’s approximately/roughly thirty."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "21–23",
+       "anchor": "Common mistakes I’m in my early twenties"
+      },
+      {
+       "text": "54–56",
+       "anchor": "e’s 30 or he’s My parents are in their mid-fifties"
+      },
+      {
+       "text": "77–79",
+       "anchor": "NOT he has My grandmother is in her late seventies"
+      },
+      {
+       "text": "he’s probably 79",
+       "anchor": "s 30 years) My grandfather is nearly/almost eighty"
+      },
+      {
+       "text": "about 30 / more or less 30",
+       "anchor": "(NOT a 30-years-old man)"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -7183,7 +7497,14 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 36
+   "unplaced_glosses": [
+    {
+     "text": "when people stop work; they are retired",
+     "anchor": "] 60 or 65 retirement"
+    }
+   ],
+   "vocabulary_count": 36,
+   "gloss_count": 8
   },
   {
    "number": 15,
@@ -7442,7 +7763,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 37
+   "unplaced_glosses": [],
+   "vocabulary_count": 37,
+   "gloss_count": 0
   },
   {
    "number": 16,
@@ -7772,7 +8095,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 50
+   "unplaced_glosses": [],
+   "vocabulary_count": 50,
+   "gloss_count": 0
   },
   {
    "number": 17,
@@ -7981,7 +8306,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 0
   },
   {
    "number": 18,
@@ -8083,7 +8410,28 @@
        "example": "fridge"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "use something at the same time as someone else",
+       "anchor": "irst child was born, she had to share our bedroom."
+      },
+      {
+       "text": "a bathroom connected to the bedroom",
+       "anchor": "edroom house. Our bedroom has an en-suite bathroom"
+      },
+      {
+       "text": "they do not have to share",
+       "anchor": "om], our two teenage children have their own rooms"
+      },
+      {
+       "text": "a room where people can work",
+       "anchor": ", there’s a living room, a dining room and a study"
+      },
+      {
+       "text": "a machine for washing dishes",
+       "anchor": "the kitchen, but a (wash)basin dishwasher"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -8216,7 +8564,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 42
+   "unplaced_glosses": [],
+   "vocabulary_count": 42,
+   "gloss_count": 5
   },
   {
    "number": 19,
@@ -8262,7 +8612,16 @@
        "example": "a pound, a fifty-pence piece, but a one-pound coin"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "type of money used",
+       "anchor": "ey A Notes and coins In the UK the currency"
+      },
+      {
+       "text": "pounds",
+       "anchor": "In the UK the currency [type of money used] is sterling"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -8469,7 +8828,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [],
+   "vocabulary_count": 33,
+   "gloss_count": 2
   },
   {
    "number": 20,
@@ -8583,7 +8944,12 @@
        "example": "I hit my leg on the table and it really hurts / it’s very painful."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "often has the pain of",
+       "anchor": "Aria’s got stomach ache. My dad suffers from"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -8632,7 +8998,14 @@
       }
      ],
      "glosses": [
-      "when special doctors, called surgeons,\ncut into the body for medical reasons; also called surgery"
+      {
+       "text": "bad",
+       "anchor": "y painful. C Serious illnesses For serious"
+      },
+      {
+       "text": "when special doctors, called surgeons, cut into the body for medical reasons; also called surgery",
+       "anchor": "is called a patient. Many patients need an operation"
+      }
      ]
     }
    ],
@@ -8710,7 +9083,14 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [
+    {
+     "text": "something you take to treat an illness",
+     "anchor": "medicine"
+    }
+   ],
+   "vocabulary_count": 33,
+   "gloss_count": 4
   },
   {
    "number": 21,
@@ -8824,7 +9204,20 @@
        "example": "trainers"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "wearing nice clothes and looking attractive; also well- dressed",
+       "anchor": "ish and casual I think the woman looks stylish"
+      },
+      {
+       "text": "clean and tidy and suitable for formal situations",
+       "anchor": "lso well- dressed]. The man is smartly dressed"
+      },
+      {
+       "text": "comfortable and suitable for informal situations",
+       "anchor": "situations]. The boy’s clothes are more casual"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -8884,7 +9277,24 @@
        "example": "I like your new trousers. (NOT I like your new trouser.)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "put but I usually take off my tie before on my clothes",
+       "anchor": "work, shower and get dressed"
+      },
+      {
+       "text": "remove it; opp put breakfast. something on",
+       "anchor": "thes]. I don’t eat lunchtime."
+      },
+      {
+       "text": "open a zip, because dark colours suit me. buttons, etc.",
+       "anchor": "black easier to undo a zip"
+      },
+      {
+       "text": "I look good in dark colours; opp quicker to do it up. bright colours",
+       "anchor": "buttons, etc.] and it’s also much"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -8950,7 +9360,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 38
+   "unplaced_glosses": [],
+   "vocabulary_count": 38,
+   "gloss_count": 7
   },
   {
    "number": 22,
@@ -9113,9 +9525,38 @@
       }
      ],
      "glosses": [
-      "another shop assistant is already helping me",
-      "too small around the",
-      "I have decided not to buy it;\nopp\nI’ll take it/them"
+      {
+       "text": "a person who works in a shop",
+       "anchor": "B In a clothes shop A shop assistant"
+      },
+      {
+       "text": "helping them to buy things",
+       "anchor": "rks in a shop] is serving different customers"
+      },
+      {
+       "text": "another shop assistant is already helping me",
+       "anchor": "omer 1 No, I’m being served, thanks."
+      },
+      {
+       "text": "too small around the body; opp loose/big",
+       "anchor": "and it didn’t really fit me; it’s a bit tight"
+      },
+      {
+       "text": "that is disappointing; syn that’s a pity",
+       "anchor": "raid. Customer 2 Oh, that’s a shame"
+      },
+      {
+       "text": "I have decided not to buy it; opp I’ll take it/them",
+       "anchor": "a pity]. OK. I’ll leave it, thanks."
+      },
+      {
+       "text": "I want to find a skirt",
+       "anchor": "ustomer 3 Yes, I’m looking for a skirt and this looks nice."
+      },
+      {
+       "text": "the place where you can try on clothes",
+       "anchor": "sisstant Yes, of course. The changing rooms are down there."
+      }
      ]
     }
    ],
@@ -9187,7 +9628,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 35
+   "unplaced_glosses": [],
+   "vocabulary_count": 35,
+   "gloss_count": 8
   },
   {
    "number": 23,
@@ -9376,7 +9819,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 24
+   "unplaced_glosses": [],
+   "vocabulary_count": 24,
+   "gloss_count": 0
   },
   {
    "number": 24,
@@ -9575,8 +10020,14 @@
       }
      ],
      "glosses": [
-      "young cow",
-      "young sheep"
+      {
+       "text": "young cow",
+       "anchor": ", fish and seafood Animal: cow calf"
+      },
+      {
+       "text": "young sheep",
+       "anchor": "Animal: cow calf [young cow] lamb"
+      }
      ]
     }
    ],
@@ -9670,7 +10121,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 2
   },
   {
    "number": 25,
@@ -9728,7 +10181,16 @@
        "example": "Preparing and cooking food"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "using oil",
+       "anchor": "grill toast or meat under a grill. You roast meat"
+      },
+      {
+       "text": "without oil",
+       "anchor": "meat [using oil] in the oven. You also bake cakes"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -9764,7 +10226,28 @@
        "example": "What does it taste like?"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "remove the skin",
+       "anchor": "grill Peel the potatoes"
+      },
+      {
+       "text": "cut it into small pieces",
+       "anchor": "oven While they’re boiling, chop an onion."
+      },
+      {
+       "text": "putting them together with the onions",
+       "anchor": "Fry the onion before adding some chopped tomatoes."
+      },
+      {
+       "text": "move it around in a saucepan using a spoon",
+       "anchor": "th the onions] Then stir it all for a few minutes."
+      },
+      {
+       "text": "people who cook food in a restaurant as a job",
+       "anchor": "a spoon] C What does it taste like? Chefs"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -9825,9 +10308,30 @@
       }
      ],
      "glosses": [
-      "people who cook food in a restaurant as a job\nput a small amount in",
-      "the type of taste that food or drink has, e.g. vanilla, coffee,\nstrawberry, etc.",
-      "terrible, unpleasant\nfantastic,\nwith a wonderful taste"
+      {
+       "text": "put a small amount in their mouth to see what it is like",
+       "anchor": "o cook food in a restaurant as a job] always taste the food"
+      },
+      {
+       "text": "has a good taste",
+       "anchor": "tasted a bit strange. Michel’s food is very tasty"
+      },
+      {
+       "text": "with a strong hot flavour",
+       "anchor": "good taste]. Indian food is a bit too spicy for me"
+      },
+      {
+       "text": "the type of taste that food or drink has, e.g. vanilla, coffee, strawberry, etc.",
+       "anchor": "flavour]. You get ice cream in different flavours"
+      },
+      {
+       "text": "terrible, unpleasant",
+       "anchor": "trawberry, etc.]. Lena said her pasta was horrible"
+      },
+      {
+       "text": "fantastic, with a wonderful taste",
+       "anchor": "ible [terrible, unpleasant], but I thought it was delicious"
+      }
      ]
     },
     {
@@ -9865,7 +10369,14 @@
       }
      ],
      "glosses": [
-      "the cooking"
+      {
+       "text": "the cooking instructions for a particular dish, e.g. lasagne",
+       "anchor": "I’m a bit nervous when I cook, so I always follow a recipe"
+      },
+      {
+       "text": "the different food you need to make a particular meal",
+       "anchor": "e], and make sure I have all the right ingredients"
+      }
      ]
     }
    ],
@@ -9959,7 +10470,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 38
+   "unplaced_glosses": [],
+   "vocabulary_count": 38,
+   "gloss_count": 15
   },
   {
    "number": 26,
@@ -10198,7 +10711,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [],
+   "vocabulary_count": 33,
+   "gloss_count": 0
   },
   {
    "number": 27,
@@ -10396,7 +10911,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 24
+   "unplaced_glosses": [],
+   "vocabulary_count": 24,
+   "gloss_count": 0
   },
   {
    "number": 28,
@@ -10697,7 +11214,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 51
+   "unplaced_glosses": [],
+   "vocabulary_count": 51,
+   "gloss_count": 0
   },
   {
    "number": 29,
@@ -10768,7 +11287,10 @@
       }
      ],
      "glosses": [
-      "you can’t pass\nanother car"
+      {
+       "text": "you can’t pass another car",
+       "anchor": "no overtaking speed limit"
+      }
      ]
     },
     {
@@ -10897,7 +11419,12 @@
        "example": "injuries"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "harm or break it",
+       "anchor": "n the brake to stop the car You damage a thing"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -10974,7 +11501,14 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 42
+   "unplaced_glosses": [
+    {
+     "text": "hurt them",
+     "anchor": "person"
+    }
+   ],
+   "vocabulary_count": 42,
+   "gloss_count": 3
   },
   {
    "number": 30,
@@ -11096,7 +11630,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 1
+   "unplaced_glosses": [],
+   "vocabulary_count": 1,
+   "gloss_count": 0
   },
   {
    "number": 31,
@@ -11246,7 +11782,44 @@
        "example": "Repeat this sentence after me. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "find the meaning of a word",
+       "anchor": "s in the classroom. look up a word in a dictionary"
+      },
+      {
+       "text": "use it and then return it",
+       "anchor": "g of a word] borrow someone’s dictionary or rubber"
+      },
+      {
+       "text": "put the plug in the electric socket",
+       "anchor": "[use it and then return it] plug in the DVD player"
+      },
+      {
+       "text": "increase the volume; make it louder; opp turn (it) down",
+       "anchor": "ctric socket] turn up the volume on the DVD player"
+      },
+      {
+       "text": "give the correct English if students make mistakes",
+       "anchor": "der; opp turn (it) down] correct students’ English"
+      },
+      {
+       "text": "someone else, i. e. another student",
+       "anchor": "the classroom. I’d like you to work with a partner"
+      },
+      {
+       "text": "change seats / sit in each other’s seats",
+       "anchor": "ent]. Henrique, could you swap places with Lorena?"
+      },
+      {
+       "text": "use it together at the same time",
+       "anchor": "seats] Kim, could you share your book with Petra?"
+      },
+      {
+       "text": "say it again",
+       "anchor": "r at the same time] Repeat this sentence after me."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -11407,7 +11980,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 51
+   "unplaced_glosses": [],
+   "vocabulary_count": 51,
+   "gloss_count": 9
   },
   {
    "number": 32,
@@ -11493,7 +12068,24 @@
        "example": "a job or go on to university ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "go to; fml",
+       "anchor": "education 3 Almost all children attend"
+      },
+      {
+       "text": "students at school",
+       "anchor": "Everyone starts primary school. 11 Pupils"
+      },
+      {
+       "text": "job",
+       "anchor": "hey can go to a college for vocational"
+      },
+      {
+       "text": "continue their education at university",
+       "anchor": "l and get a job or go on to university"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -11550,7 +12142,22 @@
       }
      ],
      "glosses": [
-      "end"
+      {
+       "text": "period of rest between work",
+       "anchor": "ience, etc. There’s usually a one-hour lunch break"
+      },
+      {
+       "text": "periods of study",
+       "anchor": "The school year is usually divided into three terms"
+      },
+      {
+       "text": "end classes for the term",
+       "anchor": "ool year, pupils usually take/do exams before they break up"
+      },
+      {
+       "text": "return",
+       "anchor": "sses for the term]. After the summer holidays, they go back"
+      }
      ]
     },
     {
@@ -11700,7 +12307,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 46
+   "unplaced_glosses": [],
+   "vocabulary_count": 46,
+   "gloss_count": 8
   },
   {
    "number": 33,
@@ -11791,9 +12400,58 @@
       }
      ],
      "glosses": [
-      "saying things in a way",
-      "happy and ready to\ntry something new to",
-      "is good at hearing, repeating and understanding sounds"
+      {
+       "text": "knows a lot of words",
+       "anchor": "ome of her students. Jade has a wide vocabulary"
+      },
+      {
+       "text": "without mistakes",
+       "anchor": "[knows a lot of words] and speaks very accurately"
+      },
+      {
+       "text": "able to speak naturally without stopping",
+       "anchor": "e her speaking more in order to become more fluent"
+      },
+      {
+       "text": "the way he pronounces words",
+       "anchor": "opping]. Angel is quite fluent, but his accent"
+      },
+      {
+       "text": "letters of the alphabet (a–z), which are not the vowels a, e, i, o, u",
+       "anchor": "articular, he has problems with certain consonants"
+      },
+      {
+       "text": "saying things in a way people understand",
+       "anchor": ". Jose has no problem making himself understood"
+      },
+      {
+       "text": "make it bigger",
+       "anchor": "people understand], but he needs to increase his vocabulary"
+      },
+      {
+       "text": "elementary; syn simple",
+       "anchor": "Nastya because at the moment it’s quite basic"
+      },
+      {
+       "text": "happy and ready to",
+       "anchor": "entary; syn simple]. Olga is always willing to"
+      },
+      {
+       "text": "try something new to see what it is like",
+       "anchor": "ys willing to [happy and ready to] experiment with language"
+      },
+      {
+       "text": "makes mistakes",
+       "anchor": "t is like]. For that reason she sometimes gets things wrong"
+      },
+      {
+       "text": "learns things without trying",
+       "anchor": "Andreas is a fantastic language learner. He picks things up"
+      },
+      {
+       "text": "is good at hearing, repeating and understanding sounds and words",
+       "anchor": "] very quickly, and he has a good ear for language"
+      }
      ]
     },
     {
@@ -11886,7 +12544,16 @@
        "example": "trying his best"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "study /prepare for the exam",
+       "anchor": "efore taking an exam, you revise for the exam."
+      },
+      {
+       "text": "do it again",
+       "anchor": "repare for the exam] Sometimes you can also retake an exam."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -11957,7 +12624,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 15
   },
   {
    "number": 34,
@@ -12176,7 +12845,14 @@
       }
      ],
      "glosses": [
-      "do something in the"
+      {
+       "text": "do something in the future",
+       "anchor": "heir degree, they are graduates. Some graduates go on to do"
+      },
+      {
+       "text": "make a detailed study of one particular subject",
+       "anchor": "(Doctor of Philosophy) where students do research"
+      }
      ]
     }
    ],
@@ -12254,7 +12930,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 47
+   "unplaced_glosses": [],
+   "vocabulary_count": 47,
+   "gloss_count": 2
   },
   {
    "number": 35,
@@ -12353,7 +13031,10 @@
       }
      ],
      "glosses": [
-      "repairs cars\nrepairs homes"
+      {
+       "text": "repairs cars repairs homes",
+       "anchor": "gs [installs and [installs and repairs"
+      }
      ]
     },
     {
@@ -12447,8 +13128,26 @@
       }
      ],
      "glosses": [
-      "general practitioners: doctors who don’t work in a hospital\npeople who look after",
-      "open the body to\nremove or repair a part that is damaged"
+      {
+       "text": "give medicine or medical help",
+       "anchor": "profession These people treat people or animals."
+      },
+      {
+       "text": "general practitioners: doctors who don’t work in a hospital",
+       "anchor": "or animals. [give medicine or medical help] GPs"
+      },
+      {
+       "text": "people who look after your teeth",
+       "anchor": "ctitioners: doctors who don’t work in a hospital], dentists"
+      },
+      {
+       "text": "animal doctors",
+       "anchor": "ists [people who look after your teeth] and vets"
+      },
+      {
+       "text": "open the body to remove or repair a part that is damaged",
+       "anchor": "who look after people, and surgeons who operate on people."
+      }
      ]
     },
     {
@@ -12513,7 +13212,12 @@
        "example": "fire brigade)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "became a member of",
+       "anchor": "services My son joined the army when he was 18."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -12596,7 +13300,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 54
+   "unplaced_glosses": [],
+   "vocabulary_count": 54,
+   "gloss_count": 7
   },
   {
    "number": 36,
@@ -12707,9 +13413,42 @@
       }
      ],
      "glosses": [
-      "does the work in marketing;\nsyn\nhandle\nin control of;\nsyn\nin",
-      "organises or controls\nhappening",
-      "when\ncustomers complain / say that something is wrong or is not satisfactory"
+      {
+       "text": "people who help others in a particular area",
+       "anchor": "involve?* James and Emma are business consultants"
+      },
+      {
+       "text": "start",
+       "anchor": "cular area]. They advise people who want to set up"
+      },
+      {
+       "text": "does the work in marketing; syn handle",
+       "anchor": "health and fitness. James deals with the marketing"
+      },
+      {
+       "text": "in control of; syn in charge of",
+       "anchor": "rk in marketing; syn handle], while Emma is responsible for"
+      },
+      {
+       "text": "things that people make/produce",
+       "anchor": "ble for [in control of; syn in charge of] products"
+      },
+      {
+       "text": "organises or controls",
+       "anchor": "Amy is a manager in a veterinary surgery. She runs"
+      },
+      {
+       "text": "happening every day",
+       "anchor": "ry surgery. She runs [organises or controls] the day-to-day"
+      },
+      {
+       "text": "short for administration",
+       "anchor": "manager and a secretary. Her work involves a lot of admin"
+      },
+      {
+       "text": "when customers complain / say that something is wrong or is not satisfactory",
+       "anchor": "pment; she also handles any complaints that customers make."
+      }
      ]
     },
     {
@@ -12754,7 +13493,16 @@
        "example": "work they do, and is usually paid into a person’s bank account every month. Wages are usually paid"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "receive money",
+       "anchor": "to do exactly? C Pay Most workers are paid"
+      },
+      {
+       "text": "every year",
+       "anchor": "ncome is about £25,000. OR I earn/make about £25,000 a year"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -12782,7 +13530,24 @@
        "example": "] for a new mother and father when a baby is born, etc. There is also a minimum wage"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "always the same",
+       "anchor": "D Conditions* Most people work fixed hours"
+      },
+      {
+       "text": "work extra hours",
+       "anchor": "to-five job. Other people have to do/work overtime"
+      },
+      {
+       "text": "not at work",
+       "anchor": ", e.g. nice offices, paid holidays, extra time off"
+      },
+      {
+       "text": "an amount of money workers receive, and employers cannot pay less than this",
+       "anchor": "a baby is born, etc. There is also a minimum wage"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -12865,7 +13630,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 36
+   "unplaced_glosses": [],
+   "vocabulary_count": 36,
+   "gloss_count": 15
   },
   {
    "number": 37,
@@ -12916,7 +13683,10 @@
       }
      ],
      "glosses": [
-      "a period of"
+      {
+       "text": "a period of organised help and advice, often in a different place",
+       "anchor": "had a training.) You can also go on / do a training course"
+      }
      ]
     },
     {
@@ -12938,7 +13708,22 @@
       }
      ],
      "glosses": [
-      "more money\nknowledge you get from doing"
+      {
+       "text": "given a better job with more responsibility",
+       "anchor": "Promotion I worked hard and soon I was promoted"
+      },
+      {
+       "text": "more money",
+       "anchor": "responsibility]. They also gave me a good pay rise"
+      },
+      {
+       "text": "knowledge you get from doing something such as a job",
+       "anchor": "a good pay rise [more money]. It was really good experience"
+      },
+      {
+       "text": "a move to a higher job in the company",
+       "anchor": "w years later, they gave me an important promotion"
+      }
      ]
     },
     {
@@ -12956,7 +13741,14 @@
       }
      ],
      "glosses": [
-      "in another"
+      {
+       "text": "in another country",
+       "anchor": "as getting a bit bored, and decided I wanted to work abroad"
+      },
+      {
+       "text": "told the company I was leaving; syn resign",
+       "anchor": "ork abroad [in another country]. So, I quit my job"
+      }
      ]
     },
     {
@@ -12993,7 +13785,20 @@
        "example": "Claudio didn’t have a job. (NOT He didn’t have a work.)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "told me to leave the company; syn gave me the sack",
+       "anchor": "to work very hard. Finally, the company sacked me"
+      },
+      {
+       "text": "without a job; syn out of work",
+       "anchor": "gave me the sack], and after that I was unemployed"
+      },
+      {
+       "text": "working only part of the day or week; opp full-time job",
+       "anchor": "ork] for two months. Finally I got a part-time job"
+      }
+     ]
     },
     {
      "letter": "E",
@@ -13030,8 +13835,18 @@
       }
      ],
      "glosses": [
-      "belonging to me / it was my",
-      "be"
+      {
+       "text": "belonging to me / it was my restaurant",
+       "anchor": "opened my own restaurant."
+      },
+      {
+       "text": "it did well and made money",
+       "anchor": "restaurant] It was very successful"
+      },
+      {
+       "text": "be successful",
+       "anchor": "the owner of two hotels. I believe anyone can succeed"
+      }
      ]
     }
    ],
@@ -13111,7 +13926,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 28
+   "unplaced_glosses": [],
+   "vocabulary_count": 28,
+   "gloss_count": 13
   },
   {
    "number": 38,
@@ -13362,7 +14179,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 36
+   "unplaced_glosses": [],
+   "vocabulary_count": 36,
+   "gloss_count": 0
   },
   {
    "number": 39,
@@ -13468,7 +14287,12 @@
        "example": "expanded"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "a lot",
+       "anchor": "you have been successful in something a great deal"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -13627,7 +14451,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 43
+   "unplaced_glosses": [],
+   "vocabulary_count": 43,
+   "gloss_count": 1
   },
   {
    "number": 40,
@@ -13733,7 +14559,28 @@
        "example": "make a loss"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "movements",
+       "anchor": "A Rise and fall These verbs describe trends"
+      },
+      {
+       "text": "how much you sell",
+       "anchor": "l These verbs describe trends [movements] in sales"
+      },
+      {
+       "text": "a bit",
+       "anchor": "ifferent ways: They can rise slightly"
+      },
+      {
+       "text": "slowly over a long period",
+       "anchor": "htly [a bit]. They can rise gradually"
+      },
+      {
+       "text": "quickly and by a large amount",
+       "anchor": "a long period]. They can rise sharply"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -13837,7 +14684,12 @@
        "example": "£100 for a year and the interest rate is 15% a year, you’ll have to pay back £115."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "asks you to pay",
+       "anchor": "uage help Interest is what the bank charges you"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -13908,7 +14760,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 47
+   "unplaced_glosses": [],
+   "vocabulary_count": 47,
+   "gloss_count": 6
   },
   {
    "number": 41,
@@ -14158,7 +15012,16 @@
        "example": "I’m afraid I don’t do any exercise at all."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "helps his body to stay in good condition",
+       "anchor": "l. My brother enjoys jogging, and it keeps him fit"
+      },
+      {
+       "text": "because she enjoys it; syn for pleasure",
+       "anchor": "My mum does a bit of jogging as well – just for fun"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -14229,7 +15092,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 57
+   "unplaced_glosses": [],
+   "vocabulary_count": 57,
+   "gloss_count": 2
   },
   {
    "number": 42,
@@ -14303,7 +15168,12 @@
        "example": "The score at the end of a game is also the result."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "the number of goals a team has",
+       "anchor": "d losing In football, you can talk about the score"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -14359,7 +15229,12 @@
        "example": "Philipp Lahm received the cup as captain of the winning team."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "join with others in",
+       "anchor": "and teams such as Manchester United, take part in"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -14532,7 +15407,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 49
+   "unplaced_glosses": [],
+   "vocabulary_count": 49,
+   "gloss_count": 2
   },
   {
    "number": 43,
@@ -14699,10 +15576,54 @@
       }
      ],
      "glosses": [
-      "the\npeople who are in films",
-      "difficult to",
-      "understand\nthings you see or do\nto enjoy yourself",
-      "the person who tells the actors what to do, e.g."
+      {
+       "text": "a film that makes people frightened, e.g. Dracula",
+       "anchor": "o see? If it’s a horror film"
+      },
+      {
+       "text": "opinions in a newspaper or magazine",
+       "anchor": "If a film gets good reviews"
+      },
+      {
+       "text": "a famous actor",
+       "anchor": "see it. If there’s a big star"
+      },
+      {
+       "text": "the people who are in films",
+       "anchor": "and see films if I don’t recognise the names of the actors"
+      },
+      {
+       "text": "difficult to understand",
+       "anchor": "I’m not interested in films that are serious or complicated"
+      },
+      {
+       "text": "things you see or do to enjoy yourself",
+       "anchor": "understand]; I only go to the cinema for entertainment"
+      },
+      {
+       "text": "films that are funny",
+       "anchor": "oy yourself]. I like comedies"
+      },
+      {
+       "text": "comedies that have a love story",
+       "anchor": "specially romantic comedies"
+      },
+      {
+       "text": "what films are being shown at the cinema",
+       "anchor": "in! I look to see what’s on"
+      },
+      {
+       "text": "want to see; infml",
+       "anchor": "anything that I fancy seeing"
+      },
+      {
+       "text": "the person who tells the actors what to do, e.g. Spielberg",
+       "anchor": "]. For me, the film director"
+      },
+      {
+       "text": "the newest, most recent",
+       "anchor": "go and see the latest film"
+      }
      ]
     }
    ],
@@ -14774,7 +15695,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 36
+   "unplaced_glosses": [],
+   "vocabulary_count": 36,
+   "gloss_count": 12
   },
   {
    "number": 44,
@@ -14825,7 +15748,26 @@
       }
      ],
      "glosses": [
-      "music written and played in a traditional"
+      {
+       "text": "music written and played in a traditional Common mistakes style",
+       "anchor": "t. I like pop music, my brother likes folk music"
+      },
+      {
+       "text": "play",
+       "anchor": "d I like going to concerts to see groups perform"
+      },
+      {
+       "text": "in front of a large group of people, called an audience; pronounced to rhyme with five",
+       "anchor": "ng to concerts to see groups perform [play] live"
+      },
+      {
+       "text": "the musical notes",
+       "anchor": "When I listen to music I am mostly interested in the tune"
+      },
+      {
+       "text": "the words of a song",
+       "anchor": "but my brother is more interested in the lyrics"
+      }
      ]
     },
     {
@@ -14963,7 +15905,18 @@
       }
      ],
      "glosses": [
-      "a large group of musicians who play"
+      {
+       "text": "a large group of musicians who play different instruments",
+       "anchor": "A conductor is someone who stands in front of an orchestra"
+      },
+      {
+       "text": "leads",
+       "anchor": "ans who play different instruments] and conducts"
+      },
+      {
+       "text": "a play in which the words are sung",
+       "anchor": "them. An opera singer is someone who sings opera"
+      }
      ]
     },
     {
@@ -15005,7 +15958,26 @@
       }
      ],
      "glosses": [
-      "is available for people"
+      {
+       "text": "put eight or ten songs into one collection",
+       "anchor": "Making an album When groups record an album"
+      },
+      {
+       "text": "one song",
+       "anchor": "um [put eight or ten songs into one collection] or a single"
+      },
+      {
+       "text": "is available for people to buy",
+       "anchor": "do it in a recording studio. Then, when the album comes out"
+      },
+      {
+       "text": "there are adverts on TV, online etc.",
+       "anchor": "e to buy], it is usually advertised in the media"
+      },
+      {
+       "text": "individual songs from an album",
+       "anchor": "c.]. Many people download their favourite tracks"
+      }
      ]
     }
    ],
@@ -15089,7 +16061,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 47
+   "unplaced_glosses": [],
+   "vocabulary_count": 47,
+   "gloss_count": 13
   },
   {
    "number": 45,
@@ -15278,7 +16252,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 23
+   "unplaced_glosses": [],
+   "vocabulary_count": 23,
+   "gloss_count": 0
   },
   {
    "number": 46,
@@ -15481,7 +16457,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 24
+   "unplaced_glosses": [],
+   "vocabulary_count": 24,
+   "gloss_count": 0
   },
   {
    "number": 47,
@@ -15704,7 +16682,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 35
+   "unplaced_glosses": [],
+   "vocabulary_count": 35,
+   "gloss_count": 0
   },
   {
    "number": 48,
@@ -15846,7 +16826,20 @@
        "example": "included, it’s normal to leave a tip ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "have as part of the meal",
+       "anchor": "Many restaurants offer three-course meals which include"
+      },
+      {
+       "text": "amount of money you pay for being served by the waiter",
+       "anchor": "am). Prices sometimes include 10% service as well"
+      },
+      {
+       "text": "extra money you give to the waiter/waitress",
+       "anchor": "ervice isn’t included, it’s normal to leave a tip"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -15883,7 +16876,14 @@
       }
      ],
      "glosses": [
-      "Have you decided what to eat?"
+      {
+       "text": "Have you decided what to eat?",
+       "anchor": "rdering a meal WAITER: Are you ready to order?"
+      },
+      {
+       "text": "lettuce with other vegetables",
+       "anchor": "steak, with French fries and a mixed salad"
+      }
      ]
     }
    ],
@@ -15967,7 +16967,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 35
+   "unplaced_glosses": [],
+   "vocabulary_count": 35,
+   "gloss_count": 5
   },
   {
    "number": 49,
@@ -16013,7 +17015,12 @@
        "example": "decaf tea/coffee ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "without caffeine",
+       "anchor": "decaf tea/coffee"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -16190,7 +17197,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 29
+   "unplaced_glosses": [],
+   "vocabulary_count": 29,
+   "gloss_count": 1
   },
   {
    "number": 50,
@@ -16313,9 +17322,30 @@
       }
      ],
      "glosses": [
-      "visit a place casually, often on foot\nI want to have a look round the museum.",
-      "leave home / your hotel to go to a social event, e.g.\nrestaurant or theatre",
-      "something you buy or keep to remember a\nplace or holiday"
+      {
+       "text": "visit famous places; also see the sights",
+       "anchor": "example • go sightseeing"
+      },
+      {
+       "text": "visit a place casually, often on foot",
+       "anchor": "f sightseeing in Warsaw. • have a look round"
+      },
+      {
+       "text": "go round a new place to see what is there",
+       "anchor": "t to have a look round the museum. • explore"
+      },
+      {
+       "text": "leave home / your hotel to go to a social event, e.g. On holiday we went out every night. restaurant or theatre",
+       "anchor": "We explored the flower market. • go out"
+      },
+      {
+       "text": "lose one’s way",
+       "anchor": "restaurant or theatre] • get lost"
+      },
+      {
+       "text": "something you buy or keep to remember a We bought some dolls as souvenirs. place or holiday",
+       "anchor": "had a lovely time in Venice. • buy souvenirs"
+      }
      ]
     },
     {
@@ -16369,7 +17399,42 @@
       }
      ],
      "glosses": [
-      "something that makes people come to a\nplace or want to do a particular thing"
+      {
+       "text": "town",
+       "anchor": "town, or country, e.g. Bruges is a lovely place"
+      },
+      {
+       "text": "hotel",
+       "anchor": "y place [town] and we found a really nice place"
+      },
+      {
+       "text": "books with information about places",
+       "anchor": "y nice place [hotel] to stay. The guidebooks"
+      },
+      {
+       "text": "very good or very beautiful",
+       "anchor": "ces] say the Alhambra in Granada is magnificent"
+      },
+      {
+       "text": "very crowded",
+       "anchor": "[very good or very beautiful], but it’s always packed"
+      },
+      {
+       "text": "full of life and activity",
+       "anchor": "s in the summer. São Paulo is a lively place"
+      },
+      {
+       "text": "a lot",
+       "anchor": "ively place [full of life and activity], and there’s plenty"
+      },
+      {
+       "text": "important places built a long time ago",
+       "anchor": "St Petersburg has lots of historic monuments"
+      },
+      {
+       "text": "something that makes people come to a place or want to do a particular thing",
+       "anchor": "Hermitage Museum was the main attraction for me."
+      }
      ]
     }
    ],
@@ -16437,7 +17502,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 36
+   "unplaced_glosses": [],
+   "vocabulary_count": 36,
+   "gloss_count": 15
   },
   {
    "number": 51,
@@ -16499,7 +17566,36 @@
        "example": "sometimes get a breeze ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "the land close to the sea",
+       "anchor": "and Many people spend their holiday at the coast"
+      },
+      {
+       "text": "towns by the sea for tourists",
+       "anchor": "he sea], where there are a lot of seaside resorts"
+      },
+      {
+       "text": "with lots of sand",
+       "anchor": "y. Generally people prefer beaches that are sandy"
+      },
+      {
+       "text": "a casual walk",
+       "anchor": "re sandy [with lots of sand], where you can go for a stroll"
+      },
+      {
+       "text": "the place where the sea meets the land",
+       "anchor": "n go for a stroll [a casual walk] along the shore"
+      },
+      {
+       "text": "when it is sunny",
+       "anchor": "re [the place where the sea meets the land] in the sunshine"
+      },
+      {
+       "text": "a nice gentle wind",
+       "anchor": "y]. On the beach, you also sometimes get a breeze"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -16632,7 +17728,10 @@
       }
      ],
      "glosses": [
-      "drink some"
+      {
+       "text": "drink some coffee",
+       "anchor": "drive (a journey in the car for pleasure), a swim, a coffee"
+      }
      ]
     }
    ],
@@ -16714,7 +17813,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 43
+   "unplaced_glosses": [],
+   "vocabulary_count": 43,
+   "gloss_count": 8
   },
   {
    "number": 52,
@@ -16769,7 +17870,30 @@
       }
      ],
      "glosses": [
-      "you read a newspaper on your"
+      {
+       "text": "newspapers",
+       "anchor": "s and television A Newspapers Most papers"
+      },
+      {
+       "text": "appear in shops; syn are published",
+       "anchor": "papers] are daily, which means that they come out"
+      },
+      {
+       "text": "for the whole country",
+       "anchor": "; syn are published] every day. Some are national"
+      },
+      {
+       "text": "for a part of the country",
+       "anchor": "onal [for the whole country], others are regional"
+      },
+      {
+       "text": "you read a newspaper on your phone",
+       "anchor": "called e-papers. You can also get mobile editions"
+      },
+      {
+       "text": "pieces of writing about news items, written by reporters/ journalists, e.g. a report in The Times on/about a crime",
+       "anchor": "thly. B Contents of* newspapers Reports"
+      }
      ]
     },
     {
@@ -16831,10 +17955,22 @@
       }
      ],
      "glosses": [
-      "pieces of writing about news items, written by reporters/\njournalists, e.g. a report in\nThe Times\non/about a crime",
-      "pieces of writing about an important subject, e.g. an article on/\nabout drugs",
-      "titles written in large letters above reports/articles, e.g.\nGOVERNMENT LOSES VOTE",
-      "words and pictures about a product, to make people buy it, e.g. an advert for\nshampoo"
+      {
+       "text": "pieces of writing about an important subject, e.g. an article on/ about drugs",
+       "anchor": "a report in The Times on/about a crime] Articles"
+      },
+      {
+       "text": "titles written in large letters above reports/articles, e.g. GOVERNMENT LOSES VOTE",
+       "anchor": ". an article on/ about drugs] Headlines"
+      },
+      {
+       "text": "pieces of writing giving an opinion, e.g. a review of a new book",
+       "anchor": "es, e.g. GOVERNMENT LOSES VOTE] Reviews"
+      },
+      {
+       "text": "words and pictures about a product, to make people buy it, e.g. an advert for shampoo",
+       "anchor": "a review of a new book] Advertisements or adverts"
+      }
      ]
     },
     {
@@ -16900,9 +18036,38 @@
       }
      ],
      "glosses": [
-      "•\na regular series of programmes, often two or three times a week, about a group of characters\nwho live in the same area",
-      "famous people",
-      "famous"
+      {
+       "text": "information about world events",
+       "anchor": "ies and many programmes. People watch: • the news"
+      },
+      {
+       "text": "a description of what the weather will be like in the next few days",
+       "anchor": "mation about world events] • the weather forecast"
+      },
+      {
+       "text": "programmes that give facts about real situations and real people",
+       "anchor": "ill be like in the next few days] • documentaries"
+      },
+      {
+       "text": "programmes where famous people are asked questions about themselves",
+       "anchor": "out real situations and real people] • chat shows"
+      },
+      {
+       "text": "a number of programmes that have the same characters or deal with the same subject",
+       "anchor": "are asked questions about themselves] • a series"
+      },
+      {
+       "text": "a regular series of programmes, often two or three times a week, about a group of characters who live in the same area",
+       "anchor": "ters or deal with the same subject] • soap operas"
+      },
+      {
+       "text": "famous people",
+       "anchor": "ows [programmes which follow ordinary people or celebrities"
+      },
+      {
+       "text": "famous",
+       "anchor": "a number of situations or challenges. Well-known"
+      }
      ]
     },
     {
@@ -16944,7 +18109,10 @@
       }
      ],
      "glosses": [
-      "a radio programme that you download\nin the paper … )"
+      {
+       "text": "a radio programme that you download to the paper … (NOT It’s written from the Internet and play on your computer or phone",
+       "anchor": "in the paper / According online through podcasts"
+      }
      ]
     }
    ],
@@ -17028,7 +18196,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 45
+   "unplaced_glosses": [],
+   "vocabulary_count": 45,
+   "gloss_count": 19
   },
   {
    "number": 53,
@@ -17071,7 +18241,14 @@
       }
      ],
      "glosses": [
-      "RECEPTIONIST\nI’m\nconnecting you"
+      {
+       "text": "I’m Common mistakes connecting you",
+       "anchor": "RECEPTIONIST: Right, Mr Sharp. I’m putting you through"
+      },
+      {
+       "text": "Yes, this is Mrs Gordon.",
+       "anchor": "? or Is it Joe?) JANE GORDON: Speaking."
+      }
      ]
     },
     {
@@ -17137,7 +18314,26 @@
       }
      ],
      "glosses": [
-      "using the phone"
+      {
+       "text": "phone you",
+       "anchor": "led [made a phone call morning"
+      },
+      {
+       "text": "using the phone",
+       "anchor": "rning – I got a very angry"
+      },
+      {
+       "text": "phoned her",
+       "anchor": "eft a message (e.g. Please ring"
+      },
+      {
+       "text": "not there; syn not in",
+       "anchor": "[make contact / speak he was out"
+      },
+      {
+       "text": "returned my phone call",
+       "anchor": "[being used, someone was on"
+      }
      ]
     },
     {
@@ -17191,7 +18387,22 @@
       }
      ],
      "glosses": [
-      "most of the time\nsending short written"
+      {
+       "text": "most of the time",
+       "anchor": "exting Many people use their mobile mostly/mainly"
+      },
+      {
+       "text": "sending short written messages from one phone to another",
+       "anchor": "e their mobile mostly/mainly [most of the time] for texting"
+      },
+      {
+       "text": "letters which represent words",
+       "anchor": "all the time? These are common text abbreviations"
+      },
+      {
+       "text": "this is what I think",
+       "anchor": "BF = boyfriend (GF = girlfriend) IMO = in my opinion"
+      }
      ]
     }
    ],
@@ -17265,7 +18476,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 30
+   "unplaced_glosses": [],
+   "vocabulary_count": 30,
+   "gloss_count": 11
   },
   {
    "number": 54,
@@ -17432,7 +18645,42 @@
       }
      ],
      "glosses": [
-      ",\na small picture on the screen\nemail\nInternet browser, etc."
+      {
+       "text": "turned on",
+       "anchor": "B Using a computer After you have switched on"
+      },
+      {
+       "text": "put a special word into the computer that only you know",
+       "anchor": "t/off) with your username and enter your password"
+      },
+      {
+       "text": "a small picture on the screen",
+       "anchor": "ly you know]. If you then double-click on an icon"
+      },
+      {
+       "text": "email, Internet browser, etc.",
+       "anchor": "a small picture on the screen], you can open an application"
+      },
+      {
+       "text": "keep",
+       "anchor": "Internet browser, etc.]. Computers can store"
+      },
+      {
+       "text": "make an extra copy of the files; syn make a backup",
+       "anchor": "important to back up the files you are working on"
+      },
+      {
+       "text": "make or start",
+       "anchor": "document document To create"
+      },
+      {
+       "text": "suddenly stops working",
+       "anchor": "important to save the document in case the computer crashes"
+      },
+      {
+       "text": "stop using an application",
+       "anchor": "enly stops working]. Press the Escape key to exit"
+      }
      ]
     },
     {
@@ -17576,7 +18824,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 48
+   "unplaced_glosses": [],
+   "vocabulary_count": 48,
+   "gloss_count": 9
   },
   {
    "number": 55,
@@ -17646,7 +18896,36 @@
        "example": "this: pd at freeserve dot co dot uk."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "look to see if you have any messages",
+       "anchor": "ou use email. • How often do you check your email"
+      },
+      {
+       "text": "important/necessary",
+       "anchor": "How many emails do you send a week? Are they all essential"
+      },
+      {
+       "text": "without waiting",
+       "anchor": "emails do you get every week? Do you read them immediately"
+      },
+      {
+       "text": "answer",
+       "anchor": "[without waiting]? • How quickly do you reply to"
+      },
+      {
+       "text": "remove them from your computer often",
+       "anchor": "ils you receive? • Do you delete emails regularly"
+      },
+      {
+       "text": "emails that you do not want, usually adverts; also called junk mail",
+       "anchor": "from your computer often]? • Do you get much spam"
+      },
+      {
+       "text": "a program that stops a virus entering your computer",
+       "anchor": "ed junk mail]? • Have you got anti-virus software"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -17690,7 +18969,24 @@
        "example": "also have links: if you click on a link, it will take you to a different website, or move you from one"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "join or link",
+       "anchor": "u need an ISP (Internet service provider) that will connect"
+      },
+      {
+       "text": "the ability to use",
+       "anchor": "r computer to the Internet and give you access to"
+      },
+      {
+       "text": "use the Internet",
+       "anchor": "use] email and other services. When you go online"
+      },
+      {
+       "text": "look at websites",
+       "anchor": "nd receive emails, or you can browse the Internet"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -17763,10 +19059,38 @@
       }
      ],
      "glosses": [
-      "look for information on",
-      "copy onto their computer;\nopp",
-      "product, e.g.",
-      "places on the Internet where you can\n."
+      {
+       "text": "look for information on the Internet; also do an Internet search",
+       "anchor": "e are common uses. • Students search the Internet"
+      },
+      {
+       "text": "copy onto their computer; opp upload",
+       "anchor": "with their studies. • People download"
+      },
+      {
+       "text": "small parts of a video recording",
+       "anchor": "load] information, pictures, music, video clips"
+      },
+      {
+       "text": "product, e.g. a book",
+       "anchor": "e, etc. People go to a website, select the item"
+      },
+      {
+       "text": "looking at different websites",
+       "anchor": "• Some people just like to spend hours surfing the web"
+      },
+      {
+       "text": "places on the Internet where you can have a discussion with other people, e.g. Facebook, Twitter, etc.",
+       "anchor": "Some people spend a lot of time on social networking sites"
+      },
+      {
+       "text": "leave messages",
+       "anchor": "ter, etc.]. On these sites people post comments"
+      },
+      {
+       "text": "send and receive messages in real time",
+       "anchor": "ends. • Some people do a lot of instant messaging"
+      }
      ]
     }
    ],
@@ -17834,7 +19158,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 39
+   "unplaced_glosses": [],
+   "vocabulary_count": 39,
+   "gloss_count": 19
   },
   {
    "number": 56,
@@ -17937,7 +19263,22 @@
       }
      ],
      "glosses": [
-      "burglar\nsteal something\ngetting into a building, usually someone’s home, and\nburgle (a place)\nstealing something"
+      {
+       "text": "stealing something, e.g. a car",
+       "anchor": "person verb theft"
+      },
+      {
+       "text": "stealing from a person or place, e.g. a bank",
+       "anchor": "hief steal/take (something) robbery"
+      },
+      {
+       "text": "getting into a building, usually someone’s home, and burglar steal something stealing something",
+       "anchor": "bber rob (someone, a place) burglary"
+      },
+      {
+       "text": "killing someone",
+       "anchor": "burgle (a place) murder"
+      }
      ]
     },
     {
@@ -18034,7 +19375,24 @@
        "example": "jail)."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "find you and arrest you",
+       "anchor": "t* If you commit a crime and the police catch you"
+      },
+      {
+       "text": "crimes that are not very important; opp serious",
+       "anchor": "st you], you will be punished. For minor offences"
+      },
+      {
+       "text": "money you have to pay",
+       "anchor": "; opp serious], the punishment may only be a fine"
+      },
+      {
+       "text": "the judge, or a jury of 12 people, decides you committed the crime; opp innocent",
+       "anchor": "will have to go to court. If you are found guilty"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -18101,7 +19459,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 42
+   "unplaced_glosses": [],
+   "vocabulary_count": 42,
+   "gloss_count": 8
   },
   {
    "number": 57,
@@ -18288,8 +19648,14 @@
       }
      ],
      "glosses": [
-      "think the ideas",
-      "are good or right\nsets of plans and ideas that a political party has\nagreed on"
+      {
+       "text": "think the ideas are good or right",
+       "anchor": "a political party because they believe in the party’s ideas"
+      },
+      {
+       "text": "sets of plans and ideas that a political party has agreed on",
+       "anchor": "are good or right], and these ideas become policies"
+      }
      ]
     }
    ],
@@ -18371,7 +19737,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 41
+   "unplaced_glosses": [],
+   "vocabulary_count": 41,
+   "gloss_count": 2
   },
   {
    "number": 58,
@@ -18481,7 +19849,16 @@
        "example": "take action"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "make it less",
+       "anchor": "olution* – or part of it To reduce global warming"
+      },
+      {
+       "text": "do something to solve a problem; syn take action",
+       "anchor": "he nations of the world will have to act together"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -18562,7 +19939,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 22
+   "unplaced_glosses": [],
+   "vocabulary_count": 22,
+   "gloss_count": 2
   },
   {
    "number": 59,
@@ -18795,7 +20174,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 35
+   "unplaced_glosses": [],
+   "vocabulary_count": 35,
+   "gloss_count": 0
   },
   {
    "number": 60,
@@ -18845,7 +20226,32 @@
        "example": "Sophie and I arrived at the same time, 9 o’clock exactly."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "before the meeting started",
+       "anchor": "Phrases with time We got to the meeting in time"
+      },
+      {
+       "text": "not early or late",
+       "anchor": "he meeting started]. My brother is always on time"
+      },
+      {
+       "text": "used to say that something should happen now",
+       "anchor": "me [not early or late]. It’s time (for us) to go."
+      },
+      {
+       "text": "have enough time to do something",
+       "anchor": "happen now] Do you have time for a cup of coffee?"
+      },
+      {
+       "text": "on the next occasion",
+       "anchor": "omething] Call me the next time you’re in London."
+      },
+      {
+       "text": "on the last occasion",
+       "anchor": "The weather was wonderful the last time we were there."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -18877,7 +20283,20 @@
        "example": "I’m going back to Brazil in ten days’ time ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "I won’t leave before 4.30",
+       "anchor": "positions often confused I’ll be here until 4.30."
+      },
+      {
+       "text": "not later than 8.15",
+       "anchor": "I won’t leave before 4.30] I’ll be there by 8.15."
+      },
+      {
+       "text": "ten days from now",
+       "anchor": "month) I’m going back to Brazil in ten days’ time"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -18925,7 +20344,40 @@
        "example": "I’m sure I’ll go to America one day ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "for a long time, e.g. many years",
+       "anchor": "d future Past I’ve known Lucia for ages"
+      },
+      {
+       "text": "e.g. in the last few months",
+       "anchor": "s]. I haven’t been to the dentist recently/lately"
+      },
+      {
+       "text": "e.g. a few weeks ago / not long ago",
+       "anchor": "[e.g. in the last few months]. I saw Tom recently"
+      },
+      {
+       "text": "e.g. 5– 10 years ago; syn ages ago",
+       "anchor": "I used to go skiing, but that was a long time ago"
+      },
+      {
+       "text": "e.g. a few days ago, perhaps a week",
+       "anchor": "ges ago]. My sister went to the zoo the other day"
+      },
+      {
+       "text": "a period including the past and now; syn nowadays",
+       "anchor": "Present I don’t see my brother much these days"
+      },
+      {
+       "text": "for now / the near future – but not for a long time",
+       "anchor": "Future This dictionary’s fine for the time being"
+      },
+      {
+       "text": "in the future but I don’t know when",
+       "anchor": "a long time]. I’m sure I’ll go to America one day"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -18977,7 +20429,12 @@
        "example": "The battery in my camera didn’t last long ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "continue for a long time",
+       "anchor": "m last? The battery in my camera didn’t last long"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -19066,7 +20523,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 18
   },
   {
    "number": 61,
@@ -19317,7 +20776,22 @@
       }
      ],
      "glosses": [
-      "trying to"
+      {
+       "text": "trying to calculate",
+       "anchor": "processes. Notice how they are said when we are working out"
+      },
+      {
+       "text": "putting numbers together to reach a total",
+       "anchor": "Some people are not very good at adding up numbers"
+      },
+      {
+       "text": "have a problem",
+       "anchor": "s together to reach a total], and often get stuck"
+      },
+      {
+       "text": "a small electronic machine for working out numbers",
+       "anchor": "difficult. The easiest way is to use a calculator"
+      }
      ]
     },
     {
@@ -19441,7 +20915,9 @@
      "section": "F"
     }
    ],
-   "vocabulary_count": 56
+   "unplaced_glosses": [],
+   "vocabulary_count": 56,
+   "gloss_count": 4
   },
   {
    "number": 62,
@@ -19524,8 +21000,38 @@
       }
      ],
      "glosses": [
-      "the one at the shortest\na mile\nAbout ten",
-      ",\ntwo\nwalk.\nperhaps three"
+      {
+       "text": "1 mile = about 1.6 kilometres",
+       "anchor": "ten minutes’ walk from here. old system of miles"
+      },
+      {
+       "text": "1 yard = almost 1 metre",
+       "anchor": "rds (NOT ten minutes’ walking.)"
+      },
+      {
+       "text": "1 foot = 30 centimetres",
+       "anchor": "inutes’ walking.) [1 yard = almost 1 metre], feet"
+      },
+      {
+       "text": "1 inch = 2.5 centimetres",
+       "anchor": "It’s a long way. (NOT It’s far.) But inches"
+      },
+      {
+       "text": "not less About ten from here",
+       "anchor": "the shortest At least"
+      },
+      {
+       "text": "two, perhaps three",
+       "anchor": "walk. of miles."
+      },
+      {
+       "text": "further along the road",
+       "anchor": "rner the road."
+      },
+      {
+       "text": "very near",
+       "anchor": "Yes, it’s (quite)"
+      }
      ]
     },
     {
@@ -19602,7 +21108,16 @@
        "example": "a wide road)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very big; syn enormous; opp a tiny room",
+       "anchor": "ages. (opp a thin book) Their living room is huge"
+      },
+      {
+       "text": "very large or bigger than other similar things",
+       "anchor": "ormous; opp a tiny room]. We caught a giant crab."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -19659,7 +21174,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 10
   },
   {
    "number": 63,
@@ -19774,7 +21291,14 @@
       }
      ],
      "glosses": [
-      "a sofa\nfashionable and attractive"
+      {
+       "text": "an object that is old and often rare or beautiful",
+       "anchor": "2 a chair wood an antique"
+      },
+      {
+       "text": "fashionable and attractive",
+       "anchor": "8 a sofa leather stylish"
+      }
      ]
     },
     {
@@ -19906,7 +21430,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 38
+   "unplaced_glosses": [],
+   "vocabulary_count": 38,
+   "gloss_count": 2
   },
   {
    "number": 64,
@@ -20089,7 +21615,30 @@
       }
      ],
      "glosses": [
-      "some but not a lot, e.g. between\nthree and eight"
+      {
+       "text": "a very small amount",
+       "anchor": "three slices of beef Just a drop of milk"
+      },
+      {
+       "text": "two, perhaps three",
+       "anchor": "two sheets I bought a couple of books."
+      },
+      {
+       "text": "some but not a lot, e.g. between three and eight",
+       "anchor": "of paper We saw several churches on our way here."
+      },
+      {
+       "text": "six",
+       "anchor": "t] I bought half a dozen eggs at the supermarket."
+      },
+      {
+       "text": "twelve",
+       "anchor": "t. [six] There are a dozen students in the class."
+      },
+      {
+       "text": "a lot of",
+       "anchor": "of sugar We’ve got plenty of time."
+      }
      ]
     }
    ],
@@ -20161,7 +21710,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 6
   },
   {
    "number": 65,
@@ -20239,7 +21790,12 @@
        "example": "sorry I’m late"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "say sorry",
+       "anchor": "Apologies with common replies We can apologise"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -20276,8 +21832,22 @@
       }
      ],
      "glosses": [
-      "when a train, plane, etc. leaves or arrives later\nthan you expect",
-      "hold up – cause a delay and make someone late – is often used in the\npassive"
+      {
+       "text": "when a train, plane, etc. leaves or arrives later than you expect",
+       "anchor": "– There was a delay / hold-up on the underground."
+      },
+      {
+       "text": "hold up – cause a delay and make someone late – is often used in the passive",
+       "anchor": "than you expect] – I was held up in traffic."
+      },
+      {
+       "text": "the train company decided not to run the train",
+       "anchor": "the passive] – My train was cancelled"
+      },
+      {
+       "text": "slept longer than I planned or wanted to",
+       "anchor": "hour for the next one. – I overslept"
+      }
      ]
     },
     {
@@ -20381,7 +21951,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 30
+   "unplaced_glosses": [],
+   "vocabulary_count": 30,
+   "gloss_count": 5
   },
   {
    "number": 66,
@@ -20439,7 +22011,12 @@
        "example": "As the requests become bigger it is normal to use longer phrases which sound more polite."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "I’m sorry but I can’t.",
+       "anchor": "til tomorrow. B: No, I’m afraid I can’t."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -20539,7 +22116,12 @@
        "example": "Mm, I’d rather do something else."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "do you want to; infml",
+       "anchor": "to some music?"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -20606,7 +22188,14 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [
+    {
+     "text": "I would prefer to do something else.",
+     "anchor": ""
+    }
+   ],
+   "vocabulary_count": 32,
+   "gloss_count": 3
   },
   {
    "number": 67,
@@ -20668,7 +22257,16 @@
        "example": "In most situations, it is probably easier and more natural to use personally."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "I think",
+       "anchor": "that we should increase the price. In my opinion"
+      },
+      {
+       "text": "my opinion is",
+       "anchor": "the direction of the company. My view/feeling is"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -20684,7 +22282,12 @@
        "example": "According to the paper ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "the paper says",
+       "anchor": "written in the newspaper) According to the paper"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -20736,7 +22339,32 @@
        "example": "I take your point ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "agree completely, 100%",
+       "anchor": "greeing (with someone) I totally agree (with you)"
+      },
+      {
+       "text": "agree but not completely",
+       "anchor": "gree completely, 100%]. I partly agree (with you)"
+      },
+      {
+       "text": "partly agree",
+       "anchor": "mpletely]. I agree (with you) to a certain extent"
+      },
+      {
+       "text": "I understand what you are saying",
+       "anchor": "That’s true, but I think … I see what you mean,"
+      },
+      {
+       "text": "idea or opinion",
+       "anchor": "to some extent, but … I think that’s a good point"
+      },
+      {
+       "text": "I understand and partly agree with your opinion",
+       "anchor": "point [idea or opinion], but … I take your point"
+      }
+     ]
     },
     {
      "letter": "E",
@@ -20765,7 +22393,18 @@
       }
      ],
      "glosses": [
-      "100%\ndon’t agree"
+      {
+       "text": "100% correct/wrong",
+       "anchor": "I think you’re absolutely right/ wrong"
+      },
+      {
+       "text": "I completely disagree",
+       "anchor": "I don’t agree at all"
+      },
+      {
+       "text": "100% don’t agree",
+       "anchor": "ly disagree]. I disagree completely"
+      }
      ]
     }
    ],
@@ -20845,7 +22484,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 28
+   "unplaced_glosses": [],
+   "vocabulary_count": 28,
+   "gloss_count": 12
   },
   {
    "number": 68,
@@ -20928,7 +22569,18 @@
       }
      ],
      "glosses": [
-      "dislike it very much;\ninfml"
+      {
+       "text": "like it very much; infml",
+       "anchor": "m I. / Me too. Really? I’m not."
+      },
+      {
+       "text": "it’s OK",
+       "anchor": "Oh, I’m not very keen. I don’t mind jazz."
+      },
+      {
+       "text": "dislike it very much; infml",
+       "anchor": "r can I. / Me neither. Really? I love it."
+      }
      ]
     },
     {
@@ -20981,7 +22633,36 @@
        "example": "I didn’t like my new glasses at first, but now I’ve got used to them."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "how you think or feel about something",
+       "anchor": "My attitude to a lot of things has changed over the years."
+      },
+      {
+       "text": "I liked chips in the past but not now.",
+       "anchor": "nk or feel about something] I used to like chips."
+      },
+      {
+       "text": "I don’t find them interesting.",
+       "anchor": "sed to play computer games, but now they don’t interest me."
+      },
+      {
+       "text": "at all makes a negative stronger",
+       "anchor": "I used to go swimming a lot, but now I don’t go at all"
+      },
+      {
+       "text": "things we enjoy doing",
+       "anchor": "nger]. Mark and I used to have the same interests"
+      },
+      {
+       "text": "have no interests that are similar; opp have a lot in common",
+       "anchor": "oing], but now it seems we have nothing in common"
+      },
+      {
+       "text": "become familiar with",
+       "anchor": "sted to see that.) It takes time to get used to"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -21005,7 +22686,12 @@
        "example": "Which would you prefer?"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "like more",
+       "anchor": "t in the afternoon I"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -21082,7 +22768,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 11
   },
   {
    "number": 69,
@@ -21161,7 +22849,18 @@
       }
      ],
      "glosses": [
-      "girls/"
+      {
+       "text": "told the name of someone we have never met",
+       "anchor": "Greetings* When we are introduced to a stranger"
+      },
+      {
+       "text": "girls/ women",
+       "anchor": "e are no real rules in Britain. Men may kiss female friends"
+      },
+      {
+       "text": "side of the face",
+       "anchor": "y kiss female friends [girls/ women] on one cheek"
+      }
      ]
     },
     {
@@ -21327,7 +23026,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 3
   },
   {
    "number": 70,
@@ -21389,7 +23090,20 @@
        "example": "It’s illegal in the UK to ride a motorbike without a helmet."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "tells the truth",
+       "anchor": "unhappy honest"
+      },
+      {
+       "text": "right✓",
+       "anchor": "impossible correct"
+      },
+      {
+       "text": "allowed by law",
+       "anchor": "r irregular legal"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -21446,7 +23160,34 @@
       }
      ],
      "glosses": [
-      "If\n."
+      {
+       "text": "different, not common or ordinary",
+       "anchor": "wait for us. Xerxes – that’s a very unusual name."
+      },
+      {
+       "text": "I didn’t think I was going to win",
+       "anchor": "ry] I won the game; it was completely unexpected."
+      },
+      {
+       "text": "surprising because it is either very good or very bad",
+       "anchor": "I was going to win] Marsha’s hat is unbelievable."
+      },
+      {
+       "text": "could not",
+       "anchor": "We tried to open the door, but we were unable to get in."
+      },
+      {
+       "text": "not healthy and not in good condition",
+       "anchor": "not] I need to do more exercise; I’m very unfit."
+      },
+      {
+       "text": "They probably won’t get here before midday.",
+       "anchor": "lose. They’re unlikely to get here before midday."
+      },
+      {
+       "text": "If something is unfair, it does not treat people equally.",
+       "anchor": "se some of the students had more time to do it than others."
+      }
      ]
     },
     {
@@ -21532,7 +23273,46 @@
       }
      ],
      "glosses": [
-      "the opposite of something"
+      {
+       "text": "don’t agree / have the same opinion",
+       "anchor": "- I disagree with the others."
+      },
+      {
+       "text": "the opposite of something",
+       "anchor": "he others. [don’t agree / have the same opinion]"
+      },
+      {
+       "text": "open the door using a key; opp lock",
+       "anchor": "I couldn’t unlock the door this morning."
+      },
+      {
+       "text": "the opposite of an action",
+       "anchor": "s morning. [open the door using a key; opp lock]"
+      },
+      {
+       "text": "take off our clothes; opp get dressed",
+       "anchor": "e of an action] We had to get undressed in the cold."
+      },
+      {
+       "text": "took everything out of the bags; opp pack",
+       "anchor": "I unpacked the bags."
+      },
+      {
+       "text": "too much",
+       "anchor": "took everything out of the bags; opp pack] over-"
+      },
+      {
+       "text": "asked me to pay too much money",
+       "anchor": "over- [too much] The bank overcharged me."
+      },
+      {
+       "text": "do something incorrectly",
+       "anchor": "he said; I’m afraid my English isn’t very good."
+      },
+      {
+       "text": "again",
+       "anchor": "rd her. I thought she said Rita, not Brita. re-"
+      }
      ]
     }
    ],
@@ -21600,7 +23380,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 43
+   "unplaced_glosses": [],
+   "vocabulary_count": 43,
+   "gloss_count": 20
   },
   {
    "number": 71,
@@ -21694,7 +23476,40 @@
        "example": "We need an improvement in the weather."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "produce or design something completely new",
+       "anchor": "noun invent"
+      },
+      {
+       "text": "talk about something seriously",
+       "anchor": "thing completely new] invention discuss"
+      },
+      {
+       "text": "change from one language to another",
+       "anchor": "iously] discussion translate"
+      },
+      {
+       "text": "rest, and feel calm and comfortable",
+       "anchor": "guage to another] translation relax"
+      },
+      {
+       "text": "get better",
+       "anchor": "comfortable] relaxation improve"
+      },
+      {
+       "text": "control the affairs of a city or country",
+       "anchor": "improvement govern"
+      },
+      {
+       "text": "direct or control a business",
+       "anchor": "a city or country] government manage"
+      },
+      {
+       "text": "grow or change and become more advanced",
+       "anchor": "iness] management develop"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -21786,7 +23601,24 @@
        "example": "I’m frustrated by my inability to use computers."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "sick, not well",
+       "anchor": "happiness ill"
+      },
+      {
+       "text": "in good condition, usually because of exercise",
+       "anchor": "illness fit"
+      },
+      {
+       "text": "liked by a lot of people",
+       "anchor": "r) stupidity popular"
+      },
+      {
+       "text": "almost the same; opp different",
+       "anchor": "le] popularity similar"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -21905,7 +23737,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 52
+   "unplaced_glosses": [],
+   "vocabulary_count": 52,
+   "gloss_count": 12
   },
   {
    "number": 72,
@@ -22027,7 +23861,40 @@
        "example": "an unbelievable story ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "something that you enjoyed",
+       "anchor": "un- often forms the opposite: an enjoyable party"
+      },
+      {
+       "text": "right/correct for a particular situation; opp unsuitable",
+       "anchor": "air (opp uncomfortable) a suitable word or phrase"
+      },
+      {
+       "text": "able to be trusted or believed; opp unreliable",
+       "anchor": "uitable] a reliable service; reliable information"
+      },
+      {
+       "text": "popular now with many people; opp unfashionable",
+       "anchor": "or believed; opp unreliable] fashionable clothes"
+      },
+      {
+       "text": "fair; not a bad decision or price; opp unreasonable",
+       "anchor": "opp unfashionable] a reasonable decision or price"
+      },
+      {
+       "text": "enjoys being with people; opp unsociable",
+       "anchor": "ion or price; opp unreasonable] a sociable person"
+      },
+      {
+       "text": "something that cannot be forgotten",
+       "anchor": "ore common adjective: an unforgettable experience"
+      },
+      {
+       "text": "something that is very surprising and very difficult to believe",
+       "anchor": "g that cannot be forgotten] an unbelievable story"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -22071,7 +23938,20 @@
        "example": "a careless driver"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "having a lot of uses; opp a useless machine",
+       "anchor": "ng the suffix -less to the noun. a useful machine"
+      },
+      {
+       "text": "giving pain and being unpleasant; opp a painless injection",
+       "anchor": "uses; opp a useless machine] a painful injection"
+      },
+      {
+       "text": "drives with care and attention; opp a careless driver",
+       "anchor": "asant; opp a painless injection] a careful driver"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -22164,7 +24044,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 11
   },
   {
    "number": 73,
@@ -22283,7 +24165,14 @@
       }
      ],
      "glosses": [
-      "the total amount of money"
+      {
+       "text": "a place used for a special purpose",
+       "anchor": "by the public. A campsite is a site for camping."
+      },
+      {
+       "text": "the total amount of money you receive every year from your work and other places",
+       "anchor": "e tax is money you pay to the government out of your income"
+      }
      ]
     },
     {
@@ -22453,7 +24342,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 44
+   "unplaced_glosses": [],
+   "vocabulary_count": 44,
+   "gloss_count": 2
   },
   {
    "number": 74,
@@ -22507,7 +24398,12 @@
        "example": "It depends on my parents. (NOT It"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "we’ll probably stay here",
+       "anchor": "It’s quite likely that we’ll stay here."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -22559,7 +24455,24 @@
        "example": "They fell in love and got married. Now Emily is expecting a baby"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "told me a funny story",
+       "anchor": "er. Pavel told me a joke but I can’t remember it."
+      },
+      {
+       "text": "become less heavy; opp put on weight",
+       "anchor": "t. [told me a funny story] I need to lose weight."
+      },
+      {
+       "text": "eat less in order to lose weight",
+       "anchor": "The doctor told my father that he should go on a diet."
+      },
+      {
+       "text": "say what will happen in the future",
+       "anchor": "eight] It’s very difficult to predict the future."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -22619,7 +24532,12 @@
        "example": "light traffic)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very enjoyable; we enjoyed it a lot",
+       "anchor": "We went to a party last night and it was great fun"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -22647,7 +24565,12 @@
        "example": "Ava is fast asleep, but the other two are still wide awake."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "She knows all about the problem.",
+       "anchor": "sorry I’m late. She’s well aware of the problem."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -22730,7 +24653,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 39
+   "unplaced_glosses": [],
+   "vocabulary_count": 39,
+   "gloss_count": 7
   },
   {
    "number": 75,
@@ -22788,7 +24713,36 @@
        "example": "except for"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "I didn’t know they were coming; it was unexpected",
+       "anchor": "ed idioms. They arrived out of the blue"
+      },
+      {
+       "text": "sound familiar",
+       "anchor": "s unexpected]. Does the name Merchant ring a bell"
+      },
+      {
+       "text": "make a decision",
+       "anchor": "familiar]? You’ll have to make up your mind soon."
+      },
+      {
+       "text": "remove it, e.g. sell it, throw it away, give it away, etc.",
+       "anchor": "we’ll have to get rid of some of this furniture."
+      },
+      {
+       "text": "I am going to leave very soon",
+       "anchor": "can’t talk to you now; I’m (just) about to leave."
+      },
+      {
+       "text": "suddenly started crying",
+       "anchor": "ow what Martin said, but Natalie burst into tears"
+      },
+      {
+       "text": "not including Yasmine; syn except for",
+       "anchor": "Everyone was there apart from Yasmine."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -22829,8 +24783,26 @@
       }
      ],
      "glosses": [
-      "four days from now; also in three weeks’/six months’/two\n.",
-      "now, immediately;"
+      {
+       "text": "four days from now; also in three weeks’/six months’/two years’ time, etc.",
+       "anchor": "B Time phrases He’s leaving in four days’ time"
+      },
+      {
+       "text": "during the week/month, etc. before the previous one",
+       "anchor": "ars’ time, etc.]. I got here the week before last"
+      },
+      {
+       "text": "up until now",
+       "anchor": "fore the previous one]. The course is fine so far"
+      },
+      {
+       "text": "now, immediately; syns right away / straight away",
+       "anchor": "r local doctor and fortunately she was able to come at once"
+      },
+      {
+       "text": "every night; also day after day, etc.",
+       "anchor": "He’s so busy at work; he comes home late night after night"
+      }
      ]
     },
     {
@@ -22871,7 +24843,32 @@
        "example": "I’ll finish this report sooner or later ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "occasionally; syns now and then",
+       "anchor": "d sometimes or. I go to the theatre now and again"
+      },
+      {
+       "text": "a few",
+       "anchor": "sionally; syns now and then]. Andy had one or two"
+      },
+      {
+       "text": "a calm situation without noise",
+       "anchor": "re whenever possible for a bit of peace and quiet"
+      },
+      {
+       "text": "first in one direction, then the other",
+       "anchor": "been up and down the street, but I can’t find their house."
+      },
+      {
+       "text": "a few times",
+       "anchor": "then the other] I’ve been to Paris once or twice"
+      },
+      {
+       "text": "I don’t know when, but I’ll finish it",
+       "anchor": "w times]. I’ll finish this report sooner or later"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -22903,7 +24900,20 @@
        "example": "To be honest, I didn’t like her boyfriend very much. (used to say what you really think)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "in your situation",
+       "anchor": "dvice, an opinion, an example, etc. If I were you"
+      },
+      {
+       "text": "usually, or in most situations; syn on the whole",
+       "anchor": ", I’d accept the job they offered you. In general"
+      },
+      {
+       "text": "for example",
+       "anchor": "untry. There were lots of questions. For instance"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -22976,7 +24986,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [],
+   "vocabulary_count": 33,
+   "gloss_count": 21
   },
   {
    "number": 76,
@@ -23063,8 +25075,38 @@
       }
      ],
      "glosses": [
-      "used to say you are not sure because",
-      "I was very"
+      {
+       "text": "I don’t know",
+       "anchor": "time did he get here? B: I’ve no idea."
+      },
+      {
+       "text": "used to say you are not sure because other things affect your answer; also It depends",
+       "anchor": "ou going tonight? B: That depends."
+      },
+      {
+       "text": "used to say no but not strongly",
+       "anchor": "you like the film? B: Not really."
+      },
+      {
+       "text": "why?",
+       "anchor": "to Sweden next week. B: Really. What for?"
+      },
+      {
+       "text": "that’s impossible; infml; syn no chance",
+       "anchor": "Can I borrow your car? B: No way."
+      },
+      {
+       "text": "used to say yes but not strongly",
+       "anchor": "re coming tonight, aren’t they? B: I suppose so."
+      },
+      {
+       "text": "I was very surprised when I saw it",
+       "anchor": "B: I know. I couldn’t believe my eyes!"
+      },
+      {
+       "text": "used to express great surprise",
+       "anchor": "marks. B: I don’t believe it!"
+      }
      ]
     },
     {
@@ -23157,7 +25199,52 @@
        "example": "sort of"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "speak to them without others listening",
+       "anchor": "A: I had to have a word with Vince and Milan today."
+      },
+      {
+       "text": "used to fill a pause in conversation",
+       "anchor": "re they causing trouble again? A: Well, you know,"
+      },
+      {
+       "text": "listen",
+       "anchor": "ng to each other, and they don’t pay attention"
+      },
+      {
+       "text": "because of the situation described",
+       "anchor": "still talked to each other. B: Well, in that case"
+      },
+      {
+       "text": "be unhappy about",
+       "anchor": "ne of them. A: Maybe, but I’d feel bad about that"
+      },
+      {
+       "text": "can’t control some actions or behaviour",
+       "anchor": "e nice boys, you know, they just can’t help it"
+      },
+      {
+       "text": "wait to discover what will happen",
+       "anchor": "ing today, so let’s wait and see what happens."
+      },
+      {
+       "text": "what will you do if they don’t improve?",
+       "anchor": "ll happen] B: OK. But what if they don’t improve?"
+      },
+      {
+       "text": "change your decision",
+       "anchor": "ink it’ll be OK. B: Well, if you change your mind"
+      },
+      {
+       "text": "examples of that type",
+       "anchor": "informal speech. (and) that sort/kind of thing"
+      },
+      {
+       "text": "approximately/more or less",
+       "anchor": "arrots – that sort/kind of thing. sort/kind of"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -23218,7 +25305,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 39
+   "unplaced_glosses": [],
+   "vocabulary_count": 39,
+   "gloss_count": 19
   },
   {
    "number": 77,
@@ -23304,7 +25393,56 @@
        "example": "depend on"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "have the same opinion as",
+       "anchor": "l doesn’t like the manager’s decision and I agree with him."
+      },
+      {
+       "text": "be nervous about",
+       "anchor": "the same opinion as] Don’t worry about your exam."
+      },
+      {
+       "text": "pleased with",
+       "anchor": "t] His teachers were satisfied with his progress."
+      },
+      {
+       "text": "it’s my plan to go",
+       "anchor": "money on clothes. I’m thinking of going to China."
+      },
+      {
+       "text": "it is the company’s land",
+       "anchor": "ontinuous form) This land belongs to the company."
+      },
+      {
+       "text": "changed from one language into another",
+       "anchor": "pany’s land] I translated the letter into French."
+      },
+      {
+       "text": "said she wasn’t happy/satisfied with",
+       "anchor": "er] She complained to the manager about the food."
+      },
+      {
+       "text": "think about",
+       "anchor": "sn’t happy/satisfied with] I can’t concentrate on"
+      },
+      {
+       "text": "trust it; it will not go wrong",
+       "anchor": "adio is playing. We can rely on this photocopier."
+      },
+      {
+       "text": "used to say you are not sure about something",
+       "anchor": "go wrong] I may go but it depends on the weather."
+      },
+      {
+       "text": "she needs his money",
+       "anchor": "meanings: Martha depends on her son for money."
+      },
+      {
+       "text": "we can trust the others to support us",
+       "anchor": "oney] We can depend on the others for support."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -23329,7 +25467,18 @@
       }
      ],
      "glosses": [
-      "spoke in a loud\nspoke in a loud voice"
+      {
+       "text": "spoke in a loud voice voice to be heard",
+       "anchor": "me. [spoke in a loud He shouted at me."
+      },
+      {
+       "text": "for me to catch it",
+       "anchor": "ecause he was angry] He threw the ball to me."
+      },
+      {
+       "text": "in order to hit me",
+       "anchor": "e. [for me to catch it] He threw the ball at me."
+      }
      ]
     },
     {
@@ -23386,7 +25535,40 @@
        "example": "There’s something wrong with this TV. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "frightened of",
+       "anchor": "od at maths. (opp bad at) She’s afraid of flying."
+      },
+      {
+       "text": "like",
+       "anchor": "ened of] The neighbours are fond of the children."
+      },
+      {
+       "text": "the same as her in some ways",
+       "anchor": "the children. [like] She’s similar to her sister"
+      },
+      {
+       "text": "knows about",
+       "anchor": "photography. I think she’s aware of the problem."
+      },
+      {
+       "text": "bored or a bit angry about",
+       "anchor": "about] I’m tired of people telling me what to do."
+      },
+      {
+       "text": "likes him very much; infml",
+       "anchor": "a bit angry about] Katya is mad about Brad Pitt."
+      },
+      {
+       "text": "we don’t have much",
+       "anchor": "much; infml] We’re short of coffee at the moment."
+      },
+      {
+       "text": "the TV is not working correctly",
+       "anchor": "have much] There’s something wrong with this TV."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -23463,7 +25645,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 23
   },
   {
    "number": 78,
@@ -23533,7 +25717,60 @@
        "example": "The poor little girl was in tears ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "I thought it was my pen",
+       "anchor": "A By, on or in + noun I took his pen by mistake"
+      },
+      {
+       "text": "not using a machine",
+       "anchor": "ught it was my pen]. These shoes are made by hand"
+      },
+      {
+       "text": "it wasn’t planned; it was luck",
+       "anchor": "hand [not using a machine]. I met them by chance"
+      },
+      {
+       "text": "he did He broke the plate on purpose not want or plan to do it",
+       "anchor": "it was luck]. He broke the plate by accident"
+      },
+      {
+       "text": "he wanted to do it; it was his intention",
+       "anchor": "not want or plan to do it]."
+      },
+      {
+       "text": "using the phone",
+       "anchor": "ntention]. My boss is on the phone at the moment."
+      },
+      {
+       "text": "they refuse to work because of a problem over pay, hours, etc.",
+       "anchor": "ment. [using the phone] The workers are on strike"
+      },
+      {
+       "text": "in the window for people to look at",
+       "anchor": ", etc.]. The books were on display in the window."
+      },
+      {
+       "text": "burning",
+       "anchor": "ople to look at] Part of the building was on fire"
+      },
+      {
+       "text": "on the train, boat, plane, etc.",
+       "anchor": "burning]. Most of the passengers are now on board"
+      },
+      {
+       "text": "needing to do something or go somewhere very quickly",
+       "anchor": "oat, plane, etc.]. Why are they always in a hurry"
+      },
+      {
+       "text": "including all the important information",
+       "anchor": "e very quickly]? I explained everything in detail"
+      },
+      {
+       "text": "crying",
+       "anchor": "gain in future. The poor little girl was in tears"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -23589,7 +25826,48 @@
        "example": "right now"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "at 8.30",
+       "anchor": "ons begin at 8.30 and the students are usually here on time"
+      },
+      {
+       "text": "before the time we need to be there",
+       "anchor": "me [at 8.30]. If we hurry, we’ll be there in time"
+      },
+      {
+       "text": "finally, after a lot of time or thought",
+       "anchor": "We were tired of waiting, so in the end we went home."
+      },
+      {
+       "text": "in the last part",
+       "anchor": "thought] At the end of the book they get married."
+      },
+      {
+       "text": "working as businesspeople",
+       "anchor": "sful in business it’s important to get on well with people."
+      },
+      {
+       "text": "they are there for work, not a holiday",
+       "anchor": "sinesspeople] They’re both in Germany on business"
+      },
+      {
+       "text": "old and not useful, or not correct in its information",
+       "anchor": "oliday]. I’m afraid this book’s a bit out-of-date"
+      },
+      {
+       "text": "knowing all the most recent ideas and information",
+       "anchor": "]. I try to keep up-to-date with all the changes."
+      },
+      {
+       "text": "not now, but very soon; syn in a minute",
+       "anchor": "t ideas and information] I’ll see you in a moment"
+      },
+      {
+       "text": "now; syn right now",
+       "anchor": "in a minute]. I can’t speak to you at the moment"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -23650,7 +25928,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 26
+   "unplaced_glosses": [],
+   "vocabulary_count": 26,
+   "gloss_count": 23
   },
   {
    "number": 79,
@@ -23696,7 +25976,32 @@
        "example": "He doesn’t get on with ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "fell to the ground",
+       "anchor": "mes a verb + adverb and preposition. He fell over"
+      },
+      {
+       "text": "learn/discover",
+       "anchor": "e ground] and hurt his knee. I’ll try to find out"
+      },
+      {
+       "text": "gave it to someone for no money",
+       "anchor": "here. He didn’t like his coat, so he gave it away"
+      },
+      {
+       "text": "find the meaning in a book/dictionary",
+       "anchor": ". If you don’t understand the meaning, look it up"
+      },
+      {
+       "text": "deal with it successfully; solve it",
+       "anchor": "dictionary]. Who’s going to sort out the problem?"
+      },
+      {
+       "text": "have a good relationship with",
+       "anchor": "it successfully; solve it] He doesn’t get on with"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -23760,7 +26065,24 @@
        "example": "When the hotel gets busy, we have to take on ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "stop",
+       "anchor": "the same as carry. My wife has decided to give up"
+      },
+      {
+       "text": "continue",
+       "anchor": "oking. We’ll take a short break and then carry on"
+      },
+      {
+       "text": "increase",
+       "anchor": "] with the meeting. The shops are going to put up"
+      },
+      {
+       "text": "employ",
+       "anchor": "ead. When the hotel gets busy, we have to take on"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -23809,7 +26131,30 @@
       }
      ],
      "glosses": [
-      "make a piece of equipment work by pressing"
+      {
+       "text": "leave",
+       "anchor": "go away I was busy, so I told him to go away"
+      },
+      {
+       "text": "go on holiday",
+       "anchor": "to go away [leave]. We try to go away in August."
+      },
+      {
+       "text": "lifted it from the floor",
+       "anchor": "hing /someone up I picked up most of the rubbish."
+      },
+      {
+       "text": "collect someone, usually in a car",
+       "anchor": "floor] I’m going to pick Jane up at the station."
+      },
+      {
+       "text": "make a piece of equipment work by pressing a switch; syn switch sth on",
+       "anchor": "Put something on Could you put the light on"
+      },
+      {
+       "text": "put clothes on your body",
+       "anchor": "witch; syn switch sth on]? I put on my best suit."
+      }
      ]
     }
    ],
@@ -23877,7 +26222,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 16
   },
   {
    "number": 80,
@@ -23911,7 +26258,28 @@
        "example": "We set off ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "arrive",
+       "anchor": "of the verb. When does your train get in"
+      },
+      {
+       "text": "wait a moment",
+       "anchor": "When does your train get in [arrive]? Hold on"
+      },
+      {
+       "text": "stopped working",
+       "anchor": "et my coat. The car broke down on my way to work."
+      },
+      {
+       "text": "go to collect them",
+       "anchor": "stopped working] I’ll call for them at 8 o’clock."
+      },
+      {
+       "text": "started the journey",
+       "anchor": "hem at 8 o’clock. [go to collect them] We set off"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -23963,7 +26331,16 @@
        "example": "How did the two men break into the shop? ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "take care of them",
+       "anchor": "sal verb. I will look after the children for you."
+      },
+      {
+       "text": "enter the shop using force, e.g. breaking a window",
+       "anchor": "of them] How did the two men break into the shop?"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -24039,7 +26416,24 @@
        "example": "reject"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "not include sb/sth; syn omit",
+       "anchor": "verb in more formal situations. leave sb/sth out"
+      },
+      {
+       "text": "create sth from your imagination; syn invent",
+       "anchor": "ade a list of people but left me out. make sth up"
+      },
+      {
+       "text": "put sth back to a later date; syn postpone",
+       "anchor": "ent], e.g. We had to make up a story. put sth off"
+      },
+      {
+       "text": "refuse an off er or request; syn reject",
+       "anchor": "ey put the game off till Friday. turn sth/sb down"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -24122,7 +26516,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 31
+   "unplaced_glosses": [],
+   "vocabulary_count": 31,
+   "gloss_count": 11
   },
   {
    "number": 81,
@@ -24419,7 +26815,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 44
+   "unplaced_glosses": [],
+   "vocabulary_count": 44,
+   "gloss_count": 0
   },
   {
    "number": 82,
@@ -24481,7 +26879,32 @@
        "example": "He gave the car a push."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "made me hungry",
+       "anchor": "dache. The walk this morning gave me an appetite"
+      },
+      {
+       "text": "advised me",
+       "anchor": "uns to express an action. He gave me some advice"
+      },
+      {
+       "text": "shocked us",
+       "anchor": "Valentina gave us a shock when she shouted like that."
+      },
+      {
+       "text": "talk formally to a group of people; also give a lecture",
+       "anchor": "ocked us] I had to give a speech at the wedding."
+      },
+      {
+       "text": "ring/phone her",
+       "anchor": "eople; also give a lecture] I’ll give her a ring"
+      },
+      {
+       "text": "helped me",
+       "anchor": "ad lots of work to do, but fortunately Ollie gave me a hand"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -24549,7 +26972,16 @@
        "example": "You’re working hard and your English is improving. That’s good – keep it up."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "stay on the right side",
+       "anchor": "y in a particular state or condition. Keep right"
+      },
+      {
+       "text": "talks to me / disturbs me when I am doing something",
+       "anchor": "getting backache. She keeps on interrupting me."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -24648,7 +27080,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [],
+   "vocabulary_count": 33,
+   "gloss_count": 8
   },
   {
    "number": 83,
@@ -24726,7 +27160,36 @@
        "example": "I got to know lots of Americans when I stayed in San Francisco. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "make contact by email, phone or letter",
+       "anchor": "Phrases You can get in touch with me via email."
+      },
+      {
+       "text": "start sleeping",
+       "anchor": "tter] A bedtime story helps children get to sleep"
+      },
+      {
+       "text": "meet and spend time together",
+       "anchor": "The salsa classes are a chance for us to get together"
+      },
+      {
+       "text": "said or wrote something that was not correct",
+       "anchor": "time together]. I’m sorry I got the number wrong"
+      },
+      {
+       "text": "becoming more unpleasant; opp getting better",
+       "anchor": "g that was not correct]. My cold is getting worse"
+      },
+      {
+       "text": "throw them away, give them away, or sell them",
+       "anchor": "tting better]. I’d like to get rid of my old CDs."
+      },
+      {
+       "text": "met and became friends with",
+       "anchor": "t to know lots of Americans when I stayed in San Francisco."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -24754,7 +27217,28 @@
        "example": "What time did you get up this morning? ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "left the car; also leave a building",
+       "anchor": "Phrasal verbs He stopped the car and I got out"
+      },
+      {
+       "text": "have it returned to me",
+       "anchor": "]. I gave her £25, but I’ll get it back tomorrow."
+      },
+      {
+       "text": "enter a place, especially when it is difficult",
+       "anchor": "to me] The door was locked so we couldn’t get in"
+      },
+      {
+       "text": "arrive",
+       "anchor": "ficult]. Our train should get in around midnight."
+      },
+      {
+       "text": "get out of bed",
+       "anchor": ". [arrive] What time did you get up this morning?"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -24831,7 +27315,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 19
+   "unplaced_glosses": [],
+   "vocabulary_count": 19,
+   "gloss_count": 12
   },
   {
    "number": 84,
@@ -24933,7 +27419,44 @@
        "example": "• Go and get means fetch ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "to a nightclub",
+       "anchor": "We could go shopping / sightseeing / swimming / clubbing"
+      },
+      {
+       "text": "his hair is becoming grey",
+       "anchor": "certain adjectives. My dad’s going grey"
+      },
+      {
+       "text": "losing his hair",
+       "anchor": "ir is becoming grey] and my uncle is going bald"
+      },
+      {
+       "text": "deaf = cannot hear",
+       "anchor": "[losing his hair]. My grandmother is going deaf"
+      },
+      {
+       "text": "blind = cannot see",
+       "anchor": "annot hear]. Our 12-year-old dog is going blind"
+      },
+      {
+       "text": "become very angry; infml",
+       "anchor": "nnot see]. He’ll go mad if you wear his jacket."
+      },
+      {
+       "text": "it was there before, but not now",
+       "anchor": "When I looked in the drawer, my watch had gone"
+      },
+      {
+       "text": "go to a place and bring something back with you",
+       "anchor": "re before, but not now]. • Go and get means fetch"
+      },
+      {
+       "text": "happening",
+       "anchor": "all we wait for George or go on to the here?"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -24986,7 +27509,26 @@
       }
      ],
      "glosses": [
-      "How are\nchicken. How about you?"
+      {
+       "text": "stopped working",
+       "anchor": "sure of the way; the lights went out"
+      },
+      {
+       "text": "successful; opp going badly",
+       "anchor": "s the business? B: Well, it was going well"
+      },
+      {
+       "text": "going on holiday",
+       "anchor": "Are you going away this year?"
+      },
+      {
+       "text": "How are chicken. How about you? you? infml",
+       "anchor": "the A: How’s it going?"
+      },
+      {
+       "text": "choosing",
+       "anchor": "B: Not bad. And you? beef."
+      }
      ]
     }
    ],
@@ -25048,7 +27590,22 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [
+    {
+     "text": "continue or move to another place/thing",
+     "anchor": "e? [happening] theatre?"
+    },
+    {
+     "text": "there have been problems",
+     "anchor": "e wrong"
+    },
+    {
+     "text": "return",
+     "anchor": "in June."
+    }
+   ],
+   "vocabulary_count": 33,
+   "gloss_count": 17
   },
   {
    "number": 85,
@@ -25127,7 +27684,26 @@
       }
      ],
      "glosses": [
-      "slightly wet, often\nThe verbs above can all be used as nouns."
+      {
+       "text": "from what I can see",
+       "anchor": "erbs with adjectives You look tired this evening."
+      },
+      {
+       "text": "from another country, from what I could hear",
+       "anchor": ". [from what I can see] That man sounded foreign."
+      },
+      {
+       "text": "slightly wet, often The verbs above can all be used as nouns. in an unpleasant way",
+       "anchor": "Language help This shirt feels damp."
+      },
+      {
+       "text": "the appearance of it",
+       "anchor": "I like the look of this hotel."
+      },
+      {
+       "text": "look carefully",
+       "anchor": "ea. D Verbs easily confused If you look"
+      }
      ]
     },
     {
@@ -25265,7 +27841,34 @@
       }
      ],
      "glosses": [
-      "paying attention to something, often for a"
+      {
+       "text": "are able to see",
+       "anchor": "If you look [look carefully] at the map, you can see"
+      },
+      {
+       "text": "paying attention to something, often for a long time",
+       "anchor": "e left. They’ve been watching that man for weeks."
+      },
+      {
+       "text": "paying attention",
+       "anchor": "ng time] He ran into me because he wasn’t looking"
+      },
+      {
+       "text": "was able to hear",
+       "anchor": "watched a film at the cinema.) I heard"
+      },
+      {
+       "text": "paying attention",
+       "anchor": "ard [was able to hear] what she said but I wasn’t listening"
+      },
+      {
+       "text": "put your hand on it",
+       "anchor": "istening [paying attention]. Don’t touch the oven"
+      },
+      {
+       "text": "put your hand on them to discover something about them",
+       "anchor": "put your hand on it]. It’s hot! Just feel my feet"
+      }
      ]
     }
    ],
@@ -25349,7 +27952,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 44
+   "unplaced_glosses": [],
+   "vocabulary_count": 44,
+   "gloss_count": 12
   },
   {
    "number": 86,
@@ -25428,12 +28033,46 @@
       }
      ],
      "glosses": [
-      "things that you throw",
-      "what you think",
-      "money that parents give regularly\ntent",
-      "the things that are used for a",
-      "the natural beauty you see\nsleeping bag",
-      "the way you do\ntoast"
+      {
+       "text": "things that you throw away because you do not want them",
+       "anchor": "• You can put all that rubbish in the bin over there."
+      },
+      {
+       "text": "what you think someone should do",
+       "anchor": "• She gave me some good advice about buying a car."
+      },
+      {
+       "text": "money that parents give regularly to their children",
+       "anchor": "bin • Do the children get pocket money"
+      },
+      {
+       "text": "the things that are used for a particular activity",
+       "anchor": ", sleeping bag, torch, things for cooking, etc."
+      },
+      {
+       "text": "tables, chairs, armchairs, etc.",
+       "anchor": "particular activity] • We sold the furniture"
+      },
+      {
+       "text": "the natural beauty you see sleeping bag around you",
+       "anchor": "chairs, etc.]. • The scenery is really beautiful."
+      },
+      {
+       "text": "what I know about it",
+       "anchor": "around you] • My knowledge of Russian is limited."
+      },
+      {
+       "text": "improving / getting better",
+       "anchor": "very hard and I believe she is making progress"
+      },
+      {
+       "text": "empty space",
+       "anchor": "• Can you take the dog? We haven’t got any room in our car."
+      },
+      {
+       "text": "the way you do toast and say things",
+       "anchor": "l over the furniture and making a lot of noise."
+      }
      ]
     },
     {
@@ -25462,7 +28101,24 @@
        "example": "He’s had several chances to go abroad, but he’s just not interested."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "the knowledge you get from doing a particular job or activity",
+       "anchor": "uncountable with another. experience (U)"
+      },
+      {
+       "text": "something that happens to you that affects the way you feel",
+       "anchor": "perience of working with children. experience (C)"
+      },
+      {
+       "text": "luck",
+       "anchor": "nces on my trip to Thailand and Japan. chance (U)"
+      },
+      {
+       "text": "the opportunity to do something",
+       "anchor": "] Lotto is a game of chance. chance (C)"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -25575,7 +28231,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 28
+   "unplaced_glosses": [],
+   "vocabulary_count": 28,
+   "gloss_count": 14
   },
   {
    "number": 87,
@@ -25589,8 +28247,26 @@
      "body": "A number of verbs are commonly followed by an\n-ing\nform.\nQUESTIONNAIRE\nQUESTIONS\nANSWERS\n• Do you\nenjoy\nstudying?\nYes, I do.\n• Do you\nmind\ngetting up early? [\n]\nIs it OK for you, or not?\nNo, I don’t mind at all.\n• Do you like or\ndislike\nhaving your photograph taken?\nI\nhate\nhaving my picture taken.\n• Do you usually\navoid\nspeaking to strangers at parties?\nYes. I prefer to talk to people that\nI already know.\n[\ntry not to do something\n]\n• Can you\nimagine\nbeing without a car? [\nthink of yourself in\nNo, I can’t. I need my car.\n]\na situation with no car\n• Have you ever\nconsidered\n[\n] living in\nthought about\nYes, many times. I’d like to live\nanother country?\nabroad.\n• Would you\nrecommend\n[\n] having a holiday in the\nadvise\nYes, I would, and I would suggest\ncapital city of your country? If so, would you\nsuggest\ngoing in spring or autumn.\ngoing at a particular time of the year?\nCommon\nmistakes\nI enjoy going there. (NOT I enjoy to go there.) They suggested leaving early. (NOT They suggested\nto leave early.) He recommended staying there. (NOT He recommended to stay there.)",
      "vocabulary": [],
      "glosses": [
-      "try not to do something",
-      "think of yourself in\nNo, I can’t. I need my car."
+      {
+       "text": "Is it OK for you, or not?",
+       "anchor": "Yes, I do. • Do you mind getting up early?"
+      },
+      {
+       "text": "try not to do something",
+       "anchor": "Yes. I prefer to talk to people that"
+      },
+      {
+       "text": "think of yourself in No, I can’t. I need my car. a situation with no car",
+       "anchor": "know. • Can you imagine being without a car?"
+      },
+      {
+       "text": "thought about",
+       "anchor": "tion with no car] • Have you ever considered"
+      },
+      {
+       "text": "advise",
+       "anchor": "abroad. • Would you recommend"
+      }
      ]
     },
     {
@@ -25627,7 +28303,36 @@
        "example": "The shop assistant was very rude, so I demanded to see the manager. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "want to see them and believe I will see them",
+       "anchor": "erb + to infinitive I hope to see them next week."
+      },
+      {
+       "text": "said they will help",
+       "anchor": "believe I will see them] They agreed to help me."
+      },
+      {
+       "text": "plan",
+       "anchor": "aid they will help] I intend to leave next month."
+      },
+      {
+       "text": "said I was happy to help",
+       "anchor": "leave next month. [plan] I offered to help them."
+      },
+      {
+       "text": "tried",
+       "anchor": "I attempted to cook the dinner, but it was terrible."
+      },
+      {
+       "text": "said I would definitely bring it back",
+       "anchor": "rible. [tried] I promised to bring her book back."
+      },
+      {
+       "text": "said in a firm way",
+       "anchor": "assistant was very rude, so I demanded to see the manager."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -25722,7 +28427,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 12
+   "unplaced_glosses": [],
+   "vocabulary_count": 12,
+   "gloss_count": 12
   },
   {
    "number": 88,
@@ -25880,7 +28587,28 @@
        "example": "My parents encouraged me to read. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "could see",
+       "anchor": "n. When I left, I noticed that the door was open."
+      },
+      {
+       "text": "think or believe that something will happen",
+       "anchor": "e gets lost. I expect (that) he’ll ring us later."
+      },
+      {
+       "text": "make me believe",
+       "anchor": "He tried to convince me that I needed some new clothes."
+      },
+      {
+       "text": "tell somebody so that they do not forget",
+       "anchor": "here by now. I had to remind him to buy the food."
+      },
+      {
+       "text": "gave me support and confidence to make it possible",
+       "anchor": "te the report.) My parents encouraged me to read."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -25941,7 +28669,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 5
   },
   {
    "number": 89,
@@ -26039,7 +28769,48 @@
        "example": "We use very or really with gradable adjectives which do not have an extreme meaning, e.g."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very good; syns terrific, wonderful, amazing",
+       "anchor": ", etc. We were lucky – the weather was marvellous"
+      },
+      {
+       "text": "very bad; syn dreadful",
+       "anchor": "amazing]. Don’t go and see that film – it’s awful"
+      },
+      {
+       "text": "very pleased",
+       "anchor": "n dreadful]. I was delighted she passed her exam."
+      },
+      {
+       "text": "very small",
+       "anchor": "It’s a nice modern flat, but it’s absolutely tiny"
+      },
+      {
+       "text": "very big; syn enormous",
+       "anchor": "I wasn’t very hungry, but they gave us a huge meal."
+      },
+      {
+       "text": "very interesting",
+       "anchor": "watch that programme; you’ll find it absolutely fascinating"
+      },
+      {
+       "text": "very tired",
+       "anchor": "Everyone was really exhausted by the end of the day."
+      },
+      {
+       "text": "very frightening",
+       "anchor": "Bungee jumping is the most terrifying thing I’ve ever done."
+      },
+      {
+       "text": "very important and necessary",
+       "anchor": "] Computers are an essential part of modern life."
+      },
+      {
+       "text": "very good; but usually only for food",
+       "anchor": "y important and necessary] The food was delicious"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -26091,7 +28862,36 @@
        "example": "We were shocked by the violence in the film. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "making you feel tired",
+       "anchor": "meaning. It was really tiring going up that hill."
+      },
+      {
+       "text": "very surprised",
+       "anchor": "el tired] I was amazed she could climb that wall."
+      },
+      {
+       "text": "not as good as I expected",
+       "anchor": "urprised] My exam results were very disappointing"
+      },
+      {
+       "text": "angry",
+       "anchor": "cted]. She was annoyed that I forgot to tell her."
+      },
+      {
+       "text": "feeling a bit stupid because of something you have said or done",
+       "anchor": "embarrassed when Ben told me her name was Angela."
+      },
+      {
+       "text": "difficult tounderstand",
+       "anchor": "id or done] The map he gave us was very confusing"
+      },
+      {
+       "text": "very surprised in an unpleasant way",
+       "anchor": "nd]. We were shocked by the violence in the film."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -26152,7 +28952,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 17
   },
   {
    "number": 90,
@@ -26226,8 +29028,30 @@
       }
      ],
      "glosses": [
-      "first there is a chemist, and",
-      "somewhere in the middle of"
+      {
+       "text": "first there is a chemist, and then a bank; opp after",
+       "anchor": "at number twenty-three."
+      },
+      {
+       "text": "on the other side of the garden against the wall. farm",
+       "anchor": "aw your bike in the back farm"
+      },
+      {
+       "text": "near",
+       "anchor": "against the wall. farm], by"
+      },
+      {
+       "text": "exactly",
+       "anchor": "found your phone on the right"
+      },
+      {
+       "text": "next to",
+       "anchor": "sofa beneath/underneath a"
+      },
+      {
+       "text": "under",
+       "anchor": "river. pile of cushions."
+      }
      ]
     },
     {
@@ -26277,7 +29101,10 @@
       }
      ],
      "glosses": [
-      "followed in order"
+      {
+       "text": "followed in order to catch us",
+       "anchor": "The woman came after us"
+      }
      ]
     }
    ],
@@ -26345,7 +29172,18 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 23
+   "unplaced_glosses": [
+    {
+     "text": "touching the wall",
+     "anchor": "farm], by [near] the"
+    },
+    {
+     "text": "somewhere in the middle of the trees",
+     "anchor": ""
+    }
+   ],
+   "vocabulary_count": 23,
+   "gloss_count": 9
   },
   {
    "number": 91,
@@ -26499,7 +29337,12 @@
        "example": "It’s an incredibly good book."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very interesting",
+       "anchor": "e with you. We had an extremely interesting trip."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -26612,7 +29455,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 1
   },
   {
    "number": 92,
@@ -26655,8 +29500,18 @@
       }
      ],
      "glosses": [
-      "a longer action ‘on my way to work’ and a\n.",
-      "two short actions happening at the same time; we can"
+      {
+       "text": "two long actions",
+       "anchor": "time Violet got ready while I cooked the dinner."
+      },
+      {
+       "text": "a longer action ‘on my way to work’ and a short action ‘the accident’; we can also use when or as here.",
+       "anchor": "The accident happened while I was on my way to work."
+      },
+      {
+       "text": "two short actions happening at the same time; we can also use when here",
+       "anchor": "e.] I saw him (just) as I came out of the office."
+      }
      ]
     },
     {
@@ -26690,7 +29545,10 @@
       }
      ],
      "glosses": [
-      "(NOT After see the film, we went home.)\nat a later time"
+      {
+       "text": "at a later time (NOT After see the film, we went home.) but usually the same day",
+       "anchor": "lm, we went home. I talked to Joe, and afterwards"
+      }
      ]
     },
     {
@@ -26740,9 +29598,18 @@
       }
      ],
      "glosses": [
-      "a",
-      "period of time\nfinally, after a long",
-      "finally, after a"
+      {
+       "text": "a period of time",
+       "anchor": "t on very well when they shared the flat. But after a while"
+      },
+      {
+       "text": "finally, after a long time or a lot of problems",
+       "anchor": ", they started arguing about various things, and eventually"
+      },
+      {
+       "text": "finally, after a period of time or thought",
+       "anchor": "sses, but after a while it got a bit boring, and in the end"
+      }
      ]
     },
     {
@@ -26860,7 +29727,9 @@
      "section": "F"
     }
    ],
-   "vocabulary_count": 25
+   "unplaced_glosses": [],
+   "vocabulary_count": 25,
+   "gloss_count": 7
   },
   {
    "number": 93,
@@ -27019,7 +29888,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 10
+   "unplaced_glosses": [],
+   "vocabulary_count": 10,
+   "gloss_count": 0
   },
   {
    "number": 94,
@@ -27090,7 +29961,10 @@
       }
      ],
      "glosses": [
-      "the reason\nfor\nthe meeting"
+      {
+       "text": "the reason for the meeting",
+       "anchor": "he purpose of the meeting is to plan next year’s timetable."
+      }
      ]
     },
     {
@@ -27139,7 +30013,36 @@
        "example": "Take some money in case you need to get a taxi."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "if we don’t leave now",
+       "anchor": "hey’re coming. We’ll be late unless we leave now."
+      },
+      {
+       "text": "if the weather doesn’t improve",
+       "anchor": "f we don’t leave now] Unless the weather improves"
+      },
+      {
+       "text": "because if I don’t",
+       "anchor": "won’t be able to go. I have to go now, otherwise"
+      },
+      {
+       "text": "because if you don’t",
+       "anchor": "bus. You’ll have to turn up the music, otherwise"
+      },
+      {
+       "text": "but you must bring it back",
+       "anchor": "You can borrow it as long as you bring it back by Thursday."
+      },
+      {
+       "text": "but you must look quite smart",
+       "anchor": "You can wear what you like as long as you look quite smart."
+      },
+      {
+       "text": "I’m doing A because B might happen later.",
+       "anchor": "e smart] I’m taking my umbrella in case it rains."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -27212,7 +30115,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 20
+   "unplaced_glosses": [],
+   "vocabulary_count": 20,
+   "gloss_count": 8
   },
   {
    "number": 95,
@@ -27270,7 +30175,48 @@
        "example": "to"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "bought",
+       "anchor": "POLICE STATEMENT: The man is being purchased"
+      },
+      {
+       "text": "about",
+       "anchor": "here may be eaten questioned regarding"
+      },
+      {
+       "text": "here",
+       "anchor": "questioned regarding [about] the on the premises"
+      },
+      {
+       "text": "I am sorry to say",
+       "anchor": "THEATRE ANNOUNCEMENT: The play will"
+      },
+      {
+       "text": "start",
+       "anchor": "sorry to say] that we are unable to … commence"
+      },
+      {
+       "text": "need",
+       "anchor": "STATION ANNOUNCEMENT: The next"
+      },
+      {
+       "text": "more help",
+       "anchor": "ANNOUNCEMENT: The next [need] further assistance"
+      },
+      {
+       "text": "leave",
+       "anchor": "r assistance [more help], train to depart"
+      },
+      {
+       "text": "give or allow",
+       "anchor": "AIRPORT ANNOUNCEMENT: Will position to grant"
+      },
+      {
+       "text": "go to",
+       "anchor": "visa to this country. to"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -27355,7 +30301,66 @@
       }
      ],
      "glosses": [
-      "the problem"
+      {
+       "text": "a friend",
+       "anchor": "A: What are you up to this evening? B: A mate"
+      },
+      {
+       "text": "What are you doing?",
+       "anchor": "mate [a friend] of mine."
+      },
+      {
+       "text": "often",
+       "anchor": "Nothing much. Why? B: Yeah, I see him quite a bit"
+      },
+      {
+       "text": "man",
+       "anchor": "Well, would you like to see the new Coen bloke"
+      },
+      {
+       "text": "come",
+       "anchor": "yn terrific]. A: Toby, I’m afraid I can’t make it"
+      },
+      {
+       "text": "terrible",
+       "anchor": "load of rubbish"
+      },
+      {
+       "text": "the problem is",
+       "anchor": "t’s a shame. A: Yeah, I’m sorry, but the thing is"
+      },
+      {
+       "text": "children",
+       "anchor": "not well, so I’ll have to look after the kids"
+      },
+      {
+       "text": "about twelve",
+       "anchor": "don’t worry. There will still be twelve or so"
+      },
+      {
+       "text": "thanks",
+       "anchor": "let you know what happens. A: Cheers"
+      },
+      {
+       "text": "I’m sure",
+       "anchor": ": Cheers [thanks]. That would be great. A: I bet"
+      },
+      {
+       "text": "want to eat something very much",
+       "anchor": "use the uncountable noun stuff, especially in"
+      },
+      {
+       "text": "e.g. plates, food, toys",
+       "anchor": "Put this stuff in the cupboard."
+      },
+      {
+       "text": "equipment",
+       "anchor": "We carried our camping stuff"
+      },
+      {
+       "text": "liquid",
+       "anchor": "What’s this stuff in the fridge in the blue bottle?"
+      }
      ]
     }
    ],
@@ -27427,7 +30432,14 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 30
+   "unplaced_glosses": [
+    {
+     "text": "very good; syn terrific",
+     "anchor": ""
+    }
+   ],
+   "vocabulary_count": 30,
+   "gloss_count": 26
   },
   {
    "number": 96,
@@ -27513,7 +30525,16 @@
        "example": "= Write your signature ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "complete",
+       "anchor": "ies B Language of forms When you fill in"
+      },
+      {
+       "text": "the special way you have of writing your own name",
+       "anchor": "? signed = Write your signature"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -27578,7 +30599,34 @@
       }
      ],
      "glosses": [
-      "a letter written by someone who knows you"
+      {
+       "text": "information about you such as your name, address, email address, etc.",
+       "anchor": "n English), which should give: • personal details"
+      },
+      {
+       "text": "the jobs you have done",
+       "anchor": "certificate, etc. • your work experience"
+      },
+      {
+       "text": "what you enjoy doing",
+       "anchor": "erience [the jobs you have done] • your interests"
+      },
+      {
+       "text": "abilities you have learned and practised, e.g. ability to speak a foreign language",
+       "anchor": "• your interests [what you enjoy doing] • skills"
+      },
+      {
+       "text": "what you want to do in your future working life",
+       "anchor": "bility to speak a foreign language] • career aims"
+      },
+      {
+       "text": "a letter written by someone who knows you which says if you are suitable for a particular job",
+       "anchor": "] • names of people who will give you a reference"
+      },
+      {
+       "text": "need; fml",
+       "anchor": "lar job] If you apply to university, they require"
+      }
      ]
     },
     {
@@ -27611,7 +30659,24 @@
        "example": "are good at working in a team ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "difficult to understand",
+       "anchor": "ble). • Keep it simple. Don’t make it complicated"
+      },
+      {
+       "text": "connected to and useful for the particular job",
+       "anchor": "• Make sure the information you give is relevant"
+      },
+      {
+       "text": "without others",
+       "anchor": "For example, if you are going to be working on your own"
+      },
+      {
+       "text": "with a group of people",
+       "anchor": "on’t say that you are good at working in a team"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -27704,7 +30769,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 36
+   "unplaced_glosses": [],
+   "vocabulary_count": 36,
+   "gloss_count": 13
   },
   {
    "number": 97,
@@ -27739,7 +30806,14 @@
       }
      ],
      "glosses": [
-      "reasons for something and"
+      {
+       "text": "opinion",
+       "anchor": "essay you have to express your own ideas and point of view"
+      },
+      {
+       "text": "reasons for something and reasons against something",
+       "anchor": "rtant to show that you understand both sides of an argument"
+      }
      ]
     },
     {
@@ -27781,7 +30855,14 @@
       }
      ],
      "glosses": [
-      "Some people\nYou can express a personal point of view with phrases"
+      {
+       "text": "Some people think",
+       "anchor": "Language help Some people believe"
+      },
+      {
+       "text": "a reason to think",
+       "anchor": "ink that … or It seems to me There is an argument"
+      }
      ]
     },
     {
@@ -27870,7 +30951,16 @@
        "example": "Teenagers tend to have ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "saying that something is true most of the time or in most situations",
+       "anchor": "rases to show that we are making a generalisation"
+      },
+      {
+       "text": "usually have",
+       "anchor": "iduals. (syn on the whole) Teenagers tend to have"
+      }
+     ]
     },
     {
      "letter": "F",
@@ -27915,7 +31005,14 @@
       }
      ],
      "glosses": [
-      "because of this;\nsyn"
+      {
+       "text": "reasons for being very fat",
+       "anchor": "or diet and lack of exercise are the main causes of obesity"
+      },
+      {
+       "text": "because of this; syn as a result",
+       "anchor": "eat the right food or get enough exercise, and consequently"
+      }
      ]
     }
    ],
@@ -28011,7 +31108,9 @@
      "section": "F"
     }
    ],
-   "vocabulary_count": 38
+   "unplaced_glosses": [],
+   "vocabulary_count": 38,
+   "gloss_count": 8
   },
   {
    "number": 98,
@@ -28082,7 +31181,10 @@
       }
      ],
      "glosses": [
-      "write your signature"
+      {
+       "text": "write your signature",
+       "anchor": "end of a formal letter to sign your name first"
+      }
      ]
     },
     {
@@ -28152,7 +31254,46 @@
       }
      ],
      "glosses": [
-      "say sorry for\nwhen something arrives later than\nOR Please accept our apologies for the delay.\nexpected"
+      {
+       "text": "about",
+       "anchor": "s and phrases Thank you for your letter regarding"
+      },
+      {
+       "text": "I am sorry to say",
+       "anchor": "he damage to your vehicle. I regret to inform you"
+      },
+      {
+       "text": "official request for something",
+       "anchor": "ret to inform you [I am sorry to say] that your application"
+      },
+      {
+       "text": "I am happy to say",
+       "anchor": "ed to inform you that your application has been successful."
+      },
+      {
+       "text": "ask about",
+       "anchor": "am writing to enquire about English courses at your school."
+      },
+      {
+       "text": "write to say that the booking is certain",
+       "anchor": "] You will need to confirm the booking in writing"
+      },
+      {
+       "text": "say thank you for offering your help",
+       "anchor": "We would like to thank you for offering your support"
+      },
+      {
+       "text": "say sorry for",
+       "anchor": "fering your help]. We would like to apologise for"
+      },
+      {
+       "text": "when something arrives later than expected",
+       "anchor": "We would like to apologise for [say sorry for] the delay"
+      },
+      {
+       "text": "I am sending a cheque for £ 100 in the same envelope as this letter.",
+       "anchor": "ogies for the delay. I enclose a cheque for £100."
+      }
      ]
     }
    ],
@@ -28209,7 +31350,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 29
+   "unplaced_glosses": [],
+   "vocabulary_count": 29,
+   "gloss_count": 11
   },
   {
    "number": 99,
@@ -28375,7 +31518,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 26
+   "unplaced_glosses": [],
+   "vocabulary_count": 26,
+   "gloss_count": 0
   },
   {
    "number": 100,
@@ -28458,7 +31603,14 @@
       }
      ],
      "glosses": [
-      "personal\n/eɪdz/\n/pɪn/"
+      {
+       "text": "a history of your job experience",
+       "anchor": "PC personal computer CV curriculum vitae"
+      },
+      {
+       "text": "personal identification number, especially used with a bank/credit card",
+       "anchor": "iations are spoken as words, e.g. AIDS /eɪdz/ and PIN /pɪn/"
+      }
      ]
     },
     {
@@ -28627,7 +31779,16 @@
        "example": "paper (newspaper)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "illness like a cold but more serious",
+       "anchor": "dvertisement) flu (influenza)"
+      },
+      {
+       "text": "special room where scientists work",
+       "anchor": "m) lab (laboratory)"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -28710,7 +31871,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 53
+   "unplaced_glosses": [],
+   "vocabulary_count": 53,
+   "gloss_count": 4
   }
  ]
 }

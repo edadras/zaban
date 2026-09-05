@@ -401,14 +401,41 @@ class ImportCurriculum extends Command
             $counts['senses']++;
         }
 
-        // The Advanced/Upper editions gloss a term inline, directly after it. The
-        // gloss may sit on the term's own line or elsewhere in the section body.
-        $gloss = $this->glossFor($term, $v['example'] ?? '')
+        /*
+         * Prefer the glosses the extractor harvested from the page in reading
+         * order, matched to this term by the text that preceded the bracket.
+         *
+         * Searching the section body for a bracket near the term only works
+         * where the book sets its glosses inline, which is the Advanced
+         * edition's habit. The other three set them as margin notes, and the
+         * body is rebuilt from pdftohtml runs that split at every font change
+         * and interleave a two-column page - so the bracket is no longer next
+         * to its headword there, or even contiguous. That is why this fell from
+         * 861 definitions in Advanced to 30 in Elementary.
+         *
+         * The body search stays as a fallback for anything the page-level pass
+         * missed.
+         */
+        $gloss = $this->glossFromList($term, $sec['glosses'] ?? [])
+            ?? $this->glossFor($term, $v['example'] ?? '')
             ?? $this->glossFor($term, $sec['body'] ?? '');
         if ($gloss) {
+            /*
+             * These books gloss two different things in the same brackets. Most
+             * are definitions - "perished [died]". Some are usage warnings -
+             * "do homework [NOT make homework]" - and showing one of those where
+             * a definition belongs teaches the learner an error as if it were
+             * the meaning. Both are worth keeping; they are labelled so the
+             * client can tell them apart.
+             */
+            $isWarning = (bool) preg_match('/^NOT\b/i', $gloss);
+
             $def = Definition::firstOrCreate(
                 ['vocabulary_sense_id' => $sense->id, 'language_id' => $this->languageId, 'text' => $gloss],
-                ['cefr_level_id' => $this->cefr[$cefrCode], 'generation_method' => 'extracted'],
+                [
+                    'cefr_level_id' => $this->cefr[$cefrCode],
+                    'generation_method' => $isWarning ? 'extracted_usage_note' : 'extracted',
+                ],
             );
             if ($def->wasRecentlyCreated) {
                 $counts['definitions']++;
@@ -485,6 +512,41 @@ class ImportCurriculum extends Command
         $words = preg_split('/\\s+/', trim($text));
 
         return count($words) >= 3 && preg_match('/[a-z]{2}/i', $text) === 1;
+    }
+
+    /**
+     * Find this term's gloss among the ones harvested off the page.
+     *
+     * A gloss is this term's when the term appears in the run-up to the
+     * bracket. Anything else is left alone: attaching a definition to the wrong
+     * headword teaches the wrong thing, and is harder to notice than a missing
+     * one.
+     *
+     * @param  list<array{text:string,anchor:string}|string>  $glosses
+     */
+    private function glossFromList(string $term, array $glosses): ?string
+    {
+        $needle = mb_strtolower(trim($term));
+
+        if ($needle === '') {
+            return null;
+        }
+
+        foreach ($glosses as $gloss) {
+            // Tolerates the older shape, where a gloss was a bare string and
+            // carried no anchor to match against.
+            if (! is_array($gloss)) {
+                continue;
+            }
+
+            if (str_contains(mb_strtolower($gloss['anchor'] ?? ''), $needle)) {
+                $text = trim((string) ($gloss['text'] ?? ''));
+
+                return $text !== '' ? $text : null;
+            }
+        }
+
+        return null;
     }
 
     private function glossFor(string $term, string $line): ?string

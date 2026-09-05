@@ -2683,7 +2683,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 25
+   "unplaced_glosses": [],
+   "vocabulary_count": 25,
+   "gloss_count": 0
   },
   {
    "number": 2,
@@ -2726,7 +2728,14 @@
       }
      ],
      "glosses": [
-      "baby"
+      {
+       "text": "NOT Anna got a baby",
+       "anchor": "6. Common mistakes Anna had a baby"
+      },
+      {
+       "text": "NOT He/ She born or He/ She is born",
+       "anchor": "a baby [NOT Anna got a baby]. He/ She was born"
+      }
      ]
     },
     {
@@ -2788,7 +2797,14 @@
       }
      ],
      "glosses": [
-      "the marriage has legally ended"
+      {
+       "text": "the marriage has legally ended",
+       "anchor": "marriage breaks up, you are separated / divorced."
+      },
+      {
+       "text": "NOT with Harry",
+       "anchor": "Common mistakes Sarah got married to Harry"
+      }
      ]
     },
     {
@@ -2814,7 +2830,10 @@
       }
      ],
      "glosses": [
-      "NOT Harry is died or\nHarry is death"
+      {
+       "text": "NOT Harry is died or Harry is death",
+       "anchor": "ack. Common mistakes Harry is dead"
+      }
      ]
     }
    ],
@@ -2902,7 +2921,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 24
+   "unplaced_glosses": [],
+   "vocabulary_count": 24,
+   "gloss_count": 5
   },
   {
    "number": 3,
@@ -3054,7 +3075,16 @@
      "title": "Singular and plurals",
      "body": "one foot – two feet\none tooth – two teeth\nHair is a singular word. My hair is very long – I must cut it soon.\nCommon\nmistakes\nUsually we use my, your, his, her, etc. with parts of the body.\nKatie is washing her hair [\n]. I have a pain in my leg [\n].\nNOT Jane is washing the hair\nNOT I have a pain in the leg\n(See Unit 6: Health and illness.)\n12",
      "vocabulary": [],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT Jane is washing the hair",
+       "anchor": "th parts of the body. Katie is washing her hair"
+      },
+      {
+       "text": "NOT I have a pain in the leg",
+       "anchor": "air [NOT Jane is washing the hair]. I have a pain in my leg"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -3149,7 +3179,9 @@
      "section": "F"
     }
    ],
-   "vocabulary_count": 25
+   "unplaced_glosses": [],
+   "vocabulary_count": 25,
+   "gloss_count": 2
   },
   {
    "number": 4,
@@ -3359,7 +3391,12 @@
        "example": "You put clothes on but you take clothes off"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT put clothes off",
+       "anchor": "When you get dressed in the morning, say to"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -3446,7 +3483,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 45
+   "unplaced_glosses": [],
+   "vocabulary_count": 45,
+   "gloss_count": 1
   },
   {
    "number": 5,
@@ -3496,7 +3535,16 @@
        "example": "Their cat is very fat. It needs to go on a diet."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "slim is more polite than thin",
+       "anchor": ". I was very thin when I was in hospital."
+      },
+      {
+       "text": "weigh too much",
+       "anchor": "Agata Sanchez The doctor said I am overweight."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -3580,7 +3628,24 @@
        "example": "I’m not ugly or beautiful, I’m just average-looking!"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very pretty",
+       "anchor": "nd dark skin. My mother is a very beautiful woman."
+      },
+      {
+       "text": "NOT People are high",
+       "anchor": "n. Common mistakes People are tall"
+      },
+      {
+       "text": "NOT hairs",
+       "anchor": "n Luca People have blonde or dark hair"
+      },
+      {
+       "text": "ugly = the opposite of beautiful or good-looking",
+       "anchor": "y. (usually girls / women only) Bob’s an ugly man."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -3727,7 +3792,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 6
   },
   {
    "number": 6,
@@ -3857,7 +3924,12 @@
        "example": "had a heart attack."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT got a heart attack",
+       "anchor": "ther went to hospital when he"
+      }
+     ]
     },
     {
      "letter": "F",
@@ -3970,7 +4042,9 @@
      "section": "F"
     }
    ],
-   "vocabulary_count": 26
+   "unplaced_glosses": [],
+   "vocabulary_count": 26,
+   "gloss_count": 1
   },
   {
    "number": 7,
@@ -4040,7 +4114,12 @@
        "example": "exam – I’m very happy for you."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT I am very happy for your news",
+       "anchor": "Common mistakes I am very happy about your news"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -4085,7 +4164,14 @@
       }
      ],
      "glosses": [
-      "NOT I want\nNote:\nI want my mother to buy a new car."
+      {
+       "text": "I would like",
+       "anchor": "Common mistakes I want a new car."
+      },
+      {
+       "text": "NOT I want Note: I want my mother to buy a new car. that you help me",
+       "anchor": "I want you to help me"
+      }
      ]
     },
     {
@@ -4118,9 +4204,7 @@
        "example": "She’s a bit / a little tired."
       }
      ],
-     "glosses": [
-      "NOT I very like football / it. or\nA\nHow’s your grandfather?"
-     ]
+     "glosses": []
     }
    ],
    "exercises": [
@@ -4203,7 +4287,14 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 27
+   "unplaced_glosses": [
+    {
+     "text": "NOT I very like football / it. or I like very much football / it.",
+     "anchor": "grandfather?"
+    }
+   ],
+   "vocabulary_count": 27,
+   "gloss_count": 4
   },
   {
    "number": 8,
@@ -4297,7 +4388,12 @@
        "example": "When it’s someone’s birthday we say: Happy Birthday ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT Congratulations",
+       "anchor": "When it’s someone’s birthday we say: Happy Birthday"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -4368,7 +4464,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 18
+   "unplaced_glosses": [],
+   "vocabulary_count": 18,
+   "gloss_count": 1
   },
   {
    "number": 9,
@@ -4498,7 +4596,44 @@
        "example": "I don’t agree ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "It’s all the same to me.",
+       "anchor": "Which film do you want to see? B: I don’t mind."
+      },
+      {
+       "text": "You can decide.",
+       "anchor": "I don’t mind. [It’s all the same to me.] It’s up to you."
+      },
+      {
+       "text": "NOT Why don’t we going",
+       "anchor": "Common mistakes Why don’t we go …"
+      },
+      {
+       "text": "NOT Let’s going",
+       "anchor": "Why don’t we go … [NOT Why don’t we going] or Let’s go …"
+      },
+      {
+       "text": "NOT How about go",
+       "anchor": "t’s go … [NOT Let’s going]. How about going …"
+      },
+      {
+       "text": "NOT What about go",
+       "anchor": "How about going … [NOT How about go] or What about going …"
+      },
+      {
+       "text": "it’s not important",
+       "anchor": "r book! B: Oh, it doesn’t matter. I don’t need it."
+      },
+      {
+       "text": "be quick",
+       "anchor": "B: Well done! A: Hurry up! The taxi’s here."
+      },
+      {
+       "text": "NOT I am agree or I’m not agree",
+       "anchor": "Common mistakes I agree or I don’t agree"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -4559,7 +4694,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 27
+   "unplaced_glosses": [],
+   "vocabulary_count": 27,
+   "gloss_count": 9
   },
   {
    "number": 10,
@@ -4625,7 +4762,12 @@
        "example": "Can I have some bread? ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT Can I have a bread?",
+       "anchor": "Can I have some bread?"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -4721,7 +4863,12 @@
        "example": "grapes"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT I love fruits",
+       "anchor": "I love fruit"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -4854,7 +5001,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 41
+   "unplaced_glosses": [],
+   "vocabulary_count": 41,
+   "gloss_count": 2
   },
   {
    "number": 11,
@@ -5113,7 +5262,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 37
+   "unplaced_glosses": [],
+   "vocabulary_count": 37,
+   "gloss_count": 0
   },
   {
    "number": 12,
@@ -5366,7 +5517,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 0
   },
   {
    "number": 13,
@@ -5508,7 +5661,12 @@
        "example": "book."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "rest and do nothing",
+       "anchor": "radio or listen to music. book."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -5552,7 +5710,12 @@
        "example": "The furniture in my room is white ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT The furniture in my room are white",
+       "anchor": "mistakes The furniture in my room is white"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -5619,7 +5782,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 39
+   "unplaced_glosses": [],
+   "vocabulary_count": 39,
+   "gloss_count": 2
   },
   {
    "number": 14,
@@ -5846,7 +6011,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 30
+   "unplaced_glosses": [],
+   "vocabulary_count": 30,
+   "gloss_count": 0
   },
   {
    "number": 15,
@@ -6068,7 +6235,12 @@
        "example": "After school, students do homework ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT make homework or do homeworks",
+       "anchor": "takes After school, students do homework"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -6145,7 +6317,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 48
+   "unplaced_glosses": [],
+   "vocabulary_count": 48,
+   "gloss_count": 1
   },
   {
    "number": 16,
@@ -6402,7 +6576,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 0
   },
   {
    "number": 17,
@@ -6617,7 +6793,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 27
+   "unplaced_glosses": [],
+   "vocabulary_count": 27,
+   "gloss_count": 0
   },
   {
    "number": 18,
@@ -6675,7 +6853,20 @@
        "example": "A coach tour is an easy way to go on holiday. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "flights and hotel are included",
+       "anchor": "ays We’re going on a package holiday to Hong Kong."
+      },
+      {
+       "text": "sleep in a tent",
+       "anchor": "holiday this year. I want to go camping this year."
+      },
+      {
+       "text": "travelling in a comfortable bus",
+       "anchor": "lps. A coach tour is an easy way to go on holiday."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -6747,7 +6938,16 @@
        "example": "ticket"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "a stamp that you need in your passport to go to some countries",
+       "anchor": "sport (if you are going to another country) a visa"
+      },
+      {
+       "text": "money of the country you are going to",
+       "anchor": "ome countries] your tickets some currency"
+      }
+     ]
     },
     {
      "letter": "E",
@@ -6795,7 +6995,12 @@
        "example": "(See Unit 32: Travelling and Unit 49: Moving for more words about travel.)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "clubs, etc.",
+       "anchor": "B We want to try the local food and enjoy the nightlife"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -6894,7 +7099,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [],
+   "vocabulary_count": 33,
+   "gloss_count": 6
   },
   {
    "number": 19,
@@ -7027,7 +7234,10 @@
       }
      ],
      "glosses": [
-      "coins or smaller notes"
+      {
+       "text": "coins or smaller notes",
+       "anchor": "omer Sorry, I only have a £50 note. I don’t have any change"
+      }
      ]
     }
    ],
@@ -7121,7 +7331,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 24
+   "unplaced_glosses": [],
+   "vocabulary_count": 24,
+   "gloss_count": 1
   },
   {
    "number": 20,
@@ -7275,7 +7487,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 10
+   "unplaced_glosses": [],
+   "vocabulary_count": 10,
+   "gloss_count": 0
   },
   {
    "number": 21,
@@ -7409,7 +7623,28 @@
        "example": "Can I have the bill, please?"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "for one person",
+       "anchor": "Expressions in reception Do you have a single room"
+      },
+      {
+       "text": "for two people",
+       "anchor": "Do you have a single room [for one person] / a double room"
+      },
+      {
+       "text": "I booked a room",
+       "anchor": "ouble room [for two people]? I have a reservation."
+      },
+      {
+       "text": "write your name",
+       "anchor": "this form, please? Sign (your name) here, please."
+      },
+      {
+       "text": "make sure it is correct",
+       "anchor": ", please. [write your name] Please check your bill"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -7534,7 +7769,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 38
+   "unplaced_glosses": [],
+   "vocabulary_count": 38,
+   "gloss_count": 5
   },
   {
    "number": 22,
@@ -7596,7 +7833,12 @@
        "example": "take-away: you buy a snack or a meal there and take it home to eat."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "non-alcoholic drinks, e.g. fruit juice",
+       "anchor": "bar / pub: bars and pubs serve alcohol and soft drinks"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -7681,7 +7923,10 @@
       }
      ],
      "glosses": [
-      "very good"
+      {
+       "text": "very good",
+       "anchor": "all right? Customer Thank you, it’s delicious."
+      }
      ]
     }
    ],
@@ -7769,7 +8014,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 29
+   "unplaced_glosses": [],
+   "vocabulary_count": 29,
+   "gloss_count": 2
   },
   {
    "number": 23,
@@ -8040,7 +8287,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 0
   },
   {
    "number": 24,
@@ -8155,7 +8404,14 @@
       }
      ],
      "glosses": [
-      "NOT What’s on"
+      {
+       "text": "NOT What’s on B Yes, I loved it / enjoyed it. the cinema this week?",
+       "anchor": "What’s on at the cinema this week?"
+      },
+      {
+       "text": "NOT Do you go to cinema often?",
+       "anchor": "orror film, I can’t sleep."
+      }
      ]
     }
    ],
@@ -8233,7 +8489,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 21
+   "unplaced_glosses": [],
+   "vocabulary_count": 21,
+   "gloss_count": 2
   },
   {
    "number": 25,
@@ -8279,7 +8537,12 @@
        "example": "I need some new headphones for my phone."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT hear or listen the radio",
+       "anchor": "atch TV [NOT see TV] and we listen to the radio"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -8347,7 +8610,12 @@
        "example": "Do you read a newspaper every day?"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "long stories",
+       "anchor": "at home. What do you read? I read novels"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -8383,7 +8651,20 @@
        "example": "Grandpa likes to have a sleep after lunch."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "we ask them to come to our house / flat",
+       "anchor": "pressions We sometimes have friends round"
+      },
+      {
+       "text": "sleeps in my house / flat",
+       "anchor": ". My best friend comes to stay sometimes."
+      },
+      {
+       "text": "NOT see TV",
+       "anchor": "lunch. Common mistakes We watch TV"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -8456,7 +8737,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 28
+   "unplaced_glosses": [],
+   "vocabulary_count": 28,
+   "gloss_count": 5
   },
   {
    "number": 26,
@@ -8470,8 +8753,14 @@
      "body": "Music is an uncountable noun. We do not use it in the plural.\nThe band played fantastic music for more than two hours\n[NOT fantastic musics].\nMusical is an adjective.\nThere is a shop on King Street that sells musical instruments\n[NOT music instruments].\nA musician (noun) is a person.\nMy brother is a very good musician. He plays three instruments.",
      "vocabulary": [],
      "glosses": [
-      "NOT fantastic musics",
-      "NOT music instruments"
+      {
+       "text": "NOT fantastic musics",
+       "anchor": "and played fantastic music for more than two hours"
+      },
+      {
+       "text": "NOT music instruments",
+       "anchor": "shop on King Street that sells musical instruments"
+      }
      ]
     },
     {
@@ -8609,9 +8898,22 @@
       }
      ],
      "glosses": [
-      "NOT classic music",
-      "NOT ‘a really",
-      "NOT ‘"
+      {
+       "text": "NOT classic music",
+       "anchor": "tte loves classical music. (for example, Beethoven, Mozart)"
+      },
+      {
+       "text": "dislikes it very much",
+       "anchor": "zart) [NOT classic music] Harper can’t stand opera"
+      },
+      {
+       "text": "NOT ‘a really good music band’",
+       "anchor": "Nuala had a really good band at her 21st birthday party."
+      },
+      {
+       "text": "NOT ‘a music concert’",
+       "anchor": "t with music. We’re going to a concert tonight."
+      }
      ]
     }
    ],
@@ -8685,7 +8987,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 28
+   "unplaced_glosses": [],
+   "vocabulary_count": 28,
+   "gloss_count": 6
   },
   {
    "number": 27,
@@ -8819,7 +9123,12 @@
        "example": "Antarctica"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT africa",
+       "anchor": "begin with a capital letter, for example Africa"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -8950,7 +9259,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 43
+   "unplaced_glosses": [],
+   "vocabulary_count": 43,
+   "gloss_count": 1
   },
   {
    "number": 28,
@@ -9169,7 +9480,10 @@
       }
      ],
      "glosses": [
-      "NOT It’s winding / clouding /\nWhat’s the weather like in your\nsunny"
+      {
+       "text": "NOT It’s winding / clouding / country in June? fogging / sunning",
+       "anchor": "her like in your sunny"
+      }
      ]
     }
    ],
@@ -9253,7 +9567,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 45
+   "unplaced_glosses": [],
+   "vocabulary_count": 45,
+   "gloss_count": 1
   },
   {
    "number": 29,
@@ -9541,7 +9857,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 43
+   "unplaced_glosses": [],
+   "vocabulary_count": 43,
+   "gloss_count": 0
   },
   {
    "number": 30,
@@ -9627,7 +9945,12 @@
        "example": "My friend lives in a cottage"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "small house in a village or the countryside",
+       "anchor": "the fields. My friend lives in a cottage /ˈkɒtɪdʒ/"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -9651,7 +9974,28 @@
        "example": "In the south of the country, there is a national park ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "animals, birds, fish and insects",
+       "anchor": "There is wonderful wildlife in the north of the country."
+      },
+      {
+       "text": "place where wildlife and nature are protected",
+       "anchor": "cts] Near the village there is a conservation area"
+      },
+      {
+       "text": "NOT I love the nature",
+       "anchor": "ed]. Common mistakes I love nature"
+      },
+      {
+       "text": "NOT I like walking in the nature",
+       "anchor": "[NOT I love the nature]. I like walking in the countryside"
+      },
+      {
+       "text": "very big national conservation area",
+       "anchor": "In the south of the country, there is a national park"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -9760,7 +10104,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 23
+   "unplaced_glosses": [],
+   "vocabulary_count": 23,
+   "gloss_count": 6
   },
   {
    "number": 31,
@@ -10041,7 +10387,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 40
+   "unplaced_glosses": [],
+   "vocabulary_count": 40,
+   "gloss_count": 0
   },
   {
    "number": 32,
@@ -10159,7 +10507,16 @@
        "example": "journey"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "to make sure you have a seat",
+       "anchor": "drid) I’d like to book / reserve a seat in advance"
+      },
+      {
+       "text": "NOT Was the travel long?",
+       "anchor": "Common mistakes Was the journey long?"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -10191,7 +10548,12 @@
        "example": "B: No, it’s a direct train."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "get off one train and get onto another",
+       "anchor": "train? A: Do I have to change trains for Toulouse?"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -10244,7 +10606,14 @@
       }
      ],
      "glosses": [
-      "NOT controlled\nchecked\nThe plane lands in New York at 14:30."
+      {
+       "text": "leaves the ground",
+       "anchor": "You have to check in two hours before the plane takes off"
+      },
+      {
+       "text": "NOT controlled The plane lands in New York at 14:30. my passport",
+       "anchor": "checked my passport"
+      }
      ]
     },
     {
@@ -10364,7 +10733,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 49
+   "unplaced_glosses": [],
+   "vocabulary_count": 49,
+   "gloss_count": 5
   },
   {
    "number": 33,
@@ -10442,7 +10813,16 @@
        "example": "have a bonfire and fireworks"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "day when most organisations are closed",
+       "anchor": "Year’s Day 1st January a bank holiday"
+      },
+      {
+       "text": "chocolate eggs",
+       "anchor": "dates vary give children Easter eggs"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -10475,7 +10855,18 @@
       }
      ],
      "glosses": [
-      "cooked in"
+      {
+       "text": "cooked in the oven",
+       "anchor": "and chips and roast beef and roast potatoes"
+      },
+      {
+       "text": "dish made of flour, milk and eggs",
+       "anchor": "atoes [cooked in the oven] with Yorkshire pudding"
+      },
+      {
+       "text": "a kind of curry",
+       "anchor": "de of flour, milk and eggs]. Chicken tikka masala"
+      }
      ]
     },
     {
@@ -10623,7 +11014,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 34
+   "unplaced_glosses": [],
+   "vocabulary_count": 34,
+   "gloss_count": 5
   },
   {
    "number": 34,
@@ -10766,8 +11159,14 @@
       }
      ],
      "glosses": [
-      "attacking\n/ˈmɜːdə/\na person in a public\n/ˈbɜːgləri/\nplace and stealing their",
-      "NOT Somebody\nstole\nThe bank was robbed yesterday. My sister was"
+      {
+       "text": "NOT Somebody robbed last week. robbed my bicycle.",
+       "anchor": ". My sister was Somebody stole my bicycle."
+      },
+      {
+       "text": "NOT I was stolen.",
+       "anchor": "I was robbed last night."
+      }
      ]
     },
     {
@@ -10832,7 +11231,16 @@
        "example": "A football hooligan is a person who goes to a football match and makes trouble"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "A vandal breaks and smashes things.",
+       "anchor": "me vandals broke the windows in the telephone box."
+      },
+      {
+       "text": "A football hooligan is a person who goes to a football match and makes trouble.",
+       "anchor": "liganism a problem in your country? /ˈhuːlɪgənɪzm/"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -10899,7 +11307,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 44
+   "unplaced_glosses": [],
+   "vocabulary_count": 44,
+   "gloss_count": 4
   },
   {
    "number": 35,
@@ -10954,8 +11364,26 @@
       }
      ],
      "glosses": [
-      "Soaps are stories about people’s",
-      "programme looking at a social problem"
+      {
+       "text": "important things that happen",
+       "anchor": "rammes The news is on TV at 6 o’clock every night."
+      },
+      {
+       "text": "Soaps are stories about people’s lives. They are often on TV every day.",
+       "anchor": "u watch soaps / soap operas? Home and Away is my favourite."
+      },
+      {
+       "text": "programmes about animals, birds, etc.",
+       "anchor": "n on TV every day.] I like nature programmes best."
+      },
+      {
+       "text": "programme looking at a social problem or question",
+       "anchor": "I watched a documentary last night about drugs and crime."
+      },
+      {
+       "text": "programmes that film real people living their lives, not actors",
+       "anchor": "24: Cinema.) My brother likes watching reality TV"
+      }
      ]
     },
     {
@@ -11009,7 +11437,10 @@
       }
      ],
      "glosses": [
-      "something that tries to persuade"
+      {
+       "text": "something that tries to persuade people to buy something",
+       "anchor": "spapers there are lots of adverts / advertisements"
+      }
      ]
     },
     {
@@ -11031,7 +11462,14 @@
       }
      ],
      "glosses": [
-      "people who go out and get the news stories"
+      {
+       "text": "people who go out and get the news stories where they happen",
+       "anchor": "The reporters are outside the film star’s house."
+      },
+      {
+       "text": "person who writes articles",
+       "anchor": "nalist; she writes for The Oxford Times newspaper."
+      }
      ]
     },
     {
@@ -11060,7 +11498,12 @@
        "example": "Is it OK if I change the channel?"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT The news are on now.",
+       "anchor": "Common mistakes The news is on now."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -11133,7 +11576,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 29
+   "unplaced_glosses": [],
+   "vocabulary_count": 29,
+   "gloss_count": 9
   },
   {
    "number": 36,
@@ -11207,7 +11652,12 @@
        "example": "with a friend. Will you apologise ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "say ‘I’m sorry’",
+       "anchor": "You’ve had a row /raU/ with a friend. Will you apologise"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -11314,7 +11764,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 22
+   "unplaced_glosses": [],
+   "vocabulary_count": 22,
+   "gloss_count": 1
   },
   {
    "number": 37,
@@ -11348,7 +11800,20 @@
        "example": "There were serious floods in the north yesterday. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "when the earth moves",
+       "anchor": "ire San Francisco has had a lot of earthquakes"
+      },
+      {
+       "text": "too much water",
+       "anchor": "There were serious floods in the north yesterday."
+      },
+      {
+       "text": "water goes over the river banks",
+       "anchor": "ch water] The river often floods after heavy rain."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -11409,9 +11874,22 @@
       }
      ],
      "glosses": [
-      "when the air, water or earth is dirty and bad for people, plants",
-      "fighting between two or more",
-      "when people refuse to work because, for example, they want"
+      {
+       "text": "when the air, water or earth is dirty and bad for people, plants and animals",
+       "anchor": "a job There is a lot of pollution in many places."
+      },
+      {
+       "text": "fighting between two or more countries or nationalities",
+       "anchor": "ican War of Independence started in 1775 and ended in 1783."
+      },
+      {
+       "text": "when people refuse to work because, for example, they want more money",
+       "anchor": "or eight years. The teachers are on strike today."
+      },
+      {
+       "text": "times when everyone is going to work",
+       "anchor": "The traffic jams in the city are terrible in the rush hour"
+      }
      ]
     }
    ],
@@ -11483,7 +11961,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 18
+   "unplaced_glosses": [],
+   "vocabulary_count": 18,
+   "gloss_count": 7
   },
   {
    "number": 38,
@@ -11578,7 +12058,30 @@
       }
      ],
      "glosses": [
-      "somebody is"
+      {
+       "text": "look at it",
+       "anchor": "s with have Is that your camera? Can I have a look"
+      },
+      {
+       "text": "ride it",
+       "anchor": "look at it]? Is that your bicycle? Can I have a go"
+      },
+      {
+       "text": "somebody is going away",
+       "anchor": "have a go [ride it]? Goodbye! Have a good journey"
+      },
+      {
+       "text": "have some time",
+       "anchor": "body is going away]! Do you have a moment"
+      },
+      {
+       "text": "speak to you",
+       "anchor": "ment [have some time]? Can I have a word with you?"
+      },
+      {
+       "text": "fun; we enjoy them",
+       "anchor": "We always have a good time in our English lessons."
+      }
      ]
     },
     {
@@ -11651,7 +12154,12 @@
        "example": "had to"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT I had got to write an essay",
+       "anchor": "s a student, I had to write an essay every week"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -11734,7 +12242,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 32
+   "unplaced_glosses": [],
+   "vocabulary_count": 32,
+   "gloss_count": 7
   },
   {
    "number": 39,
@@ -11913,7 +12423,18 @@
       }
      ],
      "glosses": [
-      "NOT I go to there every week. I\ngo there\ngo anywhere / somewhere"
+      {
+       "text": "NOT Let’s go to / for swimming and then go to / for shopping.",
+       "anchor": "istakes Let’s go swimming and then go shopping."
+      },
+      {
+       "text": "NOT I go to there every week. I don’t want to go to anywhere / somewhere else.",
+       "anchor": "e every week. I don’t want to go anywhere / somewhere else."
+      },
+      {
+       "text": "NOT I must go to / at home at 10 o’clock.",
+       "anchor": "somewhere else.] I must go home at 10 o’clock."
+      }
      ]
     }
    ],
@@ -11997,7 +12518,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 35
+   "unplaced_glosses": [],
+   "vocabulary_count": 35,
+   "gloss_count": 3
   },
   {
    "number": 40,
@@ -12091,7 +12614,16 @@
        "example": "(See Unit 14: Jobs.)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "What is your job?",
+       "anchor": "ing. C What do you do? A: What do you do?"
+      },
+      {
+       "text": "What’s your wife’s job?",
+       "anchor": "t. / I’m a hairdresser. A: What does your wife do?"
+      }
+     ]
     },
     {
      "letter": "D",
@@ -12202,7 +12734,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 21
+   "unplaced_glosses": [],
+   "vocabulary_count": 21,
+   "gloss_count": 2
   },
   {
    "number": 41,
@@ -12348,7 +12882,28 @@
        "example": "do the washing"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "fix a time to see him/her",
+       "anchor": "se. I want to make an appointment with the doctor."
+      },
+      {
+       "text": "NOT make homework",
+       "anchor": "e. Common mistakes You do homework"
+      },
+      {
+       "text": "NOT make an exam",
+       "anchor": "You do homework [NOT make homework]. You take or do an exam"
+      },
+      {
+       "text": "NOT make a photo",
+       "anchor": "do an exam [NOT make an exam]. You take a photo"
+      },
+      {
+       "text": "NOT make the washing",
+       "anchor": "You take a photo [NOT make a photo]. You do the washing"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -12415,7 +12970,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 29
+   "unplaced_glosses": [],
+   "vocabulary_count": 29,
+   "gloss_count": 5
   },
   {
    "number": 42,
@@ -12525,7 +13082,20 @@
        "example": "Come and see me some time. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "come with us",
+       "anchor": "We’re going clubbing tonight. Do you want to come along"
+      },
+      {
+       "text": "visit me",
+       "anchor": "along [come with us]? Come and see me some time."
+      },
+      {
+       "text": "NOT I’m coming from Poland",
+       "anchor": "Common mistakes I come from Poland"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -12598,7 +13168,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 20
+   "unplaced_glosses": [],
+   "vocabulary_count": 20,
+   "gloss_count": 3
   },
   {
    "number": 43,
@@ -12773,7 +13345,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 17
+   "unplaced_glosses": [],
+   "vocabulary_count": 17,
+   "gloss_count": 0
   },
   {
    "number": 44,
@@ -12912,7 +13486,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 8
+   "unplaced_glosses": [],
+   "vocabulary_count": 8,
+   "gloss_count": 0
   },
   {
    "number": 45,
@@ -12950,7 +13526,12 @@
        "example": "If you don’t have something you can get it. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "get = buy or find",
+       "anchor": "nouns If you don’t have something you can get it."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -12986,7 +13567,24 @@
        "example": "I get there at 6 o’clock, so please ring me at 6.30 ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "arrive at, reach",
+       "anchor": "ed in April. A: When you get to New York, call me."
+      },
+      {
+       "text": "return, come home",
+       "anchor": "on. I’ll see you when you get back from Hong Kong."
+      },
+      {
+       "text": "NOT When I get to home",
+       "anchor": "ommon mistakes When I get home, I have my lunch"
+      },
+      {
+       "text": "NOT I get to there",
+       "anchor": "I get there at 6 o’clock, so please ring me at 6.30"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -13063,7 +13661,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 11
+   "unplaced_glosses": [],
+   "vocabulary_count": 11,
+   "gloss_count": 5
   },
   {
    "number": 46,
@@ -13149,7 +13749,16 @@
        "example": "Come on! We’re late."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "continue",
+       "anchor": "Don’t stop. Go on talking. It’s very interesting."
+      },
+      {
+       "text": "left",
+       "anchor": "[continue] Karen went off and forgot her handbag."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -13177,7 +13786,24 @@
        "example": "She took off her shoes. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "made it not so loud",
+       "anchor": "Tip She turned down the TV."
+      },
+      {
+       "text": "refused it",
+       "anchor": "ecial page in your She turned down the invitation."
+      },
+      {
+       "text": "leaves the ground",
+       "anchor": "ee or hear. Organise Our plane takes off at 12.30."
+      },
+      {
+       "text": "removed them from her feet",
+       "anchor": "to groups, in any way that She took off her shoes."
+      }
+     ]
     }
    ],
    "exercises": [
@@ -13238,7 +13864,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 23
+   "unplaced_glosses": [],
+   "vocabulary_count": 23,
+   "gloss_count": 6
   },
   {
    "number": 47,
@@ -13401,7 +14029,10 @@
       }
      ],
      "glosses": [
-      "NOT I used to / I’m"
+      {
+       "text": "NOT I used to / I’m used to get up at 8 o’clock.",
+       "anchor": "I usually get up at 8 o’clock, but today I got up at 8.30."
+      }
      ]
     }
    ],
@@ -13459,7 +14090,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 33
+   "unplaced_glosses": [],
+   "vocabulary_count": 33,
+   "gloss_count": 1
   },
   {
    "number": 48,
@@ -13574,7 +14207,14 @@
       }
      ],
      "glosses": [
-      "Tell is often used with\nhow\nand\nwh\n- words (when,\nNOT He said"
+      {
+       "text": "NOT He said what, why, where) to find out and give information. me his name.",
+       "anchor": "h- words (when, He told me his name."
+      },
+      {
+       "text": "NOT Can you say C Ask me … ?",
+       "anchor": "station is, please?"
+      }
      ]
     },
     {
@@ -13648,7 +14288,22 @@
       }
      ],
      "glosses": [
-      "pick up"
+      {
+       "text": "having a conversation with you",
+       "anchor": "ak / talk / answer / reply I like talking to you."
+      },
+      {
+       "text": "NOT Do you talk Japanese?",
+       "anchor": "es Do you speak Japanese? (used for languages)"
+      },
+      {
+       "text": "pick up the phone / open the door to see who it is",
+       "anchor": "Can you answer the telephone / the door, please?"
+      },
+      {
+       "text": "he did not send me an email back",
+       "anchor": "eply to my email. (also used for letters / texts)"
+      }
      ]
     }
    ],
@@ -13722,7 +14377,9 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 37
+   "unplaced_glosses": [],
+   "vocabulary_count": 37,
+   "gloss_count": 6
   },
   {
    "number": 49,
@@ -13845,7 +14502,10 @@
       }
      ],
      "glosses": [
-      "NOT by a car"
+      {
+       "text": "NOT by a car",
+       "anchor": "rain last summer. taxi / underground"
+      }
      ]
     },
     {
@@ -13939,7 +14599,14 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 27
+   "unplaced_glosses": [
+    {
+     "text": "NOT arrive to a place",
+     "anchor": ""
+    }
+   ],
+   "vocabulary_count": 27,
+   "gloss_count": 2
   },
   {
    "number": 50,
@@ -14108,7 +14775,9 @@
      "section": "B"
     }
    ],
-   "vocabulary_count": 19
+   "unplaced_glosses": [],
+   "vocabulary_count": 19,
+   "gloss_count": 0
   },
   {
    "number": 51,
@@ -14250,7 +14919,12 @@
        "example": "on Tuesday evening."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT in the weekend",
+       "anchor": "esday evening. at the weekend"
+      }
+     ]
     },
     {
      "letter": "C",
@@ -14338,7 +15012,12 @@
        "example": "We say in + months / seasons: in July, in December, in (the) spring, in (the) summer, etc."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT on July",
+       "anchor": "Tip My birthday is in July"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -14425,7 +15104,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 50
+   "unplaced_glosses": [],
+   "vocabulary_count": 50,
+   "gloss_count": 2
   },
   {
    "number": 52,
@@ -14643,7 +15324,32 @@
        "example": "We met recently ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "one time",
+       "anchor": "use of a in these expressions of frequency. once"
+      },
+      {
+       "text": "two times",
+       "anchor": "I go swimming once a week, every Saturday. twice"
+      },
+      {
+       "text": "a very short time",
+       "anchor": "five times a month. I’ll be with you in a moment"
+      },
+      {
+       "text": "now",
+       "anchor": "a very short time]. Nora’s in Paris at the moment"
+      },
+      {
+       "text": "in a short time",
+       "anchor": "Nora’s in Paris at the moment [now]. See you soon"
+      },
+      {
+       "text": "not long ago",
+       "anchor": "See you soon [in a short time]! We met recently"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -14720,7 +15426,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 45
+   "unplaced_glosses": [],
+   "vocabulary_count": 45,
+   "gloss_count": 6
   },
   {
    "number": 53,
@@ -14758,7 +15466,24 @@
        "example": "(See Unit 42: Come / came / come.)"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "to me, to where I am",
+       "anchor": "A General place words Come here, please."
+      },
+      {
+       "text": "not here, another place",
+       "anchor": "Have you been to Lima? I’m going there in April."
+      },
+      {
+       "text": "to here again, to this place",
+       "anchor": "r place] Max is coming back from Portugal in May."
+      },
+      {
+       "text": "in all parts / all places",
+       "anchor": "There are books and papers everywhere in my room."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -14882,7 +15607,24 @@
        "example": "No, sorry, she’s abroad ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "in her house / flat",
+       "anchor": "ight. E Home and away Is Eleanor at home"
+      },
+      {
+       "text": "not here for a short time, e.g. at the shops or at work",
+       "anchor": "home [in her house / flat]? No, sorry, she’s out"
+      },
+      {
+       "text": "not here for a longer time, e.g. on holiday",
+       "anchor": ". at the shops or at work]. No, sorry, she’s away"
+      },
+      {
+       "text": "in another country",
+       "anchor": "r time, e.g. on holiday]. No, sorry, she’s abroad"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -14971,7 +15713,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 29
+   "unplaced_glosses": [],
+   "vocabulary_count": 29,
+   "gloss_count": 8
   },
   {
    "number": 54,
@@ -15149,7 +15893,9 @@
      "section": "E"
     }
    ],
-   "vocabulary_count": 12
+   "unplaced_glosses": [],
+   "vocabulary_count": 12,
+   "gloss_count": 0
   },
   {
    "number": 55,
@@ -15200,7 +15946,10 @@
       }
      ],
      "glosses": [
-      "NOT three\nluggages"
+      {
+       "text": "NOT three luggages",
+       "anchor": "UNCOUNTABLE You can’t count it."
+      }
      ]
     },
     {
@@ -15368,7 +16117,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 30
+   "unplaced_glosses": [],
+   "vocabulary_count": 30,
+   "gloss_count": 1
   },
   {
    "number": 56,
@@ -15410,7 +16161,12 @@
        "example": "It’s a great film. We all loved it."
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "very good",
+       "anchor": "B: That’s an excellent idea!"
+      }
+     ]
     },
     {
      "letter": "B",
@@ -15498,7 +16254,12 @@
        "example": "B: How nice! / How wonderful! / How lovely!"
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "NOT How bad!",
+       "anchor": "w nice! / How wonderful! / How lovely!"
+      }
+     ]
     }
    ],
    "exercises": [
@@ -15575,7 +16336,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 25
+   "unplaced_glosses": [],
+   "vocabulary_count": 25,
+   "gloss_count": 2
   },
   {
    "number": 57,
@@ -15705,9 +16468,7 @@
        "example": "happy about her success"
       }
      ],
-     "glosses": [
-      "NOT happy for her success"
-     ]
+     "glosses": []
     },
     {
      "letter": "D",
@@ -15806,7 +16567,18 @@
      "section": "D"
     }
    ],
-   "vocabulary_count": 27
+   "unplaced_glosses": [
+    {
+     "text": "they take care of them",
+     "anchor": "children"
+    },
+    {
+     "text": "NOT happy for her success",
+     "anchor": ""
+    }
+   ],
+   "vocabulary_count": 27,
+   "gloss_count": 2
   },
   {
    "number": 58,
@@ -15866,7 +16638,9 @@
      "section": "A"
     }
    ],
-   "vocabulary_count": 0
+   "unplaced_glosses": [],
+   "vocabulary_count": 0,
+   "gloss_count": 0
   },
   {
    "number": 59,
@@ -15926,7 +16700,9 @@
      "section": "A"
     }
    ],
-   "vocabulary_count": 0
+   "unplaced_glosses": [],
+   "vocabulary_count": 0,
+   "gloss_count": 0
   },
   {
    "number": 60,
@@ -15980,7 +16756,20 @@
        "example": "This cooker costs £500. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "silent",
+       "anchor": "quite good good My bedroom is very quiet"
+      },
+      {
+       "text": "the person who cooks",
+       "anchor": ". cook / cooker He is a very good cook"
+      },
+      {
+       "text": "the thing you cook on",
+       "anchor": "k [the person who cooks]. This cooker costs £500."
+      }
+     ]
     },
     {
      "letter": "B",
@@ -16008,7 +16797,16 @@
        "example": "The passport officer checked my passport. ["
       }
      ],
-     "glosses": []
+     "glosses": [
+      {
+       "text": "looked at it",
+       "anchor": "control The passport officer checked my passport."
+      },
+      {
+       "text": "tell it what to do",
+       "anchor": "at it] We use the mouse to control the computer."
+      }
+     ]
     },
     {
      "letter": "C",
@@ -16041,7 +16839,14 @@
       }
      ],
      "glosses": [
-      "I really"
+      {
+       "text": "I really 12 o’clock till 5 or 6 pm. want to pass",
+       "anchor": "e afternoon is from about I hope I pass my exams."
+      },
+      {
+       "text": "it’s probable",
+       "anchor": "After 9 or 10 pm it is the night. my exams."
+      }
      ]
     }
    ],
@@ -16115,7 +16920,9 @@
      "section": "C"
     }
    ],
-   "vocabulary_count": 21
+   "unplaced_glosses": [],
+   "vocabulary_count": 21,
+   "gloss_count": 7
   }
  ]
 }
