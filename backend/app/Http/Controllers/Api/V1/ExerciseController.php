@@ -91,8 +91,10 @@ class ExerciseController extends ApiController
                 'answered_at' => now(),
             ]);
 
-            // Live item calibration: real attempts are better evidence of an
-            // item's difficulty than our initial estimate.
+            // The evidence for calibration. These counters, and the learner's
+            // ability recorded on the attempt above, are what `content:calibrate`
+            // re-estimates the item's difficulty from - the seeded difficulty is
+            // a guess from the shape of the term and nothing more.
             $exercise->increment('attempt_count');
             if ($grade['correct']) {
                 $exercise->increment('correct_count');
