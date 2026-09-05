@@ -140,4 +140,70 @@ class GeneratedMediaImportTest extends TestCase
         // Failed briefs stay in the render queue rather than vanishing.
         $this->assertTrue(MediaBrief::renderable()->pluck('id')->contains($brief->id));
     }
+
+    public function test_it_accepts_the_local_runner_result_shape_and_prefers_the_file_on_disk(): void
+    {
+        // The runner writes richer entries than a bare URL, and downloads each
+        // image itself. Provider links expire, so a results.json brought back a
+        // day later must import from the files beside it rather than refetching.
+        Http::fake(['*' => Http::response('SHOULD NOT BE FETCHED', 200)]);
+
+        $dir = sys_get_temp_dir().'/runner-'.uniqid();
+        @mkdir($dir.'/images/character_portrait', 0777, true);
+        $png = $this->pngBytes();
+        file_put_contents($dir.'/images/character_portrait/1.png', $png);
+
+        $character = Character::create(['slug' => 'maya', 'name' => 'Maya']);
+        $brief = $this->briefFor($character);
+
+        $out = app(GeneratedMediaImporter::class)->importMany([
+            $brief->id => [
+                'status' => 'ok',
+                'url' => 'https://cdn.example/expired.png',
+                'file' => 'images/character_portrait/1.png',
+                'bytes' => strlen($png),
+            ],
+        ], $dir);
+
+        $this->assertSame(1, $out['imported']);
+        Http::assertNothingSent();
+
+        $asset = $brief->fresh()->mediaAsset;
+        $this->assertSame(hash('sha256', $png), $asset->checksum);
+    }
+
+    public function test_it_falls_back_to_the_url_when_the_runner_file_is_missing(): void
+    {
+        $png = $this->pngBytes();
+        Http::fake(['*' => Http::response($png, 200)]);
+
+        $character = Character::create(['slug' => 'maya', 'name' => 'Maya']);
+        $brief = $this->briefFor($character);
+
+        $out = app(GeneratedMediaImporter::class)->importMany([
+            $brief->id => ['status' => 'ok', 'url' => 'https://cdn.example/x.png', 'file' => 'images/gone.png'],
+        ], '/nonexistent');
+
+        $this->assertSame(1, $out['imported']);
+        $this->assertSame(MediaBrief::STATUS_IMPORTED, $brief->fresh()->status);
+    }
+
+    public function test_it_skips_entries_the_runner_marked_failed(): void
+    {
+        // A failed generation must not be counted as an import, and must leave
+        // the brief in the queue so a later run picks it up.
+        Http::fake();
+
+        $character = Character::create(['slug' => 'maya', 'name' => 'Maya']);
+        $brief = $this->briefFor($character);
+
+        $out = app(GeneratedMediaImporter::class)->importMany([
+            $brief->id => ['status' => 'failed', 'error' => 'the CLI exited non-zero'],
+        ], null);
+
+        $this->assertSame(1, $out['skipped']);
+        $this->assertSame(0, $out['imported']);
+        Http::assertNothingSent();
+        $this->assertTrue(MediaBrief::renderable()->pluck('id')->contains($brief->id));
+    }
 }

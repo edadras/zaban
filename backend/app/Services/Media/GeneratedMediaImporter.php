@@ -27,14 +27,29 @@ class GeneratedMediaImporter
     public function __construct(private string $disk = 'local') {}
 
     /**
-     * @param  array<int,string>  $urls  brief id => result URL
+     * @param  array<int,string|array>  $entries  brief id => result URL, or a
+     *                                            richer entry from the local runner
      * @return array{imported:int, skipped:int, failed:int, errors:array<int,string>}
      */
-    public function importMany(array $urls): array
+    public function importMany(array $entries, ?string $baseDir = null): array
     {
         $out = ['imported' => 0, 'skipped' => 0, 'failed' => 0, 'errors' => []];
 
-        foreach ($urls as $briefId => $url) {
+        foreach ($entries as $briefId => $entry) {
+            [$url, $localFile, $skip] = $this->resolveEntry($entry, $baseDir);
+
+            if ($skip !== null) {
+                $out['skipped']++;
+
+                continue;
+            }
+
+            if ($url === null && $localFile === null) {
+                $out['failed']++;
+                $out['errors'][$briefId] = 'Entry carries neither a URL nor a readable file.';
+
+                continue;
+            }
             $brief = MediaBrief::find($briefId);
 
             if (! $brief) {
@@ -51,7 +66,7 @@ class GeneratedMediaImporter
             }
 
             try {
-                $this->import($brief, $url);
+                $this->import($brief, $url, $localFile);
                 $out['imported']++;
             } catch (\Throwable $e) {
                 $brief->update([
@@ -66,9 +81,49 @@ class GeneratedMediaImporter
         return $out;
     }
 
-    public function import(MediaBrief $brief, string $url): MediaAsset
+    /**
+     * Normalise one results entry.
+     *
+     * The local runner writes richer entries than a bare URL - status, the file
+     * it saved, its size - because a run of thousands is worth being able to
+     * audit. Both shapes are accepted so results.json can come from either the
+     * runner or a hand-written mapping.
+     *
+     * @return array{0:?string, 1:?string, 2:?string} url, local file, skip reason
+     */
+    private function resolveEntry(string|array $entry, ?string $baseDir): array
     {
-        $bytes = $this->fetch($url);
+        if (is_string($entry)) {
+            return [$entry, null, null];
+        }
+
+        $status = $entry['status'] ?? 'ok';
+
+        if (! in_array($status, ['ok', 'already_downloaded'], true)) {
+            return [null, null, "runner reported status '{$status}'"];
+        }
+
+        $file = null;
+
+        if (! empty($entry['file']) && $baseDir) {
+            $candidate = rtrim($baseDir, '/').'/'.ltrim((string) $entry['file'], '/');
+
+            // Prefer the file the runner already downloaded: provider URLs
+            // expire, and a manifest imported a day late would otherwise fail
+            // wholesale.
+            if (is_file($candidate) && filesize($candidate) > 1024) {
+                $file = $candidate;
+            }
+        }
+
+        return [$entry['url'] ?? null, $file, null];
+    }
+
+    public function import(MediaBrief $brief, ?string $url, ?string $localFile = null): MediaAsset
+    {
+        $bytes = $localFile !== null
+            ? (string) file_get_contents($localFile)
+            : $this->fetch((string) $url);
         $checksum = hash('sha256', $bytes);
 
         // The same prompt can legitimately be rendered for two subjects; storing
@@ -83,7 +138,7 @@ class GeneratedMediaImporter
             $brief->update([
                 'status' => MediaBrief::STATUS_IMPORTED,
                 'media_asset_id' => $asset->id,
-                'result_url' => $url,
+                'result_url' => $url ?? $localFile,
                 'error' => null,
                 'generated_at' => $brief->generated_at ?? now(),
             ]);

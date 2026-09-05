@@ -46,17 +46,27 @@ class ImportGeneratedMedia extends Command
         if ($this->option('dry-run')) {
             $this->table(
                 ['brief', 'kind', 'status', 'url'],
-                collect($results)->map(function ($url, $id) {
+                collect($results)->map(function ($entry, $id) {
                     $b = MediaBrief::find($id);
+                    $where = is_array($entry) ? ($entry['file'] ?? $entry['url'] ?? '—') : $entry;
 
-                    return [$id, $b?->kind ?? '—', $b?->status ?? 'MISSING', \Illuminate\Support\Str::limit($url, 60)];
+                    return [$id, $b?->kind ?? '—', $b?->status ?? 'MISSING', \Illuminate\Support\Str::limit((string) $where, 60)];
                 })->values()->all(),
             );
 
             return self::SUCCESS;
         }
 
-        $out = $importer->importMany($results);
+        /*
+         * Files the local runner downloaded sit next to its results.json, and
+         * are preferred over the URLs: provider links expire, so a manifest
+         * brought back a day later would otherwise fail wholesale.
+         */
+        $baseDir = $this->argument('file')
+            ? dirname(realpath($this->argument('file')) ?: $this->argument('file'))
+            : null;
+
+        $out = $importer->importMany($results, $baseDir);
 
         $this->info("imported {$out['imported']}, already present {$out['skipped']}, failed {$out['failed']}");
 
