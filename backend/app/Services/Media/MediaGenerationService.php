@@ -38,7 +38,10 @@ class MediaGenerationService
         }
 
         $words = $lesson->concepts()->pluck('label')->take(6)->all();
-        $spec = $this->prompts->lessonScene($lesson, $words);
+        $spec = $this->prompts->forModel(
+            $this->prompts->lessonScene($lesson, $words),
+            $this->modelFor('scene'),
+        );
 
         $result = $this->ai->scene(new MediaRequest(
             feature: 'lesson.scene',
@@ -80,9 +83,14 @@ class MediaGenerationService
         $spec = $this->prompts->lessonScene($lesson, $lesson->concepts()->pluck('label')->take(4)->all());
         $safe = collect($interests)->take(3)->implode(', ');
 
+        if ($safe !== '') {
+            $spec['prompt'] .= " Set the scene in a context involving: {$safe}.";
+        }
+        $spec = $this->prompts->forModel($spec, $this->modelFor('scene'));
+
         $result = $this->ai->scene(new MediaRequest(
             feature: 'lesson.scene.personalised',
-            prompt: $spec['prompt'].($safe !== '' ? " Set the scene in a context involving: {$safe}." : ''),
+            prompt: $spec['prompt'],
             negativePrompt: $spec['negative'],
             aspectRatio: $spec['aspect_ratio'],
             userId: $userId,
@@ -105,10 +113,13 @@ class MediaGenerationService
             return ['status' => 'exists', 'media_asset_id' => $character->reference_media_asset_id];
         }
 
-        $spec = $this->prompts->characterPortrait(
-            $character->name,
-            $character->persona ?? 'a friendly recurring character in a language course',
-            $character->appearance_prompt,
+        $spec = $this->prompts->forModel(
+            $this->prompts->characterPortrait(
+                $character->name,
+                $character->persona ?? 'a friendly recurring character in a language course',
+                $character->appearance_prompt,
+            ),
+            $this->modelFor('character'),
         );
 
         $result = $this->ai->character(new MediaRequest(
@@ -183,6 +194,16 @@ class MediaGenerationService
     }
 
     /** Lessons that still have no artwork, cheapest-to-fix first. */
+    /**
+     * Which model will actually render this kind of request. Prompt shaping
+     * depends on it, so it is resolved from the same config the provider uses
+     * rather than guessed.
+     */
+    public function modelFor(string $kind): string
+    {
+        return (string) config("ai.providers.higgsfield.models.{$kind}", 'gpt_image_2');
+    }
+
     public function lessonsMissingArtwork(int $limit = 100)
     {
         return Lesson::query()

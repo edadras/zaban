@@ -49,26 +49,102 @@ class PromptBuilder
         ];
     }
 
-    public function vocabularyImage(string $term, ?string $gloss, ?string $cefr = null): array
+    /**
+     * A vocabulary card.
+     *
+     * Framing follows the word class, because the two need opposite treatments.
+     * A concrete noun wants product photography - one object, plain ground, no
+     * distractions. An adjective or verb has no object to photograph: "delighted"
+     * on a plain background is nothing, while a person visibly delighted reads
+     * instantly. Getting this wrong is the difference between a card that
+     * teaches and a card that puzzles.
+     *
+     * @param  string|null  $context  A verbatim example sentence that disambiguates
+     *                                the sense. Callers must pass only sentences that
+     *                                survive their own quality check - a fragment here
+     *                                produces a confidently wrong picture.
+     */
+    public function vocabularyImage(string $term, ?string $context, ?string $cefr = null, ?string $partOfSpeech = null): array
     {
+        $depictsSituation = in_array($partOfSpeech, ['verb', 'adjective', 'adverb'], true);
+
+        $framing = $depictsSituation
+            ? 'Show a person or a moment that makes the meaning unmistakable. '
+                .'Single clear situation, uncluttered background, natural light.'
+            : 'One unambiguous subject, plain uncluttered background, centred composition. '
+                .'Clean product-photography lighting.';
+
         $prompt = collect([
-            "A single clear subject illustrating the English word \"{$term}\".",
-            $gloss ? "Meaning: {$gloss}." : null,
-            'One unambiguous subject, plain uncluttered background, centred composition.',
+            $depictsSituation
+                ? "A single clear image conveying the English word \"{$term}\"."
+                : "A single clear subject illustrating the English word \"{$term}\".",
+            $context ? "It is used like this: {$context}" : null,
+            $framing,
             $this->levelGuidance($cefr),
             'Culturally neutral and age-appropriate.',
             'No text, letters or numbers in the image.',
-            'Clean product-photography lighting.',
         ])->filter()->implode(' ');
 
         return ['prompt' => $prompt, 'negative' => self::NEGATIVE, 'aspect_ratio' => '1:1'];
+    }
+
+    /**
+     * Is this extracted string a real sentence, or an extraction artefact?
+     *
+     * The importer pulled examples out of running book text, and a good half of
+     * what it caught are fragments: "or wound up / stressed out**", "tantamount
+     * to admitting", "the second part, e.g. public \'transport". Those are
+     * useless as image grounding and actively harmful - the model will illustrate
+     * the fragment. This gate is deliberately strict; a card with no grounding is
+     * skipped, which is a better outcome than a card grounded in noise.
+     */
+    public static function isUsableExample(?string $text): bool
+    {
+        $t = trim((string) $text);
+
+        if (mb_strlen($t) < 15 || mb_strlen($t) > 220) {
+            return false;
+        }
+
+        // Typographic debris left by the PDF extraction.
+        if (preg_match('/[*=\[\]{}<>|]|\.{3}|e\.g\.|i\.e\./u', $t)) {
+            return false;
+        }
+
+        // A sentence starts with a capital; a fragment usually starts mid-clause.
+        if (! preg_match('/^[A-Z"\x{2018}\x{201C}]/u', $t)) {
+            return false;
+        }
+
+        // ... and finishes.
+        if (! preg_match('/[.!?"\x{2019}\x{201D}]$/u', $t)) {
+            return false;
+        }
+
+        // Dictionary prose describing the word rather than using it.
+        if (preg_match('/^(If you|When you|Someone who|Something that|A person who|Used to|This means)\b/iu', $t)) {
+            return false;
+        }
+
+        // Alternatives separated by slashes are a lexis note, not a scene.
+        if (substr_count($t, '/') > 1) {
+            return false;
+        }
+
+        // Metalinguistic prose - the book talking ABOUT the word rather than
+        // using it. Grammatically a fine sentence, useless as a picture.
+        if (preg_match('/\b(means|refers to|is another way of saying|way of saying|is the opposite of|is more formal than)\b/iu', $t)) {
+            return false;
+        }
+
+        return str_word_count($t) >= 4;
     }
 
     public function characterPortrait(string $name, string $persona, ?string $appearance = null): array
     {
         $prompt = collect([
             "Portrait of a recurring language-course character named {$name}.",
-            "Character: {$persona}.",
+            'Character: '.rtrim($persona, '. ').'.',
             $appearance,
             'Neutral background, friendly natural expression, head and shoulders.',
             'Consistent, realistic, culturally neutral, age-appropriate.',
@@ -94,6 +170,39 @@ class PromptBuilder
             'aspect_ratio' => '16:9',
             'duration_seconds' => $seconds,
         ];
+    }
+
+    /**
+     * Bind a spec to the model that will actually render it.
+     *
+     * Exclusions ("no text, no watermark") only take effect if the model has
+     * somewhere to put them. No image model in the current catalogue exposes a
+     * negative-prompt parameter, so for those the exclusions have to be stated
+     * inside the prompt itself or they simply do not happen - and a dropped
+     * negative is invisible: the request succeeds and the artwork quietly comes
+     * back with a watermark in it.
+     *
+     * Returns the spec with `prompt` final for this model and `negative` set
+     * only when the model can genuinely receive it.
+     */
+    public function forModel(array $spec, string $model): array
+    {
+        $negative = $spec['negative'] ?? null;
+
+        if ($negative === null || $negative === '') {
+            return $spec;
+        }
+
+        if (in_array($model, config('ai.providers.higgsfield.negative_prompt_models', []), true)) {
+            return $spec;
+        }
+
+        $spec['prompt'] = rtrim($spec['prompt'], ' ')
+            .' Do not include any of the following: '.$negative.'.';
+        $spec['negative'] = null;
+        $spec['negative_folded'] = true;
+
+        return $spec;
     }
 
     /**

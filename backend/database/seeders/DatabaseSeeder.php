@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             PhonemeSeeder::class,
             ExamSeeder::class,
+            CastSeeder::class,
             ConversationScenarioSeeder::class,
         ]);
 

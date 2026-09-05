@@ -49,6 +49,25 @@ return [
                 'video' => env('HIGGSFIELD_VIDEO_MODEL', 'seedance_2_0'),
                 'audio' => env('HIGGSFIELD_AUDIO_MODEL', 'seed_audio'),
             ],
+
+            /*
+             * Models that accept a separate negative-prompt argument.
+             *
+             * Verified against the live catalogue: not one current image model
+             * exposes such a parameter - gpt_image_2 takes resolution+quality,
+             * nano_banana_2 takes resolution+is_inpaint, soul_2 takes
+             * quality+soul_id, and so on. A negative passed alongside those is
+             * accepted by the CLI and then dropped on the floor, which is worse
+             * than not having one: the exclusions look enforced and are not.
+             *
+             * So the list below is the allowlist, it is empty on purpose, and
+             * PromptBuilder folds exclusions into the prompt body for every
+             * model absent from it. Add a model id here only after confirming
+             * the parameter exists in `models_explore`.
+             */
+            'negative_prompt_models' => array_values(array_filter(explode(
+                ',', env('HIGGSFIELD_NEGATIVE_PROMPT_MODELS', '')
+            ))),
         ],
 
         'whisper' => [
