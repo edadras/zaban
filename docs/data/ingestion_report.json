@@ -2,8 +2,8 @@
   {
     "key": "elementary",
     "cefr": "A1-A2",
-    "pdf": "English_Vocabulary_in_Use_Elementary_3rd_Edition_www_languagecentre.pdf",
-    "zip": "English_Vocabulary_in_Use_Elementary_Audio_3rd_Edition_www_languagecentre.zip",
+    "pdf": "sources/elementary_3rd.pdf",
+    "zip": "sources/elementary_3rd_audio.zip",
     "pages_total": 177,
     "pages_body": 128,
     "answer_key_pages": [
@@ -160,8 +160,8 @@
   {
     "key": "pre_int_int",
     "cefr": "A2-B1",
-    "pdf": "English_Vocabulary_in_Use_Pre_Intermediate&Intermediate_4th_Edition.pdf",
-    "zip": "English_Vocabulary_in_Use_Pre_Intermediate&Intermediate_Audio_4th.zip",
+    "pdf": "sources/pre_intermediate_intermediate_4th.pdf",
+    "zip": "sources/pre_intermediate_intermediate_4th_audio.zip",
     "pages_total": 266,
     "pages_body": 208,
     "answer_key_pages": [
@@ -406,8 +406,8 @@
   {
     "key": "upper_int",
     "cefr": "B2",
-    "pdf": "English_Vocabulary_in_Use_Upper_Intermediate_4th_Edition_www_languagecentre.pdf",
-    "zip": "English_Vocabulary_in_Use_Upper_Intermediate_Audio_4th_Edition_www.zip",
+    "pdf": "sources/upper_intermediate_4th.pdf",
+    "zip": "sources/upper_intermediate_4th_audio.zip",
     "pages_total": 281,
     "pages_body": 210,
     "answer_key_pages": [
@@ -649,8 +649,8 @@
   {
     "key": "advanced",
     "cefr": "C1-C2",
-    "pdf": "English_Vocabulary_in_Use_Advanced_3rd_Edition_www_languagecentre.pdf",
-    "zip": "English_Vocabulary_in_Use_Advanced_Audio_3rd_Edition_www_languagecentre.zip",
+    "pdf": "sources/advanced_3rd.pdf",
+    "zip": "sources/advanced_3rd_audio.zip",
     "pages_total": 304,
     "pages_body": 211,
     "answer_key_pages": [

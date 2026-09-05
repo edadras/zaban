@@ -1,0 +1,8 @@
+
+# Laravel
+/backend/vendor
+/backend/node_modules
+/backend/.env
+/backend/storage/*.key
+/backend/public/build
+/backend/public/hot

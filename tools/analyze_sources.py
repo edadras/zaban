@@ -20,14 +20,14 @@ ROOT = Path('/home/user/zaban')
 CACHE = Path('/tmp/extract')
 
 BOOKS = [
-    ('elementary',   'A1-A2', 'English_Vocabulary_in_Use_Elementary_3rd_Edition_www_languagecentre.pdf',
-                              'English_Vocabulary_in_Use_Elementary_Audio_3rd_Edition_www_languagecentre.zip'),
-    ('pre_int_int',  'A2-B1', 'English_Vocabulary_in_Use_Pre_Intermediate&Intermediate_4th_Edition.pdf',
-                              'English_Vocabulary_in_Use_Pre_Intermediate&Intermediate_Audio_4th.zip'),
-    ('upper_int',    'B2',    'English_Vocabulary_in_Use_Upper_Intermediate_4th_Edition_www_languagecentre.pdf',
-                              'English_Vocabulary_in_Use_Upper_Intermediate_Audio_4th_Edition_www.zip'),
-    ('advanced',     'C1-C2', 'English_Vocabulary_in_Use_Advanced_3rd_Edition_www_languagecentre.pdf',
-                              'English_Vocabulary_in_Use_Advanced_Audio_3rd_Edition_www_languagecentre.zip'),
+    ('elementary',   'A1-A2', 'sources/elementary_3rd.pdf',
+                              'sources/elementary_3rd_audio.zip'),
+    ('pre_int_int',  'A2-B1', 'sources/pre_intermediate_intermediate_4th.pdf',
+                              'sources/pre_intermediate_intermediate_4th_audio.zip'),
+    ('upper_int',    'B2',    'sources/upper_intermediate_4th.pdf',
+                              'sources/upper_intermediate_4th_audio.zip'),
+    ('advanced',     'C1-C2', 'sources/advanced_3rd.pdf',
+                              'sources/advanced_3rd_audio.zip'),
 ]
 
 # An exercise label like "12.3" at the start of a line is the single most reliable
@@ -47,6 +47,7 @@ def pages_of(txt_path):
 
 
 def extract_text(pdf, txt):
+    txt.parent.mkdir(parents=True, exist_ok=True)
     if not txt.exists():
         subprocess.run(['pdftotext', '-layout', str(pdf), str(txt)], check=True)
     return txt

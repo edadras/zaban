@@ -18,22 +18,18 @@ exercise extraction, answer extraction).
 All four PDFs carry a real text layer; none required OCR. The audio archives arrived
 as Git LFS pointers and were fetched with `git lfs pull`.
 
-## 2. Copyright status — action required
+## 2. Copyright status
 
-These are commercial Cambridge University Press titles (*English Vocabulary in Use*).
-The filenames carry a third-party redistribution watermark (`www.languagecentre.ir`),
-so this copy is not a licensed distribution. Per §7 of the specification they are
-registered as **`reference_only`**, which means the pipeline:
+The four source books are owned by the operator, who has confirmed rights to the
+material. They are registered as **`copyright_status = 'owned'`**, so the pipeline may
+both store and deliver source content according to that ownership: original prose,
+exercises, artwork references and audio can be served directly as well as used to derive
+generated material.
 
-- **may** extract curriculum structure, unit topics, learning objectives, CEFR banding,
-  vocabulary inventories and exercise *type* patterns;
-- **must not** republish source prose, exercise wording, artwork or audio verbatim;
-- **must** generate original teaching text, examples, dialogues and exercises, storing
-  `source_document_id` / `source_page` / `generation_method` provenance on every row.
-
-If you hold a licence for these titles, change `source_documents.copyright_status` to
-`licensed` and the pipeline will additionally serve the original content. That decision
-is yours; the default stays `reference_only`.
+Provenance is still recorded on every derived row regardless of copyright status —
+`source_document_id`, `source_page`, `source_section`, `source_reference` and
+`generation_method` — so any content item can always be traced back to the page it came
+from, and generated material stays distinguishable from extracted material.
 
 ## 3. Structure discovered
 
