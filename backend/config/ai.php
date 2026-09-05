@@ -34,12 +34,20 @@ return [
             'binary' => env('HIGGSFIELD_BINARY', 'higgsfield'),
             'timeout' => (int) env('HIGGSFIELD_TIMEOUT', 600),
             'credentials_path' => env('HIGGSFIELD_CREDENTIALS_PATH'),
+            /*
+             * Model ids verified against the live Higgsfield catalogue.
+             * The image defaults are deliberately chosen from the models that
+             * carry unlimited generations on a Plus plan, so routine lesson
+             * artwork does not consume the monthly credit balance. Video has no
+             * unlimited tier on Plus, so seedance_2_0 spends credits and should
+             * be used sparingly - see docs/MEDIA_BUDGET.md.
+             */
             'models' => [
                 'image' => env('HIGGSFIELD_IMAGE_MODEL', 'gpt_image_2'),
                 'scene' => env('HIGGSFIELD_SCENE_MODEL', 'gpt_image_2'),
                 'character' => env('HIGGSFIELD_CHARACTER_MODEL', 'nano_banana_pro'),
                 'video' => env('HIGGSFIELD_VIDEO_MODEL', 'seedance_2_0'),
-                'audio' => env('HIGGSFIELD_AUDIO_MODEL', 'seed_audio_1_0'),
+                'audio' => env('HIGGSFIELD_AUDIO_MODEL', 'seed_audio'),
             ],
         ],
 
