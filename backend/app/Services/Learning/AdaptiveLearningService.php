@@ -24,6 +24,13 @@ use Illuminate\Support\Facades\DB;
  */
 class AdaptiveLearningService
 {
+    /**
+     * How far above a learner's ability a lesson may be pitched and still be
+     * worth starting. Roughly the top of the 70-85% success band the spec
+     * asks for: far enough to be new, close enough to be learnable.
+     */
+    private const REACH = 1.0;
+
     /** Starting mix from spec section 51; adjusted per learner below. */
     private const BASE_WEIGHTS = [
         'review' => 0.30,
@@ -34,6 +41,7 @@ class AdaptiveLearningService
     ];
 
     public function __construct(
+        private CoursePlacementService $courses,
         private MasteryService $mastery,
         private SpacedRepetitionService $srs,
         private DifficultyService $difficulty,
@@ -385,19 +393,84 @@ class AdaptiveLearningService
         return $this->difficulty->choose($candidates, $ability);
     }
 
+    /**
+     * The next lesson this learner should study.
+     *
+     * Two things this used to ignore. It walked every lesson in the database in
+     * id order, because active_course_version_id was never assigned, so the book
+     * a learner was placed into had no effect. And it ignored ability entirely,
+     * so the next lesson in the book was served whether or not it was within
+     * reach.
+     *
+     * Now the learner works through their own book in the order it was written -
+     * these are course books, and their order is the pedagogy - but a lesson
+     * pitched well above where they currently are is passed over and comes back
+     * later, once their ability has caught up with it.
+     */
     private function nextLesson(int $userId, LearnerProfile $profile): ?Lesson
     {
+        $version = $profile->active_course_version_id
+            ?? $this->courses->assign($profile);
+
+        if ($version === null) {
+            return null;
+        }
+
         $completed = DB::table('lesson_attempts')
             ->where('user_id', $userId)->where('status', 'completed')->pluck('lesson_id');
 
-        return Lesson::query()
-            ->when($profile->active_course_version_id, function ($q) use ($profile) {
-                $q->whereHas('unit.module', fn ($m) => $m->where('course_version_id', $profile->active_course_version_id));
-            })
-            ->whereNotIn('id', $completed)
-            ->whereHas('concepts')
-            ->orderBy('unit_id')->orderBy('position')
-            ->first();
+        $remaining = $this->lessonsInOrder($version, $completed);
+
+        if ($remaining->isEmpty()) {
+            // The book is finished. Move up rather than handing back nothing.
+            $next = $this->courses->nextVersionAfter($version);
+            if ($next === null || $next === $version) {
+                return null;
+            }
+            $profile->update(['active_course_version_id' => $next]);
+
+            $remaining = $this->lessonsInOrder($next, $completed);
+            if ($remaining->isEmpty()) {
+                return null;
+            }
+        }
+
+        $ability = $this->difficulty->abilityFor($userId);
+        $ceiling = $ability + self::REACH;
+
+        $withinReach = $remaining->first(fn ($l) => (float) $l->difficulty <= $ceiling);
+
+        // Everything left is above the ceiling - which happens to a learner who
+        // has worked through the easy end of a book. The easiest of what is left
+        // beats stopping.
+        $chosen = $withinReach ?? $remaining->sortBy('difficulty')->first();
+
+        return $chosen ? Lesson::find($chosen->id) : null;
+    }
+
+    /**
+     * The lessons of one course version, in the order the book teaches them,
+     * each carrying the mean difficulty of what it teaches.
+     */
+    private function lessonsInOrder(int $versionId, Collection $completed): Collection
+    {
+        return DB::table('lessons')
+            ->join('units', 'units.id', '=', 'lessons.unit_id')
+            ->join('modules', 'modules.id', '=', 'units.module_id')
+            ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->where('modules.course_version_id', $versionId)
+            ->whereNull('lessons.deleted_at')
+            ->when($completed->isNotEmpty(), fn ($q) => $q->whereNotIn('lessons.id', $completed))
+            ->groupBy('lessons.id', 'modules.position', 'units.position', 'lessons.position')
+            ->orderBy('modules.position')
+            ->orderBy('units.position')
+            ->orderBy('lessons.position')
+            ->select([
+                'lessons.id',
+                DB::raw('AVG(concepts.difficulty) as difficulty'),
+            ])
+            ->get();
     }
 
     /**

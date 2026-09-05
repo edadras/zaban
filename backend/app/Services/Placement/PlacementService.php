@@ -10,6 +10,7 @@ use App\Models\PlacementResponse;
 use App\Models\PlacementSession;
 use App\Models\PlacementSkillState;
 use App\Models\Skill;
+use App\Services\Learning\CoursePlacementService;
 use App\Services\Learning\DifficultyService;
 use Illuminate\Support\Facades\DB;
 
@@ -30,7 +31,10 @@ class PlacementService
     private const START_ABILITY = 0.0;
     private const START_SE = 1.5;
 
-    public function __construct(private DifficultyService $difficulty) {}
+    public function __construct(
+        private DifficultyService $difficulty,
+        private CoursePlacementService $courses,
+    ) {}
 
     public function start(int $userId, int $languageId): PlacementSession
     {
@@ -211,7 +215,7 @@ class PlacementService
                 'completed_at' => now(),
             ]);
 
-            LearnerProfile::updateOrCreate(
+            $profile = LearnerProfile::updateOrCreate(
                 ['user_id' => $session->user_id],
                 [
                     'language_id' => $session->language_id,
@@ -222,6 +226,12 @@ class PlacementService
                     'placed_at' => now(),
                 ],
             );
+
+            // Without this the result is a number on a profile screen: the
+            // curriculum reads active_course_version_id, and nothing was ever
+            // writing it, so every learner started at lesson one of the first
+            // book whatever the test said.
+            $this->courses->assign($profile);
 
             return $session->fresh('skillStates');
         });
