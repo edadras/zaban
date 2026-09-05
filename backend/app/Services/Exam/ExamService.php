@@ -88,15 +88,26 @@ class ExamService
             ? [$examSectionId]
             : $sections->pluck('id')->all();
 
-        // An unfinished sitting is resumed rather than duplicated; otherwise a
-        // dropped connection quietly loses the learner's work.
+        // An unfinished sitting of the same shape is resumed rather than
+        // duplicated; otherwise a dropped connection quietly loses the learner's
+        // work. A different mode - a full mock after a reading rehearsal - is a
+        // different sitting and starts fresh.
         $open = ExamAttempt::where('user_id', $userId)
             ->where('exam_type_id', $examType->id)
             ->where('status', 'in_progress')
+            ->where('mode', $mode)
             ->latest('id')->first();
 
         if ($open) {
-            return $open->load('sectionAttempts.section');
+            $open->load('sectionAttempts.section');
+            $sameScope = $mode !== self::MODE_SECTION || $open->sectionAttempts
+                ->where('exam_section_id', $examSectionId)
+                ->where('status', '!=', self::STATUS_NOT_ATTEMPTED)
+                ->isNotEmpty();
+
+            if ($sameScope) {
+                return $open;
+            }
         }
 
         return DB::transaction(function () use ($userId, $examType, $mode, $sections, $inScope) {

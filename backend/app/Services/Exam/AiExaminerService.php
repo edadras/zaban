@@ -71,7 +71,7 @@ class AiExaminerService
 
             $index = (int) $partState['answered'];
             if ($index >= count($partState['questions'])) {
-                $state = $this->closePart($attempt, $sectionAttempt, $session, $state, $code);
+                $state = $this->closePart($attempt, $session, $state, $code);
 
                 continue;
             }
@@ -266,7 +266,7 @@ class AiExaminerService
      * @param  array<string, mixed>  $state
      * @return array<string, mixed>
      */
-    private function closePart(ExamAttempt $attempt, ExamSectionAttempt $sectionAttempt, ConversationSession $session, array $state, string $code): array
+    private function closePart(ExamAttempt $attempt, ConversationSession $session, array $state, string $code): array
     {
         $partState = $state['parts'][$code];
         $task = ExamTask::with('taskType')->find($partState['exam_task_id']);
@@ -280,8 +280,6 @@ class AiExaminerService
 
         $state['parts'][$code]['complete'] = true;
         $session->update(['objectives_met' => $state]);
-
-        unset($sectionAttempt);
 
         return $state;
     }

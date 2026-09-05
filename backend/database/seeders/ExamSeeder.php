@@ -93,7 +93,7 @@ class ExamSeeder extends Seeder
                     ],
                 );
 
-                foreach ($section['task_types'] as $i => $taskType) {
+                foreach ($section['task_types'] as $taskType) {
                     ExamTaskType::updateOrCreate(
                         ['exam_section_id' => $row->id, 'code' => $taskType['code']],
                         [
@@ -103,7 +103,6 @@ class ExamSeeder extends Seeder
                             'typical_count' => $taskType['typical_count'] ?? null,
                         ],
                     );
-                    unset($i);
                 }
             }
         }

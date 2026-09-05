@@ -250,7 +250,7 @@ class ScoringService
 
         $result = $this->ai->text(new TextRequest(
             feature: self::FEATURE_RUBRIC,
-            prompt: $this->rubricPrompt($attempt->examType, $section, $scoring, $evidence, $response),
+            prompt: $this->rubricPrompt($attempt->examType, $section, $evidence, $response),
             system: $this->rubricSystemPrompt($attempt->examType, $section, $scoring),
             schema: $this->rubricSchema($scoring),
             // Marking should be repeatable, so the sampling temperature is low.
@@ -551,7 +551,7 @@ class ScoringService
     }
 
     /** @param  array<string, mixed>  $evidence */
-    private function rubricPrompt(ExamType $examType, ExamSection $section, SectionScoring $scoring, array $evidence, string $response): string
+    private function rubricPrompt(ExamType $examType, ExamSection $section, array $evidence, string $response): string
     {
         $taskType = $evidence['exam_task_type'] ?? 'task';
         $parts = [
@@ -581,8 +581,6 @@ class ScoringService
         $label = ($evidence['kind'] ?? null) === 'speaking' ? 'Candidate transcript' : 'Candidate response';
         $parts[] = "{$label}:\n\"\"\"\n{$response}\n\"\"\"";
         $parts[] = 'Mark this response against every criterion listed in the system instructions.';
-
-        unset($scoring);
 
         return implode("\n\n", $parts);
     }

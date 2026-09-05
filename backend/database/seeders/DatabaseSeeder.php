@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ReferenceDataSeeder::class,
             PlanSeeder::class,
             PhonemeSeeder::class,
+            ExamSeeder::class,
         ]);
 
         // User::factory(10)->create();

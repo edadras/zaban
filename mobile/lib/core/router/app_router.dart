@@ -14,6 +14,7 @@ import 'package:zaban/features/conversation/presentation/scenarios_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_attempt_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_home_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_result_screen.dart';
+import 'package:zaban/features/home/presentation/home_controller.dart';
 import 'package:zaban/features/home/presentation/home_screen.dart';
 import 'package:zaban/features/home/presentation/session/session_runner_screen.dart';
 import 'package:zaban/features/lesson/presentation/lesson_screen.dart';
@@ -277,6 +278,9 @@ class _AppShell extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // The badge is whatever the server said is due; the client never counts it.
+    final dueReviews = ref.watch(dueReviewCountProvider);
+
     return AdaptiveNavigationShell(
       currentIndex: shell.currentIndex,
       onSelected: (int index) => shell.goBranch(
@@ -284,8 +288,8 @@ class _AppShell extends ConsumerWidget {
         // Tapping the active tab returns it to its first screen.
         initialLocation: index == shell.currentIndex,
       ),
-      destinations: const <ShellDestination>[
-        ShellDestination(
+      destinations: <ShellDestination>[
+        const ShellDestination(
           label: 'Today',
           icon: Icons.bolt_outlined,
           selectedIcon: Icons.bolt_rounded,
@@ -296,20 +300,21 @@ class _AppShell extends ConsumerWidget {
           icon: Icons.replay_outlined,
           selectedIcon: Icons.replay_rounded,
           route: '/review',
+          badgeCount: dueReviews,
         ),
-        ShellDestination(
+        const ShellDestination(
           label: 'Talk',
           icon: Icons.forum_outlined,
           selectedIcon: Icons.forum_rounded,
           route: '/conversation',
         ),
-        ShellDestination(
+        const ShellDestination(
           label: 'Progress',
           icon: Icons.insights_outlined,
           selectedIcon: Icons.insights_rounded,
           route: '/progress',
         ),
-        ShellDestination(
+        const ShellDestination(
           label: 'You',
           icon: Icons.person_outline_rounded,
           selectedIcon: Icons.person_rounded,

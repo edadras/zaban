@@ -123,7 +123,7 @@ final class SectionScoring
 
         $score = match ($this->config['conversion'] ?? 'linear') {
             'table' => $this->fromTable($raw),
-            'anchors' => $this->fromAnchors($raw / $max, $scale),
+            'anchors' => $this->fromAnchors($raw / $max),
             default => $scale['min'] + ($raw / $max) * ($scale['max'] - $scale['min']),
         };
 
@@ -199,7 +199,7 @@ final class SectionScoring
         return $rows ? (float) end($rows)['score'] : null;
     }
 
-    private function fromAnchors(float $proportion, array $scale): ?float
+    private function fromAnchors(float $proportion): ?float
     {
         $rows = $this->config['table'] ?? [];
         if (count($rows) < 2) {
@@ -224,7 +224,7 @@ final class SectionScoring
             return (float) $lo['score'] + $t * ((float) $hi['score'] - (float) $lo['score']);
         }
 
-        return (float) end($rows)['score'] ?: $scale['max'];
+        return (float) end($rows)['score'];
     }
 
     /** @return array{min: float, max: float, step: float} */
