@@ -151,6 +151,36 @@ class SessionShapeTest extends TestCase
         );
     }
 
+    /**
+     * A wrong answer is the moment the learner most wants to know what the word
+     * means. Sending back only "incorrect, the answer was X" spends it.
+     */
+    public function test_a_wrong_answer_comes_back_with_the_word_it_was_teaching(): void
+    {
+        $user = \App\Models\User::find($this->userId);
+
+        $exerciseId = DB::table('exercises')->where('lesson_id', $this->lessonId)->value('id');
+        $conceptId = DB::table('exercise_concepts')->where('exercise_id', $exerciseId)->value('concept_id');
+        $senseId = DB::table('concepts')->where('id', $conceptId)->value('conceptable_id');
+
+        DB::table('definitions')->insert([
+            'vocabulary_sense_id' => $senseId,
+            'language_id' => DB::table('languages')->where('code', 'en')->value('id'),
+            'text' => 'to look for and hire new staff',
+            'generation_method' => 'extracted',
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+
+        $response = $this->actingAs($user)->postJson("/api/v1/exercises/{$exerciseId}/submit", [
+            'response' => 'definitely-not-the-answer',
+        ]);
+
+        $response->assertOk();
+        $this->assertFalse($response->json('data.correct'));
+        $this->assertSame('to look for and hire new staff', $response->json('data.teaching.gloss'));
+        $this->assertNotEmpty($response->json('data.teaching.term'));
+    }
+
     // ------------------------------------------------------------- fixtures
 
     private function build()

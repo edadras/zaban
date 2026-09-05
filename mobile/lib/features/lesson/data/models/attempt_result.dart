@@ -22,6 +22,12 @@ abstract class AttemptResult with _$AttemptResult {
     String? expected,
     String? explanation,
 
+    /// The word the item was teaching, with its meaning and a sentence using
+    /// it. Sent with every verdict: a wrong answer is the moment the learner
+    /// most wants to know what the word means, and spending it on a red cross
+    /// teaches nothing.
+    TeachingNote? teaching,
+
     /// Grader detail, e.g. `{"distractor_rationale": "…"}` or
     /// `{"requires_review": true, "message": "…"}` for open items.
     @Default(<String, dynamic>{}) Map<String, dynamic> feedback,
@@ -57,6 +63,25 @@ extension AttemptResultX on AttemptResult {
       .map((AttemptMastery m) => m.nextReviewAt)
       .whereType<DateTime>()
       .fold<DateTime?>(null, (DateTime? a, DateTime b) => a == null || b.isBefore(a) ? b : a);
+}
+
+/// What an item was teaching.
+@freezed
+abstract class TeachingNote with _$TeachingNote {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory TeachingNote({
+    @Default('') String term,
+    String? gloss,
+    String? example,
+  }) = _TeachingNote;
+
+  factory TeachingNote.fromJson(Map<String, dynamic> json) =>
+      _$TeachingNoteFromJson(json);
+}
+
+extension TeachingNoteX on TeachingNote {
+  bool get hasSomethingToSay =>
+      term.isNotEmpty && ((gloss ?? '').isNotEmpty || (example ?? '').isNotEmpty);
 }
 
 @freezed

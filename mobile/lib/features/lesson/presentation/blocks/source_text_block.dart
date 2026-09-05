@@ -5,7 +5,9 @@ import 'package:zaban/core/widgets/glow_button.dart';
 import 'package:zaban/features/lesson/data/models/lesson_block.dart';
 import 'package:zaban/features/lesson/presentation/blocks/block_scope.dart';
 import 'package:zaban/features/lesson/presentation/widgets/audio_player_button.dart';
+import 'package:zaban/features/lesson/presentation/blocks/reading_view.dart';
 import 'package:zaban/features/lesson/presentation/widgets/block_frame.dart';
+import 'package:zaban/features/lesson/presentation/widgets/word_sheet.dart';
 
 /// `source_text` — teaching prose lifted from the book, with the unit's own
 /// recording when there is one.
@@ -22,7 +24,7 @@ class SourceTextBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final audioUrl = block.audioUrl;
-    final body = block.text ?? '';
+    final reading = block.reading;
 
     return BlockFrame(
       eyebrow: scope.eyebrow ?? 'Read',
@@ -45,12 +47,21 @@ class SourceTextBlock extends StatelessWidget {
             ),
             const SizedBox(height: Spacing.xl),
           ],
-          // Source prose is the one place the app sets long-form measure: a
-          // taller line height and the larger body size.
-          SelectableText(
-            body,
-            style: context.text.bodyLarge?.copyWith(height: 1.7),
-          ),
+          // The page as paragraphs, with the words it teaches marked where the
+          // reader meets them. The flat string below is the fallback for a
+          // block built before the reading view existed - and for a while it
+          // was the only thing here, which is why this screen showed the
+          // extractor's line-broken runs instead of prose.
+          if (reading != null)
+            ReadingView(
+              reading: reading,
+              onTermTapped: (term) => showWordSheet(context, term),
+            )
+          else
+            SelectableText(
+              block.text ?? '',
+              style: context.text.bodyLarge?.copyWith(height: 1.7),
+            ),
         ],
       ),
     );

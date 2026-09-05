@@ -70,11 +70,13 @@ class _MultipleChoiceExerciseState extends State<MultipleChoiceExercise> {
             widget.header!,
             const SizedBox(height: Spacing.xl),
           ],
-          for (final ExerciseOption option in widget.exercise.options)
+          for (final (int index, ExerciseOption option)
+              in widget.exercise.options.indexed)
             Padding(
               padding: const EdgeInsets.only(bottom: Spacing.md),
               child: _OptionTile(
                 option: option,
+                letter: String.fromCharCode(65 + index),
                 selected: option.id == _selectedId,
                 // After grading, the server tells us what the answer was; the
                 // client never works it out from the payload.
@@ -97,9 +99,16 @@ class _MultipleChoiceExerciseState extends State<MultipleChoiceExercise> {
   }
 }
 
+/// One answer.
+///
+/// Four bare rectangles of text are hard to scan and harder to talk about, so
+/// each option carries its letter in a chip at the head. The chip is also where
+/// the state lives after grading - it becomes the tick or the cross - which
+/// keeps the verdict in one place instead of scattering colour across the row.
 class _OptionTile extends StatelessWidget {
   const _OptionTile({
     required this.option,
+    required this.letter,
     required this.selected,
     required this.correct,
     required this.wrong,
@@ -107,6 +116,7 @@ class _OptionTile extends StatelessWidget {
   });
 
   final ExerciseOption option;
+  final String letter;
   final bool selected;
   final bool correct;
   final bool wrong;
@@ -116,21 +126,15 @@ class _OptionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
 
-    final borderColor = correct
+    final tint = correct
         ? colors.success
         : wrong
-            ? colors.accent
+            ? colors.danger
             : selected
-                ? colors.accent.withValues(alpha: 0.7)
-                : colors.glassBorder;
+                ? colors.accent
+                : null;
 
-    final fill = correct
-        ? colors.success.withValues(alpha: 0.12)
-        : wrong
-            ? colors.accent.withValues(alpha: 0.12)
-            : selected
-                ? colors.accentSurface
-                : colors.glassFill;
+    final graded = correct || wrong;
 
     return PressScale(
       onTap: onTap,
@@ -138,31 +142,98 @@ class _OptionTile extends StatelessWidget {
         duration: context.motion.fast,
         curve: Curves.easeOut,
         padding: const EdgeInsets.symmetric(
-          horizontal: Spacing.lg,
-          vertical: Spacing.lg,
+          horizontal: Spacing.md,
+          vertical: Spacing.md,
         ),
         decoration: BoxDecoration(
           borderRadius: Radii.cardRadius,
-          color: fill,
-          border: Border.all(color: borderColor, width: selected ? 1.4 : 1),
+          color: tint == null
+              ? colors.glassFill
+              : tint.withValues(alpha: graded ? 0.14 : 0.10),
+          border: Border.all(
+            color: tint ?? colors.glassBorder,
+            width: tint == null ? 1 : 1.5,
+          ),
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            _LetterChip(
+              letter: letter,
+              tint: tint,
+              correct: correct,
+              wrong: wrong,
+              selected: selected,
+            ),
+            const SizedBox(width: Spacing.md),
             Expanded(
               child: Text(
                 option.text ?? '',
-                style: context.text.bodyLarge,
+                style: context.text.bodyLarge?.copyWith(
+                  height: 1.35,
+                  color: correct
+                      ? colors.success
+                      : wrong
+                          ? colors.danger
+                          : colors.textPrimary,
+                  fontWeight: graded || selected
+                      ? FontWeight.w600
+                      : FontWeight.w400,
+                ),
               ),
             ),
-            if (correct)
-              Icon(Icons.check_rounded, size: 18, color: colors.success)
-            else if (wrong)
-              Icon(Icons.close_rounded, size: 18, color: colors.accent)
-            else if (selected)
-              Icon(Icons.circle, size: 10, color: colors.accent),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _LetterChip extends StatelessWidget {
+  const _LetterChip({
+    required this.letter,
+    required this.tint,
+    required this.correct,
+    required this.wrong,
+    required this.selected,
+  });
+
+  final String letter;
+  final Color? tint;
+  final bool correct;
+  final bool wrong;
+  final bool selected;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+    final filled = correct || wrong || selected;
+
+    return AnimatedContainer(
+      duration: context.motion.fast,
+      width: 30,
+      height: 30,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: filled
+            ? (tint ?? colors.accent)
+            : colors.glassFillStrong,
+        border: Border.all(
+          color: filled ? (tint ?? colors.accent) : colors.glassBorder,
+        ),
+      ),
+      child: correct
+          ? Icon(Icons.check_rounded, size: 17, color: colors.textOnAccent)
+          : wrong
+              ? Icon(Icons.close_rounded, size: 17, color: colors.textOnAccent)
+              : Text(
+                  letter,
+                  style: context.text.labelMedium?.copyWith(
+                    color: filled ? colors.textOnAccent : colors.textSecondary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
     );
   }
 }

@@ -18,7 +18,14 @@ class FeedbackPanel extends StatelessWidget {
     final pending = result.awaitingReview;
     final tone = pending
         ? colors.info
-        : (result.isCorrect ? colors.success : colors.accent);
+        : (result.isCorrect ? colors.success : colors.danger);
+
+    final note = result.teaching;
+    // Shown when there is something to say, and always after a miss - a
+    // correct answer does not need the lesson repeated back.
+    final teaching = note != null && note.hasSomethingToSay && !result.isCorrect
+        ? note
+        : null;
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0, end: 1),
@@ -80,8 +87,77 @@ class FeedbackPanel extends StatelessWidget {
               const SizedBox(height: Spacing.md),
               Text(result.explanation!, style: context.text.bodySmall),
             ],
+            if (teaching != null) ...<Widget>[
+              const SizedBox(height: Spacing.lg),
+              _TeachingCard(note: teaching, tone: tone),
+            ],
           ],
         ),
+      ),
+    );
+  }
+}
+
+/// The word the item was about, taught at the moment it matters.
+///
+/// A verdict alone closes the loop without teaching anything: the learner who
+/// missed the item is exactly the one who wants to know what the word means,
+/// and they will not go and look it up afterwards. So the meaning and a
+/// sentence using it arrive with the cross.
+class _TeachingCard extends StatelessWidget {
+  const _TeachingCard({required this.note, required this.tone});
+
+  final TeachingNote note;
+  final Color tone;
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = context.colors;
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(Spacing.md),
+      decoration: BoxDecoration(
+        borderRadius: Radii.cardRadius,
+        color: colors.canvasRaised.withValues(alpha: 0.6),
+        border: Border.all(color: tone.withValues(alpha: 0.22)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Icon(Icons.school_rounded, size: 14, color: colors.textTertiary),
+              const SizedBox(width: Spacing.xs),
+              Text(
+                note.term,
+                style: context.text.titleSmall?.copyWith(
+                  color: colors.textPrimary,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
+          ),
+          if ((note.gloss ?? '').isNotEmpty) ...<Widget>[
+            const SizedBox(height: Spacing.sm),
+            Text(
+              note.gloss!,
+              style: context.text.bodyMedium?.copyWith(height: 1.5),
+            ),
+          ],
+          if ((note.example ?? '').isNotEmpty) ...<Widget>[
+            const SizedBox(height: Spacing.sm),
+            Text(
+              note.example!,
+              style: context.text.bodySmall?.copyWith(
+                color: colors.textSecondary,
+                fontStyle: FontStyle.italic,
+                height: 1.5,
+              ),
+            ),
+          ],
+        ],
       ),
     );
   }

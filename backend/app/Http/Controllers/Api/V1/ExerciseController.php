@@ -25,6 +25,7 @@ class ExerciseController extends ApiController
         private MasteryService $mastery,
         private DifficultyService $difficulty,
         private RemediationService $remediation,
+        private \App\Services\Content\SentenceQuality $quality,
     ) {}
 
     public function show(Request $request, Exercise $exercise)
@@ -140,6 +141,10 @@ class ExerciseController extends ApiController
             'score' => $grade['score'],
             'expected' => $grade['correct'] ? null : $grade['expected'],
             'explanation' => $exercise->explanations()->value('text'),
+            // What the item was teaching, sent with the verdict so a wrong
+            // answer becomes the moment the word is learned rather than a red
+            // cross and the next question.
+            'teaching' => $this->teachingNote($conceptIds->first()),
             'feedback' => $grade['feedback'],
             'mastery' => collect($states)->map(fn ($s) => [
                 'concept_id' => $s->concept_id,
@@ -147,6 +152,47 @@ class ExerciseController extends ApiController
                 'next_review_at' => $s->next_review_at?->toIso8601String(),
             ])->values(),
         ]);
+    }
+
+    /**
+     * The word this item is about, with its meaning and a sentence using it.
+     *
+     * A learner who misses an item has just demonstrated the one moment when
+     * they most want to know what the word means. Sending only "wrong, the
+     * answer was X" spends that moment and teaches nothing.
+     *
+     * @return array<string, mixed>|null
+     */
+    private function teachingNote(?int $conceptId): ?array
+    {
+        if ($conceptId === null) {
+            return null;
+        }
+
+        $concept = DB::table('concepts')->where('id', $conceptId)->first();
+        if (! $concept || $concept->conceptable_type !== \App\Models\VocabularySense::class) {
+            return null;
+        }
+
+        $gloss = DB::table('definitions')
+            ->where('vocabulary_sense_id', $concept->conceptable_id)
+            ->value('text');
+
+        $example = DB::table('examples')
+            ->where('exemplifiable_type', \App\Models\VocabularySense::class)
+            ->where('exemplifiable_id', $concept->conceptable_id)
+            ->orderByRaw('CHAR_LENGTH(text) ASC')
+            ->value('text');
+
+        if ($gloss === null && $example === null) {
+            return null;
+        }
+
+        return array_filter([
+            'term' => $concept->label,
+            'gloss' => $gloss,
+            'example' => $this->quality->isUsableSentence($example) ? $example : null,
+        ], fn ($v) => $v !== null && $v !== '');
     }
 
     /**

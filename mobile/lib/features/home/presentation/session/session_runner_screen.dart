@@ -11,6 +11,7 @@ import 'package:zaban/core/widgets/level_badge.dart';
 import 'package:zaban/core/widgets/responsive.dart';
 import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/features/home/data/models/learning_session.dart';
+import 'package:zaban/features/home/presentation/session/phase_palette.dart';
 import 'package:zaban/features/home/presentation/session/session_complete_view.dart';
 import 'package:zaban/features/home/presentation/session/session_controller.dart';
 import 'package:zaban/features/lesson/data/models/attempt_result.dart';
@@ -148,45 +149,104 @@ class _PhaseBanner extends StatelessWidget {
 
     final (int at, int of) = session.positionWithinPhase(activity);
     final colors = context.colors;
+    final tint = PhasePalette.colorFor(colors, phase.phase);
 
     return Padding(
-      padding: const EdgeInsets.only(bottom: Spacing.md),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Text(
-                phase.title.toUpperCase(),
-                style: context.text.labelSmall?.copyWith(
-                  color: colors.accent,
-                  letterSpacing: 1.2,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(width: Spacing.sm),
-              Text(
-                '$at of $of',
-                style: context.text.labelSmall?.copyWith(
-                  color: colors.textSecondary,
-                ),
-              ),
-              const Spacer(),
-              Text(
-                phase.durationLabel,
-                style: context.text.labelSmall?.copyWith(
-                  color: colors.textSecondary,
-                ),
-              ),
-            ],
+      padding: const EdgeInsets.only(bottom: Spacing.lg),
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(
+          Spacing.md,
+          Spacing.md,
+          Spacing.md,
+          Spacing.md,
+        ),
+        decoration: BoxDecoration(
+          borderRadius: Radii.cardRadius,
+          color: tint.withValues(alpha: 0.07),
+          border: Border(
+            // A single coloured edge, not a full outline: the banner should
+            // introduce the part without competing with the work beneath it.
+            left: BorderSide(color: tint, width: 3),
           ),
-          const SizedBox(height: Spacing.xs),
-          Text(
-            phase.purpose,
-            style: context.text.bodySmall?.copyWith(color: colors.textSecondary),
-          ),
-        ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                Icon(PhasePalette.iconFor(phase.phase), size: 15, color: tint),
+                const SizedBox(width: Spacing.sm),
+                Text(
+                  phase.title.toUpperCase(),
+                  style: context.text.labelSmall?.copyWith(
+                    color: tint,
+                    letterSpacing: 1.3,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(width: Spacing.sm),
+                _PhasePips(at: at, of: of, tint: tint),
+                const Spacer(),
+                Text(
+                  phase.durationLabel,
+                  style: context.text.labelSmall?.copyWith(
+                    color: colors.textSecondary,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: Spacing.sm),
+            Text(
+              phase.purpose,
+              style: context.text.bodySmall?.copyWith(
+                color: colors.textSecondary,
+                height: 1.4,
+              ),
+            ),
+          ],
+        ),
       ),
+    );
+  }
+}
+
+/// Where the learner is inside the current part, as pips rather than a
+/// fraction. "3 of 6" has to be read and compared; six dots with three filled
+/// is understood without reading. Beyond eight it becomes a count again, so it
+/// falls back to the fraction.
+class _PhasePips extends StatelessWidget {
+  const _PhasePips({required this.at, required this.of, required this.tint});
+
+  final int at;
+  final int of;
+  final Color tint;
+
+  @override
+  Widget build(BuildContext context) {
+    if (of > 8) {
+      return Text(
+        '$at of $of',
+        style: context.text.labelSmall?.copyWith(color: tint),
+      );
+    }
+
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        for (int i = 1; i <= of; i++)
+          Padding(
+            padding: const EdgeInsets.only(right: 3),
+            child: AnimatedContainer(
+              duration: context.motion.fast,
+              width: i == at ? 14 : 5,
+              height: 5,
+              decoration: BoxDecoration(
+                borderRadius: Radii.pillRadius,
+                color: i <= at ? tint : tint.withValues(alpha: 0.25),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }
@@ -290,7 +350,9 @@ class _SessionHeader extends ConsumerWidget {
                     value: value,
                     minHeight: 6,
                     backgroundColor: colors.glassFillStrong,
-                    valueColor: AlwaysStoppedAnimation<Color>(colors.accent),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      PhasePalette.colorFor(colors, state.current?.phase),
+                    ),
                   ),
                 ),
               ),
