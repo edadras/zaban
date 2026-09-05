@@ -4,8 +4,9 @@ publish_to: "none"
 version: 0.1.0+1
 
 environment:
-  sdk: ">=3.5.0 <4.0.0"
-  flutter: ">=3.24.0"
+  sdk: ">=3.6.0 <4.0.0"
+  # 3.27 is the floor: the design system uses Color.withValues().
+  flutter: ">=3.27.0"
 
 dependencies:
   flutter:

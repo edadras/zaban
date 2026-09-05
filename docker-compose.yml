@@ -41,12 +41,21 @@ x-app-env: &app-env
   QUEUE_CONNECTION: redis
   SESSION_DRIVER: redis
 
-  # S3-compatible storage against MinIO. AI_STORAGE_DISK is what
-  # HiggsfieldProvider/EspeakTtsProvider/PlaceholderImageProvider mirror their
-  # output into, so pointing it at s3 exercises the same code path production
-  # uses instead of writing to a container-local directory that vanishes.
-  FILESYSTEM_DISK: s3
-  AI_STORAGE_DISK: s3
+  # Storage.
+  #
+  # MinIO is running and its bucket is created, but the disk defaults to `local`
+  # because backend/composer.json does not yet require league/flysystem-aws-s3-v3
+  # — Laravel's s3 driver is a suggested package, not an installed one, and
+  # selecting it today fails at the first write. Once it is installed:
+  #
+  #     docker compose exec app composer require league/flysystem-aws-s3-v3
+  #     FILESYSTEM_DISK=s3 AI_STORAGE_DISK=s3 make up
+  #
+  # everything below is already pointed at MinIO and needs no other change.
+  # AI_STORAGE_DISK (config/ai.php) is the disk HiggsfieldProvider, EspeakTtsProvider
+  # and PlaceholderImageProvider mirror their output into.
+  FILESYSTEM_DISK: "${FILESYSTEM_DISK:-local}"
+  AI_STORAGE_DISK: "${AI_STORAGE_DISK:-local}"
   AWS_ACCESS_KEY_ID: "${MINIO_ROOT_USER:-zaban}"
   AWS_SECRET_ACCESS_KEY: "${MINIO_ROOT_PASSWORD:-zabansecret}"
   AWS_DEFAULT_REGION: us-east-1
