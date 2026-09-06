@@ -1006,20 +1006,32 @@ class BuildActivities extends Command
     {
         $this->line('▸ deriving prerequisite edges');
 
+        // A phrase teaches the words inside it, so the longer label depends on
+        // the shorter one. The match is a LIKE and cannot use an index, which
+        // makes this a full cross join - and the corpus has grown from 14,000
+        // concepts to 23,800, so it went from 200 million comparisons to 566
+        // million and took minutes.
+        //
+        // Only a label with two spaces in it can contain another label
+        // surrounded by spaces, and 4,723 of the 23,796 have that. Saying so
+        // in the join condition is not a shortcut past the rule - it is the
+        // rule, written where the database can use it - and it cuts the work
+        // fivefold.
         DB::statement("
             INSERT IGNORE INTO concept_prerequisites
                 (concept_id, prerequisite_concept_id, strength, is_blocking, detection_method, created_at, updated_at)
             SELECT c2.id, c1.id, 0.700, 0, 'inferred', NOW(), NOW()
-            FROM concepts c1
-            JOIN concepts c2
-              ON c2.id <> c1.id
-             AND c2.language_id = c1.language_id
-             AND CHAR_LENGTH(c2.label) > CHAR_LENGTH(c1.label)
+            FROM concepts c2
+            JOIN concepts c1
+              ON c1.id <> c2.id
+             AND c1.language_id = c2.language_id
              AND CHAR_LENGTH(c1.label) >= 4
+             AND CHAR_LENGTH(c2.label) > CHAR_LENGTH(c1.label)
              AND c2.label LIKE CONCAT('% ', c1.label, ' %')
             JOIN cefr_levels l1 ON l1.id = c1.cefr_level_id
             JOIN cefr_levels l2 ON l2.id = c2.cefr_level_id
-            WHERE l1.ordinal <= l2.ordinal
+            WHERE c2.label LIKE '% % %'
+              AND l1.ordinal <= l2.ordinal
         ");
 
         DB::statement("
