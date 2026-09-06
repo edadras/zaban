@@ -409,6 +409,8 @@ class BuildActivities extends Command
      */
     private function loadTaughtTerms(): array
     {
+        $meanings = $this->loadMeanings();
+
         return DB::table('lesson_concept')
             ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
             ->leftJoin('definitions', function ($j) {
@@ -422,6 +424,7 @@ class BuildActivities extends Command
                 'concepts.id as concept_id',
                 'concepts.label as term',
                 'definitions.text as gloss',
+                'concepts.conceptable_id as sense_id',
             ])
             ->get()
             ->groupBy('lesson_id')
@@ -429,7 +432,29 @@ class BuildActivities extends Command
                 'concept_id' => (int) $r->concept_id,
                 'term' => $r->term,
                 'gloss' => $r->gloss,
+                'meanings' => $meanings[(int) $r->sense_id] ?? [],
             ])->values()->all())
+            ->all();
+    }
+
+    /**
+     * The first-language meaning of each sense, by language code.
+     *
+     * Baked into the lesson rather than fetched when a word is tapped: the
+     * reading view has to work with the page already open, and a round trip per
+     * word would make the commonest interaction in the app the slowest.
+     *
+     * @return array<int, array<string, string>>
+     */
+    private function loadMeanings(): array
+    {
+        return DB::table('translations')
+            ->join('languages', 'languages.id', '=', 'translations.language_id')
+            ->select('translations.vocabulary_sense_id', 'languages.code', 'translations.text')
+            ->orderByDesc('translations.is_primary')
+            ->get()
+            ->groupBy('vocabulary_sense_id')
+            ->map(fn ($rows) => $rows->pluck('text', 'code')->all())
             ->all();
     }
 

@@ -29,7 +29,8 @@ class LessonReadingBuilder
     ) {}
 
     /**
-     * @param  array<int, array{concept_id: int, term: string, gloss: ?string}>  $taught
+     * @param  array<int, array{concept_id: int, term: string, gloss: ?string,
+     *     meanings: array<string, string>}>  $taught
      * @return array{
      *     paragraphs: array<int, array{text: string, terms: array<int, array<string, mixed>>}>,
      *     word_count: int,
@@ -111,6 +112,10 @@ class LessonReadingBuilder
                     'start' => $start,
                     'end' => $end,
                     'gloss' => $entry['gloss'],
+                    // The word in the learner's own language, by language code.
+                    // Carried per word rather than fetched per tap: the reader
+                    // works offline once the lesson is open.
+                    'meanings' => $entry['meanings'] ?? [],
                 ];
 
                 // One highlight per word per paragraph: marking every repeat

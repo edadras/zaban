@@ -751,6 +751,12 @@ class ImportCurriculum extends Command
             return false;
         }
 
+        // A web address scanned out of a running head or a footer. Nothing is
+        // taught by it, and every book in the corpus prints one somewhere.
+        if (preg_match('~https?://|www\\.|[a-z]\\.(com|org|net|edu|co\\.uk)\\b~i', $term)) {
+            return false;
+        }
+
         /*
          * Length one is a fragment, with two exceptions. Case matters for the
          * second: the pronoun is always written "I", so a lowercase "i" is not

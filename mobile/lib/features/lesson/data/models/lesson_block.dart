@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zaban/features/lesson/data/models/exercise.dart';
 import 'package:zaban/features/lesson/data/models/media_ref.dart';
@@ -86,6 +88,7 @@ class ReadingTerm {
     required this.end,
     this.conceptId,
     this.gloss,
+    this.meanings = const <String, String>{},
   });
 
   factory ReadingTerm.fromJson(Map<String, dynamic> json) => ReadingTerm(
@@ -94,6 +97,13 @@ class ReadingTerm {
         end: (json['end'] as num?)?.toInt() ?? 0,
         conceptId: (json['concept_id'] as num?)?.toInt(),
         gloss: json['gloss'] as String?,
+        meanings: <String, String>{
+          for (final MapEntry<String, dynamic> e
+              in (json['meanings'] as Map<String, dynamic>? ??
+                      const <String, dynamic>{})
+                  .entries)
+            if (e.value is String) e.key: e.value as String,
+        },
       );
 
   final String term;
@@ -102,7 +112,19 @@ class ReadingTerm {
   final int? conceptId;
   final String? gloss;
 
+  /// The word in the learner's own language, by language code. Empty for a
+  /// language nobody has translated the corpus into.
+  final Map<String, String> meanings;
+
   bool get hasGloss => (gloss ?? '').trim().isNotEmpty;
+
+  /// The meaning to show beside the English, or null when there is none for
+  /// this interface language.
+  String? meaningIn(Locale locale) {
+    final text = meanings[locale.languageCode];
+
+    return (text ?? '').trim().isEmpty ? null : text;
+  }
 }
 
 /// The whole reading text of a lesson.

@@ -26,6 +26,7 @@ class _WordSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final meaning = term.meaningIn(Localizations.localeOf(context));
 
     return SafeArea(
       top: false,
@@ -73,10 +74,32 @@ class _WordSheet extends StatelessWidget {
               color: colors.accent.withValues(alpha: 0.5),
             ),
             const SizedBox(height: Spacing.lg),
-            Text(
-              term.gloss ?? '',
-              style: context.reading(size: 17.5, height: 1.6),
-            ),
+            // The learner's own language first when there is one. At A1 the
+            // English gloss and the English word are equally unknown, so an
+            // explanation in English explains nothing; higher up, the gloss is
+            // the more useful of the two and both are shown.
+            if (meaning != null) ...<Widget>[
+              Text(
+                meaning,
+                textDirection: Directionality.of(context),
+                style: context.reading(size: 19, height: 1.6).copyWith(
+                      color: context.colors.textPrimary,
+                    ),
+              ),
+              if (term.hasGloss) const SizedBox(height: Spacing.sm),
+            ],
+            if (term.hasGloss)
+              Text(
+                term.gloss!,
+                // The gloss is the book's own English and reads left to right
+                // even when the interface does not.
+                textDirection: TextDirection.ltr,
+                style: context.reading(size: 17.5, height: 1.6).copyWith(
+                      color: meaning == null
+                          ? context.colors.textPrimary
+                          : context.colors.textSecondary,
+                    ),
+              ),
             const SizedBox(height: Spacing.xl),
             Row(
               children: <Widget>[
