@@ -169,7 +169,8 @@ class _OptionTile extends StatelessWidget {
             Expanded(
               child: Text(
                 option.text ?? '',
-                style: context.text.bodyLarge?.copyWith(
+                style: context.reading(
+                  size: 17,
                   height: 1.35,
                   color: correct
                       ? colors.success

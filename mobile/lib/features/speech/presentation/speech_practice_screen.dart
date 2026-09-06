@@ -66,7 +66,7 @@ class SpeechPracticeScreen extends ConsumerWidget {
                           'Speak for a few seconds — you will get fluency and '
                               'pronunciation feedback on whatever you say.',
                       textAlign: TextAlign.center,
-                      style: context.text.headlineSmall,
+                      style: context.reading(size: 24, height: 1.35),
                     ),
                     if (referenceAudioUrl != null) ...<Widget>[
                       const SizedBox(height: Spacing.lg),

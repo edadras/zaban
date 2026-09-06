@@ -201,8 +201,12 @@ class _CardFace extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: (isBack ? context.text.titleLarge : context.text.displaySmall)
-            ?.copyWith(
+        // Both faces are English: the word on the front, its meaning on the
+        // back. Neither is interface copy.
+        style: context.reading(
+          size: isBack ? 20 : 34,
+          height: isBack ? 1.5 : 1.2,
+          weight: isBack ? FontWeight.w400 : FontWeight.w500,
           color: isBack ? colors.textPrimary : colors.textOnAccent,
         ),
       ),

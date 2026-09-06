@@ -147,7 +147,7 @@ class _Token extends StatelessWidget {
                 : colors.glassBorder,
           ),
         ),
-        child: Text(label, style: context.text.bodyLarge),
+        child: Text(label, style: context.reading(size: 17, height: 1.3)),
       ),
     );
   }

@@ -38,7 +38,7 @@ class TurnBubble extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text(turn.text, style: context.text.bodyLarge),
+                    Text(turn.text, style: context.reading(size: 17, height: 1.45)),
                     if (turn.translation != null) ...<Widget>[
                       const SizedBox(height: Spacing.xs),
                       Text(

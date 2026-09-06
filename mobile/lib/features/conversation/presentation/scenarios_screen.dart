@@ -118,6 +118,7 @@ class _ScenarioCardState extends ConsumerState<_ScenarioCard> {
           : 'You are ${scenario.learnerRole}',
       title: scenario.title,
       subtitle: scenario.description,
+      subtitleIsContent: true,
       trailing: scenario.cefr == null ? null : LevelBadge(code: scenario.cefr!),
       footer: GlowButton(
         label: scenario.isLocked ? 'Unlock' : 'Start',
@@ -154,7 +155,7 @@ class _ScenarioCardState extends ConsumerState<_ScenarioCard> {
                         Expanded(
                           child: Text(
                             objective,
-                            style: context.text.bodySmall,
+                            style: context.reading(size: 14.5, height: 1.45),
                           ),
                         ),
                       ],

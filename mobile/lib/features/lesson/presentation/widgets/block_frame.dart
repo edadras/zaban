@@ -15,6 +15,7 @@ class BlockFrame extends StatelessWidget {
     super.key,
     this.eyebrow,
     this.title,
+    this.titleIsContent = false,
     this.instructions,
     this.trailing,
     this.footer,
@@ -25,6 +26,12 @@ class BlockFrame extends StatelessWidget {
   final Widget child;
   final String? eyebrow;
   final String? title;
+
+  /// True when [title] is English the learner is meant to read — an exercise's
+  /// sentence — rather than a name for the activity like "Listen". Content is
+  /// set in the reading face; interface words are not.
+  final bool titleIsContent;
+
   final String? instructions;
   final Widget? trailing;
   final Widget? footer;
@@ -60,7 +67,12 @@ class BlockFrame extends StatelessWidget {
                         ),
                       if (title != null) ...<Widget>[
                         const SizedBox(height: Spacing.xs),
-                        Text(title!, style: context.text.headlineSmall),
+                        Text(
+                          title!,
+                          style: titleIsContent
+                              ? context.reading(size: 21, height: 1.5)
+                              : context.text.headlineSmall,
+                        ),
                       ],
                       if (instructions != null) ...<Widget>[
                         const SizedBox(height: Spacing.xs),

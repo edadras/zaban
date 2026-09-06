@@ -3,6 +3,7 @@ import 'package:zaban/core/theme/tokens/color_tokens.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/theme/tokens/glass_tokens.dart';
 import 'package:zaban/core/theme/tokens/motion_tokens.dart';
+import 'package:zaban/core/theme/tokens/typography_tokens.dart';
 
 /// Ergonomics for reading design tokens: `context.colors.accent`.
 ///
@@ -19,6 +20,23 @@ extension ZabanThemeContext on BuildContext {
       Theme.of(this).extension<ZabanMotion>() ?? ZabanMotion.standard();
 
   TextTheme get text => Theme.of(this).textTheme;
+
+  /// Type for English the learner reads, as opposed to the interface around it.
+  /// See [ZabanTypography.reading].
+  TextStyle reading({
+    double size = 17,
+    FontWeight weight = FontWeight.w400,
+    double height = 1.65,
+    Color? color,
+    FontStyle? style,
+  }) =>
+      ZabanTypography.reading(
+        size: size,
+        weight: weight,
+        height: height,
+        color: color ?? colors.textPrimary,
+        style: style,
+      );
 
   ScreenSize get screenSize =>
       ScreenSizeX.fromWidth(MediaQuery.sizeOf(this).width);

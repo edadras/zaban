@@ -58,9 +58,11 @@ class _WordSheet extends StatelessWidget {
             const SizedBox(height: Spacing.lg),
             Text(
               term.term,
-              style: context.text.headlineSmall?.copyWith(
+              style: context.reading(
+                size: 26,
+                height: 1.2,
+                weight: FontWeight.w600,
                 color: colors.accentSoft,
-                fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(height: Spacing.sm),
@@ -72,7 +74,7 @@ class _WordSheet extends StatelessWidget {
             const SizedBox(height: Spacing.lg),
             Text(
               term.gloss ?? '',
-              style: context.text.bodyLarge?.copyWith(height: 1.6),
+              style: context.reading(size: 17.5, height: 1.6),
             ),
             const SizedBox(height: Spacing.xl),
             Row(

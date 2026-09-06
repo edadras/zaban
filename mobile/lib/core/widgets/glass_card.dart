@@ -17,6 +17,7 @@ class GlassCard extends StatelessWidget {
     this.eyebrow,
     this.title,
     this.subtitle,
+    this.subtitleIsContent = false,
     this.leading,
     this.trailing,
     this.footer,
@@ -31,6 +32,11 @@ class GlassCard extends StatelessWidget {
   final String? eyebrow;
   final String? title;
   final String? subtitle;
+
+  /// True when [subtitle] is English the learner reads — the situation a
+  /// roleplay sets up, a passage, an example — rather than the app describing
+  /// itself. Content is set in the reading face; interface copy is not.
+  final bool subtitleIsContent;
   final Widget? leading;
   final Widget? trailing;
   final Widget? footer;
@@ -98,7 +104,12 @@ class GlassCard extends StatelessWidget {
                       if (subtitle != null)
                         Padding(
                           padding: const EdgeInsets.only(top: Spacing.xs),
-                          child: Text(subtitle!, style: text.bodyMedium),
+                          child: Text(
+                            subtitle!,
+                            style: subtitleIsContent
+                                ? context.reading(size: 16, height: 1.5)
+                                : text.bodyMedium,
+                          ),
                         ),
                     ],
                   ),

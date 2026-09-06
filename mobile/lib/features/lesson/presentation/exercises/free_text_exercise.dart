@@ -85,7 +85,7 @@ class _FreeTextExerciseState extends State<FreeTextExercise> {
             enabled: !graded,
             minLines: widget.minLines,
             maxLines: null,
-            style: context.text.bodyLarge,
+            style: context.reading(size: 17, height: 1.6),
             cursorColor: context.colors.accent,
             decoration: InputDecoration(hintText: widget.hint),
           ),

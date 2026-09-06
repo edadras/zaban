@@ -172,11 +172,14 @@ class _ParagraphState extends State<_Paragraph> {
   Widget build(BuildContext context) {
     final colors = context.colors;
 
-    final base = (widget.lead ? context.text.titleMedium : context.text.bodyLarge)
-        ?.copyWith(
-      height: widget.lead ? 1.65 : 1.75,
+    // The lesson's prose is English being taught, not interface copy, so it is
+    // set in the reading face. The opening paragraph is a step larger to give
+    // the page somewhere to start.
+    final base = context.reading(
+      size: widget.lead ? 19.5 : 17.5,
+      height: widget.lead ? 1.6 : 1.7,
+      weight: widget.lead ? FontWeight.w500 : FontWeight.w400,
       color: colors.textPrimary,
-      fontWeight: widget.lead ? FontWeight.w500 : FontWeight.w400,
     );
 
     return SelectableText.rich(
@@ -191,7 +194,7 @@ class _ParagraphState extends State<_Paragraph> {
   /// the text is walked as runes. Terms arrive already sorted and
   /// non-overlapping; anything out of range is skipped rather than throwing,
   /// because a rendering error would cost the whole screen.
-  List<InlineSpan> _spans(BuildContext context, TextStyle? base) {
+  List<InlineSpan> _spans(BuildContext context, TextStyle base) {
     final colors = context.colors;
     final runes = widget.paragraph.text.runes.toList(growable: false);
     final spans = <InlineSpan>[];
@@ -227,7 +230,7 @@ class _ParagraphState extends State<_Paragraph> {
       spans.add(
         TextSpan(
           text: slice(term.start, term.end),
-          style: base?.copyWith(
+          style: base.copyWith(
             color: term.hasGloss ? colors.accentSoft : colors.textPrimary,
             fontWeight: FontWeight.w600,
             decoration: TextDecoration.underline,

@@ -22,6 +22,54 @@ class ZabanTypography {
     'Noto Sans',
   ];
 
+  /// The face the *language* is set in, as opposed to the interface.
+  ///
+  /// Everything the app says about itself — buttons, labels, counters — is set
+  /// in the platform UI font. Everything written in English for the learner to
+  /// read is set in a serif: the lesson's prose, a flashcard's example, an
+  /// exercise's sentence, a line of dialogue.
+  ///
+  /// The split is not decoration. A page of a course book read on a phone in
+  /// the same font as the toolbar reads as interface copy, and long-form text
+  /// in a UI sans is measurably harder going. Naming the two roles also stops
+  /// the two blurring into each other as screens are added.
+  ///
+  /// No font is bundled and no package is added: 'serif' resolves to the
+  /// platform's own reading face, with a fallback list for platforms whose
+  /// generic mapping is poor.
+  static const String readingFamily = 'serif';
+
+  static const List<String> readingFamilyFallback = <String>[
+    'New York',
+    'Charter',
+    'Georgia',
+    'Noto Serif',
+    'Source Serif 4',
+    'Times New Roman',
+  ];
+
+  /// Long-form text, at the size and leading prose needs.
+  ///
+  /// [scale] nudges the size for a lead paragraph or a caption without letting
+  /// callers invent their own leading.
+  static TextStyle reading({
+    double size = 17,
+    FontWeight weight = FontWeight.w400,
+    double height = 1.65,
+    Color? color,
+    FontStyle? style,
+  }) {
+    return TextStyle(
+      fontFamily: readingFamily,
+      fontFamilyFallback: readingFamilyFallback,
+      fontSize: size,
+      fontWeight: weight,
+      height: height,
+      color: color,
+      fontStyle: style,
+    );
+  }
+
   static TextTheme build(Color primary, Color secondary) {
     TextStyle style({
       required double size,

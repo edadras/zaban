@@ -69,6 +69,7 @@ class ExerciseShell extends StatelessWidget {
     return BlockFrame(
       eyebrow: eyebrow ?? exercise.skillCode,
       title: showStem ? exercise.stem : null,
+      titleIsContent: true,
       instructions: exercise.instructions,
       tag: exercise.cefr,
       footer: Column(

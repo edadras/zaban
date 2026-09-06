@@ -113,7 +113,7 @@ class _ErrorCorrectionExerciseState extends State<ErrorCorrectionExercise> {
             enabled: !graded,
             maxLines: null,
             minLines: 2,
-            style: context.text.bodyLarge,
+            style: context.reading(size: 18, height: 1.6),
             cursorColor: context.colors.accent,
             decoration: const InputDecoration(),
           ),
@@ -157,8 +157,11 @@ class _WordChip extends StatelessWidget {
         ),
         child: Text(
           word,
-          style: context.text.bodyLarge?.copyWith(
+          style: context.reading(
+            size: 18,
+            height: 1.3,
             color: selected ? colors.accentSoft : colors.textPrimary,
+          ).copyWith(
             decoration: selected ? TextDecoration.underline : null,
             decorationColor: colors.accent,
           ),

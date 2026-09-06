@@ -132,9 +132,11 @@ class _TeachingCard extends StatelessWidget {
               const SizedBox(width: Spacing.xs),
               Text(
                 note.term,
-                style: context.text.titleSmall?.copyWith(
+                style: context.reading(
+                  size: 17,
+                  height: 1.3,
+                  weight: FontWeight.w700,
                   color: colors.textPrimary,
-                  fontWeight: FontWeight.w700,
                 ),
               ),
             ],
@@ -143,17 +145,18 @@ class _TeachingCard extends StatelessWidget {
             const SizedBox(height: Spacing.sm),
             Text(
               note.gloss!,
-              style: context.text.bodyMedium?.copyWith(height: 1.5),
+              style: context.reading(size: 16, height: 1.5),
             ),
           ],
           if ((note.example ?? '').isNotEmpty) ...<Widget>[
             const SizedBox(height: Spacing.sm),
             Text(
               note.example!,
-              style: context.text.bodySmall?.copyWith(
-                color: colors.textSecondary,
-                fontStyle: FontStyle.italic,
+              style: context.reading(
+                size: 15,
                 height: 1.5,
+                color: colors.textSecondary,
+                style: FontStyle.italic,
               ),
             ),
           ],

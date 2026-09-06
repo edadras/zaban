@@ -94,7 +94,8 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
       },
       onContinue: widget.onContinue,
       child: DefaultTextStyle.merge(
-        style: context.text.bodyLarge ?? const TextStyle(),
+        // The sentence with the gap in it — English, not chrome.
+        style: context.reading(size: 18, height: 1.6),
         child: Wrap(
           crossAxisAlignment: WrapCrossAlignment.center,
           spacing: Spacing.xs,
@@ -102,7 +103,7 @@ class _FillBlankExerciseState extends State<FillBlankExercise> {
           children: <Widget>[
             for (int i = 0; i < _segments.length; i++) ...<Widget>[
               if (_segments[i].trim().isNotEmpty)
-                Text(_segments[i].trim(), style: context.text.bodyLarge),
+                Text(_segments[i].trim(), style: context.reading(size: 18, height: 1.6)),
               if (i < _controllers.length)
                 _BlankInput(
                   controller: _controllers[i],
@@ -147,7 +148,7 @@ class _BlankInput extends StatelessWidget {
           controller: controller,
           enabled: enabled,
           textAlign: TextAlign.center,
-          style: context.text.bodyLarge?.copyWith(color: tone),
+          style: context.reading(size: 18, height: 1.6, color: tone),
           cursorColor: colors.accent,
           decoration: InputDecoration(
             isDense: true,
