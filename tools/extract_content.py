@@ -33,6 +33,7 @@ from xml.etree import ElementTree
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from watermarks import scrub  # noqa: E402  (sibling module)
+import study_guide  # noqa: E402  (sibling module)
 
 ROOT = Path('/home/user/zaban')
 CACHE = Path('/tmp/extract')
@@ -145,7 +146,12 @@ BOOKS = [
     {'key': 'grammar_intermediate', 'series': 'grammar', 'cefr': 'B1-B2',
      'level': 'Intermediate', 'title': 'English Grammar in Use — Intermediate',
      'pdf': 'sources/grammar_intermediate_5th.pdf',
-     'audio': 'sources/audio/grammar_intermediate', 'pages': 'text'},
+     'audio': 'sources/audio/grammar_intermediate', 'pages': 'text',
+     # The book's own multiple-choice bank and its key, by PDF page. Only the
+     # born-digital book is read this way: the scanned grammars print the same
+     # guide, but their keys come back as "152 8B" and "20.2 €E", and a
+     # misread key marks a right answer wrong.
+     'study_guide': {'guide': (338, 347), 'key': (384, 384)}},
     {'key': 'grammar_advanced', 'series': 'grammar', 'cefr': 'C1-C2',
      'level': 'Advanced', 'title': 'Advanced Grammar in Use',
      'pdf': 'sources/grammar_advanced_3rd.pdf',
@@ -1743,8 +1749,49 @@ def shares_a_stem(a, b, length=4):
     return any(w[:length] in stems for w in normalised(b).split() if len(w) >= length)
 
 
-def mine_drill(exercise, answer_text):
-    """Pair a drill's numbered parts with the key's, and keep what can be asked."""
+def vet_options(stem, accepted, candidates, options, limit=3):
+    """Add the candidates that are safe to offer beside this item's answer."""
+    mine = accepted[0] if accepted else ''
+    for candidate in sibling_options(candidates, mine):
+        if len(options) >= limit:
+            break
+        key = normalised(candidate)
+        # An option that matches any answer this item accepts is not a
+        # wrong answer - it marks the learner wrong for being right. The
+        # key often states two forms of one answer, so checking only the
+        # first let the second through.
+        if any(key == normalised(a) for a in accepted):
+            continue
+        if key in {normalised(o) for o in options}:
+            continue
+        if key and key in normalised(stem):
+            continue
+        options.append(candidate)
+    return options
+
+
+def same_shape(a, b):
+    """Are these two answers the same kind of thing to write in a gap?
+
+    A three-word phrase offered beside three single words is the odd one out
+    before the learner has read it, and a choice given away by its shape
+    measures nothing.
+    """
+    return len(a.split()) == len(b.split())
+
+
+def mine_drill(exercise, answer_text, neighbours=()):
+    """Pair a drill's numbered parts with the key's, and keep what can be asked.
+
+    `neighbours` are the answers the rest of the unit's drills state. A drill of
+    two or three parts cannot furnish a choice out of its own answers, and those
+    items were kept as something to type; the unit around them is drilling the
+    same point and its answers are wrong answers here for the same reason a
+    sibling's is. They are only reached for when the drill's own do not suffice,
+    and they pass the same three checks - not this item's answer, not built on
+    its stem, not already printed in the sentence - plus one more: the same
+    shape, so the odd one out is not the longest.
+    """
     items, item_order = numbered_parts(exercise.get('body', ''))
     answers, answer_order = numbered_parts(answer_text)
 
@@ -1776,22 +1823,14 @@ def mine_drill(exercise, answer_text):
             for n, (_, a) in asked.items()
             if n != number and accepted_answers(a)
         ]
-        options = []
-        for candidate in sibling_options(others, accepted[0] if accepted else answer):
-            key = normalised(candidate)
-            # An option that matches any answer this item accepts is not a
-            # wrong answer - it marks the learner wrong for being right. The
-            # key often states two forms of one answer, so checking only the
-            # first let the second through.
-            if any(key == normalised(a) for a in accepted):
-                continue
-            if key in {normalised(o) for o in options}:
-                continue
-            if key and key in normalised(stem):
-                continue
-            options.append(candidate)
-            if len(options) == 3:
-                break
+        options = vet_options(stem, accepted or [answer], others, [])
+        if len(options) < 2 and neighbours:
+            mine = accepted[0] if accepted else answer
+            options = vet_options(
+                stem, accepted or [answer],
+                [n for n in neighbours if same_shape(n, mine)],
+                options,
+            )
 
         out.append({
             'number': number,
@@ -2021,12 +2060,31 @@ def load_pages(book):
     return xml_pages, load_layout(pdf, key), load_word_lines(pdf, key)
 
 
+def read_study_guide(book, layout):
+    """The book's printed multiple-choice bank, where it has one.
+
+    Set out by PDF page rather than found by searching: the guide and its key
+    are two fixed runs at the back of the book, and a search for them would
+    have to tell them apart from the Additional exercises and their key, which
+    are set the same way and are not multiple choice.
+    """
+    span = book.get('study_guide')
+    if not span:
+        return []
+
+    def pages(first, last):
+        return layout[first - 1:last]
+
+    return study_guide.items(pages(*span['guide']), pages(*span['key']))
+
+
 def build(book):
     key = book['key']
     series = SERIES[book['series']]
 
     xml_pages, layout, repair = load_pages(book)
     answer_start = find_answer_start(layout)
+    guide = read_study_guide(book, layout)
     units_meta = find_units(layout[:answer_start] if answer_start else layout,
                             series['heading'])
 
@@ -2111,11 +2169,23 @@ def build(book):
         # Pair each drill with its answers, so the numbered parts become
         # questions rather than a paragraph of instructions.
         answer_text = {k: v['body'] for k, v in ans.items()}
+        # Two passes: the drills are mined on their own answers first, and the
+        # ones that could not raise a choice out of them are offered the rest
+        # of the unit's.
         drills = []
         for k, v in sorted(ex.items()):
             drill = {'number': k, **v}
             drill['items'] = mine_drill(drill, answer_text.get(k, ''))
             drills.append(drill)
+
+        pool = [a for d in drills for i in d['items'] for a in i['answers'][:1]]
+        if pool:
+            for drill in drills:
+                if any(len(i['options']) < 2 for i in drill['items']):
+                    own = {normalised(a) for i in drill['items'] for a in i['answers']}
+                    neighbours = [a for a in pool if normalised(a) not in own]
+                    drill['items'] = mine_drill(drill, answer_text.get(drill['number'], ''),
+                                                neighbours)
 
         units.append({
             'number': n,
@@ -2170,6 +2240,7 @@ def build(book):
         'source_audio': book.get('audio'),
         'copyright_status': 'owned',
         'answer_key_page': (answer_start + 1) if answer_start is not None else None,
+        'study_guide': guide,
         'pages': pages_out,
         'audio_inventory': all_audio,
         'units': units,

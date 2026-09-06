@@ -14,6 +14,7 @@
  "source_audio": "sources/audio/elementary",
  "copyright_status": "owned",
  "answer_key_page": 129,
+ "study_guide": [],
  "pages": [
   {
    "number": 1,
@@ -3922,7 +3923,10 @@
        "answers": [
         "belt"
        ],
-       "options": []
+       "options": [
+        "carrying, bag",
+        "is"
+       ]
       }
      ]
     },
@@ -14806,7 +14810,10 @@
        "answers": [
         "bring"
        ],
-       "options": []
+       "options": [
+        "take",
+        "brought"
+       ]
       },
       {
        "number": 3,
@@ -14814,7 +14821,10 @@
        "answers": [
         "bring"
        ],
-       "options": []
+       "options": [
+        "take",
+        "brought"
+       ]
       },
       {
        "number": 5,
@@ -14822,7 +14832,10 @@
        "answers": [
         "take"
        ],
-       "options": []
+       "options": [
+        "bring",
+        "brought"
+       ]
       },
       {
        "number": 6,
@@ -14830,7 +14843,10 @@
        "answers": [
         "bring"
        ],
-       "options": []
+       "options": [
+        "take",
+        "brought"
+       ]
       }
      ]
     },
@@ -14851,7 +14867,10 @@
        "answers": [
         "brought"
        ],
-       "options": []
+       "options": [
+        "take",
+        "bring"
+       ]
       },
       {
        "number": 3,
@@ -14859,7 +14878,10 @@
        "answers": [
         "take"
        ],
-       "options": []
+       "options": [
+        "brought",
+        "bring"
+       ]
       }
      ]
     },
@@ -17334,7 +17356,11 @@
        "answers": [
         "everywhere"
        ],
-       "options": []
+       "options": [
+        "back",
+        "out",
+        "away"
+       ]
       },
       {
        "number": 5,
@@ -17373,7 +17399,11 @@
        "answers": [
         "at"
        ],
-       "options": []
+       "options": [
+        "on",
+        "here",
+        "there"
+       ]
       },
       {
        "number": 3,
@@ -17381,7 +17411,11 @@
        "answers": [
         "on"
        ],
-       "options": []
+       "options": [
+        "at",
+        "here",
+        "there"
+       ]
       },
       {
        "number": 4,
@@ -17389,7 +17423,11 @@
        "answers": [
         "at"
        ],
-       "options": []
+       "options": [
+        "here",
+        "there",
+        "everywhere"
+       ]
       },
       {
        "number": 5,
@@ -17397,7 +17435,11 @@
        "answers": [
         "on"
        ],
-       "options": []
+       "options": [
+        "at",
+        "everywhere",
+        "back"
+       ]
       }
      ]
     },
@@ -17418,7 +17460,11 @@
        "answers": [
         "out"
        ],
-       "options": []
+       "options": [
+        "away",
+        "there",
+        "everywhere"
+       ]
       },
       {
        "number": 3,
@@ -17426,7 +17472,11 @@
        "answers": [
         "away"
        ],
-       "options": []
+       "options": [
+        "out",
+        "here",
+        "there"
+       ]
       }
      ]
     },
@@ -17996,7 +18046,10 @@
         "is",
         "was"
        ],
-       "options": []
+       "options": [
+        "air",
+        "traffic"
+       ]
       },
       {
        "number": 3,
@@ -18005,7 +18058,10 @@
         "is",
         "was"
        ],
-       "options": []
+       "options": [
+        "air",
+        "traffic"
+       ]
       },
       {
        "number": 5,
@@ -18014,7 +18070,10 @@
         "is",
         "was"
        ],
-       "options": []
+       "options": [
+        "air",
+        "traffic"
+       ]
       },
       {
        "number": 6,
@@ -18023,7 +18082,10 @@
         "is",
         "was"
        ],
-       "options": []
+       "options": [
+        "air",
+        "traffic"
+       ]
       }
      ]
     },

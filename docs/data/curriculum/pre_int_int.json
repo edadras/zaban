@@ -14,6 +14,7 @@
  "source_audio": "sources/audio/pre_intermediate_intermediate",
  "copyright_status": "owned",
  "answer_key_page": 209,
+ "study_guide": [],
  "pages": [
   {
    "number": 1,
@@ -21002,7 +21003,10 @@
        "answers": [
         "back up"
        ],
-       "options": []
+       "options": [
+        "install",
+        "hard drive/disk"
+       ]
       },
       {
        "number": 4,
@@ -21010,7 +21014,11 @@
        "answers": [
         "install"
        ],
-       "options": []
+       "options": [
+        "back up",
+        "virus",
+        "laptop"
+       ]
       }
      ]
     },
@@ -25741,7 +25749,10 @@
        "answers": [
         "greet"
        ],
-       "options": []
+       "options": [
+        "introduced; shake",
+        "take"
+       ]
       }
      ]
     },

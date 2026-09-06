@@ -153,6 +153,12 @@ class DrillItemSoundnessTest extends TestCase
      * A choice needs somewhere to go wrong. One wrong option and a coin
      * decides; the importer therefore only builds a choice item where there
      * are at least two, and everything else stays something to type.
+     *
+     * A drill of two or three parts cannot raise a choice out of its own
+     * answers, so where its own do not suffice the rest of the unit's are
+     * offered - the unit drills one point, and its answers are wrong here for
+     * the same reason a sibling's is. That is what carries this count past
+     * eighteen hundred rather than leaving four in five items typed.
      */
     public function test_a_choice_item_offers_more_than_one_wrong_answer(): void
     {
@@ -166,7 +172,7 @@ class DrillItemSoundnessTest extends TestCase
             }
         }
 
-        $this->assertGreaterThan(1_000, $withChoices, 'too few items can be asked as a choice');
+        $this->assertGreaterThan(1_800, $withChoices, 'too few items can be asked as a choice');
     }
 
     /**

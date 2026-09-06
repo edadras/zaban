@@ -14,6 +14,4259 @@
  "source_audio": "sources/audio/grammar_intermediate",
  "copyright_status": "owned",
  "answer_key_page": 348,
+ "study_guide": [
+  {
+   "number": "1.1",
+   "stem": "At first I didn’t like my job, but ______ to enjoy it now.",
+   "units": [
+    1,
+    3
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I’m starting",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "I start",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "1.2",
+   "stem": "I don’t understand this sentence. What ______ ?",
+   "units": [
+    2,
+    49
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "does mean this word",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "does this word mean",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "means this word",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "1.3",
+   "stem": "Robert ______ away two or three times a year.",
+   "units": [
+    2,
+    3,
+    110
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "is going usually",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "is usually going",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "usually goes",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "goes usually",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "1.4",
+   "stem": "How ______ now? Better than before?",
+   "units": [
+    4
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "you are feeling",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "do you feel",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "are you feeling",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "1.5",
+   "stem": "It was a boring weekend. ______ anything.",
+   "units": [
+    5
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I didn’t",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "I don’t do",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "I didn’t do",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "1.6",
+   "stem": "Matt ______ while we were having dinner.",
+   "units": [
+    6,
+    14
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "phoned",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "was phoning",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "has phoned",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.1",
+   "stem": "James is on holiday. He ______ to Italy.",
+   "units": [
+    7
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "is gone",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "has gone",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "has been",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.2",
+   "stem": "Everything is going well. There ______ any problems so far.",
+   "units": [
+    8
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "weren’t",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "have been",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "haven’t been",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.3",
+   "stem": "Sarah has lost her passport again. This is the second time this ______ .",
+   "units": [
+    8
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "has happened",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "happens",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "happened",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "is happening",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.4",
+   "stem": "Why are you out of breath? ______ ?",
+   "units": [
+    9
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Are you running",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "Have you run",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "Have you been running",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.5",
+   "stem": "Where’s the book I gave you? What ______ with it?",
+   "units": [
+    10
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "have you done",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "have you been doing",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "are you doing",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.6",
+   "stem": "‘How long ______ Jane?’ ‘A long time. Since we were at school.’",
+   "units": [
+    11,
+    10
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "do you know",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "have you known",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "have you been knowing",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.7",
+   "stem": "Sally has been working here ______ .",
+   "units": [
+    12
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "for six months",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "since six months",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "six months ago",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "six months",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.8",
+   "stem": "It’s two years ______ Joe.",
+   "units": [
+    12
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "that I don’t see",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "that I haven’t seen",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "since I didn’t see",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "since I last saw",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.9",
+   "stem": "It ______ raining for a while, but now it’s raining again.",
+   "units": [
+    13
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "stopped",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "has stopped",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "was stopped",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.10",
+   "stem": "My mother ______ in Italy.",
+   "units": [
+    13
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "grew up",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "has grown up",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "had grown up",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.11",
+   "stem": "______ a lot of sweets when you were a child?",
+   "units": [
+    14
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Have you eaten",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "Had you eaten",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "Did you eat",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.12",
+   "stem": "Jack ______ in New York for ten years. Now he lives in Los Angeles.",
+   "units": [
+    14,
+    11
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "lived",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "has lived",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "has been living",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.13",
+   "stem": "The people sitting next to me on the plane were nervous. ______ before.",
+   "units": [
+    15
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "They haven’t flown",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "They didn’t fly",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "They hadn’t flown",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "They’d never flown",
+     "is_correct": true
+    },
+    {
+     "label": "E",
+     "text": "They weren’t flying",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "2.14",
+   "stem": "Katherine was lying on the sofa. She was tired because ______ very hard.",
+   "units": [
+    16
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "she was working",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "she’s been working",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "she’d been working",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.15",
+   "stem": "______ a car when you were living in Paris?",
+   "units": [
+    17,
+    14
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Had you",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "Were you having",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "Have you had",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "Did you have",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "2.16",
+   "stem": "I ______ tennis a lot, but I don’t play very much now.",
+   "units": [
+    18
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "was playing",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "was used to play",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "used to play",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "3.1",
+   "stem": "I’m tired. ______ to bed now. Goodnight.",
+   "units": [
+    19
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I go",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "I’m going",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "3.2",
+   "stem": "______ tomorrow, so we can go out somewhere.",
+   "units": [
+    19,
+    21
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I’m not working",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "I don’t work",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "I won’t work",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "3.3",
+   "stem": "That bag looks heavy. ______ you with it.",
+   "units": [
+    21
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I’m helping",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "I help",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "I’ll help",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "3.4",
+   "stem": "I think the weather ______ nice later.",
+   "units": [
+    23,
+    22
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "will be",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "is",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "is going to be",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "shall be",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "3.5",
+   "stem": "‘Anna is in hospital.’ ‘Yes, I know. ______ her this evening.’",
+   "units": [
+    23,
+    20
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I visit",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "I’m going to visit",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "I’ll visit",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "3.6",
+   "stem": "We’re late. The film ______ by the time we get to the cinema.",
+   "units": [
+    24
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "will already start",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "will be already started",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "will already have started",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "3.7",
+   "stem": "Don’t worry ______ late tonight.",
+   "units": [
+    25
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "if I’m",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "when I’m",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "when I’ll be",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "if I’ll be",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.1",
+   "stem": "The fire spread quickly, but everybody ______ from the building.",
+   "units": [
+    26
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "was able to escape",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "managed to escape",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "could escape",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.2",
+   "stem": "I’m so tired I ______ for a week.",
+   "units": [
+    27
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "can sleep",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "could sleep",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "could have slept",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.3",
+   "stem": "The story ______ be true, but I don’t think it is.",
+   "units": [
+    27,
+    29
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "might",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "can",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "could",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "may",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "4.4",
+   "stem": "Why did you stay at a hotel? You ______ with me.",
+   "units": [
+    27
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "can stay",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "could stay",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "could have stayed",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "4.5",
+   "stem": "I lost one of my gloves. I ______ it somewhere.",
+   "units": [
+    28
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "must drop",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "must have dropped",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "must be dropping",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "must have been dropping",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.6",
+   "stem": "‘Why wasn’t Amy at the meeting yesterday?’ ‘She ______ about it.’",
+   "units": [
+    29
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "might not know",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "may not know",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "might not have known",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "may not have known",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "4.7",
+   "stem": "What ______ to get a new driving licence?",
+   "units": [
+    31
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "have I to do",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "do I have to do",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "I must do",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "I have to",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.8",
+   "stem": "We have plenty of time. We ______ hurry.",
+   "units": [
+    32
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "don’t need to",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "mustn’t",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "needn’t",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "4.9",
+   "stem": "You missed a great party last night. You ______ . Why didn’t you?",
+   "units": [
+    33
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "must have come",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "should have come",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "ought to have come",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "had to come",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.10",
+   "stem": "Jane won the lottery. I suggested ______ a car with the money she won.",
+   "units": [
+    34
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "that she buy",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "that she should buy",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "her to buy",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "that she bought",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "4.11",
+   "stem": "You’re always at home. You ______ out more often.",
+   "units": [
+    35
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "should go",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "had better go",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "had better to go",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "4.12",
+   "stem": "It’s late. It’s time ______ home.",
+   "units": [
+    35
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "we go",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "we must go",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "we should go",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "we went",
+     "is_correct": true
+    },
+    {
+     "label": "E",
+     "text": "to go",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "4.13",
+   "stem": "______ a little longer, but I really have to go now.",
+   "units": [
+    36
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I’d stay",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "I’ll stay",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "I can stay",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "I’d have stayed",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "5.1",
+   "stem": "I’m not tired enough to go to bed. If I ______ to bed now, I wouldn’t sleep.",
+   "units": [
+    38,
+    39
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "go",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "went",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "had gone",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "would go",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "5.2",
+   "stem": "If I were rich, ______ a lot.",
+   "units": [
+    39
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I’ll travel",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "I can travel",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "I would travel",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "I travelled",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "5.3",
+   "stem": "I wish I ______ have to work tomorrow, but unfortunately I do.",
+   "units": [
+    39,
+    41
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "don’t",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "didn’t",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "wouldn’t",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "won’t",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "5.5",
+   "stem": "The weather is horrible. I wish it ______ raining.",
+   "units": [
+    41
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "would stop",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "stopped",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "stops",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "will stop",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "6.1",
+   "stem": "We ______ by a loud noise during the night.",
+   "units": [
+    42
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "woke up",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "are woken up",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "were woken up",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "were waking up",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "6.2",
+   "stem": "A new supermarket is going to ______ next year.",
+   "units": [
+    43
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "build",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "be built",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "be building",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "building",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "6.3",
+   "stem": "There’s somebody walking behind us. I think ______ .",
+   "units": [
+    43
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "we are following",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "we are being following",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "we are followed",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "we are being followed",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "6.4",
+   "stem": "‘Where ______ ?’ ‘In Chicago.’",
+   "units": [
+    44
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "were you born",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "are you born",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "have you been born",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "did you born",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "6.5",
+   "stem": "There was a fight, but nobody ______ .",
+   "units": [
+    44
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "was hurt",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "got hurt",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "hurt",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "6.6",
+   "stem": "Jane ______ to phone me last night, but she didn’t.",
+   "units": [
+    45
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "supposed",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "is supposed",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "was supposed",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "6.7",
+   "stem": "Where ______ ? Which hairdresser did you go to?",
+   "units": [
+    46
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "did you cut your hair",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "have you cut your hair",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "did you have cut your hair",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "did you have your hair cut",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "7.1",
+   "stem": "Paul left the room suddenly. He said he ______ to go.",
+   "units": [
+    48,
+    47
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "had",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "has",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "have",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "7.2",
+   "stem": "(You meet Joe in the street.) Joe, this is a surprise. Rachel said you ______ in hospital.",
+   "units": [
+    48,
+    47
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "are",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "were",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "was",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "7.3",
+   "stem": "Anna ______ and left.",
+   "units": [
+    48
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "said goodbye to me",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "said me goodbye",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "told me goodbye",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "8.1",
+   "stem": "‘What time ______ ?’ ‘At 8.30.’",
+   "units": [
+    49
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "starts the film",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "does start the film",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "does the film start",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "8.2",
+   "stem": "‘Do you know where ______ ?’ ‘No, he didn’t say.’",
+   "units": [
+    50
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Tom has gone",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "has Tom gone",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "has gone Tom",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "8.3",
+   "stem": "The police officer stopped us and asked us where ______ .",
+   "units": [
+    50
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "were we going",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "are we going",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "we are going",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "we were going",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "8.4",
+   "stem": "‘Do you think it will rain?’ ‘ ______ .’",
+   "units": [
+    51
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "I hope not",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "I don’t hope",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "I don’t hope so",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "8.5",
+   "stem": "‘You don’t know where Karen is, ______ ?’ ‘Sorry, I have no idea.’",
+   "units": [
+    52
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "don’t you",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "do you",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "is she",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "are you",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.1",
+   "stem": "You can’t stop people ______ what they want.",
+   "units": [
+    53,
+    62
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "doing",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "do",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to do",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "from doing",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "9.2",
+   "stem": "I’d better go now. I promised ______ late.",
+   "units": [
+    54,
+    36
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "not being",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "not to be",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "to not be",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "I wouldn’t be",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "9.3",
+   "stem": "Do you want ______ with you or do you want to go alone?",
+   "units": [
+    55
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "me coming",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "me to come",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "that I come",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "that I will come",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.4",
+   "stem": "I know I locked the door. I clearly remember ______ it.",
+   "units": [
+    56
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "locking",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "to lock",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to have locked",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.5",
+   "stem": "She tried to be serious, but she couldn’t help ______ .",
+   "units": [
+    57
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "laughing",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "to laugh",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "that she laughed",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "laugh",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.6",
+   "stem": "Paul lives in Berlin now. He likes ______ there.",
+   "units": [
+    58
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "living",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "to live",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.7",
+   "stem": "It’s not my favourite job, but I like ______ the kitchen as often as possible.",
+   "units": [
+    58
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "cleaning",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "clean",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to clean",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "that I clean",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.8",
+   "stem": "I’m tired. I’d rather ______ out this evening, if you don’t mind.",
+   "units": [
+    59
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "not going",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "not to go",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "don’t go",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "not go",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "9.9",
+   "stem": "I’d rather ______ anyone what I said.",
+   "units": [
+    59
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "you don’t tell",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "not you tell",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "you didn’t tell",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "you wouldn’t tell",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.10",
+   "stem": "Are you looking forward ______ on holiday?",
+   "units": [
+    60,
+    62
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "going",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "to go",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to going",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "that you go",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.11",
+   "stem": "When Lisa first came to Britain, she wasn’t used ______ on the left.",
+   "units": [
+    61
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "driving",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "to driving",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "to drive",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "drive",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.12",
+   "stem": "I’m thinking ______ a house. Do you think that’s a good idea?",
+   "units": [
+    62,
+    66
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "to buy",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "of to buy",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "of buying",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "about buying",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "9.13",
+   "stem": "I had no trouble ______ a place to stay. In fact it was surprisingly easy.",
+   "units": [
+    63
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "find",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "found",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to find",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "finding",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "9.14",
+   "stem": "I called the restaurant ______ a table.",
+   "units": [
+    64
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "for reserve",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "to reserve",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "for reserving",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "for to reserve",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.15",
+   "stem": "James doesn’t speak clearly. ______ .",
+   "units": [
+    65
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "It is hard to understand him",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "He is hard to understand",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "He is hard to understand him",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.16",
+   "stem": "The path was icy, so we walked very carefully. We were afraid ______ .",
+   "units": [
+    66
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "of falling",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "from falling",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to fall",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "to falling",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.17",
+   "stem": "I didn’t hear you ______ in. You must have been very quiet.",
+   "units": [
+    67
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "come",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "to come",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "came",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "9.18",
+   "stem": "______ a hotel, we looked for somewhere to eat.",
+   "units": [
+    68
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Finding",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "After finding",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "Having found",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "We found",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.1",
+   "stem": "It wasn’t your fault. It was ______ .",
+   "units": [
+    69
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "accident",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "an accident",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "some accident",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.2",
+   "stem": "Where are you going to put all your ______ ?",
+   "units": [
+    70
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "furniture",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "furnitures",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.3",
+   "stem": "‘Where are you going?’ ‘I’m going to buy ______ .’",
+   "units": [
+    70
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "a bread",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "some bread",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "a loaf of bread",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "10.4",
+   "stem": "Sandra is ______ . She works at a large hospital.",
+   "units": [
+    71,
+    72
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "nurse",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "a nurse",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "the nurse",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.6",
+   "stem": "There are millions of stars in ______ .",
+   "units": [
+    73
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "space",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "a space",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "the space",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.7",
+   "stem": "Every day ______ starts at 9 and finishes at 3.",
+   "units": [
+    74
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "school",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "a school",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "the school",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.8",
+   "stem": "______ changed a lot in the last thirty years.",
+   "units": [
+    75
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Life has",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "The life has",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "The lives have",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.9",
+   "stem": "When ______ invented?",
+   "units": [
+    76
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "was camera",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "were cameras",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "were the cameras",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "was the camera",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "10.10",
+   "stem": "Have you been to ______ ?",
+   "units": [
+    77
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Canada or United States",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "the Canada or the United States",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "Canada or the United States",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "the Canada or United States",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.11",
+   "stem": "On our first day in Moscow, we visited ______ .",
+   "units": [
+    78
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Kremlin",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "a Kremlin",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "the Kremlin",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "10.12",
+   "stem": "I have some news for you. ______ .",
+   "units": [
+    79,
+    70
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "It’s good news",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "They are good news",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "It’s a good news",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "10.13",
+   "stem": "It took us quite a long time to get here. It was ______ journey.",
+   "units": [
+    80
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "three hour",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "a three-hours",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "a three-hour",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "10.14",
+   "stem": "This isn’t my book. It’s ______ .",
+   "units": [
+    81
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "my sister",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "my sister’s",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "from my sister",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "of my sister",
+     "is_correct": false
+    },
+    {
+     "label": "E",
+     "text": "of my sister’s",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.1",
+   "stem": "What time shall we ______ tomorrow?",
+   "units": [
+    82
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "meet",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "meet us",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "meet ourselves",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.2",
+   "stem": "I’m going to a wedding on Saturday. ______ is getting married.",
+   "units": [
+    83
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "A friend of me",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "A friend of mine",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "One my friends",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.3",
+   "stem": "They live on a busy road. ______ a lot of noise from the traffic.",
+   "units": [
+    84
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "It must be",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "It must have",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "There must have",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "There must be",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "11.4",
+   "stem": "He’s lazy. He never does ______ work.",
+   "units": [
+    85
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "some",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "any",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "no",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.5",
+   "stem": "‘What would you like to eat?’ ‘I don’t mind. ______ – whatever you have.’",
+   "units": [
+    85
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Something",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "Anything",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "Nothing",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.6",
+   "stem": "The course didn’t go well. ______ of the students were happy.",
+   "units": [
+    86
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "All",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "No-one",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "None",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "Nobody",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.7",
+   "stem": "We went shopping and spent ______ money.",
+   "units": [
+    87
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "a lot of",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "much",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "lots of",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "many",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.8",
+   "stem": "I was ill yesterday. I spent ______ in bed.",
+   "units": [
+    88
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "the most of day",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "most of day",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "the most of the day",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "most of the day",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "11.9",
+   "stem": "I asked two people how to get to the station, but ______ of them knew.",
+   "units": [
+    89
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "none",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "either",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "both",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "neither",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "11.10",
+   "stem": "Our holiday was a disaster. ______ went wrong.",
+   "units": [
+    90
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Everything",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "All",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "All things",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "All of things",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.11",
+   "stem": "The bus service is excellent. There’s a bus ______ ten minutes.",
+   "units": [
+    90,
+    91
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "each",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "every",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "all",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "11.12",
+   "stem": "There were four books on the table. ______ a different colour.",
+   "units": [
+    91
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Each of books was",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "Each of the books was",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "Each book was",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "12.1",
+   "stem": "I don’t like stories ______ have unhappy endings.",
+   "units": [
+    92
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "that",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "they",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "which",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "who",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "12.2",
+   "stem": "I didn’t believe them at first, but in fact everything ______ was true.",
+   "units": [
+    93
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "they said",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "that they said",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "what they said",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "12.3",
+   "stem": "We helped some people ______ .",
+   "units": [
+    94
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "their car had broken down",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "which car had broken down",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "whose car had broken down",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "that their car had broken down",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "12.4",
+   "stem": "Anna told me about her new job, ______ a lot.",
+   "units": [
+    95
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "that she’s enjoying",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "which she’s enjoying",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "she’s enjoying",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "she’s enjoying it",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "12.5",
+   "stem": "Sarah couldn’t meet us, ______ was a shame.",
+   "units": [
+    96
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "that",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "it",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "what",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "which",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "12.6",
+   "stem": "George showed me some pictures ______ by his father.",
+   "units": [
+    97,
+    92
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "painting",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "painted",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "that were painted",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "they were painted",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.1",
+   "stem": "Jane doesn’t enjoy her job any more. She’s ______ because every day she does exactly the same thing.",
+   "units": [
+    98
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "boring",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "bored",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "13.2",
+   "stem": "Lisa was carrying a ______ bag.",
+   "units": [
+    99
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "black small plastic",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "small and black plastic",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "small black plastic",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "plastic small black",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.3",
+   "stem": "Maria’s English is excellent. She speaks ______ .",
+   "units": [
+    100
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "perfectly English",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "English perfectly",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "perfect English",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "English perfect",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.4",
+   "stem": "He ______ to find a job, but he had no luck.",
+   "units": [
+    101
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "tried hard",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "tried hardly",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "hardly tried",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.5",
+   "stem": "I haven’t seen her for ______ , I’ve forgotten what she looks like.",
+   "units": [
+    102
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "so long",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "so long time",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "a such long time",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "such a long time",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "13.6",
+   "stem": "Don’t stand on that chair. It isn’t ______ .",
+   "units": [
+    103
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "enough strong to stand on",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "strong enough to stand on it",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "strong enough to stand on",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "strong enough for stand on",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.7",
+   "stem": "Sarah is doing OK at the moment. She has ______ .",
+   "units": [
+    104
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "a quite good job",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "quite a good job",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "a pretty good job",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "13.8",
+   "stem": "The exam was quite easy – ______ I expected.",
+   "units": [
+    105
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "more easy that",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "more easy than",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "easier than",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "easier as",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.9",
+   "stem": "The more expensive the hotel, ______ .",
+   "units": [
+    106
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "the service will be better",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "will be better the service",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "the better the service",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "better the service will be",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.10",
+   "stem": "Patrick is a fast runner. I can’t run as fast as ______ .",
+   "units": [
+    107
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "he",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "him",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "he can",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "13.11",
+   "stem": "What’s ______ you’ve ever made?",
+   "units": [
+    108
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "most important decision",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "the more important decision",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "the decision more important",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "the most important decision",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "13.12",
+   "stem": "Ben likes walking. ______ .",
+   "units": [
+    109
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Every morning he walks to work",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "He walks to work every morning",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "He walks every morning to work",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "He every morning walks to work",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.13",
+   "stem": "Joe never phones me. ______ .",
+   "units": [
+    110
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Always I have to phone him",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "I always have to phone him",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "I have always to phone him",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "I have to phone always him",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "13.14",
+   "stem": "Lucy ______ . She left last month.",
+   "units": [
+    111
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "still doesn’t work here",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "doesn’t still work here",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "no more works here",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "doesn’t work here any more",
+     "is_correct": true
+    },
+    {
+     "label": "E",
+     "text": "no longer works here",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "13.15",
+   "stem": "______ she can’t drive, she has a car.",
+   "units": [
+    112,
+    113
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "Even",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "Even when",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "Even if",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "Even though",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "14.1",
+   "stem": "I couldn’t sleep ______ very tired.",
+   "units": [
+    113
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "although I was",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "despite I was",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "despite of being",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "in spite of being",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "14.2",
+   "stem": "You should insure your bike ______ stolen.",
+   "units": [
+    114
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "in case it will be",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "if it will be",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "in case it is",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "if it is",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "14.3",
+   "stem": "The club is for members only. You ______ you’re a member.",
+   "units": [
+    115
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "can’t go in if",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "can go in only if",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "can’t go in unless",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "can go in unless",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "14.4",
+   "stem": "Yesterday we watched TV all evening ______ we didn’t have anything better to do.",
+   "units": [
+    116
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "when",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "as",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "while",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "since",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "14.5",
+   "stem": "‘What’s that noise?’ ‘It sounds ______ a baby crying.’",
+   "units": [
+    117,
+    118
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "as",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "like",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "as if",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "as though",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "14.6",
+   "stem": "They are very kind to me. They treat me ______ their own son.",
+   "units": [
+    118
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "like I’m",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "as if I’m",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "as if I was",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "as if I were",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "14.7",
+   "stem": "I’m going to be in Moscow next week. I hope the weather will be good ______ .",
+   "units": [
+    119
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "while I’ll be there",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "while I’m there",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "during my visit",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "during I’m there",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "14.8",
+   "stem": "Joe is away at the moment. I don’t know exactly when he’s coming back, but I’m sure he’ll be back ______ Monday.",
+   "units": [
+    120
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "by",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "until",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.1",
+   "stem": "Bye! I’ll see you ______ .",
+   "units": [
+    121
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at Friday morning",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "on Friday morning",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "in Friday morning",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "Friday morning",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "15.2",
+   "stem": "I’m going away ______ the end of January.",
+   "units": [
+    122
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "on",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "in",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.3",
+   "stem": "When we were in Italy, we spent a few days ______ Venice.",
+   "units": [
+    123,
+    125
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "to",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "in",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "15.4",
+   "stem": "Our apartment is ______ the second floor of the building.",
+   "units": [
+    124
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "on",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "in",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "to",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.5",
+   "stem": "I saw Steve ______ a conference on Saturday.",
+   "units": [
+    125
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "on",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "in",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "to",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.6",
+   "stem": "What time did you ______ the hotel?",
+   "units": [
+    126
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "arrive to",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "arrive at",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "arrive in",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "get to",
+     "is_correct": true
+    },
+    {
+     "label": "E",
+     "text": "get in",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.7",
+   "stem": "I’m going ______ holiday next week. I’ll be away for two weeks.",
+   "units": [
+    127
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "on",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "in",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "for",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.8",
+   "stem": "We travelled ______ 6.45 train, which arrived at 8.30.",
+   "units": [
+    128
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "in the",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "on the",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "by the",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "by",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.9",
+   "stem": "‘Who is this painting ______ ? Picasso?’ ‘I have no idea.’",
+   "units": [
+    128
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "of",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "from",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "by",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "15.11",
+   "stem": "I like them very much. They have always been very nice ______ me.",
+   "units": [
+    130
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "of",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "for",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "to",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "with",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.12",
+   "stem": "I’m not very good ______ repairing things.",
+   "units": [
+    131
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "at",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "for",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "in",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "about",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.13",
+   "stem": "I don’t understand this sentence. Can you ______ ?",
+   "units": [
+    132
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "explain to me this word",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "explain me this word",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "explain this word to me",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "15.14",
+   "stem": "If you’re worried about the problem, you should do something ______ it.",
+   "units": [
+    133
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "for",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "about",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "against",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "with",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "15.15",
+   "stem": "‘Who is Tom Hart?’ ‘I have no idea. I’ve never heard ______ him.’",
+   "units": [
+    134
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "about",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "from",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "after",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "of",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "15.16",
+   "stem": "I don’t know what time we’ll arrive. It depends ______ the traffic.",
+   "units": [
+    135
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "of",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "for",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "from",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "on",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "15.17",
+   "stem": "I prefer tea ______ coffee.",
+   "units": [
+    136,
+    59
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "to",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "than",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "against",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "over",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "16.1",
+   "stem": "These shoes are uncomfortable. I’m going to ______ .",
+   "units": [
+    137
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "take off",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "take them off",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "take off them",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "16.2",
+   "stem": "They were playing cards, so I ______ .",
+   "units": [
+    138
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "joined in",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "came in",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "got in",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "broke in",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "16.3",
+   "stem": "Nobody believed Paul at first, but he ______ to be right.",
+   "units": [
+    139
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "worked out",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "came out",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "found out",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "turned out",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "16.4",
+   "stem": "We can’t ______ making a decision. We have to decide now.",
+   "units": [
+    140
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "put away",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "put over",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "put off",
+     "is_correct": true
+    },
+    {
+     "label": "D",
+     "text": "put out",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "16.6",
+   "stem": "You can always rely on Paul. He’ll never ______ .",
+   "units": [
+    142
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "put you up",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "let you down",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "take you over",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "see you off",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "16.7",
+   "stem": "Children under 16 ______ half the population of the city.",
+   "units": [
+    143
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "make up",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "put up",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "take up",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "bring up",
+     "is_correct": false
+    }
+   ]
+  },
+  {
+   "number": "16.8",
+   "stem": "I’m surprised to hear that Kate and Paul have ______ . They seemed very happy together.",
+   "units": [
+    144
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "broken up",
+     "is_correct": true
+    },
+    {
+     "label": "B",
+     "text": "ended up",
+     "is_correct": false
+    },
+    {
+     "label": "C",
+     "text": "finished up",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "split up",
+     "is_correct": true
+    }
+   ]
+  },
+  {
+   "number": "16.9",
+   "stem": "I parked in a no-parking zone, but I ______ it.",
+   "units": [
+    145
+   ],
+   "options": [
+    {
+     "label": "A",
+     "text": "came up with",
+     "is_correct": false
+    },
+    {
+     "label": "B",
+     "text": "got away with",
+     "is_correct": true
+    },
+    {
+     "label": "C",
+     "text": "made off with",
+     "is_correct": false
+    },
+    {
+     "label": "D",
+     "text": "got on with",
+     "is_correct": false
+    }
+   ]
+  }
+ ],
  "pages": [
   {
    "number": 1,
@@ -9068,7 +13321,10 @@
        "answers": [
         "consists"
        ],
-       "options": []
+       "options": [
+        "Do you recognise",
+        "’re"
+       ]
       },
       {
        "number": 9,
@@ -9113,7 +13369,10 @@
         "’re",
         "are"
        ],
-       "options": []
+       "options": [
+        "’s being",
+        "consists"
+       ]
       }
      ]
     }
@@ -9473,7 +13732,11 @@
        "answers": [
         "taught"
        ],
-       "options": []
+       "options": [
+        "sold",
+        "left",
+        "were"
+       ]
       },
       {
        "number": 3,
@@ -9481,7 +13744,11 @@
        "answers": [
         "sold"
        ],
-       "options": []
+       "options": [
+        "taught",
+        "left",
+        "were"
+       ]
       }
      ]
     },
@@ -10026,7 +14293,10 @@
        "answers": [
         "Did you go"
        ],
-       "options": []
+       "options": [
+        "were you doing",
+        "were you going"
+       ]
       }
      ]
     }
@@ -14620,7 +18890,11 @@
        "answers": [
         "did you have"
        ],
-       "options": []
+       "options": [
+        "has a break",
+        "had a party",
+        "had a chat"
+       ]
       },
       {
        "number": 10,
@@ -15504,7 +19778,11 @@
        "answers": [
         "are you going"
        ],
-       "options": []
+       "options": [
+        "He’s working",
+        "Are you doing",
+        "Are you watching"
+       ]
       },
       {
        "number": 7,
@@ -15512,7 +19790,11 @@
        "answers": [
         "I’m going"
        ],
-       "options": []
+       "options": [
+        "He’s working",
+        "he’s moving",
+        "we’re meeting"
+       ]
       },
       {
        "number": 8,
@@ -15539,7 +19821,11 @@
        "answers": [
         "I’m working tomorrow morning"
        ],
-       "options": []
+       "options": [
+        "I’m going swimming next Sunday",
+        "When are you leaving?",
+        "Are you going alone?"
+       ]
       },
       {
        "number": 3,
@@ -15547,7 +19833,10 @@
        "answers": [
         "I’m not doing anything tomorrow evening"
        ],
-       "options": []
+       "options": [
+        "I’m going swimming next Sunday",
+        "How long are you going for?"
+       ]
       },
       {
        "number": 4,
@@ -17258,7 +21547,11 @@
        "answers": [
         "I’ll see"
        ],
-       "options": []
+       "options": [
+        "I’m going to sell",
+        "I’ll lend",
+        "I’ll show"
+       ]
       },
       {
        "number": 3,
@@ -17558,7 +21851,11 @@
        "answers": [
         "will be landing"
        ],
-       "options": []
+       "options": [
+        "be watching",
+        "She’ll be waiting",
+        "I’ll be staying"
+       ]
       }
      ]
     },
@@ -17883,7 +22180,11 @@
        "answers": [
         "she goes"
        ],
-       "options": []
+       "options": [
+        "you know",
+        "you decide",
+        "she apologises"
+       ]
       },
       {
        "number": 3,
@@ -17891,7 +22192,11 @@
        "answers": [
         "you know"
        ],
-       "options": []
+       "options": [
+        "she goes",
+        "you decide",
+        "she apologises"
+       ]
       }
      ]
     },
@@ -18472,7 +22777,10 @@
        "answers": [
         "couldn’t"
        ],
-       "options": []
+       "options": [
+        "managed to",
+        "can"
+       ]
       },
       {
        "number": 5,
@@ -18491,7 +22799,10 @@
        "answers": [
         "could"
        ],
-       "options": []
+       "options": [
+        "managed to",
+        "can"
+       ]
       },
       {
        "number": 7,
@@ -18510,7 +22821,10 @@
        "answers": [
         "could"
        ],
-       "options": []
+       "options": [
+        "managed to",
+        "can"
+       ]
       },
       {
        "number": 9,
@@ -18518,7 +22832,10 @@
        "answers": [
         "couldn’t"
        ],
-       "options": []
+       "options": [
+        "managed to",
+        "can"
+       ]
       },
       {
        "number": 10,
@@ -19213,7 +23530,11 @@
        "answers": [
         "must"
        ],
-       "options": []
+       "options": [
+        "can’t",
+        "know",
+        "get"
+       ]
       },
       {
        "number": 3,
@@ -19221,7 +23542,11 @@
        "answers": [
         "can’t"
        ],
-       "options": []
+       "options": [
+        "must",
+        "know",
+        "get"
+       ]
       },
       {
        "number": 4,
@@ -19229,7 +23554,11 @@
        "answers": [
         "must"
        ],
-       "options": []
+       "options": [
+        "can’t",
+        "know",
+        "be"
+       ]
       },
       {
        "number": 5,
@@ -19237,7 +23566,11 @@
        "answers": [
         "must"
        ],
-       "options": []
+       "options": [
+        "can’t",
+        "know",
+        "be"
+       ]
       },
       {
        "number": 6,
@@ -19245,7 +23578,11 @@
        "answers": [
         "can’t"
        ],
-       "options": []
+       "options": [
+        "must",
+        "know",
+        "get"
+       ]
       },
       {
        "number": 7,
@@ -19253,7 +23590,11 @@
        "answers": [
         "must"
        ],
-       "options": []
+       "options": [
+        "can’t",
+        "know",
+        "get"
+       ]
       },
       {
        "number": 8,
@@ -19261,7 +23602,11 @@
        "answers": [
         "can’t"
        ],
-       "options": []
+       "options": [
+        "must",
+        "know",
+        "get"
+       ]
       },
       {
        "number": 9,
@@ -19269,7 +23614,11 @@
        "answers": [
         "must"
        ],
-       "options": []
+       "options": [
+        "can’t",
+        "know",
+        "be"
+       ]
       },
       {
        "number": 10,
@@ -19277,7 +23626,11 @@
        "answers": [
         "can’t"
        ],
-       "options": []
+       "options": [
+        "must",
+        "know",
+        "get"
+       ]
       },
       {
        "number": 11,
@@ -19285,7 +23638,11 @@
        "answers": [
         "must"
        ],
-       "options": []
+       "options": [
+        "can’t",
+        "know",
+        "get"
+       ]
       }
      ]
     },
@@ -19712,7 +24069,11 @@
        "answers": [
         "might be driving"
        ],
-       "options": []
+       "options": [
+        "may not be feeling well",
+        "couldn’t have been",
+        "couldn’t have tried"
+       ]
       },
       {
        "number": 7,
@@ -20797,7 +25158,11 @@
        "answers": [
         "don’t have to"
        ],
-       "options": []
+       "options": [
+        "mustn’t",
+        "had to ask",
+        "has to make"
+       ]
       },
       {
        "number": 4,
@@ -20816,7 +25181,11 @@
        "answers": [
         "don’t have to"
        ],
-       "options": []
+       "options": [
+        "mustn’t",
+        "had to ask",
+        "has to make"
+       ]
       },
       {
        "number": 6,
@@ -20824,7 +25193,11 @@
        "answers": [
         "doesn’t have to"
        ],
-       "options": []
+       "options": [
+        "mustn’t",
+        "had to ask",
+        "has to make"
+       ]
       },
       {
        "number": 7,
@@ -20832,7 +25205,11 @@
        "answers": [
         "don’t have to"
        ],
-       "options": []
+       "options": [
+        "mustn’t",
+        "had to ask",
+        "has to make"
+       ]
       },
       {
        "number": 8,
@@ -20862,7 +25239,11 @@
        "answers": [
         "don’t have to"
        ],
-       "options": []
+       "options": [
+        "mustn’t",
+        "had to ask",
+        "has to make"
+       ]
       }
      ]
     }
@@ -24497,7 +28878,11 @@
        "answers": [
         "wish"
        ],
-       "options": []
+       "options": [
+        "hope",
+        "wasn’t/weren’t",
+        "had"
+       ]
       },
       {
        "number": 4,
@@ -24505,7 +28890,11 @@
        "answers": [
         "wished"
        ],
-       "options": []
+       "options": [
+        "hope",
+        "wasn’t/weren’t",
+        "had"
+       ]
       },
       {
        "number": 5,
@@ -24524,7 +28913,11 @@
        "answers": [
         "wish"
        ],
-       "options": []
+       "options": [
+        "hope",
+        "wasn’t/weren’t",
+        "had"
+       ]
       },
       {
        "number": 7,
@@ -25911,7 +30304,11 @@
        "answers": [
         "being invited"
        ],
-       "options": []
+       "options": [
+        "was given",
+        "wasn’t told",
+        "’s paid"
+       ]
       },
       {
        "number": 3,
@@ -25919,7 +30316,11 @@
        "answers": [
         "being given"
        ],
-       "options": []
+       "options": [
+        "wasn’t told",
+        "’s paid",
+        "been shown"
+       ]
       },
       {
        "number": 4,
@@ -25935,7 +30336,11 @@
        "answers": [
         "being bitten"
        ],
-       "options": []
+       "options": [
+        "was given",
+        "wasn’t told",
+        "’s paid"
+       ]
       },
       {
        "number": 6,
@@ -25943,7 +30348,11 @@
        "answers": [
         "being treated"
        ],
-       "options": []
+       "options": [
+        "was given",
+        "wasn’t told",
+        "’s paid"
+       ]
       },
       {
        "number": 7,
@@ -25951,7 +30360,11 @@
        "answers": [
         "being stuck"
        ],
-       "options": []
+       "options": [
+        "was given",
+        "wasn’t told",
+        "’s paid"
+       ]
       }
      ]
     },
@@ -28032,7 +32445,10 @@
        "answers": [
         "How far is it to the airport?"
        ],
-       "options": []
+       "options": [
+        "How long have they been married?",
+        "She asked me if/whether I liked London"
+       ]
       },
       {
        "number": 4,
@@ -29842,7 +34258,11 @@
        "answers": [
         "to help him"
        ],
-       "options": []
+       "options": [
+        "not to tell anyone",
+        "what to do",
+        "whether to go"
+       ]
       },
       {
        "number": 6,
@@ -30540,7 +34960,11 @@
        "answers": [
         "her to give him a hand"
        ],
-       "options": []
+       "options": [
+        "to stay with them",
+        "I didn’t expect it to rain",
+        "Let him do what he wants"
+       ]
       }
      ]
     },
@@ -35458,7 +39882,11 @@
        "answers": [
         "It’s an easy mistake to make"
        ],
-       "options": []
+       "options": [
+        "The window was difficult to open",
+        "A car is expensive to maintain",
+        "This meat isn’t safe to eat"
+       ]
       }
      ]
     },
@@ -35826,7 +40254,11 @@
        "answers": [
         "interested in starting"
        ],
-       "options": []
+       "options": [
+        "sorry to hear",
+        "sorry for saying",
+        "sorry to see"
+       ]
       },
       {
        "number": 3,
@@ -35835,7 +40267,11 @@
         "interested to know",
         "interested to hear"
        ],
-       "options": []
+       "options": [
+        "sorry to hear",
+        "sorry for saying",
+        "sorry to see"
+       ]
       },
       {
        "number": 4,
@@ -35843,7 +40279,11 @@
        "answers": [
         "interested in studying"
        ],
-       "options": []
+       "options": [
+        "sorry to hear",
+        "sorry for saying",
+        "sorry to see"
+       ]
       },
       {
        "number": 6,
@@ -35851,7 +40291,11 @@
        "answers": [
         "interested in looking"
        ],
-       "options": []
+       "options": [
+        "sorry to hear",
+        "sorry for saying",
+        "sorry to see"
+       ]
       }
      ]
     },
@@ -35866,7 +40310,11 @@
        "answers": [
         "sorry to hear"
        ],
-       "options": []
+       "options": [
+        "interested in starting",
+        "interested to know",
+        "interested in studying"
+       ]
       },
       {
        "number": 3,
@@ -35875,7 +40323,11 @@
         "sorry for saying",
         "sorry I said"
        ],
-       "options": []
+       "options": [
+        "interested in starting",
+        "interested to know",
+        "interested in studying"
+       ]
       },
       {
        "number": 4,
@@ -35883,7 +40335,11 @@
        "answers": [
         "sorry to see"
        ],
-       "options": []
+       "options": [
+        "interested in starting",
+        "interested to know",
+        "interested in studying"
+       ]
       },
       {
        "number": 5,
@@ -35892,7 +40348,11 @@
         "sorry for making",
         "sorry I made"
        ],
-       "options": []
+       "options": [
+        "interested in starting",
+        "interested to know",
+        "interested in studying"
+       ]
       }
      ]
     },
@@ -38169,7 +42629,11 @@
        "answers": [
         "a lift"
        ],
-       "options": []
+       "options": [
+        "the sea",
+        "question 3",
+        "the cinema"
+       ]
       }
      ]
     },
@@ -38581,7 +43045,11 @@
        "answers": [
         "the school"
        ],
-       "options": []
+       "options": [
+        "at home",
+        "to work",
+        "at university"
+       ]
       },
       {
        "number": 4,
@@ -38597,7 +43065,11 @@
        "answers": [
         "the school"
        ],
-       "options": []
+       "options": [
+        "at home",
+        "to work",
+        "at university"
+       ]
       },
       {
        "number": 7,
@@ -43055,7 +47527,11 @@
        "answers": [
         "some"
        ],
-       "options": []
+       "options": [
+        "any",
+        "anybody/anyone",
+        "anything"
+       ]
       },
       {
        "number": 3,
@@ -43063,7 +47539,11 @@
        "answers": [
         "any"
        ],
-       "options": []
+       "options": [
+        "some",
+        "somebody/someone",
+        "anybody/anyone"
+       ]
       },
       {
        "number": 4,
@@ -43071,7 +47551,11 @@
        "answers": [
         "some"
        ],
-       "options": []
+       "options": [
+        "any",
+        "anybody/anyone",
+        "anything"
+       ]
       },
       {
        "number": 6,
@@ -43079,7 +47563,11 @@
        "answers": [
         "any"
        ],
-       "options": []
+       "options": [
+        "some",
+        "somebody/someone",
+        "anybody/anyone"
+       ]
       },
       {
        "number": 7,
@@ -43087,7 +47575,11 @@
        "answers": [
         "some"
        ],
-       "options": []
+       "options": [
+        "any",
+        "anybody/anyone",
+        "anything"
+       ]
       },
       {
        "number": 8,
@@ -43095,7 +47587,11 @@
        "answers": [
         "any"
        ],
-       "options": []
+       "options": [
+        "some",
+        "somebody/someone",
+        "anybody/anyone"
+       ]
       },
       {
        "number": 9,
@@ -43103,7 +47599,11 @@
        "answers": [
         "some"
        ],
-       "options": []
+       "options": [
+        "any",
+        "anybody/anyone",
+        "anything"
+       ]
       },
       {
        "number": 10,
@@ -43111,7 +47611,11 @@
        "answers": [
         "any"
        ],
-       "options": []
+       "options": [
+        "some",
+        "somebody/someone",
+        "anybody/anyone"
+       ]
       }
      ]
     },
@@ -43302,7 +47806,10 @@
        "answers": [
         "Any day"
        ],
-       "options": []
+       "options": [
+        "Anybody/Anyone",
+        "anybody/anyone anything"
+       ]
       },
       {
        "number": 7,
@@ -43310,7 +47817,11 @@
        "answers": [
         "Anybody/Anyone"
        ],
-       "options": []
+       "options": [
+        "Any day",
+        "some",
+        "any"
+       ]
       }
      ]
     }
@@ -43672,7 +48183,11 @@
        "answers": [
         "None"
        ],
-       "options": []
+       "options": [
+        "no",
+        "nobody/no-one",
+        "Nowhere"
+       ]
       },
       {
        "number": 6,
@@ -43702,7 +48217,11 @@
        "answers": [
         "any"
        ],
-       "options": []
+       "options": [
+        "None",
+        "nobody/no-one",
+        "Nowhere"
+       ]
       },
       {
        "number": 9,
@@ -44838,7 +49357,10 @@
        "answers": [
         "of"
        ],
-       "options": []
+       "options": [
+        "accidents",
+        "birds"
+       ]
       },
       {
        "number": 7,
@@ -44846,7 +49368,10 @@
        "answers": [
         "of"
        ],
-       "options": []
+       "options": [
+        "accidents",
+        "birds"
+       ]
       },
       {
        "number": 8,
@@ -44854,7 +49379,10 @@
        "answers": [
         "of"
        ],
-       "options": []
+       "options": [
+        "accidents",
+        "birds"
+       ]
       },
       {
        "number": 12,
@@ -44862,7 +49390,10 @@
        "answers": [
         "of"
        ],
-       "options": []
+       "options": [
+        "accidents",
+        "birds"
+       ]
       }
      ]
     },
@@ -45535,7 +50066,10 @@
        "answers": [
         "either"
        ],
-       "options": []
+       "options": [
+        "both",
+        "Neither"
+       ]
       },
       {
        "number": 3,
@@ -45543,7 +50077,10 @@
        "answers": [
         "both"
        ],
-       "options": []
+       "options": [
+        "either",
+        "Neither"
+       ]
       },
       {
        "number": 6,
@@ -45552,7 +50089,10 @@
         "both",
         "both of"
        ],
-       "options": []
+       "options": [
+        "either",
+        "Neither"
+       ]
       }
      ]
     },
@@ -46402,7 +50942,10 @@
        "answers": [
         "Each"
        ],
-       "options": []
+       "options": [
+        "every",
+        "everyone"
+       ]
       },
       {
        "number": 5,
@@ -46451,7 +50994,10 @@
        "answers": [
         "each"
        ],
-       "options": []
+       "options": [
+        "every",
+        "everyone"
+       ]
       },
       {
        "number": 10,
@@ -46478,7 +51024,10 @@
        "answers": [
         "each"
        ],
-       "options": []
+       "options": [
+        "every",
+        "everyone"
+       ]
       }
      ]
     },
@@ -50674,7 +55223,11 @@
        "answers": [
         "good"
        ],
-       "options": []
+       "options": [
+        "well",
+        "well-known",
+        "well-kept"
+       ]
       },
       {
        "number": 3,
@@ -50682,7 +55235,10 @@
        "answers": [
         "well"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 4,
@@ -50690,7 +55246,10 @@
        "answers": [
         "well"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 5,
@@ -50698,7 +55257,11 @@
        "answers": [
         "good"
        ],
-       "options": []
+       "options": [
+        "well",
+        "well-known",
+        "well-kept"
+       ]
       },
       {
        "number": 6,
@@ -50706,7 +55269,10 @@
        "answers": [
         "well"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 7,
@@ -50714,7 +55280,10 @@
        "answers": [
         "well"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       }
      ]
     },
@@ -50729,7 +55298,10 @@
        "answers": [
         "well-known"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 3,
@@ -50737,7 +55309,10 @@
        "answers": [
         "well-kept"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 4,
@@ -50745,7 +55320,10 @@
        "answers": [
         "well-written"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 5,
@@ -50753,7 +55331,10 @@
        "answers": [
         "well-informed"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       },
       {
        "number": 6,
@@ -50761,7 +55342,10 @@
        "answers": [
         "well-paid"
        ],
-       "options": []
+       "options": [
+        "good",
+        "hardly"
+       ]
       }
      ]
     },
@@ -50878,7 +55462,11 @@
         "hardly",
         "hardly ever"
        ],
-       "options": []
+       "options": [
+        "well",
+        "well-known",
+        "well-kept"
+       ]
       },
       {
        "number": 8,
@@ -52114,7 +56702,11 @@
        "answers": [
         "quite hungry"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 3,
@@ -52122,7 +56714,11 @@
        "answers": [
         "quite often"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 4,
@@ -52130,7 +56726,11 @@
        "answers": [
         "quite noisy"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 5,
@@ -52138,7 +56738,11 @@
        "answers": [
         "quite surprised"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 6,
@@ -52146,7 +56750,11 @@
        "answers": [
         "quite late"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 7,
@@ -52154,7 +56762,11 @@
        "answers": [
         "quite old"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       }
      ]
     },
@@ -52248,7 +56860,11 @@
        "answers": [
         "rather long"
        ],
-       "options": []
+       "options": [
+        "quite hungry",
+        "quite often",
+        "quite noisy"
+       ]
       },
       {
        "number": 3,
@@ -52256,7 +56872,11 @@
        "answers": [
         "rather strange"
        ],
-       "options": []
+       "options": [
+        "quite hungry",
+        "quite often",
+        "quite noisy"
+       ]
       },
       {
        "number": 4,
@@ -52264,7 +56884,11 @@
        "answers": [
         "rather impatient"
        ],
-       "options": []
+       "options": [
+        "quite hungry",
+        "quite often",
+        "quite noisy"
+       ]
       },
       {
        "number": 5,
@@ -52272,7 +56896,11 @@
        "answers": [
         "rather expensive"
        ],
-       "options": []
+       "options": [
+        "quite hungry",
+        "quite often",
+        "quite noisy"
+       ]
       }
      ]
     },
@@ -52293,7 +56921,11 @@
        "answers": [
         "quite safe"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 3,
@@ -52301,7 +56933,11 @@
        "answers": [
         "quite impossible"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 4,
@@ -52309,7 +56945,11 @@
        "answers": [
         "quite right"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 5,
@@ -52317,7 +56957,11 @@
        "answers": [
         "quite different"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       },
       {
        "number": 6,
@@ -52325,7 +56969,11 @@
        "answers": [
         "quite sure"
        ],
-       "options": []
+       "options": [
+        "rather long",
+        "rather strange",
+        "rather impatient"
+       ]
       }
      ]
     }
@@ -54383,7 +59031,10 @@
        "answers": [
         "That’s the funniest joke I’ve ever heard"
        ],
-       "options": []
+       "options": [
+        "It’s the largest country in South America",
+        "It’s the busiest time of the year"
+       ]
       },
       {
        "number": 3,
@@ -54391,7 +59042,10 @@
        "answers": [
         "This is the best coffee I’ve ever tasted"
        ],
-       "options": []
+       "options": [
+        "It was the happiest day of my life",
+        "It’s the most valuable painting in the museum"
+       ]
       },
       {
        "number": 4,
@@ -58094,7 +62748,10 @@
        "answers": [
         "during"
        ],
-       "options": []
+       "options": [
+        "for",
+        "while"
+       ]
       },
       {
        "number": 4,
@@ -58124,7 +62781,10 @@
        "answers": [
         "during"
        ],
-       "options": []
+       "options": [
+        "for",
+        "while"
+       ]
       },
       {
        "number": 8,
@@ -58151,7 +62811,10 @@
        "answers": [
         "during"
        ],
-       "options": []
+       "options": [
+        "for",
+        "while"
+       ]
       },
       {
        "number": 12,
@@ -58188,7 +62851,11 @@
        "answers": [
         "during"
        ],
-       "options": []
+       "options": [
+        "while 8",
+        "for",
+        "while"
+       ]
       },
       {
        "number": 6,
@@ -61117,7 +65784,10 @@
        "answers": [
         "to"
        ],
-       "options": []
+       "options": [
+        "into",
+        "in"
+       ]
       },
       {
        "number": 5,
@@ -61125,7 +65795,10 @@
        "answers": [
         "to"
        ],
-       "options": []
+       "options": [
+        "into",
+        "in"
+       ]
       },
       {
        "number": 6,
@@ -61133,7 +65806,10 @@
        "answers": [
         "into"
        ],
-       "options": []
+       "options": [
+        "to",
+        "in"
+       ]
       },
       {
        "number": 8,
@@ -61239,7 +65915,10 @@
        "answers": [
         "at"
        ],
-       "options": []
+       "options": [
+        "to",
+        "into"
+       ]
       },
       {
        "number": 5,
@@ -61247,7 +65926,10 @@
        "answers": [
         "to"
        ],
-       "options": []
+       "options": [
+        "at",
+        "into"
+       ]
       }
      ]
     },
@@ -65365,7 +70047,10 @@
        "answers": [
         "for"
        ],
-       "options": []
+       "options": [
+        "about",
+        "of"
+       ]
       },
       {
        "number": 8,
@@ -65421,7 +70106,10 @@
        "answers": [
         "of"
        ],
-       "options": []
+       "options": [
+        "for",
+        "to"
+       ]
       },
       {
        "number": 6,
@@ -65458,7 +70146,11 @@
        "answers": [
         "looked after"
        ],
-       "options": []
+       "options": [
+        "wait for",
+        "talk about",
+        "applied for"
+       ]
       },
       {
        "number": 4,
@@ -65466,7 +70158,11 @@
        "answers": [
         "look for"
        ],
-       "options": []
+       "options": [
+        "wait for",
+        "talk about",
+        "applied for"
+       ]
       },
       {
        "number": 5,
@@ -65474,7 +70170,11 @@
        "answers": [
         "looks after"
        ],
-       "options": []
+       "options": [
+        "wait for",
+        "talk about",
+        "applied for"
+       ]
       },
       {
        "number": 6,
@@ -65482,7 +70182,11 @@
        "answers": [
         "looking for"
        ],
-       "options": []
+       "options": [
+        "wait for",
+        "talk about",
+        "applied for"
+       ]
       }
      ]
     },
@@ -65784,7 +70488,11 @@
        "answers": [
         "hear about"
        ],
-       "options": []
+       "options": [
+        "think of",
+        "thinking of",
+        "dream of"
+       ]
       },
       {
        "number": 3,
@@ -65792,7 +70500,11 @@
        "answers": [
         "heard from"
        ],
-       "options": []
+       "options": [
+        "think about",
+        "thinking about",
+        "think of"
+       ]
       },
       {
        "number": 4,
@@ -65800,7 +70512,11 @@
        "answers": [
         "heard of"
        ],
-       "options": []
+       "options": [
+        "think about",
+        "thinking about",
+        "think of"
+       ]
       },
       {
        "number": 5,
@@ -65808,7 +70524,11 @@
        "answers": [
         "hear from"
        ],
-       "options": []
+       "options": [
+        "think about",
+        "thinking about",
+        "think of"
+       ]
       },
       {
        "number": 6,
@@ -65816,7 +70536,11 @@
        "answers": [
         "hear about"
        ],
-       "options": []
+       "options": [
+        "think of",
+        "thinking of",
+        "dream of"
+       ]
       },
       {
        "number": 7,
@@ -65824,7 +70548,11 @@
        "answers": [
         "heard of"
        ],
-       "options": []
+       "options": [
+        "think about",
+        "thinking about",
+        "think of"
+       ]
       }
      ]
     },
@@ -65839,7 +70567,11 @@
        "answers": [
         "think about"
        ],
-       "options": []
+       "options": [
+        "heard from",
+        "heard of",
+        "hear from"
+       ]
       },
       {
        "number": 3,
@@ -65847,7 +70579,11 @@
        "answers": [
         "thinking about"
        ],
-       "options": []
+       "options": [
+        "heard from",
+        "heard of",
+        "hear from"
+       ]
       },
       {
        "number": 4,
@@ -65855,7 +70591,11 @@
        "answers": [
         "think of"
        ],
-       "options": []
+       "options": [
+        "thought about",
+        "hear about",
+        "heard from"
+       ]
       },
       {
        "number": 5,
@@ -65863,7 +70603,11 @@
        "answers": [
         "think of"
        ],
-       "options": []
+       "options": [
+        "thought about",
+        "hear about",
+        "heard from"
+       ]
       },
       {
        "number": 6,
@@ -65872,7 +70616,11 @@
         "thinking of",
         "thinking about"
        ],
-       "options": []
+       "options": [
+        "thought about",
+        "hear about",
+        "heard from"
+       ]
       },
       {
        "number": 7,
@@ -65891,7 +70639,11 @@
        "answers": [
         "think of"
        ],
-       "options": []
+       "options": [
+        "thought about",
+        "hear about",
+        "heard from"
+       ]
       },
       {
        "number": 9,
@@ -65899,7 +70651,11 @@
        "answers": [
         "think about"
        ],
-       "options": []
+       "options": [
+        "heard from",
+        "heard of",
+        "hear from"
+       ]
       },
       {
        "number": 11,
@@ -65908,7 +70664,11 @@
         "thinking about",
         "thinking of"
        ],
-       "options": []
+       "options": [
+        "heard from",
+        "heard of",
+        "hear from"
+       ]
       },
       {
        "number": 12,
@@ -65916,7 +70676,11 @@
        "answers": [
         "think of"
        ],
-       "options": []
+       "options": [
+        "thought about",
+        "hear about",
+        "heard from"
+       ]
       }
      ]
     },
@@ -66629,7 +71393,11 @@
        "answers": [
         "from"
        ],
-       "options": []
+       "options": [
+        "on",
+        "for",
+        "of/from"
+       ]
       },
       {
        "number": 7,
@@ -66648,7 +71416,11 @@
        "answers": [
         "of"
        ],
-       "options": []
+       "options": [
+        "from",
+        "for",
+        "of/from"
+       ]
       },
       {
        "number": 9,

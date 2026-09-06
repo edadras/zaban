@@ -14,6 +14,7 @@
  "source_audio": "sources/audio/upper_intermediate",
  "copyright_status": "owned",
  "answer_key_page": 211,
+ "study_guide": [],
  "pages": [
   {
    "number": 1,
@@ -18492,7 +18493,10 @@
         "It’s all so complicated. I feel a bit",
         "quite confused. Can you help me?"
        ],
-       "options": []
+       "options": [
+        "I was absolutely thrilled when I heard the wonderful news!",
+        "I always get nervous just before an exam"
+       ]
       },
       {
        "number": 4,
@@ -18979,7 +18983,10 @@
        "answers": [
         "whispered"
        ],
-       "options": []
+       "options": [
+        "murmured",
+        "with"
+       ]
       },
       {
        "number": 9,
@@ -19021,7 +19028,10 @@
        "answers": [
         "with"
        ],
-       "options": []
+       "options": [
+        "whispered",
+        "murmured"
+       ]
       }
      ]
     }
@@ -22248,7 +22258,11 @@
        "answers": [
         "in"
        ],
-       "options": []
+       "options": [
+        "shrunk",
+        "stretches",
+        "extended"
+       ]
       }
      ]
     }
