@@ -149,7 +149,8 @@ is given one only when the gap between its neighbours fills exactly.
 | Pronunciation Intermediate | 360 | CD and track |
 | Pronunciation Elementary | 351 | CD and track, as **WMA** |
 
-6,543 recordings, against the 1,162 the project had. `tools/place_audio.py`
+6,543 recordings, against the 1,162 the project had, and 7,705 attached in
+all: 4,090 to units, 2,140 to lessons and 1,956 to individual exercises. `tools/place_audio.py`
 renames every one to a shape that says what it is, and records where it came
 from, so the renaming can be checked against the archive rather than believed.
 The WMA set is transcoded, since neither the application nor the project's own
@@ -164,7 +165,8 @@ in the Advanced book. The rest stay in the inventory without a unit rather than
 being spread over the units in proportion, because a recording played in the
 wrong lesson is worse than one a learner has to find for themselves.
 
-Everything is measured: **51.6 hours** of audio, every file sized and timed.
+Everything is measured: **56.4 hours** of audio, every one of the 8,622
+stored files sized and 7,705 of them timed - the rest are images.
 
 ## The disc is the find
 
