@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CefrLevel;
+use App\Models\Language;
 use App\Models\ProductionPrompt;
 use Illuminate\Database\Seeder;
 
@@ -29,6 +30,14 @@ class ProductionPromptSeeder extends Seeder
     public function run(): void
     {
         $levels = CefrLevel::pluck('id', 'code');
+        // Looked up rather than assumed to be 1. Auto-increment does not reset
+        // between tests, so a hard-coded id is a foreign key violation on every
+        // run but the first.
+        $languageId = Language::where('code', 'en')->value('id');
+
+        if ($languageId === null) {
+            return;
+        }
 
         foreach ($this->prompts() as $p) {
             $levelId = $levels[$p['cefr']] ?? null;
@@ -40,7 +49,7 @@ class ProductionPromptSeeder extends Seeder
             ProductionPrompt::updateOrCreate(
                 ['title' => $p['title'], 'modality' => $p['modality']],
                 [
-                    'language_id' => 1,
+                    'language_id' => $languageId,
                     'task_type' => $p['task_type'],
                     'prompt' => $p['prompt'],
                     'guidance' => $p['guidance'],

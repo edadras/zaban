@@ -208,6 +208,11 @@ php artisan content:import
 # 3. Derive interactive blocks and gradable items from what was imported
 php artisan content:build-activities
 
+# 3b. Build the exam papers from the authored production prompts. Writing and
+#     speaking only — see the command's own output for why reading and
+#     listening are empty.
+php artisan content:build-exams
+
 # 4. Release it to learners. NOT optional after step 2: everything imports as a
 #    draft, and the learner-facing endpoints and the session engine serve only
 #    what is published — so a re-import withdraws the whole course until this
