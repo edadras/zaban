@@ -72,43 +72,74 @@ class ImportTranslations extends Command
 
         // Every sense of every headword. A headword taught in three books has
         // three, and the meaning belongs on all of them.
-        $senses = DB::table('vocabulary_items')
+        $senseRows = DB::table('vocabulary_items')
             ->join('vocabulary_senses', 'vocabulary_senses.vocabulary_item_id', '=', 'vocabulary_items.id')
             ->select('vocabulary_items.headword', 'vocabulary_senses.id')
-            ->get()
+            ->get();
+
+        $senses = $senseRows
             ->groupBy(fn ($r) => mb_strtolower($r->headword))
+            ->map(fn ($rows) => $rows->pluck('id')->all());
+
+        // A second index, consulted only when the exact headword misses. The
+        // scanner carries the book's own section markers into the headword -
+        // "b| careers advice", "the golden era®" - and the catalogue is written
+        // in the English the book teaches rather than in the marks a scanner
+        // left on the page. Two headwords sharing a normalised form are the
+        // same word wearing different marks, so they are matched together.
+        $loose = $senseRows
+            ->groupBy(fn ($r) => $this->normalise($r->headword))
+            ->reject(fn ($rows, $key) => $key === '')
             ->map(fn ($rows) => $rows->pluck('id')->all());
 
         $written = 0;
         $words = 0;
         $unknown = [];
-        $rows = [];
+
+        // One meaning per sense, decided before anything is written. A sense
+        // can be reached twice - once by its own headword and once by the same
+        // word wearing a scanner's label - and writing both would leave the
+        // word's meaning decided by whichever entry the loop reached last.
+        // The exact headword is the better reading and keeps its claim.
+        $chosen = [];
 
         foreach ($catalogue as $headword => $meaning) {
             $meaning = trim((string) $meaning);
             $key = mb_strtolower(trim((string) $headword));
-            $ids = $senses->get($key);
+            $exact = $senses->get($key) ?? [];
+            $labelled = $loose->get($this->normalise((string) $headword)) ?? [];
 
             if ($meaning === '') {
                 continue;
             }
-            if ($ids === null) {
+            if ($exact === [] && $labelled === []) {
                 $unknown[] = $headword;
 
                 continue;
             }
 
             $words++;
-            foreach ($ids as $senseId) {
-                $rows[] = [
-                    'vocabulary_sense_id' => (int) $senseId,
-                    'language_id' => $language->id,
-                    'text' => $meaning,
-                    'is_primary' => true,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ];
+            foreach ([[$labelled, false], [$exact, true]] as [$ids, $isExact]) {
+                foreach ($ids as $senseId) {
+                    $senseId = (int) $senseId;
+                    if (isset($chosen[$senseId]) && $chosen[$senseId]['exact'] && ! $isExact) {
+                        continue;
+                    }
+                    $chosen[$senseId] = ['text' => $meaning, 'exact' => $isExact];
+                }
             }
+        }
+
+        $rows = [];
+        foreach ($chosen as $senseId => $choice) {
+            $rows[] = [
+                'vocabulary_sense_id' => $senseId,
+                'language_id' => $language->id,
+                'text' => $choice['text'],
+                'is_primary' => true,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
 
             if (count($rows) >= 500) {
                 $written += $this->flush($rows);
@@ -150,6 +181,24 @@ class ImportTranslations extends Command
     }
 
     /**
+     * A headword with the scanner's marks taken off.
+     *
+     * Only the marks: a leading section label from the page ("b| ", "| ", "6. "),
+     * a trailing footnote mark or stray quote, and repeated space. Nothing that
+     * could turn one word into another.
+     */
+    private function normalise(string $headword): string
+    {
+        $h = mb_strtolower(trim($headword));
+        // A section label from the page: "b| ", a bare "| ", or "6. ".
+        $h = preg_replace('/^(?:[a-e]?\||\d+\.)\s*/u', '', $h) ?? $h;
+        $h = preg_replace('/[®*\x{2019}\x{2018}]+$/u', '', $h) ?? $h;
+        $h = preg_replace('/\s+/u', ' ', $h) ?? $h;
+
+        return trim($h);
+    }
+
+    /**
      * Replace rather than upsert.
      *
      * The unique index is on (sense, language, text), so an upsert keyed on the
@@ -161,6 +210,16 @@ class ImportTranslations extends Command
      */
     private function flush(array $rows): int
     {
+        // Two catalogue entries can reach one sense with the same meaning - the
+        // exact headword and the same word wearing a scanner's label - and the
+        // unique index covers exactly that triple, so the duplicate has to go
+        // before the insert rather than after it.
+        $unique = [];
+        foreach ($rows as $row) {
+            $unique[$row['vocabulary_sense_id'].'|'.$row['language_id'].'|'.$row['text']] = $row;
+        }
+        $rows = array_values($unique);
+
         $senseIds = array_column($rows, 'vocabulary_sense_id');
 
         DB::transaction(function () use ($rows, $senseIds) {

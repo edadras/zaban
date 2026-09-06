@@ -110,9 +110,14 @@ reviewed as text — and attaches each meaning to every sense of its headword. A
 three books has three, and no row carries a part of speech that tells them
 apart), so every sense is the only reading the data supports; real polysemy is
 answered inside the entry, which may carry more than one meaning the way a
-bilingual dictionary prints them. The Persian catalogue holds 10,733 entries and
-covers 84% of the words the corpus teaches; what remains untranslated is scanner
-debris rather than vocabulary. `content:build-activities` bakes the meanings
+bilingual dictionary prints them. The Persian catalogue holds 13,382 entries and
+covers 98% of the words the corpus teaches. What remains untranslated is 321
+headwords the scanner produced rather than the books: 120 are the first names
+the books use in their dialogues, and the rest are unreadable - "callacatiane",
+"and tamnaraturac". A headword the exact key misses is tried again with the
+page's own section markers taken off ("b| careers advice", "the golden era®"),
+since the catalogue is written in the English the book teaches rather than in
+the marks a scanner left behind. `content:build-activities` bakes the meanings
 into each lesson's reading block, so tapping a word answers from the page
 already open rather than over the network.
 
