@@ -14,10 +14,15 @@ spelling let every one of the others through.
 """
 import re
 
+# `www.` is optional and separate, because the scanner drops the dot as often
+# as it keeps it: the same stamp arrives as "www.irLanguage.com",
+# "wwwirLanguage.com" and "irLanguage" on different pages of one book.
+_HOST = r'(?:www\s*\.?\s*)?'
+
 WATERMARKS = [
-    re.compile(r'\w*ir\s*[l1|]anguage\s*[.,]?\s*(?:c[o0]m|c[o0]n|ir)?\w*', re.I),
-    re.compile(r'\w*(?:www\.?)?shop\.?tabaeng[l1|]ish\.?\w*', re.I),
-    re.compile(r'\w*(?:www\.?)?[l1|]anguagecentre(?:\.\w+)?\w*', re.I),
+    re.compile(_HOST + r'\w*ir\s*[l1|]anguage\s*[.,]?\s*(?:c[o0]m|c[o0]n|ir)?\w*', re.I),
+    re.compile(_HOST + r'\w*shop\s*\.?\s*tabaeng[l1|]ish\s*\.?\s*\w*', re.I),
+    re.compile(_HOST + r'\w*[l1|]anguagecentre(?:\s*\.\s*\w+)?\w*', re.I),
     re.compile(r'\btabaeng[l1|]ish\b', re.I),
 ]
 
