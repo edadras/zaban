@@ -40,10 +40,37 @@ class PlacementBankSoundnessTest extends TestCase
             ->join('exercise_options', 'exercise_options.exercise_id', '=', 'exercises.id')
             ->where('exercises.is_placement_eligible', true)
             ->groupBy('exercises.id')
-            ->havingRaw('SUM(exercise_options.is_correct) <> 1 OR COUNT(exercise_options.id) < 4')
+            ->havingRaw('SUM(exercise_options.is_correct) <> 1 OR COUNT(exercise_options.id) < 3')
             ->pluck('exercises.id');
 
         $this->assertSame([], $broken->all(), 'these items cannot be answered as posed');
+    }
+
+    /**
+     * An item with three options is guessed right a third of the time and one
+     * with four a quarter, and the estimator has to be told which it is asking
+     * or it reads a lucky guess as knowledge.
+     *
+     * The bank used to take four-option items only, which kept this implicit
+     * and cost it every three-way choice the books print - and with them every
+     * grammar item in the corpus, so the placement report could only ever say
+     * "vocabulary". Three options are allowed now, and this is the condition
+     * that makes that safe.
+     */
+    public function test_every_placement_item_declares_how_easily_it_is_guessed(): void
+    {
+        $wrong = $this->corpus()->table('exercises')
+            ->join('exercise_options', 'exercise_options.exercise_id', '=', 'exercises.id')
+            ->where('exercises.is_placement_eligible', true)
+            ->groupBy('exercises.id', 'exercises.guessing')
+            ->havingRaw('ABS(COALESCE(exercises.guessing, 0) - (1 / COUNT(exercise_options.id))) > 0.005')
+            ->pluck('exercises.id');
+
+        $this->assertSame(
+            [],
+            $wrong->all(),
+            'items whose guessing rate does not match the number of options they offer',
+        );
     }
 
     /**
