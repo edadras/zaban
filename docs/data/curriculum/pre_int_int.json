@@ -5934,59 +5934,7 @@
        "answers": [
         "covered"
        ],
-       "options": [
-        "consists 3 regions",
-        "Earth 4 contrasts",
-        "distance; distance 6 landscape"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "Switzerland ______ of three main geographical regions.",
-       "answers": [
-        "consists 3 regions"
-       ],
-       "options": [
-        "covered",
-        "Earth 4 contrasts",
-        "climate 5 covers"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "It takes the moon just under 28 days to go round the ______ .",
-       "answers": [
-        "Earth 4 contrasts"
-       ],
-       "options": [
-        "covered",
-        "consists 3 regions",
-        "climate 5 covers"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "People say Cape Town in South Africa has a wonderful ______ : sunny for much of the year, and never too hot or very cold.",
-       "answers": [
-        "climate 5 covers"
-       ],
-       "options": [
-        "consists 3 regions",
-        "Earth 4 contrasts",
-        "distance; distance 6 landscape"
-       ]
-      },
-      {
-       "number": 11,
-       "stem": "The ______ from London to Paris is 340 kilometres; that’s less than the from London to Edinburgh.",
-       "answers": [
-        "distance; distance 6 landscape"
-       ],
-       "options": [
-        "covered",
-        "consists 3 regions",
-        "Earth 4 contrasts"
-       ]
+       "options": []
       }
      ]
     },
@@ -6038,7 +5986,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 1,
    "vocabulary_count": 37,
    "gloss_count": 5
   },
@@ -7993,47 +7941,7 @@
        "answers": [
         "feelings/emotions"
        ],
-       "options": [
-        "mood 3 energetic",
-        "hopeful 4 effect",
-        "frightened/scared 5 stress"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "Oliver’s cheerful one minute and miserable the next; his ______ changes all the time.",
-       "answers": [
-        "mood 3 energetic"
-       ],
-       "options": [
-        "feelings/emotions",
-        "hopeful 4 effect",
-        "frightened/scared 5 stress"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "It’s been a depressing month, but I’m ______ things will get better next month.",
-       "answers": [
-        "hopeful 4 effect"
-       ],
-       "options": [
-        "feelings/emotions",
-        "mood 3 energetic",
-        "frightened/scared 5 stress"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I don’t like walking home in the dark. I get very ______ .",
-       "answers": [
-        "frightened/scared 5 stress"
-       ],
-       "options": [
-        "feelings/emotions",
-        "mood 3 energetic",
-        "hopeful 4 effect"
-       ]
+       "options": []
       }
      ]
     },
@@ -8098,7 +8006,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 43,
    "gloss_count": 5
   },
@@ -8832,16 +8740,7 @@
      "number": 4,
      "instructions": "Over to you",
      "body": "Over to you\n         Answer the questions for you, then, if possible, ask a friend and write their answers.\n         1 Can you remember your first date? (When, and who with?)\n         2 Can you remember your first serious relationship? (Who was it with? Did you break up, or are\n           you still with the same person?)\n         3 Whose was the last wedding you went to?\n         4 What was the last big celebration (other than a wedding) that you went to?\n\n\n                                         English Vocabulary in Use Pre-intermediate and Intermediate       37",
-     "items": [
-      {
-       "number": 4,
-       "stem": "What was the last big celebration (other than a wedding) that you went to? English Vocabulary in Use Pre-intermediate and Intermediate ______ 37",
-       "answers": [
-        "I went to a friend’s 30th birthday party"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -8901,7 +8800,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 37,
    "gloss_count": 0
   },
@@ -9163,35 +9062,7 @@
      "number": 2,
      "instructions": "Match the words on the left with the words on the right.",
      "body": "Match the words on the left with the words on the right.\n                  g\n       1 get up              a the dog\n       2 fall                b my teeth\n       3 make                c make-up\n       4 put on                  d a week\n       5 go                      e the bed\n       6 clean                   f to sleep\n       7 feed                    g early\n       8 once                    h asleep",
-     "items": [
-      {
-       "number": 2,
-       "stem": "fall ______ b my teeth",
-       "answers": [
-        "h"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "make ______ c make-up",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "h",
-        "c 5f 6b 7a 8d"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "put on ______ d a week",
-       "answers": [
-        "c 5f 6b 7a 8d"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -9282,7 +9153,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 0,
    "vocabulary_count": 50,
    "gloss_count": 0
   },
@@ -10026,35 +9897,7 @@
      "number": 3,
      "instructions": "Rewrite the sentences without using the underlined words and phrases. Keep the same",
      "body": "Rewrite the sentences without using the underlined words and phrases. Keep the same\n       meaning.\n       1 He’s getting £300 a week in his job.                He’s earning £300 a week in his job.\n       2 She used the money badly.                           She\n       3 I don’t have enough money to go.                    I\n       4 We could rent a car.                                We could\n       5 He asked us to pay £25.                             He\n       6 I’ve got to pay back a lot of money.                I\n       7 I always look at my account carefully.              I always",
-     "items": [
-      {
-       "number": 2,
-       "stem": "She used the money badly. ______ She",
-       "answers": [
-        "She wasted the money. 5 He charged us £25"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "I don’t have enough money to go. ______ I",
-       "answers": [
-        "I can’t afford to go. 6 I owe a lot of money"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "We could rent a car. ______ We could",
-       "answers": [
-        "We could hire a car. 7 I always check my account carefully"
-       ],
-       "options": [
-        "She wasted the money. 5 He charged us £25",
-        "I can’t afford to go. 6 I owe a lot of money"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -10066,16 +9909,7 @@
      "number": 5,
      "instructions": "Over to you",
      "body": "Over to you\n          Answer the questions.\n          1 Have you got a bank account? If so, how long have you had it?\n          2 How often do you check your account?\n          3 How often do you use a cashpoint?\n          4 Have you ever had a bank loan? What did you have the loan for?\n          5 Are you saving up for anything at the moment?\n          6 Do you rent the place where you live? If so, did you have to pay a deposit?\n\n\n                                            English Vocabulary in Use Pre-intermediate and Intermediate             45",
-     "items": [
-      {
-       "number": 6,
-       "stem": "Do you rent the place where you live? If so, did you have to pay a deposit? English Vocabulary in Use Pre-intermediate and Intermediate ______ 45",
-       "answers": [
-        "Yes, I rent a flat with a friend. We had to pay a deposit of one month’s rent"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -10140,7 +9974,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 0,
    "vocabulary_count": 33,
    "gloss_count": 2
   },
@@ -11435,7 +11269,10 @@
        "answers": [
         "Strawberries and pears are more common than pineapple"
        ],
-       "options": []
+       "options": [
+        "veal",
+        "Peaches are my favourite fruit"
+       ]
       },
       {
        "number": 2,
@@ -11446,7 +11283,8 @@
        ],
        "options": [
         "aubergine, red pepper, pineapple, melons, grapes",
-        "veal"
+        "veal",
+        "Peaches are my favourite fruit"
        ]
       },
       {
@@ -11458,7 +11296,8 @@
        ],
        "options": [
         "Lamb and beef are more expensive than pork",
-        "veal"
+        "veal",
+        "Peaches are my favourite fruit"
        ]
       },
       {
@@ -11466,6 +11305,19 @@
        "stem": "We don’t often eat ______ .",
        "answers": [
         "veal"
+       ],
+       "options": [
+        "Strawberries and pears are more common than pineapple",
+        "Lamb and beef are more expensive than pork",
+        "aubergine, red pepper, pineapple, melons, grapes"
+       ]
+      },
+      {
+       "number": 6,
+       "stem": "is/are my favourite ______ . English",
+       "answers": [
+        "Peaches are my favourite fruit",
+        "Lamb is my favourite meat"
        ],
        "options": [
         "Strawberries and pears are more common than pineapple",
@@ -11543,7 +11395,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 6,
    "vocabulary_count": 40,
    "gloss_count": 2
   },
@@ -12988,16 +12840,7 @@
      "number": 5,
      "instructions": "Over to you",
      "body": "Over to you\n         Answer the questions about your own country. If possible, compare your answers with\n         someone else.\n         1 Do you have a speed limit on motorways? If so, what is it?\n         2 How many lanes do motorways usually have?\n         3 Do drivers usually stop for pedestrians at pedestrian crossings? If not, why not?\n         4 Do many people park their cars on the pavements? Why? / Why not?\n\n\n                                          English Vocabulary in Use Pre-intermediate and Intermediate              65",
-     "items": [
-      {
-       "number": 4,
-       "stem": "Do many people park their cars on the pavements? Why? / Why not? English Vocabulary in Use Pre-intermediate and Intermediate ______ 65",
-       "answers": [
-        "Not very often, but it sometimes happens if the road is very narrow"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -13059,7 +12902,7 @@
      "anchor": "person"
     }
    ],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 42,
    "gloss_count": 3
   },
@@ -13886,25 +13729,12 @@
      "body": "Complete the sentences.\n       1 There were three terms               in the school year.\n       2 I had to                  a uniform.\n       3 I had to call the                  teachers ‘sir’ and                    teachers ‘miss’.\n       4 I occasionally got into                   at school for doing things I shouldn’t do.\n       5 The teachers at my school were strict, and they                     pupils who broke the rules.\n       6 My school had a really nice, relaxed                     .",
      "items": [
       {
-       "number": 2,
-       "stem": "I had to ______ a uniform.",
-       "answers": [
-        "wear"
-       ],
-       "options": [
-        "trouble",
-        "punished",
-        "atmosphere"
-       ]
-      },
-      {
        "number": 4,
        "stem": "I occasionally got into ______ at school for doing things I shouldn’t do.",
        "answers": [
         "trouble"
        ],
        "options": [
-        "wear",
         "punished",
         "atmosphere"
        ]
@@ -13916,7 +13746,6 @@
         "punished"
        ],
        "options": [
-        "wear",
         "trouble",
         "atmosphere"
        ]
@@ -13928,7 +13757,6 @@
         "atmosphere"
        ],
        "options": [
-        "wear",
         "trouble",
         "punished"
        ]
@@ -13996,7 +13824,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 7,
    "vocabulary_count": 46,
    "gloss_count": 8
   },
@@ -14997,50 +14825,7 @@
      "number": 1,
      "instructions": "Match the job on the left with something the person uses on the right.",
      "body": "Match the job on the left with something the person uses on the right.\n       1 lecturer         c           a a gun\n       2 plumber                      b wood\n       3 accountant                   c books\n       4 builder                      d pipes\n       5 soldier                      e bricks\n       6 carpenter                    f numbers",
-     "items": [
-      {
-       "number": 2,
-       "stem": "plumber ______ b wood",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "f",
-        "a 6b"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "accountant ______ c books",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "d",
-        "e",
-        "a 6b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "builder ______ d pipes",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "a 6b"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "soldier ______ e bricks",
-       "answers": [
-        "a 6b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -15129,7 +14914,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 0,
    "vocabulary_count": 54,
    "gloss_count": 7
   },
@@ -15403,53 +15188,7 @@
        "answers": [
         "I work in marketing"
        ],
-       "options": [
-        "My job involves reading government reports. 4 My income is £34,000",
-        "I give advice to clients. 5 What does your job involve?",
-        "I made a complaint about the service. 6 I’m in charge of the reception area"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "What’s your job? ______ What do you do for",
-       "answers": [
-        "What do you do for a living? 3 I work for the government"
-       ],
        "options": []
-      },
-      {
-       "number": 8,
-       "stem": "I have to read government reports. ______ My job involves",
-       "answers": [
-        "My job involves reading government reports. 4 My income is £34,000"
-       ],
-       "options": [
-        "I work in marketing",
-        "I made a complaint about the service. 6 I’m in charge of the reception area"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "I advise clients. ______ I give",
-       "answers": [
-        "I give advice to clients. 5 What does your job involve?"
-       ],
-       "options": [
-        "I work in marketing",
-        "I made a complaint about the service. 6 I’m in charge of the reception area"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "I complained about the service. ______ I made",
-       "answers": [
-        "I made a complaint about the service. 6 I’m in charge of the reception area"
-       ],
-       "options": [
-        "I work in marketing",
-        "What do you do for a living? 3 I work for the government",
-        "My job involves reading government reports. 4 My income is £34,000"
-       ]
       }
      ]
     },
@@ -15528,7 +15267,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 1,
    "vocabulary_count": 36,
    "gloss_count": 15
   },
@@ -16779,16 +16518,7 @@
      "number": 5,
      "instructions": "Over to you",
      "body": "Over to you\n          Can you answer these questions about your own country?\n          1 What is the inflation rate at the moment?\n          2 If you borrow money from the bank, what is the approximate interest rate you will be charged?\n          3 Do you think the economy is doing well or badly?\n          4 When was the last time your country was in recession?\n          5 What is the value of your currency against the dollar?\n\n\n                                             English Vocabulary in Use Pre-intermediate and Intermediate            87",
-     "items": [
-      {
-       "number": 5,
-       "stem": "What is the value of your currency against the dollar? English Vocabulary in Use Pre-intermediate and Intermediate ______ 87",
-       "answers": [
-        "One British pound is 1.4 US dollars"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -16837,7 +16567,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 2,
+   "item_count": 1,
    "vocabulary_count": 46,
    "gloss_count": 6
   },
@@ -17122,7 +16852,7 @@
        "options": [
         "play",
         "ski",
-        "did"
+        "go"
        ]
       },
       {
@@ -17134,7 +16864,7 @@
        "options": [
         "do",
         "ski",
-        "did"
+        "go"
        ]
       },
       {
@@ -17146,19 +16876,7 @@
        "options": [
         "do",
         "play",
-        "did"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "I ______ a bit of yoga when I was younger.",
-       "answers": [
-        "did"
-       ],
-       "options": [
-        "do",
-        "play",
-        "ski"
+        "go"
        ]
       },
       {
@@ -17171,18 +16889,6 @@
         "do",
         "play",
         "ski"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "I ______ a lot of swimming in the summer.",
-       "answers": [
-        "do"
-       ],
-       "options": [
-        "play",
-        "ski",
-        "did"
        ]
       },
       {
@@ -17276,7 +16982,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 6,
    "vocabulary_count": 57,
    "gloss_count": 2
   },
@@ -17534,56 +17240,7 @@
      "number": 3,
      "instructions": "Complete the sentences.",
      "body": "Complete the sentences.\n        1 It was a good game but unfortunately we        lost          3–2.\n        2 The                   at half-time was 2–1, but the final                    was a draw.\n        3 Holland                    England 2–1, so they are in the semi-final.\n        4 Brazil                  1–1 with Argentina last night.\n        5 Serena Williams has won the Wimbledon                        at least six times.\n        6 Carolina Kluft broke the heptathlon world                     again last night.\n        7 There are 20 teams in the                    , and each team plays the other teams twice.\n        8 Bradley Wiggins                    part in the Tour de France in 2009 and finished fourth.\n        9 I think Novak Djokovic is going to win. He’s                   5–2 in the final set.\n       10 Argentina are playing                    Brazil next week.",
-     "items": [
-      {
-       "number": 7,
-       "stem": "There are 20 teams in the ______ , and each team plays the other teams twice.",
-       "answers": [
-        "league 3 beat/defeated"
-       ],
-       "options": [
-        "took 4 drew",
-        "leading 5 championship/tournament",
-        "against 6 record"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "Bradley Wiggins ______ part in the Tour de France in 2009 and finished fourth.",
-       "answers": [
-        "took 4 drew"
-       ],
-       "options": [
-        "league 3 beat/defeated",
-        "leading 5 championship/tournament",
-        "against 6 record"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "I think Novak Djokovic is going to win. He’s ______ 5–2 in the final set.",
-       "answers": [
-        "leading 5 championship/tournament"
-       ],
-       "options": [
-        "league 3 beat/defeated",
-        "took 4 drew",
-        "against 6 record"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "Argentina are playing ______ Brazil next week.",
-       "answers": [
-        "against 6 record"
-       ],
-       "options": [
-        "league 3 beat/defeated",
-        "took 4 drew",
-        "leading 5 championship/tournament"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -17652,7 +17309,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 0,
    "vocabulary_count": 49,
    "gloss_count": 2
   },
@@ -18241,44 +17898,7 @@
      "number": 1,
      "instructions": "Match the words on the left with the words on the right.",
      "body": "Match the words on the left with the words on the right.\n       1 classical        c           a studio\n       2 solo                         b singer\n       3 recording                    c music\n       4 musical                      d dancer\n       5 opera                        e artist\n       6 ballet                       f instrument",
-     "items": [
-      {
-       "number": 2,
-       "stem": "solo ______ b singer",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "a",
-        "f 5b",
-        "d"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "recording ______ c music",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "musical ______ d dancer",
-       "answers": [
-        "f 5b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "ballet ______ f instrument",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -18351,16 +17971,7 @@
      "number": 5,
      "instructions": "Over to you",
      "body": "Over to you\n          Answer the questions. If possible, ask someone else the same questions.\n          1 What music do you like? Is your taste in music different from your parents’?\n          2 Who’s your favourite solo artist, group or composer?\n          3 What was the last single or album you bought or downloaded?\n          4 When was the last time you heard or saw a group or orchestra perform live?\n          5 Are you usually more interested in the tune or the lyrics of a song?\n          6 Do you play a musical instrument? What do you play?\n\n\n                                                 English Vocabulary in Use Pre-intermediate and Intermediate           95",
-     "items": [
-      {
-       "number": 6,
-       "stem": "Do you play a musical instrument? What do you play? English Vocabulary in Use Pre-intermediate and Intermediate ______ 95",
-       "answers": [
-        "I play the guitar, but very badly!"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -18425,7 +18036,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 4,
    "vocabulary_count": 47,
    "gloss_count": 13
   },
@@ -19607,40 +19218,12 @@
      "body": "Complete the sentences with words from the box.\n\n        cappuccino       croissants      vegetarian        toastie     milkshake        decaf       smoothie\n\n       1 I had a cheese and tomato toastie             for lunch.\n       2 Here’s your coffee, Danny. A                   with two sugars.\n       3 For breakfast, we had some                     from the French baker’s across the road.\n       4 Do they have                   coffee here? Caffeine keeps me awake at night.\n       5 We’ve got three kinds of                  : strawberry, vanilla and chocolate.\n       6 I like that new fruit                with oranges and mangoes.\n       7 Kate can’t have the chicken panini. She only eats                   food.",
      "items": [
       {
-       "number": 2,
-       "stem": "Here’s your coffee, Danny. A ______ with two sugars.",
-       "answers": [
-        "cappuccino 3 croissants"
-       ],
-       "options": [
-        "decaf",
-        "milkshake 6 smoothie",
-        "vegetarian"
-       ]
-      },
-      {
        "number": 4,
        "stem": "Do they have ______ coffee here? Caffeine keeps me awake at night.",
        "answers": [
         "decaf"
        ],
-       "options": [
-        "cappuccino 3 croissants",
-        "milkshake 6 smoothie",
-        "vegetarian"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "We’ve got three kinds of ______ : strawberry, vanilla and chocolate.",
-       "answers": [
-        "milkshake 6 smoothie"
-       ],
-       "options": [
-        "cappuccino 3 croissants",
-        "decaf",
-        "vegetarian"
-       ]
+       "options": []
       },
       {
        "number": 7,
@@ -19648,11 +19231,7 @@
        "answers": [
         "vegetarian"
        ],
-       "options": [
-        "cappuccino 3 croissants",
-        "decaf",
-        "milkshake 6 smoothie"
-       ]
+       "options": []
       }
      ]
     },
@@ -19660,32 +19239,7 @@
      "number": 3,
      "instructions": "Match the sentence beginnings on the left with the best endings on the right.",
      "body": "Match the sentence beginnings on the left with the best endings on the right.\n       1 What size:           b         a heated up?\n       2 Is it to have in               b regular or large?\n       3 Would you like it              c that baguette?\n       4 What’s in                      d the napkins?\n       5 Where are                      e or to take away?",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Is it to have in ______ b regular or large?",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Would you like it ______ c that baguette?",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "What’s in ______ d the napkins?",
-       "answers": [
-        "c 5d"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -19754,7 +19308,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 2,
    "vocabulary_count": 29,
    "gloss_count": 1
   },
@@ -20314,46 +19868,7 @@
      "number": 2,
      "instructions": "Match the words on the left with the words on the right.",
      "body": "Match the words on the left with the words on the right.\n       1 sun           d          a shade\n       2 wind                     b sea\n       3 seaside                  c surfing\n       4 sit in the               d tan\n       5 sandy                    e resort\n       6 rough                    f beach",
-     "items": [
-      {
-       "number": 2,
-       "stem": "wind ______ b sea",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "seaside ______ c surfing",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "a 5f",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "sit in the ______ d tan",
-       "answers": [
-        "a 5f"
-       ],
-       "options": [
-        "c",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "rough ______ f beach",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -20377,16 +19892,7 @@
      "number": 6,
      "instructions": "Over to you",
      "body": "Over to you\n         Answer the questions. If possible, ask someone else the same questions.\n         1 Do you ever spend time at seaside resorts? Where do you go, and how often?\n         2 Do you enjoy any of the beach activities on the opposite page? Which ones?\n         3 Do you like sunbathing? Why? / Why not?\n         4 Do you get a suntan easily? Have you ever had sunburn? Do you often use sunscreen?\n         5 What do you like to do in the evening after a day on the beach?\n\n\n                                           English Vocabulary in Use Pre-intermediate and Intermediate         109",
-     "items": [
-      {
-       "number": 5,
-       "stem": "What do you like to do in the evening after a day on the beach? English Vocabulary in Use Pre-intermediate and Intermediate ______ 109",
-       "answers": [
-        "I like to go for a drink and then have a meal"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -20440,7 +19946,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 43,
    "gloss_count": 8
   },
@@ -20756,26 +20262,12 @@
      "body": "Complete the dialogues.\n        1 A: Have you heard of ‘Radio Five Live’?\n          B: Yes, it’s a very popular station           .\n        2 A: Is the magazine published every day?\n          B: No, it                   monthly.\n        3 A: Is it a national paper?\n          B: No, it’s a                   paper for the south-west.\n        4 A: Can we watch the news now?\n          B: Yes, it’s on                   Four.\n        5 A: Are they mostly famous people?\n          B: Yes, they’re all                  .",
      "items": [
       {
-       "number": 2,
-       "stem": "A: Is the magazine published every day? B: No, it ______ monthly.",
-       "answers": [
-        "comes out /is published 4 Channel"
-       ],
-       "options": [
-        "regional",
-        "celebrities /well-known"
-       ]
-      },
-      {
        "number": 3,
        "stem": "A: Is it a national paper? B: No, it’s a ______ paper for the south-west.",
        "answers": [
         "regional"
        ],
-       "options": [
-        "comes out /is published 4 Channel",
-        "celebrities /well-known"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -20783,10 +20275,7 @@
        "answers": [
         "celebrities /well-known"
        ],
-       "options": [
-        "comes out /is published 4 Channel",
-        "regional"
-       ]
+       "options": []
       }
      ]
     },
@@ -20871,7 +20360,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 2,
    "vocabulary_count": 45,
    "gloss_count": 19
   },
@@ -21884,16 +21373,7 @@
      "number": 4,
      "instructions": "Over to you",
      "body": "Over to you\n         Answer the questions. If possible, ask someone else the same questions.\n         1 Do you go on the Internet? If so, what are your favourite websites?\n         2 Do you have a blog or read other people’s? Whose blog do you read?\n         3 Do you download material from the Internet? What do you download?\n         4 Do you watch video clips on the Internet? What video clips do you watch?\n         5 Do you use social networking sites or instant messaging? Which websites do you use?\n           Who do you talk to?\n\n\n\n\n                                           English Vocabulary in Use Pre-intermediate and Intermediate         117",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Do you use social networking sites or instant messaging? Which websites do you use? Who do you talk to? English Vocabulary in Use Pre-intermediate and Intermediate ______ 117",
-       "answers": [
-        "I don’t use social networking sites at all"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -21945,7 +21425,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 39,
    "gloss_count": 19
   },
@@ -22824,47 +22304,7 @@
        "answers": [
         "create"
        ],
-       "options": [
-        "environment 3 result",
-        "destroy 4 effects",
-        "efficient 5 flood"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "The ______ is the air, land and water around us.",
-       "answers": [
-        "environment 3 result"
-       ],
-       "options": [
-        "create",
-        "destroy 4 effects",
-        "efficient 5 flood"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "If you ______ something, it is so badly damaged, it cannot be used again.",
-       "answers": [
-        "destroy 4 effects"
-       ],
-       "options": [
-        "create",
-        "environment 3 result",
-        "efficient 5 flood"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "If something is ______ , it works well and doesn’t waste energy.",
-       "answers": [
-        "efficient 5 flood"
-       ],
-       "options": [
-        "create",
-        "environment 3 result",
-        "destroy 4 effects"
-       ]
+       "options": []
       }
      ]
     },
@@ -22932,7 +22372,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 22,
    "gloss_count": 2
   },
@@ -23523,16 +22963,7 @@
      "number": 4,
      "instructions": "Test your general knowledge. Can you complete these sentences with the correct number",
      "body": "Test your general knowledge. Can you complete these sentences with the correct number\n       or period of time?\n       1 Michael Jackson died in 2009               .\n       2 The Olympic Games usually last about a                      .\n       3 Picasso was born in the                  th century, and died in the                th century.\n       4 President Kennedy died in                     . That’s over                years ago.\n       5 It takes approximately                   hours to fly from London to New York.\n       6 The best athletes can run 100 metres in less than                    seconds.\n       7 The                   was the decade in which the USA and USSR were trying to be the first\n         country to put a man on the moon.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "The Olympic Games usually last about a ______ .",
-       "answers": [
-        "fortnight 4 1963; 50 6 10"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -23545,10 +22976,7 @@
        "answers": [
         "It takes me half an hour to get to work"
        ],
-       "options": [
-        "I saw my cousin Rafa the other day",
-        "One day I hope to be a very successful architect"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -23556,21 +22984,7 @@
        "answers": [
         "I saw my cousin Rafa the other day"
        ],
-       "options": [
-        "It takes me half an hour to get to work",
-        "One day I hope to be a very successful architect"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "One day I hope English Vocabulary in Use Pre-intermediate and Intermediate ______ 127",
-       "answers": [
-        "One day I hope to be a very successful architect"
-       ],
-       "options": [
-        "It takes me half an hour to get to work",
-        "I saw my cousin Rafa the other day"
-       ]
+       "options": []
       }
      ]
     }
@@ -23645,7 +23059,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 7,
    "vocabulary_count": 34,
    "gloss_count": 18
   },
@@ -24914,16 +24328,7 @@
      "number": 5,
      "instructions": "Cross out the wrong answer.",
      "body": "Cross out the wrong answer.\n       1 Could you get a carton of milk / juice / coffee?\n       2 I bought a bunch of grapes / bananas / apples.\n       3 There were a couple of / a pair of / several people waiting at the bus stop.\n       4 Would you like a slice of cake / bread / biscuit?\n       5 It’s nice with a spoonful of sugar / jam / crisps.\n       6 I bought two pairs of socks / shirts / jeans.\n       7 Have you got a piece / bunch / sheet of paper I could borrow?\n\n                                           English Vocabulary in Use Pre-intermediate and Intermediate                   135",
-     "items": [
-      {
-       "number": 7,
-       "stem": "Have you got a piece / bunch / sheet of paper I could borrow? English Vocabulary in Use Pre-intermediate and Intermediate ______ 135",
-       "answers": [
-        "bunch"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -24972,7 +24377,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 40,
    "gloss_count": 6
   },
@@ -25404,40 +24809,7 @@
      "number": 2,
      "instructions": "Match 1–6 with a–f.",
      "body": "Match 1–6 with a–f.\n       1 Could you close the door?                    c            a a suggestion\n       2 May I close the window?                                   b a negative reply\n       3 We could go to the cinema.                                c a request\n       4 Yeah, great idea.                                         d asking for permission\n       5 I wonder if you could close the door?                     e a positive reply\n       6 I don’t fancy that.                                       f a polite request",
-     "items": [
-      {
-       "number": 2,
-       "stem": "May I close the window? ______ b a negative reply",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "We could go to the cinema. ______ c a request",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "Yeah, great idea. ______ d asking for permission",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "I wonder if you could close the door? ______ e a positive reply",
-       "answers": [
-        "f 6b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -25449,16 +24821,7 @@
      "number": 4,
      "instructions": "Reply to the questions. Try to give a different answer each time.",
      "body": "Reply to the questions. Try to give a different answer each time.\n       1 Could I borrow your pen for a minute? Yes, sure.\n       2 Could you possibly post a letter for me?\n       3 I was wondering if you’ve got a suitcase you could lend me?\n       4 Do you mind if I take this chair?\n       5 I’ve got some tickets for a concert. Do you fancy going?\n       6 How about going to a football match at the weekend?\n       7 Why don’t we meet this afternoon and practise our English?\n\n\n\n\n                                            English Vocabulary in Use Pre-intermediate and Intermediate   139",
-     "items": [
-      {
-       "number": 7,
-       "stem": "Why don’t we meet this afternoon and practise our English? English Vocabulary in Use Pre-intermediate and Intermediate ______ 139",
-       "answers": [
-        "I’d rather go out somewhere. OR Yes, if you like"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -25515,7 +24878,7 @@
      "anchor": ""
     }
    ],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 32,
    "gloss_count": 3
   },
@@ -26344,14 +25707,6 @@
      "body": "Complete the dialogues.\n       1 A: How are you?\n         B: Fine. How about            you?\n       2 A: How’s it                 ?\n         B: Not                 . And you?\n       3 A: Have a nice weekend.\n         B: Yeah,                 you.\n       4 A: Nobody was hurt in the accident.\n         B: Oh,                          for that.\n       5 A: I’ll see you tomorrow.\n         B: Yeah,                  care.\n       6 A: I’ve just passed my exam.\n         B:                      !\n       7 A: I’m fine, thanks.\n         B: Good. And                            Sarah?",
      "items": [
       {
-       "number": 4,
-       "stem": "A: Nobody was hurt in the accident. B: Oh, ______ for that.",
-       "answers": [
-        "thank goodness 3 same to"
-       ],
-       "options": []
-      },
-      {
        "number": 5,
        "stem": "A: I’ll see you tomorrow. B: Yeah, ______ care.",
        "answers": [
@@ -26451,7 +25806,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 3,
    "vocabulary_count": 34,
    "gloss_count": 3
   },
@@ -27404,62 +26759,7 @@
      "number": 2,
      "instructions": "Match the words on the left with the words on the right.",
      "body": "Match the words on the left with the words on the right.\n       1 a national          d           a injection\n       2 a useful                        b mistake\n       3 a painful                       c price\n       4 fashionable                     d holiday\n       5 a careless                      e man\n       6 an electrical                   f bit of advice\n       7 an unsociable                   g clothes\n       8 a reasonable                    h fault",
-     "items": [
-      {
-       "number": 2,
-       "stem": "a useful ______ b mistake",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "g 5b",
-        "h",
-        "e 8c"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "a painful ______ c price",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g 5b",
-        "h",
-        "e 8c"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "fashionable ______ d holiday",
-       "answers": [
-        "g 5b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "an electrical ______ f bit of advice",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "g 5b",
-        "e 8c"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "an unsociable ______ g clothes",
-       "answers": [
-        "e 8c"
-       ],
-       "options": [
-        "f",
-        "g 5b"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -27553,7 +26853,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 34,
    "gloss_count": 11
   },
@@ -28819,16 +28119,7 @@
      "number": 4,
      "instructions": "Where could you add the phrases in the box to the dialogues below?",
      "body": "Where could you add the phrases in the box to the dialogues below?\n\n        you know I couldn’t believe my eyes            kind of in that case\n        that sort of thing you must be joking          why not\n\n       1 A: What did you say to him?\n         B: Well, it was quite difficult. you know\n       2 A: What colour was it?\n         B: Blue.\n       3 A: He’s not coming this evening, so you won’t be able to ask him.\n         B: Well, I’ll phone him and ask him.\n       4 A: Jerry says we’ll have to walk all the way to the campsite.\n         B: That’s ten miles!\n       5 A: Do you want to get a takeaway?\n         B: Yeah.\n       6 A: What do they sell?\n         B: Oh, burgers, pizzas, …\n       7 A: Did you see Chloe wearing those high-heeled shoes?\n         B: Yes.\n\n\n                                           English Vocabulary in Use Pre-intermediate and Intermediate   159",
-     "items": [
-      {
-       "number": 7,
-       "stem": "A: Did you see Chloe wearing those high-heeled shoes? B: Yes. English Vocabulary in Use Pre-intermediate and Intermediate ______ 159",
-       "answers": [
-        "Yes. I couldn’t believe my eyes"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -28872,7 +28163,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 39,
    "gloss_count": 19
   },
@@ -30125,7 +29416,16 @@
      "number": 3,
      "instructions": "Write a sentence to describe what is happening or what has happened in the pictures.",
      "body": "Write a sentence to describe what is happening or what has happened in the pictures.\n\n\n\n\n       1   He’s putting on his jacket.    3                                    5\n\n\n\n\n       2                                  4                                    6",
-     "items": []
+     "items": [
+      {
+       "number": 1,
+       "stem": "He’s putting on his jacket. ______ 3",
+       "answers": [
+        "ALSO: He’s putting his jacket on"
+       ],
+       "options": []
+      }
+     ]
     },
     {
      "number": 4,
@@ -30263,7 +29563,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 6,
    "vocabulary_count": 31,
    "gloss_count": 11
   },
@@ -30507,45 +29807,12 @@
      "body": "Complete the sentences.\n        1 Someone took                  my coat. It was here a minute ago and now it’s gone.\n        2 I’m tired of writing this report. I'm going to                   a break for ten minutes.\n        3 We                     friends with Andrés when we were in the same class last year.\n        4 I’ve                    nothing today.\n        5 If they offered him a job with more money, why didn’t he                        it?\n        6 Could you take a                      at my essay? I think there are lots of mistakes in it.\n        7 When he shouted out the wrong answer, it                        him look stupid.\n        8 What size do you                      ?\n        9 I’m putting on weight because I don’t                       enough exercise.\n       10 I’ve                    up my mind. I’m going to go to Thailand for my holiday.",
      "items": [
       {
-       "number": 2,
-       "stem": "I’m tired of writing this report. I'm going to ______ a break for ten minutes.",
-       "answers": [
-        "take"
-       ],
-       "options": [
-        "look 4 done",
-        "made"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "If they offered him a job with more money, why didn’t he ______ it?",
-       "answers": [
-        "take 3 made"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "Could you take a ______ at my essay? I think there are lots of mistakes in it.",
-       "answers": [
-        "look 4 done"
-       ],
-       "options": [
-        "take 3 made",
-        "made"
-       ]
-      },
-      {
        "number": 7,
        "stem": "When he shouted out the wrong answer, it ______ him look stupid.",
        "answers": [
         "made"
        ],
-       "options": [
-        "take",
-        "look 4 done"
-       ]
+       "options": []
       }
      ]
     },
@@ -30618,7 +29885,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 44,
    "gloss_count": 0
   },
@@ -31125,14 +30392,6 @@
        "options": []
       },
       {
-       "number": 4,
-       "stem": "A: It’s ______ . B: Yes, it is. I’ll put the lights on.",
-       "answers": [
-        "getting dark 3 getting hot"
-       ],
-       "options": []
-      },
-      {
        "number": 5,
        "stem": "A: It’s ______ . B: Yes, it is. I think I’ll go to bed.",
        "answers": [
@@ -31215,7 +30474,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 2,
    "vocabulary_count": 19,
    "gloss_count": 12
   },
@@ -31444,47 +30703,7 @@
        "answers": [
         "(out) for a picnic"
        ],
-       "options": [
-        "swimming 3 (out) for a drink/meal",
-        "(out) for a 4 sightseeing",
-        "clubbing 5 (out) for a drive"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "The pool is at the end of the road, so we often go ______ .",
-       "answers": [
-        "swimming 3 (out) for a drink/meal"
-       ],
-       "options": [
-        "(out) for a picnic",
-        "(out) for a 4 sightseeing",
-        "clubbing 5 (out) for a drive"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "I’m just going to take the dog ______ .",
-       "answers": [
-        "(out) for a 4 sightseeing"
-       ],
-       "options": [
-        "(out) for a picnic",
-        "swimming 3 (out) for a drink/meal",
-        "clubbing 5 (out) for a drive"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "We went ______ last night and didn’t get home until three this morning.",
-       "answers": [
-        "clubbing 5 (out) for a drive"
-       ],
-       "options": [
-        "(out) for a picnic",
-        "swimming 3 (out) for a drink/meal",
-        "(out) for a 4 sightseeing"
-       ]
+       "options": []
       },
       {
        "number": 9,
@@ -31492,11 +30711,7 @@
        "answers": [
         "(out) for a"
        ],
-       "options": [
-        "(out) for a picnic",
-        "swimming 3 (out) for a drink/meal",
-        "(out) for a 4 sightseeing"
-       ]
+       "options": []
       }
      ]
     },
@@ -31516,14 +30731,6 @@
        "stem": "A: Can’t he see very well? B: No, I’m afraid he’s ______ .",
        "answers": [
         "going blind"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "A: I imagine your parents were angry that you had a party when they were away. B: They were. My dad ______ .",
-       "answers": [
-        "went mad 3 going (very) well"
        ],
        "options": []
       },
@@ -31598,7 +30805,7 @@
      "anchor": "in June."
     }
    ],
-   "item_count": 8,
+   "item_count": 4,
    "vocabulary_count": 33,
    "gloss_count": 17
   },
@@ -33080,16 +32287,7 @@
      "number": 4,
      "instructions": "Write an adjective to describe how the people felt in these situations.",
      "body": "Write an adjective to describe how the people felt in these situations.\n       1 They walked ten miles, then spent the afternoon cutting down trees. exhausted\n       2 From the description on the travel website, they expected a beautiful big villa by the sea. In actual\n         fact it was quite small, not very nice, and miles from the beach.\n       3 I arrived in jeans, but everyone else was wearing very formal clothes.\n       4 One person told them the street was on the left, another told them to turn right, and a third\n         person said they had to go back to the station.\n       5 My brother has a flat and it’s usually in a terrible mess – he’s very untidy. But yesterday when\n         I visited him, the place was incredibly tidy. In fact, everything looked new.\n       6 I got my results yesterday and I passed every exam with a grade A.\n\n                                            English Vocabulary in Use Pre-intermediate and Intermediate     185",
-     "items": [
-      {
-       "number": 6,
-       "stem": "I got my results yesterday and I passed every exam with a grade A. English Vocabulary in Use Pre-intermediate and Intermediate ______ 185",
-       "answers": [
-        "delighted"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -33133,7 +32331,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 32,
    "gloss_count": 17
   },
@@ -34067,51 +33265,7 @@
         "In spite of",
         "Despite; still"
        ],
-       "options": [
-        "as well",
-        "though 4 although",
-        "yet; still 5 In addition to"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "She’s the youngest in the group, and she’s better than most of them ______ .",
-       "answers": [
-        "as well",
-        "too 3 However"
-       ],
-       "options": [
-        "In spite of",
-        "though 4 although",
-        "yet; still 5 In addition to"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "I think you can do it. It won’t be easy, ______ .",
-       "answers": [
-        "though 4 although",
-        "even though"
-       ],
-       "options": [
-        "In spite of",
-        "as well",
-        "yet; still 5 In addition to"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I was right at the back at the concert, ______ I could hear everything.",
-       "answers": [
-        "yet; still 5 In addition to",
-        "As well as",
-        "Besides"
-       ],
-       "options": [
-        "In spite of",
-        "as well",
-        "though 4 although"
-       ]
+       "options": []
       }
      ]
     },
@@ -34184,7 +33338,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 10,
    "gloss_count": 0
   },
@@ -35015,62 +34169,7 @@
      "number": 3,
      "instructions": "Match the words on the left with the information on the right.",
      "body": "Match the words on the left with the information on the right.\n       1 personal details     c        a I would like to become a radio producer.\n       2 education                     b Trainee at Northern Radio Station, Jan–June 2007\n       3 qualifications                c Leona Phillips, 18 Mansion Road, Beckington BE2 3RJ\n       4 work experience               d I direct plays for a theatre group, and help with a children’s charity.\n       5 career aims                   e letter from Mr J. Tobin BA, MA (University tutor)\n       6 interests                     f BA Honours degree in Media Studies\n       7 references                    g Kent University 2007–2010, Ainslie Grammar School 1999–2006",
-     "items": [
-      {
-       "number": 2,
-       "stem": "education ______ b Trainee at Northern Radio Station, Jan–June 2007",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "qualifications ______ c Leona Phillips, 18 Mansion Road, Beckington BE2 3RJ",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "work experience ______ d I direct plays for a theatre group, and help with a children’s charity.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "career aims ______ e letter from Mr J. Tobin BA, MA (University tutor)",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "d"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "interests ______ f BA Honours degree in Media Studies",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 7,
-       "stem": "references ______ g Kent University 2007–2010, Ainslie Grammar School 1999–2006",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "b",
-        "d"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -35158,7 +34257,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 36,
    "gloss_count": 13
   },
@@ -35410,40 +34509,7 @@
      "number": 1,
      "instructions": "Match the definitions on the left with the examples on the right.",
      "body": "Match the definitions on the left with the examples on the right.\n       1 expressing a point of view                     c   a Canada has a smaller population than the USA.\n       2 making a comparison                                b People tend to retire at a later age.\n       3 describing the result of something                 c Some people believe we should never go to war.\n       4 showing both sides of an argument                  d Animals die because we’re cutting down the forest.\n       5 making a generalisation                            e Television can make children lazy. However, there\n                                                              are many programmes with real educational value.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "making a comparison ______ b People tend to retire at a later age.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "describing the result of something ______ c Some people believe we should never go to war.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "showing both sides of an argument ______ d Animals die because we’re cutting down the forest.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "making a generalisation ______ e Television can make children lazy. However, there are many programmes with real educational value.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -35548,7 +34614,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 0,
    "vocabulary_count": 38,
    "gloss_count": 8
   },
@@ -36007,46 +35073,7 @@
        "answers": [
         "Do you fancy going?"
        ],
-       "options": [
-        "Jamie is a laugh. 4 It looks new, but in fact it isn’t",
-        "Let’s get together for lunch. 5 I’ll let you know as soon as possible",
-        "It’s ages since I wrote"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I’m going three weeks from now. ______ IN",
-       "answers": [
-        "I’m going in three weeks’ time. 3 I’ll be/get in touch soon"
-       ],
-       "options": [
-        "Jamie is a laugh. 4 It looks new, but in fact it isn’t",
-        "It’s ages since I wrote"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Jamie is very funny. ______ LAUGH",
-       "answers": [
-        "Jamie is a laugh. 4 It looks new, but in fact it isn’t"
-       ],
-       "options": [
-        "Do you fancy going?",
-        "I’m going in three weeks’ time. 3 I’ll be/get in touch soon",
-        "Let’s get together for lunch. 5 I’ll let you know as soon as possible"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "Let’s meet for lunch. ______ GET",
-       "answers": [
-        "Let’s get together for lunch. 5 I’ll let you know as soon as possible"
-       ],
-       "options": [
-        "Do you fancy going?",
-        "Jamie is a laugh. 4 It looks new, but in fact it isn’t",
-        "It’s ages since I wrote"
-       ]
+       "options": []
       },
       {
        "number": 9,
@@ -36054,11 +35081,7 @@
        "answers": [
         "It’s ages since I wrote"
        ],
-       "options": [
-        "Do you fancy going?",
-        "I’m going in three weeks’ time. 3 I’ll be/get in touch soon",
-        "Jamie is a laugh. 4 It looks new, but in fact it isn’t"
-       ]
+       "options": []
       }
      ]
     },
@@ -36110,7 +35133,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 2,
    "vocabulary_count": 25,
    "gloss_count": 0
   },

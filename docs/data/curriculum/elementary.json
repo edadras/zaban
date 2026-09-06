@@ -3943,46 +3943,7 @@
        "answers": [
         "is"
        ],
-       "options": [
-        "were; are 2 is wearing",
-        "are 4 is; are",
-        "is wearing"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "Last year Harry’s trousers ______ white. Now they",
-       "answers": [
-        "were; are 2 is wearing"
-       ],
-       "options": [
-        "is",
-        "are 4 is; are"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "My favourite pyjamas ______ dark green.",
-       "answers": [
-        "are 4 is; are"
-       ],
-       "options": [
-        "is",
-        "were; are 2 is wearing",
-        "is wearing"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "Kim ______ a new pair of shorts.",
-       "answers": [
-        "is wearing",
-        "has"
-       ],
-       "options": [
-        "is",
-        "are 4 is; are"
-       ]
+       "options": []
       }
      ]
     },
@@ -4064,7 +4025,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 3,
    "vocabulary_count": 45,
    "gloss_count": 1
   },
@@ -4306,15 +4267,6 @@
         "tall"
        ],
        "options": []
-      },
-      {
-       "number": 6,
-       "stem": "If I eat too much I’ll be ______ .",
-       "answers": [
-        "fat",
-        "overweight 4 fair"
-       ],
-       "options": []
       }
      ]
     },
@@ -4405,7 +4357,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 2,
+   "item_count": 1,
    "vocabulary_count": 40,
    "gloss_count": 6
   },
@@ -4605,17 +4557,7 @@
      "number": 4,
      "instructions": "Answer these questions. Use a dictionary to help you.",
      "body": "Answer these questions. Use a dictionary to help you.\n      1 Do you have a healthy diet?\n      2 What exercise do you do?\n      3 Do you often feel stressed?\n      4 Have you ever been in hospital?\n      5 Do you get hay fever in summer?\n\n\n\n\n                                                                  English Vocabulary in Use Elementary   19",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Do you get hay fever in summer? English Vocabulary in Use Elementary ______ 19",
-       "answers": [
-        "Yes, I start sneezing as soon as I get near flowers",
-        "grass"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -4691,7 +4633,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 2,
+   "item_count": 1,
    "vocabulary_count": 26,
    "gloss_count": 1
   },
@@ -8256,51 +8198,7 @@
      "number": 1,
      "instructions": "Match the words from A and B with the examples on the right.",
      "body": "Match the words from A and B with the examples on the right.\n       1 size                        a MR12 6QA\n       2 price                       b MasterCard\n       3 delivery address            c 8167990012\n       4 post code                   d small\n       5 credit card                 e £12.89\n       6 order number                f 7 Park Lane, Bristol",
-     "items": [
-      {
-       "number": 2,
-       "stem": "price ______ b MasterCard",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "delivery address ______ c 8167990012",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "post code ______ d small",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "credit card ______ e £12.89",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "order number ______ f 7 Park Lane, Bristol",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -8381,7 +8279,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 10,
    "gloss_count": 0
   },
@@ -8600,82 +8498,7 @@
      "number": 2,
      "instructions": "Match what you want on the left with what you need on the right.",
      "body": "Match what you want on the left with what you need on the right.\n       You want:                                    You need:\n       1 to have a drink in your room               a the lift\n       2 to go to the top floor                     b an outside line\n       3 to open your door                          c a shower\n       4 to get up at 6 am                          d a mini-bar\n       5 to phone your country                      e a hairdryer\n       6 to watch the news                          f a wake-up call\n       7 to wash your hair                          g a TV\n       8 to dry your hair                           h a key",
-     "items": [
-      {
-       "number": 2,
-       "stem": "to go to the top floor ______ b an outside line",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "to open your door ______ c a shower",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "f",
-        "b",
-        "g"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "to get up at 6 am ______ d a mini-bar",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "h",
-        "c"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "to phone your country ______ e a hairdryer",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "f",
-        "g"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "to watch the news ______ f a wake-up call",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 7,
-       "stem": "to wash your hair ______ g a TV",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "f",
-        "b",
-        "e"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "to dry your hair ______ h a key",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "b",
-        "g"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -8750,7 +8573,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 0,
    "vocabulary_count": 38,
    "gloss_count": 5
   },
@@ -8980,17 +8803,7 @@
      "number": 6,
      "instructions": "Answer these questions.",
      "body": "Answer these questions.\n       1 What would you choose to eat from the menu opposite?\n       2 What can vegetarians eat from the menu?\n       3 Do you like eating out?\n       4 How often do you go to a restaurant?\n\n\n          Over to you\n          Sometimes restaurants in other countries have English menus for tourists. Look at one of these.\n          Write down any useful words you find.\n\n\n\n\n                                                                   English Vocabulary in Use Elementary     51",
-     "items": [
-      {
-       "number": 4,
-       "stem": "How often do you go to a restaurant? Over to you Sometimes restaurants in other countries have English menus for tourists. Look at one of these. Write down any useful words you find. English Vocabulary in Use Elementary ______ 51",
-       "answers": [
-        "I go to a restaurant two",
-        "three times a month"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -9052,7 +8865,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 3,
    "vocabulary_count": 29,
    "gloss_count": 2
   },
@@ -9278,16 +9091,7 @@
      "number": 4,
      "instructions": "Look at the different sports in this unit.",
      "body": "Look at the different sports in this unit.\n       1 Write the names of the sports you have done.\n       2 Where did you do them?\n       3 Which ones do you like?\n       4 Which do you not like?\n       5 Which ones would you like to do?\n\n           Over to you\n           Make a page in your vocabulary book for ‘sports’. Look at the sports pages of an English-language\n           newspaper. Write down the names of sports you do not know. Look them up in a dictionary.\n\n\n                                                                English Vocabulary in Use Elementary           53",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Which ones would you like to do? Over to you Make a page in your vocabulary book for ‘sports’. Look at the sports pages of an English-language newspaper. Write down the names of sports you do not know. Look them up in a dictionary. English Vocabulary in Use Elementary ______ 53",
-       "answers": [
-        "I’d like to go sailing. English Vocabulary in Use Elementary 139"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -9347,7 +9151,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 40,
    "gloss_count": 0
   },
@@ -10699,32 +10503,7 @@
        "answers": [
         "rains"
        ],
-       "options": [
-        "degrees 3 weather",
-        "cold 5 lightning"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "It is 24 ______ here today.",
-       "answers": [
-        "degrees 3 weather"
-       ],
-       "options": [
-        "rains",
-        "cold 5 lightning"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "It is very ______ in Siberia in winter.",
-       "answers": [
-        "cold 5 lightning"
-       ],
-       "options": [
-        "rains",
-        "degrees 3 weather"
-       ]
+       "options": []
       }
      ]
     },
@@ -10803,7 +10582,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 1,
    "vocabulary_count": 44,
    "gloss_count": 1
   },
@@ -11950,66 +11729,7 @@
      "number": 1,
      "instructions": "Match the words on the left with their definitions on the right.",
      "body": "Match the words on the left with their definitions on the right.\n       1 land                           a a place to eat on a train\n       2 direct                         b bags and suitcases\n       3 restaurant car                 c it says when trains depart and arrive\n       4 ship                           d you do not have to change to a different plane / train / bus\n       5 timetable                      e planes do this at airports\n       6 platform                       f it travels on water, e.g. the Titanic\n       7 luggage                        g where you stand when you are waiting for a train",
-     "items": [
-      {
-       "number": 2,
-       "stem": "direct ______ b bags and suitcases",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "restaurant car ______ c it says when trains depart and arrive",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "f",
-        "g",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "ship ______ d you do not have to change to a different plane / train / bus",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "timetable ______ e planes do this at airports",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "f",
-        "g"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "platform ______ f it travels on water, e.g. the Titanic",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "luggage ______ g where you stand when you are waiting for a train",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -12095,7 +11815,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 49,
    "gloss_count": 5
   },
@@ -12913,51 +12633,7 @@
      "number": 2,
      "instructions": "Match the left-hand column with the type of programme on the right.",
      "body": "Match the left-hand column with the type of programme on the right.\n       1 Talking about family problems                    a International news\n       2 Film of elephants in Africa                      b Sports programme\n       3 Football cup final                               c Reality TV programme\n       4 Reports from all over the world                  d Soap (opera)\n       5 Maria decides not to marry Philip                e Nature programme\n       6 Ten people in a house - they cannot              f Talk show\n         leave or talk to anyone outside",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Film of elephants in Africa ______ b Sports programme",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Football cup final ______ c Reality TV programme",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "Reports from all over the world ______ d Soap (opera)",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "b",
-        "c"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "Maria decides not to marry Philip ______ e Nature programme",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "Ten people in a house - they cannot ______ f Talk show leave or talk to anyone outside",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -12969,16 +12645,7 @@
      "number": 4,
      "instructions": "Answer these questions for yourself.",
      "body": "Answer these questions for yourself.\n       1 Do you read a morning or an evening newspaper?\n       2 Do you read newspapers online?\n       3 What kinds of magazine do you read?\n       4 What will you watch on TV tonight?\n       5 What is your favourite TV channel?\n       6 How many hours of TV do you watch every day?\n       7 What are your favourite kinds of TV programmes?\n       8 Do you ever watch TV online?\n       9 Do you like watching adverts on TV?\n\n          Over to you\n          Go to www.bbc.co.uk/learningenglish Listen to programmes and download podcasts that interest you.\n\n\n\n\n                                                               English Vocabulary in Use Elementary           77",
-     "items": [
-      {
-       "number": 9,
-       "stem": "Do you like watching adverts on TV? Over to you Go to www.bbc.co.uk/learningenglish Listen to programmes and download podcasts that interest you. English Vocabulary in Use Elementary ______ 77",
-       "answers": [
-        "No, I don’t like watching adverts on TV"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -13038,7 +12705,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 29,
    "gloss_count": 9
   },
@@ -15375,16 +15042,7 @@
      "number": 2,
      "instructions": "Complete these sentences using the correct form of get and a word from the box.",
      "body": "Complete these sentences using the correct form of get and a word from the box.\n\n        better light dark cold wet\n       1 The sun is going down. It ’s getting dark.\n       2 When the sun comes up it\n       3 She’s in hospital but she\n       4 It’s raining! I                                                         !\n       5 Please close the window. I",
-     "items": [
-      {
-       "number": 4,
-       "stem": "It’s raining! I ______ !",
-       "answers": [
-        "It’s raining! I’m getting wet! 3 She’s in hospital but she’s getting better"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -15450,16 +15108,7 @@
      "number": 5,
      "instructions": "Answer the questions. Write sentences.",
      "body": "Answer the questions. Write sentences.\n       1 In your country, how old are people usually when they get married?\n       2 When do people usually get married? Which day? Which month(s)?\n       3 What time do you usually get home every day? How do you get there?\n\n\n\n                                                                  English Vocabulary in Use Elementary            97",
-     "items": [
-      {
-       "number": 3,
-       "stem": "What time do you usually get home every day? How do you get there? English Vocabulary in Use Elementary ______ 97",
-       "answers": [
-        "I get home at about 5 o’clock. I get there by car"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -15516,7 +15165,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 4,
    "vocabulary_count": 11,
    "gloss_count": 5
   },
@@ -15666,84 +15315,7 @@
      "number": 1,
      "instructions": "Match a sentence on the left with a sentence on the right.",
      "body": "Match a sentence on the left with a sentence on the right.\n       1 It’s eight o’clock.                           a I’m going to turn it down.\n       2 We arrived at our station.                    b Please turn your music down.\n       3 That funny programme is on soon.              c It’s time to get up.\n       4 The bus arrived.                              d We got off the train.\n       5 I’m trying to work.                           e Put on your raincoat.\n       6 I can’t hear the news.                        f We got on.\n       7 It’s raining today.                           g Turn on the TV.\n       8 I don’t want to accept that job.              h Turn the radio up.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "We arrived at our station. ______ b Please turn your music down.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "g",
-        "f",
-        "h"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "That funny programme is on soon. ______ c It’s time to get up.",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "The bus arrived. ______ d We got off the train.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "I’m trying to work. ______ e Put on your raincoat.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "d",
-        "f",
-        "h"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I can’t hear the news. ______ f We got on.",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "It’s raining today. ______ g Turn on the TV.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I don’t want to accept that job. ______ h Turn the radio up.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "f"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -15814,16 +15386,7 @@
      "number": 4,
      "instructions": "Replace the underlined words with a phrasal verb from the opposite page.",
      "body": "Replace the underlined words with a phrasal verb from the opposite page.\n       1 The plane left at midnight. The plane took off at midnight.\n       2 I removed my hat and coat.\n       3 She continued writing novels all her life.\n       4 Michael left without saying goodbye to anybody.\n       5 I refused the invitation to Maya’s wedding.\n\n\n\n\n                                                                  English Vocabulary in Use Elementary           99",
-     "items": [
-      {
-       "number": 5,
-       "stem": "I refused the invitation to Maya’s wedding. English Vocabulary in Use Elementary ______ 99",
-       "answers": [
-        "turned down"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -15867,7 +15430,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 13,
+   "item_count": 5,
    "vocabulary_count": 23,
    "gloss_count": 6
   },
@@ -16813,16 +16376,7 @@
      "number": 5,
      "instructions": "Complete these sentences about yourself.",
      "body": "Complete these sentences about yourself.\n       1 I’m learning English because\n       2 I’ll learn more English if\n       3 I’m learning English and\n       4 I started learning English when\n       5 I can speak some English, so\n       6 I’ll learn more English but\n\n                                                                        English Vocabulary in Use Elementary                107",
-     "items": [
-      {
-       "number": 6,
-       "stem": "I’ll learn more English but English Vocabulary in Use Elementary ______ 107",
-       "answers": [
-        "I’ll learn more English but sometimes it’s difficult"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -16871,7 +16425,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 19,
    "gloss_count": 0
   },
@@ -18477,16 +18031,7 @@
      "number": 4,
      "instructions": "Correct the mistakes in these sentences.",
      "body": "Correct the mistakes in these sentences.\n       1 The news are not very good today. is\n       2 Where can I get some informations about your country?\n       3 Let me give you an advice.\n       4 Cook these spaghetti for ten minutes.\n       5 Can I have a bread, please?\n       6 We need to buy some new furnitures.\n       7 The east of the country usually has a better weather than the west.\n       8 I must find a new accommodation soon.\n\n          Over to you\n          Use a dictionary to check if these words are countable or uncountable\n          and make a note of them in your vocabulary notebook:\n          equipment\n          biscuit\n          homework\n          vehicle\n\n\n\n\n                                                                 English Vocabulary in Use Elementary   117",
-     "items": [
-      {
-       "number": 8,
-       "stem": "I must find a new accommodation soon. Over to you Use a dictionary to check if these words are countable or uncountable and make a note of them in your vocabulary notebook: equipment biscuit homework vehicle English Vocabulary in Use Elementary ______ 117",
-       "answers": [
-        "I must find some new accommodation soon"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -18538,7 +18083,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 7,
    "vocabulary_count": 30,
    "gloss_count": 1
   },
@@ -18700,43 +18245,7 @@
      "number": 3,
      "instructions": "Match the words on the left with an expression from the right.",
      "body": "Match the words on the left with an expression from the right.\n       1 Blue sky, sun 25°                                  a Wonderful news\n       2 Five stars (*****)                                 b Awful weather\n       3 I don’t want to walk. Let’s take a taxi.           c Lovely weather\n       4 90 out of 100 in an exam                           d A very good idea\n       5 (in summer) Grey sky, wind, rain, 4°               e An excellent hotel",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Five stars (*****) ______ b Awful weather",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "d",
-        "b English Vocabulary in Use Elementary 155"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "I don’t want to walk. Let’s take a taxi. ______ c Lovely weather",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "90 out of 100 in an exam ______ d A very good idea",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "(in summer) Grey sky, wind, rain, 4° ______ e An excellent hotel",
-       "answers": [
-        "b English Vocabulary in Use Elementary 155"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -18805,7 +18314,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 0,
    "vocabulary_count": 25,
    "gloss_count": 2
   },

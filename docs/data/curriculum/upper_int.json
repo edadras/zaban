@@ -5878,54 +5878,7 @@
      "number": 2,
      "instructions": "Match the countries with their world regions.",
      "body": "Match the countries with their world regions.\n      1 Sweden                           c                a the Middle East\n      2 Cambodia                                          b Southern Africa\n      3 Nicaragua                                         c Scandinavia\n      4 Tunisia                                           d East Asia\n      5 Saudi Arabia                                      e Central America\n      6 Botswana                                          f North Africa",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Cambodia ______ b Southern Africa",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Nicaragua ______ c Scandinavia",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "Tunisia ______ d East Asia",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Saudi Arabia ______ e Central America",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "Botswana ______ f North Africa",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "d",
-        "e"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -6011,7 +5964,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 50,
    "gloss_count": 0
   },
@@ -7133,51 +7086,7 @@
      "number": 1,
      "instructions": "Match the words on the left with their opposites on the right.",
      "body": "Match the words on the left with their opposites on the right.\n      1 clever                  f           a introverted\n      2 extroverted                         b tight-fisted\n      3 rude                                c courteous\n      4 cruel                               d gregarious\n      5 generous                            e kind-hearted\n      6 unsociable                          f dim",
-     "items": [
-      {
-       "number": 2,
-       "stem": "extroverted ______ b tight-fisted",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "rude ______ c courteous",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "a",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "cruel ______ d gregarious",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "generous ______ e kind-hearted",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "unsociable ______ f dim",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -7272,7 +7181,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 101,
    "gloss_count": 0
   },
@@ -8942,16 +8851,7 @@
      "number": 5,
      "instructions": "Which diseases are these? Try to do this from memory.",
      "body": "Which diseases are these? Try to do this from memory.\n       1 One that can be caused by a mosquito bite. malaria\n       2 One you can get by drinking infected water.\n       3 One you can get from an animal bite.\n       4 One caused by a virus which destroys the body’s immune system.\n\n\n\n\n                                                       English Vocabulary in Use Upper-intermediate          33",
-     "items": [
-      {
-       "number": 4,
-       "stem": "One caused by a virus which destroys the body’s immune system. English Vocabulary in Use Upper-intermediate ______ 33",
-       "answers": [
-        "AIDS"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -9017,7 +8917,7 @@
      "anchor": "bles] [too much rain] [no rain]"
     }
    ],
-   "item_count": 5,
+   "item_count": 4,
    "vocabulary_count": 42,
    "gloss_count": 15
   },
@@ -13190,48 +13090,7 @@
      "number": 4,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n       1 A large bough fell              d         a some herbs to put on our pizza.\n       2 We picked up                              b its feathers. It was beautiful.\n       3 The scientists grew                       c into the stream and swam away.\n       4 The peacock opened                        d from the tree during the storm.\n       5 A frog jumped                             e some apples that had dropped from the tree.\n       6 We picked                                 f a new type of tomato that was very big.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "We picked up ______ b its feathers. It was beautiful.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "The scientists grew ______ c into the stream and swam away.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "The peacock opened ______ d from the tree during the storm.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "A frog jumped ______ e some apples that had dropped from the tree.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "We picked ______ f a new type of tomato that was very big.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -13308,7 +13167,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 37,
    "gloss_count": 0
   },
@@ -14039,51 +13898,7 @@
      "number": 3,
      "instructions": "Match the sentences on the left with the ones on the right.",
      "body": "Match the sentences on the left with the ones on the right.\n       1 My shoulder is itching.              d a I’ve been working too much.\n       2 My head hurts.                           b I feel so cold.\n       3 I’m shivering.                           c I think I need to see a psychiatrist.\n       4 I’m trembling.                           d I can’t stop scratching it.\n       5 I’m really stressed and exhausted.       e I banged it as I walked through the low doorway.\n       6 I’m depressed.                           f I feel very nervous and scared.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "My head hurts. ______ b I feel so cold.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "I’m shivering. ______ c I think I need to see a psychiatrist.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "I’m trembling. ______ d I can’t stop scratching it.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "I’m really stressed and exhausted. ______ e I banged it as I walked through the low doorway.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "f",
-        "c"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I’m depressed. ______ f I feel very nervous and scared.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -14150,7 +13965,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 48,
    "gloss_count": 10
   },
@@ -14640,32 +14455,7 @@
      "number": 3,
      "instructions": "Verb-noun collocations. Match the sentence beginnings on the left with the endings on",
      "body": "Verb-noun collocations. Match the sentence beginnings on the left with the endings on\n       the right.\n       1 Certain foods can slow             d        a cholesterol.\n       2 Some foods can boost                        b the risk of heart disease.\n       3 Some foods can lower                        c the immune system.\n       4 Other foods can reduce                      d the ageing process.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Some foods can boost ______ b the risk of heart disease.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Some foods can lower ______ c the immune system.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "Other foods can reduce ______ d the ageing process.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -14743,7 +14533,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 41,
    "gloss_count": 0
   },
@@ -16208,47 +15998,7 @@
        "answers": [
         "blog"
        ],
-       "options": [
-        "links 3 access, down",
-        "virtual 4 Skype",
-        "interactive 5 subscribe 226 English Vocabulary in Use Upper-intermediate"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I like this website because it has lots of very useful ______ to all sorts of other sites that interest me.",
-       "answers": [
-        "links 3 access, down"
-       ],
-       "options": [
-        "blog",
-        "virtual 4 Skype",
-        "interactive 5 subscribe 226 English Vocabulary in Use Upper-intermediate"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "My brother loves online gaming, particularly ______ reality games.",
-       "answers": [
-        "virtual 4 Skype"
-       ],
-       "options": [
-        "blog",
-        "links 3 access, down",
-        "interactive 5 subscribe 226 English Vocabulary in Use Upper-intermediate"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "An ______ website is one which allows users to add comments to it or edit its content in some way.",
-       "answers": [
-        "interactive 5 subscribe 226 English Vocabulary in Use Upper-intermediate"
-       ],
-       "options": [
-        "blog",
-        "links 3 access, down",
-        "virtual 4 Skype"
-       ]
+       "options": []
       }
      ]
     },
@@ -16301,7 +16051,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 48,
    "gloss_count": 3
   },
@@ -17237,76 +16987,7 @@
      "number": 3,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n       1 The President appointed his uncle                     c          a over a Cabinet of Ministers.\n       2 The Prime Minister presides                                      b on the ballot paper.\n       3 In last year’s election I voted                                  c as a judge.\n       4 Lee says he would never want to stand                            d from in our constituency.\n       5 Put a cross beside the name you want                             e the seat in our constituency.\n       6 I haven’t decided yet how to cast                                f for the Green Party candidate.\n       7 I’m not keen on the candidate who won                            g for political office.\n       8 We had five candidates to choose                                 h my vote.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "The Prime Minister presides ______ b on the ballot paper.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "f",
-        "g"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "In last year’s election I voted ______ c as a judge.",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "b",
-        "h"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "Lee says he would never want to stand ______ d from in our constituency.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Put a cross beside the name you want ______ e the seat in our constituency.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "f",
-        "g"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I haven’t decided yet how to cast ______ f for the Green Party candidate.",
-       "answers": [
-        "h"
-       ],
-       "options": []
-      },
-      {
-       "number": 7,
-       "stem": "I’m not keen on the candidate who won ______ g for political office.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "We had five candidates to choose ______ h my vote.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "g",
-        "b"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -17370,7 +17051,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 0,
    "vocabulary_count": 60,
    "gloss_count": 0
   },
@@ -17866,51 +17547,7 @@
      "number": 1,
      "instructions": "Match the words on the left with the definitions on the right.",
      "body": "Match the words on the left with the definitions on the right.\n        1 interest                 e       a an account for money you don’t need immediately\n        2 mortgage                         b payment taken automatically from an account\n        3 overdraft                        c an account for day-to-day use\n        4 savings account                  d a loan to buy a house or flat\n        5 current account                  e money that is charged on a loan\n        6 direct debit                     f an account with a negative sum of money in it",
-     "items": [
-      {
-       "number": 2,
-       "stem": "mortgage ______ b payment taken automatically from an account",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "overdraft ______ c an account for day-to-day use",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "savings account ______ d a loan to buy a house or flat",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "current account ______ e money that is charged on a loan",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "direct debit ______ f an account with a negative sum of money in it",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -17980,7 +17617,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 35,
    "gloss_count": 0
   },
@@ -18187,16 +17824,7 @@
      "number": 4,
      "instructions": "Some words in this unit can be used to talk about abstract ideas as well as objects.",
      "body": "Some words in this unit can be used to talk about abstract ideas as well as objects.\n       Use your knowledge of these words to answer the questions.\n       1 If someone gives you a genuine smile, do they feel friendly or not particularly friendly\n         towards you? They feel friendly\n       2 Do you think a transparent argument is one that is easy or difficult to follow?\n       3 If a writer describes something vividly, is their writing effective?\n       4 If a person behaves in a stiff way, are they more likely to be relaxed or tense?\n       5 If the teacher says your work is ‘solid’, are you likely to be pleased or not?\n\n\n\n\n                                                            English Vocabulary in Use Upper-intermediate            89",
-     "items": [
-      {
-       "number": 5,
-       "stem": "If the teacher says your work is ‘solid’, are you likely to be pleased or not? English Vocabulary in Use Upper-intermediate ______ 89",
-       "answers": [
-        "You’d be pleased because the teacher is saying that it is of a good standard"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -18248,7 +17876,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 32,
    "gloss_count": 5
   },
@@ -18505,93 +18133,7 @@
      "number": 1,
      "instructions": "Match the sentence beginnings on the left with the endings on the right and add an",
      "body": "Match the sentence beginnings on the left with the endings on the right and add an\n       appropriate preposition. Sometimes more than one answer is possible.\n       1 I have strong views on                          c        a my opinion.\n       2 Many people believe                                      b the proposed changes.\n       3 I was in favour                                          c marriage.\n       4 What does she think                                      d the plans for the new airport?\n       5 This is absurd,                                          e life after death.\n       6 He’s quite wrong,                                        f how honest he is.\n       7 Well, that’s just silly,                                 g our point of view.\n       8 I have my doubts                                         h the new teacher?\n       9 Is Alex likely to be opposed                             i my mind.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Many people believe ______ b the proposed changes.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "a/g/i",
-        "f"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "I was in favour ______ c marriage.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "h",
-        "a/g/i",
-        "d"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "What does she think ______ d the plans for the new airport?",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "b",
-        "a/g/i"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "This is absurd, ______ e life after death.",
-       "answers": [
-        "a/g/i"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "He’s quite wrong, ______ f how honest he is.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "b",
-        "a/g/i",
-        "d"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Well, that’s just silly, ______ g our point of view.",
-       "answers": [
-        "a/g/i"
-       ],
-       "options": [
-        "b",
-        "d"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I have my doubts ______ h the new teacher?",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 9,
-       "stem": "Is Alex likely to be opposed ______ i my mind.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "h",
-        "a/g/i",
-        "f"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -18672,7 +18214,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 0,
    "vocabulary_count": 42,
    "gloss_count": 8
   },
@@ -19178,32 +18720,7 @@
      "number": 3,
      "instructions": "In each pair of sentences which person probably feels more strongly, a or b?",
      "body": "In each pair of sentences which person probably feels more strongly, a or b?\n       1 a He’s devoted to his sister.                           b He’s very fond of his sister.            a\n       2 a I dislike his poetry.                                 b I loathe his poetry.\n       3 a She’s yearning to see him.                            b She’s longing to see him.\n       4 a I’m not really looking forward to the exam.           b I’m absolutely dreading the exam.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "a I dislike his poetry. ______ b I loathe his poetry.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "a She’s yearning to see him. ______ b She’s longing to see him.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "a I’m not really looking forward to the exam. ______ b I’m absolutely dreading the exam.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -19267,7 +18784,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 0,
    "vocabulary_count": 24,
    "gloss_count": 0
   },
@@ -19462,49 +18979,7 @@
        "answers": [
         "whispered"
        ],
-       "options": [
-        "shrieked 3 shouted",
-        "screamed 4 stuttered",
-        "mumbling"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "‘Oh, that’s so, so funny!’ she ______ with laughter.",
-       "answers": [
-        "shrieked 3 shouted"
-       ],
-       "options": [
-        "whispered",
-        "screamed 4 stuttered",
-        "mumbling"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "‘There’s a spider!!!’ she ______ .",
-       "answers": [
-        "screamed 4 stuttered",
-        "stammered"
-       ],
-       "options": [
-        "whispered",
-        "shrieked 3 shouted",
-        "mumbling"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "‘Stop ______ ! I can’t hear what you’re saying,’ she said.",
-       "answers": [
-        "mumbling",
-        "muttering 5 muttered (or shouted, if he was very angry)"
-       ],
-       "options": [
-        "whispered",
-        "shrieked 3 shouted",
-        "screamed 4 stuttered"
-       ]
+       "options": []
       },
       {
        "number": 9,
@@ -19513,11 +18988,7 @@
         "murmured",
         "whispered"
        ],
-       "options": [
-        "shrieked 3 shouted",
-        "screamed 4 stuttered",
-        "mumbling"
-       ]
+       "options": []
       }
      ]
     },
@@ -19525,51 +18996,7 @@
      "number": 2,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n        1 He always maintained              d        a to cancel my parking permit.\n        2 He groaned                                 b not to leave, but I had to.\n        3 They threatened                            c on using recycled paper for everything.\n        4 She complained                             d that he could read people’s minds.\n        5 He begged me                               e that he needed a doctor immediately.\n        6 She insisted                               f about the noise coming from above.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "He groaned ______ b not to leave, but I had to.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "c"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "They threatened ______ c on using recycled paper for everything.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "She complained ______ d that he could read people’s minds.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "He begged me ______ e that he needed a doctor immediately.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "She insisted ______ f about the noise coming from above.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -19593,15 +19020,6 @@
        "stem": "What is the missing preposition? ‘Let’s be friends. I don’t want to argue ______ you.’",
        "answers": [
         "with"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "How might someone speak at a job interview if they were not very confident? English Vocabulary in Use Upper-intermediate ______ 97",
-       "answers": [
-        "nervously",
-        "shyly"
        ],
        "options": []
       }
@@ -19662,7 +19080,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 12,
+   "item_count": 3,
    "vocabulary_count": 37,
    "gloss_count": 0
   },
@@ -20378,16 +19796,7 @@
      "number": 5,
      "instructions": "Circle the correct word to complete the sentences.",
      "body": "Circle the correct word to complete the sentences.\n       1 We worked hard in the hot sun. Soon we were trembling / perspiring / shivering.\n       2 He seemed very amused. He was trembling / blushing / grinning.\n       3 She sucked / licked / bit the stamp and stuck it on the envelope.\n       4 I always find it difficult to swallow / suck / chew medicines.\n       5 It was so funny! I was just trembling / shaking / shivering with laughter!\n       6 The poor little animal was shivering / trembling / grinning with fear.\n       7 It was so hot and humid. Soon my shirt was soaked with perspire / perspiration / perspitation.\n\n\n\n\n                                                           English Vocabulary in Use Upper-intermediate              101",
-     "items": [
-      {
-       "number": 7,
-       "stem": "It was so hot and humid. Soon my shirt was soaked with perspire / perspiration / perspitation. English Vocabulary in Use Upper-intermediate ______ 101",
-       "answers": [
-        "perspiration"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -20452,7 +19861,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 51,
    "gloss_count": 0
   },
@@ -21071,54 +20480,7 @@
      "number": 1,
      "instructions": "Match the sentence beginnings on the left with the endings on the right to",
      "body": "Match the sentence beginnings on the left with the endings on the right to\n         1 Imogen was on                  c             a her chin up.\n         2 Michaela was in                              b a bear with a sore head.\n         3 Anna kept                                    c cloud nine.\n         4 Lily was as                                  d a bad mood.\n         5 Kathy was like                               e a wobbly.\n         6 Rosie threw                                  f happy as the day is long.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Michaela was in ______ b a bear with a sore head.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Anna kept ______ c cloud nine.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "Lily was as ______ d a bad mood.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Kathy was like ______ e a wobbly.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "d",
-        "f"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "Rosie threw ______ f happy as the day is long.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -21218,7 +20580,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 36,
    "gloss_count": 20
   },
@@ -21576,92 +20938,7 @@
      "number": 2,
      "instructions": "Match the sentence beginnings with the words on the right and add a preposition to",
      "body": "Match the sentence beginnings with the words on the right and add a preposition to\n       complete the sentence.\n       1 Ben decided he would immediately lay his cards.          on            c       a troubled waters.\n       2 The best thing to do is just to take the bull                                  b her life.\n       3 Fortunately we can now see the light at the end                                c the table.\n       4 It’ll take ages before we can get to the bottom                                d a dead end.\n       5 It’s asking for trouble to sweep things                                        e the horns.\n       6 You can always rely on Naomi to pour oil                                       f things.\n       7 At the moment my research seems to have come                                   g the tunnel.\n       8 Claire has now reached a turning point                                         h the carpet.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "The best thing to do is just to take the bull ______ b her life.",
-       "answers": [
-        "by e"
-       ],
-       "options": [
-        "of g",
-        "of f",
-        "under h"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "Fortunately we can now see the light at the end ______ c the table.",
-       "answers": [
-        "of g"
-       ],
-       "options": [
-        "by e",
-        "of f",
-        "under h"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "It’ll take ages before we can get to the bottom ______ d a dead end.",
-       "answers": [
-        "of f"
-       ],
-       "options": [
-        "by e",
-        "of g",
-        "under h"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "It’s asking for trouble to sweep things ______ e the horns.",
-       "answers": [
-        "under h"
-       ],
-       "options": [
-        "by e",
-        "of g",
-        "of f"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "You can always rely on Naomi to pour oil ______ f things.",
-       "answers": [
-        "on a"
-       ],
-       "options": [
-        "by e",
-        "of g",
-        "of f"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "At the moment my research seems to have come ______ g the tunnel.",
-       "answers": [
-        "to d"
-       ],
-       "options": [
-        "by e",
-        "of g",
-        "of f"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "Claire has now reached a turning point ______ h the carpet.",
-       "answers": [
-        "in b"
-       ],
-       "options": [
-        "by e",
-        "of g",
-        "of f"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -21675,18 +20952,10 @@
      "body": "Choose suitable idioms from C and D to fill the gaps.\n       1 Selim’s business has been going through hard times but he feels at last the tide has turned\n       2 No, please, don’t say anything: you’ll only\n       3 It’s been a long, hard struggle, but I think finally we can\n       4 The police are trying their best to                                 , but it’s still a real mystery at the\n         moment.\n       5 You’ve been messing around achieving nothing for too long; it’s time you                                          !\n       6 At last I’ve managed to get him to                                   ; he’s paid no attention at all to us\n         so far.\n       7 I found it hard to understand thermodynamics at first but I’m beginning to\n                                        it now.\n       8 I think I’ll just                               and let everyone else get on with sorting matters out.\n       9 I wish you and John wouldn’t argue so much. Can’t you                                           once and for all?\n\n\n\n\n                                                             English Vocabulary in Use Upper-intermediate               107",
      "items": [
       {
-       "number": 6,
-       "stem": "At last I’ve managed to get him to ______ ; he’s paid no attention at all to us so far.",
+       "number": 9,
+       "stem": "I wish you and John wouldn’t argue so much. Can’t you ______ once and for all? English",
        "answers": [
-        "sit up and take notice 3 see the light at the end of the tunnel"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "I think I’ll just ______ and let everyone else get on with sorting matters out.",
-       "answers": [
-        "take a back seat 5 got your act together"
+        "bury the hatchet"
        ],
        "options": []
       }
@@ -21750,7 +21019,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 14,
+   "item_count": 6,
    "vocabulary_count": 42,
    "gloss_count": 18
   },
@@ -22926,57 +22195,7 @@
      "number": 3,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n       1 The city’s spread a lot;                    c        a for miles along the river.\n       2 It takes ten weeks;                                  b you should broaden it.\n       3 We extended the house                                c it’s much bigger now.\n       4 You can choose;                                      d there’s a wide range.\n       5 Your experience is too narrow;                       e it’s a lengthy business.\n       6 The forest stretches                                 f to give us more room.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "It takes ten weeks; ______ b you should broaden it.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "We extended the house ______ c it’s much bigger now.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "You can choose; ______ d there’s a wide range.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "Your experience is too narrow; ______ e it’s a lengthy business.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "f",
-        "d"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "The forest stretches ______ f to give us more room.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -23028,14 +22247,6 @@
        "stem": "I saw you ______ the distance yesterday but didn’t call out as you were with someone.",
        "answers": [
         "in"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "She’s a great shot. She can hit an empty can ______ a distance of about 100 feet.",
-       "answers": [
-        "from (or possibly at)"
        ],
        "options": []
       }
@@ -23104,7 +22315,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 10,
+   "item_count": 4,
    "vocabulary_count": 39,
    "gloss_count": 9
   },
@@ -23299,48 +22510,7 @@
      "number": 1,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n       1 The club closed down                          e      a of repairs and redecoration.\n       2 People could not heat their homes                    b for university entry on the website.\n       3 Most people cannot do                                c because of the oil shortage.\n       4 There is a real need                                 d for better day care for young children.\n       5 There is a list of requirements                      e through lack of interest.\n       6 The whole house is in need                           f without a mobile phone these days.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "People could not heat their homes ______ b for university entry on the website.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Most people cannot do ______ c because of the oil shortage.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "There is a real need ______ d for better day care for young children.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "There is a list of requirements ______ e through lack of interest.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "The whole house is in need ______ f without a mobile phone these days.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -23416,7 +22586,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 25,
    "gloss_count": 13
   },
@@ -23661,48 +22831,7 @@
      "number": 4,
      "instructions": "Pair up the sentences on the left with the ones on the right so they make sense.",
      "body": "Pair up the sentences on the left with the ones on the right so they make sense.\n       1 I saw a beam of light coming towards me.                     b    a Then it died, leaving us in complete\n                                                                             darkness.\n       2 The jewels sparkled in the sunlight.                              b It was a police officer holding a flashlamp.\n       3 The candle began to flicker uncertainly.                          c But blacks and greys do suit her.\n       4 The first rays of the sun shone into the room.                    d I’d never seen such a beautiful bracelet.\n       5 She always wears rather sombre clothes.                           e As we got nearer we realised it was a\n                                                                             bush.\n       6 We could see a dim shape in the fog.                              f It was clearly time to get up.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "The jewels sparkled in the sunlight. ______ b It was a police officer holding a flashlamp.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "The candle began to flicker uncertainly. ______ c But blacks and greys do suit her.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "The first rays of the sun shone into the room. ______ d I’d never seen such a beautiful bracelet.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "She always wears rather sombre clothes. ______ e As we got nearer we realised it was a bush.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "We could see a dim shape in the fog. ______ f It was clearly time to get up.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -23773,7 +22902,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 10,
+   "item_count": 5,
    "vocabulary_count": 26,
    "gloss_count": 3
   },
@@ -24259,40 +23388,7 @@
      "number": 1,
      "instructions": "Pair up the sentences on the left with the ones on the right so they make sense.",
      "body": "Pair up the sentences on the left with the ones on the right so they make sense.\n       1 That tree was swaying back and forth                c         a It sails at dawn.\n         in the wind.\n       2 The cruise liner is leaving tomorrow.                         b It flows through the capital city.\n       3 A cat ran out in front of my car.                             c It was moving so much I thought it would break\n                                                                         altogether.\n       4 The most famous river in France is                            d It was travelling at 160 kph at the time.\n         the Seine.\n       5 A train came off the rails yesterday.                         e I had to swerve hard and nearly ended up in the\n                                                                         river.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "The cruise liner is leaving tomorrow. ______ b It flows through the capital city.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "A cat ran out in front of my car. ______ c It was moving so much I thought it would break altogether.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "The most famous river in France is ______ d It was travelling at 160 kph at the time. the Seine.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "A train came off the rails yesterday. ______ e I had to swerve hard and nearly ended up in the river.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -24433,7 +23529,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 4,
    "vocabulary_count": 25,
    "gloss_count": 10
   },
@@ -24586,51 +23682,7 @@
      "number": 3,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n       1 We walked through the jungle vegetation,              e        a which was hollow.\n       2 We found it inside an old tree,                                b which was absolutely solid.\n       3 We loved the new colour,                                       c which was as heavy as lead.\n       4 We examined the desert vegetation,                             d which was very vivid.\n       5 We tried to drill into the rock,                               e which was very dense.\n       6 We couldn’t lift the box,                                      f which was very sparse.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "We found it inside an old tree, ______ b which was absolutely solid.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "We loved the new colour, ______ c which was as heavy as lead.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "We examined the desert vegetation, ______ d which was very vivid.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "We tried to drill into the rock, ______ e which was very dense.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "We couldn’t lift the box, ______ f which was very sparse.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -24694,7 +23746,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 24,
    "gloss_count": 1
   },
@@ -24924,16 +23976,7 @@
      "number": 5,
      "instructions": "Over to you",
      "body": "Over to you\n          What would you do if …\n          1 you were having a lot of bother with your car?\n          2 you started a small business but it came to nothing?\n          3 you couldn’t cope with your English studies?\n\n\n                                                            English Vocabulary in Use Upper-intermediate                 127",
-     "items": [
-      {
-       "number": 3,
-       "stem": "you couldn’t cope with your English studies? English Vocabulary in Use Upper-intermediate ______ 127",
-       "answers": [
-        "Perhaps ask for help and advice from the teacher"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -24990,7 +24033,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 36,
    "gloss_count": 5
   },
@@ -25730,19 +24773,7 @@
        ],
        "options": [
         "of",
-        "in",
-        "to"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "That press article has given rise ______ a lot of criticism.",
-       "answers": [
-        "to"
-       ],
-       "options": [
-        "in",
-        "from"
+        "in"
        ]
       }
      ]
@@ -25803,7 +24834,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 3,
    "vocabulary_count": 39,
    "gloss_count": 1
   },
@@ -26476,48 +25507,7 @@
      "number": 1,
      "instructions": "Match the sentences on the left with a suitable label on the right.",
      "body": "Match the sentences on the left with a suitable label on the right.\n       1 The earth is in orbit around the sun.              c        a problem\n       2 It has proved to be most efficient.                         b evaluation\n       3 People are essentially good.                                c fact\n       4 I’ve run out of cash.                                       d belief\n       5 World poverty and overpopulation.                           e view\n       6 They should get married, to my mind.                        f issue",
-     "items": [
-      {
-       "number": 2,
-       "stem": "It has proved to be most efficient. ______ b evaluation",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "People are essentially good. ______ c fact",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "I’ve run out of cash. ______ d belief",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "World poverty and overpopulation. ______ e view",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "They should get married, to my mind. ______ f issue",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -26609,7 +25599,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 3,
    "vocabulary_count": 34,
    "gloss_count": 3
   },
@@ -27028,51 +26018,7 @@
      "number": 1,
      "instructions": "Match the linking words on the left with the appropriate function on the right.",
      "body": "Match the linking words on the left with the appropriate function on the right.\n       1 Leaving aside …                   c        a change the topic\n       2 In parenthesis, …                          b read something earlier in the text\n       3 Turning to …                               c this will not be discussed\n       4 In conclusion, …                           d this document is about another one\n       5 With reference to …                        e to finish off\n       6 See above …                                f as an aside / as a secondary issue",
-     "items": [
-      {
-       "number": 2,
-       "stem": "In parenthesis, … ______ b read something earlier in the text",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Turning to … ______ c this will not be discussed",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "In conclusion, … ______ d this document is about another one",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "With reference to … ______ e to finish off",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "a",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "See above … ______ f as an aside / as a secondary issue",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -27142,7 +26088,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 34,
    "gloss_count": 7
   },
@@ -27365,7 +26311,8 @@
        ],
        "options": [
         "winded",
-        "shop"
+        "shop",
+        "back"
        ]
       },
       {
@@ -27376,7 +26323,20 @@
        ],
        "options": [
         "winded",
-        "sense"
+        "sense",
+        "back"
+       ]
+      },
+      {
+       "number": 8,
+       "stem": "You should tell him what you think to his face rather than talking behind his ______ . English",
+       "answers": [
+        "back"
+       ],
+       "options": [
+        "winded",
+        "sense",
+        "shop"
        ]
       }
      ]
@@ -27431,7 +26391,7 @@
      "anchor": "saying."
     }
    ],
-   "item_count": 6,
+   "item_count": 7,
    "vocabulary_count": 21,
    "gloss_count": 8
   },
@@ -29495,115 +28455,7 @@
      "number": 2,
      "instructions": "Match the compound nouns on the left with the synonyms on the right.",
      "body": "Match the compound nouns on the left with the synonyms on the right.\n        1 breakdown                            e                 a result\n        2 break-up                                               b beginning\n        3 cutback                                                c production\n        4 drawback                                               d strike\n        5 feedback                                               e failure\n        6 outcome                                                f disadvantage\n        7 output                                                 g payment\n        8 outset                                                 h comments\n        9 walkout                                                i reduction\n       10 bailout                                                j collapse",
-     "items": [
-      {
-       "number": 2,
-       "stem": "break-up ______ b beginning",
-       "answers": [
-        "j"
-       ],
-       "options": [
-        "f",
-        "h",
-        "c"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "cutback ______ c production",
-       "answers": [
-        "i"
-       ],
-       "options": [
-        "j",
-        "f",
-        "h"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "drawback ______ d strike",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "j",
-        "h",
-        "g"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "feedback ______ e failure",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "j",
-        "g"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "outcome ______ f disadvantage",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "j",
-        "h",
-        "b"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "output ______ g payment",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "j",
-        "i",
-        "f"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "outset ______ h comments",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "j",
-        "i",
-        "f"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "walkout ______ i reduction",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "j",
-        "f",
-        "h"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "bailout ______ j collapse",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "f",
-        "h",
-        "d"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -29694,7 +28546,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 0,
    "vocabulary_count": 30,
    "gloss_count": 28
   },
@@ -31071,90 +29923,7 @@
      "number": 1,
      "instructions": "Match the verbs and the animals which make the sound. Some of the verbs are not given",
      "body": "Match the verbs and the animals which make the sound. Some of the verbs are not given\n       on the opposite page.\n       1 cat                 d           a roar\n       2 hen                             b growl\n       3 sheep                           c buzz\n       4 snake                           d purr\n       5 dog                             e tweet\n       6 bee                             f hiss\n       7 small bird                      g cluck\n       8 lion                            h bleat",
-     "items": [
-      {
-       "number": 2,
-       "stem": "hen ______ b growl",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "f",
-        "c",
-        "a"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "sheep ______ c buzz",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "g",
-        "f",
-        "a"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "snake ______ d purr",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "g",
-        "h",
-        "b"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "dog ______ e tweet",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "h",
-        "f",
-        "c"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "bee ______ f hiss",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "g",
-        "a"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "small bird ______ g cluck",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "h",
-        "f"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "lion ______ h bleat",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "f",
-        "c"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -31222,7 +29991,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 0,
    "vocabulary_count": 35,
    "gloss_count": 20
   },
@@ -32498,16 +31267,7 @@
      "number": 4,
      "instructions": "What is the difference between (a) and (b) in each pair? Check in a dictionary if you’re",
      "body": "What is the difference between (a) and (b) in each pair? Check in a dictionary if you’re\n       not sure.\n       1 a She was always a great lover of the arts.\n         b Are you an art lover?\n         a Arts here means       theatre, music, etc.        b Art here means\n       2 a (road sign) PLANT AND HEAVY MACHINERY CROSSING\n         b I’ve bought you a house plant.\n         a Plant here means                                  b A plant here means\n       3 a There was a lot of damage to the car as a result of the accident.\n         b The film star won $500,000 in damages because the story in the newspaper was\n         a Damage here means                                 b Damages here means\n       4 a I’ve had some bad times at the dentist’s!\n         b How many times have you been to the dentist’s this year?\n         a Times here means                                  b Times here means\n\n                                                             English Vocabulary in Use",
-     "items": [
-      {
-       "number": 4,
-       "stem": "a I’ve had some bad times at the dentist’s! b How many times have you been to the dentist’s this year? a Times here means ______ b Times here means English Vocabulary in Use",
-       "answers": [
-        "a Times here means experiences. b Times here means occasions"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -32556,7 +31316,7 @@
      "anchor": "countries."
     }
    ],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 43,
    "gloss_count": 10
   },
@@ -32797,67 +31557,7 @@
      "number": 1,
      "instructions": "Match the words on the left with the words they collocate with on the right.",
      "body": "Match the words on the left with the words they collocate with on the right.\n       1 a stroke        h         a lightning\n       2 a shower                  b coal\n       3 an article                c grass\n       4 a lump               of   d news\n       5 a flash                   e rain\n       6 a blade                   f clothing\n       7 an item                   g thunder\n       8 a rumble                  h luck",
-     "items": [
-      {
-       "number": 2,
-       "stem": "a shower ______ b coal",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "d",
-        "f",
-        "g"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "an article ______ c grass",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "a flash ______ e rain",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "d",
-        "c",
-        "g"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "a blade ______ f clothing",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 7,
-       "stem": "an item ______ g thunder",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "a rumble ______ h luck",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "d",
-        "f"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -32927,7 +31627,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 49,
    "gloss_count": 1
   },
@@ -33121,82 +31821,7 @@
      "number": 3,
      "instructions": "Match the collective nouns on the left with the words on the right.",
      "body": "Match the collective nouns on the left with the words on the right.\n       1 a clump of                c          a houses\n       2 a range of                           b flies\n       3 a gang of                            c fir trees\n       4 a swarm of                           d deer\n       5 a row of                             e grapes\n       6 a heap of                            f mountains\n       7 a herd of                            g criminals\n       8 a bunch of                           h bed linen",
-     "items": [
-      {
-       "number": 2,
-       "stem": "a range of ______ b flies",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "h",
-        "d"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "a gang of ______ c fir trees",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "b",
-        "h",
-        "d"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "a swarm of ______ d deer",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "g",
-        "h"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "a row of ______ e grapes",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "b",
-        "h",
-        "d"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "a heap of ______ f mountains",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "g",
-        "b",
-        "d"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "a herd of ______ g criminals",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "a bunch of ______ h bed linen",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -33281,7 +31906,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 0,
    "vocabulary_count": 25,
    "gloss_count": 6
   },
@@ -34165,24 +32790,7 @@
      "number": 3,
      "instructions": "Match the situations on the left with the appropriate responses on the right.",
      "body": "Match the situations on the left with the appropriate responses on the right.\n       1 Someone has been very impolite to                  e       a You always try to get out of things!\n         one of your friends.\n       2 Someone is about to throw something                        b You wait! I’ll get my own back on you\n         away.                                                        one day!\n       3 Someone is being negative about                            c Don’t get rid of that yet!\n         everything you suggest.\n       4 Someone has done something very                            d You got out of bed on the wrong side\n         cruel to you.                                                this morning!\n       5 Someone says they can’t help with the                      e Your rudeness really gets me!\n         clearing up after a party.",
-     "items": [
-      {
-       "number": 3,
-       "stem": "Someone is being negative about ______ c Don’t get rid of that yet! everything you suggest.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Someone says they can’t help with the ______ e Your rudeness really gets me! clearing up after a party.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -34243,7 +32851,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 2,
+   "item_count": 0,
    "vocabulary_count": 15,
    "gloss_count": 11
   },
@@ -34482,16 +33090,7 @@
      "number": 4,
      "instructions": "Using the expressions in C opposite, reword the following sentences without changing",
      "body": "Using the expressions in C opposite, reword the following sentences without changing\n       their meaning.\n        1 They have promised to liberate the hostages at noon.\n           They have promised to set the hostages free at noon.\n        2 He’s bound to draw the obvious conclusion if you keep on behaving like that.\n        3 Her aim is to become Prime Minister.\n        4 I find her terribly irritating.\n        5 If you try to make her change her mind it’ll make her even more determined.\n        6 Please concentrate on the problem in hand.\n        7 She is determined to get a seat in Parliament.\n        8 She threw petrol on the rubbish and put a match to it.\n        9 It’s time the teacher told the children to stop making so much noise.\n       10 The man has officially eaten more burgers in one hour than anyone else.\n       11 This is the first time I’ve ever been to the southern hemisphere.\n       12 We spent most of our evenings discussing the problems of the world rather than studying.\n       13 You really should be firm with him or there’ll be trouble later.\n       14 If the teacher doesn’t behave properly, the children certainly won’t.\n       15 His goal is to run the Athens marathon next year.\n\n\n\n                                                           English Vocabulary in Use Upper-intermediate   191",
-     "items": [
-      {
-       "number": 15,
-       "stem": "His goal is to run the Athens marathon next year. English Vocabulary in Use Upper-intermediate ______ 191",
-       "answers": [
-        "He has set himself the target of running the Athens marathon next year"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -34543,7 +33142,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 37,
    "gloss_count": 8
   },
@@ -34861,62 +33460,7 @@
      "number": 4,
      "instructions": "Match questions on the left with the responses on the right.",
      "body": "Match questions on the left with the responses on the right.\n       1 Why don’t you and Ollie go on?                                 c      a Any time after eight.\n       2 How did he come by so much money?                                     b The firm went bankrupt.\n       3 Did the plan go through?                                              c We’ll catch you up.\n       4 What’s the worst pain you’ve ever gone through?                       d A rich aunt of his died.\n       5 Why did that factory close down?                                      e No, people voted against it.\n       6 When should I come round to your place?                               f It looks like a demonstration.\n       7 What’s going on over there?                                           g When I broke my wrist.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "How did he come by so much money? ______ b The firm went bankrupt.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Did the plan go through? ______ c We’ll catch you up.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "b",
-        "f"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "What’s the worst pain you’ve ever gone through? ______ d A rich aunt of his died.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Why did that factory close down? ______ e No, people voted against it.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "When should I come round to your place? ______ f It looks like a demonstration.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "b"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "What’s going on over there? ______ g When I broke my wrist.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -34982,7 +33526,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 3,
    "vocabulary_count": 25,
    "gloss_count": 30
   },
@@ -36519,16 +35063,7 @@
      "number": 5,
      "instructions": "What can you say about …",
      "body": "What can you say about …\n       1 a person who sees everything and never misses a thing? He/She's got eyes like a hawk.\n       2 a plan or course of action that works very well?\n       3 someone who eats and drinks a great deal?\n       4 someone with a very bad memory?\n       5 someone who has been very active and busy all day?\n\n\n\n\n                                                           English Vocabulary in Use Upper-intermediate   201",
-     "items": [
-      {
-       "number": 5,
-       "stem": "someone who has been very active and busy all day? English Vocabulary in Use Upper-intermediate ______ 201",
-       "answers": [
-        "He/She has been as busy as a bee all day"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -36577,7 +35112,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 10,
+   "item_count": 9,
    "vocabulary_count": 55,
    "gloss_count": 10
   },
@@ -36768,125 +35303,7 @@
      "number": 2,
      "instructions": "Match the words on the left with their meanings on the right.",
      "body": "Match the words on the left with their meanings on the right.\n        1 to prosecute                    c            a a young person under the age of 18\n        2 a penalty                                    b to get off a bicycle or a horse\n        3 a purchase                                   c to bring a legal case against\n        4 a trespasser                                 d not to do something\n        5 to refrain                                   e to forbid something\n        6 to alight from                               f a means of transport\n        7 to prohibit                                  g a punishment\n        8 an auditorium                                h something which has been or is to be bought\n        9 to dismount                                  i to get off a means of public transport\n       10 a minor                                      j a large place where an audience sits\n       11 a vehicle                                    k someone who goes on private land without permission",
-     "items": [
-      {
-       "number": 2,
-       "stem": "a penalty ______ b to get off a bicycle or a horse",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "k",
-        "d",
-        "j"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "a purchase ______ c to bring a legal case against",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "k",
-        "d",
-        "j"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "a trespasser ______ d not to do something",
-       "answers": [
-        "k"
-       ],
-       "options": [
-        "j",
-        "b",
-        "f"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "to refrain ______ e to forbid something",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "k",
-        "j"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "to alight from ______ f a means of transport",
-       "answers": [
-        "i"
-       ],
-       "options": [
-        "k",
-        "d",
-        "j"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "to prohibit ______ g a punishment",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "k",
-        "d",
-        "j"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "an auditorium ______ h something which has been or is to be bought",
-       "answers": [
-        "j"
-       ],
-       "options": [
-        "k",
-        "f"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "to dismount ______ i to get off a means of public transport",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "h",
-        "k",
-        "j"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "a minor ______ j a large place where an audience sits",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "k",
-        "b",
-        "f"
-       ]
-      },
-      {
-       "number": 11,
-       "stem": "a vehicle ______ k someone who goes on private land without permission",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "j",
-        "b"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -36940,7 +35357,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 10,
+   "item_count": 0,
    "vocabulary_count": 0,
    "gloss_count": 0
   },

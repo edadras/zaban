@@ -169,6 +169,60 @@ class DrillItemSoundnessTest extends TestCase
         $this->assertGreaterThan(1_000, $withChoices, 'too few items can be asked as a choice');
     }
 
+    /**
+     * Three shapes reach the miner that are not questions, and each was found
+     * by reading what it produced rather than by reasoning about it.
+     *
+     * A matching drill answers with a letter - "f", "h" - which means nothing
+     * outside the printed grid it points into. A key note says what to leave
+     * out rather than what to write: "– (Those are nice shoes.)". And an answer
+     * with an item number inside it is two answers the column reader ran
+     * together: "insolent 3 offhand".
+     */
+    public function test_no_answer_is_a_grid_reference_or_a_note_to_the_reader(): void
+    {
+        $bad = [];
+
+        foreach ($this->items() as [$item, $where]) {
+            foreach ($item['answers'] ?? [] as $answer) {
+                $answer = trim($answer);
+                // One character only. "is", "AD" and "e.g" are the answers to
+                // real gaps in these books, and a rule that took anything
+                // under three characters took those with it.
+                if (mb_strlen($answer) <= 1) {
+                    $bad[] = "{$where}: \"{$answer}\" is a grid reference, not an answer";
+                }
+                if (preg_match('/^[-–—]|\(\s*no\s+\w+/iu', $answer)) {
+                    $bad[] = "{$where}: \"{$answer}\" is a note to the reader";
+                }
+                if (preg_match('/\S\s+\d{1,2}\s+\S/', $answer)) {
+                    $bad[] = "{$where}: \"{$answer}\" is two answers run together";
+                }
+            }
+        }
+
+        $this->assertSame([], array_slice($bad, 0, 5));
+    }
+
+    /**
+     * The last item in a column runs into the page furniture below it, and the
+     * gap before that furniture then reads as the printed blank - so the item
+     * was mined as a question whose answer went at the foot of the page.
+     */
+    public function test_no_stem_runs_into_the_foot_of_the_page(): void
+    {
+        $footer = '/\b(?:Vocabulary|Grammar|Pronunciation|Phrasal Verbs?|Collocations?|Idioms) in Use\b/i';
+        $bad = [];
+
+        foreach ($this->items() as [$item, $where]) {
+            if (preg_match($footer, $item['stem'])) {
+                $bad[] = "{$where}: {$item['stem']}";
+            }
+        }
+
+        $this->assertSame([], array_slice($bad, 0, 5), 'stems carrying the running footer');
+    }
+
     private function normalise(string $text): string
     {
         return trim(preg_replace('/[^a-z0-9 ]/', '', mb_strtolower($text)));

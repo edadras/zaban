@@ -13510,16 +13510,7 @@
      "number": 4,
      "instructions": "Write sentences about yourself using the ideas in brackets.",
      "body": "Write sentences about yourself using the ideas in brackets.\n         1 (something you haven’t done today) I haven’t eaten any fruit today.\n         2 (something you haven’t done today)\n         3 (something you didn’t do yesterday)\n         4 (something you did yesterday evening)\n         5 (something you haven’t done recently)\n         6 (something you’ve done a lot recently)\n\n\n➜ Additional exercises 2–4 (pages 303–04), 14–15 (pages 310–11)                                                                 29",
-     "items": [
-      {
-       "number": 6,
-       "stem": "(something you’ve done a lot recently) ➜ Additional exercises 2–4 (pages 303–04), 14–15 (pages 310–11) ______ 29",
-       "answers": [
-        "I’ve read a lot of books recently"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -13591,7 +13582,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 4,
    "vocabulary_count": 59,
    "gloss_count": 0
   },
@@ -14616,37 +14607,10 @@
        "options": []
       },
       {
-       "number": 5,
-       "stem": "Jack ______ a car. He can’t afford one and he can’t drive anyway.",
-       "answers": [
-        "doesn’t have",
-        "hasn’t got (hasn’t is less usual)"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "‘Excuse me, ______ a pen I could borrow?’ ‘Yes, sure. Here you are.’",
-       "answers": [
-        "do you have",
-        "have you got (have you is less usual)"
-       ],
-       "options": []
-      },
-      {
        "number": 7,
        "stem": "I was very busy yesterday. I ______ time to go shopping.",
        "answers": [
         "didn’t have"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "‘Tell me about Jack. ______ a job?’ ‘Yes, he works at the hospital.’",
-       "answers": [
-        "Does he have",
-        "Has he got (Has he is less usual)"
        ],
        "options": []
       },
@@ -14754,18 +14718,6 @@
        ]
       },
       {
-       "number": 8,
-       "stem": "Suzanne ______ a few weeks ago. It’s her second child.",
-       "answers": [
-        "had a baby"
-       ],
-       "options": [
-        "has a break",
-        "had a party",
-        "have a look"
-       ]
-      },
-      {
        "number": 9,
        "stem": "I ______ when the light went out suddenly.",
        "answers": [
@@ -14866,7 +14818,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 17,
+   "item_count": 13,
    "vocabulary_count": 64,
    "gloss_count": 0
   },
@@ -15100,14 +15052,6 @@
      "body": "Complete the sentences with used to + a suitable verb.\n        1 Nicola used to travel a lot, but she doesn’t go away much these days.\n        2 Sophie                             a motorbike, but last year she sold it and bought a\n        3 Our friends moved to Spain a few years ago. They                                 in Paris.\n        4 Jackie                             my best friend, but we aren’t friends any more.\n        5 I rarely eat ice cream now, but I                            it when I was a child.\n        6 It only takes me about 40 minutes to get to work now that the new road is open.\n          It                            more than an hour.\n        7 There                             a hotel near the airport, but it closed a long time ago.\n        8 I                                   in a factory. It wasn’t my favourite job.",
      "items": [
       {
-       "number": 2,
-       "stem": "Sophie ______ a motorbike, but last year she sold it and bought a",
-       "answers": [
-        "used to have/ride"
-       ],
-       "options": []
-      },
-      {
        "number": 3,
        "stem": "Our friends moved to Spain a few years ago. They ______ in Paris.",
        "answers": [
@@ -15140,14 +15084,6 @@
        "options": []
       },
       {
-       "number": 7,
-       "stem": "There ______ a hotel near the airport, but it closed a long time ago.",
-       "answers": [
-        "used to be"
-       ],
-       "options": []
-      },
-      {
        "number": 8,
        "stem": "I ______ in a factory. It wasn’t my favourite job.",
        "answers": [
@@ -15175,18 +15111,6 @@
        ]
       },
       {
-       "number": 3,
-       "stem": "Lisa works in a shop now. She ______ a receptionist in a hotel.",
-       "answers": [
-        "used to be"
-       ],
-       "options": [
-        "did",
-        "use",
-        "to"
-       ]
-      },
-      {
        "number": 4,
        "stem": "What games ______ you use to play when you were a child?",
        "answers": [
@@ -15194,8 +15118,8 @@
        ],
        "options": [
         "used",
-        "used to be",
-        "used to"
+        "used to",
+        "be able"
        ]
       },
       {
@@ -15218,8 +15142,8 @@
        ],
        "options": [
         "used",
-        "used to be",
-        "used to"
+        "used to",
+        "be able"
        ]
       },
       {
@@ -15229,9 +15153,9 @@
         "to"
        ],
        "options": [
-        "used to be",
         "did",
-        "used to"
+        "used to",
+        "be able"
        ]
       },
       {
@@ -15241,7 +15165,6 @@
         "be able"
        ],
        "options": [
-        "used to be",
         "did",
         "didn’t"
        ]
@@ -15254,8 +15177,8 @@
        ],
        "options": [
         "used",
-        "used to be",
-        "did"
+        "did",
+        "used to"
        ]
       }
      ]
@@ -15323,7 +15246,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 16,
+   "item_count": 13,
    "vocabulary_count": 42,
    "gloss_count": 0
   },
@@ -15717,6 +15640,19 @@
         "he’s moving",
         "we’re meeting"
        ]
+      },
+      {
+       "number": 12,
+       "stem": "A: Do you need the car this evening? B: No, you can have it. ______ (I / not / use) it. ➜ Additional exercises 10–13 (pages 308–10)",
+       "answers": [
+        "I’m not using",
+        "I am not using"
+       ],
+       "options": [
+        "Are you going",
+        "he’s moving",
+        "we’re meeting"
+       ]
       }
      ]
     }
@@ -15778,7 +15714,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 17,
+   "item_count": 18,
    "vocabulary_count": 38,
    "gloss_count": 0
   },
@@ -16522,6 +16458,14 @@
         "What shall I give/buy/get Helen (for her birthday)?"
        ],
        "options": []
+      },
+      {
+       "number": 6,
+       "stem": "You’re meeting a friend tomorrow, but you have to decide what time. You say: ______ ? Is 10.30 OK for you? ➜ Additional exercises 10–13 (pages 308–10)",
+       "answers": [
+        "What time shall we meet?"
+       ],
+       "options": []
       }
      ]
     }
@@ -16575,7 +16519,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 14,
+   "item_count": 15,
    "vocabulary_count": 41,
    "gloss_count": 0
   },
@@ -17014,16 +16958,7 @@
      "number": 5,
      "instructions": "Which is better in these sentences?",
      "body": "Which is better in these sentences?\n         1 Lisa isn’t free on Saturday. She’ll work / She’s working. (She’s working is correct)\n         2 It was an amazing experience. I never forget it. / I’ll never forget it.\n         3 Something very funny happened. You’re laughing / You’ll laugh when I tell you about it.\n         4 I’ll go / I’m going to a party tomorrow night. Would you like to come too?\n         5 Who do you think will win / is winning the game tomorrow?\n         6 I can’t meet you this evening. A friend of mine will come / is coming to see me.\n         7 Don’t be afraid of the dog. It won’t hurt / It isn’t hurting you.\n         8 What’s happening / What will happen if I press this button?\n         9 A: Have you decided where to go for your holidays?\n           B: Yes, we’ll go / we’re going to Italy.\n➜ Additional exercises 10–13 (pages 308–10)                                                               45",
-     "items": [
-      {
-       "number": 9,
-       "stem": "A: Have you decided where to go for your holidays? B: Yes, we’ll go / we’re going to Italy. ➜ Additional exercises 10–13 (pages 308–10) ______ 45",
-       "answers": [
-        "we’re going"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -17072,7 +17007,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 13,
+   "item_count": 12,
    "vocabulary_count": 58,
    "gloss_count": 0
   },
@@ -17234,7 +17169,7 @@
        "options": [
         "I’ll lend",
         "I’ll show",
-        "I’ll have"
+        "I’ll call"
        ]
       },
       {
@@ -17258,7 +17193,7 @@
        "options": [
         "I’ll lend",
         "I’ll show",
-        "I’ll have"
+        "I’ll call"
        ]
       },
       {
@@ -17270,19 +17205,7 @@
        "options": [
         "I’ll lend",
         "I’ll show",
-        "I’ll have"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "A: What would you like to eat? B: ______ a pizza, please. (I / have)",
-       "answers": [
-        "I’ll have"
-       ],
-       "options": [
-        "I’ll lend",
-        "I’m going to wash",
-        "I’ll show"
+        "I’ll call"
        ]
       },
       {
@@ -17294,7 +17217,7 @@
        "options": [
         "I’ll lend",
         "I’ll show",
-        "I’ll have"
+        "I’ll call"
        ]
       },
       {
@@ -17307,7 +17230,7 @@
        "options": [
         "I’ll lend",
         "I’ll show",
-        "I’ll have"
+        "I’ll call"
        ]
       },
       {
@@ -17406,7 +17329,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 11,
+   "item_count": 10,
    "vocabulary_count": 27,
    "gloss_count": 0
   },
@@ -17653,7 +17576,8 @@
        ],
        "options": [
         "you’ll still be living",
-        "I’ll be staying"
+        "I’ll be staying",
+        "I won’t be doing"
        ]
       },
       {
@@ -17665,7 +17589,8 @@
        ],
        "options": [
         "She’ll be waiting",
-        "I’ll be staying"
+        "I’ll be staying",
+        "I won’t be doing"
        ]
       },
       {
@@ -17677,7 +17602,21 @@
        ],
        "options": [
         "She’ll be waiting",
-        "you’ll still be living"
+        "you’ll still be living",
+        "I won’t be doing"
+       ]
+      },
+      {
+       "number": 9,
+       "stem": "I’m fed up with my job. I hope ______ it much longer. (I / not / do) ➜ Additional exercises 12–13 (pages 309–10)",
+       "answers": [
+        "I won’t be doing",
+        "I will not be doing"
+       ],
+       "options": [
+        "She’ll be waiting",
+        "you’ll still be living",
+        "I’ll be staying"
        ]
       }
      ]
@@ -17727,7 +17666,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 6,
    "vocabulary_count": 40,
    "gloss_count": 0
   },
@@ -19030,6 +18969,14 @@
         "couldn’t have studied"
        ],
        "options": []
+      },
+      {
+       "number": 8,
+       "stem": "I wouldn’t like to live near the motorway. I ______ the noise of the traffic. ➜ Additional exercises 16–18 (pages 311–13)",
+       "answers": [
+        "couldn’t stand"
+       ],
+       "options": []
       }
      ]
     }
@@ -19083,7 +19030,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 12,
+   "item_count": 13,
    "vocabulary_count": 45,
    "gloss_count": 0
   },
@@ -19463,16 +19410,7 @@
      "number": 3,
      "instructions": "Use the words in brackets to write sentences with must have and can’t have.",
      "body": "Use the words in brackets to write sentences with must have and can’t have.\n         1 We went to our friends’ house and rang the doorbell, but nobody answered. (they / go out)\n             They must have gone out.\n         2 Sarah hasn’t contacted me. (she / get / my message)\n             She can’t have got my message.\n         3 The jacket you bought is very good quality. (it / be / very expensive)\n\n         4 I haven’t seen our neighbours for the last few days. (they / go away)\n\n         5 I can’t find my umbrella. (I / leave / it in the restaurant last night)\n\n         6 Amy was in a very difficult situation when she lost her job. (it / be / easy for her)\n\n         7 There was a man standing outside the cafe. He was there a long time. (he / wait / for somebody)\n\n         8 Rachel did the opposite of what I asked her to do. (she / understand / what I said)\n\n         9 When I got back to my car, it was unlocked. (I / forget / to lock it)\n\n        10 My neighbours were making a lot of noise in the night. It woke me up. (they / have / a party)\n\n        11 The light was red, but the car didn’t stop. (the driver / see / the red light)\n\n        12 Paul has had these shoes for years, but they still look new. (he / wear / them much)\n\n\n\n\n➜ Additional exercises 16–18 (pages 311–13)                                                                   57",
-     "items": [
-      {
-       "number": 12,
-       "stem": "Paul has had these shoes for years, but they still look new. (he / wear / them much) ➜ Additional exercises 16–18 (pages 311–13) ______ 57",
-       "answers": [
-        "He can’t have worn them much"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -19519,7 +19457,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 20,
+   "item_count": 19,
    "vocabulary_count": 36,
    "gloss_count": 0
   },
@@ -19788,7 +19726,7 @@
        "number": 8,
        "stem": "A: Gary is in a strange mood today. B: Yes, he is. He ______ .",
        "answers": [
-        "may not be feeling well 341"
+        "may not be feeling well"
        ],
        "options": [
         "might be driving",
@@ -19871,17 +19809,6 @@
        ]
       },
       {
-       "number": 8,
-       "stem": "A: Does Max have any brothers or sisters? B: I’m not sure. I think he may ______ a younger sister. (have)",
-       "answers": [
-        "have"
-       ],
-       "options": [
-        "be waiting",
-        "be watching"
-       ]
-      },
-      {
        "number": 9,
        "stem": "A: I can’t find my umbrella. Have you seen it? B: You may ______ it in the restaurant last night. (leave)",
        "answers": [
@@ -19942,6 +19869,14 @@
        "stem": "A: Mike says he needs to see you. He tried to find you yesterday. B: Well, he ______ very hard. I was in my office all day.",
        "answers": [
         "couldn’t have tried"
+       ],
+       "options": []
+      },
+      {
+       "number": 5,
+       "stem": "A: The man you spoke to – are you sure he was American? B: No, I’m not sure. He ______ . ➜ Additional exercises 16–18 (pages 311–13)",
+       "answers": [
+        "might not have been American"
        ],
        "options": []
       }
@@ -20756,7 +20691,7 @@
        "number": 11,
        "stem": "Was the exhibition free, or ______ to go in? (you / pay)",
        "answers": [
-        "did you have to pay 342"
+        "did you have to pay"
        ],
        "options": [
         "he has to get up",
@@ -20771,17 +20706,6 @@
      "instructions": "Complete the sentences using have/has/had to + the verbs in the list. Some sentences are negative",
      "body": "Complete the sentences using have/has/had to + the verbs in the list. Some sentences are negative\n         (I don’t have to … etc.):\n          ask      decide      drive      get up       go     make       make       pay       show       stand\n         1 I’m not working tomorrow, so I don’t have to get up early.\n         2 Steve didn’t know how to change the settings on his phone. I had to show him.\n         3 Excuse me a moment – I                                                a phone call. I won’t be long.\n         4 You can let me know later what you want to do. You                                             now.\n         5 I couldn’t find the street I wanted. I                                    somebody for directions.\n         6 This car park is free. You                                                                         .\n         7 A man was slightly injured in the accident, but he                                      to hospital.\n         8 Jane has a senior position in the company. She                               important decisions.\n         9 The train was very full and there were no seats free. We                                all the way.\n        10 When Patrick starts his new job next month, he                                     50 miles to work\n           every day.",
      "items": [
-      {
-       "number": 3,
-       "stem": "Excuse me a moment – I ______ a phone call. I won’t be long.",
-       "answers": [
-        "have to make"
-       ],
-       "options": [
-        "had to ask",
-        "had to stand"
-       ]
-      },
       {
        "number": 4,
        "stem": "You can let me know later what you want to do. You ______ now.",
@@ -20801,9 +20725,9 @@
         "had to ask"
        ],
        "options": [
-        "have to make",
         "don’t have to decide",
-        "don’t have to pay"
+        "don’t have to pay",
+        "didn’t have to go"
        ]
       },
       {
@@ -20849,9 +20773,9 @@
         "had to stand"
        ],
        "options": [
-        "have to make",
         "don’t have to decide",
-        "had to ask"
+        "had to ask",
+        "don’t have to pay"
        ]
       }
      ]
@@ -20931,6 +20855,14 @@
         "don’t have to",
         "doesn’t have to"
        ]
+      },
+      {
+       "number": 10,
+       "stem": "We have plenty of time before our flight. We ______ check in yet. ➜ Additional exercise 16 (page 311)",
+       "answers": [
+        "don’t have to"
+       ],
+       "options": []
       }
      ]
     }
@@ -21213,16 +21145,7 @@
      "number": 5,
      "instructions": "Are these sentences OK? Change them where necessary.",
      "body": "Are these sentences OK? Change them where necessary.\n        1 We have plenty of time. We don’t need hurry.               We don’t need to hurry\n        2 Keep it a secret. You mustn’t tell anybody.                OK\n        3 You needn’t to shout. I can hear you perfectly.\n        4 I needn’t have gone out, so I stayed at home.\n        5 This train is direct. You don’t need to change.\n        6 You mustn’t lock the door. It’s OK to leave it unlocked.\n        7 I needn’t have said anything, so I kept quiet.\n        8 I needn’t have said anything. I should have kept quiet.\n\n➜ Additional exercises 16–17 (pages 311–12)                                                                     65",
-     "items": [
-      {
-       "number": 8,
-       "stem": "I needn’t have said anything. I should have kept quiet. ➜ Additional exercises 16–17 (pages 311–12) ______ 65",
-       "answers": [
-        "OK"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -21287,7 +21210,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 4,
    "vocabulary_count": 29,
    "gloss_count": 0
   },
@@ -23106,87 +23029,13 @@
      "number": 1,
      "instructions": "Which goes with which?",
      "body": "Which goes with which?\n\n        1 Could you pass the sugar?                      a It depends what you want me to do.\n        2 Would you like to go to the cinema?            b No, that’s fine.\n        3 Can I use your toilet?                         c Me too. Let’s go out for a walk.\n        4 Do you mind if I leave work early?             d Sure. It’s the door on the left.\n        5 Can you do me a favour?                        e Yes, here you are.\n        6 Would you like something to eat?               f No, it’s all right. I can manage, thanks.\n        7 Can I give you a hand?                         g Maybe. What’s on?\n        8 I’d like some fresh air.                       h No, thanks. I’m not hungry.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "Would you like to go to the cinema? ______ b No, that’s fine.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Can I use your toilet? ______ c Me too. Let’s go out for a walk.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "b",
-        "h"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "Do you mind if I leave work early? ______ d Sure. It’s the door on the left.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "g",
-        "c"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "Can you do me a favour? ______ e Yes, here you are.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "Would you like something to eat? ______ f No, it’s all right. I can manage, thanks.",
-       "answers": [
-        "h"
-       ],
-       "options": []
-      },
-      {
-       "number": 7,
-       "stem": "Can I give you a hand? ______ g Maybe. What’s on?",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "I’d like some fresh air. ______ h No, thanks. I’m not hungry.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
      "instructions": "Complete the sentences. Choose from:",
      "body": "Complete the sentences. Choose from:\n         I’d like        Would you like to try          Do you mind          Can I take\n         Can I give      Would you like to come         Would you like       I’d like to\n\n       1 You’re driving and you see a friend walking along the road. You stop and say:\n         Hi Joe. Can I give you a lift?\n       2 You’re making a cold drink for your friend. Perhaps he wants ice. You ask:\n                                                         ice in your drink?\n       3 You’re ordering something to eat in a cafe. You say:\n                                                         a chicken salad, please.\n       4 You have an extra ticket for a concert. Maybe your friend will come. You ask:\n                                                         to a concert tomorrow night?\n       5 You answer the phone. The caller wants to speak to Lisa. You say:\n         Lisa’s not here.                                                 a message?\n       6 You need to see a dentist. You phone for an appointment. You say:\n         Hello.                                                   make an appointment, please.\n       7 You work in a shoe shop. A customer asks you about some shoes. You ask:\n                                                         them on?\n       8 You go into a cafe and see some people you know. You ask:\n                                                         if I join you?",
      "items": [
-      {
-       "number": 5,
-       "stem": "You answer the phone. The caller wants to speak to Lisa. You say: Lisa’s not here. ______ a message?",
-       "answers": [
-        "Can I take"
-       ],
-       "options": []
-      },
       {
        "number": 6,
        "stem": "You need to see a dentist. You phone for an appointment. You say: Hello. ______ make an appointment, please.",
@@ -23264,7 +23113,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 1,
    "vocabulary_count": 35,
    "gloss_count": 0
   },
@@ -23481,8 +23330,7 @@
        ],
        "options": [
         "happened",
-        "went",
-        "was"
+        "went"
        ]
       },
       {
@@ -23493,8 +23341,7 @@
        ],
        "options": [
         "dropped",
-        "went",
-        "was"
+        "went"
        ]
       },
       {
@@ -23505,20 +23352,7 @@
        ],
        "options": [
         "dropped",
-        "happened",
-        "was"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "If there ______ a fire in the building, would you know how to put the fire out?",
-       "answers": [
-        "was"
-       ],
-       "options": [
-        "dropped",
-        "happened",
-        "went"
+        "happened"
        ]
       }
      ]
@@ -23625,7 +23459,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 6,
    "vocabulary_count": 42,
    "gloss_count": 0
   },
@@ -23960,16 +23794,7 @@
      "number": 4,
      "instructions": "Write your own sentences beginning I wish … .",
      "body": "Write your own sentences beginning I wish … .\n         1 (somewhere you’d like to be now – on the beach, in New York, in bed etc.)\n           I wish I\n         2 (something you’d like to have – a motorbike, more friends, lots of money etc.)\n\n         3 (something you’d like to be able to do – sing, travel more, cook etc.)\n\n         4 (something you’d like to be – famous, more intelligent, good at sport etc.)\n\n\n\n➜ Additional exercises 19–21 (pages 313–14)                                                                                  79",
-     "items": [
-      {
-       "number": 4,
-       "stem": "(something you’d like to be – famous, more intelligent, good at sport etc.) ➜ Additional exercises 19–21 (pages 313–14) ______ 79",
-       "answers": [
-        "I wish I was taller. 344"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -24037,7 +23862,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 6,
    "vocabulary_count": 47,
    "gloss_count": 0
   },
@@ -24851,7 +24676,7 @@
        "options": [
         "I knew",
         "we hadn’t gone",
-        "it was/were"
+        "I’d taken"
        ]
       },
       {
@@ -24863,19 +24688,7 @@
        "options": [
         "I knew",
         "we hadn’t gone",
-        "it was/were"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Our flat is rather small. I wish ______ a bit bigger. (it / be)",
-       "answers": [
-        "it was/were"
-       ],
-       "options": [
-        "I knew",
-        "we hadn’t gone",
-        "the bus would come"
+        "I’d taken"
        ]
       },
       {
@@ -24939,19 +24752,6 @@
         "I knew",
         "we hadn’t gone",
         "I could come"
-       ]
-      },
-      {
-       "number": 13,
-       "stem": "I wish ______ a piano. I’d love to have one. (I / have)",
-       "answers": [
-        "I had",
-        "I could have"
-       ],
-       "options": [
-        "I knew",
-        "we hadn’t gone",
-        "the bus would come"
        ]
       },
       {
@@ -25026,7 +24826,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 25,
+   "item_count": 23,
    "vocabulary_count": 46,
    "gloss_count": 0
   },
@@ -26168,8 +25968,8 @@
        ],
        "options": [
         "get used",
-        "got stolen",
-        "get paid"
+        "get paid",
+        "get broken"
        ]
       },
       {
@@ -26180,20 +25980,8 @@
        ],
        "options": [
         "got stung",
-        "got stolen",
-        "get paid"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "I used to have a bike, but it ______ a few months ago.",
-       "answers": [
-        "got stolen"
-       ],
-       "options": [
-        "got stung",
-        "get used",
-        "get paid"
+        "get paid",
+        "get broken"
        ]
       },
       {
@@ -26205,7 +25993,7 @@
        "options": [
         "got stung",
         "get used",
-        "got stolen"
+        "get broken"
        ]
       },
       {
@@ -26217,7 +26005,7 @@
        "options": [
         "got stung",
         "get used",
-        "got stolen"
+        "get paid"
        ]
       },
       {
@@ -26229,7 +26017,7 @@
        "options": [
         "got stung",
         "get used",
-        "got stolen"
+        "get paid"
        ]
       },
       {
@@ -26241,7 +26029,7 @@
        "options": [
         "got stung",
         "get used",
-        "got stolen"
+        "get paid"
        ]
       }
      ]
@@ -26333,6 +26121,18 @@
         "were",
         "given",
         "lost"
+       ]
+      },
+      {
+       "number": 10,
+       "stem": "We had to do what we did. We ______ given any choice. ➜ Additional exercises 22–24 (pages 314–15)",
+       "answers": [
+        "weren’t"
+       ],
+       "options": [
+        "lost",
+        "being",
+        "get"
        ]
       }
      ]
@@ -26628,7 +26428,8 @@
        ],
        "options": [
         "’re",
-        "aren’t"
+        "aren’t",
+        "isn’t"
        ]
       },
       {
@@ -26641,7 +26442,8 @@
        ],
        "options": [
         "was supposed to phone",
-        "was supposed to depart"
+        "was supposed to depart",
+        "isn’t"
        ]
       },
       {
@@ -26652,6 +26454,21 @@
        ],
        "options": [
         "’re",
+        "aren’t",
+        "isn’t"
+       ]
+      },
+      {
+       "number": 6,
+       "stem": "Jonathan has a problem with his back. He ______ anything heavy. ➜ Additional exercises 22–24 (pages 314–15)",
+       "answers": [
+        "isn’t",
+        "’s not",
+        "is not supposed to lift"
+       ],
+       "options": [
+        "’re",
+        "was supposed to phone",
         "aren’t"
        ]
       }
@@ -26707,7 +26524,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 10,
    "vocabulary_count": 24,
    "gloss_count": 0
   },
@@ -27214,6 +27031,19 @@
         "he didn’t know anyone",
         "she would be away"
        ]
+      },
+      {
+       "number": 8,
+       "stem": "A: I haven’t seen Ben recently. B: That’s strange. He told me ______ last weekend. ➜ Additional exercise 25 (page 316)",
+       "answers": [
+        "he’d seen you",
+        "he saw you last weekend"
+       ],
+       "options": [
+        "wasn’t coming",
+        "he didn’t know anyone",
+        "she would be away"
+       ]
       }
      ]
     }
@@ -27265,7 +27095,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 6,
    "vocabulary_count": 43,
    "gloss_count": 0
   },
@@ -27585,6 +27415,18 @@
         "her not to worry",
         "told him to mind his own business"
        ]
+      },
+      {
+       "number": 8,
+       "stem": "I didn’t want to delay Helen, so I ______ . ➜ Additional exercise 25 (page 316)",
+       "answers": [
+        "told her not to wait (for me) if I was late"
+       ],
+       "options": [
+        "her to slow down",
+        "her not to worry",
+        "asked/told me to open my bag"
+       ]
       }
      ]
     }
@@ -27625,7 +27467,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 12,
+   "item_count": 13,
    "vocabulary_count": 31,
    "gloss_count": 0
   },
@@ -30259,21 +30101,9 @@
         "what to do"
        ],
        "options": [
-        "how to ride",
         "whether to go",
-        "where to put"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "You’ll never forget ______ a bike once you’ve learnt.",
-       "answers": [
-        "how to ride"
-       ],
-       "options": [
-        "what to do",
-        "whether to go",
-        "where to put"
+        "where to put",
+        "how to use"
        ]
       },
       {
@@ -30284,8 +30114,8 @@
        ],
        "options": [
         "what to do",
-        "how to ride",
-        "where to put"
+        "where to put",
+        "how to use"
        ]
       },
       {
@@ -30296,8 +30126,20 @@
        ],
        "options": [
         "what to do",
-        "how to ride",
-        "whether to go"
+        "whether to go",
+        "how to use"
+       ]
+      },
+      {
+       "number": 6,
+       "stem": "I have some clothes to wash. Can you show me ______ the washing machine? ➜ Additional exercises 26–28 (pages 317–19)",
+       "answers": [
+        "how to use"
+       ],
+       "options": [
+        "what to do",
+        "whether to go",
+        "where to put"
        ]
       }
      ]
@@ -31801,19 +31643,6 @@
         "overhearing",
         "smiling"
        ]
-      },
-      {
-       "number": 8,
-       "stem": "I can’t help you ______ a job. You have to find one yourself. (get) 115",
-       "answers": [
-        "get",
-        "to get 348"
-       ],
-       "options": [
-        "look",
-        "overhearing",
-        "smiling"
-       ]
       }
      ]
     }
@@ -31875,7 +31704,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 19,
+   "item_count": 18,
    "vocabulary_count": 44,
    "gloss_count": 0
   },
@@ -32267,18 +32096,6 @@
        ]
       },
       {
-       "number": 11,
-       "stem": "Shall we leave now, or would you prefer ______ a little?",
-       "answers": [
-        "to wait"
-       ],
-       "options": [
-        "to sit",
-        "turning",
-        "doing"
-       ]
-      },
-      {
        "number": 12,
        "stem": "Steve wants to win every time. He hates ______ .",
        "answers": [
@@ -32297,17 +32114,7 @@
      "number": 4,
      "instructions": "Write sentences using would … to have (done). Use the verbs in brackets.",
      "body": "Write sentences using would … to have (done). Use the verbs in brackets.\n         1 It’s a shame I couldn’t go to the party. (like) I would like to have gone to the party.\n         2 It’s a shame I didn’t see the programme. (like)\n         3 I’m glad I didn’t lose my watch. (hate)\n         4 It’s too bad I didn’t meet your parents. (love)\n         5 I’m glad I wasn’t alone. (not / like)\n         6 We should have travelled by train. (prefer)\n\n\n\n➜ Additional exercises 26–28 (pages 317–19)                                                              117",
-     "items": [
-      {
-       "number": 6,
-       "stem": "We should have travelled by train. (prefer) ➜ Additional exercises 26–28 (pages 317–19) ______ 117",
-       "answers": [
-        "I would prefer",
-        "I’d prefer to have travelled by train"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -32359,7 +32166,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 11,
+   "item_count": 9,
    "vocabulary_count": 59,
    "gloss_count": 0
   },
@@ -32734,18 +32541,6 @@
        ]
       },
       {
-       "number": 6,
-       "stem": "The weather here isn’t bad, but I’d rather it ______ a little warmer.",
-       "answers": [
-        "was"
-       ],
-       "options": [
-        "came",
-        "watch",
-        "than"
-       ]
-      },
-      {
        "number": 7,
        "stem": "I don’t want to go to the match. I’d prefer ______ it on TV.",
        "answers": [
@@ -32779,6 +32574,18 @@
         "came",
         "watch",
         "than"
+       ]
+      },
+      {
+       "number": 10,
+       "stem": "I’d prefer to go to the beach ______ go shopping. ➜ Additional exercises 27–28 (pages 318–19)",
+       "answers": [
+        "rather than"
+       ],
+       "options": [
+        "came",
+        "watch",
+        "didn’t"
        ]
       }
      ]
@@ -33226,18 +33033,6 @@
         "remembering names",
         "winning the lottery"
        ]
-      },
-      {
-       "number": 8,
-       "stem": "Amy is 90 years old, but she’s fit and healthy. Amy is fit and healthy despite ______ .",
-       "answers": [
-        "being 90 years old"
-       ],
-       "options": [
-        "applying for the job",
-        "remembering names",
-        "winning the lottery"
-       ]
       }
      ]
     },
@@ -33451,16 +33246,7 @@
      "number": 4,
      "instructions": "For each situation, write a sentence with I’m (not) looking forward to.",
      "body": "For each situation, write a sentence with I’m (not) looking forward to.\n         1 You are going on holiday next week. How do you feel?\n             I’m looking forward to going on holiday.\n         2 A good friend of yours is coming to visit you soon. It will be good to see her again. How do you feel?\n           I’m\n         3 You’re going to the dentist tomorrow. You don’t enjoy visits to the dentist. How do you feel?\n           I’m not\n         4 Rachel doesn’t like school, but she’s leaving next summer. How does she feel?\n\n         5 Joe and Helen are moving to a new apartment soon. It’s much nicer than where they live now.\n           How do they feel?\n\n➜ Additional exercises 26–28 (pages 317–19)                                                                         121",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Joe and Helen are moving to a new apartment soon. It’s much nicer than where they live now. How do they feel? ➜ Additional exercises 26–28 (pages 317–19) ______ 121",
-       "answers": [
-        "They’re looking forward to moving (to their new apartment)"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -33504,7 +33290,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 24,
+   "item_count": 22,
    "vocabulary_count": 68,
    "gloss_count": 0
   },
@@ -33810,27 +33596,15 @@
      "body": "Complete the sentences using only one word each time.\n        1 Lisa had to get used to driving on the left.\n        2 Daniel used to                              a lot of coffee. Now he prefers tea.\n        3 I feel very full after that meal. I’m not used to                           so much.\n        4 I wouldn’t like to share a room. I’m used to                              my own room.\n        5 I used to                            a car, but I sold it a few months ago.\n        6 When we were children, we used to                                  swimming very often.\n        7 There used to                              a school here, but it was knocked down a few years ago.\n        8 I’m the boss here! I’m not used to                               told what to do.\n\n➜ Additional exercises 26–28 (pages 317–19)                                                                           123",
      "items": [
       {
-       "number": 2,
-       "stem": "Daniel used to ______ a lot of coffee. Now he prefers tea.",
-       "answers": [
-        "drink"
-       ],
-       "options": [
-        "eating",
-        "having",
-        "have/own"
-       ]
-      },
-      {
        "number": 3,
        "stem": "I feel very full after that meal. I’m not used to ______ so much.",
        "answers": [
         "eating"
        ],
        "options": [
-        "drink",
         "having",
-        "have/own"
+        "go",
+        "being"
        ]
       },
       {
@@ -33840,21 +33614,9 @@
         "having"
        ],
        "options": [
-        "drink",
         "eating",
-        "have/own"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "I used to ______ a car, but I sold it a few months ago.",
-       "answers": [
-        "have/own"
-       ],
-       "options": [
-        "drink",
-        "eating",
-        "having"
+        "go",
+        "being"
        ]
       },
       {
@@ -33864,21 +33626,21 @@
         "go"
        ],
        "options": [
-        "drink",
         "eating",
-        "having"
+        "having",
+        "being"
        ]
       },
       {
-       "number": 7,
-       "stem": "There used to ______ a school here, but it was knocked down a few years ago.",
+       "number": 8,
+       "stem": "I’m the boss here! I’m not used to ______ told what to do. ➜ Additional exercises 26–28 (pages 317–19)",
        "answers": [
-        "be"
+        "being"
        ],
        "options": [
-        "drink",
         "eating",
-        "having"
+        "having",
+        "go"
        ]
       }
      ]
@@ -33954,7 +33716,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 13,
+   "item_count": 11,
    "vocabulary_count": 43,
    "gloss_count": 0
   },
@@ -34302,17 +34064,6 @@
         "doing/trying"
        ],
        "options": []
-      },
-      {
-       "number": 7,
-       "stem": "I’ve always dreamed of ______ a small house by the",
-       "answers": [
-        "buying/having/owning"
-       ],
-       "options": [
-        "doing",
-        "doing/trying"
-       ]
       }
      ]
     },
@@ -34424,7 +34175,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 6,
    "vocabulary_count": 75,
    "gloss_count": 0
   },
@@ -35736,15 +35487,6 @@
         "You are bound to be tired"
        ],
        "options": []
-      },
-      {
-       "number": 5,
-       "stem": "The holidays begin this weekend. (there / sure / be) ______ a lot of",
-       "answers": [
-        "There’s",
-        "There is sure to be"
-       ],
-       "options": []
       }
      ]
     }
@@ -35803,7 +35545,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 5,
    "vocabulary_count": 54,
    "gloss_count": 0
   },
@@ -37707,64 +37449,12 @@
      "body": "Put in a/an or some where necessary. If no word is necessary, leave the space empty.\n        1 I’ve seen some          good movies recently.\n        2 Are you feeling all right? Do you have a headache?\n        3 I know lots of people. Most of them are −              students.\n        4 When I was               child, I used to be very shy.\n        5             birds, for example the penguin, cannot fly.\n        6 Would you like to be                 actor?\n        7 Questions, questions, questions! You’re always asking                    questions!\n        8 I didn’t expect to see you. What                 surprise!\n        9 Do you like staying in                hotels?\n       10 Tomorrow is a holiday.                  shops will be open, but most of them will be\n       11 Those are               nice shoes. Where did you get them?\n       12 You need               visa to visit             countries, but not all of them.\n       13 Kate is             teacher. Her parents were                 teachers too.\n       14 I don’t believe him. He’s                 liar. He’s always telling           lies.",
      "items": [
       {
-       "number": 4,
-       "stem": "When I was ______ child, I used to be very shy.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "an",
-        "– (You’re always asking questions!)",
-        "– (Do you like staying in hotels?)"
-       ]
-      },
-      {
        "number": 6,
        "stem": "Would you like to be ______ actor?",
        "answers": [
         "an"
        ],
-       "options": [
-        "– (You’re always asking questions!)",
-        "– (Do you like staying in hotels?)",
-        "Some"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Questions, questions, questions! You’re always asking ______ questions!",
-       "answers": [
-        "– (You’re always asking questions!)"
-       ],
-       "options": [
-        "an",
-        "– (Do you like staying in hotels?)",
-        "Some"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I didn’t expect to see you. What ______ surprise!",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "an",
-        "– (You’re always asking questions!)",
-        "– (Do you like staying in hotels?)"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "Do you like staying in ______ hotels?",
-       "answers": [
-        "– (Do you like staying in hotels?)"
-       ],
-       "options": [
-        "an",
-        "– (You’re always asking questions!)",
-        "Some"
-       ]
+       "options": []
       },
       {
        "number": 10,
@@ -37772,23 +37462,7 @@
        "answers": [
         "Some"
        ],
-       "options": [
-        "an",
-        "– (You’re always asking questions!)",
-        "– (Do you like staying in hotels?)"
-       ]
-      },
-      {
-       "number": 11,
-       "stem": "Those are ______ nice shoes. Where did you get them?",
-       "answers": [
-        "– (Those are nice shoes.)"
-       ],
-       "options": [
-        "an",
-        "– (You’re always asking questions!)",
-        "– (Do you like staying in hotels?)"
-       ]
+       "options": []
       }
      ]
     }
@@ -37866,7 +37540,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 2,
    "vocabulary_count": 53,
    "gloss_count": 0
   },
@@ -38116,16 +37790,7 @@
      "number": 4,
      "instructions": "Answer these questions. Where possible, use once a week / three times a day etc.",
      "body": "Answer these questions. Where possible, use once a week / three times a day etc.\n         1 How often do you go to the cinema? Three or four times a year.\n         2 How often do you go to the dentist?\n         3 How often do you go away on holiday?\n         4 How long do you usually sleep?\n         5 How often do you go out in the evening?\n         6 How many hours of TV do you watch (on average)?\n         7 What’s the usual speed limit in towns in your country?\n\n\n\n➜ Additional exercise 29 (page 319)                                                                                145",
-     "items": [
-      {
-       "number": 7,
-       "stem": "What’s the usual speed limit in towns in your country? ➜ Additional exercise 29 (page 319) ______ 145",
-       "answers": [
-        "50 kilometres an hour"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -38177,7 +37842,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 46,
    "gloss_count": 0
   },
@@ -38589,7 +38254,19 @@
        "number": 7,
        "stem": "(airport announcement) Flight AB123 to Rome is now boarding at ______ .",
        "answers": [
-        "Gate 24"
+        "Gate"
+       ],
+       "options": [
+        "the sea",
+        "question 3",
+        "the cinema"
+       ]
+      },
+      {
+       "number": 8,
+       "stem": "I forgot to shut ______ . Can you shut it for me? ➜ Additional exercise 29 (page 319)",
+       "answers": [
+        "the gate"
        ],
        "options": [
         "the sea",
@@ -38649,7 +38326,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 8,
    "vocabulary_count": 64,
    "gloss_count": 0
   },
@@ -39021,6 +38698,18 @@
         "at home",
         "to work"
        ]
+      },
+      {
+       "number": 8,
+       "stem": "If people commit crimes, they may end up ______ . ➜ Additional exercise 29 (page 319)",
+       "answers": [
+        "in prison"
+       ],
+       "options": [
+        "to school",
+        "at home",
+        "to work"
+       ]
       }
      ]
     }
@@ -39074,7 +38763,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 11,
+   "item_count": 12,
    "vocabulary_count": 50,
    "gloss_count": 0
   },
@@ -39379,7 +39068,7 @@
        "number": 12,
        "stem": "You need ______ to teach young children.",
        "answers": [
-        "patience 352"
+        "patience"
        ],
        "options": [
         "spiders",
@@ -42394,7 +42083,7 @@
        "options": [
         "her own business",
         "our own words",
-        "its own private beach 353"
+        "its own private beach"
        ]
       },
       {
@@ -42406,7 +42095,7 @@
        "options": [
         "his own opinions",
         "our own words",
-        "its own private beach 353"
+        "its own private beach"
        ]
       },
       {
@@ -42418,14 +42107,14 @@
        "options": [
         "his own opinions",
         "her own business",
-        "its own private beach 353"
+        "its own private beach"
        ]
       },
       {
        "number": 5,
        "stem": "We stayed at a luxury hotel by the sea. The hotel had ______ .",
        "answers": [
-        "its own private beach 353"
+        "its own private beach"
        ],
        "options": [
         "his own opinions",
@@ -42961,43 +42650,6 @@
         "there wasn’t"
        ],
        "options": [
-        "Is it",
-        "It isn’t",
-        "It was"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "What’s that new building over there? ______ a hotel?",
-       "answers": [
-        "Is it"
-       ],
-       "options": [
-        "there wasn’t",
-        "Is there",
-        "there was"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "How can we get across the river? ______ a bridge?",
-       "answers": [
-        "Is there"
-       ],
-       "options": [
-        "Is it",
-        "It isn’t",
-        "It was"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "A few days ago ______ a big storm, which caused a lot of damage.",
-       "answers": [
-        "there was"
-       ],
-       "options": [
-        "Is it",
         "It isn’t",
         "It was"
        ]
@@ -43011,8 +42663,7 @@
        ],
        "options": [
         "there wasn’t",
-        "Is it",
-        "Is there"
+        "It was"
        ]
       },
       {
@@ -43023,8 +42674,7 @@
        ],
        "options": [
         "there wasn’t",
-        "Is it",
-        "Is there"
+        "It isn’t"
        ]
       }
      ]
@@ -43057,27 +42707,10 @@
        "options": []
       },
       {
-       "number": 4,
-       "stem": "Look at those clouds. ______ a storm. I’m sure of it.",
-       "answers": [
-        "There’s",
-        "There is going to be"
-       ],
-       "options": []
-      },
-      {
        "number": 5,
        "stem": "There isn’t a school in the village. ______ one, but it closed",
        "answers": [
         "There used to be"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "People drive too fast on this road. I think ______ a speed limit.",
-       "answers": [
-        "there should be"
        ],
        "options": []
       },
@@ -43155,7 +42788,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 12,
+   "item_count": 7,
    "vocabulary_count": 53,
    "gloss_count": 0
   },
@@ -45224,14 +44857,6 @@
        "options": []
       },
       {
-       "number": 9,
-       "stem": "Joe has lived in Chicago all ______ his life.",
-       "answers": [
-        "— (of is also correct)"
-       ],
-       "options": []
-      },
-      {
        "number": 12,
        "stem": "They won the lottery a few years ago, but they’ve spent most ______ the money.",
        "answers": [
@@ -45585,7 +45210,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 27,
+   "item_count": 26,
    "vocabulary_count": 74,
    "gloss_count": 0
   },
@@ -46504,16 +46129,7 @@
      "number": 4,
      "instructions": "Which is right?",
      "body": "Which is right?\n         1 Did you spend the whole money / all the money I gave you? (all the money is correct)\n         2 Eve works every day / all days except Sunday.\n         3 I’m tired. I’ve been working hard all the day / all day.\n         4 It was a terrible fire. Whole building / The whole building was destroyed.\n         5 It’s a very sad song. Every time / All the time I hear it, it makes me cry.\n         6 I don’t like the weather here. It rains every time / all the time.\n         7 When I was on holiday, all my luggage / my whole luggage was stolen.\n\n\n\n➜ Additional exercise 30 (page 320)                                                                              181",
-     "items": [
-      {
-       "number": 7,
-       "stem": "When I was on holiday, all my luggage / my whole luggage was stolen. ➜ Additional exercise 30 (page 320) ______ 181",
-       "answers": [
-        "all my luggage"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -46573,7 +46189,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 16,
+   "item_count": 15,
    "vocabulary_count": 64,
    "gloss_count": 0
   },
@@ -46924,7 +46540,7 @@
        "number": 5,
        "stem": "I dropped a tray of glasses. Unfortunately ______ broke. 183",
        "answers": [
-        "every one (2 words) 355"
+        "every one (2 words)"
        ],
        "options": []
       }
@@ -47690,23 +47306,12 @@
      "body": "Put in that or what where necessary. If the sentence is already complete, leave the space empty.\n       1 I gave her all the money – I had. (all the money that I had is also correct)\n       2 Did you hear what they said?\n       3 She gives her children everything                       they want.\n       4 Tell me                     you want and I’ll try to get it for you.\n       5 Why do you blame me for everything                           goes wrong?\n       6 I won’t be able to do much, but I’ll do                       I can.\n       7 I won’t be able to do much, but I’ll do the best                       I can.\n       8 I don’t agree with                    you said.\n       9 I don’t trust him. I don’t believe anything                       he says.\n                                                                                                            187",
      "items": [
       {
-       "number": 3,
-       "stem": "She gives her children everything ______ they want.",
-       "answers": [
-        "– (that is also correct)"
-       ],
-       "options": []
-      },
-      {
        "number": 4,
        "stem": "Tell me ______ you want and I’ll try to get it for you.",
        "answers": [
         "what"
        ],
-       "options": [
-        "– (that is also correct)",
-        "that"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -47722,17 +47327,6 @@
        "answers": [
         "what"
        ],
-       "options": [
-        "– (that is also correct)",
-        "that"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "I won’t be able to do much, but I’ll do the best ______ I can.",
-       "answers": [
-        "– (that is also correct)"
-       ],
        "options": []
       },
       {
@@ -47740,17 +47334,6 @@
        "stem": "I don’t agree with ______ you said.",
        "answers": [
         "what"
-       ],
-       "options": [
-        "– (that is also correct)",
-        "that"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "I don’t trust him. I don’t believe anything ______ he says. 187",
-       "answers": [
-        "– (that is also correct)"
        ],
        "options": []
       }
@@ -47806,7 +47389,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 18,
+   "item_count": 15,
    "vocabulary_count": 37,
    "gloss_count": 0
   },
@@ -50101,16 +49684,7 @@
      "number": 4,
      "instructions": "Write the following in another way using the first … / the next … / the last … .",
      "body": "Write the following in another way using the first … / the next … / the last … .\n         1 the first day and the second day of the course       the first two days of the course\n         2 next week and the week after                         the next two weeks\n         3 yesterday and the day before yesterday\n         4 the first week and the second week of May\n         5 tomorrow and a few days after that\n         6 questions 1, 2 and 3 in the exam\n         7 next year and the year after\n         8 the last day of our holiday and the two days\n           before that\n\n\n➜ Additional exercise 31 (page 320)                                                                                 199",
-     "items": [
-      {
-       "number": 8,
-       "stem": "the last day of our holiday and the two days before that ➜ Additional exercise 31 (page 320) ______ 199",
-       "answers": [
-        "the last three days of our holiday"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -50170,7 +49744,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 14,
+   "item_count": 13,
    "vocabulary_count": 65,
    "gloss_count": 0
   },
@@ -50828,6 +50402,18 @@
         "absolutely enormous",
         "slightly damaged"
        ]
+      },
+      {
+       "number": 9,
+       "stem": "A lot went wrong during our holiday because it was ______ . ➜ Additional exercise 31 (page 320)",
+       "answers": [
+        "badly planned"
+       ],
+       "options": [
+        "seriously ill",
+        "absolutely enormous",
+        "slightly damaged"
+       ]
       }
      ]
     }
@@ -50889,7 +50475,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 31,
+   "item_count": 32,
    "vocabulary_count": 54,
    "gloss_count": 0
   },
@@ -51309,6 +50895,14 @@
         "hardly any"
        ],
        "options": []
+      },
+      {
+       "number": 10,
+       "stem": "There isn’t much to do in this town. There’s ______ to go. ➜ Additional exercise 31 (page 320)",
+       "answers": [
+        "hardly anywhere"
+       ],
+       "options": []
       }
      ]
     }
@@ -51375,7 +50969,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 25,
+   "item_count": 26,
    "vocabulary_count": 36,
    "gloss_count": 0
   },
@@ -55270,22 +54864,10 @@
        ]
       },
       {
-       "number": 11,
-       "stem": "The moon (round the earth / every 27 days / goes). The moon ______ .",
-       "answers": [
-        "The moon goes round the earth every 27 days"
-       ],
-       "options": [
-        "Why did you come home so late?",
-        "I haven’t been to the cinema recently",
-        "I remembered her name after a few minutes"
-       ]
-      },
-      {
        "number": 12,
        "stem": "Anna (Italian / for the last three years / has been teaching / in London). Anna ______ . 219",
        "answers": [
-        "Anna has been teaching Italian in London for the last three years. 359"
+        "Anna has been teaching Italian in London for the last three years"
        ],
        "options": [
         "I go to the supermarket every Friday",
@@ -55348,7 +54930,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 17,
+   "item_count": 16,
    "vocabulary_count": 40,
    "gloss_count": 0
   },
@@ -56098,18 +55680,6 @@
        ]
       },
       {
-       "number": 14,
-       "stem": "Do you want to join the club or are you ______ a member?",
-       "answers": [
-        "already"
-       ],
-       "options": [
-        "still",
-        "yet",
-        "any more"
-       ]
-      },
-      {
        "number": 15,
        "stem": "It happened a long time ago, but I ______ remember it very clearly.",
        "answers": [
@@ -56188,7 +55758,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 17,
+   "item_count": 16,
    "vocabulary_count": 30,
    "gloss_count": 0
   },
@@ -56740,16 +56310,7 @@
      "number": 4,
      "instructions": "Use the words in brackets to make a sentence with though at the end.",
      "body": "Use the words in brackets to make a sentence with though at the end.\n        1 The house isn’t very nice. (like / garden) I like the garden though.\n        2 I enjoyed reading the book. (very long)\n        3 We didn’t like the food. (ate)\n        4 Laura is very nice. (don’t like / husband) I\n\n\n\n➜ Additional exercise 32 (page 321)                                                                               227",
-     "items": [
-      {
-       "number": 4,
-       "stem": "Laura is very nice. (don’t like / husband) I ➜ Additional exercise 32 (page 321) ______ 227",
-       "answers": [
-        "I don’t like her husband though"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -56793,7 +56354,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 4,
    "vocabulary_count": 38,
    "gloss_count": 0
   },
@@ -57022,6 +56583,14 @@
         "in case"
        ],
        "options": []
+      },
+      {
+       "number": 10,
+       "stem": "I was advised to get insurance ______ I needed medical treatment while I was abroad. ➜ Additional exercise 32 (page 321)",
+       "answers": [
+        "in case"
+       ],
+       "options": []
       }
      ]
     }
@@ -57083,7 +56652,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 13,
+   "item_count": 14,
    "vocabulary_count": 14,
    "gloss_count": 0
   },
@@ -57241,16 +56810,7 @@
      "number": 4,
      "instructions": "Use your own ideas to complete these sentences.",
      "body": "Use your own ideas to complete these sentences.\n        1 We’ll be late unless we take a taxi.\n        2 I like hot weather as long as\n        3 It takes 20 minutes to drive to the airport provided\n        4 I don’t mind walking home as long as\n        5 I like to walk to work in the morning unless\n        6 We can meet tomorrow unless\n        7 I’ll lend you the money providing\n        8 I’ll tell you a secret as long as\n        9 You won’t achieve anything unless\n\n\n\n\n➜ Additional exercise 32 (page 321)                                                                      231",
-     "items": [
-      {
-       "number": 9,
-       "stem": "You won’t achieve anything unless ➜ Additional exercise 32 (page 321) ______ 231",
-       "answers": [
-        "you take risks"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -57310,7 +56870,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 25,
    "gloss_count": 0
   },
@@ -57510,16 +57070,7 @@
      "number": 5,
      "instructions": "Use your own ideas to complete these sentences.",
      "body": "Use your own ideas to complete these sentences.\n        1 Just as I sat down, the doorbell rang.\n        2 I saw you as\n        3 It started to rain just as\n        4 As she doesn’t have a phone,\n        5 Just as I took the picture,\n\n\n➜ Additional exercise 32 (page 321)                                                                            233",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Just as I took the picture, ➜ Additional exercise 32 (page 321) ______ 233",
-       "answers": [
-        "Just as I took the picture, somebody walked in front of my phone"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -57576,7 +57127,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 36,
    "gloss_count": 0
   },
@@ -57806,51 +57357,7 @@
      "number": 2,
      "instructions": "Which goes with which?",
      "body": "Which goes with which?\n\n        1 I won’t be able to come to the party.          a It was full, as I expected.\n        2 I like Tom’s idea.                             b As I’ve told you before, it’s boring.\n        3 I’m fed up with my job.                        c As you know, I’ll be away.\n        4 You drive too fast.                            d You can do as you like.\n        5 You don’t have to take my advice.              e Let’s do as he suggests.\n        6 I couldn’t get a seat on the train.            f You should take more care, as I\n                                                           keep telling you.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "I like Tom’s idea. ______ b As I’ve told you before, it’s boring.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "I’m fed up with my job. ______ c As you know, I’ll be away.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "You drive too fast. ______ d You can do as you like.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "You don’t have to take my advice. ______ e Let’s do as he suggests.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "b",
-        "f"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I couldn’t get a seat on the train. ______ f You should take more care, as I keep telling you.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -57868,14 +57375,6 @@
        "stem": "I wish I had a car ______ yours.",
        "answers": [
         "like"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Hannah has been working ______ a waitress for the last two months.",
-       "answers": [
-        "as"
        ],
        "options": []
       },
@@ -57900,14 +57399,6 @@
        "stem": "Tom showed me some photos of the city ______ it was thirty years ago.",
        "answers": [
         "as"
-       ],
-       "options": []
-      },
-      {
-       "number": 8,
-       "stem": "My neighbour’s house is full of interesting things. It’s ______ a museum.",
-       "answers": [
-        "like"
        ],
        "options": []
       },
@@ -57937,34 +57428,10 @@
        "options": []
       },
       {
-       "number": 12,
-       "stem": "The news that they are getting married came ______ a complete surprise to me.",
-       "answers": [
-        "as"
-       ],
-       "options": []
-      },
-      {
        "number": 13,
        "stem": "This tea is awful. It tastes ______ water.",
        "answers": [
         "like"
-       ],
-       "options": []
-      },
-      {
-       "number": 14,
-       "stem": "Suddenly there was a terrible noise. It was ______ a bomb exploding.",
-       "answers": [
-        "like"
-       ],
-       "options": []
-      },
-      {
-       "number": 15,
-       "stem": "Right now I’m working in a shop. It’s not great, but it’s OK ______ a temporary job.",
-       "answers": [
-        "as"
        ],
        "options": []
       },
@@ -58028,7 +57495,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 19,
+   "item_count": 9,
    "vocabulary_count": 44,
    "gloss_count": 0
   },
@@ -58338,18 +57805,6 @@
        ]
       },
       {
-       "number": 7,
-       "stem": "I phoned Kate and invited her to the party, but she wasn’t very enthusiastic. She sounded ______ .",
-       "answers": [
-        "in about 20 minutes"
-       ],
-       "options": [
-        "as if he meant what he said",
-        "as if she’s hurt her leg her leg",
-        "as if he hadn’t eaten for a week"
-       ]
-      },
-      {
        "number": 8,
        "stem": "I went into the office, but nobody spoke to me or looked at me. Everybody ignored me ______ .",
        "answers": [
@@ -58368,14 +57823,6 @@
      "instructions": "These sentences are like the ones in Section D. Complete each sentence using as if.",
      "body": "These sentences are like the ones in Section D. Complete each sentence using as if.\n      1 Andy is a terrible driver. He drives as if he were       the only driver on the road.\n      2 I’m 20 years old, so please don’t talk to me                                    a child.\n      3 Steve has never met Nicola, but he talks about her                                      his best friend.\n      4 We first met a long time ago, but I remember it                                     yesterday.\n\n\n                                                                                                                   237",
      "items": [
-      {
-       "number": 2,
-       "stem": "I’m 20 years old, so please don’t talk to me ______ a child.",
-       "answers": [
-        "as if I was/were"
-       ],
-       "options": []
-      },
       {
        "number": 3,
        "stem": "Steve has never met Nicola, but he talks about her ______ his best friend.",
@@ -58460,7 +57907,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 10,
+   "item_count": 8,
    "vocabulary_count": 47,
    "gloss_count": 0
   },
@@ -58680,34 +58127,12 @@
        "options": []
       },
       {
-       "number": 7,
-       "stem": "Sarah was very angry with me. She didn’t speak to me ______ a week.",
-       "answers": [
-        "for"
-       ],
-       "options": [
-        "during",
-        "during (or in)"
-       ]
-      },
-      {
        "number": 8,
        "stem": "I don’t have much free time ______ the week, but I relax at weekends.",
        "answers": [
         "during (or in)"
        ],
        "options": []
-      },
-      {
-       "number": 9,
-       "stem": "I need a break. I think I’ll go away ______ a few days.",
-       "answers": [
-        "for"
-       ],
-       "options": [
-        "during",
-        "during (or in)"
-       ]
       },
       {
        "number": 10,
@@ -58753,16 +58178,15 @@
         "while 8"
        ],
        "options": [
-        "during 10",
-        "during (or in) 11",
-        "during (or in) 12"
+        "during",
+        "during (or in)"
        ]
       },
       {
        "number": 5,
        "stem": "I learnt a lot ______ the course. The teachers were very good.",
        "answers": [
-        "during 10"
+        "during"
        ],
        "options": []
       },
@@ -58770,7 +58194,7 @@
        "number": 6,
        "stem": "There was a lot of noise ______ the night. What was it?",
        "answers": [
-        "during (or in) 11"
+        "during (or in)"
        ],
        "options": []
       },
@@ -58778,7 +58202,7 @@
        "number": 7,
        "stem": "I’d been away for many years. Many things had changed ______ that time.",
        "answers": [
-        "during (or in) 12"
+        "during (or in)"
        ],
        "options": []
       }
@@ -58955,7 +58379,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 24,
+   "item_count": 22,
    "vocabulary_count": 35,
    "gloss_count": 0
   },
@@ -59518,23 +58942,7 @@
        "answers": [
         "in the evening"
        ],
-       "options": [
-        "on 21 July 1969",
-        "at the moment",
-        "in 11 seconds"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "Neil Armstrong was the first man to walk on the moon ______ .",
-       "answers": [
-        "on 21 July 1969"
-       ],
-       "options": [
-        "in the evening",
-        "at the moment",
-        "in 11 seconds"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -59542,23 +58950,7 @@
        "answers": [
         "at the moment"
        ],
-       "options": [
-        "in the evening",
-        "on 21 July 1969",
-        "in 11 seconds"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "Ben is a very fast runner. He can run 100 metres ______ .",
-       "answers": [
-        "in 11 seconds"
-       ],
-       "options": [
-        "in the evening",
-        "on 21 July 1969",
-        "at the moment"
-       ]
+       "options": []
       }
      ]
     },
@@ -59629,7 +59021,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 2,
    "vocabulary_count": 65,
    "gloss_count": 0
   },
@@ -60182,7 +59574,7 @@
         "on my guitar"
        ],
        "options": [
-        "at junction 14",
+        "at junction",
         "in his hand",
         "on that tree"
        ]
@@ -60191,7 +59583,7 @@
        "number": 3,
        "stem": "Leave the motorway ______ and then turn left.",
        "answers": [
-        "at junction 14"
+        "at junction"
        ],
        "options": [
         "on my guitar",
@@ -60207,7 +59599,7 @@
        ],
        "options": [
         "on my guitar",
-        "at junction 14",
+        "at junction",
         "on that tree"
        ]
       },
@@ -60219,7 +59611,7 @@
        ],
        "options": [
         "on my guitar",
-        "at junction 14",
+        "at junction",
         "in his hand"
        ]
       },
@@ -60231,7 +59623,7 @@
        ],
        "options": [
         "on my guitar",
-        "at junction 14",
+        "at junction",
         "in his hand"
        ]
       },
@@ -60243,7 +59635,7 @@
        ],
        "options": [
         "on my guitar",
-        "at junction 14",
+        "at junction",
         "in his hand"
        ]
       },
@@ -60255,7 +59647,7 @@
        ],
        "options": [
         "on my guitar",
-        "at junction 14",
+        "at junction",
         "in his hand"
        ]
       }
@@ -60324,14 +59716,6 @@
        ]
       },
       {
-       "number": 8,
-       "stem": "I wouldn’t like an office job. I couldn’t spend the whole day sitting ______ a desk.",
-       "answers": [
-        "at"
-       ],
-       "options": []
-      },
-      {
        "number": 9,
        "stem": "The man the police are looking for has a scar ______ his right cheek.",
        "answers": [
@@ -60348,17 +59732,6 @@
        "options": [
         "on",
         "in"
-       ]
-      },
-      {
-       "number": 11,
-       "stem": "Have you ever been camping? Have you ever slept ______ a tent?",
-       "answers": [
-        "in"
-       ],
-       "options": [
-        "on",
-        "at"
        ]
       },
       {
@@ -60424,7 +59797,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 18,
+   "item_count": 16,
    "vocabulary_count": 45,
    "gloss_count": 0
   },
@@ -60778,14 +60151,6 @@
        "options": []
       },
       {
-       "number": 5,
-       "stem": "We had to wait ______ a queue for an hour to check in at the airport.",
-       "answers": [
-        "in"
-       ],
-       "options": []
-      },
-      {
        "number": 6,
        "stem": "There was a list of names, but my name wasn’t ______ the list.",
        "answers": [
@@ -60905,7 +60270,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 10,
+   "item_count": 9,
    "vocabulary_count": 67,
    "gloss_count": 0
   },
@@ -61744,10 +61109,7 @@
        "answers": [
         "at"
        ],
-       "options": [
-        "into",
-        "– (no preposition)"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -61755,10 +61117,7 @@
        "answers": [
         "to"
        ],
-       "options": [
-        "into",
-        "– (no preposition)"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -61766,10 +61125,7 @@
        "answers": [
         "to"
        ],
-       "options": [
-        "into",
-        "– (no preposition)"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -61777,22 +61133,7 @@
        "answers": [
         "into"
        ],
-       "options": [
-        "to",
-        "– (no preposition)"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "I missed the bus, so I walked ______ home.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "at",
-        "to",
-        "into"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -61802,8 +61143,7 @@
        ],
        "options": [
         "at",
-        "into",
-        "– (no preposition)"
+        "into"
        ]
       },
       {
@@ -61812,10 +61152,7 @@
        "answers": [
         "into"
        ],
-       "options": [
-        "at",
-        "– (no preposition)"
-       ]
+       "options": []
       },
       {
        "number": 10,
@@ -61825,8 +61162,7 @@
        ],
        "options": [
         "at",
-        "into",
-        "– (no preposition)"
+        "into"
        ]
       },
       {
@@ -61837,8 +61173,7 @@
        ],
        "options": [
         "to",
-        "into",
-        "– (no preposition)"
+        "into"
        ]
       },
       {
@@ -61849,8 +61184,7 @@
        ],
        "options": [
         "at",
-        "into",
-        "– (no preposition)"
+        "into"
        ]
       },
       {
@@ -61861,20 +61195,7 @@
        ],
        "options": [
         "at",
-        "into",
-        "– (no preposition)"
-       ]
-      },
-      {
-       "number": 14,
-       "stem": "We drove along the main road and then turned ______ a narrow side street.",
-       "answers": [
         "into"
-       ],
-       "options": [
-        "at",
-        "to",
-        "– (no preposition)"
        ]
       },
       {
@@ -61885,19 +61206,6 @@
        ],
        "options": [
         "at",
-        "into",
-        "– (no preposition)"
-       ]
-      },
-      {
-       "number": 16,
-       "stem": "I did some shopping on my way ______ home.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "at",
-        "to",
         "into"
        ]
       }
@@ -61921,19 +61229,7 @@
         "in"
        ],
        "options": [
-        "– (no preposition)",
         "at",
-        "to"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "What time did you get ______ home last night?",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "in",
         "to"
        ]
       },
@@ -61943,10 +61239,7 @@
        "answers": [
         "at"
        ],
-       "options": [
-        "– (no preposition)",
-        "to"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -61954,21 +61247,7 @@
        "answers": [
         "to"
        ],
-       "options": [
-        "– (no preposition)",
-        "at"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "We were delayed and arrived ______ home very late.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "in",
-        "to"
-       ]
+       "options": []
       }
      ]
     },
@@ -61982,14 +61261,6 @@
        "stem": "You were waiting at the bus stop. At last your bus came and stopped. The doors opened. What did you do then? I ______ the bus.",
        "answers": [
         "I got on"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "You were travelling by plane. At the end of your flight, your plane landed at the airport and stopped. The doors were opened, you took your bag and stood up. What did you do then? ➜ Additional exercise 34 (page 322) ______ 253",
-       "answers": [
-        "I got off (the plane)"
        ],
        "options": []
       }
@@ -62061,7 +61332,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 21,
+   "item_count": 15,
    "vocabulary_count": 73,
    "gloss_count": 0
   },
@@ -62517,25 +61788,14 @@
      "body": "Complete the sentences with in, on or at.\n        1 Water boils at 100 degrees Celsius.\n        2 When I was 14, I went               a trip to France organised by my school.\n        3 Julia’s grandmother died recently                 the age of 90.\n        4 Can you turn the light on, please? I don’t want to sit                  the dark.\n        5 We didn’t go              holiday last year. We stayed at home.\n        6 I hate driving             fog. You can’t see anything.\n        7 Technology has developed                   great speed.\n        8 David got married               19, which is rather young to get married.\n        9 I listened to an interesting programme                  the radio this morning.\n       10 I wouldn’t like to go             a cruise. I think I’d get bored.\n       11 The earth travels round the sun                 107,000 kilometres an hour.\n       12 I shouldn’t eat too much. I’m supposed to be                    a diet.\n       13 A lot of houses were damaged                  the storm last week.\n       14 I won’t be here next week. I’ll be               holiday.\n       15 I wouldn’t like his job. He spends most of his time talking                   the phone.\n       16 ‘Did you enjoy your holiday?’ ‘Not every minute, but                      the whole, yes.’\n       17             your opinion, what should I do?\n       18 Ben is a happy sort of person. He always seems to be                      a good mood.\n       19 I don’t think violent films should be shown                  TV.\n       20 The museum guidebook is available                    several languages.\n\n\n\n\n➜ Additional exercise 34 (page 322)                                                                               255",
      "items": [
       {
-       "number": 2,
-       "stem": "When I was 14, I went ______ a trip to France organised by my school.",
-       "answers": [
-        "on"
-       ],
-       "options": [
-        "at",
-        "in"
-       ]
-      },
-      {
        "number": 3,
        "stem": "Julia’s grandmother died recently ______ the age of 90.",
        "answers": [
         "at"
        ],
        "options": [
-        "on",
-        "in"
+        "in",
+        "on"
        ]
       },
       {
@@ -62569,8 +61829,8 @@
         "at"
        ],
        "options": [
-        "on",
-        "in"
+        "in",
+        "on"
        ]
       },
       {
@@ -62580,21 +61840,13 @@
         "at"
        ],
        "options": [
-        "on",
-        "in"
+        "in",
+        "on"
        ]
       },
       {
        "number": 9,
        "stem": "I listened to an interesting programme ______ the radio this morning.",
-       "answers": [
-        "on"
-       ],
-       "options": []
-      },
-      {
-       "number": 10,
-       "stem": "I wouldn’t like to go ______ a cruise. I think I’d get bored.",
        "answers": [
         "on"
        ],
@@ -62607,17 +61859,9 @@
         "at"
        ],
        "options": [
-        "on",
-        "in"
-       ]
-      },
-      {
-       "number": 12,
-       "stem": "I shouldn’t eat too much. I’m supposed to be ______ a diet.",
-       "answers": [
+        "in",
         "on"
-       ],
-       "options": []
+       ]
       },
       {
        "number": 13,
@@ -62626,8 +61870,8 @@
         "in"
        ],
        "options": [
-        "on",
-        "at"
+        "at",
+        "on"
        ]
       },
       {
@@ -62658,18 +61902,18 @@
        "options": []
       },
       {
-       "number": 18,
-       "stem": "Ben is a happy sort of person. He always seems to be ______ a good mood.",
-       "answers": [
-        "in"
-       ],
-       "options": []
-      },
-      {
        "number": 19,
        "stem": "I don’t think violent films should be shown ______ TV.",
        "answers": [
         "on"
+       ],
+       "options": []
+      },
+      {
+       "number": 20,
+       "stem": "The museum guidebook is available ______ several languages. ➜ Additional exercise 34 (page 322)",
+       "answers": [
+        "in"
        ],
        "options": []
       }
@@ -62728,7 +61972,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 35,
+   "item_count": 32,
    "vocabulary_count": 44,
    "gloss_count": 0
   },
@@ -63124,26 +62368,12 @@
      "body": "Put in by, in, on or with.\n        1 Have you ever been bitten by a dog?\n        2 We managed to put the fire out               a fire extinguisher.\n        3 Who’s that man standing               the window?\n        4 Do you travel much               bus?\n        5 We travelled             my friend’s car because it is larger and more comfortable than mine.\n        6 It was only            accident that I discovered the error.\n        7 These pictures were taken              a very good camera.\n        8 My friends live in a beautiful house              the sea.\n        9 There were only a few people               the plane. It was almost empty.\n       10 The new railway line will reduce the journey time                two hours (from five\n       11 There was a small table              the bed               a lamp and a clock",
      "items": [
       {
-       "number": 2,
-       "stem": "We managed to put the fire out ______ a fire extinguisher.",
-       "answers": [
-        "with"
-       ],
-       "options": [
-        "by",
-        "on"
-       ]
-      },
-      {
        "number": 3,
        "stem": "Who’s that man standing ______ the window?",
        "answers": [
         "by"
        ],
-       "options": [
-        "with",
-        "on"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -63152,7 +62382,6 @@
         "by"
        ],
        "options": [
-        "with",
         "in",
         "on"
        ]
@@ -63164,7 +62393,6 @@
         "in"
        ],
        "options": [
-        "with",
         "by",
         "on"
        ]
@@ -63175,22 +62403,7 @@
        "answers": [
         "by"
        ],
-       "options": [
-        "with",
-        "in"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "These pictures were taken ______ a very good camera.",
-       "answers": [
-        "with"
-       ],
-       "options": [
-        "by",
-        "in",
-        "on"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -63198,10 +62411,7 @@
        "answers": [
         "by"
        ],
-       "options": [
-        "with",
-        "on"
-       ]
+       "options": []
       },
       {
        "number": 9,
@@ -63210,7 +62420,6 @@
         "on"
        ],
        "options": [
-        "with",
         "by",
         "in"
        ]
@@ -63221,10 +62430,7 @@
        "answers": [
         "by"
        ],
-       "options": [
-        "with",
-        "on"
-       ]
+       "options": []
       }
      ]
     },
@@ -63281,7 +62487,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 22,
+   "item_count": 20,
    "vocabulary_count": 46,
    "gloss_count": 0
   },
@@ -63765,7 +62971,7 @@
        "number": 10,
        "stem": "It wasn’t a bad accident. The ______ the car wasn’t serious.",
        "answers": [
-        "damage to 364"
+        "damage to"
        ],
        "options": [
         "invitation to",
@@ -63922,6 +63128,14 @@
         "in",
         "for"
        ]
+      },
+      {
+       "number": 14,
+       "stem": "The fact that Jane was offered a job in the company has no connection ______ the fact that she is a friend of the managing director. ➜ Additional exercise 35 (page 322)",
+       "answers": [
+        "with"
+       ],
+       "options": []
       }
      ]
     }
@@ -63978,7 +63192,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 30,
+   "item_count": 31,
    "vocabulary_count": 53,
    "gloss_count": 0
   },
@@ -65334,6 +64548,17 @@
         "in",
         "with"
        ]
+      },
+      {
+       "number": 10,
+       "stem": "We’re short ______ staff in our office right now. We need more people to do the work. ➜ Additional exercise 35 (page 322)",
+       "answers": [
+        "of"
+       ],
+       "options": [
+        "for",
+        "with"
+       ]
       }
      ]
     }
@@ -65408,7 +64633,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 22,
+   "item_count": 23,
    "vocabulary_count": 66,
    "gloss_count": 0
   },
@@ -66101,8 +65326,7 @@
        ],
        "options": [
         "for",
-        "about",
-        "– (no preposition)"
+        "about"
        ]
       },
       {
@@ -66113,8 +65337,7 @@
        ],
        "options": [
         "to",
-        "about",
-        "– (no preposition)"
+        "about"
        ]
       },
       {
@@ -66126,14 +65349,6 @@
        "options": []
       },
       {
-       "number": 5,
-       "stem": "I don’t want to discuss ______ what happened last night. Let’s forget it.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": []
-      },
-      {
        "number": 6,
        "stem": "We had an interesting discussion ______ the problem, but we didn’t reach a decision.",
        "answers": [
@@ -66141,8 +65356,7 @@
        ],
        "options": [
         "to",
-        "for",
-        "– (no preposition)"
+        "for"
        ]
       },
       {
@@ -66151,10 +65365,7 @@
        "answers": [
         "for"
        ],
-       "options": [
-        "about",
-        "– (no preposition)"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -66162,10 +65373,7 @@
        "answers": [
         "about"
        ],
-       "options": [
-        "for",
-        "– (no preposition)"
-       ]
+       "options": []
       }
      ]
     },
@@ -66182,8 +65390,7 @@
        ],
        "options": [
         "about",
-        "for",
-        "– (no preposition)"
+        "for"
        ]
       },
       {
@@ -66194,8 +65401,7 @@
        ],
        "options": [
         "of",
-        "for",
-        "– (no preposition)"
+        "for"
        ]
       },
       {
@@ -66206,8 +65412,7 @@
        ],
        "options": [
         "of",
-        "about",
-        "– (no preposition)"
+        "about"
        ]
       },
       {
@@ -66216,10 +65421,7 @@
        "answers": [
         "of"
        ],
-       "options": [
-        "for",
-        "– (no preposition)"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -66229,8 +65431,7 @@
        ],
        "options": [
         "of",
-        "about",
-        "– (no preposition)"
+        "about"
        ]
       },
       {
@@ -66241,19 +65442,6 @@
        ],
        "options": [
         "of",
-        "for",
-        "– (no preposition)"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I want to have a good holiday. I don’t care ______ how much it costs.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "of",
-        "about",
         "for"
        ]
       }
@@ -66264,14 +65452,6 @@
      "instructions": "Complete the sentences with look for or look after. Use the correct form of look (looks/",
      "body": "Complete the sentences with look for or look after. Use the correct form of look (looks/\n        looked/looking).\n        1 I looked for my keys, but I couldn’t find them anywhere.\n        2 Kate is                             a job. I hope she finds one soon.\n        3 Who                              you when you were ill?\n        4 The car park was full, so we had to                              somewhere else to park.\n        5 A child minder is somebody who                                 other people’s children.\n        6 I’m                             Lisa. I need to ask her something. Have you seen her?",
      "items": [
-      {
-       "number": 2,
-       "stem": "Kate is ______ a job. I hope she finds one soon.",
-       "answers": [
-        "looking for"
-       ],
-       "options": []
-      },
       {
        "number": 3,
        "stem": "Who ______ you when you were ill?",
@@ -66433,7 +65613,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 23,
+   "item_count": 20,
    "vocabulary_count": 45,
    "gloss_count": 0
   },
@@ -66762,14 +65942,6 @@
        "options": []
       },
       {
-       "number": 4,
-       "stem": "I love this music. It reminds me ______ a warm day in spring.",
-       "answers": [
-        "of"
-       ],
-       "options": []
-      },
-      {
        "number": 5,
        "stem": "A: We’ve got no money. What are we going to do? B: Don’t worry. I’ll think ______ something.",
        "answers": [
@@ -66898,7 +66070,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 25,
+   "item_count": 24,
    "vocabulary_count": 27,
    "gloss_count": 0
   },
@@ -67163,8 +66335,8 @@
        ],
        "options": [
         "of",
-        "– (no preposition)",
-        "of/from"
+        "of/from",
+        "on"
        ]
       },
       {
@@ -67175,7 +66347,6 @@
        ],
        "options": [
         "for",
-        "– (no preposition)",
         "of/from"
        ]
       },
@@ -67187,20 +66358,8 @@
        ],
        "options": [
         "for",
-        "– (no preposition)",
-        "of/from"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "We finished our meal, paid ______ the bill, and left the restaurant.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "for",
-        "of",
-        "of/from"
+        "of/from",
+        "on"
        ]
       },
       {
@@ -67211,8 +66370,8 @@
        ],
        "options": [
         "of",
-        "– (no preposition)",
-        "of/from"
+        "of/from",
+        "on"
        ]
       },
       {
@@ -67224,7 +66383,7 @@
        "options": [
         "for",
         "of",
-        "– (no preposition)"
+        "on"
        ]
       },
       {
@@ -67235,8 +66394,8 @@
        ],
        "options": [
         "of",
-        "– (no preposition)",
-        "of/from"
+        "of/from",
+        "on"
        ]
       },
       {
@@ -67247,8 +66406,8 @@
        ],
        "options": [
         "for",
-        "– (no preposition)",
-        "of/from"
+        "of/from",
+        "on"
        ]
       },
       {
@@ -67259,7 +66418,6 @@
        ],
        "options": [
         "of",
-        "– (no preposition)",
         "of/from"
        ]
       },
@@ -67272,7 +66430,7 @@
        "options": [
         "for",
         "of",
-        "– (no preposition)"
+        "of/from"
        ]
       },
       {
@@ -67283,8 +66441,8 @@
        ],
        "options": [
         "of",
-        "– (no preposition)",
-        "of/from"
+        "of/from",
+        "on"
        ]
       }
      ]
@@ -67455,33 +66613,10 @@
      "body": "Put in the correct preposition. If no preposition is necessary, leave the space empty.\n        1 I’ll never forgive them for what they did.\n        2 Vaccinations may protect you              a number of diseases.\n        3 You know you can always rely              me if you need any help.\n        4 Sophie will have to borrow money to pay                her college fees.\n        5 She’s often unwell. She suffers             very bad headaches.\n        6 I don’t know whether I’ll go out tonight. It depends              how I feel.\n        7 Anna doesn’t have a job. She depends                 her parents for money.\n        8 My usual breakfast consists            fruit, cereal and coffee.\n        9 I complimented her              her English. It was really good.\n\n\n➜ Additional exercise 36 (page 323)                                                                        271",
      "items": [
       {
-       "number": 2,
-       "stem": "Vaccinations may protect you ______ a number of diseases.",
-       "answers": [
-        "from"
-       ],
-       "options": [
-        "– (no preposition)",
-        "depends how (no preposition)"
-       ]
-      },
-      {
        "number": 3,
        "stem": "You know you can always rely ______ me if you need any help.",
        "answers": [
         "on"
-       ],
-       "options": [
-        "from",
-        "– (no preposition)",
-        "depends how (no preposition)"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "Sophie will have to borrow money to pay ______ her college fees.",
-       "answers": [
-        "– (no preposition)"
        ],
        "options": [
         "from",
@@ -67494,23 +66629,7 @@
        "answers": [
         "from"
        ],
-       "options": [
-        "on",
-        "– (no preposition)",
-        "depends how (no preposition)"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I don’t know whether I’ll go out tonight. It depends ______ how I feel.",
-       "answers": [
-        "depends how (no preposition)",
-        "depends on how"
-       ],
-       "options": [
-        "from",
-        "of"
-       ]
+       "options": []
       },
       {
        "number": 7,
@@ -67520,8 +66639,7 @@
        ],
        "options": [
         "from",
-        "– (no preposition)",
-        "depends how (no preposition)"
+        "of"
        ]
       },
       {
@@ -67530,10 +66648,17 @@
        "answers": [
         "of"
        ],
+       "options": []
+      },
+      {
+       "number": 9,
+       "stem": "I complimented her ______ her English. It was really good. ➜ Additional exercise 36 (page 323)",
+       "answers": [
+        "on"
+       ],
        "options": [
         "from",
-        "– (no preposition)",
-        "depends how (no preposition)"
+        "of"
        ]
       }
      ]
@@ -67588,7 +66713,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 30,
+   "item_count": 27,
    "vocabulary_count": 52,
    "gloss_count": 0
   },
@@ -67882,18 +67007,6 @@
        ]
       },
       {
-       "number": 7,
-       "stem": "A burglar is someone who ______ a house to steal things.",
-       "answers": [
-        "breaks into"
-       ],
-       "options": [
-        "happened to",
-        "invited to",
-        "believe in"
-       ]
-      },
-      {
        "number": 8,
        "stem": "Don’t try and do two things together. ______ one thing at a time.",
        "answers": [
@@ -68052,18 +67165,6 @@
        ]
       },
       {
-       "number": 8,
-       "stem": "There was an awful noise as the car crashed ______ a tree.",
-       "answers": [
-        "into"
-       ],
-       "options": [
-        "to",
-        "on",
-        "in"
-       ]
-      },
-      {
        "number": 9,
        "stem": "Patrick is a photographer. He specialises ______ sports photography.",
        "answers": [
@@ -68088,18 +67189,6 @@
        ]
       },
       {
-       "number": 11,
-       "stem": "I was amazed when I heard the news. I couldn’t believe ______ it.",
-       "answers": [
-        "– (no preposition)"
-       ],
-       "options": [
-        "to",
-        "on",
-        "in"
-       ]
-      },
-      {
        "number": 12,
        "stem": "Somebody broke ______ my car and stole my bag.",
        "answers": [
@@ -68119,8 +67208,7 @@
        ],
        "options": [
         "with",
-        "into",
-        "– (no preposition)"
+        "into"
        ]
       },
       {
@@ -68143,8 +67231,7 @@
        ],
        "options": [
         "to",
-        "into",
-        "– (no preposition)"
+        "into"
        ]
       }
      ]
@@ -68201,6 +67288,18 @@
         "into a wall",
         "to volleyball"
        ]
+      },
+      {
+       "number": 6,
+       "stem": "Shakespeare’s plays have been translated ______ . ➜ Additional exercise 36 (page 323)",
+       "answers": [
+        "into many languages"
+       ],
+       "options": [
+        "on petrol",
+        "to volleyball",
+        "in seafood"
+       ]
       }
      ]
     }
@@ -68254,7 +67353,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 29,
+   "item_count": 27,
    "vocabulary_count": 47,
    "gloss_count": 0
   },
@@ -68649,34 +67748,10 @@
        ]
       },
       {
-       "number": 6,
-       "stem": "I can’t hear you very well. Can you ______ a little?",
-       "answers": [
-        "speak up"
-       ],
-       "options": [
-        "sit down",
-        "taking off",
-        "flew away"
-       ]
-      },
-      {
        "number": 7,
        "stem": "Ben’s salary is very low, but it’s enough to ______ .",
        "answers": [
         "get by"
-       ],
-       "options": [
-        "sit down",
-        "taking off",
-        "flew away"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "Everything is so expensive now. Prices have ______ a lot.",
-       "answers": [
-        "gone up"
        ],
        "options": [
         "sit down",
@@ -68984,6 +68059,18 @@
         "We can turn the TV/television off",
         "I don’t want to wake her up"
        ]
+      },
+      {
+       "number": 10,
+       "stem": "A: How did the vase get broken? B: I’m afraid I knocked ______ while I was cleaning. (over) ➜ Additional exercises 37–41 (pages 323–25)",
+       "answers": [
+        "I knocked it over"
+       ],
+       "options": [
+        "I have to give them back to her",
+        "We can turn the TV/television off",
+        "I don’t want to wake her up"
+       ]
       }
      ]
     }
@@ -69045,7 +68132,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 30,
+   "item_count": 29,
    "vocabulary_count": 74,
    "gloss_count": 0
   },
@@ -70484,23 +69571,9 @@
         "finish off"
        ],
        "options": [
-        "drive on",
         "ripped off",
-        "getting on"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "‘Shall I stop the car here?’ ‘No, ______ a bit further.’",
-       "answers": [
-        "drive on",
-        "carry on",
-        "go on"
-       ],
-       "options": [
-        "finish off",
-        "ripped off",
-        "getting on"
+        "getting on",
+        "went off"
        ]
       },
       {
@@ -70511,8 +69584,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "getting on"
+        "getting on",
+        "went off"
        ]
       },
       {
@@ -70523,8 +69596,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "went off"
        ]
       },
       {
@@ -70535,8 +69608,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70547,8 +69620,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70559,8 +69632,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70571,8 +69644,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70584,8 +69657,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70597,8 +69670,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70609,8 +69682,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70621,8 +69694,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70634,8 +69707,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       },
       {
@@ -70648,8 +69721,8 @@
        ],
        "options": [
         "finish off",
-        "drive on",
-        "ripped off"
+        "ripped off",
+        "getting on"
        ]
       }
      ]
@@ -70727,6 +69800,19 @@
        "stem": "A: Some children at the next table in the restaurant were behaving very badly. B: Why didn’t their parents ______ ?",
        "answers": [
         "tell them off"
+       ],
+       "options": [
+        "gets on with",
+        "carry on",
+        "finish it off"
+       ]
+      },
+      {
+       "number": 8,
+       "stem": "A: Is Kate good at making decisions? B: No, she isn’t. ______ changing her mind. ➜ Additional exercises 37–41 (pages 323–25)",
+       "answers": [
+        "She keeps on",
+        "She keeps"
        ],
        "options": [
         "gets on with",
@@ -71631,6 +70717,18 @@
         "fixed it up",
         "keep up with"
        ]
+      },
+      {
+       "number": 11,
+       "stem": "When I was on holiday, I joined a tour group. The group ______ two Americans, three Japanese, five Germans and myself. ➜ Additional exercises 37–41 (pages 323–25)",
+       "answers": [
+        "was made up of"
+       ],
+       "options": [
+        "tidy it up",
+        "fixed it up",
+        "keep up with"
+       ]
       }
      ]
     }
@@ -71654,7 +70752,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 17,
+   "item_count": 18,
    "vocabulary_count": 43,
    "gloss_count": 0
   },
@@ -71933,7 +71031,7 @@
        "options": [
         "put up with",
         "making it up",
-        "come up with"
+        "tear them up"
        ]
       },
       {
@@ -71957,18 +71055,6 @@
        "options": [
         "look it up",
         "put up with",
-        "come up with"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "The problem was complicated, but we managed to ______ a solution.",
-       "answers": [
-        "come up with"
-       ],
-       "options": [
-        "look it up",
-        "making it up",
         "tear them up"
        ]
       },
@@ -71985,10 +71071,10 @@
        ]
       },
       {
-       "number": 7,
-       "stem": "I’m trying to spend less money at the moment. I’m ______ a holiday.",
+       "number": 8,
+       "stem": "Tina doesn’t like talking about the accident, so it’s better not to ______ .",
        "answers": [
-        "saving up for"
+        "bring it up"
        ],
        "options": [
         "look it up",
@@ -71997,10 +71083,11 @@
        ]
       },
       {
-       "number": 8,
-       "stem": "Tina doesn’t like talking about the accident, so it’s better not to ______ .",
+       "number": 9,
+       "stem": "The words ‘there’ and ‘their’ sound the same, so it’s easy to ______ . ➜ Additional exercises 37–41 (pages 323–25)",
        "answers": [
-        "bring it up"
+        "mix them up",
+        "get them mixed up"
        ],
        "options": [
         "look it up",
@@ -72035,7 +71122,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 13,
+   "item_count": 12,
    "vocabulary_count": 32,
    "gloss_count": 0
   },

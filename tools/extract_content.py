@@ -1621,6 +1621,12 @@ def as_question(prompt, answer):
     rewrite or a discussion question - still teaching, but not something that
     can be marked - and is left out.
     """
+    # The last item in a column runs into the page furniture below it, and the
+    # gap before that furniture then reads as the printed blank: "Have you got
+    # a piece / bunch / sheet of paper I could borrow? English Vocabulary in
+    # Use" was mined as a question whose gap was the foot of the page.
+    prompt = RE_FOOTER.split(prompt)[0]
+    prompt = re.sub(r'\s{3,}\d{1,3}\s*$', '', prompt)
     prompt = re.sub(r'\s+$', '', prompt)
     if not RE_PRINTED_BLANK.search(prompt):
         return None
@@ -1631,8 +1637,13 @@ def as_question(prompt, answer):
     # The key's columns sit under a running head, and the last answer in a
     # column picks it up: "I agree UNIT 3".
     answer = re.sub(r'\s*\b(?:UNIT|Unit)\s+\d{1,3}\s*$', '', answer)
+    # The page number sits under the last answer in a column and is read as
+    # part of it: "in 363".
+    answer = re.sub(r'\s+\d{2,3}\s*$', '', answer)
     answer = re.sub(r'\s{2,}', ' ', answer).strip(' .')
     if not answer or len(answer) > 80 or not re.search(r'[A-Za-z]', answer):
+        return None
+    if not is_typable(answer):
         return None
     # A "…" in the key means the answer fills two blanks in the sentence; the
     # halves cannot be matched to the gaps without guessing which is which.
@@ -1644,8 +1655,43 @@ def as_question(prompt, answer):
         return None
     if stem.count(BLANK) != 1:
         return None
+    # "qualifications ______ c Leona Phillips, 18 Mansion Road" - the two
+    # halves of a matching grid, read across as though they were a sentence.
+    if re.search(r'{}\s+[a-j]\b'.format(BLANK), stem):
+        return None
 
     return stem, answer
+
+
+# The key writes "no article here" as a dash, sometimes with the finished
+# sentence beside it. That is a note to the reader, not a word to type.
+RE_KEY_NOTE = re.compile(r'^[-–—]|\(\s*no\s+\w+', re.I)
+# An item number that ran into the answer beside it: "insolent 3 offhand" is
+# two answers, and neither of them is that.
+RE_RUN_ON = re.compile(r'\S\s+\d{1,2}\s+\S')
+
+
+def is_typable(answer):
+    """Could a learner write this, and would it be marked fairly?
+
+    Three shapes get this far and none of them is a question. A matching drill
+    answers with a letter - "f", "h" - which means nothing outside the printed
+    grid it points into. A key note says what to leave out rather than what to
+    write. And an answer with an item number inside it is two answers that the
+    column reader ran together.
+
+    Only a single character is short enough to be a grid reference. Rejecting
+    everything under three took "is", "AD" and "e.g" with it, and those are
+    the answers to "Spaghetti ... ______ very good", "dates from 500 ______"
+    and "Fruits, ______ lemons, pears or grapes".
+    """
+    if len(answer.strip()) <= 1:
+        return False
+    if RE_KEY_NOTE.search(answer):
+        return False
+    if RE_RUN_ON.search(answer):
+        return False
+    return True
 
 
 def accepted_answers(answer):

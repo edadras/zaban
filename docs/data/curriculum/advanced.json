@@ -5055,6 +5055,18 @@
         "guidelines",
         "mature"
        ]
+      },
+      {
+       "number": 8,
+       "stem": "At university I was lucky enough to have a lot of ______ tutorials, just me and the tutor! English",
+       "answers": [
+        "one-to-one"
+       ],
+       "options": [
+        "scholarship",
+        "guidelines",
+        "mature"
+       ]
       }
      ]
     }
@@ -5100,7 +5112,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 6,
    "vocabulary_count": 44,
    "gloss_count": 13
   },
@@ -5294,128 +5306,7 @@
      "number": 1,
      "instructions": "Match the two parts of these business collocations from A and B.",
      "body": "Match the two parts of these business collocations from A and B.\n       1 healthcare                               a faithfully\n       2 team                                     b prospects\n       3 Yours                                    c plan\n       4 competitive                              d a team\n       5 challenging                              e application\n       6 communication                            f role\n       7 online                                   g letter\n       8 lead                                     h player\n       9 career                                   i skills\n      10 cover                                    j salary",
-     "items": [
-      {
-       "number": 1,
-       "stem": "healthcare ______ a faithfully",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "j",
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "team ______ b prospects",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "j",
-        "f",
-        "i"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "Yours ______ c plan",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "h",
-        "j",
-        "f"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "competitive ______ d a team",
-       "answers": [
-        "j"
-       ],
-       "options": [
-        "h",
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "challenging ______ e application",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "j",
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "communication ______ f role",
-       "answers": [
-        "i"
-       ],
-       "options": [
-        "h",
-        "j",
-        "d"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "online ______ g letter",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "c",
-        "h",
-        "a"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "lead ______ h player",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "c",
-        "j",
-        "f"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "career ______ i skills",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "h",
-        "j",
-        "f"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "cover ______ j salary",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "h",
-        "f",
-        "i"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -5544,7 +5435,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 15,
+   "item_count": 5,
    "vocabulary_count": 37,
    "gloss_count": 3
   },
@@ -5726,7 +5617,7 @@
        ],
        "options": [
         "first impression",
-        "criteria English Vocabulary in Use Advanced 211"
+        "criteria English Vocabulary in Use Advanced"
        ]
       },
       {
@@ -5737,14 +5628,14 @@
        ],
        "options": [
         "trial run",
-        "criteria English Vocabulary in Use Advanced 211"
+        "criteria English Vocabulary in Use Advanced"
        ]
       },
       {
        "number": 6,
        "stem": "During the interview, describe all your relevant education and experience to show how you fulfil all the ______ for the job.",
        "answers": [
-        "criteria English Vocabulary in Use Advanced 211"
+        "criteria English Vocabulary in Use Advanced"
        ],
        "options": [
         "trial run",
@@ -6029,62 +5920,7 @@
      "number": 2,
      "instructions": "Match the left and right-hand columns to make pairs of sentences.",
      "body": "Match the left and right-hand columns to make pairs of sentences.\n       1 We often work together.                                   a There are several levels of management.\n       2 The firm’s rather hierarchical.                           b Deadlines have to be met.\n       3 Peter’s my counterpart.                                   c It’s a job-share.\n       4 We work to a tight schedule.                              d Collaboration is a good thing.\n       5 I don’t think I’ll be promoted before her.                e We do the same job but he’s based in Rome.\n       6 Jess and I work half-and-half.                            f There’s a strict pecking order in the company.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "We often work together. ______ a There are several levels of management.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "b",
-        "c"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "The firm’s rather hierarchical. ______ b Deadlines have to be met.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Peter’s my counterpart. ______ c It’s a job-share.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "d",
-        "f"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "We work to a tight schedule. ______ d Collaboration is a good thing.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "I don’t think I’ll be promoted before her. ______ e We do the same job but he’s based in Rome.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "Jess and I work half-and-half. ______ f There’s a strict pecking order in the company.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -6146,7 +5982,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 41,
    "gloss_count": 0
   },
@@ -6685,113 +6521,7 @@
      "number": 1,
      "instructions": "Match the two parts of these business collocations from the opposite page.",
      "body": "Match the two parts of these business collocations from the opposite page.\n      1 loss                          a agency\n      2 capital                       b channel\n      3 purchasing                    c leader\n      4 shopping                      d tape\n      5 hard                          e power\n      6 letting                       f loyalty\n      7 brand                         g assets\n      8 niche                         h sell\n      9 red                           i market",
-     "items": [
-      {
-       "number": 1,
-       "stem": "loss ______ a agency",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "b",
-        "h",
-        "f"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "capital ______ b channel",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "f",
-        "d"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "purchasing ______ c leader",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "b",
-        "f"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "shopping ______ d tape",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "c",
-        "f"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "hard ______ e power",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "c",
-        "g",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "letting ______ f loyalty",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "c",
-        "b",
-        "h"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "brand ______ g assets",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "c",
-        "h",
-        "i"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "niche ______ h sell",
-       "answers": [
-        "i"
-       ],
-       "options": [
-        "g",
-        "b",
-        "a"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "red ______ i market",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "c",
-        "g",
-        "b"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -6805,21 +6535,9 @@
         "under"
        ],
        "options": [
-        "around",
         "back",
-        "cold"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "It’s a sensible idea to shop ______ a bit before buying a computer.",
-       "answers": [
-        "around"
-       ],
-       "options": [
-        "under",
-        "back",
-        "cold"
+        "cold",
+        "part"
        ]
       },
       {
@@ -6830,8 +6548,8 @@
        ],
        "options": [
         "under",
-        "around",
-        "cold"
+        "cold",
+        "part"
        ]
       },
       {
@@ -6842,8 +6560,8 @@
        ],
        "options": [
         "under",
-        "around",
-        "back"
+        "back",
+        "part"
        ]
       },
       {
@@ -6854,8 +6572,8 @@
        ],
        "options": [
         "under",
-        "around",
-        "back"
+        "back",
+        "cold"
        ]
       },
       {
@@ -6866,8 +6584,8 @@
        ],
        "options": [
         "under",
-        "around",
-        "back"
+        "back",
+        "cold"
        ]
       },
       {
@@ -6878,8 +6596,8 @@
        ],
        "options": [
         "under",
-        "around",
-        "back"
+        "back",
+        "cold"
        ]
       },
       {
@@ -6890,8 +6608,8 @@
        ],
        "options": [
         "under",
-        "around",
-        "back"
+        "back",
+        "cold"
        ]
       }
      ]
@@ -6906,16 +6624,7 @@
      "number": 4,
      "instructions": "Choose the best word to complete each sentence.",
      "body": "Choose the best word to complete each sentence.\n      1 I hope we’ll be able to keep / reach a compromise when we meet tomorrow.\n      2 I think those new games consoles are priced / purchased too high at the moment.\n      3 The shops are hoping to sell a lot of capital assets / merchandise connected with the\n        royal wedding.\n      4 My sports car was so expensive to run that I decided to trade it down / up for something\n        much cheaper.\n      5 Helga has never looked back / out since she started her own business ten years ago.\n      6 There’s a lot of loss leader / red tape involved in setting up a new business.\n\n\n\n\n                                                             English Vocabulary in Use Advanced         21",
-     "items": [
-      {
-       "number": 6,
-       "stem": "There’s a lot of loss leader / red tape involved in setting up a new business. English Vocabulary in Use Advanced ______ 21",
-       "answers": [
-        "red tape English Vocabulary in Use Advanced 213"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -6967,7 +6676,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 18,
+   "item_count": 7,
    "vocabulary_count": 37,
    "gloss_count": 4
   },
@@ -7445,10 +7154,7 @@
        "answers": [
         "unkempt"
        ],
-       "options": [
-        "bulked up",
-        "haggard"
-       ]
+       "options": []
       },
       {
        "number": 2,
@@ -7458,19 +7164,6 @@
        ],
        "options": [
         "unkempt",
-        "bulked up",
-        "haggard"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "Alex has ______ a lot – must be all that time he spends at the gym lifting weights!",
-       "answers": [
-        "bulked up"
-       ],
-       "options": [
-        "unkempt",
-        "hair",
         "haggard"
        ]
       },
@@ -7482,8 +7175,7 @@
        ],
        "options": [
         "unkempt",
-        "hair",
-        "bulked up"
+        "hair"
        ]
       }
      ]
@@ -7492,22 +7184,22 @@
      "number": 3,
      "instructions": "What are these people doing?",
      "body": "What are these people doing?\n\n\n\n\n      1    He’s folding his arms.           2                                        3\n\n\n\n\n      4                                     5                                        6",
-     "items": []
+     "items": [
+      {
+       "number": 1,
+       "stem": "He’s folding his arms. ______ 2",
+       "answers": [
+        "He’s folding his arms"
+       ],
+       "options": []
+      }
+     ]
     },
     {
      "number": 4,
      "instructions": "Answer these questions. Use a dictionary if necessary.",
      "body": "Answer these questions. Use a dictionary if necessary.\n      1 The verb to pout has two meanings on the opposite page. What are they?\n      2 If someone scowls at you, how are they probably feeling?\n      3 What is the difference between a swarthy complexion and a sallow complexion?\n      4 When would you clench your fist?\n      5 When do people normally shrug their shoulders?\n      6 What might you do with your fingers on a table if you were nervous or impatient?\n      7 In what situations do people typically (a) fold their arms, (b) cross their legs?\n      8 If someone is ‘lean and wiry’, which of these adjectives are true of them: thin, fat, healthy, weak,\n        ill-looking, strong?\n                                                              English Vocabulary in Use Advanced           25",
-     "items": [
-      {
-       "number": 8,
-       "stem": "If someone is ‘lean and wiry’, which of these adjectives are true of them: thin, fat, healthy, weak, ill-looking, strong? English Vocabulary in Use Advanced ______ 25",
-       "answers": [
-        "A ‘lean and wiry’ person is thin, healthy and strong"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -7567,7 +7259,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 4,
    "vocabulary_count": 31,
    "gloss_count": 19
   },
@@ -8810,6 +8502,14 @@
         "It was a genuine misunderstanding"
        ],
        "options": []
+      },
+      {
+       "number": 5,
+       "stem": "Two of the brothers have not spoken to their other brother for 20 years because of something bad that happened. I think it’s a ______ . English",
+       "answers": [
+        "I think it’s a family feud"
+       ],
+       "options": []
       }
      ]
     }
@@ -8873,7 +8573,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 11,
+   "item_count": 12,
    "vocabulary_count": 50,
    "gloss_count": 19
   },
@@ -9111,66 +8811,7 @@
      "number": 3,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n       1 Lucy has been walking                        a on top of the world since he got his PhD.\n       2 Beth is full                                 b unaware of all the problems.\n       3 Eva seems to be blissfully                   c to bits when he won the medal.\n       4 Everyone rejoiced                            d on air since she got her promotion.\n       5 Sam is feeling                               e when they heard that the war had ended.\n       6 His parents were thrilled                    f of the joys of spring.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "Lucy has been walking ______ a on top of the world since he got his PhD.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "Beth is full ______ b unaware of all the problems.",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "d",
-        "c English Vocabulary in Use Advanced 217"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "Eva seems to be blissfully ______ c to bits when he won the medal.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "Everyone rejoiced ______ d on air since she got her promotion.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "b",
-        "c English Vocabulary in Use Advanced 217"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "Sam is feeling ______ e when they heard that the war had ended.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "b",
-        "c English Vocabulary in Use Advanced 217"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "His parents were thrilled ______ f of the joys of spring.",
-       "answers": [
-        "c English Vocabulary in Use Advanced 217"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -9234,7 +8875,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 38,
    "gloss_count": 8
   },
@@ -9573,48 +9214,7 @@
      "number": 3,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n        1 We were distraught                           a so I offered to buy him a coffee.\n        2 She felt dejected                            b by the death of so many good friends.\n        3 He was looking a bit down                    c who rarely laughed or enjoyed herself.\n        4 They were utterly devastated                 d when our cat went missing.\n        5 She was quite a miserable person             e because she failed the exam.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "We were distraught ______ a so I offered to buy him a coffee.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "She felt dejected ______ b by the death of so many good friends.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "He was looking a bit down ______ c who rarely laughed or enjoyed herself.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "They were utterly devastated ______ d when our cat went missing.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "She was quite a miserable person ______ e because she failed the exam.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -9686,7 +9286,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 51,
    "gloss_count": 18
   },
@@ -10417,6 +10017,18 @@
         "couch potato",
         "gone off"
        ]
+      },
+      {
+       "number": 6,
+       "stem": "A: Someone said I could make some money out of those necklaces I make in my spare time. B: I agree. I think it could prove very ______ for you. English",
+       "answers": [
+        "lucrative English Vocabulary in Use Advanced"
+       ],
+       "options": [
+        "therapeutic",
+        "couch potato",
+        "gone off"
+       ]
       }
      ]
     }
@@ -10467,7 +10079,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 11,
+   "item_count": 12,
    "vocabulary_count": 26,
    "gloss_count": 13
   },
@@ -11271,18 +10883,6 @@
        ]
       },
       {
-       "number": 6,
-       "stem": "As a child, the writer ______ a sheltered life in a small village in the back of beyond.",
-       "answers": [
-        "led"
-       ],
-       "options": [
-        "on fire",
-        "home truths",
-        "write home about"
-       ]
-      },
-      {
        "number": 7,
        "stem": "We need someone to come and ______ some new life into the project.",
        "answers": [
@@ -11318,16 +10918,7 @@
      "number": 4,
      "instructions": "Here are some more expressions with home and life. Use the context to work out what",
      "body": "Here are some more expressions with home and life. Use the context to work out what\n       the underlined expressions mean.\n       1 The poet said that he had had a period of depression but that he had never considered\n         taking his own life.\n       2 The comedy duo’s superb performance brought the house down.\n       3 Our customers come from many different walks of life – we have doctors, shop assistants,\n         computer programmers, you name it!\n       4 The system turned out to be a house of cards – it didn’t take much to bring it down.\n       5 Whenever my nephews arrive for a visit, they eat us out of house and home.\n       6 I love having George around – you can rely on him to be the life and soul of the party.\n\n\n\n\n                                                                      English Vocabulary in Use Advanced                    43",
-     "items": [
-      {
-       "number": 6,
-       "stem": "I love having George around – you can rely on him to be the life and soul of the party. English Vocabulary in Use Advanced ______ 43",
-       "answers": [
-        "be energetic and funny at a social occasion"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -11379,7 +10970,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 7,
    "vocabulary_count": 66,
    "gloss_count": 1
   },
@@ -12625,40 +12216,7 @@
      "number": 4,
      "instructions": "Match the things you might find in particular kinds of books with an appropriate type of book.",
      "body": "Match the things you might find in particular kinds of books with an appropriate type of book.\n        1 a section on ‘troubleshooting’ / problem-solving                 a encyclopedia\n        2 an article about waterfalls, with pictures                       b journal\n        3 a record of a recent examination or test of a lorry              c manual\n        4 a day-to-day record of life during a war in 1776                 d logbook",
-     "items": [
-      {
-       "number": 1,
-       "stem": "a section on ‘troubleshooting’ / problem-solving ______ a encyclopedia",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "an article about waterfalls, with pictures ______ b journal",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "a record of a recent examination or test of a lorry ______ c manual",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "a day-to-day record of life during a war in 1776 ______ d logbook",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -12716,7 +12274,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 0,
    "vocabulary_count": 37,
    "gloss_count": 10
   },
@@ -13318,16 +12876,7 @@
      "number": 4,
      "instructions": "Which expressions on the opposite page mean:",
      "body": "Which expressions on the opposite page mean:\n       1 eat whatever your hosts are eating at home, not a special dish for you?\n       2 tell me when I’ve poured enough in your glass?\n       3 get a quick meal or some other food that does not take a long time?\n       4 small items you eat before a meal, or perhaps at a reception?\n       5 another portion of what you have just eaten?\n       6 a semi-formal party in someone’s house, probably not a meal?\n\n\n\n\n                                                               English Vocabulary in Use Advanced        55",
-     "items": [
-      {
-       "number": 6,
-       "stem": "a semi-formal party in someone’s house, probably not a meal? English Vocabulary in Use Advanced ______ 55",
-       "answers": [
-        "an informal get-together English Vocabulary in Use Advanced 225"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -13387,7 +12936,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 33,
    "gloss_count": 24
   },
@@ -13587,47 +13136,7 @@
        "answers": [
         "tow-away"
        ],
-       "options": [
-        "(exhaust) emissions 2 tailback",
-        "disruption 5 right of way",
-        "congestion 6 hit-and-run"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "The permitted level of ______ is to be lowered in an attempt to reduce air pollution in big cities.",
-       "answers": [
-        "(exhaust) emissions 2 tailback"
-       ],
-       "options": [
-        "tow-away",
-        "disruption 5 right of way",
-        "congestion 6 hit-and-run"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "The bad weather caused a lot of ______ to traffic all over the country.",
-       "answers": [
-        "disruption 5 right of way"
-       ],
-       "options": [
-        "tow-away",
-        "(exhaust) emissions 2 tailback",
-        "congestion 6 hit-and-run"
-       ]
-      },
-      {
-       "number": 11,
-       "stem": "People are being encouraged to leave their cars at home in an effort to reduce ______ in the city centre.",
-       "answers": [
-        "congestion 6 hit-and-run"
-       ],
-       "options": [
-        "tow-away",
-        "(exhaust) emissions 2 tailback",
-        "disruption 5 right of way"
-       ]
+       "options": []
       }
      ]
     },
@@ -13680,7 +13189,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 29,
    "gloss_count": 11
   },
@@ -13918,128 +13427,7 @@
      "number": 2,
      "instructions": "Match the words on the left with their collocations on the right.",
      "body": "Match the words on the left with their collocations on the right.\n        1 holiday                          a catering\n        2 full                             b for money\n        3 self-                            c mileage\n        4 unlimited                        d bus\n        5 exotic                           e of a lifetime\n        6 value                            f board\n        7 shuttle                          g train\n        8 through                          h airline\n        9 low-cost                         i class\n       10 economy                          j island",
-     "items": [
-      {
-       "number": 1,
-       "stem": "holiday ______ a catering",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "j",
-        "b"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "full ______ b for money",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "a",
-        "c",
-        "j"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "self- ______ c mileage",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "j",
-        "b",
-        "d"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "unlimited ______ d bus",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "f",
-        "a",
-        "j"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "exotic ______ e of a lifetime",
-       "answers": [
-        "j"
-       ],
-       "options": [
-        "b",
-        "d",
-        "g"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "value ______ f board",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "c",
-        "j",
-        "g"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "shuttle ______ g train",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "f",
-        "c",
-        "j"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "through ______ h airline",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "f",
-        "c",
-        "j"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "low-cost ______ i class",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "e",
-        "f",
-        "j"
-       ]
-      },
-      {
-       "number": 10,
-       "stem": "economy ______ j island",
-       "answers": [
-        "i"
-       ],
-       "options": [
-        "f",
-        "b",
-        "g"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -14138,6 +13526,18 @@
         "be my own boss",
         "roughing it"
        ]
+      },
+      {
+       "number": 8,
+       "stem": "I’d hate to stay in just one place on my holiday – I much prefer ______ . English",
+       "answers": [
+        "to keep on the move"
+       ],
+       "options": [
+        "lounged around",
+        "be my own boss",
+        "roughing it"
+       ]
       }
      ]
     }
@@ -14183,7 +13583,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 17,
+   "item_count": 8,
    "vocabulary_count": 50,
    "gloss_count": 0
   },
@@ -14770,35 +14170,7 @@
      "number": 1,
      "instructions": "Match the two parts of the collocations from the opposite page. Note the words are not",
      "body": "Match the two parts of the collocations from the opposite page. Note the words are not\n        all in bold.\n        1 coniferous                        a plantation\n        2 developed                         b industry\n        3 paddy                             c forest\n        4 chemical                          d field\n        5 sugar                             e nation",
-     "items": [
-      {
-       "number": 1,
-       "stem": "coniferous ______ a plantation",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "e 3 d",
-        "b"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "developed ______ b industry",
-       "answers": [
-        "e 3 d"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "chemical ______ d field",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -14895,7 +14267,7 @@
      "anchor": "4"
     }
    ],
-   "item_count": 3,
+   "item_count": 0,
    "vocabulary_count": 25,
    "gloss_count": 1
   },
@@ -15424,80 +14796,7 @@
      "number": 1,
      "instructions": "Match up the words to make metaphors. Explain what each metaphor means.",
      "body": "Match up the words to make metaphors. Explain what each metaphor means.\n       1 glass                             a strength\n       2 ivory                             b opportunity\n       3 brick                             c ceiling\n       4 back                              d tower\n       5 window of                         e wall\n       6 tower of                          f door",
-     "items": [
-      {
-       "number": 1,
-       "stem": "glass ______ a strength",
-       "answers": [
-        "c glass ceiling = invisible barrier"
-       ],
-       "options": [
-        "d ivory tower = life away from unpleasant realities",
-        "f back door = unofficial way in",
-        "b window of opportunity = time when there is the chance to do something"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "ivory ______ b opportunity",
-       "answers": [
-        "d ivory tower = life away from unpleasant realities"
-       ],
-       "options": [
-        "c glass ceiling = invisible barrier",
-        "e brick wall = barrier",
-        "f back door = unofficial way in"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "brick ______ c ceiling",
-       "answers": [
-        "e brick wall = barrier"
-       ],
-       "options": [
-        "d ivory tower = life away from unpleasant realities",
-        "f back door = unofficial way in",
-        "b window of opportunity = time when there is the chance to do something"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "back ______ d tower",
-       "answers": [
-        "f back door = unofficial way in"
-       ],
-       "options": [
-        "c glass ceiling = invisible barrier",
-        "d ivory tower = life away from unpleasant realities",
-        "e brick wall = barrier"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "window of ______ e wall",
-       "answers": [
-        "b window of opportunity = time when there is the chance to do something"
-       ],
-       "options": [
-        "c glass ceiling = invisible barrier",
-        "d ivory tower = life away from unpleasant realities",
-        "e brick wall = barrier"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "tower of ______ f door",
-       "answers": [
-        "a tower of strength = very supportive person"
-       ],
-       "options": [
-        "c glass ceiling = invisible barrier",
-        "e brick wall = barrier",
-        "f back door = unofficial way in"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -15558,19 +14857,6 @@
        "stem": "Ben ______ over all the other lawyers in his firm. He is by far the most able.",
        "answers": [
         "towers"
-       ],
-       "options": [
-        "gone",
-        "hold",
-        "opens"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Her argument with the board last year has, unfortunately, ______ a lot of doors for her in this company.",
-       "answers": [
-        "shut",
-        "closed"
        ],
        "options": [
         "gone",
@@ -15652,7 +14938,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 13,
+   "item_count": 6,
    "vocabulary_count": 44,
    "gloss_count": 1
   },
@@ -16725,95 +16011,7 @@
      "number": 4,
      "instructions": "Match words on the left with words on the right",
      "body": "Match words on the left with words on the right\n        to make collocations about the environment.\n        1 renewable                a scenario\n        2 demographic              b sceptic\n        3 precious                 c effect\n        4 polar                    d energy\n        5 waste                    e projections\n        6 greenhouse               f disposal\n        7 worst-case               g commodity\n        8 climate change           h ice",
-     "items": [
-      {
-       "number": 1,
-       "stem": "renewable ______ a scenario",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "g",
-        "h",
-        "f"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "demographic ______ b sceptic",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "precious ______ c effect",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "d",
-        "h",
-        "a"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "polar ______ d energy",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "f",
-        "c",
-        "b"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "waste ______ e projections",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "d",
-        "g",
-        "h"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "greenhouse ______ f disposal",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 7,
-       "stem": "worst-case ______ g commodity",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "h",
-        "f",
-        "b"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "climate change ______ h ice",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "d",
-        "f"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -16863,7 +16061,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 0,
    "vocabulary_count": 35,
    "gloss_count": 0
   },
@@ -17466,47 +16664,7 @@
        "answers": [
         "detected"
        ],
-       "options": [
-        "enforce 2 refugees",
-        "allowance 3 persecution",
-        "search 4 exceeding"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "It is a police officer’s duty to do all he or she can to ______ the law.",
-       "answers": [
-        "enforce 2 refugees"
-       ],
-       "options": [
-        "detected",
-        "allowance 3 persecution",
-        "search 4 exceeding"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "When you come into this country, the tobacco ______ is 200 cigarettes per person.",
-       "answers": [
-        "allowance 3 persecution"
-       ],
-       "options": [
-        "detected",
-        "enforce 2 refugees",
-        "search 4 exceeding"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "There are restrictions on the powers the police have to stop and ______ people.",
-       "answers": [
-        "search 4 exceeding"
-       ],
-       "options": [
-        "detected",
-        "enforce 2 refugees",
-        "allowance 3 persecution"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -17515,11 +16673,7 @@
         "suspicions",
         "a suspicion"
        ],
-       "options": [
-        "detected",
-        "enforce 2 refugees",
-        "allowance 3 persecution"
-       ]
+       "options": []
       }
      ]
     },
@@ -17579,7 +16733,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 2,
    "vocabulary_count": 46,
    "gloss_count": 8
   },
@@ -18797,66 +17951,13 @@
      "number": 3,
      "instructions": "Match the beginnings and endings of the sentences.",
      "body": "Match the beginnings and endings of the sentences.\n        1 The sailors                     a marched for three days.\n        2 The emperor drove               b led his army into battle.\n        3 The infantry                    c drew a map of the island.\n        4 The nobility                    d boarded the galleon.\n        5 The cavalry                     e traded with the local tribespeople.\n        6 The warlord                     f lived in large, expensive houses.\n        7 The merchant                    g a chariot with two black horses.\n        8 The explorer                    h galloped across the field.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "The sailors ______ a marched for three days.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "The emperor drove ______ b led his army into battle.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "The infantry ______ c drew a map of the island.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "The nobility ______ d boarded the galleon.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "The cavalry ______ e traded with the local tribespeople.",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "g",
-        "f"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
      "instructions": "Here are some of the words from the opposite page used in a metaphorical way. Read the",
      "body": "Here are some of the words from the opposite page used in a metaphorical way. Read the\n        sentences and answer the questions about the underlined phrases.\n        1 The princess swept into the room like a galleon in full sail. Was the princess (a) small and awkward\n          or (b) large and stately?\n        2 He doesn’t mind criticism and it’s often hard to penetrate his armour. Is the person described\n          likely to be (a) thick-skinned or (b) physically strong?\n        3 There has been a renaissance of interest in the harp. Has interest (a) increased or (b) decreased?\n        4 No one should be a slave to tradition. Does the writer think people should (a) always follow\n          tradition or (b) not always follow tradition?\n        5 Mike has a positively medieval attitude towards the role of women in society. Does Mike have (a) a\n          liberal, open-minded attitude or (b) a very old-fashioned, conservative attitude?\n\n\n\n                                                               English Vocabulary in Use Advanced          85",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Mike has a positively medieval attitude towards the role of women in society. Does Mike have (a) a liberal, open-minded attitude or (b) a very old-fashioned, conservative attitude? English Vocabulary in Use Advanced ______ 85",
-       "answers": [
-        "b 234 English Vocabulary in Use Advanced"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -18916,7 +18017,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 34,
    "gloss_count": 4
   },
@@ -19387,16 +18488,7 @@
      "number": 4,
      "instructions": "Choose the best word to complete each of these sentences.",
      "body": "Choose the best word to complete each of these sentences.\n        1 A person who sleeps in a cardboard box on the street and begs for money can best be described\n          as impoverished / destitute.\n        2 Without my husband’s income, we were very much living from hand to mouth / foot.\n        3 When we were children, money was always small / tight.\n        4 Even children with rich parents can be deprived / destitute in terms of love and affection.\n        5 An increasing number of people live below the penury / poverty line.\n        6 The table shows the proportion of people in each income section / bracket.\n        7 Many of the children here are classed / grouped as living in poverty.\n        8 The country has great extremes of poverty and influence / affluence.\n        9 Children who don’t get enough food will suffer ill health as a result of nutrition / malnourishment.\n       10 Inadequate sanitation / deprivation can have serious health consequences.\n\n\n\n\n                                                                English Vocabulary in Use Advanced          87",
-     "items": [
-      {
-       "number": 10,
-       "stem": "Inadequate sanitation / deprivation can have serious health consequences. English Vocabulary in Use Advanced ______ 87",
-       "answers": [
-        "sanitation"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -19440,7 +18532,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 18,
+   "item_count": 17,
    "vocabulary_count": 41,
    "gloss_count": 12
   },
@@ -20918,48 +20010,7 @@
      "number": 4,
      "instructions": "Match the sentence beginnings on the left with the endings on the right.",
      "body": "Match the sentence beginnings on the left with the endings on the right.\n        1 The President was besieged                        a advertising campaign to launch the new phone.\n        2 Our team is battling                              b war on child poverty.\n        3 He had a fight on                                 c fleet of white limousines.\n        4 The company planned a major                       d by reporters as she stepped out of her car.\n        5 The government set out to wage                    e to reach the semi-finals.\n        6 The band arrived in a                             f his hands to convince everyone he was right.\n\n\n\n\n                                                                    English Vocabulary in Use Advanced            95",
-     "items": [
-      {
-       "number": 1,
-       "stem": "The President was besieged ______ a advertising campaign to launch the new phone.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "Our team is battling ______ b war on child poverty.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "He had a fight on ______ c fleet of white limousines.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "The company planned a major ______ d by reporters as she stepped out of her car.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "The government set out to wage ______ e to reach the semi-finals.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -21011,7 +20062,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 20,
+   "item_count": 15,
    "vocabulary_count": 41,
    "gloss_count": 12
   },
@@ -21639,62 +20690,7 @@
      "number": 3,
      "instructions": "Match the beginnings and endings of the sentences.",
      "body": "Match the beginnings and endings of the sentences.\n       1 Students often find it difficult to make               a in her will.\n       2 She invested a lot of money on the                     b PIN, as that’s when I was born.\n       3 If you need cash, there’s a                            c to cover the cost of the holiday.\n       4 I use 1-9-8-7 as my                                    d ends meet.\n       5 She left a million euros                               e cashpoint in the supermarket.\n       6 The money was not enough                               f stock market and lost it all.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "Students often find it difficult to make ______ a in her will.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "She invested a lot of money on the ______ b PIN, as that’s when I was born.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "If you need cash, there’s a ______ c to cover the cost of the holiday.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "I use 1-9-8-7 as my ______ d ends meet.",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "f",
-        "c"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "She left a million euros ______ e cashpoint in the supermarket.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "The money was not enough ______ f stock market and lost it all.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -21744,7 +20740,7 @@
      "anchor": "ut = informal] [personal identification number]"
     }
    ],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 41,
    "gloss_count": 17
   },
@@ -22014,43 +21010,7 @@
      "number": 5,
      "instructions": "Here are some expressions in bold not on the opposite page, which refer to how different",
      "body": "Here are some expressions in bold not on the opposite page, which refer to how different\n       types of printed material present their information. Match the sentences with the type\n       of printed material. Use a dictionary if necessary.\n       1 It lists entry requirements.                             a a political pamphlet on poverty\n       2 It exposes serious problems in the industry.             b a guarantee leaflet with a new camera\n       3 It draws attention to the fundamental issues.            c a university prospectus\n       4 It tells you all you need to know about\n         main sights.                                             d a newspaper article\n       5 It’s packed with useful tips.                            e a tourist brochure\n       6 It contains a lot of small print.                        f a booklet about buying a house\n\n\n\n\n                                                                English Vocabulary in Use Advanced         101",
-     "items": [
-      {
-       "number": 1,
-       "stem": "It lists entry requirements. ______ a a political pamphlet on poverty",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "d",
-        "f"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "It exposes serious problems in the industry. ______ b a guarantee leaflet with a new camera",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "It draws attention to the fundamental issues. ______ c a university prospectus",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "It’s packed with useful tips. ______ e a tourist brochure",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -22099,7 +21059,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 12,
+   "item_count": 8,
    "vocabulary_count": 29,
    "gloss_count": 0
   },
@@ -22996,104 +21956,7 @@
      "number": 1,
      "instructions": "Match the two parts of the collocations from the opposite page.",
      "body": "Match the two parts of the collocations from the opposite page.\n       1 air                             a groups\n       2 issue                           b conference\n       3 muck                            c bite\n       4 press                           d journalism\n       5 pressure                        e raking\n       6 citizen                         f sources\n       7 sound                           g a statement\n       8 tap                             h your views",
-     "items": [
-      {
-       "number": 1,
-       "stem": "air ______ a groups",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "e",
-        "b",
-        "d"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "issue ______ b conference",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "h",
-        "a",
-        "d"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "muck ______ c bite",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "h",
-        "g",
-        "a"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "press ______ d journalism",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "h",
-        "g",
-        "c"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "pressure ______ e raking",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "h",
-        "b",
-        "d"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "citizen ______ f sources",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "h",
-        "g",
-        "b"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "sound ______ g a statement",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "h",
-        "b",
-        "f"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "tap ______ h your views",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "g",
-        "b",
-        "d"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -23166,7 +22029,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 0,
    "vocabulary_count": 49,
    "gloss_count": 3
   },
@@ -25935,100 +24798,7 @@
      "number": 3,
      "instructions": "Match the adjectives on the left with the words on the right to make collocations.",
      "body": "Match the adjectives on the left with the words on the right to make collocations.\n        1 lingering                          a events\n        2 fleeting                           b population\n        3 incipient                          c glimpse\n        4 inexorable                         d smile\n        5 persistent                         e peace negotiations\n        6 simultaneous                       f refusal\n        7 protracted                         g stages\n        8 transient                          h advance of time",
-     "items": [
-      {
-       "number": 1,
-       "stem": "lingering ______ a events",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "c",
-        "h",
-        "f"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "fleeting ______ b population",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "d",
-        "h",
-        "b 246 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "incipient ______ c glimpse",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "d",
-        "h",
-        "f"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "inexorable ______ d smile",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "c",
-        "g",
-        "f"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "persistent ______ e peace negotiations",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "d",
-        "h",
-        "b 246 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "simultaneous ______ f refusal",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "d",
-        "c",
-        "g"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "protracted ______ g stages",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "h",
-        "f",
-        "b 246 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "transient ______ h advance of time",
-       "answers": [
-        "b 246 English Vocabulary in Use Advanced"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
@@ -26092,7 +24862,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 0,
    "vocabulary_count": 38,
    "gloss_count": 15
   },
@@ -26635,47 +25405,7 @@
        "answers": [
         "done"
        ],
-       "options": [
-        "ceremony 2 netiquette",
-        "insolent 3 offhand",
-        "straitlaced 4 manners"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "We don’t stand on ______ in this house – just help yourself to anything you want from the fridge.",
-       "answers": [
-        "ceremony 2 netiquette"
-       ],
-       "options": [
-        "done",
-        "insolent 3 offhand",
-        "straitlaced 4 manners"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "I’m sick of your ______ comments. It’s time you learnt to speak politely to people. You’re so rude!",
-       "answers": [
-        "insolent 3 offhand"
-       ],
-       "options": [
-        "done",
-        "ceremony 2 netiquette",
-        "straitlaced 4 manners"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "For a young person, she’s very ______ and old-fashioned in her ideas and behaviour.",
-       "answers": [
-        "straitlaced 4 manners"
-       ],
-       "options": [
-        "done",
-        "ceremony 2 netiquette",
-        "insolent 3 offhand"
-       ]
+       "options": []
       }
      ]
     },
@@ -26745,7 +25475,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 4,
+   "item_count": 1,
    "vocabulary_count": 26,
    "gloss_count": 10
   },
@@ -27039,64 +25769,12 @@
      "body": "Which adjective can describe the following? The first letter is given.\n       1 An extremely loud noise, e.g. very loud music                  d\n       2 A strange, almost scary silence                                e\n       3 A high noise that hurts your ears                              p\n       4 A harsh, irritating kind of voice                              g\n       5 A voice that has a similar tone to a whistle                   h                -p\n       6 A whisper that is almost impossible to hear                    i",
      "items": [
       {
-       "number": 1,
-       "stem": "An extremely loud noise, e.g. very loud music ______ d",
-       "answers": [
-        "deafening"
-       ],
-       "options": [
-        "eerie",
-        "piercing",
-        "grating"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "A strange, almost scary silence ______ e",
-       "answers": [
-        "eerie"
-       ],
-       "options": [
-        "deafening",
-        "piercing",
-        "grating"
-       ]
-      },
-      {
        "number": 3,
        "stem": "A high noise that hurts your ears ______ p",
        "answers": [
         "piercing"
        ],
-       "options": [
-        "deafening",
-        "eerie",
-        "grating"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "A harsh, irritating kind of voice ______ g",
-       "answers": [
-        "grating"
-       ],
-       "options": [
-        "deafening",
-        "eerie",
-        "piercing"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "A whisper that is almost impossible to hear ______ i",
-       "answers": [
-        "inaudible"
-       ],
-       "options": [
-        "deafening",
-        "eerie",
-        "piercing"
-       ]
+       "options": []
       }
      ]
     },
@@ -27118,6 +25796,14 @@
        "stem": "Turn that music down! I can’t ______ !",
        "answers": [
         "Turn that music down! I can’t hear myself think!"
+       ],
+       "options": []
+      },
+      {
+       "number": 4,
+       "stem": "I don’t even notice that Will is in the flat sometimes. He’s ______ . English",
+       "answers": [
+        "I don’t even notice that Will is in the flat sometimes. He’s as quiet as a mouse"
        ],
        "options": []
       }
@@ -27181,7 +25867,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 4,
    "vocabulary_count": 32,
    "gloss_count": 25
   },
@@ -27940,96 +26626,13 @@
      "number": 3,
      "instructions": "Answer these questions about the words in B.",
      "body": "Answer these questions about the words in B.\n       1 Which of the following is not a pastel colour?\n         A mauve            B pink                 C scarlet\n       2 Which of the following colours can’t be described as electric?\n         A black            B green                C blue\n       3 Which of the following colours is a primary colour?\n         A green            B orange               C yellow\n       4 If a speaker comments that a lipstick is rather a harsh red, what does the speaker think of\n         the lipstick?\n         A She likes it.    B She doesn’t like it.\n         C We don’t know – she’s stating a fact not giving an opinion.\n       5 Which is the closest synonym of a bright pink material?\n         A a material with a tinge of pink         B a vivid pink material     C a pinkish material",
-     "items": [
-      {
-       "number": 4,
-       "stem": "If a speaker comments that a lipstick is rather a harsh red, what does the speaker think of the lipstick? A She likes it. ______ B She doesn’t like it. C We don’t know – she’s stating a fact not giving an opinion.",
-       "answers": [
-        "B"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 4,
      "instructions": "Look at C opposite. Match the situations on the left with the responses on the right.",
      "body": "Look at C opposite. Match the situations on the left with the responses on the right.\n       1 That child looks a bit green.                                        a No, they make me feel sick.\n       2 He seems to have the blues most days.                                b Yes, it’s not at all clear what we\n                                                                                should do.\n       3 That TV programme always makes him see red.                          c Yes, but they need qualifications.\n       4 It’s a bit of a grey area, isn’t it?                                 d I think he’s going to be sick.\n       5 They seem to be trying to blacken his name.                          e Yes, they want to do their bit for the\n                                                                                environment.\n       6 Do you like white-knuckle rides?                                     f Yes, he can’t stand the presenter.\n       7 White-collar workers earn more.                                      g Yes, ever since his wife left him.\n       8 They’re going to vote for the Green Party.                           h I wonder what they’ve got against him?",
-     "items": [
-      {
-       "number": 1,
-       "stem": "That child looks a bit green. ______ a No, they make me feel sick.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "He seems to have the blues most days. ______ b Yes, it’s not at all clear what we should do.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "That TV programme always makes him see red. ______ c Yes, but they need qualifications.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "It’s a bit of a grey area, isn’t it? ______ d I think he’s going to be sick.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "They seem to be trying to blacken his name. ______ e Yes, they want to do their bit for the environment.",
-       "answers": [
-        "h"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "Do you like white-knuckle rides? ______ f Yes, he can’t stand the presenter.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "b"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "White-collar workers earn more. ______ g Yes, ever since his wife left him.",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "They’re going to vote for the Green Party. ______ h I wonder what they’ve got against him?",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "b",
-        "c"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 5,
@@ -28092,7 +26695,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 9,
+   "item_count": 0,
    "vocabulary_count": 69,
    "gloss_count": 8
   },
@@ -28540,14 +27143,6 @@
         "caused (brought about is also possible here)"
        ],
        "options": []
-      },
-      {
-       "number": 5,
-       "stem": "His stupidity ______ in none of us being able to get home that night.",
-       "answers": [
-        "resulted (no other possibilities: result collocates with in)"
-       ],
-       "options": []
       }
      ]
     },
@@ -28574,10 +27169,7 @@
        "answers": [
         "The higher taxes have sparked off riots in three cities"
        ],
-       "options": [
-        "This software can generate stunning images and graphics",
-        "Jealousy caused the break-up of his marriage"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -28593,21 +27185,7 @@
        "answers": [
         "This software can generate stunning images and graphics"
        ],
-       "options": [
-        "The higher taxes have sparked off riots in three cities",
-        "Jealousy caused the break-up of his marriage"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "jealousy ______ a number of serious accidents this week",
-       "answers": [
-        "Jealousy caused the break-up of his marriage"
-       ],
-       "options": [
-        "The higher taxes have sparked off riots in three cities",
-        "This software can generate stunning images and graphics"
-       ]
+       "options": []
       }
      ]
     },
@@ -28659,7 +27237,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 4,
    "vocabulary_count": 22,
    "gloss_count": 7
   },
@@ -28850,7 +27428,7 @@
        "options": [
         "tantamount to",
         "corresponds to",
-        "akin to"
+        "distinct from English Vocabulary in Use Advanced"
        ]
       },
       {
@@ -28862,7 +27440,7 @@
        "options": [
         "dissimilar to",
         "corresponds to",
-        "akin to"
+        "distinct from English Vocabulary in Use Advanced"
        ]
       },
       {
@@ -28874,26 +27452,14 @@
        "options": [
         "dissimilar to",
         "tantamount to",
-        "akin to"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "His life story is more ______ a novel by Charles Dickens than a James Bond film.",
-       "answers": [
-        "akin to"
-       ],
-       "options": [
-        "dissimilar to",
-        "tantamount to",
-        "corresponds to"
+        "distinct from English Vocabulary in Use Advanced"
        ]
       },
       {
        "number": 5,
        "stem": "The culture of the north of the country is quite ______ that of the south, and it’s a mistake to think they are the same.",
        "answers": [
-        "distinct from English Vocabulary in Use Advanced 251"
+        "distinct from English Vocabulary in Use Advanced"
        ],
        "options": [
         "dissimilar to",
@@ -28952,7 +27518,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 4,
    "vocabulary_count": 32,
    "gloss_count": 5
   },
@@ -29592,94 +28158,7 @@
      "number": 1,
      "instructions": "Look at A opposite. Match the situations on the left with the responses on the right.",
      "body": "Look at A opposite. Match the situations on the left with the responses on the right.\n        1 Are you going clubbing tonight?                      a Shall I have a look at it?\n        2 I painted my house bright green last week.           b They must be overjoyed.\n        3 The car won’t start.                                 c You must have been terrified.\n        4 You might win the lottery.                           d It’ll be the Patels.\n        5 I’m afraid I’ve broken a cup.                        e What, may I ask, was the point of that?\n        6 Erica and Matt have just had twins.                  f I should be so lucky! Do you know what the\n                                                                 odds are?\n        7 Someone’s at the door.                               g You must be joking! I’m much too old.\n        8 I only just managed to escape.                       h Don’t worry. Accidents will happen!",
-     "items": [
-      {
-       "number": 1,
-       "stem": "Are you going clubbing tonight? ______ a Shall I have a look at it?",
-       "answers": [
-        "g"
-       ],
-       "options": [
-        "f",
-        "d",
-        "c 252 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "I painted my house bright green last week. ______ b They must be overjoyed.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "c 252 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "The car won’t start. ______ c You must have been terrified.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "g",
-        "c 252 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "You might win the lottery. ______ d It’ll be the Patels.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "I’m afraid I’ve broken a cup. ______ e What, may I ask, was the point of that?",
-       "answers": [
-        "h"
-       ],
-       "options": [
-        "g",
-        "c 252 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "Erica and Matt have just had twins. ______ f I should be so lucky! Do you know what the odds are?",
-       "answers": [
-        "b"
-       ],
-       "options": [
-        "g",
-        "c 252 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Someone’s at the door. ______ g You must be joking! I’m much too old.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "f",
-        "c 252 English Vocabulary in Use Advanced"
-       ]
-      },
-      {
-       "number": 8,
-       "stem": "I only just managed to escape. ______ h Don’t worry. Accidents will happen!",
-       "answers": [
-        "c 252 English Vocabulary in Use Advanced"
-       ],
-       "options": [
-        "f",
-        "b"
-       ]
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -29865,7 +28344,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 16,
+   "item_count": 8,
    "vocabulary_count": 49,
    "gloss_count": 11
   },
@@ -30554,16 +29033,7 @@
      "number": 4,
      "instructions": "The people below are all complaining indirectly. What do they really mean in each case?",
      "body": "The people below are all complaining indirectly. What do they really mean in each case?\n        1 (walking into a room) ‘It doesn’t smell very nice in here!’\n        2 (on a school report) ‘Jorge tends to complete his work rather too quickly.’\n        3 (in a reference letter) ‘Punctuality is not Simone’s highest priority.’\n        4 (at a work appraisal) ‘You’d be well advised to reassess your long-term plans.’\n        5 (commenting on a room) ‘It would benefit from a lick of paint.’\n        6 (coming into a room) ‘The TV seems to be a bit loud.’\n\n\n\n\n                                                                English Vocabulary in Use Advanced           153",
-     "items": [
-      {
-       "number": 6,
-       "stem": "(coming into a room) ‘The TV seems to be a bit loud.’ English Vocabulary in Use Advanced ______ 153",
-       "answers": [
-        "The TV must be turned down"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -30607,7 +29077,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 36,
    "gloss_count": 2
   },
@@ -31288,59 +29758,7 @@
      "number": 2,
      "instructions": "Look at the table in B opposite. Match the beginning of each sentence with its ending.",
      "body": "Look at the table in B opposite. Match the beginning of each sentence with its ending.\n       1 The performers were given                        a tribute to her predecessor.\n       2 In the speech, the new manager paid              b a pat on the back for her drawings.\n       3 They’re always extolling                         c the toast of the tennis world.\n       4 Matt’s design earned him                         d a standing ovation.\n       5 The teacher gave Becky                           e the virtues of living in the country.\n       6 The new young Czech player was                   f the highest plaudits from the judges.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "The performers were given ______ a tribute to her predecessor.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 2,
-       "stem": "In the speech, the new manager paid ______ b a pat on the back for her drawings.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "They’re always extolling ______ c the toast of the tennis world.",
-       "answers": [
-        "e"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "Matt’s design earned him ______ d a standing ovation.",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "b",
-        "c"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "The teacher gave Becky ______ e the virtues of living in the country.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "The new young Czech player was ______ f the highest plaudits from the judges.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -31407,7 +29825,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 62,
    "gloss_count": 2
   },
@@ -31983,63 +30401,7 @@
      "number": 2,
      "instructions": "Look at C opposite. Match the beginning of each sentence with its ending.",
      "body": "Look at C opposite. Match the beginning of each sentence with its ending.\n       1 I felt some pangs                    a my lost youth.\n       2 I rue the day                        b because I’d done nothing wrong.\n       3 I feel a certain remorse             c not contacting her earlier.\n       4 I regret                             d I agreed to go into business with him.\n       5 I mourn                              e of guilt about what happened.\n       6 I felt no shame                      f about what happened. It was my fault.",
-     "items": [
-      {
-       "number": 1,
-       "stem": "I felt some pangs ______ a my lost youth.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "d",
-        "c",
-        "b"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "I rue the day ______ b because I’d done nothing wrong.",
-       "answers": [
-        "d"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "I feel a certain remorse ______ c not contacting her earlier.",
-       "answers": [
-        "f"
-       ],
-       "options": [
-        "d",
-        "b"
-       ]
-      },
-      {
-       "number": 4,
-       "stem": "I regret ______ d I agreed to go into business with him.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "I mourn ______ e of guilt about what happened.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "I felt no shame ______ f about what happened. It was my fault.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 3,
@@ -32090,7 +30452,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 6,
+   "item_count": 0,
    "vocabulary_count": 27,
    "gloss_count": 5
   },
@@ -32938,18 +31300,6 @@
         "brings",
         "touches"
        ]
-      },
-      {
-       "number": 8,
-       "stem": "This unit has attempted to ______ a range of useful vocabulary for formal writing. (give all the necessary information about)",
-       "answers": [
-        "deal with"
-       ],
-       "options": [
-        "return",
-        "brings",
-        "touches"
-       ]
       }
      ]
     },
@@ -33004,7 +31354,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 8,
+   "item_count": 7,
    "vocabulary_count": 31,
    "gloss_count": 5
   },
@@ -34533,7 +32883,7 @@
        "number": 9,
        "stem": "I know Ben is a little strange but you can’t ______ about all Canadians just because of him.",
        "answers": [
-        "generalise English Vocabulary in Use Advanced 261"
+        "generalise English Vocabulary in Use Advanced"
        ],
        "options": [
         "stuttered",
@@ -34830,21 +33180,7 @@
         "AD",
         "CE"
        ],
-       "options": [
-        "NB 2 i.e",
-        "e.g"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "Type your message here. ______ , press ‘save’ before pressing ‘send’, or you may lose your message.",
-       "answers": [
-        "NB 2 i.e"
-       ],
-       "options": [
-        "AD",
-        "e.g"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -34932,7 +33268,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 2,
    "vocabulary_count": 40,
    "gloss_count": 2
   },
@@ -36258,16 +34594,7 @@
      "number": 5,
      "instructions": "What words have been combined",
      "body": "What words have been combined\n       to make these blends? What do you\n       think they mean?\n       1 infomercial\n       2 podcast\n       3 camcorder\n       4 veggieburger\n       5 swimathon\n       6 freeware\n\n\n\n\n                                                                                 English Vocabulary in Use Advanced   183",
-     "items": [
-      {
-       "number": 6,
-       "stem": "freeware English Vocabulary in Use Advanced ______ 183",
-       "answers": [
-        "free + software, i.e. software you can download without charge from the internet"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -36316,7 +34643,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 42,
    "gloss_count": 14
   },
@@ -40195,16 +38522,7 @@
      "number": 5,
      "instructions": "Rewrite the sentences using everyday, non-bureaucratic English to replace the",
      "body": "Rewrite the sentences using everyday, non-bureaucratic English to replace the\n        underlined words and phrases. Use a dictionary if necessary.\n        1 Clients must comply with the following regulations.\n        2 Insert coins into the slot below.\n        3 Your complaints have been investigated and are considered to be without foundation.\n        4 Passengers are requested to refrain from smoking.\n        5 Tick your country of residence.\n\n\n\n\n                                                             English Vocabulary in Use Advanced     209",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Tick your country of residence. English Vocabulary in Use Advanced ______ 209",
-       "answers": [
-        "Tick the country where you live"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -40253,7 +38571,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 33,
    "gloss_count": 19
   }

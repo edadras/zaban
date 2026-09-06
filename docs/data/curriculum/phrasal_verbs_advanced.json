@@ -1850,16 +1850,7 @@
      "number": 5,
      "instructions": "Here are some more phrasal adjectives. Work out from the context what they mean",
      "body": "Here are some more phrasal adjectives. Work out from the context what they mean\n      rewrite the sentences replacing the underlined words with a word or phrase that\n      the same.\n      1 If the union doesn’t accept our terms, what should we have as our fallback position?\n      2 Clara always feels left out when her brother’s friends come round to play.\n      3 Julian is usually chatty but his sister is not very forthcoming.\n      4 You shouldn’t get so worked up about every little thing.\n      5 Zack met me at the airport with outstretched arms.\n\n                                                          English Phrasal Verbs in Use Advanced      13",
-     "items": [
-      {
-       "number": 5,
-       "stem": "Zack met me at the airport with outstretched arms. English Phrasal Verbs in Use Advanced ______ 13",
-       "answers": [
-        "Zack met me at the airport with arms open wide ready to embrace me"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -1891,7 +1882,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 0,
    "gloss_count": 0
   },
@@ -3628,16 +3619,7 @@
      "number": 5,
      "instructions": "Rewrite these sentences using phrasal verbs from the opposite page.",
      "body": "Rewrite these sentences using phrasal verbs from the opposite page.\n       1 James is a reliable person.\n       2 Dad will talk monotonously for hours about European history.\n       3 Many political reputations are about to be crucially affected by the outcome of next week’s\n         election.\n       4 Josh never stops complaining about the litter in the office car park. It irritates me.\n       5 While tidying my room, I found an old diary of mine from 2001.\n\n\n\n\n                                                             English Phrasal Verbs in Use Advanced         31",
-     "items": [
-      {
-       "number": 5,
-       "stem": "While tidying my room, I found an old diary of mine from 2001. English Phrasal Verbs in Use Advanced ______ 31",
-       "answers": [
-        "While tidying my room, I happened on an old diary of mine from 2001"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -3686,7 +3668,7 @@
      "anchor": "ell asleep. Read on, press on, live on and dwell on*"
     }
    ],
-   "item_count": 8,
+   "item_count": 7,
    "vocabulary_count": 0,
    "gloss_count": 4
   },
@@ -4109,47 +4091,7 @@
         "finish up",
         "eat up"
        ],
-       "options": [
-        "propped up 2 pep up/jazz up",
-        "jazz it up 3 shore up",
-        "wrap up 4 pick them up"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "I noticed Tim’s bicycle ______ against a wall outside Hannah’s apartment.",
-       "answers": [
-        "propped up 2 pep up/jazz up"
-       ],
-       "options": [
-        "finish up",
-        "jazz it up 3 shore up",
-        "wrap up 4 pick them up"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "Your black dress is a little plain – why don’t you ______ a bit with a colourful scarf?",
-       "answers": [
-        "jazz it up 3 shore up"
-       ],
-       "options": [
-        "finish up",
-        "propped up 2 pep up/jazz up",
-        "wrap up 4 pick them up"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "I think we should try and ______ the meeting by 4 p.m.",
-       "answers": [
-        "wrap up 4 pick them up"
-       ],
-       "options": [
-        "finish up",
-        "propped up 2 pep up/jazz up",
-        "jazz it up 3 shore up"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -4157,11 +4099,7 @@
        "answers": [
         "lift up"
        ],
-       "options": [
-        "finish up",
-        "propped up 2 pep up/jazz up",
-        "jazz it up 3 shore up"
-       ]
+       "options": []
       }
      ]
     },
@@ -4197,7 +4135,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 2,
    "vocabulary_count": 35,
    "gloss_count": 5
   },
@@ -4385,71 +4323,7 @@
      "number": 1,
      "instructions": "Match the beginning of each sentence with its ending.",
      "body": "Match the beginning of each sentence with its ending.\n       1 Aidan’s new job will undoubtedly impact  a) to one clear cause of the crisis.\n       2 How the situation develops will depend   b) from a childhood spent in the rainforest.\n       3 Isabelle’s behaviour may well rebound    c) in ignorance.\n       4 Freddie’s interest in botany stems       d) in significant social change.\n       5 Her attitude to foreigners is rooted     e) to the changes in the country’s\n       6 It is impossible to point\t\t leadership.\n       7 The new education reform should result   f) on the reaction from the USA.\n       8 Professor Bukowsky attributes the crisis g) to a civil war.\n       9 The situation in the country may lead    h) on his family.\n       \t\t                                          i) on her if she is not careful.",
-     "items": [
-      {
-       "number": 2,
-       "stem": "How the situation develops will depend ______ b) from a childhood spent in the rainforest.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "Isabelle’s behaviour may well rebound ______ c) in ignorance.",
-       "answers": [
-        "i"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "Freddie’s interest in botany stems ______ d) in significant social change.",
-       "answers": [
-        "b"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Her attitude to foreigners is rooted ______ e) to the changes in the country’s",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 6,
-       "stem": "It is impossible to point ______ leadership.",
-       "answers": [
-        "a"
-       ],
-       "options": [
-        "f",
-        "c",
-        "g"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "The new education reform should result ______ f) on the reaction from the USA.",
-       "answers": [
-        "d"
-       ],
-       "options": [
-        "b",
-        "g"
-       ]
-      },
-      {
-       "number": 9,
-       "stem": "The situation in the country may lead ______ h) on his family. i) on her if she is not careful.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     },
     {
      "number": 2,
@@ -4494,7 +4368,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 0,
    "vocabulary_count": 0,
    "gloss_count": 0
   },
@@ -5493,34 +5367,12 @@
      "body": "Match the beginning of each sentence with its ending.\n       1 The Marketing Director refused to go          a) through last week, and it arrived in the post this morning.\n       2 Although it’s very unlikely that we’ll        b) to pressure and agreed to increase the annual\n         get the contract, I wouldn’t rule it             dividend.\n       3 I’d like to settle                            c) along with our suggestions about the new product\n       4 I really want to smooth things                   design.\n       5 The application for my credit card went       d) round to his way of thinking. That’s why he’s such\n       6 Lucy was very resistant at first, but            a good negotiator.\n         we eventually managed to win her              e) on a date for the interviews as soon as possible.\n       7 After a very difficult meeting with the       f) over with Roger, as we have to work together every day.\n         shareholders, the Board finally bowed         g) out completely.\n       8 Dominic’s very good at talking people         h) over. Now she loves the idea!",
      "items": [
       {
-       "number": 1,
-       "stem": "The Marketing Director refused to go ______ a) through last week, and it arrived in the post this morning.",
-       "answers": [
-        "c"
-       ],
-       "options": [
-        "e 5a 7b 2 g",
-        "f 6h 8d"
-       ]
-      },
-      {
-       "number": 3,
-       "stem": "I’d like to settle ______ c) along with our suggestions about the new product",
-       "answers": [
-        "e 5a 7b 2 g"
-       ],
-       "options": []
-      },
-      {
        "number": 4,
        "stem": "I really want to smooth things ______ design.",
        "answers": [
         "f 6h 8d"
        ],
-       "options": [
-        "c",
-        "e 5a 7b 2 g"
-       ]
+       "options": []
       }
      ]
     },
@@ -5567,7 +5419,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 1,
    "vocabulary_count": 28,
    "gloss_count": 0
   },
@@ -5759,16 +5611,7 @@
      "number": 3,
      "instructions": "Find phrasal verbs from the opposite page which",
      "body": "Find phrasal verbs from the opposite page which\n       seem to treat ideas as if they are:\n       1 balls that can be played with\n       2 parts of a puzzle\n       3 things that you need physical strength to deal with\n\n                                                                 Max stared at the crossword for ages, but\n                                                                 then the answer suddenly leapt out at him.\n\n                                                              English Phrasal Verbs in Use Advanced             53\n\n                                 https://",
-     "items": [
-      {
-       "number": 3,
-       "stem": "things that you need physical strength to deal with Max stared at the crossword for ages, but then the answer suddenly leapt out at him. English Phrasal Verbs in Use Advanced ______ 53 https://",
-       "answers": [
-        "thrash something out, grapple with, break something down"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -5790,7 +5633,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 35,
    "gloss_count": 0
   },
@@ -7044,7 +6887,8 @@
        ],
        "options": [
         "If you hate your job so much, why don’t you just hand in your notice?",
-        "As a PA I spend most of my time running round after my boss"
+        "As a PA I spend most of my time running round after my boss",
+        "Ever since she was a child she has wanted to go in to medicine"
        ]
       },
       {
@@ -7055,7 +6899,8 @@
        ],
        "options": [
         "I can’t stand the sight of blood, so I’m not really cut out for nursing",
-        "As a PA I spend most of my time running round after my boss"
+        "As a PA I spend most of my time running round after my boss",
+        "Ever since she was a child she has wanted to go in to medicine"
        ]
       },
       {
@@ -7066,7 +6911,20 @@
        ],
        "options": [
         "I can’t stand the sight of blood, so I’m not really cut out for nursing",
-        "If you hate your job so much, why don’t you just hand in your notice?"
+        "If you hate your job so much, why don’t you just hand in your notice?",
+        "Ever since she was a child she has wanted to go in to medicine"
+       ]
+      },
+      {
+       "number": 8,
+       "stem": "Ever since she was a child she has wanted to ______ medicine. English",
+       "answers": [
+        "Ever since she was a child she has wanted to go in to medicine"
+       ],
+       "options": [
+        "I can’t stand the sight of blood, so I’m not really cut out for nursing",
+        "If you hate your job so much, why don’t you just hand in your notice?",
+        "As a PA I spend most of my time running round after my boss"
        ]
       }
      ]
@@ -7096,7 +6954,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 4,
    "vocabulary_count": 0,
    "gloss_count": 0
   },
@@ -8972,16 +8830,7 @@
      "number": 5,
      "instructions": "Rewrite each sentence using the word in brackets.",
      "body": "Rewrite each sentence using the word in brackets.\n       1 Layla let her feelings become very obvious. (spill)\n       2 Grandma doesn’t think she could manage a long flight. (feel)\n       3 We must not allow our feelings to make us do something we’ll regret. (run)\n       4 You mustn’t let those feelings of insecurity take over. (give)\n       5 Everyone suddenly felt very tired. (came)\n       6 We extend our sympathies to all the victims of the disaster. (go)\n\n\n\n                                                              English Phrasal Verbs in Use Advanced       87",
-     "items": [
-      {
-       "number": 6,
-       "stem": "We extend our sympathies to all the victims of the disaster. (go) English Phrasal Verbs in Use Advanced ______ 87",
-       "answers": [
-        "Our sympathies go out to all the victims of the disaster"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -9013,7 +8862,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 43,
    "gloss_count": 0
   },
@@ -9447,51 +9296,7 @@
      "number": 3,
      "instructions": "Match the beginning of each sentence with its ending.",
      "body": "Match the beginning of each sentence with its ending.\n        1 The doctor put me                  a) out and I slept deeply.\n        2 I’ve come                          b) out from all that work.\n        3 The tablet knocked me              c) off the antibiotics.\n        4 I found it difficult to            d) myself up a bit.\n        5 There’s a lot of flu going         e) on a course of antibiotics.\n        6 I’m quite weak, so I need to build f) drop off last night.\n        7 I feel worn                        g) around right now.\n\n            Over to you\n            Find a magazine article on a health issue and make a note of any phrasal verbs that are used in it.\n\n                                                                 English Phrasal Verbs in Use Advanced             91",
-     "items": [
-      {
-       "number": 1,
-       "stem": "The doctor put me ______ a) out and I slept deeply.",
-       "answers": [
-        "e"
-       ],
-       "options": [
-        "f",
-        "g"
-       ]
-      },
-      {
-       "number": 2,
-       "stem": "I’ve come ______ b) out from all that work.",
-       "answers": [
-        "c"
-       ],
-       "options": []
-      },
-      {
-       "number": 3,
-       "stem": "The tablet knocked me ______ c) off the antibiotics.",
-       "answers": [
-        "a"
-       ],
-       "options": []
-      },
-      {
-       "number": 4,
-       "stem": "I found it difficult to ______ d) myself up a bit.",
-       "answers": [
-        "f"
-       ],
-       "options": []
-      },
-      {
-       "number": 5,
-       "stem": "There’s a lot of flu going ______ e) on a course of antibiotics.",
-       "answers": [
-        "g"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -9513,7 +9318,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 0,
    "vocabulary_count": 47,
    "gloss_count": 0
   },
@@ -9685,16 +9490,7 @@
      "number": 5,
      "instructions": "Explain the play on words in these sentences.",
      "body": "Explain the play on words in these sentences.\n       1 The twins doubled up laughing.\n       2 The rubbish collectors were wasting away.\n       3 The grammar teacher tensed up when Maria said ‘writed’ instead of ‘wrote’.\n       4 The taxi driver picked himself up after he tripped over the suitcase.\n\n\n\n\n                                                              English Phrasal Verbs in Use Advanced           93",
-     "items": [
-      {
-       "number": 4,
-       "stem": "The taxi driver picked himself up after he tripped over the suitcase. English Phrasal Verbs in Use Advanced ______ 93",
-       "answers": [
-        "A taxi driver picks people up to drive them somewhere"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -9726,7 +9522,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 29,
    "gloss_count": 0
   },
@@ -10149,14 +9945,6 @@
         "in on"
        ],
        "options": []
-      },
-      {
-       "number": 5,
-       "stem": "Oh! I didn’t realise you were there! You shouldn’t creep ______ me like that!",
-       "answers": [
-        "up on 3 on"
-       ],
-       "options": []
       }
      ]
     },
@@ -10171,47 +9959,7 @@
        "answers": [
         "piled"
        ],
-       "options": [
-        "clear 2 tripped",
-        "stumbled 3 push",
-        "zipping 4 stand"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "The message warned them to ______ everyone out of the building as quickly as possible.",
-       "answers": [
-        "clear 2 tripped"
-       ],
-       "options": [
-        "piled",
-        "stumbled 3 push",
-        "zipping 4 stand"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "When I was putting some books in the attic, I ______ on an old picture I hadn’t noticed before.",
-       "answers": [
-        "stumbled 3 push"
-       ],
-       "options": [
-        "piled",
-        "clear 2 tripped",
-        "zipping 4 stand"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Crossing the valley, we were ______ along, but then the car suddenly broke down as we went up a hill.",
-       "answers": [
-        "zipping 4 stand"
-       ],
-       "options": [
-        "piled",
-        "clear 2 tripped",
-        "stumbled 3 push"
-       ]
+       "options": []
       }
      ]
     },
@@ -10261,7 +10009,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 7,
+   "item_count": 3,
    "vocabulary_count": 30,
    "gloss_count": 4
   },
@@ -10665,7 +10413,7 @@
        ],
        "options": [
         "misting over",
-        "mist/fog/steam up English Phrasal Verbs in Use Advanced 155"
+        "mist/fog/steam up English Phrasal Verbs in Use Advanced"
        ]
       },
       {
@@ -10680,7 +10428,7 @@
        "number": 3,
        "stem": "Whenever I go from a cold street into a heated shop, my glasses ______ .",
        "answers": [
-        "mist/fog/steam up English Phrasal Verbs in Use Advanced 155"
+        "mist/fog/steam up English Phrasal Verbs in Use Advanced"
        ],
        "options": []
       }
@@ -11050,23 +10798,12 @@
        "options": []
       },
       {
-       "number": 5,
-       "stem": "Robinson Crusoe is about someone who was ______ on a desert island.",
-       "answers": [
-        "cast away 2 knocked over"
-       ],
-       "options": []
-      },
-      {
        "number": 6,
        "stem": "Take that narrow road that ______ the main road just after the railway bridge.",
        "answers": [
         "branches off 156 English Phrasal Verbs in Use Advanced"
        ],
-       "options": [
-        "stow away",
-        "cast away 2 knocked over"
-       ]
+       "options": []
       }
      ]
     }
@@ -11095,7 +10832,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 3,
+   "item_count": 2,
    "vocabulary_count": 19,
    "gloss_count": 5
   },
@@ -11287,16 +11024,7 @@
      "number": 3,
      "instructions": "Rewrite the underlined parts of these sentences, using a phrasal verb from the opposite page.",
      "body": "Rewrite the underlined parts of these sentences, using a phrasal verb from the opposite page.\n       Make any other necessary changes.\n        1 The conservatives won the election in 2015.\n        2 A helicopter was destroyed by enemy fire whilst in flight yesterday.\n        3 My great-great-grandfather became a soldier when he was only 16.\n        4 The kidnappers surrendered to the police just after midday.\n        5 The rebels successfully defended themselves for six weeks.\n        6 The government has ordered a group of experts to go to assess the flood damage.\n        7 The government crushed the rebellion using massive force.\n        8 Mr Fleet is trying to arouse some enthusiasm for the concert he is trying to organise.\n        9 Hundreds of people participated in the celebrations outside the palace.\n       10 Theodore got a place on the party’s national committee.\n\n          Over to you\n          Phrasal verbs are very common in newspaper headlines – perhaps because they are often short and\n          dramatic words. See how many you can find in any one copy of a newspaper. Make a note of any\n          interesting ones.\n\n\n\n\n                                                                    English Phrasal Verbs in Use Advanced                107",
-     "items": [
-      {
-       "number": 10,
-       "stem": "Theodore got a place on the party’s national committee. Over to you Phrasal verbs are very common in newspaper headlines – perhaps because they are often short and dramatic words. See how many you can find in any one copy of a newspaper. Make a note of any interesting ones. English Phrasal Verbs in Use Advanced ______ 107",
-       "answers": [
-        "Theodore got onto the party’s national committee"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -11318,7 +11046,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 35,
    "gloss_count": 0
   },
@@ -11776,16 +11504,7 @@
      "number": 4,
      "instructions": "Complete each sentence in an appropriate way using one of the phrasal verbs from the",
      "body": "Complete each sentence in an appropriate way using one of the phrasal verbs from the\n       opposite page and any other words that you need.\n       1 The advantage of a wireless connection is that you don’t\n                                                                                                                   .\n       2 You can print a document by selecting the print icon or by\n                                                                                                                   .\n       3 It’s quite easy to                                                 a website with these step-by-step\n         instructions.\n       4 Whenever I switch on my computer, it takes time\n                                                                                                                   .\n       5 I can use this cable to listen to my MP3 player in the car by\n                                                                                                                   .\n       6 If the printer is beginning to run out of ink, a warning light\n                                                                                                                   .\n\n         Over to you\n          Find an article online about a computer, camera, mobile phone, MP3 player or other piece of technology\n          that you are interested in. Does it contain any examples of phrasal verbs? If so, note them down in\n          their context.\n\n\n                                                               English Phrasal Verbs in Use Advanced           113",
-     "items": [
-      {
-       "number": 3,
-       "stem": "It’s quite easy to ______ a website with these step-by-step instructions.",
-       "answers": [
-        "It’s quite easy to set up a website with these step-by-step instructions"
-       ],
-       "options": []
-      }
-     ]
+     "items": []
     }
    ],
    "answers": [
@@ -11812,7 +11531,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 1,
+   "item_count": 0,
    "vocabulary_count": 24,
    "gloss_count": 0
   },
@@ -12402,47 +12121,7 @@
        "answers": [
         "down"
        ],
-       "options": [
-        "in 2 off",
-        "up to 3 off",
-        "into 4 out of"
-       ]
-      },
-      {
-       "number": 5,
-       "stem": "I’d like to get ______ a game of tennis later today. Are you free around five?",
-       "answers": [
-        "in 2 off"
-       ],
-       "options": [
-        "down",
-        "up to 3 off",
-        "into 4 out of"
-       ]
-      },
-      {
-       "number": 6,
-       "stem": "Hi there. What have you been getting ______ since I last saw you?",
-       "answers": [
-        "up to 3 off"
-       ],
-       "options": [
-        "down",
-        "in 2 off",
-        "into 4 out of"
-       ]
-      },
-      {
-       "number": 7,
-       "stem": "Ryan has got ______ photography recently; he spends all his time editing pictures on his computer.",
-       "answers": [
-        "into 4 out of"
-       ],
-       "options": [
-        "down",
-        "in 2 off",
-        "up to 3 off"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -12450,11 +12129,7 @@
        "answers": [
         "together"
        ],
-       "options": [
-        "down",
-        "in 2 off",
-        "up to 3 off"
-       ]
+       "options": []
       }
      ]
     },
@@ -12500,7 +12175,7 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "item_count": 5,
+   "item_count": 2,
    "vocabulary_count": 26,
    "gloss_count": 5
   },
