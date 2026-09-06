@@ -94,6 +94,22 @@ class ApiEndpoints {
   static const String requestExport = '/profile/export';
   static const String requestDeletion = '/profile/delete';
 
+  // ---------------------------------------------------------------- admin
+  // Gated server-side on an admin, editor or reviewer role; the router hides
+  // the screens from everyone else so the calls are never made.
+  static const String adminCurriculumBooks = '/admin/curriculum/books';
+  static String adminCurriculumLessons(int bookId) =>
+      '/admin/curriculum/books/$bookId/lessons';
+  static String adminCurriculumPublish(int bookId) =>
+      '/admin/curriculum/books/$bookId/publish';
+  static String adminCurriculumWithdraw(int bookId) =>
+      '/admin/curriculum/books/$bookId/withdraw';
+  static String adminCurriculumLesson(int lessonId) =>
+      '/admin/curriculum/lessons/$lessonId';
+  static const String adminIngestionSummary = '/admin/ingestion/summary';
+  static const String adminReviewQueue = '/admin/content/queue';
+  static const String adminAiOverview = '/admin/ai/overview';
+
   // ------------------------------------------------- awaiting the backend
   // These two features are built client-side against the shapes documented in
   // their models, but the routes do not exist on the server yet. Calls fail

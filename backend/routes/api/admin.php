@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\V1\Admin\AiUsageController;
 use App\Http\Controllers\Api\V1\Admin\ContentReviewController;
+use App\Http\Controllers\Api\V1\Admin\CurriculumController;
 use App\Http\Controllers\Api\V1\Admin\IngestionController;
 use App\Http\Controllers\Api\V1\Admin\UserAdminController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,13 @@ Route::prefix('v1/admin')->middleware(['auth:sanctum', 'admin'])->group(function
     Route::post('content/reviews/{review}/decide', [ContentReviewController::class, 'decide']);
     Route::post('content/validate-batch', [ContentReviewController::class, 'validateBatch']);
     Route::post('content/auto-publish', [ContentReviewController::class, 'autoPublish']);
+
+    // the curriculum, and what a learner is allowed to see of it
+    Route::get('curriculum/books', [CurriculumController::class, 'books']);
+    Route::get('curriculum/books/{document}/lessons', [CurriculumController::class, 'lessons']);
+    Route::post('curriculum/books/{document}/publish', [CurriculumController::class, 'publishBook']);
+    Route::post('curriculum/books/{document}/withdraw', [CurriculumController::class, 'withdrawBook']);
+    Route::patch('curriculum/lessons/{lesson}', [CurriculumController::class, 'setLessonStatus']);
 
     // AI cost and reliability
     Route::get('ai/overview', [AiUsageController::class, 'overview']);

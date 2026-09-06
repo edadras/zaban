@@ -15,6 +15,9 @@ import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/subscription/data/models/subscription_models.dart';
 import 'package:zaban/features/subscription/data/subscription_repository.dart';
 
+/// Kept in step with the router's own gate and with EnsureAdmin on the server.
+const Set<String> _staffRoles = <String>{'admin', 'editor', 'reviewer'};
+
 /// Account, plan and the entry point to settings.
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -124,6 +127,16 @@ class ProfileScreen extends ConsumerWidget {
                   subtitle: 'Level, skills and study history',
                   onTap: () => context.go(AppRoute.progress.path),
                 ),
+                // Staff only, and only as a shortcut: the router refuses the
+                // route to everyone else and the server refuses the calls.
+                if (_staffRoles.contains(user.role))
+                  _row(
+                    context,
+                    icon: Icons.library_books_rounded,
+                    title: 'Curriculum',
+                    subtitle: 'What is published, and what is ready to be',
+                    onTap: () => context.push(AppRoute.adminCurriculum.path),
+                  ),
                 const SizedBox(height: Spacing.xl),
                 GlowButton(
                   label: 'Sign out',

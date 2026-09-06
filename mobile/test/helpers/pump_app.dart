@@ -11,10 +11,14 @@ import 'package:zaban/core/theme/tokens/motion_tokens.dart';
 /// animations make `pumpAndSettle` unreliable and add nothing to what these
 /// tests assert. Colours, spacing and layout are unchanged.
 extension PumpApp on WidgetTester {
+  /// [scrollable] wraps the widget in a scroll view, which is what a bare
+  /// component wants and what a whole screen must not have: a screen brings its
+  /// own scaffold and background, and those need a bounded height.
   Future<void> pumpApp(
     Widget child, {
     Size surfaceSize = const Size(420, 900),
     List<Override> overrides = const <Override>[],
+    bool scrollable = true,
   }) async {
     await binding.setSurfaceSize(surfaceSize);
     addTearDown(() => binding.setSurfaceSize(null));
@@ -28,7 +32,9 @@ extension PumpApp on WidgetTester {
             glass: ZabanGlass.flat(),
             motion: ZabanMotion.reduced(),
           ),
-          home: Scaffold(body: SingleChildScrollView(child: child)),
+          home: scrollable
+              ? Scaffold(body: SingleChildScrollView(child: child))
+              : child,
         ),
       ),
     );

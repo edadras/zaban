@@ -30,7 +30,11 @@ enum AppRoute {
   plans('/plans', 'plans'),
 
   profile('/profile', 'profile'),
-  settings('/profile/settings', 'settings');
+  settings('/profile/settings', 'settings'),
+
+  /// Admin. Hidden from a learner by the router and refused by the server.
+  adminCurriculum('/admin/curriculum', 'adminCurriculum'),
+  adminBook('/admin/curriculum/:bookId', 'adminBook');
 
   const AppRoute(this.path, this.name);
 
@@ -38,6 +42,7 @@ enum AppRoute {
   final String name;
 
   String lessonPath(int lessonId) => '/lesson/$lessonId';
+  String bookPath(int bookId) => '/admin/curriculum/$bookId';
   String conversationPath(int sessionId) => '/conversation/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';
   String examResultPath(int attemptId) => '/exam/result/$attemptId';

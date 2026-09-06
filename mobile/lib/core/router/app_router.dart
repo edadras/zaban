@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/storage/preferences_store.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
+import 'package:zaban/features/admin/presentation/book_lessons_screen.dart';
+import 'package:zaban/features/admin/presentation/curriculum_screen.dart';
 import 'package:zaban/features/auth/data/models/user.dart';
 import 'package:zaban/features/auth/domain/auth_state.dart';
 import 'package:zaban/features/auth/presentation/auth_controller.dart';
@@ -31,6 +33,15 @@ import 'package:zaban/features/speech/presentation/speech_practice_screen.dart';
 import 'package:zaban/features/subscription/presentation/plans_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+
+/// Roles the server lets into `/api/v1/admin`. Kept in step with
+/// `App\Http\Middleware\EnsureAdmin`; the client hides the screens so the
+/// call is never made, the server refuses them so hiding is not the defence.
+const Set<String> _staffRoles = <String>{'admin', 'editor', 'reviewer'};
+
+bool _staff(Ref ref) => _staffRoles.contains(
+      ref.read(authControllerProvider).user?.role,
+    );
 
 /// Routes that a signed-out user may see.
 const Set<String> _publicPaths = <String>{'/login', '/register', '/splash'};
@@ -188,6 +199,27 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoute.settings.path,
         name: AppRoute.settings.name,
         builder: (_, __) => const SettingsScreen(),
+      ),
+
+      // Admin. Outside the tab shell because it is not part of learning, and
+      // redirected away from anyone whose account does not carry a staff role
+      // - the server refuses them anyway, and a 403 is a worse way to find out.
+      GoRoute(
+        path: AppRoute.adminCurriculum.path,
+        name: AppRoute.adminCurriculum.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (_, __) => const AdminCurriculumScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.adminBook.path,
+        name: AppRoute.adminBook.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (BuildContext context, GoRouterState state) =>
+            AdminBookLessonsScreen(
+          bookId: int.parse(state.pathParameters['bookId']!),
+        ),
       ),
 
       // The tabbed part of the app. IndexedStack keeps each tab's scroll
