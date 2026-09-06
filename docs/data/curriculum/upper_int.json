@@ -5904,9 +5904,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -5914,9 +5912,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -7144,9 +7140,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -7165,9 +7159,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -7175,9 +7167,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -9957,10 +9947,7 @@
        "answers": [
         "job"
        ],
-       "options": [
-        "work",
-        "work"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -9968,10 +9955,7 @@
        "answers": [
         "work"
        ],
-       "options": [
-        "job",
-        "job"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -9979,10 +9963,7 @@
        "answers": [
         "work"
        ],
-       "options": [
-        "job",
-        "job"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -9990,10 +9971,7 @@
        "answers": [
         "job"
        ],
-       "options": [
-        "work",
-        "work"
-       ]
+       "options": []
       }
      ]
     },
@@ -13227,9 +13205,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -13245,9 +13221,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -14080,9 +14054,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -14109,9 +14081,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -14685,9 +14655,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -17298,9 +17266,7 @@
        "answers": [
         "g"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -17319,9 +17285,7 @@
        "answers": [
         "h"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 7,
@@ -17329,9 +17293,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -17919,9 +17881,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -18554,7 +18514,6 @@
        ],
        "options": [
         "a/g/i",
-        "a/g/i",
         "f"
        ]
       },
@@ -18567,7 +18526,7 @@
        "options": [
         "h",
         "a/g/i",
-        "a/g/i"
+        "d"
        ]
       },
       {
@@ -18578,7 +18537,6 @@
        ],
        "options": [
         "b",
-        "a/g/i",
         "a/g/i"
        ]
       },
@@ -18599,7 +18557,7 @@
        "options": [
         "b",
         "a/g/i",
-        "a/g/i"
+        "d"
        ]
       },
       {
@@ -18619,10 +18577,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "a/g/i",
-        "a/g/i"
-       ]
+       "options": []
       },
       {
        "number": 9,
@@ -18633,7 +18588,7 @@
        "options": [
         "h",
         "a/g/i",
-        "a/g/i"
+        "f"
        ]
       }
      ]
@@ -18995,9 +18950,7 @@
         "It’s all so complicated. I feel a bit",
         "quite confused. Can you help me?"
        ],
-       "options": [
-        "I was absolutely thrilled when I heard the wonderful news!"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -19017,9 +18970,7 @@
         "It made me feel quite",
         "a bit frustrated that I still couldn’t play any songs"
        ],
-       "options": [
-        "I was absolutely thrilled when I heard the wonderful news!"
-       ]
+       "options": []
       }
      ]
     },
@@ -19563,9 +19514,9 @@
         "whispered"
        ],
        "options": [
-        "whispered",
         "shrieked 3 shouted",
-        "screamed 4 stuttered"
+        "screamed 4 stuttered",
+        "mumbling"
        ]
       }
      ]
@@ -19592,9 +19543,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -19602,9 +19551,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -19612,9 +19559,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -19649,9 +19594,7 @@
        "answers": [
         "with"
        ],
-       "options": [
-        "nervously"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -19660,9 +19603,7 @@
         "nervously",
         "shyly"
        ],
-       "options": [
-        "with"
-       ]
+       "options": []
       }
      ]
     }
@@ -21137,9 +21078,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -21158,9 +21097,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "e"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -21179,9 +21116,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -22998,9 +22933,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -23008,9 +22941,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "a"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -23098,9 +23029,7 @@
        "answers": [
         "in"
        ],
-       "options": [
-        "from (or possibly at)"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -23108,9 +23037,7 @@
        "answers": [
         "from (or possibly at)"
        ],
-       "options": [
-        "in"
-       ]
+       "options": []
       }
      ]
     }
@@ -23403,9 +23330,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -23413,9 +23338,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       }
      ]
     },
@@ -23769,9 +23692,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -24345,9 +24266,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -24371,9 +24290,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -24695,9 +24612,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -24705,9 +24620,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -26578,9 +26491,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -26596,9 +26507,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -26606,9 +26515,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -26649,9 +26556,7 @@
         "solution",
         "answer"
        ],
-       "options": [
-        "question (mystery would also be possible)"
-       ]
+       "options": []
       }
      ]
     },
@@ -27138,9 +27043,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -27148,9 +27051,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -27453,7 +27354,7 @@
        "options": [
         "talk",
         "talking",
-        "talking"
+        "sense"
        ]
       },
       {
@@ -28994,9 +28895,7 @@
        "answers": [
         "It’s a very built-up coast, with hotels and villas everywhere"
        ],
-       "options": [
-        "We managed to get a last-minute booking for a Mediterranean cruise"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -29004,9 +28903,7 @@
        "answers": [
         "We managed to get a last-minute booking for a Mediterranean cruise"
        ],
-       "options": [
-        "It’s a very built-up coast, with hotels and villas everywhere"
-       ]
+       "options": []
       }
      ]
     },
@@ -32919,9 +32816,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -32949,9 +32844,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -33293,9 +33186,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -33303,9 +33194,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "g"
-       ]
+       "options": []
       }
      ]
     },
@@ -34939,9 +34828,7 @@
        "answers": [
         "They say that long skirts are coming into fashion again"
        ],
-       "options": [
-        "I found it very difficult to come to terms with my failure"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -34949,9 +34836,7 @@
        "answers": [
         "The telephone first came into existence nearly 150 years ago"
        ],
-       "options": [
-        "I found it very difficult to come to terms with my failure"
-       ]
+       "options": []
       },
       {
        "number": 7,
@@ -34983,9 +34868,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "g"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -35004,9 +34887,7 @@
        "answers": [
         "g"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -35033,9 +34914,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       }
      ]
     },
@@ -35804,9 +35683,7 @@
        "answers": [
         "particular"
        ],
-       "options": [
-        "account"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -35814,9 +35691,7 @@
        "answers": [
         "account"
        ],
-       "options": [
-        "particular"
-       ]
+       "options": []
       }
      ]
     },

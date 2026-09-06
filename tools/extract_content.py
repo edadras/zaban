@@ -1730,15 +1730,30 @@ def mine_drill(exercise, answer_text):
             for n, (_, a) in asked.items()
             if n != number and accepted_answers(a)
         ]
-        options = [
-            o for o in sibling_options(others, accepted[0] if accepted else answer)
-            if normalised(o) not in normalised(stem)
-        ]
+        options = []
+        for candidate in sibling_options(others, accepted[0] if accepted else answer):
+            key = normalised(candidate)
+            # An option that matches any answer this item accepts is not a
+            # wrong answer - it marks the learner wrong for being right. The
+            # key often states two forms of one answer, so checking only the
+            # first let the second through.
+            if any(key == normalised(a) for a in accepted):
+                continue
+            if key in {normalised(o) for o in options}:
+                continue
+            if key and key in normalised(stem):
+                continue
+            options.append(candidate)
+            if len(options) == 3:
+                break
+
         out.append({
             'number': number,
             'stem': stem,
             'answers': accepted,
-            'options': options[:3],
+            # One wrong option is not a choice, it is a coin toss. Either the
+            # item offers somewhere to go wrong or it is something to type.
+            'options': options if len(options) >= 2 else [],
         })
 
     return out

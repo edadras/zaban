@@ -3302,8 +3302,7 @@
        ],
        "options": [
         "dead",
-        "died",
-        "dead"
+        "died"
        ]
       },
       {
@@ -3325,7 +3324,6 @@
        ],
        "options": [
         "death",
-        "dead",
         "dead"
        ]
       },
@@ -3916,9 +3914,7 @@
        "answers": [
         "carrying, bag"
        ],
-       "options": [
-        "belt"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -3926,9 +3922,7 @@
        "answers": [
         "belt"
        ],
-       "options": [
-        "carrying, bag"
-       ]
+       "options": []
       }
      ]
     },
@@ -4311,9 +4305,7 @@
        "answers": [
         "tall"
        ],
-       "options": [
-        "fat"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -4322,9 +4314,7 @@
         "fat",
         "overweight 4 fair"
        ],
-       "options": [
-        "tall"
-       ]
+       "options": []
       }
      ]
     },
@@ -7814,9 +7804,7 @@
        "answers": [
         "by"
        ],
-       "options": [
-        "send"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -7824,9 +7812,7 @@
        "answers": [
         "send"
        ],
-       "options": [
-        "by"
-       ]
+       "options": []
       }
      ]
     },
@@ -8277,9 +8263,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -8287,9 +8271,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -8308,9 +8290,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -8627,9 +8607,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -8671,9 +8649,7 @@
        "answers": [
         "g"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 7,
@@ -11981,9 +11957,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -12033,9 +12007,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       }
      ]
     },
@@ -12948,9 +12920,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -12958,9 +12928,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -12979,9 +12947,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -12989,9 +12955,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -14805,8 +14769,7 @@
        ],
        "options": [
         "comes",
-        "Are; coming",
-        "comes"
+        "Are; coming"
        ]
       },
       {
@@ -14828,7 +14791,6 @@
        ],
        "options": [
         "came",
-        "comes",
         "comes"
        ]
       },
@@ -15177,9 +15139,7 @@
        "answers": [
         "bring"
        ],
-       "options": [
-        "take"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -15187,9 +15147,7 @@
        "answers": [
         "bring"
        ],
-       "options": [
-        "take"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -15197,11 +15155,7 @@
        "answers": [
         "take"
        ],
-       "options": [
-        "bring",
-        "bring",
-        "bring"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -15209,9 +15163,7 @@
        "answers": [
         "bring"
        ],
-       "options": [
-        "take"
-       ]
+       "options": []
       }
      ]
     },
@@ -15232,9 +15184,7 @@
        "answers": [
         "brought"
        ],
-       "options": [
-        "take"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -15242,9 +15192,7 @@
        "answers": [
         "take"
        ],
-       "options": [
-        "brought"
-       ]
+       "options": []
       }
      ]
     },
@@ -15841,11 +15789,7 @@
        "answers": [
         "off 7on"
        ],
-       "options": [
-        "off",
-        "off",
-        "off"
-       ]
+       "options": []
       },
       {
        "number": 8,
@@ -15855,8 +15799,7 @@
        ],
        "options": [
         "off",
-        "off",
-        "off"
+        "off 7on"
        ]
       }
      ]
@@ -16400,10 +16343,7 @@
        "answers": [
         "said"
        ],
-       "options": [
-        "told",
-        "told"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -16411,10 +16351,7 @@
        "answers": [
         "tell; said"
        ],
-       "options": [
-        "told",
-        "told"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -17822,7 +17759,7 @@
        "options": [
         "there",
         "everywhere",
-        "there"
+        "back"
        ]
       },
       {
@@ -17843,9 +17780,7 @@
        "answers": [
         "everywhere"
        ],
-       "options": [
-        "back"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -17884,10 +17819,7 @@
        "answers": [
         "at"
        ],
-       "options": [
-        "on",
-        "on"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -17895,10 +17827,7 @@
        "answers": [
         "on"
        ],
-       "options": [
-        "at",
-        "at"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -17914,10 +17843,7 @@
        "answers": [
         "on"
        ],
-       "options": [
-        "at",
-        "at"
-       ]
+       "options": []
       }
      ]
     },
@@ -17938,9 +17864,7 @@
        "answers": [
         "out"
        ],
-       "options": [
-        "away"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -17948,9 +17872,7 @@
        "answers": [
         "away"
        ],
-       "options": [
-        "out"
-       ]
+       "options": []
       }
      ]
     },
@@ -18796,9 +18718,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b English Vocabulary in Use Elementary 155"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -18806,9 +18726,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "b English Vocabulary in Use Elementary 155"
-       ]
+       "options": []
       },
       {
        "number": 5,

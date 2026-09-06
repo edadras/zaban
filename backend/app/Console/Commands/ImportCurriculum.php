@@ -976,7 +976,25 @@ class ImportCurriculum extends Command
             return;
         }
 
-        $options = array_values(array_filter($item['options'] ?? []));
+        // The extractor already refuses an option that matches an answer, is
+        // given away by the sentence, or stands alone. Checked again here
+        // because this is the last place before a learner is marked wrong, and
+        // extracted data outlives the run that produced it.
+        $keys = array_map($this->comparable(...), $answers);
+        $options = [];
+        foreach (array_filter($item['options'] ?? []) as $option) {
+            $key = $this->comparable($option);
+            if ($key === '' || in_array($key, $keys, true)) {
+                continue;
+            }
+            if (in_array($key, array_map($this->comparable(...), $options), true)) {
+                continue;
+            }
+            if (str_contains($this->comparable($stem), $key)) {
+                continue;
+            }
+            $options[] = $option;
+        }
         $recognition = count($options) >= 2;
 
         $lesson = $this->lessonFor($unit, $stem.' '.implode(' ', $answers));
@@ -1052,6 +1070,12 @@ class ImportCurriculum extends Command
             ['reviewable_type' => Exercise::class, 'reviewable_id' => $row->id],
             ['status' => 'approved', 'auto_publishable' => true],
         );
+    }
+
+    /** Text reduced to what two answers have to differ in to be different. */
+    private function comparable(string $text): string
+    {
+        return trim(preg_replace('/[^a-z0-9 ]/', '', Str::lower($text)));
     }
 
     /**

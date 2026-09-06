@@ -6066,9 +6066,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -6076,9 +6074,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -6086,9 +6082,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -8181,7 +8175,7 @@
        "options": [
         "for",
         "of",
-        "of"
+        "in"
        ]
       },
       {
@@ -8192,8 +8186,8 @@
        ],
        "options": [
         "to",
-        "to",
-        "in"
+        "in",
+        "towards"
        ]
       },
       {
@@ -8205,7 +8199,7 @@
        "options": [
         "for",
         "of",
-        "of"
+        "in"
        ]
       },
       {
@@ -8217,7 +8211,7 @@
        "options": [
         "to",
         "for",
-        "to"
+        "in"
        ]
       },
       {
@@ -8253,7 +8247,7 @@
        "options": [
         "to",
         "for",
-        "to"
+        "of"
        ]
       },
       {
@@ -8265,7 +8259,7 @@
        "options": [
         "to",
         "for",
-        "to"
+        "of"
        ]
       }
      ]
@@ -9124,9 +9118,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "c English Vocabulary in Use Advanced 217"
-       ]
+       "options": []
       },
       {
        "number": 2,
@@ -9145,9 +9137,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "c English Vocabulary in Use Advanced 217"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -9178,9 +9168,7 @@
        "answers": [
         "c English Vocabulary in Use Advanced 217"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -10304,9 +10292,9 @@
         "therapeutic"
        ],
        "options": [
-        "therapeutic",
         "lucrative",
-        "fruitful"
+        "fruitful",
+        "rewarding"
        ]
       },
       {
@@ -12652,9 +12640,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -12662,9 +12648,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -14804,9 +14788,7 @@
        "answers": [
         "e 3 d"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -14814,9 +14796,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "e 3 d"
-       ]
+       "options": []
       }
      ]
     },
@@ -16764,9 +16744,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -16810,9 +16788,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 7,
@@ -18828,9 +18804,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "g"
-       ]
+       "options": []
       },
       {
        "number": 2,
@@ -18838,9 +18812,7 @@
        "answers": [
         "g"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -18848,9 +18820,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "g"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -20425,9 +20395,7 @@
        "answers": [
         "You shouldn’t start laying down the law on your first day in a new job"
        ],
-       "options": [
-        "Masha will never be able to get Vadim to conform – he’s a law unto himself"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -20435,9 +20403,7 @@
        "answers": [
         "Masha will never be able to get Vadim to conform – he’s a law unto himself"
        ],
-       "options": [
-        "You shouldn’t start laying down the law on your first day in a new job"
-       ]
+       "options": []
       }
      ]
     },
@@ -20959,9 +20925,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 2,
@@ -20969,9 +20933,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -20979,9 +20941,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -20997,9 +20957,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       }
      ]
     }
@@ -21688,9 +21646,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 2,
@@ -21698,9 +21654,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -21708,9 +21662,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -21740,9 +21692,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -25367,9 +25317,7 @@
        "answers": [
         "food miles"
        ],
-       "options": [
-        "carbon footprint"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -25377,9 +25325,7 @@
        "answers": [
         "carbon footprint"
        ],
-       "options": [
-        "food miles"
-       ]
+       "options": []
       }
      ]
     },
@@ -26080,9 +26026,7 @@
        "answers": [
         "b 246 English Vocabulary in Use Advanced"
        ],
-       "options": [
-        "g"
-       ]
+       "options": []
       }
      ]
     },
@@ -28026,9 +27970,7 @@
        "answers": [
         "g"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -29691,9 +29633,7 @@
        "answers": [
         "f"
        ],
-       "options": [
-        "c 252 English Vocabulary in Use Advanced"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -30896,8 +30836,8 @@
        ],
        "options": [
         "perfect",
-        "flimsy",
-        "cast-iron"
+        "cast-iron",
+        "sincere"
        ]
       },
       {
@@ -30920,9 +30860,9 @@
         "perfect"
        ],
        "options": [
-        "perfect",
         "lame",
-        "flimsy"
+        "flimsy",
+        "sincere"
        ]
       },
       {
@@ -31371,9 +31311,7 @@
        "answers": [
         "e"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       },
       {
        "number": 4,
@@ -31392,9 +31330,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "d"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -31402,9 +31338,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "b"
-       ]
+       "options": []
       }
      ]
     },
@@ -32068,9 +32002,7 @@
        "answers": [
         "d"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 3,
@@ -32089,9 +32021,7 @@
        "answers": [
         "c"
        ],
-       "options": [
-        "f"
-       ]
+       "options": []
       },
       {
        "number": 5,
@@ -32099,9 +32029,7 @@
        "answers": [
         "a"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       },
       {
        "number": 6,
@@ -32109,9 +32037,7 @@
        "answers": [
         "b"
        ],
-       "options": [
-        "c"
-       ]
+       "options": []
       }
      ]
     },
@@ -34018,8 +33944,8 @@
        ],
        "options": [
         "stacks",
-        "stacks",
-        "smattering"
+        "smattering",
+        "dollop"
        ]
       },
       {
@@ -34043,7 +33969,7 @@
        "options": [
         "stacks",
         "dash",
-        "stacks"
+        "dollop"
        ]
       },
       {
@@ -34055,7 +33981,7 @@
        "options": [
         "stacks",
         "dash",
-        "stacks"
+        "smattering"
        ]
       }
      ]
@@ -34926,9 +34852,7 @@
        "answers": [
         "e.g"
        ],
-       "options": [
-        "NB 2 i.e"
-       ]
+       "options": []
       }
      ]
     },
