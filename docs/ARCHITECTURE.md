@@ -42,6 +42,7 @@ sources/*.pdf, sources/audio/           four books + 1,162 mp3s (Git LFS)
 docs/data/curriculum/*.json             committed extraction output
         │
         │  php artisan content:import            lossless load, with provenance
+        │  php artisan content:translate         attach first-language meanings
         │  php artisan content:build-activities  derive blocks and gradable items
         │  php artisan content:audit             prove nothing was dropped
         │  php artisan content:readiness         prove the engines can actually run
@@ -101,6 +102,19 @@ items have gradable answers, that lessons have interactive blocks rather than
 just source text, and that enough placement-eligible items exist to run an
 adaptive test. A database can be full and the product still broken; this command
 is the difference between the two.
+
+`content:translate` reads `docs/data/translations/<code>.json` — a flat map from
+English headword to a meaning in the learner's own language, written by hand and
+reviewed as text — and attaches each meaning to every sense of its headword. A
+"sense" in this corpus is an occurrence rather than a meaning (a word taught in
+three books has three, and no row carries a part of speech that tells them
+apart), so every sense is the only reading the data supports; real polysemy is
+answered inside the entry, which may carry more than one meaning the way a
+bilingual dictionary prints them. The Persian catalogue holds 10,733 entries and
+covers 84% of the words the corpus teaches; what remains untranslated is scanner
+debris rather than vocabulary. `content:build-activities` bakes the meanings
+into each lesson's reading block, so tapping a word answers from the page
+already open rather than over the network.
 
 `content:build-activities` sits between them and derives interactive blocks and
 gradable exercises **deterministically** from what the books already give: the
