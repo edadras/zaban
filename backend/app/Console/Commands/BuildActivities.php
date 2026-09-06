@@ -42,6 +42,17 @@ class BuildActivities extends Command
      */
     private const WORDS_FOR_A_VOCABULARY_LESSON = 3;
 
+    /**
+     * How many recall cards one grammar or pronunciation section is worth.
+     *
+     * A section teaches one point in several forms; six cards covers the point
+     * without turning a two-minute page into a twenty-minute drill.
+     */
+    private const CARDS_PER_PATTERN_LESSON = 6;
+
+    /** How many forms to ask a learner to say aloud in one go. */
+    private const FORMS_TO_SAY = 5;
+
     private ?int $language = null;
 
     /** Distractor candidates by CEFR level id, loaded once. */
@@ -121,6 +132,7 @@ class BuildActivities extends Command
         $this->buildFromVocabulary();
         $this->buildReadingViews();
         $this->classifyLessons();
+        $this->buildPatternActivities();
         $this->deriveWordFamilyPrerequisites();
         $this->markPlacementBank();
 
@@ -408,6 +420,141 @@ class BuildActivities extends Command
      * that cannot is `study_skills`. Both stay in the course and both remain
      * browsable. Only the first kind drives a daily session.
      */
+    /**
+     * Give a grammar or pronunciation lesson something to do.
+     *
+     * Every derived activity in this builder comes from a vocabulary sense, so
+     * the 838 lessons of the grammar and pronunciation books - which teach a
+     * pattern rather than words - had nothing at all: source text, and then
+     * straight on to the next page. A learner opening one was shown an
+     * explanation and given no way to practise it.
+     *
+     * What those pages do have is the forms of the pattern, in bold, and the
+     * sentences the book prints them in. So the lesson gets cards: the
+     * sentence with the form taken out on the front, the form on the back.
+     *
+     * Deliberately a card and not a marked question. A different form is often
+     * also grammatical in the same sentence - that is exactly what these units
+     * contrast - so an auto-marked answer would tell a learner they were wrong
+     * for writing good English. A card asks them to recall what the book wrote
+     * and lets them judge it, which is what the page itself asks.
+     */
+    private function buildPatternActivities(): void
+    {
+        $this->line('▸ building practice for the pattern lessons');
+
+        $lessons = DB::table('lessons')
+            ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->where('concepts.conceptable_type', Lesson::class)
+            ->whereNull('lessons.deleted_at')
+            ->distinct()
+            ->pluck('lessons.id');
+
+        $cards = 0;
+        $spoken = 0;
+        $bare = 0;
+
+        foreach ($lessons as $lessonId) {
+            $lesson = Lesson::find($lessonId);
+            $block = $lesson?->blocks()->where('type', 'source_text')->first();
+            if (! $block) {
+                continue;
+            }
+
+            $forms = array_values(array_filter(
+                $block->config['target_forms'] ?? [],
+                fn ($f) => $this->isActivityWorthy((string) $f),
+            ));
+            $text = (string) ($block->config['text'] ?? '');
+
+            $position = 1;
+            $made = 0;
+            foreach ($forms as $form) {
+                if ($made >= self::CARDS_PER_PATTERN_LESSON) {
+                    break;
+                }
+                $sentence = $this->sentenceShowing($text, $form);
+                if ($sentence === null) {
+                    continue;
+                }
+
+                $lesson->blocks()->updateOrCreate(
+                    ['type' => 'flashcard', 'position' => $position++],
+                    [
+                        'title' => null,
+                        'config' => [
+                            'front' => $this->quality->blank($sentence, $form) ?? $sentence,
+                            'back' => $form,
+                            'source' => 'pattern_form',
+                        ],
+                        'estimated_seconds' => 20,
+                    ],
+                );
+                $cards++;
+                $made++;
+            }
+
+            // The recording is the book reading these very sentences aloud, and
+            // a pronunciation unit asks for exactly this.
+            if ($forms !== [] && $this->hasAudio($lesson)) {
+                $lesson->blocks()->updateOrCreate(
+                    ['type' => 'repeat_after_speaker', 'position' => $position++],
+                    [
+                        'title' => null,
+                        'config' => [
+                            'targets' => array_slice($forms, 0, self::FORMS_TO_SAY),
+                            'source' => 'pattern_form',
+                        ],
+                        'estimated_seconds' => 45,
+                    ],
+                );
+                $spoken++;
+            }
+
+            if ($made === 0) {
+                $bare++;
+            }
+        }
+
+        $this->line("   recall cards: {$cards}");
+        $this->line("   speaking blocks: {$spoken}");
+        if ($bare > 0) {
+            // A page whose bold forms never appear in a sentence on the same
+            // page - a table of endings, a chart - has nothing to build a card
+            // from, and saying so is better than pretending otherwise.
+            $this->warn("   pattern lessons with no usable example sentence: {$bare}");
+        }
+    }
+
+    /** The lesson's own sentence showing this form, if the page prints one. */
+    private function sentenceShowing(string $text, string $form): ?string
+    {
+        foreach ($this->miner->sentences($text) as $sentence) {
+            if (mb_strlen($sentence) < 25 || mb_strlen($sentence) > 200) {
+                continue;
+            }
+            if (! $this->quality->containsTerm($sentence, $form)) {
+                continue;
+            }
+            if (! $this->quality->isUsableSentence($sentence)) {
+                continue;
+            }
+
+            return $sentence;
+        }
+
+        return null;
+    }
+
+    private function hasAudio(Lesson $lesson): bool
+    {
+        return DB::table('audio_mappings')
+            ->where('mappable_type', Lesson::class)
+            ->where('mappable_id', $lesson->id)
+            ->exists();
+    }
+
     private function classifyLessons(): void
     {
         $this->line('▸ classifying lessons');

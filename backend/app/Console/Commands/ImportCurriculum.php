@@ -13,6 +13,7 @@ use App\Models\Definition;
 use App\Models\Example;
 use App\Models\Exercise;
 use App\Models\ExerciseAnswer;
+use App\Models\ExerciseOption;
 use App\Models\ExerciseTemplate;
 use App\Models\IngestionJob;
 use App\Models\IngestionStage;
@@ -245,7 +246,8 @@ class ImportCurriculum extends Command
         $counts = ['units' => 0, 'lessons' => 0, 'vocab' => 0, 'senses' => 0,
                    'definitions' => 0, 'examples' => 0, 'concepts' => 0,
                    'exercises' => 0, 'audio' => 0, 'pages' => 0, 'segments' => 0,
-                   'chars' => 0, 'images' => 0, 'image_blocks' => 0];
+                   'chars' => 0, 'images' => 0, 'image_blocks' => 0,
+                   'items' => 0, 'options' => 0];
 
         // Every page of the book is stored verbatim first. Whatever the structural
         // parser does or does not recognise, no source text is ever unrepresented.
@@ -418,6 +420,10 @@ class ImportCurriculum extends Command
         $answers = collect($u['answers'])->keyBy('number');
         foreach ($u['exercises'] as $ex) {
             $this->importExercise($ex, $answers->get($ex['number']), $unit, $doc, $u, $cefrCode, $counts, $pageIds);
+
+            foreach ($ex['items'] ?? [] as $item) {
+                $this->importDrillItem($item, $ex, $unit, $doc, $u, $cefrCode, $counts);
+            }
         }
     }
 
@@ -948,6 +954,169 @@ class ImportCurriculum extends Command
         );
     }
 
+    /**
+     * One numbered part of a printed drill, with the answer the key gives it.
+     *
+     * The drill itself imports as a single row holding its instruction, which
+     * is all a page can offer: its parts are typography and its answers are a
+     * hundred pages away. Read the key column by column, though, and the two
+     * numbered lists pair up - so each part becomes a question with a stated
+     * answer instead of an instruction with nothing to do.
+     *
+     * The wrong options, where there are any, are the other parts' answers.
+     * That is what makes them provable rather than plausible: the drill asks
+     * the same kind of question several times and the key states one answer
+     * for each, so another part's answer is a wrong answer for this one.
+     */
+    private function importDrillItem(array $item, array $drill, Unit $unit, SourceDocument $doc, array $u, string $cefrCode, array &$counts): void
+    {
+        $stem = trim($item['stem'] ?? '');
+        $answers = array_values(array_filter($item['answers'] ?? []));
+        if ($stem === '' || $answers === []) {
+            return;
+        }
+
+        $options = array_values(array_filter($item['options'] ?? []));
+        $recognition = count($options) >= 2;
+
+        $lesson = $this->lessonFor($unit, $stem.' '.implode(' ', $answers));
+        $template = $recognition
+            ? ExerciseTemplate::where('code', 'multiple_choice')->first()
+            : ExerciseTemplate::where('code', 'fill_blank')->first();
+
+        $row = Exercise::updateOrCreate(
+            [
+                'source_document_id' => $doc->id,
+                'source_reference' => "drill:{$u['number']}.{$drill['number']}.{$item['number']}",
+            ],
+            [
+                'lesson_id' => $lesson?->id,
+                'exercise_template_id' => $template?->id,
+                'language_id' => $this->languageId,
+                'skill_id' => $this->skillId,
+                'cefr_level_id' => $this->cefr[$cefrCode],
+                'stem' => Str::limit($stem, 1000, ''),
+                'instructions' => Str::limit(trim($drill['instructions'] ?? '') ?: 'Complete the sentence.', 1000, ''),
+                'difficulty' => $this->difficultyFor($cefrCode),
+                'status' => 'approved',
+                'generation_method' => 'extracted',
+                'copyright_status' => $doc->copyright_status,
+                'source_page' => $u['source_page'],
+            ],
+        );
+        $counts['items']++;
+
+        $row->answers()->delete();
+        foreach ($answers as $position => $value) {
+            ExerciseAnswer::create([
+                'exercise_id' => $row->id,
+                'blank_index' => 0,
+                'value' => Str::limit($value, 500, ''),
+                // The books' keys accept spelling and contraction variants, and
+                // marking more strictly than the book does fails a learner who
+                // wrote the form the book itself prints second.
+                'match_mode' => 'normalised',
+                'is_primary' => $position === 0,
+                'credit' => 1.000,
+            ]);
+        }
+
+        $row->options()->delete();
+        if ($recognition) {
+            $shuffled = array_merge([$answers[0]], $options);
+            sort($shuffled, SORT_NATURAL | SORT_FLAG_CASE);
+            foreach ($shuffled as $position => $text) {
+                ExerciseOption::create([
+                    'exercise_id' => $row->id,
+                    'position' => $position,
+                    'text' => Str::limit($text, 500, ''),
+                    'is_correct' => $text === $answers[0],
+                ]);
+                $counts['options']++;
+            }
+            $row->update(['guessing' => round(1 / count($shuffled), 3)]);
+        }
+
+        if ($lesson) {
+            $concepts = DB::table('lesson_concept')->where('lesson_id', $lesson->id)->pluck('concept_id');
+            if ($concepts->isNotEmpty()) {
+                $row->concepts()->syncWithoutDetaching(
+                    $concepts->mapWithKeys(fn ($id) => [$id => [
+                        'weight' => 1.000, 'created_at' => now(), 'updated_at' => now(),
+                    ]])->all(),
+                );
+            }
+        }
+
+        ContentReview::updateOrCreate(
+            ['reviewable_type' => Exercise::class, 'reviewable_id' => $row->id],
+            ['status' => 'approved', 'auto_publishable' => true],
+        );
+    }
+
+    /**
+     * Which lesson of this unit a drill item belongs to.
+     *
+     * A unit is several lettered sections and each is a lesson, so filing every
+     * item under the first one leaves the rest of the unit with nothing to
+     * practise - and tells the learner they are practising section A when the
+     * question is about section C. The item names its own section: the words it
+     * uses are the words that section teaches.
+     */
+    private function lessonFor(Unit $unit, string $text): ?Lesson
+    {
+        $lessons = Lesson::where('unit_id', $unit->id)->orderBy('position')->get();
+        if ($lessons->isEmpty()) {
+            return null;
+        }
+
+        $haystack = ' '.Str::lower(preg_replace('/[^\p{L}\p{N} ]+/u', ' ', $text)).' ';
+
+        $best = null;
+        $bestScore = 0;
+        foreach ($lessons as $lesson) {
+            $score = 0;
+            foreach ($this->taughtBy($lesson) as $term) {
+                if (mb_strlen($term) >= 4 && str_contains($haystack, ' '.$term.' ')) {
+                    $score++;
+                }
+            }
+            if ($score > $bestScore) {
+                $best = $lesson;
+                $bestScore = $score;
+            }
+        }
+
+        // No section claims it, so it belongs to the unit rather than to one
+        // part of it, and the first lesson is where the unit starts.
+        return $best ?? $lessons->first();
+    }
+
+    /** @return list<string> the language a lesson teaches, lowercased */
+    private function taughtBy(Lesson $lesson): array
+    {
+        static $cache = [];
+        if (isset($cache[$lesson->id])) {
+            return $cache[$lesson->id];
+        }
+
+        $terms = DB::table('lesson_concept')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->where('lesson_concept.lesson_id', $lesson->id)
+            ->pluck('concepts.label')
+            ->all();
+
+        $block = $lesson->blocks()->where('type', 'source_text')->first();
+        foreach ($block->config['target_forms'] ?? [] as $form) {
+            $terms[] = $form;
+        }
+
+        return $cache[$lesson->id] = array_values(array_unique(array_map(
+            fn ($t) => Str::lower(preg_replace('/[^\p{L}\p{N} ]+/u', ' ', (string) $t)),
+            $terms,
+        )));
+    }
+
     /** Best-effort template inference from the rubric wording. */
     private function templateFor(string $instructions): string
     {
@@ -1014,17 +1183,18 @@ class ImportCurriculum extends Command
         foreach ($this->stats as $book => $c) {
             $rows[] = [$book, $c['pages'], $c['units'], $c['lessons'], $c['segments'],
                        $c['vocab'], $c['senses'], $c['definitions'], $c['examples'],
-                       $c['exercises'], $c['audio'], $c['images'], number_format($c['chars'])];
+                       $c['exercises'], $c['items'], $c['audio'], $c['images'],
+                       number_format($c['chars'])];
         }
         $totals = ['TOTAL'];
-        for ($i = 1; $i <= 11; $i++) {
+        for ($i = 1; $i <= 12; $i++) {
             $totals[] = array_sum(array_column($rows, $i));
         }
         $totals[] = number_format(array_sum(array_map(fn ($c) => $c['chars'], $this->stats)));
         $rows[] = $totals;
         $this->table(
             ['book', 'pages', 'units', 'lessons', 'segments', 'new vocab', 'senses',
-             'defs', 'examples', 'exercises', 'audio', 'images', 'source chars'],
+             'defs', 'examples', 'drills', 'items', 'audio', 'images', 'source chars'],
             $rows,
         );
     }

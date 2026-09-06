@@ -1423,6 +1423,109 @@ def dedupe_vocab(items):
     return out
 
 
+# A gutter has to be this wide before it is read as a column break rather than
+# as the space between two words that happen to line up.
+GUTTER_WIDTH = 6
+# And it has to be blank on this share of the page's lines. A table can leave a
+# ragged white channel down the middle of a single column; a real gutter is
+# blank on nearly every line.
+GUTTER_SHARE = 0.85
+
+
+def gutters(lines):
+    """Where the page breaks into columns, as character offsets to cut at.
+
+    An answer key is printed in two or three narrow columns, and
+    `pdftotext -layout` renders that as lines running across all of them. Read
+    straight across, the answers to one exercise arrive interleaved with the
+    answers to two others: exercise 2.2 of Grammar in Use came back as
+    "7 lives / 6 She didn't have (any) lunch / 2 do the banks close", three
+    exercises at once, and nothing could be paired with anything.
+
+    A gutter is a run of character columns blank on nearly every line. Nearly,
+    not entirely: the first page of a key carries a full-width introduction
+    above the columns, and demanding a column of pure white found no gutters at
+    all on exactly the page that most needed them.
+
+    Nothing here assumes how many columns there are, because these books use
+    two and three in the same volume.
+    """
+    if len(lines) < 8:
+        return []
+
+    width = max((len(ln) for ln in lines), default=0)
+    if width < 40:
+        return []
+
+    filled = [0] * width
+    for line in lines:
+        for i, ch in enumerate(line):
+            if ch != ' ':
+                filled[i] += 1
+
+    tolerance = len(lines) * (1 - GUTTER_SHARE)
+
+    cuts = []
+    start = None
+    for i in range(width + 1):
+        blank_enough = i < width and filled[i] <= tolerance
+        if blank_enough:
+            if start is None:
+                start = i
+            continue
+        if start is not None:
+            # Cut where the run is emptiest, and in the middle of a tie, so a
+            # line that does reach into the gutter loses as little as possible.
+            if i - start >= GUTTER_WIDTH and start > 8 and i < width - 4:
+                quietest = min(filled[start:i])
+                at = [j for j in range(start, i) if filled[j] == quietest]
+                cuts.append(at[len(at) // 2])
+            start = None
+
+    return cuts
+
+
+def columns(page_text):
+    """The page as a list of columns, each read top to bottom.
+
+    A page with no gutters comes back as one column - the whole page - so a
+    caller can always work in columns without first asking whether the page
+    has any.
+
+    A line whose text runs across a cut is not column content: it is a running
+    head or an introduction printed the full width of the page. Slicing one
+    would cut a word in half and file the halves under two different columns,
+    so it is kept whole, with the first column, and left out of the others.
+    """
+    lines = page_text.splitlines()
+    cuts = gutters(lines)
+    if not cuts:
+        return [page_text]
+
+    bounds = list(zip([0] + cuts, cuts + [None]))
+
+    out = []
+    for index, (start, end) in enumerate(bounds):
+        piece = []
+        for line in lines:
+            if spans_a_cut(line, cuts):
+                piece.append(line if index == 0 else '')
+                continue
+            piece.append(line[start:end] if end is not None else line[start:])
+        text = '\n'.join(p.rstrip() for p in piece)
+        if text.strip():
+            out.append(text)
+    return out
+
+
+def spans_a_cut(line, cuts):
+    """Does this line's text run straight through a column break?"""
+    return any(
+        cut < len(line) and line[cut] != ' ' and line[cut - 1:cut] not in ('', ' ')
+        for cut in cuts
+    )
+
+
 def split_labelled_blocks(page, unit_no):
     """Every "<unit>.<n>" label on a page owns the text up to the next label.
 
@@ -1446,6 +1549,201 @@ def split_labelled_blocks(page, unit_no):
     return out
 
 
+# ---------------------------------------------------------------- drill items
+#
+# A printed exercise imports as one row per instruction, because its numbered
+# parts belong to the page and its answers are a hundred pages away in the key.
+# That is why none of them can be served: the learner is handed "Complete the
+# sentences" and has nothing to complete.
+#
+# Both halves are on the page, though, and both are numbered. Once the answer
+# key is read column by column - see `columns` - the two lists can be paired,
+# and 3,700 of these items turn out to carry a printed blank and a stated
+# answer, which is a question.
+
+RE_ITEM = re.compile(r'^\s{0,10}(\d{1,2})\s+(\S.*)$')
+# A second item beginning part-way along a line. These drills print their items
+# in two sub-columns inside one page column, too narrow to show up as a gutter.
+RE_INLINE_ITEM = re.compile(r'\s{3,}(\d{1,2})\s+(?=[A-Za-z‘’"\'(])')
+# The blank the book prints: a run of spaces inside a sentence, or a rule.
+RE_PRINTED_BLANK = re.compile(r'(?<=\S)(\s{3,}|\.{3,}|_{3,})(?=\S)')
+BLANK = '______'
+
+
+def numbered_parts(text):
+    """The numbered parts of a drill or of its answers.
+
+    @return (number -> text, the numbers in the order they were printed)
+    """
+    parts, order = {}, []
+    current = None
+
+    def add(number, body):
+        nonlocal current
+        if number in parts:
+            # A number seen twice means two drills have been read as one, and
+            # there is no way to tell which half belongs to which.
+            current = None
+            return
+        parts[number] = body.rstrip()
+        order.append(number)
+        current = number
+
+    for line in text.splitlines():
+        m = RE_ITEM.match(line)
+        if m:
+            number, body = int(m.group(1)), m.group(2)
+        elif current is not None and line.strip():
+            number, body = None, line.strip()
+        else:
+            continue
+
+        pieces = RE_INLINE_ITEM.split(body)
+        if number is None:
+            parts[current] += ' ' + pieces[0]
+        else:
+            add(number, pieces[0])
+        for i in range(1, len(pieces), 2):
+            add(int(pieces[i]), pieces[i + 1])
+
+    return parts, order
+
+
+def in_order(numbers):
+    return all(b > a for a, b in zip(numbers, numbers[1:]))
+
+
+def as_question(prompt, answer):
+    """The item as something a learner can be asked, or None.
+
+    The book prints the gap as whitespace, so a run of spaces inside the
+    sentence is the blank and is marked as one. An item with no gap is a
+    rewrite or a discussion question - still teaching, but not something that
+    can be marked - and is left out.
+    """
+    prompt = re.sub(r'\s+$', '', prompt)
+    if not RE_PRINTED_BLANK.search(prompt):
+        return None
+
+    stem = RE_PRINTED_BLANK.sub(f' {BLANK} ', prompt)
+    stem = re.sub(r'\s{2,}', ' ', stem).strip()
+
+    # The key's columns sit under a running head, and the last answer in a
+    # column picks it up: "I agree UNIT 3".
+    answer = re.sub(r'\s*\b(?:UNIT|Unit)\s+\d{1,3}\s*$', '', answer)
+    answer = re.sub(r'\s{2,}', ' ', answer).strip(' .')
+    if not answer or len(answer) > 80 or not re.search(r'[A-Za-z]', answer):
+        return None
+    # A "…" in the key means the answer fills two blanks in the sentence; the
+    # halves cannot be matched to the gaps without guessing which is which.
+    if '…' in answer or '...' in answer:
+        return None
+
+    words = len(stem.split())
+    if words < 4 or words > 60:
+        return None
+    if stem.count(BLANK) != 1:
+        return None
+
+    return stem, answer
+
+
+def accepted_answers(answer):
+    """The forms the key says are acceptable.
+
+    A key writes alternatives with a slash - "I've had / I have had" - and
+    marking only the first wrong-foots a learner who wrote the second.
+    """
+    out = []
+    for piece in re.split(r'\s+/\s+|\s+or\s+', answer):
+        piece = piece.strip(' .')
+        if piece and re.search(r'[A-Za-z]', piece) and piece not in out:
+            out.append(piece)
+    return out[:4]
+
+
+def sibling_options(answers, mine):
+    """The other items' answers, where they are safe to offer as wrong ones.
+
+    A drill asks the same kind of question several times and states one answer
+    for each, so another item's answer is a wrong answer for this one - that is
+    what makes these options provable rather than plausible.
+
+    Two rules keep that honest. An option that already appears in this item's
+    own sentence is not wrong, it is given away; and an option built on the
+    same stem as the answer ("close" against "closes") may be a second correct
+    form rather than a wrong one, which is the failure this whole check exists
+    to avoid.
+    """
+    out = []
+    for other in answers:
+        if other == mine:
+            continue
+        if normalised(other) == normalised(mine):
+            continue
+        if shares_a_stem(other, mine):
+            continue
+        out.append(other)
+    return out
+
+
+def normalised(text):
+    return re.sub(r'[^a-z0-9 ]', '', text.lower()).strip()
+
+
+def shares_a_stem(a, b, length=4):
+    """Do these two answers share the opening of a word?"""
+    stems = {w[:length] for w in normalised(a).split() if len(w) >= length}
+    return any(w[:length] in stems for w in normalised(b).split() if len(w) >= length)
+
+
+def mine_drill(exercise, answer_text):
+    """Pair a drill's numbered parts with the key's, and keep what can be asked."""
+    items, item_order = numbered_parts(exercise.get('body', ''))
+    answers, answer_order = numbered_parts(answer_text)
+
+    if not items or not answers:
+        return []
+    # Out of order means the two columns of a page were read as one list, and
+    # the pairing would be by position rather than by number.
+    if not in_order(item_order) or not in_order(answer_order):
+        return []
+
+    shared = sorted(set(items) & set(answers))
+    if len(shared) < 2:
+        return []
+
+    asked = {}
+    for number in shared:
+        question = as_question(items[number], answers[number])
+        if question is not None:
+            asked[number] = question
+
+    out = []
+    for number, (stem, answer) in asked.items():
+        accepted = accepted_answers(answer)
+        # An option is one form, not a key entry: "What is she studying? /
+        # What's she studying?" is two ways of writing one answer, and offering
+        # the pair as a single choice asks the learner to pick a slash.
+        others = [
+            accepted_answers(a)[0]
+            for n, (_, a) in asked.items()
+            if n != number and accepted_answers(a)
+        ]
+        options = [
+            o for o in sibling_options(others, accepted[0] if accepted else answer)
+            if normalised(o) not in normalised(stem)
+        ]
+        out.append({
+            'number': number,
+            'stem': stem,
+            'answers': accepted,
+            'options': options[:3],
+        })
+
+    return out
+
+
 def extract_exercises(layout_pages, unit_no, teaching_page, answer_start):
     """Exercise blocks live on the page(s) after the teaching page; the matching
     answers live in the answer-key run at the back. Both are captured whole."""
@@ -1456,7 +1754,22 @@ def extract_exercises(layout_pages, unit_no, teaching_page, answer_start):
             continue
         if not in_key and not teaching_page and answer_start is not None and i >= answer_start:
             continue
-        blocks = split_labelled_blocks(page, unit_no)
+        # Column by column. Both the exercise pages and the answer key are set
+        # in two or three narrow columns, and read straight across the page a
+        # drill's own items arrive interleaved with its neighbour's. Where a
+        # drill spans a column break its halves are joined in reading order,
+        # which is the order the items are numbered in.
+        blocks = {}
+        for column in columns(page):
+            for num, blk in split_labelled_blocks(column, unit_no).items():
+                if num in blocks:
+                    blocks[num] = {
+                        'instructions': blocks[num]['instructions'] or blk['instructions'],
+                        'body': blocks[num]['body'] + '\n' + blk['body'],
+                    }
+                else:
+                    blocks[num] = blk
+
         for num, blk in blocks.items():
             target = ans if in_key else ex
             if num not in target:
@@ -1734,13 +2047,22 @@ def build(book):
             else:
                 unplaced.append(entry)
 
+        # Pair each drill with its answers, so the numbered parts become
+        # questions rather than a paragraph of instructions.
+        answer_text = {k: v['body'] for k, v in ans.items()}
+        drills = []
+        for k, v in sorted(ex.items()):
+            drill = {'number': k, **v}
+            drill['items'] = mine_drill(drill, answer_text.get(k, ''))
+            drills.append(drill)
+
         units.append({
             'number': n,
             'title': meta['title'],
             'needs_title_review': meta.get('needs_title_review', False),
             'source_page': meta['teaching_page'],
             'sections': sections,
-            'exercises': [{'number': k, **v} for k, v in sorted(ex.items())],
+            'exercises': drills,
             'answers': [{'number': k, 'text': v['body'], 'instructions': v['instructions']}
                         for k, v in sorted(ans.items())],
             'audio': audio.get(n, []),
@@ -1748,6 +2070,7 @@ def build(book):
             # than dropped: a definition filed under the wrong headword teaches
             # the wrong thing, but one thrown away teaches nothing at all.
             'unplaced_glosses': unplaced,
+            'item_count': sum(len(e['items']) for e in drills),
             'vocabulary_count': sum(len(s['vocabulary']) for s in sections),
             'gloss_count': sum(len(s['glosses']) for s in sections) + len(unplaced),
         })
@@ -1825,17 +2148,17 @@ def main():
             sum(u['vocabulary_count'] for u in data['units']),
             sum(u.get('gloss_count', 0) for u in data['units']),
             sum(len(u['exercises']) for u in data['units']),
-            sum(len(u['answers']) for u in data['units']),
+            sum(u.get('item_count', 0) for u in data['units']),
             len(data['audio_inventory']),
         ))
         k, *n = rows[-1]
         print(f'{k:28s} units={n[0]:>3} sections={n[1]:>4} vocab={n[2]:>5} '
-              f'glosses={n[3]:>4} exercises={n[4]:>4} answers={n[5]:>4} audio={n[6]:>5}')
+              f'glosses={n[3]:>4} drills={n[4]:>4} items={n[5]:>5} audio={n[6]:>5}')
 
     if len(rows) > 1:
         t = [sum(r[i] for r in rows) for i in range(1, 8)]
         print(f'{"TOTAL":28s} units={t[0]:>3} sections={t[1]:>4} vocab={t[2]:>5} '
-              f'glosses={t[3]:>4} exercises={t[4]:>4} answers={t[5]:>4} audio={t[6]:>5}')
+              f'glosses={t[3]:>4} drills={t[4]:>4} items={t[5]:>5} audio={t[6]:>5}')
 
 
 if __name__ == '__main__':
