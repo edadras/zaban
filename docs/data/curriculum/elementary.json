@@ -1,10 +1,18 @@
 {
  "key": "elementary",
+ "series": "vocabulary",
+ "series_title": "English Vocabulary in Use",
+ "course_title": "English Vocabulary",
+ "skill": "vocabulary",
+ "title": "English Vocabulary in Use — Elementary",
  "cefr": "A1-A2",
  "course": "Elementary",
+ "level": "Elementary",
+ "text_source": "text",
  "source_pdf": "sources/elementary_3rd.pdf",
  "source_audio": "sources/audio/elementary",
  "copyright_status": "owned",
+ "answer_key_page": 129,
  "pages": [
   {
    "number": 1,
@@ -1063,13 +1071,14 @@
    "is_answer_key": true
   }
  ],
- "answer_key_page": 129,
  "audio_inventory": [
   {
    "path": "sources/audio/elementary/U_01.A.mp3",
    "extracted_path": "sources/audio/elementary/U_01.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 1
   },
   {
@@ -1077,6 +1086,8 @@
    "extracted_path": "sources/audio/elementary/U_01.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 1
   },
   {
@@ -1084,6 +1095,8 @@
    "extracted_path": "sources/audio/elementary/U_02.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 2
   },
   {
@@ -1091,6 +1104,8 @@
    "extracted_path": "sources/audio/elementary/U_02.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 2
   },
   {
@@ -1098,6 +1113,8 @@
    "extracted_path": "sources/audio/elementary/U_02.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 2
   },
   {
@@ -1105,6 +1122,8 @@
    "extracted_path": "sources/audio/elementary/U_03.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1112,6 +1131,8 @@
    "extracted_path": "sources/audio/elementary/U_03.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1119,6 +1140,8 @@
    "extracted_path": "sources/audio/elementary/U_03.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1126,6 +1149,8 @@
    "extracted_path": "sources/audio/elementary/U_03.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1133,6 +1158,8 @@
    "extracted_path": "sources/audio/elementary/U_03.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1140,6 +1167,8 @@
    "extracted_path": "sources/audio/elementary/U_03.F.mp3",
    "exists": true,
    "section": "F",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1147,6 +1176,8 @@
    "extracted_path": "sources/audio/elementary/U_04.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1154,6 +1185,8 @@
    "extracted_path": "sources/audio/elementary/U_04.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1161,6 +1194,8 @@
    "extracted_path": "sources/audio/elementary/U_04.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1168,6 +1203,8 @@
    "extracted_path": "sources/audio/elementary/U_05.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1175,6 +1212,8 @@
    "extracted_path": "sources/audio/elementary/U_05.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1182,6 +1221,8 @@
    "extracted_path": "sources/audio/elementary/U_05.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1189,6 +1230,8 @@
    "extracted_path": "sources/audio/elementary/U_05.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1196,6 +1239,8 @@
    "extracted_path": "sources/audio/elementary/U_06.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1203,6 +1248,8 @@
    "extracted_path": "sources/audio/elementary/U_06.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1210,6 +1257,8 @@
    "extracted_path": "sources/audio/elementary/U_06.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1217,6 +1266,8 @@
    "extracted_path": "sources/audio/elementary/U_06.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1224,6 +1275,8 @@
    "extracted_path": "sources/audio/elementary/U_06.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1231,6 +1284,8 @@
    "extracted_path": "sources/audio/elementary/U_06.F.mp3",
    "exists": true,
    "section": "F",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1238,6 +1293,8 @@
    "extracted_path": "sources/audio/elementary/U_07.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1245,6 +1302,8 @@
    "extracted_path": "sources/audio/elementary/U_07.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1252,6 +1311,8 @@
    "extracted_path": "sources/audio/elementary/U_07.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1259,6 +1320,8 @@
    "extracted_path": "sources/audio/elementary/U_07.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1266,6 +1329,8 @@
    "extracted_path": "sources/audio/elementary/U_08.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 8
   },
   {
@@ -1273,6 +1338,8 @@
    "extracted_path": "sources/audio/elementary/U_08.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 8
   },
   {
@@ -1280,6 +1347,8 @@
    "extracted_path": "sources/audio/elementary/U_09.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 9
   },
   {
@@ -1287,6 +1356,8 @@
    "extracted_path": "sources/audio/elementary/U_09.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 9
   },
   {
@@ -1294,6 +1365,8 @@
    "extracted_path": "sources/audio/elementary/U_10.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1301,6 +1374,8 @@
    "extracted_path": "sources/audio/elementary/U_10.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1308,6 +1383,8 @@
    "extracted_path": "sources/audio/elementary/U_10.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1315,6 +1392,8 @@
    "extracted_path": "sources/audio/elementary/U_10.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1322,6 +1401,8 @@
    "extracted_path": "sources/audio/elementary/U_11.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1329,6 +1410,8 @@
    "extracted_path": "sources/audio/elementary/U_11.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1336,6 +1419,8 @@
    "extracted_path": "sources/audio/elementary/U_11.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1343,6 +1428,8 @@
    "extracted_path": "sources/audio/elementary/U_11.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1350,6 +1437,8 @@
    "extracted_path": "sources/audio/elementary/U_12.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 12
   },
   {
@@ -1357,6 +1446,8 @@
    "extracted_path": "sources/audio/elementary/U_12.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 12
   },
   {
@@ -1364,6 +1455,8 @@
    "extracted_path": "sources/audio/elementary/U_12.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 12
   },
   {
@@ -1371,6 +1464,8 @@
    "extracted_path": "sources/audio/elementary/U_13.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 13
   },
   {
@@ -1378,6 +1473,8 @@
    "extracted_path": "sources/audio/elementary/U_13.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 13
   },
   {
@@ -1385,6 +1482,8 @@
    "extracted_path": "sources/audio/elementary/U_13.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 13
   },
   {
@@ -1392,6 +1491,8 @@
    "extracted_path": "sources/audio/elementary/U_14.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 14
   },
   {
@@ -1399,6 +1500,8 @@
    "extracted_path": "sources/audio/elementary/U_14.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 14
   },
   {
@@ -1406,6 +1509,8 @@
    "extracted_path": "sources/audio/elementary/U_14.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 14
   },
   {
@@ -1413,6 +1518,8 @@
    "extracted_path": "sources/audio/elementary/U_15.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1420,6 +1527,8 @@
    "extracted_path": "sources/audio/elementary/U_15.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1427,6 +1536,8 @@
    "extracted_path": "sources/audio/elementary/U_15.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1434,6 +1545,8 @@
    "extracted_path": "sources/audio/elementary/U_16.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1441,6 +1554,8 @@
    "extracted_path": "sources/audio/elementary/U_16.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1448,6 +1563,8 @@
    "extracted_path": "sources/audio/elementary/U_16.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1455,6 +1572,8 @@
    "extracted_path": "sources/audio/elementary/U_16.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1462,6 +1581,8 @@
    "extracted_path": "sources/audio/elementary/U_17.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 17
   },
   {
@@ -1469,6 +1590,8 @@
    "extracted_path": "sources/audio/elementary/U_17.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 17
   },
   {
@@ -1476,6 +1599,8 @@
    "extracted_path": "sources/audio/elementary/U_17.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 17
   },
   {
@@ -1483,6 +1608,8 @@
    "extracted_path": "sources/audio/elementary/U_18.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -1490,6 +1617,8 @@
    "extracted_path": "sources/audio/elementary/U_18.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -1497,6 +1626,8 @@
    "extracted_path": "sources/audio/elementary/U_18.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -1504,6 +1635,8 @@
    "extracted_path": "sources/audio/elementary/U_18.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -1511,6 +1644,8 @@
    "extracted_path": "sources/audio/elementary/U_18.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -1518,6 +1653,8 @@
    "extracted_path": "sources/audio/elementary/U_19.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -1525,6 +1662,8 @@
    "extracted_path": "sources/audio/elementary/U_19.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -1532,6 +1671,8 @@
    "extracted_path": "sources/audio/elementary/U_19.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -1539,6 +1680,8 @@
    "extracted_path": "sources/audio/elementary/U_19.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -1546,6 +1689,8 @@
    "extracted_path": "sources/audio/elementary/U_20.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 20
   },
   {
@@ -1553,6 +1698,8 @@
    "extracted_path": "sources/audio/elementary/U_20.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 20
   },
   {
@@ -1560,6 +1707,8 @@
    "extracted_path": "sources/audio/elementary/U_20.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 20
   },
   {
@@ -1567,6 +1716,8 @@
    "extracted_path": "sources/audio/elementary/U_21.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 21
   },
   {
@@ -1574,6 +1725,8 @@
    "extracted_path": "sources/audio/elementary/U_21.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 21
   },
   {
@@ -1581,6 +1734,8 @@
    "extracted_path": "sources/audio/elementary/U_21.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 21
   },
   {
@@ -1588,6 +1743,8 @@
    "extracted_path": "sources/audio/elementary/U_22.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 22
   },
   {
@@ -1595,6 +1752,8 @@
    "extracted_path": "sources/audio/elementary/U_22.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 22
   },
   {
@@ -1602,6 +1761,8 @@
    "extracted_path": "sources/audio/elementary/U_22.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 22
   },
   {
@@ -1609,6 +1770,8 @@
    "extracted_path": "sources/audio/elementary/U_23.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 23
   },
   {
@@ -1616,6 +1779,8 @@
    "extracted_path": "sources/audio/elementary/U_23.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 23
   },
   {
@@ -1623,6 +1788,8 @@
    "extracted_path": "sources/audio/elementary/U_23.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 23
   },
   {
@@ -1630,6 +1797,8 @@
    "extracted_path": "sources/audio/elementary/U_23.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 23
   },
   {
@@ -1637,6 +1806,8 @@
    "extracted_path": "sources/audio/elementary/U_24.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -1644,6 +1815,8 @@
    "extracted_path": "sources/audio/elementary/U_24.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -1651,6 +1824,8 @@
    "extracted_path": "sources/audio/elementary/U_24.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -1658,6 +1833,8 @@
    "extracted_path": "sources/audio/elementary/U_25.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -1665,6 +1842,8 @@
    "extracted_path": "sources/audio/elementary/U_25.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -1672,6 +1851,8 @@
    "extracted_path": "sources/audio/elementary/U_25.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -1679,6 +1860,8 @@
    "extracted_path": "sources/audio/elementary/U_25.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -1686,6 +1869,8 @@
    "extracted_path": "sources/audio/elementary/U_26.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -1693,6 +1878,8 @@
    "extracted_path": "sources/audio/elementary/U_26.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -1700,6 +1887,8 @@
    "extracted_path": "sources/audio/elementary/U_26.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -1707,6 +1896,8 @@
    "extracted_path": "sources/audio/elementary/U_26.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -1714,6 +1905,8 @@
    "extracted_path": "sources/audio/elementary/U_27.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 27
   },
   {
@@ -1721,6 +1914,8 @@
    "extracted_path": "sources/audio/elementary/U_27.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 27
   },
   {
@@ -1728,6 +1923,8 @@
    "extracted_path": "sources/audio/elementary/U_28.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -1735,6 +1932,8 @@
    "extracted_path": "sources/audio/elementary/U_28.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -1742,6 +1941,8 @@
    "extracted_path": "sources/audio/elementary/U_28.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -1749,6 +1950,8 @@
    "extracted_path": "sources/audio/elementary/U_28.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -1756,6 +1959,8 @@
    "extracted_path": "sources/audio/elementary/U_29.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 29
   },
   {
@@ -1763,6 +1968,8 @@
    "extracted_path": "sources/audio/elementary/U_29.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 29
   },
   {
@@ -1770,13 +1977,17 @@
    "extracted_path": "sources/audio/elementary/U_29.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 29
   },
   {
    "path": "sources/audio/elementary/U_30.0.mp3",
    "extracted_path": "sources/audio/elementary/U_30.0.mp3",
    "exists": true,
-   "section": "0",
+   "section": null,
+   "page": null,
+   "index": 0,
    "unit": 30
   },
   {
@@ -1784,6 +1995,8 @@
    "extracted_path": "sources/audio/elementary/U_30.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -1791,6 +2004,8 @@
    "extracted_path": "sources/audio/elementary/U_30.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -1798,6 +2013,8 @@
    "extracted_path": "sources/audio/elementary/U_30.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -1805,6 +2022,8 @@
    "extracted_path": "sources/audio/elementary/U_30.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -1812,6 +2031,8 @@
    "extracted_path": "sources/audio/elementary/U_31.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -1819,6 +2040,8 @@
    "extracted_path": "sources/audio/elementary/U_31.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -1826,6 +2049,8 @@
    "extracted_path": "sources/audio/elementary/U_31.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -1833,6 +2058,8 @@
    "extracted_path": "sources/audio/elementary/U_31.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -1840,6 +2067,8 @@
    "extracted_path": "sources/audio/elementary/U_32.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -1847,6 +2076,8 @@
    "extracted_path": "sources/audio/elementary/U_32.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -1854,6 +2085,8 @@
    "extracted_path": "sources/audio/elementary/U_32.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -1861,6 +2094,8 @@
    "extracted_path": "sources/audio/elementary/U_32.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -1868,6 +2103,8 @@
    "extracted_path": "sources/audio/elementary/U_32.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -1875,6 +2112,8 @@
    "extracted_path": "sources/audio/elementary/U_33.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 33
   },
   {
@@ -1882,6 +2121,8 @@
    "extracted_path": "sources/audio/elementary/U_33.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 33
   },
   {
@@ -1889,6 +2130,8 @@
    "extracted_path": "sources/audio/elementary/U_33.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 33
   },
   {
@@ -1896,6 +2139,8 @@
    "extracted_path": "sources/audio/elementary/U_33.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 33
   },
   {
@@ -1903,6 +2148,8 @@
    "extracted_path": "sources/audio/elementary/U_34.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 34
   },
   {
@@ -1910,6 +2157,8 @@
    "extracted_path": "sources/audio/elementary/U_34.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 34
   },
   {
@@ -1917,6 +2166,8 @@
    "extracted_path": "sources/audio/elementary/U_34.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 34
   },
   {
@@ -1924,6 +2175,8 @@
    "extracted_path": "sources/audio/elementary/U_35.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -1931,6 +2184,8 @@
    "extracted_path": "sources/audio/elementary/U_35.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -1938,6 +2193,8 @@
    "extracted_path": "sources/audio/elementary/U_35.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -1945,6 +2202,8 @@
    "extracted_path": "sources/audio/elementary/U_35.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -1952,6 +2211,8 @@
    "extracted_path": "sources/audio/elementary/U_36.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 36
   },
   {
@@ -1959,6 +2220,8 @@
    "extracted_path": "sources/audio/elementary/U_36.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 36
   },
   {
@@ -1966,6 +2229,8 @@
    "extracted_path": "sources/audio/elementary/U_37.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -1973,6 +2238,8 @@
    "extracted_path": "sources/audio/elementary/U_37.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -1980,6 +2247,8 @@
    "extracted_path": "sources/audio/elementary/U_38.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -1987,6 +2256,8 @@
    "extracted_path": "sources/audio/elementary/U_38.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -1994,6 +2265,8 @@
    "extracted_path": "sources/audio/elementary/U_38.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -2001,6 +2274,8 @@
    "extracted_path": "sources/audio/elementary/U_38.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -2008,6 +2283,8 @@
    "extracted_path": "sources/audio/elementary/U_39.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 39
   },
   {
@@ -2015,6 +2292,8 @@
    "extracted_path": "sources/audio/elementary/U_39.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 39
   },
   {
@@ -2022,6 +2301,8 @@
    "extracted_path": "sources/audio/elementary/U_39.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 39
   },
   {
@@ -2029,6 +2310,8 @@
    "extracted_path": "sources/audio/elementary/U_39.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 39
   },
   {
@@ -2036,6 +2319,8 @@
    "extracted_path": "sources/audio/elementary/U_40.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 40
   },
   {
@@ -2043,6 +2328,8 @@
    "extracted_path": "sources/audio/elementary/U_40.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 40
   },
   {
@@ -2050,6 +2337,8 @@
    "extracted_path": "sources/audio/elementary/U_40.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 40
   },
   {
@@ -2057,6 +2346,8 @@
    "extracted_path": "sources/audio/elementary/U_40.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 40
   },
   {
@@ -2064,6 +2355,8 @@
    "extracted_path": "sources/audio/elementary/U_41.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 41
   },
   {
@@ -2071,6 +2364,8 @@
    "extracted_path": "sources/audio/elementary/U_41.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 41
   },
   {
@@ -2078,13 +2373,17 @@
    "extracted_path": "sources/audio/elementary/U_41.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 41
   },
   {
    "path": "sources/audio/elementary/U_42.0.mp3",
    "extracted_path": "sources/audio/elementary/U_42.0.mp3",
    "exists": true,
-   "section": "0",
+   "section": null,
+   "page": null,
+   "index": 0,
    "unit": 42
   },
   {
@@ -2092,6 +2391,8 @@
    "extracted_path": "sources/audio/elementary/U_42.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 42
   },
   {
@@ -2099,6 +2400,8 @@
    "extracted_path": "sources/audio/elementary/U_42.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 42
   },
   {
@@ -2106,6 +2409,8 @@
    "extracted_path": "sources/audio/elementary/U_42.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 42
   },
   {
@@ -2113,6 +2418,8 @@
    "extracted_path": "sources/audio/elementary/U_43.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 43
   },
   {
@@ -2120,6 +2427,8 @@
    "extracted_path": "sources/audio/elementary/U_43.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 43
   },
   {
@@ -2127,6 +2436,8 @@
    "extracted_path": "sources/audio/elementary/U_43.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 43
   },
   {
@@ -2134,6 +2445,8 @@
    "extracted_path": "sources/audio/elementary/U_44.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2141,6 +2454,8 @@
    "extracted_path": "sources/audio/elementary/U_44.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2148,6 +2463,8 @@
    "extracted_path": "sources/audio/elementary/U_44.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2155,6 +2472,8 @@
    "extracted_path": "sources/audio/elementary/U_45.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 45
   },
   {
@@ -2162,6 +2481,8 @@
    "extracted_path": "sources/audio/elementary/U_45.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 45
   },
   {
@@ -2169,6 +2490,8 @@
    "extracted_path": "sources/audio/elementary/U_45.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 45
   },
   {
@@ -2176,6 +2499,8 @@
    "extracted_path": "sources/audio/elementary/U_46.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 46
   },
   {
@@ -2183,6 +2508,8 @@
    "extracted_path": "sources/audio/elementary/U_46.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 46
   },
   {
@@ -2190,6 +2517,8 @@
    "extracted_path": "sources/audio/elementary/U_47.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 47
   },
   {
@@ -2197,6 +2526,8 @@
    "extracted_path": "sources/audio/elementary/U_47.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 47
   },
   {
@@ -2204,6 +2535,8 @@
    "extracted_path": "sources/audio/elementary/U_47.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 47
   },
   {
@@ -2211,6 +2544,8 @@
    "extracted_path": "sources/audio/elementary/U_48.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2218,6 +2553,8 @@
    "extracted_path": "sources/audio/elementary/U_48.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2225,6 +2562,8 @@
    "extracted_path": "sources/audio/elementary/U_48.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2232,6 +2571,8 @@
    "extracted_path": "sources/audio/elementary/U_48.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2239,6 +2580,8 @@
    "extracted_path": "sources/audio/elementary/U_49.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 49
   },
   {
@@ -2246,6 +2589,8 @@
    "extracted_path": "sources/audio/elementary/U_49.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 49
   },
   {
@@ -2253,6 +2598,8 @@
    "extracted_path": "sources/audio/elementary/U_49.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 49
   },
   {
@@ -2260,6 +2607,8 @@
    "extracted_path": "sources/audio/elementary/U_50.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 50
   },
   {
@@ -2267,6 +2616,8 @@
    "extracted_path": "sources/audio/elementary/U_50.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 50
   },
   {
@@ -2274,6 +2625,8 @@
    "extracted_path": "sources/audio/elementary/U_51.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 51
   },
   {
@@ -2281,6 +2634,8 @@
    "extracted_path": "sources/audio/elementary/U_51.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 51
   },
   {
@@ -2288,6 +2643,8 @@
    "extracted_path": "sources/audio/elementary/U_51.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 51
   },
   {
@@ -2295,6 +2652,8 @@
    "extracted_path": "sources/audio/elementary/U_52.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2302,6 +2661,8 @@
    "extracted_path": "sources/audio/elementary/U_52.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2309,6 +2670,8 @@
    "extracted_path": "sources/audio/elementary/U_52.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2316,6 +2679,8 @@
    "extracted_path": "sources/audio/elementary/U_53.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2323,6 +2688,8 @@
    "extracted_path": "sources/audio/elementary/U_53.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2330,6 +2697,8 @@
    "extracted_path": "sources/audio/elementary/U_53.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2337,6 +2706,8 @@
    "extracted_path": "sources/audio/elementary/U_53.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2344,13 +2715,17 @@
    "extracted_path": "sources/audio/elementary/U_53.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
    "path": "sources/audio/elementary/U_54.0.mp3",
    "extracted_path": "sources/audio/elementary/U_54.0.mp3",
    "exists": true,
-   "section": "0",
+   "section": null,
+   "page": null,
+   "index": 0,
    "unit": 54
   },
   {
@@ -2358,6 +2733,8 @@
    "extracted_path": "sources/audio/elementary/U_54.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2365,6 +2742,8 @@
    "extracted_path": "sources/audio/elementary/U_54.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2372,6 +2751,8 @@
    "extracted_path": "sources/audio/elementary/U_54.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2379,6 +2760,8 @@
    "extracted_path": "sources/audio/elementary/U_54.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2386,6 +2769,8 @@
    "extracted_path": "sources/audio/elementary/U_54.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2393,6 +2778,8 @@
    "extracted_path": "sources/audio/elementary/U_55.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 55
   },
   {
@@ -2400,6 +2787,8 @@
    "extracted_path": "sources/audio/elementary/U_55.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 55
   },
   {
@@ -2407,6 +2796,8 @@
    "extracted_path": "sources/audio/elementary/U_55.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 55
   },
   {
@@ -2414,6 +2805,8 @@
    "extracted_path": "sources/audio/elementary/U_56.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 56
   },
   {
@@ -2421,6 +2814,8 @@
    "extracted_path": "sources/audio/elementary/U_56.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 56
   },
   {
@@ -2428,6 +2823,8 @@
    "extracted_path": "sources/audio/elementary/U_56.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 56
   },
   {
@@ -2435,6 +2832,8 @@
    "extracted_path": "sources/audio/elementary/U_57.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 57
   },
   {
@@ -2442,6 +2841,8 @@
    "extracted_path": "sources/audio/elementary/U_57.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 57
   },
   {
@@ -2449,6 +2850,8 @@
    "extracted_path": "sources/audio/elementary/U_57.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 57
   },
   {
@@ -2456,6 +2859,8 @@
    "extracted_path": "sources/audio/elementary/U_57.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 57
   },
   {
@@ -2463,6 +2868,8 @@
    "extracted_path": "sources/audio/elementary/U_58.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 58
   },
   {
@@ -2470,13 +2877,17 @@
    "extracted_path": "sources/audio/elementary/U_59.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 59
   },
   {
    "path": "sources/audio/elementary/U_60.0.mp3",
    "extracted_path": "sources/audio/elementary/U_60.0.mp3",
    "exists": true,
-   "section": "0",
+   "section": null,
+   "page": null,
+   "index": 0,
    "unit": 60
   },
   {
@@ -2484,6 +2895,8 @@
    "extracted_path": "sources/audio/elementary/U_60.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2491,6 +2904,8 @@
    "extracted_path": "sources/audio/elementary/U_60.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2498,6 +2913,8 @@
    "extracted_path": "sources/audio/elementary/U_60.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 60
   }
  ],
@@ -2674,13 +3091,17 @@
      "path": "sources/audio/elementary/U_01.A.mp3",
      "extracted_path": "sources/audio/elementary/U_01.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_01.B.mp3",
      "extracted_path": "sources/audio/elementary/U_01.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -2906,19 +3327,25 @@
      "path": "sources/audio/elementary/U_02.A.mp3",
      "extracted_path": "sources/audio/elementary/U_02.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_02.B.mp3",
      "extracted_path": "sources/audio/elementary/U_02.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_02.C.mp3",
      "extracted_path": "sources/audio/elementary/U_02.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -3146,37 +3573,49 @@
      "path": "sources/audio/elementary/U_03.A.mp3",
      "extracted_path": "sources/audio/elementary/U_03.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_03.B.mp3",
      "extracted_path": "sources/audio/elementary/U_03.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_03.C.mp3",
      "extracted_path": "sources/audio/elementary/U_03.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_03.D.mp3",
      "extracted_path": "sources/audio/elementary/U_03.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_03.E.mp3",
      "extracted_path": "sources/audio/elementary/U_03.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_03.F.mp3",
      "extracted_path": "sources/audio/elementary/U_03.F.mp3",
      "exists": true,
-     "section": "F"
+     "section": "F",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -3468,19 +3907,25 @@
      "path": "sources/audio/elementary/U_04.A.mp3",
      "extracted_path": "sources/audio/elementary/U_04.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_04.B.mp3",
      "extracted_path": "sources/audio/elementary/U_04.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_04.C.mp3",
      "extracted_path": "sources/audio/elementary/U_04.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -3771,25 +4216,33 @@
      "path": "sources/audio/elementary/U_05.A.mp3",
      "extracted_path": "sources/audio/elementary/U_05.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_05.B.mp3",
      "extracted_path": "sources/audio/elementary/U_05.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_05.C.mp3",
      "extracted_path": "sources/audio/elementary/U_05.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_05.D.mp3",
      "extracted_path": "sources/audio/elementary/U_05.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4009,37 +4462,49 @@
      "path": "sources/audio/elementary/U_06.A.mp3",
      "extracted_path": "sources/audio/elementary/U_06.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_06.B.mp3",
      "extracted_path": "sources/audio/elementary/U_06.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_06.C.mp3",
      "extracted_path": "sources/audio/elementary/U_06.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_06.D.mp3",
      "extracted_path": "sources/audio/elementary/U_06.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_06.E.mp3",
      "extracted_path": "sources/audio/elementary/U_06.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_06.F.mp3",
      "extracted_path": "sources/audio/elementary/U_06.F.mp3",
      "exists": true,
-     "section": "F"
+     "section": "F",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4266,25 +4731,33 @@
      "path": "sources/audio/elementary/U_07.A.mp3",
      "extracted_path": "sources/audio/elementary/U_07.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_07.B.mp3",
      "extracted_path": "sources/audio/elementary/U_07.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_07.C.mp3",
      "extracted_path": "sources/audio/elementary/U_07.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_07.D.mp3",
      "extracted_path": "sources/audio/elementary/U_07.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -4455,13 +4928,17 @@
      "path": "sources/audio/elementary/U_08.A.mp3",
      "extracted_path": "sources/audio/elementary/U_08.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_08.B.mp3",
      "extracted_path": "sources/audio/elementary/U_08.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4685,13 +5162,17 @@
      "path": "sources/audio/elementary/U_09.A.mp3",
      "extracted_path": "sources/audio/elementary/U_09.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_09.B.mp3",
      "extracted_path": "sources/audio/elementary/U_09.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4980,25 +5461,33 @@
      "path": "sources/audio/elementary/U_10.A.mp3",
      "extracted_path": "sources/audio/elementary/U_10.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_10.B.mp3",
      "extracted_path": "sources/audio/elementary/U_10.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_10.C.mp3",
      "extracted_path": "sources/audio/elementary/U_10.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_10.D.mp3",
      "extracted_path": "sources/audio/elementary/U_10.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5237,25 +5726,33 @@
      "path": "sources/audio/elementary/U_11.A.mp3",
      "extracted_path": "sources/audio/elementary/U_11.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_11.B.mp3",
      "extracted_path": "sources/audio/elementary/U_11.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_11.C.mp3",
      "extracted_path": "sources/audio/elementary/U_11.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_11.D.mp3",
      "extracted_path": "sources/audio/elementary/U_11.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5498,19 +5995,25 @@
      "path": "sources/audio/elementary/U_12.A.mp3",
      "extracted_path": "sources/audio/elementary/U_12.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_12.B.mp3",
      "extracted_path": "sources/audio/elementary/U_12.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_12.C.mp3",
      "extracted_path": "sources/audio/elementary/U_12.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5763,19 +6266,25 @@
      "path": "sources/audio/elementary/U_13.A.mp3",
      "extracted_path": "sources/audio/elementary/U_13.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_13.B.mp3",
      "extracted_path": "sources/audio/elementary/U_13.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_13.C.mp3",
      "extracted_path": "sources/audio/elementary/U_13.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5992,19 +6501,25 @@
      "path": "sources/audio/elementary/U_14.A.mp3",
      "extracted_path": "sources/audio/elementary/U_14.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_14.B.mp3",
      "extracted_path": "sources/audio/elementary/U_14.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_14.C.mp3",
      "extracted_path": "sources/audio/elementary/U_14.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6298,19 +6813,25 @@
      "path": "sources/audio/elementary/U_15.A.mp3",
      "extracted_path": "sources/audio/elementary/U_15.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_15.B.mp3",
      "extracted_path": "sources/audio/elementary/U_15.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_15.C.mp3",
      "extracted_path": "sources/audio/elementary/U_15.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6551,25 +7072,33 @@
      "path": "sources/audio/elementary/U_16.A.mp3",
      "extracted_path": "sources/audio/elementary/U_16.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_16.B.mp3",
      "extracted_path": "sources/audio/elementary/U_16.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_16.C.mp3",
      "extracted_path": "sources/audio/elementary/U_16.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_16.D.mp3",
      "extracted_path": "sources/audio/elementary/U_16.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6774,19 +7303,25 @@
      "path": "sources/audio/elementary/U_17.A.mp3",
      "extracted_path": "sources/audio/elementary/U_17.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_17.B.mp3",
      "extracted_path": "sources/audio/elementary/U_17.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_17.C.mp3",
      "extracted_path": "sources/audio/elementary/U_17.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7068,31 +7603,41 @@
      "path": "sources/audio/elementary/U_18.A.mp3",
      "extracted_path": "sources/audio/elementary/U_18.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_18.B.mp3",
      "extracted_path": "sources/audio/elementary/U_18.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_18.C.mp3",
      "extracted_path": "sources/audio/elementary/U_18.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_18.D.mp3",
      "extracted_path": "sources/audio/elementary/U_18.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_18.E.mp3",
      "extracted_path": "sources/audio/elementary/U_18.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7306,25 +7851,33 @@
      "path": "sources/audio/elementary/U_19.A.mp3",
      "extracted_path": "sources/audio/elementary/U_19.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_19.B.mp3",
      "extracted_path": "sources/audio/elementary/U_19.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_19.C.mp3",
      "extracted_path": "sources/audio/elementary/U_19.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_19.D.mp3",
      "extracted_path": "sources/audio/elementary/U_19.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7468,19 +8021,25 @@
      "path": "sources/audio/elementary/U_20.A.mp3",
      "extracted_path": "sources/audio/elementary/U_20.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_20.B.mp3",
      "extracted_path": "sources/audio/elementary/U_20.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_20.C.mp3",
      "extracted_path": "sources/audio/elementary/U_20.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7750,19 +8309,25 @@
      "path": "sources/audio/elementary/U_21.A.mp3",
      "extracted_path": "sources/audio/elementary/U_21.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_21.B.mp3",
      "extracted_path": "sources/audio/elementary/U_21.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_21.C.mp3",
      "extracted_path": "sources/audio/elementary/U_21.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7995,19 +8560,25 @@
      "path": "sources/audio/elementary/U_22.A.mp3",
      "extracted_path": "sources/audio/elementary/U_22.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_22.B.mp3",
      "extracted_path": "sources/audio/elementary/U_22.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_22.C.mp3",
      "extracted_path": "sources/audio/elementary/U_22.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8262,25 +8833,33 @@
      "path": "sources/audio/elementary/U_23.A.mp3",
      "extracted_path": "sources/audio/elementary/U_23.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_23.B.mp3",
      "extracted_path": "sources/audio/elementary/U_23.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_23.C.mp3",
      "extracted_path": "sources/audio/elementary/U_23.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_23.D.mp3",
      "extracted_path": "sources/audio/elementary/U_23.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8470,19 +9049,25 @@
      "path": "sources/audio/elementary/U_24.A.mp3",
      "extracted_path": "sources/audio/elementary/U_24.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_24.B.mp3",
      "extracted_path": "sources/audio/elementary/U_24.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_24.C.mp3",
      "extracted_path": "sources/audio/elementary/U_24.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8712,25 +9297,33 @@
      "path": "sources/audio/elementary/U_25.A.mp3",
      "extracted_path": "sources/audio/elementary/U_25.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_25.B.mp3",
      "extracted_path": "sources/audio/elementary/U_25.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_25.C.mp3",
      "extracted_path": "sources/audio/elementary/U_25.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_25.D.mp3",
      "extracted_path": "sources/audio/elementary/U_25.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8962,25 +9555,33 @@
      "path": "sources/audio/elementary/U_26.A.mp3",
      "extracted_path": "sources/audio/elementary/U_26.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_26.B.mp3",
      "extracted_path": "sources/audio/elementary/U_26.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_26.C.mp3",
      "extracted_path": "sources/audio/elementary/U_26.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_26.D.mp3",
      "extracted_path": "sources/audio/elementary/U_26.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -9246,13 +9847,17 @@
      "path": "sources/audio/elementary/U_27.A.mp3",
      "extracted_path": "sources/audio/elementary/U_27.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_27.B.mp3",
      "extracted_path": "sources/audio/elementary/U_27.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -9538,25 +10143,33 @@
      "path": "sources/audio/elementary/U_28.A.mp3",
      "extracted_path": "sources/audio/elementary/U_28.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_28.B.mp3",
      "extracted_path": "sources/audio/elementary/U_28.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_28.C.mp3",
      "extracted_path": "sources/audio/elementary/U_28.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_28.D.mp3",
      "extracted_path": "sources/audio/elementary/U_28.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -9834,19 +10447,25 @@
      "path": "sources/audio/elementary/U_29.A.mp3",
      "extracted_path": "sources/audio/elementary/U_29.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_29.B.mp3",
      "extracted_path": "sources/audio/elementary/U_29.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_29.C.mp3",
      "extracted_path": "sources/audio/elementary/U_29.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10069,31 +10688,41 @@
      "path": "sources/audio/elementary/U_30.0.mp3",
      "extracted_path": "sources/audio/elementary/U_30.0.mp3",
      "exists": true,
-     "section": "0"
+     "section": null,
+     "page": null,
+     "index": 0
     },
     {
      "path": "sources/audio/elementary/U_30.A.mp3",
      "extracted_path": "sources/audio/elementary/U_30.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_30.B.mp3",
      "extracted_path": "sources/audio/elementary/U_30.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_30.C.mp3",
      "extracted_path": "sources/audio/elementary/U_30.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_30.D.mp3",
      "extracted_path": "sources/audio/elementary/U_30.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10358,25 +10987,33 @@
      "path": "sources/audio/elementary/U_31.A.mp3",
      "extracted_path": "sources/audio/elementary/U_31.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_31.B.mp3",
      "extracted_path": "sources/audio/elementary/U_31.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_31.C.mp3",
      "extracted_path": "sources/audio/elementary/U_31.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_31.D.mp3",
      "extracted_path": "sources/audio/elementary/U_31.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10698,31 +11335,41 @@
      "path": "sources/audio/elementary/U_32.A.mp3",
      "extracted_path": "sources/audio/elementary/U_32.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_32.B.mp3",
      "extracted_path": "sources/audio/elementary/U_32.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_32.C.mp3",
      "extracted_path": "sources/audio/elementary/U_32.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_32.D.mp3",
      "extracted_path": "sources/audio/elementary/U_32.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_32.E.mp3",
      "extracted_path": "sources/audio/elementary/U_32.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10985,25 +11632,33 @@
      "path": "sources/audio/elementary/U_33.A.mp3",
      "extracted_path": "sources/audio/elementary/U_33.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_33.B.mp3",
      "extracted_path": "sources/audio/elementary/U_33.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_33.C.mp3",
      "extracted_path": "sources/audio/elementary/U_33.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_33.D.mp3",
      "extracted_path": "sources/audio/elementary/U_33.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11284,19 +11939,25 @@
      "path": "sources/audio/elementary/U_34.A.mp3",
      "extracted_path": "sources/audio/elementary/U_34.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_34.B.mp3",
      "extracted_path": "sources/audio/elementary/U_34.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_34.C.mp3",
      "extracted_path": "sources/audio/elementary/U_34.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11547,25 +12208,33 @@
      "path": "sources/audio/elementary/U_35.A.mp3",
      "extracted_path": "sources/audio/elementary/U_35.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_35.B.mp3",
      "extracted_path": "sources/audio/elementary/U_35.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_35.C.mp3",
      "extracted_path": "sources/audio/elementary/U_35.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_35.D.mp3",
      "extracted_path": "sources/audio/elementary/U_35.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11747,13 +12416,17 @@
      "path": "sources/audio/elementary/U_36.A.mp3",
      "extracted_path": "sources/audio/elementary/U_36.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_36.B.mp3",
      "extracted_path": "sources/audio/elementary/U_36.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11944,13 +12617,17 @@
      "path": "sources/audio/elementary/U_37.A.mp3",
      "extracted_path": "sources/audio/elementary/U_37.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_37.B.mp3",
      "extracted_path": "sources/audio/elementary/U_37.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12205,25 +12882,33 @@
      "path": "sources/audio/elementary/U_38.A.mp3",
      "extracted_path": "sources/audio/elementary/U_38.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_38.B.mp3",
      "extracted_path": "sources/audio/elementary/U_38.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_38.C.mp3",
      "extracted_path": "sources/audio/elementary/U_38.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_38.D.mp3",
      "extracted_path": "sources/audio/elementary/U_38.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12473,25 +13158,33 @@
      "path": "sources/audio/elementary/U_39.A.mp3",
      "extracted_path": "sources/audio/elementary/U_39.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_39.B.mp3",
      "extracted_path": "sources/audio/elementary/U_39.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_39.C.mp3",
      "extracted_path": "sources/audio/elementary/U_39.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_39.D.mp3",
      "extracted_path": "sources/audio/elementary/U_39.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12673,25 +13366,33 @@
      "path": "sources/audio/elementary/U_40.A.mp3",
      "extracted_path": "sources/audio/elementary/U_40.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_40.B.mp3",
      "extracted_path": "sources/audio/elementary/U_40.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_40.C.mp3",
      "extracted_path": "sources/audio/elementary/U_40.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_40.D.mp3",
      "extracted_path": "sources/audio/elementary/U_40.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12911,19 +13612,25 @@
      "path": "sources/audio/elementary/U_41.A.mp3",
      "extracted_path": "sources/audio/elementary/U_41.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_41.B.mp3",
      "extracted_path": "sources/audio/elementary/U_41.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_41.C.mp3",
      "extracted_path": "sources/audio/elementary/U_41.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13103,25 +13810,33 @@
      "path": "sources/audio/elementary/U_42.0.mp3",
      "extracted_path": "sources/audio/elementary/U_42.0.mp3",
      "exists": true,
-     "section": "0"
+     "section": null,
+     "page": null,
+     "index": 0
     },
     {
      "path": "sources/audio/elementary/U_42.A.mp3",
      "extracted_path": "sources/audio/elementary/U_42.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_42.B.mp3",
      "extracted_path": "sources/audio/elementary/U_42.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_42.C.mp3",
      "extracted_path": "sources/audio/elementary/U_42.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13286,19 +14001,25 @@
      "path": "sources/audio/elementary/U_43.A.mp3",
      "extracted_path": "sources/audio/elementary/U_43.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_43.B.mp3",
      "extracted_path": "sources/audio/elementary/U_43.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_43.C.mp3",
      "extracted_path": "sources/audio/elementary/U_43.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13427,19 +14148,25 @@
      "path": "sources/audio/elementary/U_44.A.mp3",
      "extracted_path": "sources/audio/elementary/U_44.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_44.B.mp3",
      "extracted_path": "sources/audio/elementary/U_44.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_44.C.mp3",
      "extracted_path": "sources/audio/elementary/U_44.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13602,19 +14329,25 @@
      "path": "sources/audio/elementary/U_45.A.mp3",
      "extracted_path": "sources/audio/elementary/U_45.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_45.B.mp3",
      "extracted_path": "sources/audio/elementary/U_45.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_45.C.mp3",
      "extracted_path": "sources/audio/elementary/U_45.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13811,13 +14544,17 @@
      "path": "sources/audio/elementary/U_46.A.mp3",
      "extracted_path": "sources/audio/elementary/U_46.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_46.B.mp3",
      "extracted_path": "sources/audio/elementary/U_46.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -14031,19 +14768,25 @@
      "path": "sources/audio/elementary/U_47.A.mp3",
      "extracted_path": "sources/audio/elementary/U_47.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_47.B.mp3",
      "extracted_path": "sources/audio/elementary/U_47.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_47.C.mp3",
      "extracted_path": "sources/audio/elementary/U_47.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -14312,25 +15055,33 @@
      "path": "sources/audio/elementary/U_48.A.mp3",
      "extracted_path": "sources/audio/elementary/U_48.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_48.B.mp3",
      "extracted_path": "sources/audio/elementary/U_48.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_48.C.mp3",
      "extracted_path": "sources/audio/elementary/U_48.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_48.D.mp3",
      "extracted_path": "sources/audio/elementary/U_48.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -14540,19 +15291,25 @@
      "path": "sources/audio/elementary/U_49.A.mp3",
      "extracted_path": "sources/audio/elementary/U_49.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_49.B.mp3",
      "extracted_path": "sources/audio/elementary/U_49.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_49.C.mp3",
      "extracted_path": "sources/audio/elementary/U_49.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -14722,13 +15479,17 @@
      "path": "sources/audio/elementary/U_50.A.mp3",
      "extracted_path": "sources/audio/elementary/U_50.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_50.B.mp3",
      "extracted_path": "sources/audio/elementary/U_50.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15045,19 +15806,25 @@
      "path": "sources/audio/elementary/U_51.A.mp3",
      "extracted_path": "sources/audio/elementary/U_51.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_51.B.mp3",
      "extracted_path": "sources/audio/elementary/U_51.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_51.C.mp3",
      "extracted_path": "sources/audio/elementary/U_51.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15363,19 +16130,25 @@
      "path": "sources/audio/elementary/U_52.A.mp3",
      "extracted_path": "sources/audio/elementary/U_52.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_52.B.mp3",
      "extracted_path": "sources/audio/elementary/U_52.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_52.C.mp3",
      "extracted_path": "sources/audio/elementary/U_52.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15638,31 +16411,41 @@
      "path": "sources/audio/elementary/U_53.A.mp3",
      "extracted_path": "sources/audio/elementary/U_53.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_53.B.mp3",
      "extracted_path": "sources/audio/elementary/U_53.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_53.C.mp3",
      "extracted_path": "sources/audio/elementary/U_53.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_53.D.mp3",
      "extracted_path": "sources/audio/elementary/U_53.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_53.E.mp3",
      "extracted_path": "sources/audio/elementary/U_53.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15812,37 +16595,49 @@
      "path": "sources/audio/elementary/U_54.0.mp3",
      "extracted_path": "sources/audio/elementary/U_54.0.mp3",
      "exists": true,
-     "section": "0"
+     "section": null,
+     "page": null,
+     "index": 0
     },
     {
      "path": "sources/audio/elementary/U_54.A.mp3",
      "extracted_path": "sources/audio/elementary/U_54.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_54.B.mp3",
      "extracted_path": "sources/audio/elementary/U_54.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_54.C.mp3",
      "extracted_path": "sources/audio/elementary/U_54.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_54.D.mp3",
      "extracted_path": "sources/audio/elementary/U_54.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_54.E.mp3",
      "extracted_path": "sources/audio/elementary/U_54.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16054,19 +16849,25 @@
      "path": "sources/audio/elementary/U_55.A.mp3",
      "extracted_path": "sources/audio/elementary/U_55.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_55.B.mp3",
      "extracted_path": "sources/audio/elementary/U_55.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_55.C.mp3",
      "extracted_path": "sources/audio/elementary/U_55.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16273,19 +17074,25 @@
      "path": "sources/audio/elementary/U_56.A.mp3",
      "extracted_path": "sources/audio/elementary/U_56.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_56.B.mp3",
      "extracted_path": "sources/audio/elementary/U_56.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_56.C.mp3",
      "extracted_path": "sources/audio/elementary/U_56.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16498,25 +17305,33 @@
      "path": "sources/audio/elementary/U_57.A.mp3",
      "extracted_path": "sources/audio/elementary/U_57.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_57.B.mp3",
      "extracted_path": "sources/audio/elementary/U_57.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_57.C.mp3",
      "extracted_path": "sources/audio/elementary/U_57.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_57.D.mp3",
      "extracted_path": "sources/audio/elementary/U_57.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -16587,7 +17402,9 @@
      "path": "sources/audio/elementary/U_58.A.mp3",
      "extracted_path": "sources/audio/elementary/U_58.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16649,7 +17466,9 @@
      "path": "sources/audio/elementary/U_59.A.mp3",
      "extracted_path": "sources/audio/elementary/U_59.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16851,25 +17670,33 @@
      "path": "sources/audio/elementary/U_60.0.mp3",
      "extracted_path": "sources/audio/elementary/U_60.0.mp3",
      "exists": true,
-     "section": "0"
+     "section": null,
+     "page": null,
+     "index": 0
     },
     {
      "path": "sources/audio/elementary/U_60.A.mp3",
      "extracted_path": "sources/audio/elementary/U_60.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_60.B.mp3",
      "extracted_path": "sources/audio/elementary/U_60.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/elementary/U_60.C.mp3",
      "extracted_path": "sources/audio/elementary/U_60.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],

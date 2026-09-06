@@ -52,10 +52,29 @@ class ImportCurriculum extends Command
     /** Units per module, used to give each course a navigable spine. */
     private const UNITS_PER_MODULE = 10;
 
+    /**
+     * The slug each series' courses live under.
+     *
+     * Short and fixed, because a course slug is an address: the four
+     * vocabulary courses have been `evu-elementary` and the rest since the
+     * first import, and renaming them would orphan every learner already
+     * enrolled on one.
+     */
+    private const SERIES_SLUG = [
+        'vocabulary' => 'evu',
+        'grammar' => 'egu',
+        'pronunciation' => 'epu',
+        'phrasal_verbs' => 'epv',
+        'collocations' => 'ecu',
+        'idioms' => 'eiu',
+    ];
+
     private array $cefr = [];
     private array $stats = [];
+    private array $skills = [];
     private int $languageId;
     private int $vocabSkillId;
+    private int $skillId;
 
     public function handle(): int
     {
@@ -74,7 +93,9 @@ class ImportCurriculum extends Command
             return self::FAILURE;
         }
         $this->languageId = $english->id;
-        $this->vocabSkillId = Skill::where('code', 'vocabulary')->value('id');
+        $this->skills = Skill::pluck('id', 'code')->all();
+        $this->vocabSkillId = $this->skills['vocabulary'];
+        $this->skillId = $this->vocabSkillId;
 
         $files = glob($dir.'/*.json');
         if ($book = $this->option('book')) {
@@ -123,8 +144,15 @@ class ImportCurriculum extends Command
 
         [$fromCode, $toCode] = $this->cefrRange($data['cefr']);
 
+        // Which skill this book's concepts and items count towards. Until the
+        // grammar, pronunciation, phrasal verb, collocation and idiom books
+        // arrived, everything in the corpus was filed under vocabulary and six
+        // of the seven skills had nothing behind them at all - so the placement
+        // report was showing a starting prior and calling it a measurement.
+        $this->skillId = $this->skills[$data['skill'] ?? 'vocabulary'] ?? $this->vocabSkillId;
+
         $doc = SourceDocument::updateOrCreate(
-            ['title' => "English Vocabulary in Use — {$data['course']}"],
+            ['title' => $data['title'] ?? "English Vocabulary in Use — {$data['course']}"],
             [
                 'publisher' => null,
                 'language_id' => $this->languageId,
@@ -151,17 +179,20 @@ class ImportCurriculum extends Command
             ],
         );
 
-        $audioRel = $data['source_audio'];
-        $audioAbs = base_path('..').'/'.$audioRel;
+        // Six of the sixteen books have no recordings at all, and a book
+        // without audio is not a book with an empty audio directory.
+        $audioRel = $data['source_audio'] ?? null;
+        $audioAbs = $audioRel ? base_path('..').'/'.$audioRel : null;
         $audioBytes = 0;
-        if (is_dir($audioAbs)) {
+        if ($audioAbs && is_dir($audioAbs)) {
             foreach (new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($audioAbs, \FilesystemIterator::SKIP_DOTS)) as $f) {
                 if ($f->isFile()) {
                     $audioBytes += $f->getSize();
                 }
             }
         }
-        SourceFile::updateOrCreate(
+        if ($audioRel !== null) {
+            SourceFile::updateOrCreate(
             ['source_document_id' => $doc->id, 'path' => $audioRel],
             [
                 'disk' => 'local',
@@ -173,7 +204,8 @@ class ImportCurriculum extends Command
                 'checksum' => '',
                 'status' => 'processed',
             ],
-        );
+            );
+        }
 
         $job = IngestionJob::create([
             'source_document_id' => $doc->id,
@@ -181,14 +213,19 @@ class ImportCurriculum extends Command
             'started_at' => now(),
         ]);
 
+        $series = $data['series'] ?? 'vocabulary';
+        $prefix = self::SERIES_SLUG[$series] ?? 'evu';
+        $courseTitle = $data['course_title'] ?? 'English Vocabulary';
+        $strand = Str::lower($data['series_title'] ?? 'English Vocabulary in Use');
+
         $course = Course::updateOrCreate(
-            ['slug' => Str::slug("evu-{$key}")],
+            ['slug' => Str::slug("{$prefix}-{$key}")],
             [
                 'language_id' => $this->languageId,
                 'from_cefr_level_id' => $this->cefr[$fromCode],
                 'to_cefr_level_id' => $this->cefr[$toCode],
-                'title' => "English Vocabulary — {$data['course']}",
-                'description' => "Adaptive vocabulary curriculum derived from the {$data['course']} source book.",
+                'title' => "{$courseTitle} — {$data['course']}",
+                'description' => "Adaptive curriculum derived from the {$data['course']} book of {$strand}.",
                 'track' => 'general',
                 'is_active' => true,
             ],
@@ -466,7 +503,7 @@ class ImportCurriculum extends Command
             ['conceptable_type' => VocabularySense::class, 'conceptable_id' => $sense->id],
             [
                 'language_id' => $this->languageId,
-                'skill_id' => $this->vocabSkillId,
+                'skill_id' => $this->skillId,
                 'cefr_level_id' => $this->cefr[$cefrCode],
                 'label' => $term,
                 // Seed difficulty from the CEFR band midpoint; live attempts recalibrate it.
@@ -764,7 +801,7 @@ class ImportCurriculum extends Command
             [
                 'exercise_template_id' => $template->id,
                 'language_id' => $this->languageId,
-                'skill_id' => $this->vocabSkillId,
+                'skill_id' => $this->skillId,
                 'cefr_level_id' => $this->cefr[$cefrCode],
                 'stem' => Str::limit($instructions, 1000, ''),
                 'instructions' => Str::limit($instructions, 1000, ''),

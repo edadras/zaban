@@ -3,4 +3,19 @@
 sources/images/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 sources/images/**/*.png filter=lfs diff=lfs merge=lfs -text
 sources/images/**/*.ppm filter=lfs diff=lfs merge=lfs -text
-Advanced-Grammar-in-Use.pdf filter=lfs diff=lfs merge=lfs -text
+
+# The scanned books. Each is a few hundred megabytes of page images, which
+# is more than git should hold inline; the four born-digital vocabulary PDFs
+# stay as ordinary blobs because they already are.
+sources/grammar_basic_4th.pdf filter=lfs diff=lfs merge=lfs -text
+sources/grammar_advanced_3rd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/pronunciation_elementary_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/pronunciation_intermediate_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/pronunciation_advanced_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/phrasal_verbs_intermediate_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/phrasal_verbs_advanced_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/collocations_intermediate_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/collocations_advanced_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/idioms_intermediate_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/idioms_advanced_2nd.pdf filter=lfs diff=lfs merge=lfs -text
+sources/grammar_intermediate_5th.pdf filter=lfs diff=lfs merge=lfs -text

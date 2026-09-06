@@ -1,59 +1,191 @@
 #!/usr/bin/env python3
 """
-Content extractor for the English Vocabulary in Use sources.
+Content extractor for the "in Use" sources.
 
 Turns each book into structured educational objects ready for database import.
 Where analyze_sources.py reports *what* is in the books, this produces the actual
-payload: units, lettered sections, the target vocabulary each section teaches,
+payload: units, lettered sections, the target language each section teaches,
 worked examples, exercise instructions, the answer key, and the audio map.
 
-Target vocabulary is recovered from typography rather than guessed: the series
-sets every taught item in bold, so bold runs in the PDF's text layer are the
-authoritative headword list. Each run is attributed to a section by vertical
-position on the page.
+Sixteen books across six series: vocabulary, grammar, pronunciation, phrasal
+verbs, collocations and idioms. They share a house style closely enough for one
+parser, and differ in exactly two places that matter - how a unit heading is
+printed, and whether the pages carry text at all. Ten of them are scans and are
+read from their page images by tools/ocr_book.py first; they arrive here in the
+same shape as a born-digital page and nothing downstream can tell the
+difference.
+
+Target language is recovered from typography rather than guessed: the series
+sets every taught item in bold, so bold runs are the authoritative headword
+list. Each run is attributed to a section by vertical position on the page.
 """
+import argparse
 import html
 import json
 import re
 import subprocess
-import sys
-import zipfile
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 from xml.etree import ElementTree
 
 ROOT = Path('/home/user/zaban')
 CACHE = Path('/tmp/extract')
 
-# (key, cefr span, course label, pdf, audio directory)
+# The six "in Use" series this project is built from.
 #
-# The course label names the LEVEL, and it must keep naming the level.
+# `skill` is the one every concept taken from the series is filed under. It is
+# not decoration: the placement test reports a level per skill, and until these
+# books arrived six of the seven skills had no items at all behind them, so the
+# report was showing a starting guess and calling it a measurement.
 #
-# An earlier pass renamed these to Foundation / Core / Advancing / Mastery,
-# which broke two things at once. Searching the corpus for "elementary" or
-# "advanced" - the words everyone actually uses for these books, and the words
-# in their own filenames - returned nothing, so both looked empty when they were
-# full. Worse, "Advancing" was the upper-intermediate book, so a search for
-# "Advanc" landed confidently on the wrong one.
+# `heading` says how the series prints a unit heading, which is the one thing
+# that genuinely differs between them - see `find_units`.
+SERIES = {
+    'vocabulary': {
+        'family': 'English Vocabulary in Use',
+        'course': 'English Vocabulary',
+        'skill': 'vocabulary',
+        'heading': 'number_first',
+    },
+    'grammar': {
+        'family': 'Grammar in Use',
+        'course': 'English Grammar',
+        'skill': 'grammar',
+        'heading': 'unit_above',
+    },
+    'pronunciation': {
+        'family': 'English Pronunciation in Use',
+        'course': 'English Pronunciation',
+        'skill': 'pronunciation',
+        'heading': 'number_first',
+    },
+    'phrasal_verbs': {
+        'family': 'English Phrasal Verbs in Use',
+        'course': 'English Phrasal Verbs',
+        'skill': 'vocabulary',
+        'heading': 'number_first',
+    },
+    'collocations': {
+        'family': 'English Collocations in Use',
+        'course': 'English Collocations',
+        'skill': 'vocabulary',
+        'heading': 'number_first',
+    },
+    'idioms': {
+        'family': 'English Idioms in Use',
+        'course': 'English Idioms',
+        'skill': 'vocabulary',
+        'heading': 'number_first',
+    },
+}
+
+# Every book, and where its pages and its recordings are.
 #
-# A label that quietly points at a different book than its name suggests is a
-# worse failure than an ugly label, so these track the filenames exactly.
+# `level` names the LEVEL, and it must keep naming the level.
+#
+# An earlier pass renamed the vocabulary books to Foundation / Core / Advancing
+# / Mastery, which broke two things at once. Searching the corpus for
+# "elementary" or "advanced" - the words everyone actually uses for these books,
+# and the words in their own filenames - returned nothing, so both looked empty
+# when they were full. Worse, "Advancing" was the upper-intermediate book, so a
+# search for "Advanc" landed confidently on the wrong one. A label that quietly
+# points at a different book than its name suggests is a worse failure than an
+# ugly label, so these track the filenames exactly.
+#
+# `pages` says where the text comes from. Ten of the sixteen books are scans:
+# nine have no text layer at all, and `Pronunciation in Use Advanced` has
+# something worse - an old OCR layer with the letters spaced apart, so
+# "dictionary" is stored as "d i cti o n a ry" and a fifth of its tokens are
+# stray single letters. Those are read from the page images by tools/ocr_book.py
+# instead, and arrive here in the same shape as a born-digital page.
 BOOKS = [
-    ('elementary',  'A1-A2', 'Elementary',
-     'sources/elementary_3rd.pdf', 'sources/audio/elementary'),
-    ('pre_int_int', 'A2-B1', 'Pre-intermediate and Intermediate',
-     'sources/pre_intermediate_intermediate_4th.pdf',
-     'sources/audio/pre_intermediate_intermediate'),
-    ('upper_int',   'B2', 'Upper-intermediate',
-     'sources/upper_intermediate_4th.pdf', 'sources/audio/upper_intermediate'),
-    ('advanced',    'C1-C2', 'Advanced',
-     'sources/advanced_3rd.pdf', 'sources/audio/advanced'),
+    {'key': 'elementary', 'series': 'vocabulary', 'cefr': 'A1-A2',
+     'level': 'Elementary', 'title': 'English Vocabulary in Use — Elementary',
+     'pdf': 'sources/elementary_3rd.pdf',
+     'audio': 'sources/audio/elementary', 'pages': 'text'},
+    {'key': 'pre_int_int', 'series': 'vocabulary', 'cefr': 'A2-B1',
+     'level': 'Pre-intermediate and Intermediate',
+     'title': 'English Vocabulary in Use — Pre-intermediate and Intermediate',
+     'pdf': 'sources/pre_intermediate_intermediate_4th.pdf',
+     'audio': 'sources/audio/pre_intermediate_intermediate', 'pages': 'text'},
+    {'key': 'upper_int', 'series': 'vocabulary', 'cefr': 'B2',
+     'level': 'Upper-intermediate', 'title': 'English Vocabulary in Use — Upper-intermediate',
+     'pdf': 'sources/upper_intermediate_4th.pdf',
+     'audio': 'sources/audio/upper_intermediate', 'pages': 'text'},
+    {'key': 'advanced', 'series': 'vocabulary', 'cefr': 'C1-C2',
+     'level': 'Advanced', 'title': 'English Vocabulary in Use — Advanced',
+     'pdf': 'sources/advanced_3rd.pdf',
+     'audio': 'sources/audio/advanced', 'pages': 'text'},
+
+    {'key': 'grammar_basic', 'series': 'grammar', 'cefr': 'A1-A2',
+     'level': 'Basic', 'title': 'Basic Grammar in Use',
+     'pdf': 'sources/grammar_basic_4th.pdf',
+     'audio': 'sources/audio/grammar_basic', 'pages': 'ocr'},
+    {'key': 'grammar_intermediate', 'series': 'grammar', 'cefr': 'B1-B2',
+     'level': 'Intermediate', 'title': 'English Grammar in Use — Intermediate',
+     'pdf': 'sources/grammar_intermediate_5th.pdf',
+     'audio': 'sources/audio/grammar_intermediate', 'pages': 'text'},
+    {'key': 'grammar_advanced', 'series': 'grammar', 'cefr': 'C1-C2',
+     'level': 'Advanced', 'title': 'Advanced Grammar in Use',
+     'pdf': 'sources/grammar_advanced_3rd.pdf',
+     'audio': 'sources/audio/grammar_advanced', 'pages': 'ocr'},
+
+    {'key': 'pronunciation_elementary', 'series': 'pronunciation', 'cefr': 'A1-A2',
+     'level': 'Elementary', 'title': 'English Pronunciation in Use — Elementary',
+     'pdf': 'sources/pronunciation_elementary_2nd.pdf',
+     'audio': 'sources/audio/pronunciation_elementary', 'pages': 'ocr'},
+    {'key': 'pronunciation_intermediate', 'series': 'pronunciation', 'cefr': 'B1-B2',
+     'level': 'Intermediate', 'title': 'English Pronunciation in Use — Intermediate',
+     'pdf': 'sources/pronunciation_intermediate_2nd.pdf',
+     'audio': 'sources/audio/pronunciation_intermediate', 'pages': 'ocr'},
+    {'key': 'pronunciation_advanced', 'series': 'pronunciation', 'cefr': 'C1-C2',
+     'level': 'Advanced', 'title': 'English Pronunciation in Use — Advanced',
+     'pdf': 'sources/pronunciation_advanced_2nd.pdf',
+     'audio': 'sources/audio/pronunciation_advanced', 'pages': 'ocr'},
+
+    {'key': 'phrasal_verbs_intermediate', 'series': 'phrasal_verbs', 'cefr': 'B1-B2',
+     'level': 'Intermediate', 'title': 'English Phrasal Verbs in Use — Intermediate',
+     'pdf': 'sources/phrasal_verbs_intermediate_2nd.pdf',
+     'audio': None, 'pages': 'ocr'},
+    {'key': 'phrasal_verbs_advanced', 'series': 'phrasal_verbs', 'cefr': 'C1-C2',
+     'level': 'Advanced', 'title': 'English Phrasal Verbs in Use — Advanced',
+     'pdf': 'sources/phrasal_verbs_advanced_2nd.pdf',
+     'audio': None, 'pages': 'text'},
+
+    {'key': 'collocations_intermediate', 'series': 'collocations', 'cefr': 'B1-B2',
+     'level': 'Intermediate', 'title': 'English Collocations in Use — Intermediate',
+     'pdf': 'sources/collocations_intermediate_2nd.pdf',
+     'audio': None, 'pages': 'ocr'},
+    {'key': 'collocations_advanced', 'series': 'collocations', 'cefr': 'C1-C2',
+     'level': 'Advanced', 'title': 'English Collocations in Use — Advanced',
+     'pdf': 'sources/collocations_advanced_2nd.pdf',
+     'audio': None, 'pages': 'ocr'},
+
+    {'key': 'idioms_intermediate', 'series': 'idioms', 'cefr': 'B1-B2',
+     'level': 'Intermediate', 'title': 'English Idioms in Use — Intermediate',
+     'pdf': 'sources/idioms_intermediate_2nd.pdf',
+     'audio': None, 'pages': 'ocr'},
+    {'key': 'idioms_advanced', 'series': 'idioms', 'cefr': 'C1-C2',
+     'level': 'Advanced', 'title': 'English Idioms in Use — Advanced',
+     'pdf': 'sources/idioms_advanced_2nd.pdf',
+     'audio': None, 'pages': 'ocr'},
 ]
+
+# Where the OCR of a scanned book is kept, one JSON file per page.
+OCR_ROOT = ROOT / 'sources' / 'ocr'
+
+# The resolution the page images were read at. Word positions arrive in those
+# pixels and are converted to points, so a rule written against a born-digital
+# page - "the section title shares a line with its letter, within twelve" -
+# means the same thing on a scan.
+OCR_DPI = 300
 
 RE_EXERCISE = re.compile(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+(.*)$', re.M)
 RE_GLOSS = re.compile(r'\[([^\[\]]{3,200})\]')
 RE_SECTION_LETTER = re.compile(r'^[A-H]$')
-RE_FOOTER = re.compile(r'English Vocabulary in Use', re.I)
+# The running footer at the foot of every page of every book in the family.
+RE_FOOTER = re.compile(r'\b(?:Vocabulary|Grammar|Pronunciation|Phrasal Verbs?|'
+                       r'Collocations?|Idioms) in Use\b', re.I)
 # Bold runs that are structural furniture rather than taught language.
 RE_NOISE = re.compile(r'^(?:\d+|[A-H]|Common|mistakes|Language help|Tip|Note|Exercises|'
                       r'Answer key|Follow[- ]up|Study unit)\.?$', re.I)
@@ -209,6 +341,106 @@ def bold_spans(el):
     return out
 
 
+def load_ocr(key):
+    """The pages of a scanned book, in the same shape as a born-digital one.
+
+    tools/ocr_book.py writes one JSON file per page holding the page laid out
+    on a character grid and every word with its box, its confidence and whether
+    it is bold. Both halves are needed and neither replaces the other: the laid
+    out text is what the unit, exercise and gloss parsers read, and the word
+    boxes are what the section and vocabulary parsers read.
+
+    Word positions arrive in image pixels and leave in points, so that a rule
+    written for a PDF - "the section title is the run beside the letter, within
+    twelve of its top" - holds here too rather than silently never matching.
+
+    @return (page number -> runs, list of page texts)
+    """
+    directory = OCR_ROOT / key
+    files = sorted(directory.glob('*.json'))
+    if not files:
+        raise SystemExit(
+            f'{key}: no OCR under {directory}. Read the book first:\n'
+            f'  python3 tools/ocr_book.py <pdf> --out {directory}')
+
+    scale = 72.0 / OCR_DPI
+    pages = {}
+    layout = []
+    expected = 1
+    for path in files:
+        page = json.loads(path.read_text(encoding='utf-8'))
+        number = page['number']
+
+        # A page that failed to read still occupies its place in the book, or
+        # every page after it is numbered wrongly and every unit lands on the
+        # wrong one.
+        while expected < number:
+            layout.append('')
+            pages[expected] = []
+            expected += 1
+
+        layout.append(page['text'])
+        pages[number] = runs_from_words(page.get('words', []), scale)
+        expected = number + 1
+
+    return pages, layout
+
+
+def runs_from_words(words, scale):
+    """Group read words back into the runs a PDF would have given.
+
+    A run is a stretch of one line set the same way. That is what the section
+    and vocabulary parsers expect, and it matters most for bold: the series
+    marks every taught item in bold, so a bold stretch has to arrive as its own
+    run or the headword list is empty.
+
+    A run therefore ends where the weight changes, or where the gap to the next
+    word is wide enough to be a column boundary rather than a space.
+    """
+    lines = {}
+    for word in words:
+        # Words on the same line rarely share a top exactly; a band a few
+        # points deep groups them without merging two lines.
+        band = round(word['y0'] * scale / 6)
+        lines.setdefault(band, []).append(word)
+
+    runs = []
+    for band in sorted(lines):
+        row = sorted(lines[band], key=lambda w: w['x0'])
+        current = None
+        for word in row:
+            left = word['x0'] * scale
+            top = word['y0'] * scale
+            width = max(1.0, (word['x1'] - word['x0']) * scale)
+            per_char = width / max(1, len(word['text']))
+
+            gap = None if current is None else left - current['right']
+            if (current is None
+                    or word['bold'] != current['bold']
+                    or gap > per_char * 3):
+                if current is not None:
+                    runs.append(current)
+                current = {'top': int(round(top)), 'left': int(round(left)),
+                           'text': word['text'], 'bold': word['bold'],
+                           'right': left + width}
+            else:
+                current['text'] += ' ' + word['text']
+                current['right'] = left + width
+        if current is not None:
+            runs.append(current)
+
+    out = []
+    for run in runs:
+        out.append({
+            'top': run['top'],
+            'left': run['left'],
+            'text': run['text'],
+            'bold': [run['text']] if run['bold'] else [],
+        })
+    out.sort(key=lambda r: (r['top'], r['left']))
+    return out
+
+
 def parse_pages(root):
     """page number -> list of runs {top,left,text,bold[]}"""
     pages = {}
@@ -230,37 +462,361 @@ def parse_pages(root):
     return pages
 
 
-def find_units(layout_pages):
-    """Reuse the heading rules proven in analyze_sources.py: returns
-    unit_no -> teaching page index (1-based)."""
-    units = {}
+# A unit heading, in the two shapes the six series print it in.
+#
+#   number_first   "11   In"                     - the number opens the line
+#   unit_above     "Unit" / " 9   Present ..."   - the word sits on its own line
+#
+# The distinction is not cosmetic. Read a Grammar in Use page with the
+# number-first rule and it finds no units at all, because the number is on the
+# second line; read a Vocabulary in Use page with the other and the same.
+RE_NUMBER_FIRST = re.compile(r'^\s{0,12}(\d{1,3})\s{1,}(\S.{1,70})$')
+RE_UNIT_INLINE = re.compile(r'^\s*unit\s+(\d{1,3})\s{1,}(\S.{1,70})$', re.I)
+RE_UNIT_WORD = re.compile(r'^\s*units?\s*$', re.I)
+# "Unit       Present continuous and present simple 1" - the word and the first
+# half of a title that was too long for one line, with the number and the rest
+# of it below.
+RE_UNIT_WITH_TITLE = re.compile(r'^\s*units?\s{2,}(\S.{1,70})$', re.I)
+
+# A page that carries a unit heading also carries the unit: a lettered section
+# under it, or one of the unit's numbered exercises. Without that test the
+# front matter is read as units - "60 units of vocabulary reference and
+# practice" on the cover of Phrasal Verbs in Use became unit 60, displacing the
+# real one.
+RE_SECTION_LINE = re.compile(r'^\s{0,24}[A-H]\|?\s{2,}\S', re.M)
+RE_EXERCISE_LABEL = re.compile(r'^\s{0,8}\d{1,3}\.\d{1,2}\s', re.M)
+
+
+def heading_on_page(head, style):
+    """The unit number and title at the top of a page, or (None, None).
+
+    `head` is the first few non-empty lines. Only the top of the page is looked
+    at, because a numbered exercise further down the page ("11 Complete the
+    sentences") reads exactly like a unit heading and is not one.
+    """
+    for index, line in enumerate(head):
+        if style == 'unit_above':
+            m = RE_UNIT_INLINE.match(line)
+            if m:
+                return int(m.group(1)), m.group(2).strip()
+            # "Unit" alone, then the number and the title on the next line.
+            if RE_UNIT_WORD.match(line) and index + 1 < len(head):
+                m = RE_NUMBER_FIRST.match(head[index + 1])
+                if m:
+                    return int(m.group(1)), m.group(2).strip()
+
+            # The same, but the title was too long and started beside the word.
+            opener = RE_UNIT_WITH_TITLE.match(line)
+            if opener and index + 1 < len(head):
+                m = RE_NUMBER_FIRST.match(head[index + 1])
+                if m:
+                    return int(m.group(1)), f'{opener.group(1).strip()} {m.group(2).strip()}'
+            continue
+
+        m = RE_NUMBER_FIRST.match(line)
+        if m:
+            title = m.group(2).strip()
+            # A heading that wrapped: the line above is the first half of it.
+            if index > 0:
+                previous = head[index - 1].strip()
+                if (previous and not re.match(r'^\d', previous)
+                        and previous[:1].isupper() and not previous.endswith('.')
+                        and len(previous) < 70):
+                    title = f'{previous} {title}'
+            return int(m.group(1)), title
+
+        m = RE_UNIT_INLINE.match(line)
+        if m:
+            return int(m.group(1)), m.group(2).strip()
+
+    return None, None
+
+
+# A contents entry: the unit number, its title, and often the page it starts
+# on. The page number is optional because the scanned books lose it to the
+# gutter as often as not.
+# A contents entry: the unit number, its title, and often the page it starts
+# on. The page number is optional because the scanned books lose it to the
+# gutter as often as not.
+RE_CONTENTS_ENTRY = re.compile(r'^(\s{0,20})(\d{1,3})(\s{1,8})(\S.{1,70}?)(?:\s{2,}\d{1,3})?\s*$')
+RE_CONTENTS_LINE = re.compile(r'^(\s{0,30})(\S.{1,70}?)(?:\s{2,}\d{1,3})?\s*$')
+
+
+def tidy_title(text: str) -> str:
+    """Close up the spacing, and put back the pronoun the scanner lost.
+
+    A capital I standing alone is read as a vertical rule more often than not,
+    so "I have... and I've got" arrives as "| have... and I've got". A pipe is
+    never an English word, so the substitution cannot take anything away.
+    """
+    text = re.sub(r'\s{2,}', ' ', text).strip(' .')
+    return re.sub(r'(?<=^)\|(?=\s)|(?<=\s)\|(?=\s)', 'I', text)
+
+
+def reads_as_title(text: str) -> bool:
+    """Is this a title, or is it what the scanner made of the numeral column?
+
+    The numbers 2 to 9 of the Basic Grammar contents came back as the single
+    line "WO WON HRW", sitting at the title column and counting as an entry -
+    which shifted every title after it down by one unit. Every real title in
+    these books contains ordinary lowercase words; a column of mangled digits
+    does not.
+    """
+    return len(re.findall(r'[a-z]', text)) >= 2
+
+
+def contents_rows(page):
+    """Every line of a contents page, as (number or None, column, title).
+
+    Both kinds of line are kept. The numbered ones are the entries; the
+    unnumbered ones matter because the numeral column is the narrowest thing on
+    a scanned page and the first to be lost - on the Basic Grammar contents the
+    numbers 2 to 9 came back as "WO WON HRW" while their titles read perfectly.
+    """
+    rows = []
+    for line in page.splitlines():
+        m = RE_CONTENTS_ENTRY.match(line)
+        if m:
+            title = tidy_title(m.group(4))
+            column = len(m.group(1)) + len(m.group(2)) + len(m.group(3))
+            rows.append((int(m.group(2)), column, title))
+            continue
+        m = RE_CONTENTS_LINE.match(line)
+        if m:
+            title = tidy_title(m.group(2))
+            rows.append((None, len(m.group(1)), title))
+    return [(n, c, t) for n, c, t in rows
+            if len(t) >= 2 and sum(ch.isalpha() for ch in t) >= 2]
+
+
+def number_contents(rows):
+    """Give the unnumbered entries the numbers the scan lost.
+
+    A contents list runs consecutively, so an entry between number 1 and
+    number 10 with eight titles between them can only be 2 to 9. That is done
+    only when it comes out exactly: if the count between two anchors does not
+    fill the gap, nothing is assigned, because a title filed under the wrong
+    unit is worse than a title missing.
+
+    A line is only a candidate if it starts at or right of the column the
+    numbered titles start in. That is what separates an entry from the section
+    headings the contents also prints ("Present", "Prepositions"), which sit
+    further left - while still keeping an entry whose own first words were lost
+    to the scan and which therefore begins further right than its neighbours.
+    """
+    numbered = [(n, c, t) for n, c, t in rows if n is not None]
+    if len(numbered) < 4:
+        return []
+
+    columns = sorted(c for _, c, _ in numbered)
+    title_column = columns[len(columns) // 2]
+    candidates = [
+        (n, t) for n, c, t in rows
+        if n is not None or (c >= title_column - 3 and reads_as_title(t))
+    ]
+
+    out = []
+    pending = []
+    previous = None
+    for number, title in candidates:
+        if number is None:
+            pending.append(title)
+            continue
+        if previous is not None and pending:
+            # The gap has to be exactly the number of unnumbered lines in it.
+            if number - previous - 1 == len(pending):
+                out.extend((previous + 1 + i, t) for i, t in enumerate(pending))
+        pending = []
+        out.append((number, title))
+        previous = number
+
+    return out
+
+
+def titles_from_contents(layout_pages, horizon=None):
+    """Unit titles as the book itself lists them.
+
+    Reading a title off the teaching page works when the page prints one. Basic
+    Grammar in Use does not - its unit number lives in a coloured tab, which is
+    artwork - and on a scan the largest line of a page is as likely to be a
+    caption or a mis-read as the heading: unit 5 came back titled
+    "| like ice cream." and unit 2 "Affirmative Question".
+
+    The contents pages state every title plainly, in one column, in order. That
+    is a better source than any page heading, and it is the same list the book
+    prints for its own readers.
+
+    Three things have to hold before a page is read as contents, and each one
+    stops a different impostor. It has to come before the first unit, which no
+    exercises page does. It has to carry at least eight numbered entries in
+    ascending order, which no prose page does. And its numbers have to reach
+    into double figures, which the numbered items of an exercise do not - the
+    first attempt at this had none of that and read "1 Do you live in a city?"
+    off an exercises page as the title of unit 2.
+    """
+    titles = {}
+    if horizon is None:
+        horizon = max(6, len(layout_pages) // 8)
+    horizon = min(len(layout_pages), horizon)
+
+    for page in layout_pages[:horizon]:
+        rows = contents_rows(page)
+        entries = [(n, t) for n, _, t in rows if n is not None and 1 <= n <= 200]
+
+        if len(entries) < 8 or max(n for n, _ in entries) < 10:
+            continue
+        ascending = sum(1 for a, b in zip(entries, entries[1:]) if b[0] > a[0])
+        if ascending < len(entries) - 2:
+            continue
+
+        for number, title in number_contents(rows):
+            if 1 <= number <= 200:
+                titles.setdefault(number, title)
+
+    return titles
+
+
+def candidate_headings(layout_pages, style):
+    """Every page whose top reads like a unit heading, in page order."""
+    found = []
     for i, page in enumerate(layout_pages):
-        head = [ln for ln in page.splitlines() if ln.strip()][:3]
+        head = [ln for ln in page.splitlines() if ln.strip()][:4]
         if not head:
             continue
-        u = title = None
-        for idx, ln in enumerate(head):
-            m = re.match(r'^\s{0,12}(\d{1,3})\s{1,}([A-Z‘’\'][^\n]{2,70})$', ln)
-            if m:
-                u, title = int(m.group(1)), m.group(2).strip()
-                if idx > 0:
-                    prev = head[idx - 1].strip()
-                    if (prev and not re.match(r'^\d', prev) and prev[:1].isupper()
-                            and not prev.endswith('.') and len(prev) < 70):
-                        title = f'{prev} {title}'
-                break
-            m = re.match(r'^\s*unit\s+(\d{1,3})\s{1,}([A-Z‘’\'][^\n]{2,70})$', ln, re.I)
-            if m:
-                u, title = int(m.group(1)), m.group(2).strip()
-                break
-        if u is None or not (1 <= u <= 200):
+
+        number, title = heading_on_page(head, style)
+        if number is None or not (1 <= number <= 200):
             continue
+
         title = re.sub(r'\s{3,}.*$', '', title).strip()
-        if len(title) < 3 or RE_FOOTER.search(title):
+        # Two characters is a real unit title in this family: Phrasal Verbs in
+        # Use has units called "In", "Up" and "On".
+        if len(title) < 2 or RE_FOOTER.search(title):
             continue
-        if u not in units:
-            units[u] = {'number': u, 'title': title, 'teaching_page': i + 1}
+
+        found.append({
+            'number': number,
+            'title': title,
+            'teaching_page': i + 1,
+            'teaches': bool(RE_SECTION_LINE.search(page) or RE_EXERCISE_LABEL.search(page)),
+        })
+    return found
+
+
+def find_units(layout_pages, style='number_first'):
+    """unit number -> its teaching page (1-based).
+
+    Two rounds, because the two ways a heading can be wrong pull in opposite
+    directions. Front matter fakes headings - "60 units of vocabulary reference
+    and practice" on a cover reads exactly like unit 60 - so the first round
+    only accepts a page that also shows a lettered section or a numbered
+    exercise, which no cover does.
+
+    That test is strict enough to lose a real unit: Phrasal Verbs in Use unit
+    11 is a page of continuous prose with neither. So the second round takes
+    back any number the first round missed, on one condition - that its page
+    falls between the pages of the units either side of it. A book runs its
+    units in order, and a cover cannot be between unit 10 and unit 12.
+    """
+    found = candidate_headings(layout_pages, style)
+
+    units = {}
+    for c in found:
+        if c['teaches'] and c['number'] not in units:
+            units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
+
+    if not units:
+        return units
+
+    for c in found:
+        if c['number'] in units:
+            continue
+        before = units.get(c['number'] - 1)
+        after = units.get(c['number'] + 1)
+        lower = before['teaching_page'] if before else 0
+        upper = after['teaching_page'] if after else len(layout_pages) + 1
+        if lower < c['teaching_page'] < upper:
+            units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
+
+    units.update(units_behind_exercises(layout_pages, units))
     return units
+
+
+RE_EXERCISES_HEADING = re.compile(r'^\W{0,4}exercises?\b', re.I)
+# An exercise label at the start of a line, allowing for the box the scanned
+# books print around it - the OCR reads its left edge as "|", "(" or "[".
+# An exercise label at the start of a line. The scanned books print a box
+# around it and the reader turns the box's edges into "|", "(" or "[", so those
+# are allowed on either side of the number - without that, two thirds of Basic
+# Grammar in Use's exercises are invisible.
+RE_LABEL_ANCHORED = re.compile(
+    r'^[ \t]{0,10}[|(\[]?[ \t]{0,2}(\d{1,3})\.(\d{1,2})[ \t]{0,2}[|)\]]?(?=[ \t]|$)', re.M)
+
+
+def units_behind_exercises(layout_pages, taken):
+    """Find a unit by its exercises when its own page does not name it.
+
+    Basic Grammar in Use prints no unit number on its teaching pages at all -
+    the number is in a coloured tab in the margin, which is artwork, not text.
+    Every unit of it therefore arrived titleless and pageless, 113 of them,
+    even though the book was read cleanly.
+
+    The facing page gives it away. Exercises are numbered `<unit>.<n>`, so an
+    exercises page states the unit outright, and the teaching page is the one
+    before it. The title is then the first real line of that page, which in
+    this series is the grammar point itself - "am/is/are", "I am doing
+    (present continuous)".
+
+    Only units that no other rule found are taken this way, and only when the
+    page before is not already another unit's, so this can add units to a
+    book but never move one.
+    """
+    found = {}
+    claimed = {u['teaching_page'] for u in taken.values()}
+
+    for i, page in enumerate(layout_pages):
+        head = next((ln for ln in page.splitlines() if ln.strip()), '')
+        if not RE_EXERCISES_HEADING.match(head.strip()):
+            continue
+
+        numbers = [int(m[0]) for m in RE_LABEL_ANCHORED.findall(page)]
+        if not numbers:
+            continue
+        unit = Counter(numbers).most_common(1)[0][0]
+        if unit in taken or unit in found or not (1 <= unit <= 200):
+            continue
+
+        teaching_page = i          # the page before, 1-based
+        if teaching_page < 1 or teaching_page in claimed:
+            continue
+
+        title = teaching_title(layout_pages[teaching_page - 1])
+        found[unit] = {
+            'number': unit,
+            'title': title or f'Unit {unit}',
+            'teaching_page': teaching_page,
+            'needs_title_review': title is None,
+        }
+        claimed.add(teaching_page)
+
+    return found
+
+
+def teaching_title(page_text):
+    """The grammar point at the top of a teaching page, if it reads as one."""
+    for line in page_text.splitlines():
+        line = line.strip()
+        if len(line) < 3 or len(line) > 70:
+            continue
+        letters = sum(c.isalpha() for c in line)
+        # A line of scanner noise is mostly punctuation; a heading is mostly
+        # letters.
+        if letters < 3 or letters / len(line) < 0.55:
+            continue
+        if RE_FOOTER.search(line) or RE_EXERCISES_HEADING.match(line):
+            continue
+        return re.sub(r'\s{2,}', ' ', line)
+    return None
 
 
 def sections_on_page(runs):
@@ -400,7 +956,7 @@ def split_labelled_blocks(page, unit_no):
     a rubric-only capture silently discards.
     """
     marks = []
-    for m in re.finditer(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+', page, re.M):
+    for m in RE_LABEL_ANCHORED.finditer(page):
         marks.append((m.start(), int(m.group(1)), int(m.group(2)), m.end()))
     out = {}
     for i, (start, u, n, body_at) in enumerate(marks):
@@ -435,67 +991,132 @@ def extract_exercises(layout_pages, unit_no, teaching_page, answer_start):
 
 
 def find_answer_start(layout_pages):
-    hits = [i for i, p in enumerate(layout_pages)
-            if re.search(r'^\s*(Answer key|Key|Answers)\s*$',
-                         '\n'.join(p.strip().splitlines()[:6]), re.M | re.I)]
+    """The page the answer key begins on, or None.
+
+    Each series titles it differently - "Answer key", "Key", "Key to
+    Exercises" - and a scan spaces the letters of a display heading out, so
+    "Answer Key to Exercises" arrives with four spaces between its words.
+    Getting this wrong costs the whole key: everything after the page is read
+    as answers and everything before it as exercises.
+    """
+    heading = re.compile(
+        r'^\W{0,4}(?:answers?\s+key|answers?|key)'
+        r'(?:\s+to\s+(?:the\s+)?exercises)?\W{0,4}$',
+        re.I)
+
+    hits = []
+    for i, page in enumerate(layout_pages):
+        for line in page.strip().splitlines()[:6]:
+            if heading.match(re.sub(r'\s+', ' ', line).strip()):
+                hits.append(i)
+                break
+
     if not hits:
         return None
+    # The contents page names the key too. The real one is at the back.
     late = [h for h in hits if h > len(layout_pages) * 0.5]
     return late[0] if late else hits[0]
 
 
-# Where each book's audio was unpacked to inside the project.
-AUDIO_DIRS = {
-    'elementary': 'sources/audio/elementary',
-    'pre_int_int': 'sources/audio/pre_intermediate_intermediate',
-    'upper_int': 'sources/audio/upper_intermediate',
-    'advanced': 'sources/audio/advanced',
-}
+# Filenames the placement tool gives every recording, whatever the archive
+# called it. See tools/place_audio.py for how each set is read.
+#
+#   U_014.B.002.mp3   unit 14, section B, third clip
+#   U_014.B.p071.003  the same, for the set that numbers clips by printed page
+#   APP_07.009.mp3    appendix 7
+#   T_B017.mp3        CD B track 17 - how the pronunciation books cite audio
+RE_AUDIO_UNIT = re.compile(
+    r'^U_?(\d{1,3})(?:\.([A-H]))?(?:\.p(\d{1,3}))?(?:\.(\d{1,3}))?\.mp3$', re.I)
+RE_AUDIO_TRACK = re.compile(r'^T_([A-E])(\d{1,3})\.mp3$', re.I)
 
 
-def audio_map(_unused, book_key):
-    """Scan the extracted audio tree for this book.
+def audio_map(book):
+    """The recordings for each unit of this book.
 
-    The mp3 files live in the project under sources/audio/<book>/, so the
-    inventory is read from disk rather than from an archive.
+    Only files whose unit the placement tool could read are attached here. The
+    pronunciation sets are cited by CD track rather than by unit, and the
+    interactive disc by an internal clip id, so those are carried in the
+    inventory and mapped by the pages that reference them - not guessed from a
+    filename that does not name a unit.
     """
     by_unit = defaultdict(list)
-    base = ROOT / AUDIO_DIRS[book_key]
+    if not book.get('audio'):
+        return by_unit, []
+
+    base = ROOT / book['audio']
     if not base.is_dir():
-        return by_unit
-    pat = re.compile(r'U_?(\d{1,3})(?:[._]([A-H]|\d{1,2}))?\.mp3$', re.I)
+        return by_unit, []
+
+    unattached = []
     for f in sorted(base.rglob('*.mp3')):
-        m = pat.search(f.name)
-        if not m:
-            continue
         rel = f.relative_to(ROOT).as_posix()
-        by_unit[int(m.group(1))].append({
-            'path': rel,
-            'extracted_path': rel,
-            'exists': True,
-            'section': (m.group(2) or '').upper() or None,
-        })
+        m = RE_AUDIO_UNIT.match(f.name)
+        if m:
+            by_unit[int(m.group(1))].append({
+                'path': rel,
+                'extracted_path': rel,
+                'exists': True,
+                'section': (m.group(2) or '').upper() or None,
+                'page': int(m.group(3)) if m.group(3) else None,
+                'index': int(m.group(4)) if m.group(4) else None,
+            })
+            continue
+
+        track = RE_AUDIO_TRACK.match(f.name)
+        entry = {'path': rel, 'extracted_path': rel, 'exists': True, 'section': None}
+        if track:
+            entry['track'] = f'{track.group(1).upper()}{int(track.group(2))}'
+        unattached.append(entry)
+
     for v in by_unit.values():
-        v.sort(key=lambda a: (a['section'] or ''))
-    return by_unit
+        v.sort(key=lambda a: (a['section'] or '', a['page'] or 0, a['index'] or 0))
+    return by_unit, unattached
 
 
-def build(key, cefr, course, pdf_rel, zip_rel):
-    pdf = ROOT / pdf_rel
-    root = load_xml(pdf, key)
-    xml_pages = parse_pages(root)
-    layout = load_layout(pdf, key)
-    repair = load_word_lines(pdf, key)
+def load_pages(book):
+    """Everything the parsers need to read this book, however it was stored."""
+    key = book['key']
+    if book['pages'] == 'ocr':
+        xml_pages, layout = load_ocr(key)
+        return xml_pages, layout, {}
+
+    pdf = ROOT / book['pdf']
+    xml_pages = parse_pages(load_xml(pdf, key))
+    return xml_pages, load_layout(pdf, key), load_word_lines(pdf, key)
+
+
+def build(book):
+    key = book['key']
+    series = SERIES[book['series']]
+
+    xml_pages, layout, repair = load_pages(book)
     answer_start = find_answer_start(layout)
-    units_meta = find_units(layout[:answer_start] if answer_start else layout)
-    audio = audio_map(None, key)
+    units_meta = find_units(layout[:answer_start] if answer_start else layout,
+                            series['heading'])
+
+    # The book's own contents list is a better title than anything a single
+    # page yields, and on a scan it is much better - see titles_from_contents.
+    # It fills the gaps everywhere, and on a scanned book it wins outright.
+    first_unit_page = min((m['teaching_page'] for m in units_meta.values()
+                           if m.get('teaching_page')), default=None)
+    contents = titles_from_contents(
+        layout, horizon=(first_unit_page - 1) if first_unit_page else None)
+    for number, meta in units_meta.items():
+        listed = contents.get(number)
+        if not listed:
+            continue
+        if book['pages'] == 'ocr' or meta.get('needs_title_review') or not meta.get('title'):
+            meta['title'] = listed
+            meta['needs_title_review'] = False
+            meta['title_source'] = 'contents'
+    audio, unattached_audio = audio_map(book)
 
     # Any unit number that owns exercise labels but whose heading the parser could
     # not read still exists in the book. Register it (flagged for review) so its
     # exercises, answers and audio are never orphaned.
     seen_in_exercises = set()
     for i, page in enumerate(layout[:answer_start] if answer_start else layout):
-        for m in re.finditer(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+', page, re.M):
+        for m in RE_LABEL_ANCHORED.finditer(page):
             u = int(m.group(1))
             if 1 <= u <= 200:
                 seen_in_exercises.add(u)
@@ -582,12 +1203,22 @@ def build(key, cefr, course, pdf_rel, zip_rel):
     for unit_no, files in sorted(audio.items()):
         for a in files:
             all_audio.append({**a, 'unit': unit_no})
+    all_audio.extend(unattached_audio)
 
     return {
-        'key': key, 'cefr': cefr, 'course': course,
-        'source_pdf': pdf_rel, 'source_audio': zip_rel,
+        'key': key,
+        'series': book['series'],
+        'series_title': series['family'],
+        'course_title': series['course'],
+        'skill': series['skill'],
+        'title': book['title'],
+        'cefr': book['cefr'],
+        'course': book['level'],
+        'level': book['level'],
+        'text_source': book['pages'],
+        'source_pdf': book['pdf'],
+        'source_audio': book.get('audio'),
         'copyright_status': 'owned',
-        'pages': len(layout),
         'answer_key_page': (answer_start + 1) if answer_start is not None else None,
         'pages': pages_out,
         'audio_inventory': all_audio,
@@ -596,25 +1227,49 @@ def build(key, cefr, course, pdf_rel, zip_rel):
 
 
 def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('--book', action='append', default=[],
+                    help='extract only this book key (repeatable)')
+    ap.add_argument('--series', action='append', default=[],
+                    help='extract only this series (repeatable)')
+    args = ap.parse_args()
+
+    wanted = [b for b in BOOKS
+              if (not args.book or b['key'] in args.book)
+              and (not args.series or b['series'] in args.series)]
+    if not wanted:
+        raise SystemExit('no book matched')
+
     outdir = ROOT / 'docs' / 'data' / 'curriculum'
     outdir.mkdir(parents=True, exist_ok=True)
-    grand = {}
-    for b in BOOKS:
-        data = build(*b)
+
+    rows = []
+    for book in wanted:
+        try:
+            data = build(book)
+        except SystemExit as exc:
+            print(f"{book['key']:28s} skipped: {exc}")
+            continue
         (outdir / f'{data["key"]}.json').write_text(
             json.dumps(data, indent=1, ensure_ascii=False))
-        v = sum(u['vocabulary_count'] for u in data['units'])
-        s = sum(len(u['sections']) for u in data['units'])
-        e = sum(len(u['exercises']) for u in data['units'])
-        a = sum(len(u['answers']) for u in data['units'])
-        au = sum(len(u['audio']) for u in data['units'])
-        g = sum(u.get('gloss_count', 0) for u in data['units'])
-        grand[data['key']] = (len(data['units']), s, v, g, e, a, au)
-        print(f"{data['key']:14s} units={len(data['units']):>3} sections={s:>4} "
-              f"vocab={v:>5} glosses={g:>4} exercises={e:>4} answers={a:>4} audio={au:>4}")
-    t = [sum(x[i] for x in grand.values()) for i in range(7)]
-    print(f"{'TOTAL':14s} units={t[0]:>3} sections={t[1]:>4} vocab={t[2]:>5} "
-          f"glosses={t[3]:>4} exercises={t[4]:>4} answers={t[5]:>4} audio={t[6]:>4}")
+        rows.append((
+            data['key'],
+            len(data['units']),
+            sum(len(u['sections']) for u in data['units']),
+            sum(u['vocabulary_count'] for u in data['units']),
+            sum(u.get('gloss_count', 0) for u in data['units']),
+            sum(len(u['exercises']) for u in data['units']),
+            sum(len(u['answers']) for u in data['units']),
+            len(data['audio_inventory']),
+        ))
+        k, *n = rows[-1]
+        print(f'{k:28s} units={n[0]:>3} sections={n[1]:>4} vocab={n[2]:>5} '
+              f'glosses={n[3]:>4} exercises={n[4]:>4} answers={n[5]:>4} audio={n[6]:>5}')
+
+    if len(rows) > 1:
+        t = [sum(r[i] for r in rows) for i in range(1, 8)]
+        print(f'{"TOTAL":28s} units={t[0]:>3} sections={t[1]:>4} vocab={t[2]:>5} '
+              f'glosses={t[3]:>4} exercises={t[4]:>4} answers={t[5]:>4} audio={t[6]:>5}')
 
 
 if __name__ == '__main__':

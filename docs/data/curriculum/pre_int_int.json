@@ -1,10 +1,18 @@
 {
  "key": "pre_int_int",
+ "series": "vocabulary",
+ "series_title": "English Vocabulary in Use",
+ "course_title": "English Vocabulary",
+ "skill": "vocabulary",
+ "title": "English Vocabulary in Use — Pre-intermediate and Intermediate",
  "cefr": "A2-B1",
  "course": "Pre-intermediate and Intermediate",
+ "level": "Pre-intermediate and Intermediate",
+ "text_source": "text",
  "source_pdf": "sources/pre_intermediate_intermediate_4th.pdf",
  "source_audio": "sources/audio/pre_intermediate_intermediate",
  "copyright_status": "owned",
+ "answer_key_page": 209,
  "pages": [
   {
    "number": 1,
@@ -1597,13 +1605,14 @@
    "is_answer_key": true
   }
  ],
- "answer_key_page": 209,
  "audio_inventory": [
   {
    "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.A.mp3",
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 1
   },
   {
@@ -1611,6 +1620,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 1
   },
   {
@@ -1618,6 +1629,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 1
   },
   {
@@ -1625,6 +1638,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 1
   },
   {
@@ -1632,6 +1647,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_002.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 2
   },
   {
@@ -1639,6 +1656,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_002.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 2
   },
   {
@@ -1646,6 +1665,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1653,6 +1674,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1660,6 +1683,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1667,6 +1692,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 3
   },
   {
@@ -1674,6 +1701,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1681,6 +1710,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1688,6 +1719,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1695,6 +1728,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1702,6 +1737,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 4
   },
   {
@@ -1709,6 +1746,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1716,6 +1755,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1723,6 +1764,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 5
   },
   {
@@ -1730,6 +1773,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_006.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1737,6 +1782,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_006.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 6
   },
   {
@@ -1744,6 +1791,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1751,6 +1800,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1758,6 +1809,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 7
   },
   {
@@ -1765,6 +1818,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 8
   },
   {
@@ -1772,6 +1827,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 8
   },
   {
@@ -1779,6 +1836,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 8
   },
   {
@@ -1786,6 +1845,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 8
   },
   {
@@ -1793,6 +1854,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 9
   },
   {
@@ -1800,6 +1863,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 9
   },
   {
@@ -1807,6 +1872,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 9
   },
   {
@@ -1814,6 +1881,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1821,6 +1890,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1828,6 +1899,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1835,6 +1908,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 10
   },
   {
@@ -1842,6 +1917,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1849,6 +1926,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1856,6 +1935,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 11
   },
   {
@@ -1863,6 +1944,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 12
   },
   {
@@ -1870,6 +1953,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 12
   },
   {
@@ -1877,6 +1962,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 12
   },
   {
@@ -1884,6 +1971,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_013.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 13
   },
   {
@@ -1891,6 +1980,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_013.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 13
   },
   {
@@ -1898,6 +1989,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 14
   },
   {
@@ -1905,6 +1998,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 14
   },
   {
@@ -1912,6 +2007,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 14
   },
   {
@@ -1919,6 +2016,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1926,6 +2025,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1933,6 +2034,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1940,6 +2043,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 15
   },
   {
@@ -1947,6 +2052,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1954,6 +2061,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1961,6 +2070,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1968,6 +2079,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1975,6 +2088,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 16
   },
   {
@@ -1982,6 +2097,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 17
   },
   {
@@ -1989,6 +2106,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 17
   },
   {
@@ -1996,6 +2115,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 17
   },
   {
@@ -2003,6 +2124,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_018.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -2010,6 +2133,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_018.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 18
   },
   {
@@ -2017,6 +2142,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -2024,6 +2151,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -2031,6 +2160,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -2038,6 +2169,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 19
   },
   {
@@ -2045,6 +2178,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 20
   },
   {
@@ -2052,6 +2187,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 20
   },
   {
@@ -2059,6 +2196,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 20
   },
   {
@@ -2066,6 +2205,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_021.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 21
   },
   {
@@ -2073,6 +2214,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_021.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 21
   },
   {
@@ -2080,6 +2223,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_022.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 22
   },
   {
@@ -2087,6 +2232,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_022.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 22
   },
   {
@@ -2094,6 +2241,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_023.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 23
   },
   {
@@ -2101,6 +2250,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_023.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 23
   },
   {
@@ -2108,6 +2259,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -2115,6 +2268,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -2122,6 +2277,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -2129,6 +2286,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 24
   },
   {
@@ -2136,6 +2295,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -2143,6 +2304,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -2150,6 +2313,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -2157,6 +2322,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 25
   },
   {
@@ -2164,6 +2331,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -2171,6 +2340,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -2178,6 +2349,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 26
   },
   {
@@ -2185,6 +2358,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 27
   },
   {
@@ -2192,6 +2367,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 27
   },
   {
@@ -2199,6 +2376,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 27
   },
   {
@@ -2206,6 +2385,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -2213,6 +2394,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -2220,6 +2403,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 28
   },
   {
@@ -2227,6 +2412,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 29
   },
   {
@@ -2234,6 +2421,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 29
   },
   {
@@ -2241,6 +2430,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 29
   },
   {
@@ -2248,6 +2439,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -2255,6 +2448,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -2262,6 +2457,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -2269,6 +2466,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 30
   },
   {
@@ -2276,6 +2475,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -2283,6 +2484,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -2290,6 +2493,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 31
   },
   {
@@ -2297,6 +2502,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -2304,6 +2511,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -2311,6 +2520,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 32
   },
   {
@@ -2318,6 +2529,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_033.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 33
   },
   {
@@ -2325,6 +2538,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_033.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 33
   },
   {
@@ -2332,6 +2547,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 34
   },
   {
@@ -2339,6 +2556,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 34
   },
   {
@@ -2346,6 +2565,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 34
   },
   {
@@ -2353,6 +2574,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -2360,6 +2583,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -2367,6 +2592,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -2374,6 +2601,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 35
   },
   {
@@ -2381,6 +2610,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 36
   },
   {
@@ -2388,6 +2619,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 36
   },
   {
@@ -2395,6 +2628,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 36
   },
   {
@@ -2402,6 +2637,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 36
   },
   {
@@ -2409,6 +2646,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -2416,6 +2655,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -2423,6 +2664,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -2430,6 +2673,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -2437,6 +2682,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 37
   },
   {
@@ -2444,6 +2691,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -2451,6 +2700,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -2458,6 +2709,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 38
   },
   {
@@ -2465,6 +2718,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_039.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 39
   },
   {
@@ -2472,6 +2727,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_039.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 39
   },
   {
@@ -2479,6 +2736,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_040.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 40
   },
   {
@@ -2486,6 +2745,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_040.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 40
   },
   {
@@ -2493,6 +2754,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_041.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 41
   },
   {
@@ -2500,6 +2763,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_041.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 41
   },
   {
@@ -2507,6 +2772,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 42
   },
   {
@@ -2514,6 +2781,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 42
   },
   {
@@ -2521,6 +2790,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 42
   },
   {
@@ -2528,6 +2799,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_043.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 43
   },
   {
@@ -2535,6 +2808,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_043.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 43
   },
   {
@@ -2542,6 +2817,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2549,6 +2826,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2556,6 +2835,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2563,6 +2844,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 44
   },
   {
@@ -2570,6 +2853,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 45
   },
   {
@@ -2577,6 +2862,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 45
   },
   {
@@ -2584,6 +2871,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 45
   },
   {
@@ -2591,6 +2880,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 46
   },
   {
@@ -2598,6 +2889,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 46
   },
   {
@@ -2605,6 +2898,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 46
   },
   {
@@ -2612,6 +2907,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_047.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 47
   },
   {
@@ -2619,6 +2916,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_047.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 47
   },
   {
@@ -2626,6 +2925,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2633,6 +2934,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2640,6 +2943,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2647,6 +2952,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 48
   },
   {
@@ -2654,6 +2961,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 49
   },
   {
@@ -2661,6 +2970,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 49
   },
   {
@@ -2668,6 +2979,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 49
   },
   {
@@ -2675,6 +2988,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 50
   },
   {
@@ -2682,6 +2997,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 50
   },
   {
@@ -2689,6 +3006,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 50
   },
   {
@@ -2696,6 +3015,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_051.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 51
   },
   {
@@ -2703,6 +3024,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_051.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 51
   },
   {
@@ -2710,6 +3033,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2717,6 +3042,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2724,6 +3051,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2731,6 +3060,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 52
   },
   {
@@ -2738,6 +3069,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2745,6 +3078,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2752,6 +3087,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2759,6 +3096,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 53
   },
   {
@@ -2766,6 +3105,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2773,6 +3114,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2780,6 +3123,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 54
   },
   {
@@ -2787,6 +3132,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 55
   },
   {
@@ -2794,6 +3141,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 55
   },
   {
@@ -2801,6 +3150,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 55
   },
   {
@@ -2808,6 +3159,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 56
   },
   {
@@ -2815,6 +3168,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 56
   },
   {
@@ -2822,6 +3177,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 56
   },
   {
@@ -2829,6 +3186,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_057.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 57
   },
   {
@@ -2836,6 +3195,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_057.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 57
   },
   {
@@ -2843,6 +3204,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_058.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 58
   },
   {
@@ -2850,6 +3213,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_058.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 58
   },
   {
@@ -2857,6 +3222,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_059.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 59
   },
   {
@@ -2864,6 +3231,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_059.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 59
   },
   {
@@ -2871,6 +3240,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2878,6 +3249,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2885,6 +3258,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2892,6 +3267,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2899,6 +3276,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 60
   },
   {
@@ -2906,6 +3285,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 61
   },
   {
@@ -2913,6 +3294,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 61
   },
   {
@@ -2920,6 +3303,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 61
   },
   {
@@ -2927,6 +3312,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 61
   },
   {
@@ -2934,6 +3321,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 61
   },
   {
@@ -2941,6 +3330,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.F.mp3",
    "exists": true,
    "section": "F",
+   "page": null,
+   "index": null,
    "unit": 61
   },
   {
@@ -2948,6 +3339,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 62
   },
   {
@@ -2955,6 +3348,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 62
   },
   {
@@ -2962,6 +3357,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 62
   },
   {
@@ -2969,6 +3366,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_063.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 63
   },
   {
@@ -2976,6 +3375,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_063.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 63
   },
   {
@@ -2983,6 +3384,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_064.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 64
   },
   {
@@ -2990,6 +3393,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_064.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 64
   },
   {
@@ -2997,6 +3402,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 65
   },
   {
@@ -3004,6 +3411,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 65
   },
   {
@@ -3011,6 +3420,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 65
   },
   {
@@ -3018,6 +3429,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 66
   },
   {
@@ -3025,6 +3438,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 66
   },
   {
@@ -3032,6 +3447,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 66
   },
   {
@@ -3039,6 +3456,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 67
   },
   {
@@ -3046,6 +3465,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 67
   },
   {
@@ -3053,6 +3474,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 67
   },
   {
@@ -3060,6 +3483,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 67
   },
   {
@@ -3067,6 +3492,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 67
   },
   {
@@ -3074,6 +3501,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 68
   },
   {
@@ -3081,6 +3510,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 68
   },
   {
@@ -3088,6 +3519,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 68
   },
   {
@@ -3095,6 +3528,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 69
   },
   {
@@ -3102,6 +3537,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 69
   },
   {
@@ -3109,6 +3546,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 69
   },
   {
@@ -3116,6 +3555,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 70
   },
   {
@@ -3123,6 +3564,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 70
   },
   {
@@ -3130,6 +3573,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 70
   },
   {
@@ -3137,6 +3582,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 71
   },
   {
@@ -3144,6 +3591,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 71
   },
   {
@@ -3151,6 +3600,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 71
   },
   {
@@ -3158,6 +3609,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 72
   },
   {
@@ -3165,6 +3618,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 72
   },
   {
@@ -3172,6 +3627,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 72
   },
   {
@@ -3179,6 +3636,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 72
   },
   {
@@ -3186,6 +3645,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 73
   },
   {
@@ -3193,6 +3654,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 73
   },
   {
@@ -3200,6 +3663,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 73
   },
   {
@@ -3207,6 +3672,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 73
   },
   {
@@ -3214,6 +3681,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 74
   },
   {
@@ -3221,6 +3690,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 74
   },
   {
@@ -3228,6 +3699,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 74
   },
   {
@@ -3235,6 +3708,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 74
   },
   {
@@ -3242,6 +3717,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 75
   },
   {
@@ -3249,6 +3726,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 75
   },
   {
@@ -3256,6 +3735,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 75
   },
   {
@@ -3263,6 +3744,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 75
   },
   {
@@ -3270,6 +3753,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_076.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 76
   },
   {
@@ -3277,6 +3762,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_076.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 76
   },
   {
@@ -3284,6 +3771,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 77
   },
   {
@@ -3291,6 +3780,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 77
   },
   {
@@ -3298,6 +3789,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 77
   },
   {
@@ -3305,6 +3798,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_078.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 78
   },
   {
@@ -3312,6 +3807,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_078.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 78
   },
   {
@@ -3319,6 +3816,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 79
   },
   {
@@ -3326,6 +3825,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 79
   },
   {
@@ -3333,6 +3834,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 79
   },
   {
@@ -3340,6 +3843,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 80
   },
   {
@@ -3347,6 +3852,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 80
   },
   {
@@ -3354,6 +3861,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 80
   },
   {
@@ -3361,6 +3870,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 80
   },
   {
@@ -3368,6 +3879,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 81
   },
   {
@@ -3375,6 +3888,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 81
   },
   {
@@ -3382,6 +3897,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 81
   },
   {
@@ -3389,6 +3906,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 81
   },
   {
@@ -3396,6 +3915,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 82
   },
   {
@@ -3403,6 +3924,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 82
   },
   {
@@ -3410,6 +3933,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 82
   },
   {
@@ -3417,6 +3942,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 83
   },
   {
@@ -3424,6 +3951,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 83
   },
   {
@@ -3431,6 +3960,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 83
   },
   {
@@ -3438,6 +3969,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_084.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 84
   },
   {
@@ -3445,6 +3978,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_084.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 84
   },
   {
@@ -3452,6 +3987,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 85
   },
   {
@@ -3459,6 +3996,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 85
   },
   {
@@ -3466,6 +4005,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 85
   },
   {
@@ -3473,6 +4014,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 85
   },
   {
@@ -3480,6 +4023,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 86
   },
   {
@@ -3487,6 +4032,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 86
   },
   {
@@ -3494,6 +4041,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 86
   },
   {
@@ -3501,6 +4050,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 87
   },
   {
@@ -3508,6 +4059,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 87
   },
   {
@@ -3515,6 +4068,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 87
   },
   {
@@ -3522,6 +4077,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_088.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 88
   },
   {
@@ -3529,6 +4086,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_088.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 88
   },
   {
@@ -3536,6 +4095,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_089.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 89
   },
   {
@@ -3543,6 +4104,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_089.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 89
   },
   {
@@ -3550,6 +4113,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 90
   },
   {
@@ -3557,6 +4122,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 90
   },
   {
@@ -3564,6 +4131,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 90
   },
   {
@@ -3571,6 +4140,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 91
   },
   {
@@ -3578,6 +4149,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 91
   },
   {
@@ -3585,6 +4158,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 91
   },
   {
@@ -3592,6 +4167,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 92
   },
   {
@@ -3599,6 +4176,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 92
   },
   {
@@ -3606,6 +4185,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 92
   },
   {
@@ -3613,6 +4194,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 92
   },
   {
@@ -3620,6 +4203,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 92
   },
   {
@@ -3627,6 +4212,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.F.mp3",
    "exists": true,
    "section": "F",
+   "page": null,
+   "index": null,
    "unit": 92
   },
   {
@@ -3634,6 +4221,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 93
   },
   {
@@ -3641,6 +4230,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 93
   },
   {
@@ -3648,6 +4239,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 93
   },
   {
@@ -3655,6 +4248,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 93
   },
   {
@@ -3662,6 +4257,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 94
   },
   {
@@ -3669,6 +4266,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 94
   },
   {
@@ -3676,6 +4275,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 94
   },
   {
@@ -3683,6 +4284,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 94
   },
   {
@@ -3690,6 +4293,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_095.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 95
   },
   {
@@ -3697,6 +4302,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_095.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 95
   },
   {
@@ -3704,6 +4311,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 96
   },
   {
@@ -3711,6 +4320,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 96
   },
   {
@@ -3718,6 +4329,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 96
   },
   {
@@ -3725,6 +4338,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 96
   },
   {
@@ -3732,6 +4347,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 97
   },
   {
@@ -3739,6 +4356,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 97
   },
   {
@@ -3746,6 +4365,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 97
   },
   {
@@ -3753,6 +4374,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 97
   },
   {
@@ -3760,6 +4383,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.E.mp3",
    "exists": true,
    "section": "E",
+   "page": null,
+   "index": null,
    "unit": 97
   },
   {
@@ -3767,6 +4392,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.F.mp3",
    "exists": true,
    "section": "F",
+   "page": null,
+   "index": null,
    "unit": 97
   },
   {
@@ -3774,6 +4401,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_098.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 98
   },
   {
@@ -3781,6 +4410,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_098.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 98
   },
   {
@@ -3788,6 +4419,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_099.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 99
   },
   {
@@ -3795,6 +4428,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_099.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 99
   },
   {
@@ -3802,6 +4437,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.A.mp3",
    "exists": true,
    "section": "A",
+   "page": null,
+   "index": null,
    "unit": 100
   },
   {
@@ -3809,6 +4446,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.B.mp3",
    "exists": true,
    "section": "B",
+   "page": null,
+   "index": null,
    "unit": 100
   },
   {
@@ -3816,6 +4455,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.C.mp3",
    "exists": true,
    "section": "C",
+   "page": null,
+   "index": null,
    "unit": 100
   },
   {
@@ -3823,6 +4464,8 @@
    "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.D.mp3",
    "exists": true,
    "section": "D",
+   "page": null,
+   "index": null,
    "unit": 100
   }
  ],
@@ -3953,6 +4596,16 @@
    ],
    "exercises": [
     {
+     "number": 1,
+     "instructions": "Over to you",
+     "body": "Over to you\n                   Write your answers.\n                   1 How often can you spend at least half an hour or forty- five minutes on a unit?\n\n\n                   2 How often can you revise? How much time can you spend when you revise? Where will you\n                     do it?\n\n\n\n\n         B     Studying a new unit\n               When you are studying a unit for the first time, you need to be active when you are learning.\n               • With a new word or phrase, say it aloud [speak it so you can hear it], and repeat it to yourself\n                 silently [in your head, not speaking]. If you have the eBook that goes with the book, use it to\n                   check the pronunciation.\n               •   Use a highlighter pen to mark words you think are important or difficult.\n               •   Write down new words and phrases in your notebook. (See Unit 2 for\n                   more information.)\n               •   Always try to write an example sentence for new words. You can choose an example\n                   from this book or a dictionary, but an example from your own life will often help you to\n                   remember a word, e.g. I shared a flat with an Australian girl when I was in London last year.\n               •   Do exercises in pencil, then you can rub them out (using a rubber) and do them again later.\n                   This is a good way to revise vocabulary."
+    },
+    {
+     "number": 2,
+     "instructions": "Over to you",
+     "body": "Over to you\n                   Write your answers.\n                   1 Which of these things do you do now when you are learning vocabulary?\n\n\n                   2 What will you do in the future?\n\n\n\n         C     Revising a unit\n               When you are revising a unit one or two days later, it is also important to be as active as possible.\n               • Test yourself, e.g. look at a word and cover the meaning. Can you remember what the\n                 meaning is? If you can’t, check the meaning, then come back to the word in five minutes’\n                 time and test yourself again.\n               • Look at what you wrote in your notebook when you first studied the unit. Is there any new\n                 information you want to add, e.g. something about the pronunciation, or a common word\n                 partner? (See Unit 2.)\n               • Diagrams may help you to organise some of the vocabulary differently, and help you to remember it.\n\n  8            English Vocabulary in Use Pre-intermediate and intermediate"
+    },
+    {
      "number": 4,
      "instructions": "Using this method, find opposites for the words in bold.",
      "body": "Using this method, find opposites for the words in bold.\n             1 My room is very clean. opp dirty\n             2 It’s a permanent job. opp\n             3 He was kind to all of his animals. opp\n             4 Babies have very soft, smooth skin. opp\n             5 Where’s the entrance? opp\n             6 Was the bird dead? opp\n             7 Did they accept the invitation? opp\n             • Building word families (see Units 70–72) will also help to expand your vocabulary. From a\n               noun, verb or adjective, you can often find related words in the dictionary with a similar\n               meaning. So, you can often learn two or three words, and not just one, e.g. argue v = have\n               an angry discussion; n = argument."
@@ -4005,25 +4658,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_001.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4244,13 +4905,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_002.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_002.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_002.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_002.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4417,6 +5082,16 @@
    ],
    "exercises": [
     {
+     "number": 1,
+     "instructions": "Correct the spelling mistakes. Use a dictionary to check your answers.",
+     "body": "Correct the spelling mistakes. Use a dictionary to check your answers.\n                   1 allways    always                                  6 confortable\n                   2 realy                                              7 accomodation\n                   3 unfortunatly                                       8 beautifull\n                   4 expecially                                         9 unbeleivable\n                   5 cloths                                            10 neccesary"
+    },
+    {
+     "number": 2,
+     "instructions": "In the word island /ˈaɪlənd/, the letter ‘s’ is silent (not pronounced). Use your dictionary to",
+     "body": "In the word island /ˈaɪlənd/, the letter ‘s’ is silent (not pronounced). Use your dictionary to\n                   find the silent letters in these words.\n                   1 knee                2 comb                 3 castle            4 salmon              5 receipt\n\n\n\n\n           C        Defining words\n                    ‘Defining words’ are words that dictionaries use when they define [explain] the words in the\n                    dictionary. Some of these are quite common.\n                    emphasise [give something more attention and importance], e.g. My teacher has always\n                    emphasised the importance of writing down new words in a notebook.\n                    relating to or connected to/with [having a relationship with someone or something],\n                    e.g. musical is connected with / related to music\n                    amount [how much there is of something], e.g. £5 million is a large amount of money.\n                    official [done by the government or someone in authority], e.g. A passport is an official document.\n                    behave [do or say things in a particular way], e.g. People can behave strangely when they’re nervous.\n\n  12                English Vocabulary in Use Pre-intermediate and intermediate"
+    },
+    {
      "number": 3,
      "instructions": "Complete the dictionary definitions using words from the box.",
      "body": "Complete the dictionary definitions using words from the box.\n\n       connected with      emphasise relating to          behave official amount\n\n      1 industrial / ɪnˈdʌstriəl/ 1 adjective connected with      industry\n      2 sum /sʌm/ noun [C] an                         of money\n      3 pretend /prɪˈtend/ verb [I,T] to                      as if something is true when it is not\n      4 certificate /səˈtɪfɪkət/ noun [C] an                       document that gives details to show\n        something is true\n      5 not at all /nɒt ət ɔːl/ used instead of ‘no’ or ‘not’ to                    what you are saying:\n        I’m not at all happy about it\n      6 legal /ˈliːgəl/ adjective                    the law\n\nD     Using a dictionary\n      • When you use a dictionary to check the meaning of a word, put a tick (✓) next to it. Each\n        time you return to a page with a tick, see [find out] if you remember the word.\n      • When you meet a new word or phrase in a text, first try to guess the meaning [try to think of\n        the meaning when you don’t know it]. Then, use a dictionary to see if your guess was correct.\n      • Don’t just read the dictionary definition. Example phrases and sentences show you how a\n        word or phrase is used, and they help you to understand the meaning more clearly.\n      • If you look up a word in a bilingual dictionary and get two or three different translations,\n        check these words in an English dictionary to see which translation is the best one for\n        the situation.\n      • Remember that many words have more than one meaning. The first meaning in the\n        dictionary is not always the one you want. You may need to read through the different\n        meanings."
@@ -4464,25 +5139,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_003.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4704,31 +5387,41 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_004.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -4911,19 +5604,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_005.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5171,13 +5870,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_006.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_006.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_006.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_006.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5489,19 +6192,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_007.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -5801,25 +6510,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_008.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6067,19 +6784,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_009.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6389,25 +7112,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_010.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6677,19 +7408,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_011.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -6980,19 +7717,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_012.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7199,13 +7942,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_013.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_013.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_013.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_013.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -7466,19 +8213,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_014.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -7726,25 +8479,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_015.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8045,6 +8806,11 @@
      "number": 4,
      "text": "2 instead                     4 early                   6 takeaway\n       3 stay in                     5 come round              7 chat\n\n\n\n\n                                           English Vocabulary in Use Pre-intermediate and Intermediate       213",
      "instructions": "2 instead                     4 early                   6 takeaway"
+    },
+    {
+     "number": 5,
+     "text": "Possible answers:\n                 Similar\n                 1 I usually have a light lunch.\n                 2 I have my main meal in the evening.\n                 3 I sometimes have a bath instead of a shower in the winter.\n                 Different\n                 1 I usually wake up before 7.00 am.\n                 2 I have a shower in the morning.\n                 3 I do my own washing because I don’t have a cleaner.\n\n                 Unit 17",
+     "instructions": "Possible answers:"
     }
    ],
    "audio": [
@@ -8052,31 +8818,41 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_016.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8269,25 +9045,57 @@
      "body": "Over to you\n           Answer the questions about your home.\n           1 Do you live in a house or flat?                    5 How long have you lived there?\n           2 If you live in a flat, what floor is it on?        6 Do you have these things:\n           3 Do you own your home or rent it?                     air conditioning?    central heating?\n           4 Are you in the centre, or on the outskirts of        a balcony?\n             your town?\n\n\n\n                                                 English Vocabulary in Use Pre-intermediate and Intermediate       41"
     }
    ],
-   "answers": [],
+   "answers": [
+    {
+     "number": 1,
+     "text": "2 False. They used to live in the centre of town.         7 False. A French couple live upstairs.\n                 3 False. They rent their flat.                            8 False. The parents own a cottage.\n                 4 True                                                    9 True\n                 5 False. They live on the second floor.                  10 True\n                 6 True",
+     "instructions": "2 False. They used to live in the centre of town.         7 False. A French couple live upstairs."
+    },
+    {
+     "number": 2,
+     "text": "Positive: air conditioning, character, charming\n                 Negative: dark, no central heating",
+     "instructions": "Positive: air conditioning, character, charming"
+    },
+    {
+     "number": 3,
+     "text": "2 a lift   3 a balcony      4 a cottage      5 front door        6 steps",
+     "instructions": "2 a lift   3 a balcony      4 a cottage      5 front door        6 steps"
+    },
+    {
+     "number": 4,
+     "text": "2 on; downstairs               5 outskirts                8 floor; lift\n                 3 space                        6 balcony                  9 moved\n                 4 location                     7 heat                    10 light",
+     "instructions": "2 on; downstairs               5 outskirts                8 floor; lift"
+    },
+    {
+     "number": 5,
+     "text": "Possible answers:\n                 I live in a house, which I own, and it’s near the centre of town. I’ve lived here for seven years now.\n                 I used to live in a house in London, but I moved because I didn’t need to be in London for my job.\n                 I’ve got central heating where I live, but I haven’t got air conditioning or a balcony.\n\n                 Unit 18",
+     "instructions": "Possible answers:"
+    }
+   ],
    "audio": [
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_017.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8533,19 +9341,49 @@
      "body": "Over to you\n         Look at section B on the opposite page again. Which do you prefer, and why? Compare your\n         answers with someone else if possible.\n\n\n                                           English Vocabulary in Use Pre-intermediate and Intermediate       43"
     }
    ],
-   "answers": [],
+   "answers": [
+    {
+     "number": 1,
+     "text": "2 in the microwave             4 in the washing machine                    6 in a cupboard\n                 3 in the oven                  5 in the dishwasher (or sink)               7 in the freezer",
+     "instructions": "2 in the microwave             4 in the washing machine                    6 in a cupboard"
+    },
+    {
+     "number": 2,
+     "text": "2 sink, in the kitchen\n                  3 curtains, in the living room or the bedroom\n                  4 cushions, in the living room\n                  5 kettle, in the kitchen\n                  6 washbasin, in the bathroom\n                  7 carpet, in the living room or the bedrooms\n                  8 pillow, in the bedroom\n                  9 washing machine, in the utility room or the kitchen\n                 10 cooker, in the kitchen\n                 11 armchair, in the living room\n                 12 tiles, in any room, though more likely in the kitchen or bathroom",
+     "instructions": "2 sink, in the kitchen"
+    },
+    {
+     "number": 3,
+     "text": "2 wooden                       5 share; own               8 blanket; duvet\n                 3 choice                       6 spare                    9 en suite\n                 4 study                        7 tap(s)                  10 utility",
+     "instructions": "2 wooden                       5 share; own               8 blanket; duvet"
+    },
+    {
+     "number": 4,
+     "text": "Possible answers:\n                 1 tiles 2 tiles 3 carpet and a couple of rugs                 4 curtains   5 a duvet",
+     "instructions": "Possible answers:"
+    },
+    {
+     "number": 5,
+     "text": "Possible answers:\n                 I like big sofas with lots of cushions.\n                 I prefer a wooden floor with rugs.\n                 I have no preference – it depends on the blinds and the curtains.\n                 I prefer a duvet.\n                 I must have two pillows. I can’t stand only one pillow.\n\n    214          English Vocabulary in Use Pre-intermediate and Intermediate",
+     "instructions": "Possible answers:"
+    }
+   ],
    "audio": [
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_018.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_018.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_018.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_018.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -8791,25 +9629,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_019.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -9052,19 +9898,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_020.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -9335,13 +10187,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_021.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_021.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_021.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_021.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -9603,13 +10459,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_022.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_022.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_022.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_022.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -9794,13 +10654,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_023.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_023.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_023.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_023.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10084,25 +10948,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_024.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10433,25 +11305,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_025.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10680,19 +11560,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_026.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -10880,19 +11766,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_027.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11183,19 +12075,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_028.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11470,19 +12368,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_029.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -11593,25 +12497,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_030.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -11949,19 +12861,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_031.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12276,19 +13194,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_032.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12599,13 +13523,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_033.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_033.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_033.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_033.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -12899,19 +13827,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_034.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13263,25 +14197,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_035.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13593,25 +14535,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_036.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -13883,31 +14833,41 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_037.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -14148,19 +15108,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_038.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -14422,13 +15388,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_039.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_039.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_039.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_039.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -14727,13 +15697,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_040.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_040.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_040.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_040.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15059,13 +16033,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_041.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_041.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_041.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_041.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15368,19 +16346,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_042.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -15662,13 +16646,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_043.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_043.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_043.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_043.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16016,25 +17004,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_044.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16213,19 +17209,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_045.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16418,19 +17420,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_046.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16649,13 +17657,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_047.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_047.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_047.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_047.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -16922,25 +17934,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_048.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -17158,19 +18178,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_1/U_049.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -17463,19 +18489,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_050.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -17780,13 +18812,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_051.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_051.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_051.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_051.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -18151,25 +19187,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_052.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -18431,25 +19475,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_053.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -18785,19 +19837,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_054.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -19119,19 +20177,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_055.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -19420,19 +20484,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_056.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -19704,13 +20774,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_057.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_057.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_057.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_057.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -19906,13 +20980,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_058.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_058.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_058.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_058.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -20141,13 +21219,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_059.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_059.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_059.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_059.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -20472,31 +21554,41 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_060.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -20858,37 +21950,49 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.F.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_061.F.mp3",
      "exists": true,
-     "section": "F"
+     "section": "F",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -21135,19 +22239,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_062.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -21397,13 +22507,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_063.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_063.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_063.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_063.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -21677,13 +22791,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_064.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_064.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_064.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_064.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -21908,19 +23026,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_065.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -22145,19 +23269,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_066.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -22425,31 +23555,41 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_067.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -22721,19 +23861,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_068.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -22979,19 +24125,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_069.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -23329,19 +24481,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_070.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -23682,19 +24840,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_071.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -23983,25 +25147,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_072.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -24281,25 +25453,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_073.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -24592,25 +25772,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_074.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -24925,25 +26113,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_075.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -25256,13 +26452,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_076.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_076.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_076.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_076.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -25590,19 +26790,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_077.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -25879,13 +27085,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_078.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_078.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_078.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_078.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -26167,19 +27377,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_079.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -26455,25 +27671,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_080.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -26754,25 +27978,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_081.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -27025,19 +28257,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_082.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -27260,19 +28498,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_083.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -27541,13 +28785,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_084.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_084.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_084.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_084.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -27891,25 +29139,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_085.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -28176,19 +29432,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_086.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -28372,19 +29634,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_087.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -28620,13 +29888,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_088.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_088.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_088.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_088.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -28903,13 +30175,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_089.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_089.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_089.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_089.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -29117,19 +30393,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_090.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -29396,19 +30678,25 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_091.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -29650,37 +30938,49 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.F.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_092.F.mp3",
      "exists": true,
-     "section": "F"
+     "section": "F",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -29823,25 +31123,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_093.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -30050,25 +31358,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_094.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -30379,13 +31695,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_095.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_095.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_095.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_095.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [
@@ -30704,25 +32024,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_096.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -31031,37 +32359,49 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.E.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.E.mp3",
      "exists": true,
-     "section": "E"
+     "section": "E",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.F.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_097.F.mp3",
      "exists": true,
-     "section": "F"
+     "section": "F",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -31282,6 +32622,11 @@
      "number": 3,
      "text": "2 I regret to inform you …\n       3 I am pleased to inform you …\n       4 Are you available on Wednesday?\n       5 I would like to enquire about the dates of the course.\n       6 Please accept our apologies for the delay.\n       7 I would be grateful if you could send me the details.\n       8 Could you confirm that in writing?\n       9 I enclose a copy of my CV.\n                                               English Vocabulary in Use Pre-intermediate and Intermediate   243",
      "instructions": "2 I regret to inform you …"
+    },
+    {
+     "number": 4,
+     "text": "2 writing                  4 regarding/about             6 delays            8 sincerely\n              3 response/reply           5 regret                      7 apologise\n\n              Unit 99",
+     "instructions": "2 writing                  4 regarding/about             6 delays            8 sincerely"
     }
    ],
    "audio": [
@@ -31289,13 +32634,17 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_098.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_098.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_098.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_098.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -31447,19 +32796,44 @@
      "body": "Complete the email with words from the box.\n\n        touch join fact together hoping in\n        let  since give ages actually anyway\n\n\n                                                                              Reply      Forward\n\n          From       Jonny M.                                              4:42 AM (5 hours ago)\n\n\n          Dear Gilberto\n\n          I haven’t been in 1     touch       for 2             – I’m sorry about that. In\n          3                  , I’ve been really busy 4                      I last wrote because\n          I’ve got a new job in TV –   5                 it’s with the BBC. I’m doing research\n          for various documentary programmes and I’m 6                              to go to Brazil\n          7                  three months’ time. If so, I’ll obviously get in touch.\n          It would be great if we could get 8                     , and maybe Filipe could\n          9                  us if he’s free. 10                  , I’ll write again soon. I hope\n          things are going well with you, and 11                       me know when the baby\n          arrives. And, of course,  12                  my love to Teresa.\n\n          All the best,\n          Jonny\n\n\n\n\n                                             English Vocabulary in Use Pre-intermediate and Intermediate   205"
     }
    ],
-   "answers": [],
+   "answers": [
+    {
+     "number": 1,
+     "text": "in a week’s time; once again; let you know; best wishes; give my regards to",
+     "instructions": "in a week’s time; once again; let you know; best wishes; give my regards to"
+    },
+    {
+     "number": 2,
+     "text": "2 Dear Mark                                               4 Lots of love, Evelyn\n              3 Send/Give my regards/love to Patricia                   5 All the best, Sam",
+     "instructions": "2 Dear Mark                                               4 Lots of love, Evelyn"
+    },
+    {
+     "number": 3,
+     "text": "2 Do you fancy going?                                     6 I’m going in three weeks’ time.\n              3 I’ll be/get in touch soon.                              7 Jamie is a laugh.\n              4 It looks new, but in fact it isn’t.                     8 Let’s get together for lunch.\n              5 I’ll let you know as soon as possible.                  9 It’s ages since I wrote.",
+     "instructions": "2 Do you fancy going?                                     6 I’m going in three weeks’ time."
+    },
+    {
+     "number": 4,
+     "text": "2 ages                         6 hoping                  10 Anyway\n              3 fact                         7 in                      11 let\n              4 since                        8 together                12 give\n              5 actually                     9 join\n\n              Unit 100",
+     "instructions": "2 ages                         6 hoping                  10 Anyway"
+    }
+   ],
    "audio": [
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_099.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_099.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_099.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_099.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],
@@ -31778,25 +33152,33 @@
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.A.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.A.mp3",
      "exists": true,
-     "section": "A"
+     "section": "A",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.B.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.B.mp3",
      "exists": true,
-     "section": "B"
+     "section": "B",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.C.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.C.mp3",
      "exists": true,
-     "section": "C"
+     "section": "C",
+     "page": null,
+     "index": null
     },
     {
      "path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.D.mp3",
      "extracted_path": "sources/audio/pre_intermediate_intermediate/Part_2/U_100.D.mp3",
      "exists": true,
-     "section": "D"
+     "section": "D",
+     "page": null,
+     "index": null
     }
    ],
    "unplaced_glosses": [],

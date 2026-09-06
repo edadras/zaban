@@ -11,5 +11,7 @@
 __pycache__/
 *.pyc
 
-# Staged new sources, extracted from the `new` branch (3.1 GB)
+
+# Page images rendered for OCR, and the archives they came from. The OCR
+# output itself (sources/ocr) is kept: it costs hours to regenerate.
 sources/incoming/

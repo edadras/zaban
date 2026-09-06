@@ -1,0 +1,2116 @@
+{
+ "key": "pronunciation_elementary",
+ "source": "sources/incoming/audio_pron_elementary",
+ "files": 351,
+ "unresolved": [],
+ "collisions": [],
+ "transcode_failures": [],
+ "placed": [
+  {
+   "file": "T_A001.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/01 - A1.wma",
+   "disc": "A",
+   "track": 1
+  },
+  {
+   "file": "T_A002.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/02 - A2.wma",
+   "disc": "A",
+   "track": 2
+  },
+  {
+   "file": "T_A003.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/03 - A3.wma",
+   "disc": "A",
+   "track": 3
+  },
+  {
+   "file": "T_A004.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/04 - A4.wma",
+   "disc": "A",
+   "track": 4
+  },
+  {
+   "file": "T_A005.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/05 - A5.wma",
+   "disc": "A",
+   "track": 5
+  },
+  {
+   "file": "T_A006.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/06 - A6.wma",
+   "disc": "A",
+   "track": 6
+  },
+  {
+   "file": "T_A007.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/07 - A7.wma",
+   "disc": "A",
+   "track": 7
+  },
+  {
+   "file": "T_A008.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/08 - A8.wma",
+   "disc": "A",
+   "track": 8
+  },
+  {
+   "file": "T_A009.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/09 - A9.wma",
+   "disc": "A",
+   "track": 9
+  },
+  {
+   "file": "T_A010.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/10 - A10.wma",
+   "disc": "A",
+   "track": 10
+  },
+  {
+   "file": "T_A011.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/11 - A11.wma",
+   "disc": "A",
+   "track": 11
+  },
+  {
+   "file": "T_A012.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/12 - A12.wma",
+   "disc": "A",
+   "track": 12
+  },
+  {
+   "file": "T_A013.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/13 - A13.wma",
+   "disc": "A",
+   "track": 13
+  },
+  {
+   "file": "T_A014.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/14 - A14.wma",
+   "disc": "A",
+   "track": 14
+  },
+  {
+   "file": "T_A015.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/15 - A15.wma",
+   "disc": "A",
+   "track": 15
+  },
+  {
+   "file": "T_A016.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/16 - A16.wma",
+   "disc": "A",
+   "track": 16
+  },
+  {
+   "file": "T_A017.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/17 - A17.wma",
+   "disc": "A",
+   "track": 17
+  },
+  {
+   "file": "T_A018.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/18 - A18.wma",
+   "disc": "A",
+   "track": 18
+  },
+  {
+   "file": "T_A019.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/19 - A19.wma",
+   "disc": "A",
+   "track": 19
+  },
+  {
+   "file": "T_A020.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/20 - A20.wma",
+   "disc": "A",
+   "track": 20
+  },
+  {
+   "file": "T_A021.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/21 - A21.wma",
+   "disc": "A",
+   "track": 21
+  },
+  {
+   "file": "T_A022.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/22 - A22.wma",
+   "disc": "A",
+   "track": 22
+  },
+  {
+   "file": "T_A023.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/23 - A23.wma",
+   "disc": "A",
+   "track": 23
+  },
+  {
+   "file": "T_A024.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/24 - A24.wma",
+   "disc": "A",
+   "track": 24
+  },
+  {
+   "file": "T_A025.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/25 - A25.wma",
+   "disc": "A",
+   "track": 25
+  },
+  {
+   "file": "T_A026.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/26 - A26.wma",
+   "disc": "A",
+   "track": 26
+  },
+  {
+   "file": "T_A027.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/27 - A27.wma",
+   "disc": "A",
+   "track": 27
+  },
+  {
+   "file": "T_A028.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/28 - A28.wma",
+   "disc": "A",
+   "track": 28
+  },
+  {
+   "file": "T_A029.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/29 - A29.wma",
+   "disc": "A",
+   "track": 29
+  },
+  {
+   "file": "T_A030.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/30 - A30.wma",
+   "disc": "A",
+   "track": 30
+  },
+  {
+   "file": "T_A031.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/31 - A31.wma",
+   "disc": "A",
+   "track": 31
+  },
+  {
+   "file": "T_A032.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/32 - A32.wma",
+   "disc": "A",
+   "track": 32
+  },
+  {
+   "file": "T_A033.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/33 - A33.wma",
+   "disc": "A",
+   "track": 33
+  },
+  {
+   "file": "T_A034.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/34 - A34.wma",
+   "disc": "A",
+   "track": 34
+  },
+  {
+   "file": "T_A035.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/35 - A35.wma",
+   "disc": "A",
+   "track": 35
+  },
+  {
+   "file": "T_A036.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/36 - A36.wma",
+   "disc": "A",
+   "track": 36
+  },
+  {
+   "file": "T_A037.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/37 - A37.wma",
+   "disc": "A",
+   "track": 37
+  },
+  {
+   "file": "T_A038.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/38 - A38.wma",
+   "disc": "A",
+   "track": 38
+  },
+  {
+   "file": "T_A039.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/39 - A39.wma",
+   "disc": "A",
+   "track": 39
+  },
+  {
+   "file": "T_A040.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/40 - A40.wma",
+   "disc": "A",
+   "track": 40
+  },
+  {
+   "file": "T_A041.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/41 - A41.wma",
+   "disc": "A",
+   "track": 41
+  },
+  {
+   "file": "T_A042.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/42 - A42.wma",
+   "disc": "A",
+   "track": 42
+  },
+  {
+   "file": "T_A043.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/43 - A43.wma",
+   "disc": "A",
+   "track": 43
+  },
+  {
+   "file": "T_A044.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/44 - A44.wma",
+   "disc": "A",
+   "track": 44
+  },
+  {
+   "file": "T_A045.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/45 - A45.wma",
+   "disc": "A",
+   "track": 45
+  },
+  {
+   "file": "T_A046.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/46 - A46.wma",
+   "disc": "A",
+   "track": 46
+  },
+  {
+   "file": "T_A047.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/47 - A47.wma",
+   "disc": "A",
+   "track": 47
+  },
+  {
+   "file": "T_A048.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/48 - A48.wma",
+   "disc": "A",
+   "track": 48
+  },
+  {
+   "file": "T_A049.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/49 - A49.wma",
+   "disc": "A",
+   "track": 49
+  },
+  {
+   "file": "T_A050.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/50 - A50.wma",
+   "disc": "A",
+   "track": 50
+  },
+  {
+   "file": "T_A051.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/51 - A51.wma",
+   "disc": "A",
+   "track": 51
+  },
+  {
+   "file": "T_A052.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/52 - A52.wma",
+   "disc": "A",
+   "track": 52
+  },
+  {
+   "file": "T_A053.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/53 - A53.wma",
+   "disc": "A",
+   "track": 53
+  },
+  {
+   "file": "T_A054.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/54 - A54.wma",
+   "disc": "A",
+   "track": 54
+  },
+  {
+   "file": "T_A055.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/55 - A55.wma",
+   "disc": "A",
+   "track": 55
+  },
+  {
+   "file": "T_A056.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/56 - A56.wma",
+   "disc": "A",
+   "track": 56
+  },
+  {
+   "file": "T_A057.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/57 - A57.wma",
+   "disc": "A",
+   "track": 57
+  },
+  {
+   "file": "T_A058.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/58 - A58.wma",
+   "disc": "A",
+   "track": 58
+  },
+  {
+   "file": "T_A059.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/59 - A59.wma",
+   "disc": "A",
+   "track": 59
+  },
+  {
+   "file": "T_A060.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/60 - A60.wma",
+   "disc": "A",
+   "track": 60
+  },
+  {
+   "file": "T_A061.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/61 - A61.wma",
+   "disc": "A",
+   "track": 61
+  },
+  {
+   "file": "T_A062.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/62 - A62.wma",
+   "disc": "A",
+   "track": 62
+  },
+  {
+   "file": "T_A063.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/63 - A63.wma",
+   "disc": "A",
+   "track": 63
+  },
+  {
+   "file": "T_A064.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/64 - A64.wma",
+   "disc": "A",
+   "track": 64
+  },
+  {
+   "file": "T_A065.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/65 - A65.wma",
+   "disc": "A",
+   "track": 65
+  },
+  {
+   "file": "T_A066.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/66 - A66.wma",
+   "disc": "A",
+   "track": 66
+  },
+  {
+   "file": "T_A067.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/67 - A67.wma",
+   "disc": "A",
+   "track": 67
+  },
+  {
+   "file": "T_A068.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/68 - A68.wma",
+   "disc": "A",
+   "track": 68
+  },
+  {
+   "file": "T_A069.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/69 - A69.wma",
+   "disc": "A",
+   "track": 69
+  },
+  {
+   "file": "T_A070.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/70 - A70.wma",
+   "disc": "A",
+   "track": 70
+  },
+  {
+   "file": "T_A071.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/71 - A71.wma",
+   "disc": "A",
+   "track": 71
+  },
+  {
+   "file": "T_A072.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/72 - A72.wma",
+   "disc": "A",
+   "track": 72
+  },
+  {
+   "file": "T_A073.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/73 - A73.wma",
+   "disc": "A",
+   "track": 73
+  },
+  {
+   "file": "T_A074.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/74 - A74.wma",
+   "disc": "A",
+   "track": 74
+  },
+  {
+   "file": "T_A075.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/75 - A75.wma",
+   "disc": "A",
+   "track": 75
+  },
+  {
+   "file": "T_A076.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/76 - A76.wma",
+   "disc": "A",
+   "track": 76
+  },
+  {
+   "file": "T_A077.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/77 - A77.wma",
+   "disc": "A",
+   "track": 77
+  },
+  {
+   "file": "T_A078.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/78 - A78.wma",
+   "disc": "A",
+   "track": 78
+  },
+  {
+   "file": "T_A079.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/79 - A79.wma",
+   "disc": "A",
+   "track": 79
+  },
+  {
+   "file": "T_A080.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/80 - A80.wma",
+   "disc": "A",
+   "track": 80
+  },
+  {
+   "file": "T_A081.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 01/81 - A81.wma",
+   "disc": "A",
+   "track": 81
+  },
+  {
+   "file": "T_B001.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/01 - B1.wma",
+   "disc": "B",
+   "track": 1
+  },
+  {
+   "file": "T_B002.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/02 - B2.wma",
+   "disc": "B",
+   "track": 2
+  },
+  {
+   "file": "T_B003.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/03 - B3.wma",
+   "disc": "B",
+   "track": 3
+  },
+  {
+   "file": "T_B004.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/04 - B4.wma",
+   "disc": "B",
+   "track": 4
+  },
+  {
+   "file": "T_B005.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/05 - B5.wma",
+   "disc": "B",
+   "track": 5
+  },
+  {
+   "file": "T_B006.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/06 - B6.wma",
+   "disc": "B",
+   "track": 6
+  },
+  {
+   "file": "T_B007.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/07 - B7.wma",
+   "disc": "B",
+   "track": 7
+  },
+  {
+   "file": "T_B008.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/08 - B8.wma",
+   "disc": "B",
+   "track": 8
+  },
+  {
+   "file": "T_B009.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/09 - B9.wma",
+   "disc": "B",
+   "track": 9
+  },
+  {
+   "file": "T_B010.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/10 - B10.wma",
+   "disc": "B",
+   "track": 10
+  },
+  {
+   "file": "T_B011.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/11 - B11.wma",
+   "disc": "B",
+   "track": 11
+  },
+  {
+   "file": "T_B012.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/12 - B12.wma",
+   "disc": "B",
+   "track": 12
+  },
+  {
+   "file": "T_B013.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/13 - B13.wma",
+   "disc": "B",
+   "track": 13
+  },
+  {
+   "file": "T_B014.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/14 - B14.wma",
+   "disc": "B",
+   "track": 14
+  },
+  {
+   "file": "T_B015.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/15 - B15.wma",
+   "disc": "B",
+   "track": 15
+  },
+  {
+   "file": "T_B016.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/16 - B16.wma",
+   "disc": "B",
+   "track": 16
+  },
+  {
+   "file": "T_B017.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/17 - B17.wma",
+   "disc": "B",
+   "track": 17
+  },
+  {
+   "file": "T_B018.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/18 - B18.wma",
+   "disc": "B",
+   "track": 18
+  },
+  {
+   "file": "T_B019.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/19 - B19.wma",
+   "disc": "B",
+   "track": 19
+  },
+  {
+   "file": "T_B020.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/20 - B20.wma",
+   "disc": "B",
+   "track": 20
+  },
+  {
+   "file": "T_B021.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/21 - B21.wma",
+   "disc": "B",
+   "track": 21
+  },
+  {
+   "file": "T_B022.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/22 - B22.wma",
+   "disc": "B",
+   "track": 22
+  },
+  {
+   "file": "T_B023.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/23 - B23.wma",
+   "disc": "B",
+   "track": 23
+  },
+  {
+   "file": "T_B024.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/24 - B24.wma",
+   "disc": "B",
+   "track": 24
+  },
+  {
+   "file": "T_B025.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/25 - B25.wma",
+   "disc": "B",
+   "track": 25
+  },
+  {
+   "file": "T_B026.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/26 - B26.wma",
+   "disc": "B",
+   "track": 26
+  },
+  {
+   "file": "T_B027.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/27 - B27.wma",
+   "disc": "B",
+   "track": 27
+  },
+  {
+   "file": "T_B028.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/28 - B28.wma",
+   "disc": "B",
+   "track": 28
+  },
+  {
+   "file": "T_B029.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/29 - B29.wma",
+   "disc": "B",
+   "track": 29
+  },
+  {
+   "file": "T_B030.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/30 - B30.wma",
+   "disc": "B",
+   "track": 30
+  },
+  {
+   "file": "T_B031.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/31 - B31.wma",
+   "disc": "B",
+   "track": 31
+  },
+  {
+   "file": "T_B032.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/32 - B32.wma",
+   "disc": "B",
+   "track": 32
+  },
+  {
+   "file": "T_B033.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/33 - B33.wma",
+   "disc": "B",
+   "track": 33
+  },
+  {
+   "file": "T_B034.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/34 - B34.wma",
+   "disc": "B",
+   "track": 34
+  },
+  {
+   "file": "T_B035.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/35 - B35.wma",
+   "disc": "B",
+   "track": 35
+  },
+  {
+   "file": "T_B036.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/36 - B36.wma",
+   "disc": "B",
+   "track": 36
+  },
+  {
+   "file": "T_B037.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/37 - B37.wma",
+   "disc": "B",
+   "track": 37
+  },
+  {
+   "file": "T_B038.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/38 - B38.wma",
+   "disc": "B",
+   "track": 38
+  },
+  {
+   "file": "T_B039.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/39 - B39.wma",
+   "disc": "B",
+   "track": 39
+  },
+  {
+   "file": "T_B040.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/40 - B40.wma",
+   "disc": "B",
+   "track": 40
+  },
+  {
+   "file": "T_B041.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/41 - B41.wma",
+   "disc": "B",
+   "track": 41
+  },
+  {
+   "file": "T_B042.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/42 - B42.wma",
+   "disc": "B",
+   "track": 42
+  },
+  {
+   "file": "T_B043.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/43 - B43.wma",
+   "disc": "B",
+   "track": 43
+  },
+  {
+   "file": "T_B044.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/44 - B44.wma",
+   "disc": "B",
+   "track": 44
+  },
+  {
+   "file": "T_B045.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/45 - B45.wma",
+   "disc": "B",
+   "track": 45
+  },
+  {
+   "file": "T_B046.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/46 - B46.wma",
+   "disc": "B",
+   "track": 46
+  },
+  {
+   "file": "T_B047.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/47 - B47.wma",
+   "disc": "B",
+   "track": 47
+  },
+  {
+   "file": "T_B048.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/48 - B48.wma",
+   "disc": "B",
+   "track": 48
+  },
+  {
+   "file": "T_B049.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/49 - B49.wma",
+   "disc": "B",
+   "track": 49
+  },
+  {
+   "file": "T_B050.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/50 - B50.wma",
+   "disc": "B",
+   "track": 50
+  },
+  {
+   "file": "T_B051.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/51 - B51.wma",
+   "disc": "B",
+   "track": 51
+  },
+  {
+   "file": "T_B052.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/52 - B52.wma",
+   "disc": "B",
+   "track": 52
+  },
+  {
+   "file": "T_B053.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/53 - B53.wma",
+   "disc": "B",
+   "track": 53
+  },
+  {
+   "file": "T_B054.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/54 - B54.wma",
+   "disc": "B",
+   "track": 54
+  },
+  {
+   "file": "T_B055.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/55 - B55.wma",
+   "disc": "B",
+   "track": 55
+  },
+  {
+   "file": "T_B056.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/56 - B56.wma",
+   "disc": "B",
+   "track": 56
+  },
+  {
+   "file": "T_B057.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/57 - B57.wma",
+   "disc": "B",
+   "track": 57
+  },
+  {
+   "file": "T_B058.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/58 - B58.wma",
+   "disc": "B",
+   "track": 58
+  },
+  {
+   "file": "T_B059.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/59 - B59.wma",
+   "disc": "B",
+   "track": 59
+  },
+  {
+   "file": "T_B060.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/60 - B60.wma",
+   "disc": "B",
+   "track": 60
+  },
+  {
+   "file": "T_B061.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/61 - B61.wma",
+   "disc": "B",
+   "track": 61
+  },
+  {
+   "file": "T_B062.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/62 - B62.wma",
+   "disc": "B",
+   "track": 62
+  },
+  {
+   "file": "T_B063.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/63 - B63.wma",
+   "disc": "B",
+   "track": 63
+  },
+  {
+   "file": "T_B064.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/64 - B64.wma",
+   "disc": "B",
+   "track": 64
+  },
+  {
+   "file": "T_B065.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/65 - B65.wma",
+   "disc": "B",
+   "track": 65
+  },
+  {
+   "file": "T_B066.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/66 - B66.wma",
+   "disc": "B",
+   "track": 66
+  },
+  {
+   "file": "T_B067.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/67 - B67.wma",
+   "disc": "B",
+   "track": 67
+  },
+  {
+   "file": "T_B068.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/68 - B68.wma",
+   "disc": "B",
+   "track": 68
+  },
+  {
+   "file": "T_B069.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/69 - B69.wma",
+   "disc": "B",
+   "track": 69
+  },
+  {
+   "file": "T_B070.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/70 - B70.wma",
+   "disc": "B",
+   "track": 70
+  },
+  {
+   "file": "T_B071.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/71 - B71.wma",
+   "disc": "B",
+   "track": 71
+  },
+  {
+   "file": "T_B072.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/72 - B72.wma",
+   "disc": "B",
+   "track": 72
+  },
+  {
+   "file": "T_B073.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/73 - B73.wma",
+   "disc": "B",
+   "track": 73
+  },
+  {
+   "file": "T_B074.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/74 - B74.wma",
+   "disc": "B",
+   "track": 74
+  },
+  {
+   "file": "T_B075.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/75 - B75.wma",
+   "disc": "B",
+   "track": 75
+  },
+  {
+   "file": "T_B076.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/76 - B76.wma",
+   "disc": "B",
+   "track": 76
+  },
+  {
+   "file": "T_B077.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/77 - B77.wma",
+   "disc": "B",
+   "track": 77
+  },
+  {
+   "file": "T_B078.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/78 - B78.wma",
+   "disc": "B",
+   "track": 78
+  },
+  {
+   "file": "T_B079.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/79 - B79.wma",
+   "disc": "B",
+   "track": 79
+  },
+  {
+   "file": "T_B080.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/80 - B80.wma",
+   "disc": "B",
+   "track": 80
+  },
+  {
+   "file": "T_B081.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/81 - B81.wma",
+   "disc": "B",
+   "track": 81
+  },
+  {
+   "file": "T_B082.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/82 - B82.wma",
+   "disc": "B",
+   "track": 82
+  },
+  {
+   "file": "T_B083.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/83 - B83.wma",
+   "disc": "B",
+   "track": 83
+  },
+  {
+   "file": "T_B084.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/84 - B84.wma",
+   "disc": "B",
+   "track": 84
+  },
+  {
+   "file": "T_B085.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/85 - B85.wma",
+   "disc": "B",
+   "track": 85
+  },
+  {
+   "file": "T_B086.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/86 - B86.wma",
+   "disc": "B",
+   "track": 86
+  },
+  {
+   "file": "T_B087.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/87 - B87.wma",
+   "disc": "B",
+   "track": 87
+  },
+  {
+   "file": "T_B088.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/88 - B88.wma",
+   "disc": "B",
+   "track": 88
+  },
+  {
+   "file": "T_B089.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/89 - B89.wma",
+   "disc": "B",
+   "track": 89
+  },
+  {
+   "file": "T_B090.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/90 - B90.wma",
+   "disc": "B",
+   "track": 90
+  },
+  {
+   "file": "T_B091.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/91 - B91.wma",
+   "disc": "B",
+   "track": 91
+  },
+  {
+   "file": "T_B092.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 02/92 - B92.wma",
+   "disc": "B",
+   "track": 92
+  },
+  {
+   "file": "T_C001.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/01 - C1.wma",
+   "disc": "C",
+   "track": 1
+  },
+  {
+   "file": "T_C002.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/02 - C2.wma",
+   "disc": "C",
+   "track": 2
+  },
+  {
+   "file": "T_C003.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/03 - C3.wma",
+   "disc": "C",
+   "track": 3
+  },
+  {
+   "file": "T_C004.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/04 - C4.wma",
+   "disc": "C",
+   "track": 4
+  },
+  {
+   "file": "T_C005.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/05 - C5.wma",
+   "disc": "C",
+   "track": 5
+  },
+  {
+   "file": "T_C006.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/06 - C6.wma",
+   "disc": "C",
+   "track": 6
+  },
+  {
+   "file": "T_C007.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/07 - C7.wma",
+   "disc": "C",
+   "track": 7
+  },
+  {
+   "file": "T_C008.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/08 - C8.wma",
+   "disc": "C",
+   "track": 8
+  },
+  {
+   "file": "T_C009.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/09 - C9.wma",
+   "disc": "C",
+   "track": 9
+  },
+  {
+   "file": "T_C010.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/10 - C10.wma",
+   "disc": "C",
+   "track": 10
+  },
+  {
+   "file": "T_C011.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/11 - C11.wma",
+   "disc": "C",
+   "track": 11
+  },
+  {
+   "file": "T_C012.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/12 - C12.wma",
+   "disc": "C",
+   "track": 12
+  },
+  {
+   "file": "T_C013.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/13 - C13.wma",
+   "disc": "C",
+   "track": 13
+  },
+  {
+   "file": "T_C014.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/14 - C14.wma",
+   "disc": "C",
+   "track": 14
+  },
+  {
+   "file": "T_C015.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/15 - C15.wma",
+   "disc": "C",
+   "track": 15
+  },
+  {
+   "file": "T_C016.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/16 - C16.wma",
+   "disc": "C",
+   "track": 16
+  },
+  {
+   "file": "T_C017.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/17 - C17.wma",
+   "disc": "C",
+   "track": 17
+  },
+  {
+   "file": "T_C018.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/18 - C18.wma",
+   "disc": "C",
+   "track": 18
+  },
+  {
+   "file": "T_C019.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/19 - C19.wma",
+   "disc": "C",
+   "track": 19
+  },
+  {
+   "file": "T_C020.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/20 - C20.wma",
+   "disc": "C",
+   "track": 20
+  },
+  {
+   "file": "T_C021.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/21 - C21.wma",
+   "disc": "C",
+   "track": 21
+  },
+  {
+   "file": "T_C022.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/22 - C22.wma",
+   "disc": "C",
+   "track": 22
+  },
+  {
+   "file": "T_C023.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/23 - C23.wma",
+   "disc": "C",
+   "track": 23
+  },
+  {
+   "file": "T_C024.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/24 - C24.wma",
+   "disc": "C",
+   "track": 24
+  },
+  {
+   "file": "T_C025.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/25 - C25.wma",
+   "disc": "C",
+   "track": 25
+  },
+  {
+   "file": "T_C026.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/26 - C26.wma",
+   "disc": "C",
+   "track": 26
+  },
+  {
+   "file": "T_C027.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/27 - C27.wma",
+   "disc": "C",
+   "track": 27
+  },
+  {
+   "file": "T_C028.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/28 - C28.wma",
+   "disc": "C",
+   "track": 28
+  },
+  {
+   "file": "T_C029.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/29 - C29.wma",
+   "disc": "C",
+   "track": 29
+  },
+  {
+   "file": "T_C030.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/30 - C30.wma",
+   "disc": "C",
+   "track": 30
+  },
+  {
+   "file": "T_C031.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/31 - C31.wma",
+   "disc": "C",
+   "track": 31
+  },
+  {
+   "file": "T_C032.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/32 - C32.wma",
+   "disc": "C",
+   "track": 32
+  },
+  {
+   "file": "T_C033.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/33 - C33.wma",
+   "disc": "C",
+   "track": 33
+  },
+  {
+   "file": "T_C034.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/34 - C34.wma",
+   "disc": "C",
+   "track": 34
+  },
+  {
+   "file": "T_C035.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/35 - C35.wma",
+   "disc": "C",
+   "track": 35
+  },
+  {
+   "file": "T_C036.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/36 - C36.wma",
+   "disc": "C",
+   "track": 36
+  },
+  {
+   "file": "T_C037.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/37 - C37.wma",
+   "disc": "C",
+   "track": 37
+  },
+  {
+   "file": "T_C038.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/38 - C38.wma",
+   "disc": "C",
+   "track": 38
+  },
+  {
+   "file": "T_C039.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/39 - C39.wma",
+   "disc": "C",
+   "track": 39
+  },
+  {
+   "file": "T_C040.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/40 - C40.wma",
+   "disc": "C",
+   "track": 40
+  },
+  {
+   "file": "T_C041.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/41 - C41.wma",
+   "disc": "C",
+   "track": 41
+  },
+  {
+   "file": "T_C042.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/42 - C42.wma",
+   "disc": "C",
+   "track": 42
+  },
+  {
+   "file": "T_C043.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/43 - C43.wma",
+   "disc": "C",
+   "track": 43
+  },
+  {
+   "file": "T_C044.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/44 - C44.wma",
+   "disc": "C",
+   "track": 44
+  },
+  {
+   "file": "T_C045.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/45 - C45.wma",
+   "disc": "C",
+   "track": 45
+  },
+  {
+   "file": "T_C046.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/46 - C46.wma",
+   "disc": "C",
+   "track": 46
+  },
+  {
+   "file": "T_C047.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/47 - C47.wma",
+   "disc": "C",
+   "track": 47
+  },
+  {
+   "file": "T_C048.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/48 - C48.wma",
+   "disc": "C",
+   "track": 48
+  },
+  {
+   "file": "T_C049.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/49 - C49.wma",
+   "disc": "C",
+   "track": 49
+  },
+  {
+   "file": "T_C050.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/50 - C50.wma",
+   "disc": "C",
+   "track": 50
+  },
+  {
+   "file": "T_C051.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/51 - C51.wma",
+   "disc": "C",
+   "track": 51
+  },
+  {
+   "file": "T_C052.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/52 - C52.wma",
+   "disc": "C",
+   "track": 52
+  },
+  {
+   "file": "T_C053.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/53 - C53.wma",
+   "disc": "C",
+   "track": 53
+  },
+  {
+   "file": "T_C054.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/54 - C54.wma",
+   "disc": "C",
+   "track": 54
+  },
+  {
+   "file": "T_C055.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/55 - C55.wma",
+   "disc": "C",
+   "track": 55
+  },
+  {
+   "file": "T_C056.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/56 - C56.wma",
+   "disc": "C",
+   "track": 56
+  },
+  {
+   "file": "T_C057.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/57 - C57.wma",
+   "disc": "C",
+   "track": 57
+  },
+  {
+   "file": "T_C058.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/58 - C58.wma",
+   "disc": "C",
+   "track": 58
+  },
+  {
+   "file": "T_C059.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/59 - C59.wma",
+   "disc": "C",
+   "track": 59
+  },
+  {
+   "file": "T_C060.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/60 - C60.wma",
+   "disc": "C",
+   "track": 60
+  },
+  {
+   "file": "T_C061.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/61 - C61.wma",
+   "disc": "C",
+   "track": 61
+  },
+  {
+   "file": "T_C062.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/62 - C62.wma",
+   "disc": "C",
+   "track": 62
+  },
+  {
+   "file": "T_C063.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/63 - C63.wma",
+   "disc": "C",
+   "track": 63
+  },
+  {
+   "file": "T_C064.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/64 - C64.wma",
+   "disc": "C",
+   "track": 64
+  },
+  {
+   "file": "T_C065.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/65 - C65.wma",
+   "disc": "C",
+   "track": 65
+  },
+  {
+   "file": "T_C066.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/66 - C66.wma",
+   "disc": "C",
+   "track": 66
+  },
+  {
+   "file": "T_C067.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/67 - C67.wma",
+   "disc": "C",
+   "track": 67
+  },
+  {
+   "file": "T_C068.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/68 - C68.wma",
+   "disc": "C",
+   "track": 68
+  },
+  {
+   "file": "T_C069.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/69 - C69.wma",
+   "disc": "C",
+   "track": 69
+  },
+  {
+   "file": "T_C070.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/70 - C70.wma",
+   "disc": "C",
+   "track": 70
+  },
+  {
+   "file": "T_C071.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/71 - C71.wma",
+   "disc": "C",
+   "track": 71
+  },
+  {
+   "file": "T_C072.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/72 - C72.wma",
+   "disc": "C",
+   "track": 72
+  },
+  {
+   "file": "T_C073.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/73 - C73.wma",
+   "disc": "C",
+   "track": 73
+  },
+  {
+   "file": "T_C074.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/74 - C74.wma",
+   "disc": "C",
+   "track": 74
+  },
+  {
+   "file": "T_C075.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/75 - C75.wma",
+   "disc": "C",
+   "track": 75
+  },
+  {
+   "file": "T_C076.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/76 - C76.wma",
+   "disc": "C",
+   "track": 76
+  },
+  {
+   "file": "T_C077.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/77 - C77.wma",
+   "disc": "C",
+   "track": 77
+  },
+  {
+   "file": "T_C078.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/78 - C78.wma",
+   "disc": "C",
+   "track": 78
+  },
+  {
+   "file": "T_C079.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/79 - C79.wma",
+   "disc": "C",
+   "track": 79
+  },
+  {
+   "file": "T_C080.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/80 - C80.wma",
+   "disc": "C",
+   "track": 80
+  },
+  {
+   "file": "T_C081.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/81 - C81.wma",
+   "disc": "C",
+   "track": 81
+  },
+  {
+   "file": "T_C082.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/82 - C82.wma",
+   "disc": "C",
+   "track": 82
+  },
+  {
+   "file": "T_C083.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/83 - C83.wma",
+   "disc": "C",
+   "track": 83
+  },
+  {
+   "file": "T_C084.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/84 - C84.wma",
+   "disc": "C",
+   "track": 84
+  },
+  {
+   "file": "T_C085.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 03/85 - C85.wma",
+   "disc": "C",
+   "track": 85
+  },
+  {
+   "file": "T_D001.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/01 - D1.wma",
+   "disc": "D",
+   "track": 1
+  },
+  {
+   "file": "T_D002.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/02 - D2.wma",
+   "disc": "D",
+   "track": 2
+  },
+  {
+   "file": "T_D003.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/03 - D3.wma",
+   "disc": "D",
+   "track": 3
+  },
+  {
+   "file": "T_D004.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/04 - D4.wma",
+   "disc": "D",
+   "track": 4
+  },
+  {
+   "file": "T_D005.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/05 - D5.wma",
+   "disc": "D",
+   "track": 5
+  },
+  {
+   "file": "T_D006.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/06 - D6.wma",
+   "disc": "D",
+   "track": 6
+  },
+  {
+   "file": "T_D007.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/07 - D7.wma",
+   "disc": "D",
+   "track": 7
+  },
+  {
+   "file": "T_D008.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/08 - D8.wma",
+   "disc": "D",
+   "track": 8
+  },
+  {
+   "file": "T_D009.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/09 - D9.wma",
+   "disc": "D",
+   "track": 9
+  },
+  {
+   "file": "T_D010.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/10 - D10.wma",
+   "disc": "D",
+   "track": 10
+  },
+  {
+   "file": "T_D011.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/11 - D11.wma",
+   "disc": "D",
+   "track": 11
+  },
+  {
+   "file": "T_D012.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/12 - D12.wma",
+   "disc": "D",
+   "track": 12
+  },
+  {
+   "file": "T_D013.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/13 - D13.wma",
+   "disc": "D",
+   "track": 13
+  },
+  {
+   "file": "T_D014.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/14 - D14.wma",
+   "disc": "D",
+   "track": 14
+  },
+  {
+   "file": "T_D015.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/15 - D15.wma",
+   "disc": "D",
+   "track": 15
+  },
+  {
+   "file": "T_D016.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/16 - D16.wma",
+   "disc": "D",
+   "track": 16
+  },
+  {
+   "file": "T_D017.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/17 - D17.wma",
+   "disc": "D",
+   "track": 17
+  },
+  {
+   "file": "T_D018.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/18 - D18.wma",
+   "disc": "D",
+   "track": 18
+  },
+  {
+   "file": "T_D019.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/19 - D19.wma",
+   "disc": "D",
+   "track": 19
+  },
+  {
+   "file": "T_D020.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/20 - D20.wma",
+   "disc": "D",
+   "track": 20
+  },
+  {
+   "file": "T_D021.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/21 - D21.wma",
+   "disc": "D",
+   "track": 21
+  },
+  {
+   "file": "T_D022.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/22 - D22.wma",
+   "disc": "D",
+   "track": 22
+  },
+  {
+   "file": "T_D023.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/23 - D23.wma",
+   "disc": "D",
+   "track": 23
+  },
+  {
+   "file": "T_D024.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/24 - D24.wma",
+   "disc": "D",
+   "track": 24
+  },
+  {
+   "file": "T_D025.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/25 - D25.wma",
+   "disc": "D",
+   "track": 25
+  },
+  {
+   "file": "T_D026.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/26 - D26.wma",
+   "disc": "D",
+   "track": 26
+  },
+  {
+   "file": "T_D027.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/27 - D27.wma",
+   "disc": "D",
+   "track": 27
+  },
+  {
+   "file": "T_D028.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/28 - D28.wma",
+   "disc": "D",
+   "track": 28
+  },
+  {
+   "file": "T_D029.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/29 - D29.wma",
+   "disc": "D",
+   "track": 29
+  },
+  {
+   "file": "T_D030.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/30 - D30.wma",
+   "disc": "D",
+   "track": 30
+  },
+  {
+   "file": "T_D031.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/31 - D31.wma",
+   "disc": "D",
+   "track": 31
+  },
+  {
+   "file": "T_D032.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/32 - D32.wma",
+   "disc": "D",
+   "track": 32
+  },
+  {
+   "file": "T_D033.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/33 - D33.wma",
+   "disc": "D",
+   "track": 33
+  },
+  {
+   "file": "T_D034.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/34 - D34.wma",
+   "disc": "D",
+   "track": 34
+  },
+  {
+   "file": "T_D035.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/35 - D35.wma",
+   "disc": "D",
+   "track": 35
+  },
+  {
+   "file": "T_D036.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/36 - D36.wma",
+   "disc": "D",
+   "track": 36
+  },
+  {
+   "file": "T_D037.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/37 - D37.wma",
+   "disc": "D",
+   "track": 37
+  },
+  {
+   "file": "T_D038.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/38 - D38.wma",
+   "disc": "D",
+   "track": 38
+  },
+  {
+   "file": "T_D039.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/39 - D39.wma",
+   "disc": "D",
+   "track": 39
+  },
+  {
+   "file": "T_D040.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/40 - D40.wma",
+   "disc": "D",
+   "track": 40
+  },
+  {
+   "file": "T_D041.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/41 - D41.wma",
+   "disc": "D",
+   "track": 41
+  },
+  {
+   "file": "T_D042.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/42 - D42.wma",
+   "disc": "D",
+   "track": 42
+  },
+  {
+   "file": "T_D043.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/43 - D43.wma",
+   "disc": "D",
+   "track": 43
+  },
+  {
+   "file": "T_D044.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/44 - D44.wma",
+   "disc": "D",
+   "track": 44
+  },
+  {
+   "file": "T_D045.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/45 - D45.wma",
+   "disc": "D",
+   "track": 45
+  },
+  {
+   "file": "T_D046.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/46 - D46.wma",
+   "disc": "D",
+   "track": 46
+  },
+  {
+   "file": "T_D047.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/47 - D47.wma",
+   "disc": "D",
+   "track": 47
+  },
+  {
+   "file": "T_D048.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/48 - D48.wma",
+   "disc": "D",
+   "track": 48
+  },
+  {
+   "file": "T_D049.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/49 - D49.wma",
+   "disc": "D",
+   "track": 49
+  },
+  {
+   "file": "T_D050.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/50 - D50.wma",
+   "disc": "D",
+   "track": 50
+  },
+  {
+   "file": "T_D051.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/51 - D51.wma",
+   "disc": "D",
+   "track": 51
+  },
+  {
+   "file": "T_D052.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/52 - D52.wma",
+   "disc": "D",
+   "track": 52
+  },
+  {
+   "file": "T_D053.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/53 - D53.wma",
+   "disc": "D",
+   "track": 53
+  },
+  {
+   "file": "T_D054.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/54 - D54.wma",
+   "disc": "D",
+   "track": 54
+  },
+  {
+   "file": "T_D055.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 04/55 - D55.wma",
+   "disc": "D",
+   "track": 55
+  },
+  {
+   "file": "T_E001.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/01 - E1.wma",
+   "disc": "E",
+   "track": 1
+  },
+  {
+   "file": "T_E002.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/02 - E2.wma",
+   "disc": "E",
+   "track": 2
+  },
+  {
+   "file": "T_E003.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/03 - E3.wma",
+   "disc": "E",
+   "track": 3
+  },
+  {
+   "file": "T_E004.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/04 - E4.wma",
+   "disc": "E",
+   "track": 4
+  },
+  {
+   "file": "T_E005.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/05 - E5.wma",
+   "disc": "E",
+   "track": 5
+  },
+  {
+   "file": "T_E006.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/06 - E6.wma",
+   "disc": "E",
+   "track": 6
+  },
+  {
+   "file": "T_E007.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/07 - E7.wma",
+   "disc": "E",
+   "track": 7
+  },
+  {
+   "file": "T_E008.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/08 - E8.wma",
+   "disc": "E",
+   "track": 8
+  },
+  {
+   "file": "T_E009.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/09 - E9.wma",
+   "disc": "E",
+   "track": 9
+  },
+  {
+   "file": "T_E010.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/10 - E10.wma",
+   "disc": "E",
+   "track": 10
+  },
+  {
+   "file": "T_E011.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/11 - E11.wma",
+   "disc": "E",
+   "track": 11
+  },
+  {
+   "file": "T_E012.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/12 - E12.wma",
+   "disc": "E",
+   "track": 12
+  },
+  {
+   "file": "T_E013.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/13 - E13.wma",
+   "disc": "E",
+   "track": 13
+  },
+  {
+   "file": "T_E014.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/14 - E14.wma",
+   "disc": "E",
+   "track": 14
+  },
+  {
+   "file": "T_E015.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/15 - E15.wma",
+   "disc": "E",
+   "track": 15
+  },
+  {
+   "file": "T_E016.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/16 - E16.wma",
+   "disc": "E",
+   "track": 16
+  },
+  {
+   "file": "T_E017.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/17 - E17.wma",
+   "disc": "E",
+   "track": 17
+  },
+  {
+   "file": "T_E018.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/18 - E18.wma",
+   "disc": "E",
+   "track": 18
+  },
+  {
+   "file": "T_E019.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/19 - E19.wma",
+   "disc": "E",
+   "track": 19
+  },
+  {
+   "file": "T_E020.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/20 - E20.wma",
+   "disc": "E",
+   "track": 20
+  },
+  {
+   "file": "T_E021.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/21 - E21.wma",
+   "disc": "E",
+   "track": 21
+  },
+  {
+   "file": "T_E022.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/22 - E22.wma",
+   "disc": "E",
+   "track": 22
+  },
+  {
+   "file": "T_E023.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/23 - E23.wma",
+   "disc": "E",
+   "track": 23
+  },
+  {
+   "file": "T_E024.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/24 - E24.wma",
+   "disc": "E",
+   "track": 24
+  },
+  {
+   "file": "T_E025.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/25 - E25.wma",
+   "disc": "E",
+   "track": 25
+  },
+  {
+   "file": "T_E026.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/26 - E26.wma",
+   "disc": "E",
+   "track": 26
+  },
+  {
+   "file": "T_E027.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/27 - E27.wma",
+   "disc": "E",
+   "track": 27
+  },
+  {
+   "file": "T_E028.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/28 - E28.wma",
+   "disc": "E",
+   "track": 28
+  },
+  {
+   "file": "T_E029.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/29 - E29.wma",
+   "disc": "E",
+   "track": 29
+  },
+  {
+   "file": "T_E030.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/30 - E30.wma",
+   "disc": "E",
+   "track": 30
+  },
+  {
+   "file": "T_E031.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/31 - E31.wma",
+   "disc": "E",
+   "track": 31
+  },
+  {
+   "file": "T_E032.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/32 - E32.wma",
+   "disc": "E",
+   "track": 32
+  },
+  {
+   "file": "T_E033.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/33 - E33.wma",
+   "disc": "E",
+   "track": 33
+  },
+  {
+   "file": "T_E034.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/34 - E34.wma",
+   "disc": "E",
+   "track": 34
+  },
+  {
+   "file": "T_E035.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/35 - E35.wma",
+   "disc": "E",
+   "track": 35
+  },
+  {
+   "file": "T_E036.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/36 - E36.wma",
+   "disc": "E",
+   "track": 36
+  },
+  {
+   "file": "T_E037.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/37 - E37.wma",
+   "disc": "E",
+   "track": 37
+  },
+  {
+   "file": "T_E038.mp3",
+   "from": "01-EPIU Elementary-Audio [www.irLanguage.com]/01-EPIU Elementary-Audio [www.irLanguage.com]/CD 05/38 - E38.wma",
+   "disc": "E",
+   "track": 38
+  }
+ ]
+}
