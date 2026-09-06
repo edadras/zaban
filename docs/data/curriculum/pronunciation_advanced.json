@@ -1211,14 +1211,16 @@
    "extracted_path": "sources/audio/pronunciation_advanced/T_A007.mp3",
    "exists": true,
    "section": null,
-   "track": "A7"
+   "track": "A7",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A008.mp3",
    "extracted_path": "sources/audio/pronunciation_advanced/T_A008.mp3",
    "exists": true,
    "section": null,
-   "track": "A8"
+   "track": "A8",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A009.mp3",
@@ -1439,42 +1441,48 @@
    "extracted_path": "sources/audio/pronunciation_advanced/T_A039.mp3",
    "exists": true,
    "section": null,
-   "track": "A39"
+   "track": "A39",
+   "unit": 10
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A040.mp3",
    "extracted_path": "sources/audio/pronunciation_advanced/T_A040.mp3",
    "exists": true,
    "section": null,
-   "track": "A40"
+   "track": "A40",
+   "unit": 10
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A041.mp3",
    "extracted_path": "sources/audio/pronunciation_advanced/T_A041.mp3",
    "exists": true,
    "section": null,
-   "track": "A41"
+   "track": "A41",
+   "unit": 10
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A042.mp3",
    "extracted_path": "sources/audio/pronunciation_advanced/T_A042.mp3",
    "exists": true,
    "section": null,
-   "track": "A42"
+   "track": "A42",
+   "unit": 10
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A043.mp3",
    "extracted_path": "sources/audio/pronunciation_advanced/T_A043.mp3",
    "exists": true,
    "section": null,
-   "track": "A43"
+   "track": "A43",
+   "unit": 10
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A044.mp3",
    "extracted_path": "sources/audio/pronunciation_advanced/T_A044.mp3",
    "exists": true,
    "section": null,
-   "track": "A44"
+   "track": "A44",
+   "unit": 10
   },
   {
    "path": "sources/audio/pronunciation_advanced/T_A045.mp3",
@@ -4068,22 +4076,35 @@
    "number": 2,
    "title": "how this speaker divides up what he is saying:",
    "needs_title_review": true,
-   "source_page": null,
+   "source_page": 9,
    "sections": [],
    "exercises": [
     {
      "number": 1,
-     "instructions": "",
-     "body": "Listen to the recording as many times as you need, and mark the boundaries between speech units\n             C7\n                   with // in these extracts. The first one has been done for you.\n                   1  that’s the  main    thing//and   then   if  you’ve  got   any   questions  afterwards\n                      hopefully  we'll  still have   time  to  go   through   a   few   of  them   is  that  okay\n                   2  she’d  left when    she  had   a   baby   and   then   decided  not   to  go_  back\n                      although   the  job  had   been   kept   open   for  her\n                   3 Tom    dear   where’s  the   advert  for  this  calculator  because   I  don’t   know   the\n                      address  and   I  dont    know   who    I’ve  got  to   make   the   cheque   payable   to\n\n                   Now  check your answers in the Key. Then read the extracts aloud. Put short breaks between speech\n                   units and link the words within speech units smoothly together without pauses."
-    },
-    {
-     "number": 2,
-     "instructions": "",
-     "body": "Each of these extracts consists of three speech units. Put // in two of the four spaces to show where\n                   you expect the speech unit boundaries to be.\n                   EXAMPLE\n                   when  you  read it carefully // it doesn’t say anything // that’s very critical\n                   1 when   I woke up           even  realise  what  time  it was\n                   2  of course  it’s written in a language that hardly               understand\n                   3  I was working late  because they want    it done  as quickly as  possible\n                   4  because he was   ill I didn’t expect  him   to come to work\n                   5  ifI get sometime     [Ill be over on the weekend        you   both\n                   6  luckily we  haven’t had any rain   since  the day  we  arrived\n                   7  it should never have   been  built in my  opinion _ this new office building\n\n\n                                                ys\n                            .                                                         Wee\n                                            Mp\n\n\n             C8\n                   Now  listen and check your answers. Then read the extracts aloud. Put short breaks between speech\n                   units and link the words within speech units smoothly together without pauses.\n\n             2.3\n                   Give special emphasis to the words in bold by putting each one in a short speech unit. Read the\n                   extracts aloud and then compare your pronunciation with the recording.\n             C9\n\n                   1  I’ve never seen such an incredibly exciting football match.\n                   2  She has always helped me  and has never refused any request I’ve made.\n                   3  After the day of climbing I was completely exhausted.\n                   4  She looked much  older   grey and lined — and she used a walking stick.\n\n                     Follow up: Record a short extract (about 15 seconds) from a radio or TV programme. (See Unit 4 for\n                     suggestions.) Write out what was said and then try to mark speech unit boundaries in the text. Listen to the\n                     recording as many times as necessary.\n\n\n                                                                       English Pronunciation in Use (Advanced)   7I"
+     "instructions": "You  will hear speakers with international accents of English from five countries talking about their",
+     "body": "Section A Getting started\n\n\n                     Exercises\n\n             2.1\n                    You  will hear speakers with international accents of English from five countries talking about their\n                    families. Where do you  think they are from? Listen and write the name of the country in the space.\n              A7\n\n                    Speaker  1 is from                                                                       n\n                    Speaker  2 is from                              Poland                 .          Japa\n                    Speaker  3 is from                                                C hina\n                    Speaker  4 is from                                India                           Spain\n                    Speaker  5 is from\n                     Now  check your answers  in the Key. Which of these accents do you find easiest to understand and\n                    which  most  difficult? Can you say why? Which of these English accents is closest to your own?\n\n             2.2\n                     Listen. You wilt hear the same text read three times: first by a speaker of BBC English, second by a\n                    speaker  of Jamaican English, and third by a Polish speaker of English. They are talking about moving\n              A8 -\n                     into a new house and some  of the things they have had to buy.\n                     Here are some notes on how  the pronunciation  in part of the reading by the speaker of Jamaican\n                     English is different from that in the reading by the speaker of BBC English.\n\n                                                                         the vowel  is\n                                                                                                   the vowel is close\n                           the first vowel is close to /p/ (as\n                                                                       close to /i:/ and\n                                                                                                to /u:/ (as in ‘too'); /au/\n                          in ‘hot'); /o:/ in BBC English. Also,\n                                                                      sounds like ‘pleets’;\n                                                                                                    in BBC English\n                                   is not pronounced\n                                                                          in BBC English\n                           said with a\n                           ‘d': /brado/\n                                                ...         had  cutlery and  cupsjand  saucers, and\n                                               my  brother  gave  me  some  new          and    bow\n                          the vowel is\n                                               | had to get quite  a lot of furniture, too. | didn’t\n                       close to /1a/, and\n                          sounds               need  a  new  bed, but  | bought a nice old wooden           said with a\n                        ‘cheers’:    in        table and  some   chairs for hte sitting room. ...             ‘d':\n                          BBC  English\n\n\n                                                  ...  [had to do quite a lot of decorating. I've\n                     Now  do the same  for\n                                                  wallpapered   the bedroom    and  painted the\n                     this part of the text\n                                                  bathroom   so  far, but        still quite a lot to\n                     read by the Polish\n                                                  do. But  I'm in no hurry and  I'm really enjoying\n                     speaker of English.\n                                                  it. It's great having my own  place at last.\n\n\n              2.3\n                     Are there any accents of English that are of particular interest or importance to you?\n                     Practise listening to people with these accents as much as possible. If you have access to the\n                     internet, you could regularly listen to English language broadcasts where you will hear these accents.\n                     For example, for New Zealand  accents, try http://www.radionz.co.nz/; for Swedish accents of English,\n                     Radio Stockholm  has a weekly English news broadcast  (at http://www.sr.se/rs/red/ind_eng.html) where\n                     many  of the speakers are Swedish. (For more information, see Unit 4.)\n\n                      Follow up: Record yourself reading the text in exercise 2.2. Practise a few times before recording. Then write\n                      out the text again, and make notes on it, highlighting differences between your pronunciation and that of\n                      the speaker of BBC English. (Alternatively, you could get a friend or teacher to make notes for you.)\n\n\n                                                                          English Pronunciation in Use (Advanced)",
+     "unlabelled": true
     }
    ],
    "answers": [],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A007.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A007.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A7",
+     "unit": 2
+    },
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A008.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A008.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A8",
+     "unit": 2
+    }
+   ],
    "unplaced_glosses": [],
    "vocabulary_count": 0,
    "gloss_count": 0
@@ -4129,9 +4150,16 @@
    "number": 4,
    "title": "Section E Reference /gl-/, /gr-/ and /g-/",
    "needs_title_review": true,
-   "source_page": null,
+   "source_page": 13,
    "sections": [],
-   "exercises": [],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "These exercises depend on you  having internet access. It may be that you have to download free",
+     "body": "Section A Getting started\n\n\n                     Exercises\n\n\n                    These exercises depend on you  having internet access. It may be that you have to download free\n                    software to listen to some of the material.\n\n             4.1\n                    Visit the websites of two English-language internet radio stations from different countries. You could\n                    take two  of the four given in A or look for others. (The website http://www.penguinradio.com/ can\n                     help you find them.) Find one recent news story that you are familiar with that is reported on both\n                    stations and listen carefully to the broadcast on the first radio station. Write down a few of the key\n                    words  you hear. Now  listen in detail to the story on the second radio station and notice whether\n                    these key words  are pronounced in the same or a different way. What differences do you notice?\n\n             4.2\n                    Go  to http://www.bbc.co.uk/voices/. Follow links to ‘Voices Recordings. Here you can listen to voices\n                    from  many  parts of the UK. Choose one of the recordings by clicking on a dot on the map, and then\n                    do  the following:\n                     1 Click on the name  of one of the speakers under  ‘More  clips from this interview’.\n                    2  Read  ‘About the interviewee’.\n                    3  Read  the transcript. Check in a dictionary any words you  don’t understand.\n                    4  Listen to the recording and follow the transcript.\n                    5  Some  clips have a section on ‘More  about the speech in this clip’. Read this, focusing in\n                       particular on information  about pronunciation.  Some  dialect words, which  you may  not find\n                       in the dictionary, are explained here.\n                    6  Do  the same with  any other ‘More  clips from this interview’.\n                    7  Go  back and  listen to the ‘Voice clip(s)’. These don’t have transcripts. How much of them\n                       do you  understand?  Do  you notice features of pronunciation you  observed and  read about\n                       earlier?\n                    8  Do  the same with  accents from other parts of the UK  by clicking on other dots on the map.\n\n             4.3\n                    Go  to http://dictionary.cambridge.org/ and look up the following words in the Cambridge Advanced\n                    Learner's Dictionary:\n                        belligerent      charade        continuum         felafel      precinct       sepia\n                        vitamin       wrath\n\n\n                     ls the usual British and American pronunciation the same or different for each? Try to work out from\n                    the phonemic  symbols  how  each is pronounced. (See Section E1 for advice, if necessary.) If you want\n                    to hear how  these words are pronounced  in North American  English, go to http://www.m-w.com/.\n                    Notice that where  more than one  pronunciation is given, the most common  one comes  first.\n\n\n             4.4\n                    Go  to http://www.genome.gov/page.cfm?pagelD=10002096      and look up the following words:\n\n                        centromere        monosomy          nucleotide\n\n                    Listen to the explanations and find out how they are pronounced. Say the words after the recording.\n\n                      Follow up: Use your search engine (such as Google) to try to find one other website that gives information\n                      about the pronunciation of terms in a specialist area. Use the search words ‘pronunciation guide [specialist\n                      area]!\n\n\n                                                                         English Pronunciation in Use (Advanced)     15",
+     "unlabelled": true
+    }
+   ],
    "answers": [],
    "audio": [],
    "unplaced_glosses": [],
@@ -4271,8 +4299,8 @@
   },
   {
    "number": 9,
-   "title": "abstract, next Friday Consonant clusters within and across words",
-   "needs_title_review": false,
+   "title": "Unit 9",
+   "needs_title_review": true,
    "source_page": 23,
    "sections": [
     {
@@ -4489,9 +4517,9 @@
   },
   {
    "number": 10,
-   "title": "Section E Reference Final clusters ending with /-d/ (/-md/, /-zd/, etc.)",
-   "needs_title_review": true,
-   "source_page": null,
+   "title": "and controVERsial",
+   "needs_title_review": false,
+   "source_page": 25,
    "sections": [],
    "exercises": [
     {
@@ -4511,7 +4539,56 @@
     }
    ],
    "answers": [],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A039.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A039.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A39",
+     "unit": 10
+    },
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A040.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A040.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A40",
+     "unit": 10
+    },
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A041.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A041.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A41",
+     "unit": 10
+    },
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A042.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A042.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A42",
+     "unit": 10
+    },
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A043.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A043.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A43",
+     "unit": 10
+    },
+    {
+     "path": "sources/audio/pronunciation_advanced/T_A044.mp3",
+     "extracted_path": "sources/audio/pronunciation_advanced/T_A044.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A44",
+     "unit": 10
+    }
+   ],
    "unplaced_glosses": [],
    "vocabulary_count": 0,
    "gloss_count": 0
@@ -6631,7 +6708,7 @@
   },
   {
    "number": 38,
-   "title": "just help yourSELF; Throw it to ME Prominence in reflexive and",
+   "title": "non-prominent (see Unit 33):",
    "needs_title_review": false,
    "source_page": 81,
    "sections": [
@@ -6815,7 +6892,7 @@
   },
   {
    "number": 40,
-   "title": "Tails",
+   "title": "These tails usually emphasise what we are saying:",
    "needs_title_review": false,
    "source_page": 85,
    "sections": [],
@@ -7742,8 +7819,8 @@
   },
   {
    "number": 52,
-   "title": "Mhnm, see Keeping conversation going",
-   "needs_title_review": false,
+   "title": "Unit 52",
+   "needs_title_review": true,
    "source_page": 109,
    "sections": [],
    "exercises": [
@@ -8149,8 +8226,8 @@
   },
   {
    "number": 59,
-   "title": "Unit 59",
-   "needs_title_review": true,
+   "title": "Small, medium, and large Tones in a series of similar items",
+   "needs_title_review": false,
    "source_page": 123,
    "sections": [
     {
@@ -8271,7 +8348,7 @@
   },
   {
    "number": 60,
-   "title": "> Quotation",
+   "title": "‘Politicians are the same all over...’ Level tone in quoting and",
    "needs_title_review": false,
    "source_page": 125,
    "sections": [

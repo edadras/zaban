@@ -1094,7 +1094,8 @@
    "extracted_path": "sources/audio/pronunciation_elementary/T_A010.mp3",
    "exists": true,
    "section": null,
-   "track": "A10"
+   "track": "A10",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_elementary/T_A011.mp3",
@@ -1108,7 +1109,8 @@
    "extracted_path": "sources/audio/pronunciation_elementary/T_A012.mp3",
    "exists": true,
    "section": null,
-   "track": "A12"
+   "track": "A12",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_elementary/T_A013.mp3",
@@ -1129,7 +1131,8 @@
    "extracted_path": "sources/audio/pronunciation_elementary/T_A015.mp3",
    "exists": true,
    "section": null,
-   "track": "A15"
+   "track": "A15",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_elementary/T_A016.mp3",
@@ -1912,8 +1915,7 @@
    "extracted_path": "sources/audio/pronunciation_elementary/T_B042.mp3",
    "exists": true,
    "section": null,
-   "track": "B42",
-   "unit": 22
+   "track": "B42"
   },
   {
    "path": "sources/audio/pronunciation_elementary/T_B043.mp3",
@@ -3293,7 +3295,7 @@
    "exists": true,
    "section": null,
    "track": "E3",
-   "unit": 3
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_elementary/T_E004.mp3",
@@ -3582,13 +3584,46 @@
   },
   {
    "number": 2,
-   "title": "One house, two houses 3) Syllables",
+   "title": "2 What terrible weather!",
    "needs_title_review": true,
-   "source_page": null,
+   "source_page": 13,
    "sections": [],
    "exercises": [],
    "answers": [],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_elementary/T_A010.mp3",
+     "extracted_path": "sources/audio/pronunciation_elementary/T_A010.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A10",
+     "unit": 2
+    },
+    {
+     "path": "sources/audio/pronunciation_elementary/T_A012.mp3",
+     "extracted_path": "sources/audio/pronunciation_elementary/T_A012.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A12",
+     "unit": 2
+    },
+    {
+     "path": "sources/audio/pronunciation_elementary/T_E003.mp3",
+     "extracted_path": "sources/audio/pronunciation_elementary/T_E003.mp3",
+     "exists": true,
+     "section": null,
+     "track": "E3",
+     "unit": 2
+    },
+    {
+     "path": "sources/audio/pronunciation_elementary/T_A015.mp3",
+     "extracted_path": "sources/audio/pronunciation_elementary/T_A015.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A15",
+     "unit": 2
+    }
+   ],
    "unplaced_glosses": [],
    "vocabulary_count": 0,
    "gloss_count": 0
@@ -3639,14 +3674,6 @@
      "exists": true,
      "section": null,
      "track": "A21",
-     "unit": 3
-    },
-    {
-     "path": "sources/audio/pronunciation_elementary/T_E003.mp3",
-     "extracted_path": "sources/audio/pronunciation_elementary/T_E003.mp3",
-     "exists": true,
-     "section": null,
-     "track": "E3",
      "unit": 3
     }
    ],
@@ -3892,7 +3919,7 @@
   },
   {
    "number": 7,
-   "title": "My birthday’s",
+   "title": "My birthday’s on Thursday",
    "needs_title_review": false,
    "source_page": 23,
    "sections": [
@@ -4741,102 +4768,8 @@
    "gloss_count": 0
   },
   {
-   "number": 22,
-   "title": "Unit 22",
-   "needs_title_review": true,
-   "source_page": 53,
-   "sections": [
-    {
-     "letter": "B",
-     "title": "Sound and",
-     "body": "spelling\n(enh\nusually spelled\ne /r/ is\nr or rr, and sometimes wr. Listen and say these words.\nred\nready\nreally\nright\nroad\nr\nroom\nferry\nIr\nsorry\nwritten\nwr\nwrap\nwrist\nwrite\nwrote\nio\ne Listen and say these phrases and sentences.\n1 What are you reading?\n2 I'm really sorry — your room isn’t ready.\n3 I don’t know if I’m right or wrong.\n4 Too much writing makes my wrist ache.\n5 travelling by ferry\n6 wrapping presents for Christmas\n5\nSome\nEnglish\nspeakers\n/r/ sounds. Listen to\nother speakers saying the\nuse different\nsome\nsame\nexamples,\nand\nnotice the different /r/ sounds they use.\n( Wmportant /\ndeel:\nWhere there's\nWales\nand Australia only pronounce it if\n©\na letter r in a word, most people in England,\n—\nthere's a vowel sound after it, in\nthe same word\n00\nor the next word. Listen.\na)\n[r/\nfour\nno\nforty\n/r/\nno\n/fr/\nfour days\nno\nfoureggs _— [c/ is pronounced\nfour hours — /r/ is pronounced\nBea\nBut\nireland\n©\nmost people in America, Scotland,\nand the south-west of England always pronounce /:/\nwhere there's a\nletter\nr in the spelling. Listen.\n/r] is pronounced\nfour\nforty\nIr] is pronounced\n_—\n[r/ is pronounced\nfour days\n_\n/r] is pronounced\nfour eggs\n—\n/r/ is pronounced\nfour hours",
-     "vocabulary": [
-      {
-       "term": "English",
-       "example": "English"
-      },
-      {
-       "term": "use different",
-       "example": "use different"
-      },
-      {
-       "term": "some",
-       "example": "some"
-      },
-      {
-       "term": "same",
-       "example": "same"
-      },
-      {
-       "term": "Where there's",
-       "example": "Where there's"
-      },
-      {
-       "term": "Wales",
-       "example": "Wales"
-      },
-      {
-       "term": "the same word",
-       "example": "the same word"
-      },
-      {
-       "term": "But",
-       "example": "But"
-      },
-      {
-       "term": "ireland",
-       "example": "ireland"
-      },
-      {
-       "term": "letter",
-       "example": "letter"
-      }
-     ],
-     "glosses": []
-    },
-    {
-     "letter": "A",
-     "title": "Note: The name of the letter R in the alphabet is /u:/ or /a:r/ for those speakers who always",
-     "body": "-\nioe pronounce the letter r. Listen.\n52\nEnglish\nPronunciation in\nUse\n(Elementary)",
-     "vocabulary": [
-      {
-       "term": "English",
-       "example": "English"
-      },
-      {
-       "term": "Use",
-       "example": "Use"
-      }
-     ],
-     "glosses": []
-    }
-   ],
-   "exercises": [
-    {
-     "number": 1,
-     "instructions": "Section A Sounds and spelling",
-     "body": "Section A Sounds and spelling\n\n                            Exercises\n\n                            Put these words in the correct places, in their normal spelling.\n\n                               fru:m/                     /'reko:dz/        /a'raiv/ /raund/  /'bpraud/  /a'dres/\n                                        /'rabif/ /‘hari/ /rek/           /‘riali/ /rets/ /ratt/\n\n\n                                                                                                                  -\n                                                                                                            :\n\n                                                                                                               AA\n\n\n                            |                               | OI         WAR      SAB)                                    |\n\n\n                            1 Hey, look! I found these old     rock                     ina                bin!\n                                                   —                     weather!\n                            BATE  YOU                sure this is the                            ?\n                            4 Stop .....                        the                 Weve                           to\n                              go out.\n                            5 A: Oh,  no, Pve lost an               ;\n                                   |                                    it!\n                                                up!\n                              Bz       It isn’t &              .\n                              At                      Late!\n                                                      »       wait till we\n\n                            Listen to check your answers. Check with the Key. Then listen and repeat.\n\n\n                            Look at the words with r in the spelling. Listen and put a tick (W) by them if the r is pronounced, and\n                            a cross (X) if the r is not pronounced.\n                     B42\n\n                            1 A: Where  / did you  park the car?\n                              B: I'm not sure. I think it was just around the corner.\n                            2 A: Have  you ever heard of square oranges?\n                              B: No, never!\n                            3 A: Can  you play the guitar?\n                              B: I can play the guitar and sing.\n                            4 A: Are we  far away from the road?\n                              B: Well, it’s rather hard to say ...\n\n                            Check      the Key. Then listen and repeat.\n\n                            Listen and circle the word you hear. Check with the Key. If you find any of these difficult, go to\n                            Section E3 Sound pairs for further practice.\n                            1 light / right        sound  pair 36)\n                            2 long / wrong         sound  pair 36)\n                            3 collect /            sound  pair 36)\n\n                                                                             English Pronunciation in Use (Elementary)   53",
-     "unlabelled": true
-    }
-   ],
-   "answers": [],
-   "audio": [
-    {
-     "path": "sources/audio/pronunciation_elementary/T_B042.mp3",
-     "extracted_path": "sources/audio/pronunciation_elementary/T_B042.mp3",
-     "exists": true,
-     "section": null,
-     "track": "B42",
-     "unit": 22
-    }
-   ],
-   "unplaced_glosses": [],
-   "vocabulary_count": 12,
-   "gloss_count": 0
-  },
-  {
    "number": 23,
-   "title": "What's",
+   "title": "What's the news? [w/ and /j/",
    "needs_title_review": false,
    "source_page": 55,
    "sections": [
@@ -5189,6 +5122,26 @@
    ],
    "unplaced_glosses": [],
    "vocabulary_count": 31,
+   "gloss_count": 0
+  },
+  {
+   "number": 28,
+   "title": "Unit 28",
+   "needs_title_review": true,
+   "source_page": 65,
+   "sections": [],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Section B Syllables and words",
+     "body": "Section B Syllables and words\n\n                           Exercises\n\n                  28.1\n                           How  many syllables are there in these words? Write the number of syllables next to the word.\n                                                                                                    glassesL)\n                              university]                    information LJ\n                           Listen to check your answers. Check with the Key.\n                     CAa\n\n                           Then listen and repeat these sentences.\n                           1 I’ve got blue eyes.                          6  Is this your glass?\n                           2 I don’t know why.                            7  I don’t wear glasses.\n                           3 Black coffee or white?                       8  Where’s the university?\n                           4 Will you write to me?                        9  Business is business.\n                           5 What  are you writing?                      10  There’s the information office.\n\n                           1 Which  day of the week  has three syllables?\n                  28.2\n                           2 How   many  syllables do the other days of the week have?\n                           3 Which  numbers   between 1 and 20  have three syllables?\n                           4 Which  letter of the alphabet has more than one syllable?\n                           5 Which  months  have  only one syllable?\n                           Listen to check your answers. Check with the Key. Then listen and repeat.\n\n                           Read this story and mark all the words that have two or three syllables.\n\n                             | remember(3) once on my\n                             first visit(2) to England( ),\n                             soon after( ) | started( )\n                             learning( ) English( ), my\n                             landlady( ) went shopping( )\n                             and she came back with a\n                             big bag full of things, but she\n                             forgot( ) to buy some soup\n                             she needed( ) a tin of\n                             tomato( ) soup. So | said, ‘I'll\n                             go to the shop and buy it for\n                            you,’ because( ) | wanted( )\n                            to  be helpful( ) and it was a\n                             chance to practise( ) my\n                             English( ) a bit. So | went to\n                             the little( ) shop round the\n                             comer( ) and asked the\n                             shopkeeper( ) for tomato( ) soup. But he seemed surprised( ), he didn’t( ) understand( ), and |\n                             repeated( ) again( ) and again( ) ‘soup, tomato( ) soup’ until( ) he gave me some red soap, and\n                             |          I'd confused( ) ‘soup’ and ‘soap’ and | was asking( ) for ‘tomato( ) soap’. | felt\n                                       | wanted( ) to run out of the shop, but my landlady( ) wanted( ) her soup, so | said,\n                             ‘Thank you. And tomato( ) soup, please’ — this time with the correct( ) pronunciation — and he\n                             gave me the soup. | paid and went back to the house and said to the        pronouncing( )\n                             very( ) carefully( ), ‘Here’s your soup, and | bought you this soap as a present( ),’ and she said,\n                             ‘Ooh, thank you very much, that’s very( ) nice of youl’\n\n\n                           Listen to check your answers. Check with the Key. Then listen and practise reading the story aloud.\n\n\n                                                                            English Pronunciation in Use (Elementary)   65",
+     "unlabelled": true
+    }
+   ],
+   "answers": [],
+   "audio": [],
+   "unplaced_glosses": [],
+   "vocabulary_count": 0,
    "gloss_count": 0
   },
   {

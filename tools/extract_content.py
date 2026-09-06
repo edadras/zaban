@@ -624,32 +624,6 @@ def contents_rows(page):
             if len(t) >= 2 and sum(ch.isalpha() for ch in t) >= 2]
 
 
-def longest_run(pairs):
-    """Which of these entries are the run the contents page is listing.
-
-    A mis-read number is not merely a wrong title, it is a wrong title filed
-    under a real unit. The Pronunciation in Use contents lists units 41 to 50
-    on one page, and "41]" came back as "4]" - so unit 4, forty pages earlier,
-    was given unit 41's title. Contents entries run consecutively, so the
-    longest chain that does is the list, and anything outside it is a mis-read.
-
-    @param pairs list[(number, row index)] in page order
-    @return set of row indices to keep
-    """
-    if not pairs:
-        return set()
-
-    best = current = [pairs[0]]
-    for entry in pairs[1:]:
-        if 1 <= entry[0] - current[-1][0] <= 3:
-            current.append(entry)
-        else:
-            current = [entry]
-        if len(current) > len(best):
-            best = current
-    return {index for _, index in best}
-
-
 def number_contents(rows):
     """Give the unnumbered entries the numbers the scan lost.
 
@@ -664,13 +638,17 @@ def number_contents(rows):
     headings the contents also prints ("Present", "Prepositions"), which sit
     further left - while still keeping an entry whose own first words were lost
     to the scan and which therefore begins further right than its neighbours.
+
+    A number can also be misread, and a misread number is worse than a missing
+    one: it is a wrong title filed under a real unit. The Pronunciation in Use
+    contents lists units 41 to 50 on one page, and "41]" came back as "4]", so
+    unit 4 - forty pages earlier - was handed unit 41's title. An anchor whose
+    step to the next one neither is small nor fills exactly is therefore
+    dropped, once the entry after it shows which of the two was the misread.
     """
-    numbered_at = [i for i, (n, _, _) in enumerate(rows) if n is not None]
-    kept = set(longest_run([(rows[i][0], i) for i in numbered_at]))
-    if len(kept) < 4:
+    numbered = [(n, c, t) for n, c, t in rows if n is not None]
+    if len(numbered) < 4:
         return []
-    rows = [row for i, row in enumerate(rows) if row[0] is None or i in kept]
-    numbered = [row for row in rows if row[0] is not None]
 
     columns = sorted(c for _, c, _ in numbered)
     title_column = columns[len(columns) // 2]
@@ -679,17 +657,38 @@ def number_contents(rows):
         if n is not None or (c >= title_column - 3 and reads_as_title(t))
     ]
 
+    anchors = [i for i, (n, _) in enumerate(candidates) if n is not None]
+
     out = []
     pending = []
     previous = None
-    for number, title in candidates:
+    for position, (number, title) in enumerate(candidates):
         if number is None:
             pending.append(title)
             continue
-        if previous is not None and pending:
-            # The gap has to be exactly the number of unnumbered lines in it.
-            if number - previous - 1 == len(pending):
+
+        if previous is not None:
+            step = number - previous
+            fills = step - 1 == len(pending)
+            near = 1 <= step <= 3 and not pending
+
+            if not (fills or near):
+                # One of the two anchors is a misread. The one the entry after
+                # this continues from is the real one.
+                following = next((candidates[i][0] for i in anchors if i > position), None)
+                if following is not None and 1 <= following - number <= 3:
+                    out = [entry for entry in out if entry[0] != previous]
+                    pending = []
+                    previous = number
+                    out.append((number, title))
+                    continue
+                pending = []
+                previous = number
+                continue
+
+            if fills and pending:
                 out.extend((previous + 1 + i, t) for i, t in enumerate(pending))
+
         pending = []
         out.append((number, title))
         previous = number
@@ -698,7 +697,15 @@ def number_contents(rows):
 
 
 def contents_pages(layout_pages, horizon=None):
-    """Which pages are the contents list, in page order."""
+    """Which pages are the contents list, in page order.
+
+    Three things have to hold, and each one stops a different impostor. The
+    page has to be in the front matter, which no exercises page is. It has to
+    carry at least eight numbered entries in ascending order, which no prose
+    page does. And its numbers have to reach into double figures, which the
+    numbered items of an exercise do not - without that, "1 Do you live in a
+    city?" off an exercises page was read as the title of unit 2.
+    """
     if horizon is None:
         # Contents live in the front matter of every book in this family.
         horizon = max(8, int(len(layout_pages) * 0.15))
@@ -757,6 +764,32 @@ def titles_from_contents(layout_pages, horizon=None):
     return titles
 
 
+def trim_second_column(line: str) -> str:
+    """Drop what follows a heading on the same line, if it is another column.
+
+    A fixed number of spaces cannot tell the two apart. A born-digital page
+    separates its words by one space and its columns by twenty, so cutting at
+    three worked; a scanned page can put eight spaces between two words of the
+    same title, and cutting at three took "Father and mother" down to "Father",
+    while cutting at eight took "What is a collocation?" down to "What".
+
+    What does tell them apart is the shape of the line: a column gap stands out
+    from every other gap on it, and a title that is merely spaced out has no
+    gap that stands out at all.
+    """
+    gaps = [(m.start(), len(m.group())) for m in re.finditer(r'\s{2,}', line)]
+    if not gaps:
+        return line
+
+    widest = max(gaps, key=lambda g: g[1])
+    others = [width for start, width in gaps if start != widest[0]]
+    rival = max(others) if others else 0
+
+    if widest[1] >= 8 and widest[1] >= 2 * max(rival, 1):
+        return line[:widest[0]]
+    return line
+
+
 def candidate_headings(layout_pages, style):
     """Every page whose top reads like a unit heading, in page order."""
     found = []
@@ -769,10 +802,7 @@ def candidate_headings(layout_pages, style):
         if number is None or not (1 <= number <= 200):
             continue
 
-        # A scan spaces the words of a heading out, so cutting at three
-        # spaces truncated "Father and mother" to "Father". Only a gap wide
-        # enough to be a second column is a cut; the rest is closed up.
-        title = tidy_title(re.sub(r'\s{8,}.*$', '', title))
+        title = tidy_title(trim_second_column(title))
         # Two characters is a real unit title in this family: Phrasal Verbs in
         # Use has units called "In", "Up" and "On".
         if len(title) < 2 or RE_FOOTER.search(title):
@@ -811,15 +841,32 @@ def find_units(layout_pages, style='number_first'):
     contents = contents_pages(layout_pages)
     front_matter = (max(contents) + 1) if contents else 0
 
-    units = {}
+    # The exercises page states its unit outright - "17.1", "17.2" - which is
+    # stronger evidence than a heading the scanner half read, so it goes first.
+    # Phrasal Verbs in Use Intermediate has both: 58 of its 70 units name
+    # themselves on their exercises page, while three headings came through,
+    # one of which put unit 1 on unit 6's page. Read in the other order that
+    # heading won and unit 1 kept the wrong page.
+    units = units_behind_exercises(layout_pages, {})
+
     for c in found:
         past_front_matter = c['teaching_page'] > front_matter if contents else c['teaches']
         if past_front_matter and c['number'] not in units:
             units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
 
+    # The exercises page says which unit it is, not what the unit is called;
+    # its title is guessed from the largest readable line of the page before.
+    # Where the heading itself was read, that is the title, so it wins.
+    by_number = {}
+    for c in found:
+        by_number.setdefault(c['number'], c)
+    for number, unit in units.items():
+        heading = by_number.get(number)
+        if heading and heading['teaching_page'] == unit.get('teaching_page'):
+            unit['title'] = heading['title']
+
     if not units:
         units.update(units_by_sequence(layout_pages, titles_from_contents(layout_pages)))
-        units.update(units_behind_exercises(layout_pages, units))
         return units
 
     for c in found:
@@ -833,10 +880,155 @@ def find_units(layout_pages, style='number_first'):
             units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
 
     contents_titles = titles_from_contents(layout_pages)
-    units.update(units_behind_exercises(layout_pages, units))
     units.update(units_by_sequence(layout_pages, contents_titles, units))
     units.update(units_by_stride(found, contents_titles, len(layout_pages), front_matter, units))
-    return drop_out_of_order(units)
+    units.update(units_by_pitch(layout_pages, contents_titles, front_matter, units))
+    return drop_off_the_line(drop_out_of_order(units))
+
+
+def drop_off_the_line(units):
+    """A unit whose page does not lie where the book's own spacing puts it.
+
+    `drop_out_of_order` only sees a page that both its neighbours contradict,
+    which misses the ends of the run: Phrasal Verbs in Use Intermediate had
+    unit 1 on page 18 with unit 7 on page 20, and since there was nothing
+    before unit 1, nothing contradicted it - so unit 1 took the text and the
+    vocabulary of unit 6.
+
+    These books are laid out to a fixed pitch, so where most of the units agree
+    on one, a unit far off it is a mis-read rather than an exception. The
+    tolerance is three units' worth of pages, and the check only runs when the
+    line is well supported, so a book that is not laid out this way is left
+    alone.
+    """
+    placed = [(n, u['teaching_page']) for n, u in units.items() if u.get('teaching_page')]
+    if len(placed) < 20:
+        return units
+
+    strides = Counter()
+    for (n1, p1), (n2, p2) in zip(sorted(placed), sorted(placed)[1:]):
+        if n2 - n1 == 1 and 1 <= p2 - p1 <= 6:
+            strides[p2 - p1] += 1
+    if not strides:
+        return units
+
+    stride, _ = strides.most_common(1)[0]
+    offsets = Counter(page - stride * number for number, page in placed)
+    offset, support = offsets.most_common(1)[0]
+    if support < 0.7 * len(placed):
+        return units
+
+    for number, page in placed:
+        if abs(page - (stride * number + offset)) > 3 * stride:
+            units[number]['teaching_page'] = None
+            units[number]['off_the_line'] = True
+            units[number]['needs_title_review'] = (
+                units[number].get('title_source') != 'contents'
+            )
+
+    # And put the ones that came off it back where the line says they are, if
+    # nothing else is there. Unit 1 of Phrasal Verbs in Use Intermediate was
+    # read onto page 18; the line puts it on page 8, which is where it is.
+    taken_pages = {u['teaching_page'] for u in units.values() if u.get('teaching_page')}
+    highest = max(taken_pages) if taken_pages else 0
+
+    for number, unit in units.items():
+        if unit.get('teaching_page'):
+            continue
+        page = stride * number + offset
+        if page < 1 or page > highest + stride or page in taken_pages:
+            continue
+        unit['teaching_page'] = page
+        unit['page_source'] = 'line'
+        taken_pages.add(page)
+
+    return units
+
+
+def units_by_pitch(layout_pages, contents, front_matter, taken):
+    """Number the units off the rhythm of the exercises pages.
+
+    The last resort, for the two books where nothing else survives the scan.
+    Collocations in Use and Phrasal Verbs in Use Intermediate print their unit
+    numbers and their contents numbers in coloured boxes - artwork - so the
+    contents came back with no numbers at all and the headings with three unit
+    numbers between them. Read that way, Collocations gave 44 units of 60 and
+    Phrasal Verbs gave 68 of 70, eight of which were not units.
+
+    Both books say what they are on their own first page: *the book has 60
+    two-page units*. That regularity is visible without reading it - the
+    exercises pages come every second page from the first to the last - and it
+    is a far better guide than three misread headings. So the run is fitted to
+    the pitch, and the units are counted along it.
+
+    The fit has to explain almost every exercises page found. A book whose
+    exercises do not come at a fixed interval produces no fit and nothing is
+    numbered.
+    """
+    pages = [i + 1 for i, page in enumerate(layout_pages)
+             if is_exercises_page(page) and i + 1 > front_matter]
+    if len(pages) < 20:
+        return {}
+
+    gaps = Counter(b - a for a, b in zip(pages, pages[1:]))
+    pitch, _ = gaps.most_common(1)[0]
+    if not (2 <= pitch <= 4):
+        return {}
+
+    first, last = pages[0], pages[-1]
+    predicted = list(range(first, last + 1, pitch))
+    actual = set(pages)
+    explained = sum(1 for p in predicted if p in actual)
+    if explained < 0.85 * len(pages) or explained < 0.85 * len(predicted):
+        return {}
+
+    count = len(predicted)
+
+    # Where the headings did give a run of units, the fit has to agree with it
+    # roughly, or one of the two is reading a different book.
+    known = [n for n in taken if taken[n].get('teaching_page')]
+    if len(known) >= 20 and not (0.8 * max(known) <= count <= 1.25 * max(known)):
+        return {}
+
+    # Whether the fit merely fills gaps or replaces what the headings said.
+    #
+    # A book whose headings mostly read gets its pages from them, and the fit
+    # only fills what is missing. A book where they mostly do not - Phrasal
+    # Verbs in Use Intermediate gave twelve headings for seventy units, and put
+    # unit 1 on unit 6's page - is better described by its own rhythm than by
+    # the handful that came through, so the fit takes over completely. Leaving
+    # those twelve in place would pin a dozen units to the wrong pages and
+    # block the right ones from being filled in around them.
+    placed = sum(1 for n in range(1, count + 1)
+                 if n in taken and taken[n].get('teaching_page'))
+    authoritative = placed < 0.4 * count
+
+    claimed = set()
+    if not authoritative:
+        claimed = {u['teaching_page'] for u in taken.values() if u.get('teaching_page')}
+
+    filled = {}
+    for number, page in enumerate(predicted, start=1):
+        if page - 1 <= front_matter or (page - 1) in claimed:
+            continue
+        if number in taken and not authoritative:
+            continue
+
+        title = contents.get(number) or (
+            taken[number]['title'] if number in taken and taken[number].get('title_source') == 'contents'
+            else None
+        )
+        filled[number] = {
+            'number': number,
+            'title': title or teaching_title(layout_pages[page - 2]) or f'Unit {number}',
+            'teaching_page': page - 1,
+            'title_source': 'contents' if title else None,
+            'page_source': 'pitch',
+            'needs_title_review': title is None,
+        }
+        claimed.add(page - 1)
+
+    return filled
 
 
 def units_by_stride(found, contents, page_count, front_matter, taken):
@@ -1077,7 +1269,15 @@ def teaching_title(page_text):
             continue
         if RE_FOOTER.search(line) or RE_EXERCISES_HEADING.match(line):
             continue
-        return re.sub(r'\s{2,}', ' ', line)
+        # One word is a fragment, not a title. The scanner reads the first
+        # words of a heading and loses the rest often enough that unit 1 of
+        # Phrasal Verbs in Use came back titled "fan" and a Collocations unit
+        # "Business" - each the opening of a real title, each useless on its
+        # own and worse than saying the title is unknown.
+        title = re.sub(r'\s{2,}', ' ', line)
+        if len(title.split()) < 2:
+            continue
+        return title
     return None
 
 
@@ -1447,10 +1647,11 @@ def build(book):
     # The book's own contents list is a better title than anything a single
     # page yields, and on a scan it is much better - see titles_from_contents.
     # It fills the gaps everywhere, and on a scanned book it wins outright.
-    first_unit_page = min((m['teaching_page'] for m in units_meta.values()
-                           if m.get('teaching_page')), default=None)
-    contents = titles_from_contents(
-        layout, horizon=(first_unit_page - 1) if first_unit_page else None)
+    # The same view of the contents the unit finder used, rather than one
+    # derived from where the first unit turned out to be: a single unit read
+    # onto page 2 would otherwise pull the horizon in front of the contents and
+    # lose every title in the book.
+    contents = titles_from_contents(layout)
     for number, meta in units_meta.items():
         listed = contents.get(number)
         if not listed:

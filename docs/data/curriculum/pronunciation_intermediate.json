@@ -1228,14 +1228,16 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A001.mp3",
    "exists": true,
    "section": null,
-   "track": "A1"
+   "track": "A1",
+   "unit": 5
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A002.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A002.mp3",
    "exists": true,
    "section": null,
-   "track": "A2"
+   "track": "A2",
+   "unit": 1
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A003.mp3",
@@ -1264,21 +1266,24 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A006.mp3",
    "exists": true,
    "section": null,
-   "track": "A6"
+   "track": "A6",
+   "unit": 15
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A007.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A007.mp3",
    "exists": true,
    "section": null,
-   "track": "A7"
+   "track": "A7",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A008.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A008.mp3",
    "exists": true,
    "section": null,
-   "track": "A8"
+   "track": "A8",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A009.mp3",
@@ -1341,21 +1346,24 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A017.mp3",
    "exists": true,
    "section": null,
-   "track": "A17"
+   "track": "A17",
+   "unit": 4
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A018.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A018.mp3",
    "exists": true,
    "section": null,
-   "track": "A18"
+   "track": "A18",
+   "unit": 4
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A019.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A019.mp3",
    "exists": true,
    "section": null,
-   "track": "A19"
+   "track": "A19",
+   "unit": 5
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A020.mp3",
@@ -1397,14 +1405,16 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A025.mp3",
    "exists": true,
    "section": null,
-   "track": "A25"
+   "track": "A25",
+   "unit": 6
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A026.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A026.mp3",
    "exists": true,
    "section": null,
-   "track": "A26"
+   "track": "A26",
+   "unit": 6
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A027.mp3",
@@ -1439,7 +1449,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A031.mp3",
    "exists": true,
    "section": null,
-   "track": "A31"
+   "track": "A31",
+   "unit": 7
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A032.mp3",
@@ -1453,7 +1464,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A033.mp3",
    "exists": true,
    "section": null,
-   "track": "A33"
+   "track": "A33",
+   "unit": 7
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A034.mp3",
@@ -1467,7 +1479,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A035.mp3",
    "exists": true,
    "section": null,
-   "track": "A35"
+   "track": "A35",
+   "unit": 8
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A036.mp3",
@@ -1509,21 +1522,24 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A041.mp3",
    "exists": true,
    "section": null,
-   "track": "A41"
+   "track": "A41",
+   "unit": 9
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A042.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A042.mp3",
    "exists": true,
    "section": null,
-   "track": "A42"
+   "track": "A42",
+   "unit": 9
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A043.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A043.mp3",
    "exists": true,
    "section": null,
-   "track": "A43"
+   "track": "A43",
+   "unit": 9
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A044.mp3",
@@ -1565,7 +1581,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A049.mp3",
    "exists": true,
    "section": null,
-   "track": "A49"
+   "track": "A49",
+   "unit": 11
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A050.mp3",
@@ -1677,7 +1694,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A065.mp3",
    "exists": true,
    "section": null,
-   "track": "A65"
+   "track": "A65",
+   "unit": 14
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A066.mp3",
@@ -1705,7 +1723,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A069.mp3",
    "exists": true,
    "section": null,
-   "track": "A69"
+   "track": "A69",
+   "unit": 15
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A070.mp3",
@@ -1768,14 +1787,16 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A078.mp3",
    "exists": true,
    "section": null,
-   "track": "A78"
+   "track": "A78",
+   "unit": 16
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A079.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A079.mp3",
    "exists": true,
    "section": null,
-   "track": "A79"
+   "track": "A79",
+   "unit": 16
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A080.mp3",
@@ -1824,7 +1845,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_A086.mp3",
    "exists": true,
    "section": null,
-   "track": "A86"
+   "track": "A86",
+   "unit": 18
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_A087.mp3",
@@ -1923,7 +1945,7 @@
    "exists": true,
    "section": null,
    "track": "B1",
-   "unit": 71
+   "unit": 21
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B002.mp3",
@@ -1938,7 +1960,7 @@
    "exists": true,
    "section": null,
    "track": "B3",
-   "unit": 71
+   "unit": 21
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B004.mp3",
@@ -1966,7 +1988,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B007.mp3",
    "exists": true,
    "section": null,
-   "track": "B7"
+   "track": "B7",
+   "unit": 22
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B008.mp3",
@@ -1987,14 +2010,16 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B010.mp3",
    "exists": true,
    "section": null,
-   "track": "B10"
+   "track": "B10",
+   "unit": 23
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B011.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B011.mp3",
    "exists": true,
    "section": null,
-   "track": "B11"
+   "track": "B11",
+   "unit": 23
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B012.mp3",
@@ -2029,14 +2054,16 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B016.mp3",
    "exists": true,
    "section": null,
-   "track": "B16"
+   "track": "B16",
+   "unit": 24
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B017.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B017.mp3",
    "exists": true,
    "section": null,
-   "track": "B17"
+   "track": "B17",
+   "unit": 24
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B018.mp3",
@@ -2050,35 +2077,40 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B019.mp3",
    "exists": true,
    "section": null,
-   "track": "B19"
+   "track": "B19",
+   "unit": 24
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B020.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B020.mp3",
    "exists": true,
    "section": null,
-   "track": "B20"
+   "track": "B20",
+   "unit": 25
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B021.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B021.mp3",
    "exists": true,
    "section": null,
-   "track": "B21"
+   "track": "B21",
+   "unit": 25
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B022.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B022.mp3",
    "exists": true,
    "section": null,
-   "track": "B22"
+   "track": "B22",
+   "unit": 25
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B023.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B023.mp3",
    "exists": true,
    "section": null,
-   "track": "B23"
+   "track": "B23",
+   "unit": 26
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B024.mp3",
@@ -2092,14 +2124,16 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B025.mp3",
    "exists": true,
    "section": null,
-   "track": "B25"
+   "track": "B25",
+   "unit": 26
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B026.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B026.mp3",
    "exists": true,
    "section": null,
-   "track": "B26"
+   "track": "B26",
+   "unit": 26
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B027.mp3",
@@ -2128,7 +2162,7 @@
    "exists": true,
    "section": null,
    "track": "B30",
-   "unit": 1
+   "unit": 27
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B031.mp3",
@@ -2136,7 +2170,7 @@
    "exists": true,
    "section": null,
    "track": "B31",
-   "unit": 1
+   "unit": 27
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B032.mp3",
@@ -2144,7 +2178,7 @@
    "exists": true,
    "section": null,
    "track": "B32",
-   "unit": 1
+   "unit": 27
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B033.mp3",
@@ -2323,7 +2357,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B056.mp3",
    "exists": true,
    "section": null,
-   "track": "B56"
+   "track": "B56",
+   "unit": 32
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B057.mp3",
@@ -2546,21 +2581,24 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B087.mp3",
    "exists": true,
    "section": null,
-   "track": "B87"
+   "track": "B87",
+   "unit": 38
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B088.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B088.mp3",
    "exists": true,
    "section": null,
-   "track": "B88"
+   "track": "B88",
+   "unit": 39
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B089.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B089.mp3",
    "exists": true,
    "section": null,
-   "track": "B89"
+   "track": "B89",
+   "unit": 39
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B090.mp3",
@@ -2581,7 +2619,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_B092.mp3",
    "exists": true,
    "section": null,
-   "track": "B92"
+   "track": "B92",
+   "unit": 39
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_B093.mp3",
@@ -2673,7 +2712,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_C008.mp3",
    "exists": true,
    "section": null,
-   "track": "C8"
+   "track": "C8",
+   "unit": 51
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_C009.mp3",
@@ -3274,7 +3314,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_C093.mp3",
    "exists": true,
    "section": null,
-   "track": "C93"
+   "track": "C93",
+   "unit": 59
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_C094.mp3",
@@ -3324,7 +3365,8 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_D001.mp3",
    "exists": true,
    "section": null,
-   "track": "D1"
+   "track": "D1",
+   "unit": 1
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_D002.mp3",
@@ -3338,21 +3380,24 @@
    "extracted_path": "sources/audio/pronunciation_intermediate/T_D003.mp3",
    "exists": true,
    "section": null,
-   "track": "D3"
+   "track": "D3",
+   "unit": 1
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_D004.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_D004.mp3",
    "exists": true,
    "section": null,
-   "track": "D4"
+   "track": "D4",
+   "unit": 2
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_D005.mp3",
    "extracted_path": "sources/audio/pronunciation_intermediate/T_D005.mp3",
    "exists": true,
    "section": null,
-   "track": "D5"
+   "track": "D5",
+   "unit": 23
   },
   {
    "path": "sources/audio/pronunciation_intermediate/T_D006.mp3",
@@ -3778,11 +3823,22 @@
  "units": [
   {
    "number": 1,
-   "title": "Ms Fox’s",
+   "title": "phonemic symbols (see Section D1). For example, duck is /dak/.",
    "needs_title_review": false,
-   "source_page": 62,
+   "source_page": 11,
    "sections": [],
-   "exercises": [],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "",
+     "body": "one, but the spelling is different. Correct them using words from the box.\n           son    some    meat     way    threw     pears    sent   week     buy    piece    road    two\n\n\n         |  Last      I sent my sla Jamie  to the shops\n               sum  food. He got a peace of meet and  too\n           pairs. On the weigh home,  the bag broke. The\n           food fell onto the rode and got dirty. In the end,\n         : Jamie through  the food in the bin.\n\n\n         How  many  sounds are there in each word? Write the order of consonant sounds (C) and\n         vowel sounds (V).\n         EXAMPLE\n         night              (three sounds: first a consonant, then a vowel and finally another consonant)\n           Og                                            A\n         2 rabbit\n           GOP                                           6 DCO\n\n         Listen to these possible names of cartoon animals. Do they have the same first sounds? (Write A.)\n         Do they rhyme?  (Write B.)\n\n         EXAMPLE                    ..2..\n         1 Phil the fox                                  5 Polly the         ........\n         2 Mary   the canary   .........                 6 Deborah   the zebra\n         3 Ida the spider                                7 Myrtle  the turtle\n         4 Claire the bear                               8 Kitty the cat\n\n         Listen to these sounds. Do you have a similar sound in your language? If you do, write a tick (V)."
+    },
+    {
+     "number": 4,
+     "instructions": "",
+     "body": "1    (shoe)                                     5 /d3/ (June)\n         2     (girl)                                    6 /au/ (SOAP)  mm\n                                                         7 /0/ (thing)\n         4     (ZOO)                                     8    (life)\n\n\n                                                                                      Now  go to Unit 21\n\n\n                                                                       English Pronunciation in Use"
+    }
+   ],
    "answers": [
     {
      "number": 1,
@@ -3807,27 +3863,27 @@
    ],
    "audio": [
     {
-     "path": "sources/audio/pronunciation_intermediate/T_B030.mp3",
-     "extracted_path": "sources/audio/pronunciation_intermediate/T_B030.mp3",
+     "path": "sources/audio/pronunciation_intermediate/T_D001.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_D001.mp3",
      "exists": true,
      "section": null,
-     "track": "B30",
+     "track": "D1",
      "unit": 1
     },
     {
-     "path": "sources/audio/pronunciation_intermediate/T_B031.mp3",
-     "extracted_path": "sources/audio/pronunciation_intermediate/T_B031.mp3",
+     "path": "sources/audio/pronunciation_intermediate/T_A002.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A002.mp3",
      "exists": true,
      "section": null,
-     "track": "B31",
+     "track": "A2",
      "unit": 1
     },
     {
-     "path": "sources/audio/pronunciation_intermediate/T_B032.mp3",
-     "extracted_path": "sources/audio/pronunciation_intermediate/T_B032.mp3",
+     "path": "sources/audio/pronunciation_intermediate/T_D003.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_D003.mp3",
      "exists": true,
      "section": null,
-     "track": "B32",
+     "track": "D3",
      "unit": 1
     }
    ],
@@ -3837,9 +3893,9 @@
   },
   {
    "number": 2,
-   "title": "Short vowel crossword",
-   "needs_title_review": true,
-   "source_page": null,
+   "title": "word plan.",
+   "needs_title_review": false,
+   "source_page": 13,
    "sections": [],
    "exercises": [
     {
@@ -3880,18 +3936,71 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A007.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A007.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A7",
+     "unit": 2
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_D004.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_D004.mp3",
+     "exists": true,
+     "section": null,
+     "track": "D4",
+     "unit": 2
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A008.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A008.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A8",
+     "unit": 2
+    }
+   ],
    "unplaced_glosses": [],
    "vocabulary_count": 0,
    "gloss_count": 0
   },
   {
    "number": 3,
-   "title": "Back,",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "title": "Back, pack /b/, /p/",
+   "needs_title_review": false,
+   "source_page": 15,
+   "sections": [
+    {
+     "letter": "B",
+     "title": "(comb).",
+     "body": "/b/\nB is sometimes silent\n(job)\n|\nBB (rubber)\n|\n/f/ (phone).\nPH pronounced\n/p/\nP (open)\n(psychology).\n(apple)\nP is sometimes silent\nPP\nUse\nEnglish Pronunciation in\n14",
+     "vocabulary": [
+      {
+       "term": "(job)",
+       "example": "(job)"
+      },
+      {
+       "term": "(apple)",
+       "example": "(apple)"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Section A Letters and sounds",
+     "body": "Section A Letters and sounds\n\n\n         Exercises\n\n        First read this conversation to the end, and then write the letter or ‘p' in each gap.\n        Listen and check your answers.\n  All\n         Sip: Where  are the\n                 ears?!!! Did you  say .......ears?\n         Sip:              you  know,  fruit!\n        Jor:  Oh, I see, ......ears with a P! They’re in the ......ack.\n         Sip: What,  in the .......ack of the truck?\n        Jor:  No,  in the .......ack, you know, with a P!\n         Sip: Oh, I see, .......ack with a P! Would you like one?\n        Jor:  No,     have a  ......each, please.\n         Sip: A  beach?!!!\n\n          Follow up: Play the recording again, pausing it after each of lines.\n          You say Joe's lines before listening to him saying them.\n\n         The word ape  contains the two sounds /e1/ and /p/. If you reverse the sounds, you get the word\n         pay       Reverse the sounds in these words and  write the new word.\n         EXAMPLE    tops _\n\n         2                                                5 keeps\n\n\n         Listen. In one word in each group, the ‘b' or ‘p' is not pronounced. Circle the word.\n\n  Al2\n         EXAMPLE    double            Dublin\n                                                          5 recipe   repeat  receipt\n         1 lamb    label  lab\n                                                          6 possibly   psychology\n         2 crab   robbed    climb\n                                                          7 Cambridge     combine    combing\n         3 cup   cupboard     copy\n         4 photo    potato   paper\n\n         Listen and tick (W) the sentence you hear, A or B. If you find any of these difficult, go to\n         Section D4 Sound  pairs for further practice.\n  Al3\n\n                                                                  B\n                            A\n                                                                                        =>sound  pair 28\n                                                                                       (\n                                                  There's a pear in that tree.\n             There's a bear in that tree.\n\n                                                                                                 pair 28\n                                                                                       (\n                                                  He had  the peach to himself.\n             He had the beach to himself.\n                                                  They've earned it.                             pair 29\n             They burned it.                                                           (\n                                                  Save oil.                                      pair 29\n             Say ‘boil’.\n                                                  This is a nice affair.                         pair 30\n                                                                                       (\n             This is a nicer pear.\n                                                  Would  you like a coffee?                      pair 30\n                                                                                       (\n             Would  you like a copy?\n\n           Follow up: Record yourself saying the sentences in 3.4, choosing\n           sentence A or B. Make a note of which you say. Then listen to your\n           recording in about two weeks. Is it clear which sentences you said?\n\n\n                                                                         English Pronunciation in Use       15",
+     "unlabelled": true
+    }
+   ],
    "answers": [
     {
      "number": 1,
@@ -3916,15 +4025,35 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 3,
    "gloss_count": 0
   },
   {
    "number": 4,
-   "title": "Oh,",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Al4a Listen to the sounds /s/ and /z/. Look at the mouth diagram",
+   "needs_title_review": false,
+   "source_page": 17,
+   "sections": [
+    {
+     "letter": "C",
+     "title": "can",
+     "body": "(place)\nS is not always pronounced /s/ (sugar, rise, plays).\nX spells /gz/ (exact).\n/z/\nZ (zero), S (nose) | ZZ (buzz)\nSS (scissors) | -SE at the end of word is usually pronounced /z/ (rise).\na",
+     "vocabulary": [],
+     "glosses": []
+    },
+    {
+     "letter": "A",
+     "title": "/jurs/",
+     "body": "Eee\n/ju:z/ verb\nconnected\nPronunciation may be\nuse\nto grammar:\nuse\n= noun\n=\nhouse /hauz/ verb\nclose /klauz/ = verb\nhouse /haus/ = noun\nclose /klaus/ adjective\n=\n=\n16\nEnglish",
+     "vocabulary": [
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -3959,16 +4088,33 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A017.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A017.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A17",
+     "unit": 4
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A018.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A018.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A18",
+     "unit": 4
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 1,
    "gloss_count": 0
   },
   {
    "number": 5,
    "title": "6 Listen to the sounds /d/ and Look at the mouth t",
-   "needs_title_review": true,
-   "source_page": null,
+   "needs_title_review": false,
+   "source_page": 19,
    "sections": [],
    "exercises": [
     {
@@ -4009,7 +4155,24 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A019.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A019.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A19",
+     "unit": 5
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A001.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A001.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A1",
+     "unit": 5
+    }
+   ],
    "unplaced_glosses": [],
    "vocabulary_count": 0,
    "gloss_count": 0
@@ -4017,9 +4180,78 @@
   {
    "number": 6,
    "title": "word met.",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "needs_title_review": false,
+   "source_page": 21,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "2",
+     "body": "/e/\n/i:/\noes\nand\nsounds\n-\n:\nThe vowel\nsound\nin\nthe letters of the alphabet, E has the long vowel sound /i:/. You hear this\nWhen you say\nthe short vowel sound /e/, as in the\nalso be pronounced\nas\nthe word meet. But the letter E can\nword met.\n7 A\nhow make this long vowel sound.\nthe mouth diagram\nto\nto see\nA24a\nListen to the sound /i:/. Look at\n,\nit with the words on each side.\nwords below and\ncompare\nA24b\nListen to the target sound /i:/ in the\n»\ncarget liz\nwide\nmouth _,\n| 7’ @ Le “RT TSS\nie\naa\nEB | oss I A ae\n.\nlast\nleact\niP\nbeer\nbee\nbay\nbeat\nbet\nJ\nbit\nsound.\nA24c\nListen and repeat these examples of the target\n4\nkeeps\nkey\nkeys\npeas\npiece\npea\nseat\nscene\nseas\nf important\nfor listening\nvowel\nthe mouth diagram to see how to make this short\nthe sound /e/. Look\nA2Sa . Listen to\nat\nsound.\n—_\nit with the words on each side.\nthe words below and\nsound\n/e/ in\ncompare\nA2Sb\nListen to the target\n4\ncatget /ey\nwide\nmouth —_\nmen\nman\n<=\nhead\nheard\nmet\nmate\nset\nsit\nlittle)\njaw down (a\nsound.\nof the\ntarget\nA25¢\nListen and repeat these examples\n»\ndeath\nred\ntest\nan ee\n(e=—\nsaid\nfriend\nmany\n“It's best to rest, said the vet to the pet.”\nshelf\nleg\ncheck\nSpelling\nsometimes\nnotes\nfrequently\nspelt EA,\nMany other vowel sounds\nare\nE (me)\nfix!\nEE (feet), EA (eat)\n/i:/\nthough\nis the most common.\nIE (piece)\nE-E (scene)\n(friend)\nIf E is followed by R, the vowel is not /e/,\nEA (death), IE\nlel\nE (men)\nbut /3:(r)/ for example in serve.\nA (many), Al (said)\n(See Unit 19.)\n20\nEnglish",
+     "vocabulary": [
+      {
+       "term": "oes",
+       "example": "oes"
+      },
+      {
+       "term": "| 7’ @ Le “RT TSS",
+       "example": "| 7’ @ Le “RT TSS"
+      },
+      {
+       "term": "ie",
+       "example": "ie"
+      },
+      {
+       "term": "aa",
+       "example": "aa"
+      },
+      {
+       "term": "EB | oss I A ae",
+       "example": "EB | oss I A ae"
+      },
+      {
+       "term": "last",
+       "example": "last"
+      },
+      {
+       "term": "leact",
+       "example": "leact"
+      },
+      {
+       "term": "iP",
+       "example": "iP"
+      },
+      {
+       "term": "bee",
+       "example": "bee"
+      },
+      {
+       "term": "men",
+       "example": "men"
+      },
+      {
+       "term": "head",
+       "example": "head"
+      },
+      {
+       "term": "met",
+       "example": "met"
+      },
+      {
+       "term": "an ee",
+       "example": "an ee"
+      },
+      {
+       "term": "(e=—",
+       "example": "(e=—"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 3,
@@ -4049,18 +4281,163 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A025.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A025.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A25",
+     "unit": 6
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A026.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A026.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A26",
+     "unit": 6
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 15,
    "gloss_count": 0
   },
   {
    "number": 7,
    "title": "Carrot,",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "needs_title_review": false,
+   "source_page": 23,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Pea",
+     "body": "> °\n“,\nA me TAR pullin\n(7 %G\nos\nF ‘Ge, VY)\nQ a= 7: ol\nA ©\nWA ZY. Gy) 35) )\nv7\nWE me\nYj,’ AN Y\nI\naN [GZ\nA 3 I\nX\n|\nOP\n(KS\n; ww\n~\nFe\" 2\nX sgl\naes Ass)\nSao\nBad\n“| ate an apple and a banana in a cinema in Canada.\"\nimportant 7\nfor listening",
+     "vocabulary": [
+      {
+       "term": "A me TAR pullin",
+       "example": "A me TAR pullin"
+      },
+      {
+       "term": "(7 %G",
+       "example": "(7 %G"
+      },
+      {
+       "term": "os",
+       "example": "os"
+      },
+      {
+       "term": "F ‘Ge, VY)",
+       "example": "F ‘Ge, VY)"
+      },
+      {
+       "term": "Q a= 7: ol",
+       "example": "Q a= 7: ol"
+      },
+      {
+       "term": "A ©",
+       "example": "A ©"
+      },
+      {
+       "term": "WA ZY. Gy) 35) )",
+       "example": "WA ZY. Gy) 35) )"
+      },
+      {
+       "term": "v7",
+       "example": "v7"
+      },
+      {
+       "term": "WE me",
+       "example": "WE me"
+      },
+      {
+       "term": "Yj,’ AN Y",
+       "example": "Yj,’ AN Y"
+      },
+      {
+       "term": "I",
+       "example": "I"
+      },
+      {
+       "term": "aN [GZ",
+       "example": "aN [GZ"
+      },
+      {
+       "term": "A 3 I",
+       "example": "A 3 I"
+      },
+      {
+       "term": "OP",
+       "example": "OP"
+      },
+      {
+       "term": "(KS",
+       "example": "(KS"
+      },
+      {
+       "term": "ww",
+       "example": "; ww"
+      },
+      {
+       "term": "Fe\" 2",
+       "example": "Fe\" 2"
+      },
+      {
+       "term": "X sgl",
+       "example": "X sgl"
+      },
+      {
+       "term": "aes Ass)",
+       "example": "aes Ass)"
+      },
+      {
+       "term": "Sao",
+       "example": "Sao"
+      },
+      {
+       "term": "Bad",
+       "example": "Bad"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "how make the sound /i/.",
+     "body": "Look\nthe mouth diagram\nto see\nto\nat\ne\n_\nA30, » Listen to these examples and repeat them. The weak vowels in the unstressed syllables in\nblack\npronounced /1/.\nare\n— cabbage\nweak A:\norange\nbegin\nweak\nE:\ndances\nwanted\nwomen\nweak I: music\nwalking\nfront of\nweak U: lettuce\nminute\ntongue up\n“Alex's lettuces tasted like cabbages.\"\nDD\nSpelling\nbe pronounced\nweak vowel.\nvowel spelling\nNotice in the examples above that nearly\nany\nmay\nas a\nLA\\\npronounced weak syllables, with weak vowel. For example:\nhalf\nNote: Often, whole words\na\nan\nare\nas\nlate. See Unit 33.\nhour, going to work, Jim\nwas\n72",
+     "vocabulary": [
+      {
+       "term": "black",
+       "example": "black"
+      },
+      {
+       "term": "DD",
+       "example": "DD"
+      },
+      {
+       "term": "Spelling",
+       "example": "Spelling"
+      },
+      {
+       "term": "half",
+       "example": "half"
+      },
+      {
+       "term": "was",
+       "example": "was"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Listen to the poem. Circle the words which rhyme.",
+     "body": "Letters and sounds\n\n\n         Exercises\n\n         Listen to the poem. Circle the words which rhyme.\n   A31\n\n\n          Listen. In each sentence or phrase there are two vowels which are not /a/. Circle them.\n         EXAMPLE     an @pple and a banana\n          1 from Canada   to China\n         2  The parrot was  asleep.\n          3 The cinema  was  open.\n         4  the photographer’s assistant\n          5 a question and an  answer\n          6 a woman   and her husband\n          7 a pasta salad\n\n          Write the words in the correct part of the table. Then listen and check.\n   A33\n             erange    wemen     return    collect    market    begin     visit     asleep\n             salad               needed               sofa      peaches   quarter   women\n\n\n            vowel in weak syllable =                        vowel  in weak syllable = /1/\n            woman                                            orange\n\n\n          Listen and circle the word you hear.\n      4                                                                    .\n           1  Woman   or women?     What  time did the woman   / women  arrive?\n           2  Dress or address?  Where’s  Kate’s dress / address?\n           3  Manager’s  or manages?    The team  manager's / manages  well.\n           4  Teacher’s or teaches?  The German            / teaches English.\n           5  Weight’s or waiter’s?  The weight’s / waiter’s heavy.\n           6  Dancer’s or dances?   The woman    dancer’s / dances fast.\n           7  Officer’s or office’s? The officer’s / office’s here.\n           8  Away  or way?   Take  that away / way.\n           9  Driver or drive?  What  a nice driver / drive!\n          10  Racer’s or races?  The racer’s / races finished.\n\n            Follow up: Record yourself saying the sentences in 7.4, choosing one of\n            the two words. Make a note of which words you say. Then listen to your\n            recording in about two weeks. Is it clear which words you said?\n\n\n                                                                        English Pronunciation in Use     23",
+     "unlabelled": true
+    }
+   ],
    "answers": [
     {
      "number": 2,
@@ -4073,18 +4450,50 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A031.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A031.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A31",
+     "unit": 7
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A033.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A033.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A33",
+     "unit": 7
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 26,
    "gloss_count": 0
   },
   {
    "number": 8,
    "title": "Unit 8",
    "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "source_page": 25,
+   "sections": [
+    {
+     "letter": "F",
+     "title": "(of)",
+     "body": "V (never)\n24",
+     "vocabulary": [],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Section A Letters and sounds",
+     "body": "Section A Letters and sounds\n\n\n         Exercises\n\n         How  many  /f/ and /v/ sounds are there when you say these numbers?  Write the number.\n\n\n         Complete  this conversation using words from the box. Then listen and check.\n             fan           wife’s   wives\n          Sip: My              left me.                                                            wag\n          JOE:                   left you? HOW  Many              did you have,  Sid?                     A\n          Sip: One  wife. And  now  she has left me.\n               Ohy  [                with  an E,                With a V!\n          Sip: That’s right! Yes, she took the            and  drove off.\n          Jor: What   did she want the             for?\n          SID: [said             , you know, a kind  of vehicle.\n          JOE:                       with  a Vj NOt            With  an F!\n            Follow up: Play the recording again, pausing after each of Sid's lines.\n            You say Joe's lines before listening to him saying them.\n\n          Find 12 words beginning  or ending with /f/ or /v/.\n          The words  are written horizontally (->) or                   Dc        L    AU       GH\n          vertically (|). Note that the last letter is not always       R    OW        S   A    V         F\n          F or V. Use all the letters.\n                                                                         1   Ul        L    F    It\n                                                                        VG        F         H   A\n                                                                         E   H    E    V              L   F\n                                                                        O    F    F    E    S   A\n\n\n           Listen and circle the word you hear. If you find any of these difficult, go to Section D4 Sound pairs\n          for further practice.\n           1 Thief’s or thieves’? These  are the thief’s / thieves’ fingerprints.                    pair 37)\n           2 Few  or view?   She’s painted a few / view.                                             pair 37)\n           3 Copy  or coffee?   Do you  want  a copy / coffee?                              (sound   pair 30\n           4 Boat  or vote?  What   are you going to do with  your boat / vote?                       pair 29)\n           5 Worse  or verse?   I don’t know  which  is worse / verse.                                pair 38\n           6 Free or three?   We  got free / three tickets!                                           pair 39\n             Follow up: Record yourself saying the sentences in 8.4, choosing one of\n             the two words. Make a note of which words you say. Then listen to your\n             recording in about two weeks. Is it clear which words you said?\n                                                                                               0 fo Unit  28\n\n                                                                          English Pronunciation in Use      25",
+     "unlabelled": true
+    }
+   ],
    "answers": [
     {
      "number": 1,
@@ -4102,7 +4511,16 @@
      "instructions": "1   thief’s          3 copy                   5 verse"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A035.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A035.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A35",
+     "unit": 8
+    }
+   ],
    "unplaced_glosses": [],
    "vocabulary_count": 0,
    "gloss_count": 0
@@ -4111,9 +4529,37 @@
    "number": 9,
    "title": "Unit 9",
    "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "source_page": 27,
+   "sections": [
+    {
+     "letter": "G",
+     "title": "(go)",
+     "body": "/g/\nGH (ghost)\nG can be silent (sign, foreign).\n(biggen\nThe vowel sound is\nbit longer before /g/ than before\nGG\nGU (guest)\na\n/k/\nin pairs like bag and\nback.\n~ |\nmiddle\nbeginning\nend\nnotes\nQU spells the sound /kw/, e.g. quick /kwiky.\n/k/- | € (can)\nCC (soccer) | K (milk)\nK (king)\nCK (locker) | CK (black)\nX spells the sound /ks/, e.g. (six) /siks/.\nC (comic)\nIn\nwords beginning with K, the K is silent,\nsome\n(ache)\nCH\ne.g. know, knife.\n26\nEnglish Pronunciation Use\nin",
+     "vocabulary": [
+      {
+       "term": "(biggen",
+       "example": "(biggen"
+      },
+      {
+       "term": "end",
+       "example": "end"
+      },
+      {
+       "term": "notes",
+       "example": "notes"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Add the sound  /g/ or /k/ to the beginning of these words and write the new words. Remember:",
+     "body": "Section A       anc\n\n\n            Exercises\n\n            Add the sound  /g/ or /k/ to the beginning of these words and write the new words. Remember:\n            of sounds, not spelling. For example, if you add /k/ to the beginning of water /wo:ta/, you get\n            quarter /kwo:ta/. The sound is similar but the spelling is completely different!\n            EXAMPLE    eight\n            DUP\n                                             6  VME                             9  rate\n            3 ache                            7 air                            10  ill\n\n\n            Complete  the second line to rhyme with the first line, using a word from the box.\n            Then listen and repeat.\n     A41\n\n               rocks    cake    ache              key    bigger             kitchen    six   ask\n\n            EXAMPLE    He  dressed for soccer, And closed his\n            1 Kelly Collins couldn’t figure,                          4       a fox,\n              How   to make  the plants grow            .               Behind  those            .\n            2 I'd like five bricks,                                   5 Clara saw a  friend she knew,\n              No,  Make  it           !                                 Standing  quietly in the\n            3 Mr  Quinn  ate so much  steak,\n              He  came  home  with a stomach             .\n\n            Complete  this conversation using words from the box. Then listen and check. — lock  log   Loch\n     A42\n            Sip: Hey, there’s the monster!\n            JOE: That’s Just              +                      a,                                       |\n                                     Ness.\n            JOE: Noy  NOt                                 ;\n                 you  know, from a  tree!\n                     never  seen a tree With a            .\n            JOE:                       that you open  With a keys a            with  a G!\n\n             Follow up: Play the recording again, pausing it after each of Sid's lines.\n             You say Joe's lines before listening to him saying them.\n\n            Listen and circle the word you hear. If you find any of these difficult, go to Section D4 Sound pairs\n            for further practice.\n     A43\n\n            1 Ghost  or coast?  Did  you see the ghost / coast?                                       pair 40)\n            2 Glasses or classes?  I don’t need glasses / classes.                          (sound    pair 40)\n            3 Bag or back?    My  bag’s/ back’s wet.                                        (sound    pair 40)\n            4 Goat  or coat?  She’s lost her goat / coat.                                   (sound   pair 40)\n             Follow up: Record yourself saying the sentences in 9.4, choosing one of\n             the two words. Make a note of which words you say. Then listen to your\n             recording in about two weeks. Is it clear which words you said?\n\n                                                                          English Pronunciation in Use     27",
+     "unlabelled": true
+    }
+   ],
    "answers": [
     {
      "number": 1,
@@ -4131,18 +4577,98 @@
      "instructions": "1  coast            2 glasses          3 bag              4 coat"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A041.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A041.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A41",
+     "unit": 9
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A042.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A042.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A42",
+     "unit": 9
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A043.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A043.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A43",
+     "unit": 9
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 3,
    "gloss_count": 0
   },
   {
    "number": 10,
    "title": "Unit 10",
    "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "source_page": 29,
+   "sections": [
+    {
+     "letter": "D",
+     "title": "ofair|}",
+     "body": "janeuage\nsquare\nlips we round\n;\nwould\ngood\ngood\n“Wendy went away twice a week.\"\nGwyn\nGwyn\n.\nwin\nrelax lips\nJ\nA46a_» Listen to the sound /j/. Look at the mouth diagram to see how to make this sound.\nthe\nwords on each side.\nthe target sound /j/ in the words below and compare it with\nA46b\nListen\nto\n»\nA46c Then listen and repeat the examples of the target sound.\n«\nif\nmake\nsmall at top of mouth\ngap\ncarget //y\n|\n|\nExamples\njoke\njoke\nyolk\n—— =\nyear —_ used\neuro\n‘\nyour\nJaw | few\nview\njaw\ncure\nfuel\nfool\nfool\n——\nmove\nin Europe\n“We didn't\nja\nuse euros\na\nmove tongue down\n|\nplayer\npleasure\npleasure\ndown (a little)\nago.\"\nfew\nto\nopen gap\nyears\nImportant\nLor listening\nSpelling\nfrequently\nrarely\nnotes\n(hill)\nWH (who)\nH is often silent (hour, honest).\n/b/ _| H\n|\n/kw/ (quite).\nO (one, once)\nThe letters QU usually spell\n/w/ | W (will, WH (when)",
+     "vocabulary": [
+      {
+       "term": "win",
+       "example": "win"
+      },
+      {
+       "term": "the",
+       "example": "the"
+      },
+      {
+       "term": "Examples",
+       "example": "Examples"
+      },
+      {
+       "term": "yolk",
+       "example": "yolk"
+      },
+      {
+       "term": "your",
+       "example": "your"
+      },
+      {
+       "term": "player",
+       "example": "player"
+      },
+      {
+       "term": "notes",
+       "example": "notes"
+      },
+      {
+       "term": "(hill)",
+       "example": "(hill)"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "E",
+     "title": "(cute)",
+     "body": "(view),\n(few),\nU\n28\n/j/\nY (you),\n|",
+     "vocabulary": [],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Section A Letters and sounds",
+     "body": "Section A Letters and sounds\n\n\n         Exercises\n\n         Add one of these sounds to the start of these words to make other words: /h/, /j/, /w/.\n         Think of sounds, not spelling!\n         EXAMPLE    if\n                                          6  eyes\n                                           7 all\n         3\n\n\n         5\n\n         In these groups of words, three of the words begin with the same consonant sound and one of the\n         words begins with a different sound. Circle the one with the different sound. You can use a dictionary.\n         EXAMPLE   (hour)  half  home    high\n         1 union   used   under   university            4 year   euro             untie\n         2 water   whale   whole    window              5 how    honest   healthy   happy\n         3 when    who   where    which                 6 one   write   world   waste\n\n         Each sentence contains four or five examples of one of these sounds: /h/, /w/, /j/.\n         Write the phonemic  letter under the sounds in the sentences.\n         EXAMPLE   A  fusion of Cuban  and  European  music. /j/\n                      J          J          J           J\n         1 Your  uniform  used to be yellow. /j/\n         2 Haley’s horse hurried ahead. /h/\n         3 This is a quiz with twenty quick questions. /w/\n         4 We  went  to work at quarter to twelve. /w/\n         5 New   York University student’s union. /j/\n         6 The  hen hid behind the hen  house. /h/\n         7 Which   language would  you  like to work in? /w/\n\n         Listen and circle the word you hear. If you find any of these difficult, go to Section D4 Sound pairs\n         for further practice.\n\n         1 Art or heart?   This is the art / heart of the country.                                pair 41)\n         2 Hearing  or earring?  She’s lost her hearing / earring.                                pair 41)\n         3 West  or vest?  The west / vest is very warm.                                          pair 38)\n         4 Aware  or of air?  They  weren’t made  aware  / of air.                                pair 38)\n         5 Use  or juice? What’s  the use / juice?                                                pair 42)\n         6 Heat  or sheet?  I can’t sleep in this heat / sheet.                                   pair 43)\n\n           Follow up: Record yourself saying the sentences in 10.4, choosing one\n           of the two words. Make a note of which words you say. Then listen to\n           your recording in about two weeks. Is it clear which words you said?\n\n\n                                                                       English Pronunciation in Use     29",
+     "unlabelled": true
+    }
+   ],
    "answers": [
     {
      "number": 2,
@@ -4162,15 +4688,52 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 8,
    "gloss_count": 0
   },
   {
    "number": 11,
    "title": "Wine,",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "needs_title_review": false,
+   "source_page": 31,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "pack",
+     "body": "peak\npick\ntongue up\nwheel\nwill\nwhile\nsit\nset\nsat\nfit\nfeet\nfat\nA.\nA49¢\nexamples of the\nsound.\ntarget\n» Listen and repeat these\nking ~~\nkid\nkit\npink\npig\npick\n_—\n“\nfish\nfit\nfill\n“Tim\nbit a bit of Kitty's biscuit.”\nC]}\nSpelling\n~~\nfrequently\nsometimes |\nnotes\n| These spellings are not always pronounced /a1/\n/ai/ | I-E (smile), IE (die) |\nIGH (high),\n(fridge, city, friend).\nY (cry)\nUY (buy)\nAl\n| (win)\nThe sound /1/ is also\na weak vowel (see Unit 7), and can\nhave various spellings in\nunstressed syllable (needed,\nan\nvillage).\n(and\ncities,\n\\f there is an R after the letter |\nthe\nR does not have a vowel after it), | has a different\npronunciation. (See Unit 19.)",
+     "vocabulary": [
+      {
+       "term": "pick",
+       "example": "pick"
+      },
+      {
+       "term": "will",
+       "example": "will"
+      },
+      {
+       "term": "sit",
+       "example": "sit"
+      },
+      {
+       "term": "C]}",
+       "example": "C]}"
+      },
+      {
+       "term": "Spelling",
+       "example": "Spelling"
+      },
+      {
+       "term": "notes",
+       "example": "notes"
+      },
+      {
+       "term": "IGH (high)",
+       "example": "IGH (high),"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4195,17 +4758,299 @@
      "instructions": "1   live                   2 feel                 3 letter                4  lift"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A049.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A049.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A49",
+     "unit": 11
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 7,
    "gloss_count": 0
   },
   {
    "number": 12,
-   "title": "Sheep,",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Sheep, jeep, cheap",
+   "needs_title_review": false,
+   "source_page": 33,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "sound.",
+     "body": "| AS2a ¢\nthe mouth diagram to see how to make this consonant\nthe sound /{/. Look\nListen to\nat\n——————\nhand when you\nfeel the air\nfram the throat. and\non your\nNatica that there ie na voice\nvou can\nin\nthe sound /3/,\nfrom the throat,\nas\nyou get\nput it in front of your mouth. If you add voice\ntelevision, but this sound is not common in English.\nsound /f/ in the words below and compare it with the words on each side.\nAS2b\nthe\ntarget\n» Listen to\nthe examples.\nAS2¢ » Then\nlisten and\nrepeat\ncarget //y\n| Examples\nshort\nsort\nsort\nshould — shirt — sugar\nsuit\nshoot\nsult} |\nfashion\nnation\nocean\nEnglish :\nush\nwish\n:\ncatch\ncatch\ncash\nP\nend bot of tongue curv\nback\nbehind tooth ridg\nchoose\nshoes\nchoose\n(push\nthrough gap)\nair\nthe shower’\n“Sharon shouldn't wash her shoes in\ny",
+     "vocabulary": [
+      {
+       "term": "| AS2a ¢",
+       "example": "| AS2a ¢"
+      },
+      {
+       "term": "the mouth diagram to see how to make this consonant",
+       "example": "the mouth diagram to see how to make this consonant"
+      },
+      {
+       "term": "the sound /{/. Look",
+       "example": "the sound /{/. Look"
+      },
+      {
+       "term": "Listen to",
+       "example": "Listen to"
+      },
+      {
+       "term": "at",
+       "example": "at"
+      },
+      {
+       "term": "hand when you",
+       "example": "hand when you"
+      },
+      {
+       "term": "feel the air",
+       "example": "feel the air"
+      },
+      {
+       "term": "fram the throat. and",
+       "example": "fram the throat. and"
+      },
+      {
+       "term": "on your",
+       "example": "on your"
+      },
+      {
+       "term": "Natica that there ie na voice",
+       "example": "Natica that there ie na voice"
+      },
+      {
+       "term": "vou can",
+       "example": "vou can"
+      },
+      {
+       "term": "shoot",
+       "example": "shoot"
+      },
+      {
+       "term": "cash",
+       "example": "cash"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "the mouth diagram in C below to see how to make",
+     "body": "| A53a\nthe sounds /d3/ and /t{/. Look\nat\n» Listen to\nthere is\nvoice from the throat, with /d3/ there is. Notice that\nWith\n/t{/\nA\nthece canconant sounds.\nno\ndo this with /t{/ and /dz/.\nsound, but\nmake the sound /{/ into a continuous\nyou cannot\nyou can\n| AS3b\nfc",
+     "vocabulary": [
+      {
+       "term": "| A53a",
+       "example": "| A53a"
+      },
+      {
+       "term": "the sounds /d3/ and /t{/. Look",
+       "example": "the sounds /d3/ and /t{/. Look"
+      },
+      {
+       "term": "at",
+       "example": "at"
+      },
+      {
+       "term": "» Listen to",
+       "example": "» Listen to"
+      },
+      {
+       "term": "there is",
+       "example": "there is"
+      },
+      {
+       "term": "voice from the throat, with /d3/ there is. Notice that",
+       "example": "voice from the throat, with /d3/ there is. Notice that"
+      },
+      {
+       "term": "With",
+       "example": "With"
+      },
+      {
+       "term": "/t{/",
+       "example": "/t{/"
+      },
+      {
+       "term": "thece canconant sounds",
+       "example": "thece canconant sounds."
+      },
+      {
+       "term": "no",
+       "example": "no"
+      },
+      {
+       "term": "| AS3b",
+       "example": "| AS3b"
+      },
+      {
+       "term": "fc",
+       "example": "fc"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "E",
+     "title": "Now listen to the sound /d3/ on its own.",
+     "body": "each\nanch\nside.\ncide\nwith\nweet\nthe\nabn\nwords\neR\nI\n1\nit\nta\n“\nwords\n144\nbelow and\nJom\nthe\n1\non\nAw\n/d3/\n83\nin\ncompare\noo ee\nAS3¢\n.\nListen to the\ntarget sound\nA534 Then listen and repeat the examples.\n»\nExamples\ncheap\njeep\ncheap\ngeneral\nJune\njob\nJune\ntune |\nagenda _ object\ntune\ndanger\nvillage\nedge\njuice\nage\nuse|\nuse\ndraw\ndaw\niam\n“Ginger spilt orange juice on George's jacket.”\nD | As4a\nE Listen to the sound /t{/ on its own.\nside\nside\nwords\nwarde\neach\neach\nwith\nurith\nthe\nthe\nAn\nbelow\nLala\nand\nand\nit\nit\nA\nwords\nA.\non\nan\nAS4b\nab\nPert\n/t// in the\n‘\ncompare\nanmannee\nListen\n=\ntarget sound\nto the\n«\nAS4¢ Then listen and repeat the examples.\n«\ncareet /tyy\nExamples\nchea\n“ = ; ee\n_ ee\n—\ncheese\nchicken\nchair\nalee!\nshare\nkitchen\nfuture — question\nsnare\n=-March\nrich\n=which\nchips\ntrips\ntrips\nwhat's\nwhat's\nwatch\nchalk\nthe teacher's cha'\"™\n\"Which\nchild\nput\non\n—_E|\nSpelling\n— re TO\nend\nmiddle\nbeginning\n(finish)\nSH\n(fashion), SS (Russia)\nSH\nA\nSH (shoe), S (sugar)\nTI (nation), C (ocean)",
+     "vocabulary": [
+      {
+       "term": "anch",
+       "example": "anch"
+      },
+      {
+       "term": "cide",
+       "example": "cide"
+      },
+      {
+       "term": "weet",
+       "example": "weet"
+      },
+      {
+       "term": "abn",
+       "example": "abn"
+      },
+      {
+       "term": "eR",
+       "example": "eR"
+      },
+      {
+       "term": "ta",
+       "example": "ta"
+      },
+      {
+       "term": "Jom",
+       "example": "Jom"
+      },
+      {
+       "term": "Aw",
+       "example": "Aw"
+      },
+      {
+       "term": "oo ee",
+       "example": "oo ee"
+      },
+      {
+       "term": "jeep",
+       "example": "jeep"
+      },
+      {
+       "term": "June",
+       "example": "June"
+      },
+      {
+       "term": "iam",
+       "example": "iam"
+      },
+      {
+       "term": "D | As4a",
+       "example": "D | As4a"
+      },
+      {
+       "term": "E Listen to the sound /t{/ on its own",
+       "example": "E Listen to the sound /t{/ on its own."
+      },
+      {
+       "term": "side",
+       "example": "side"
+      },
+      {
+       "term": "warde",
+       "example": "warde"
+      },
+      {
+       "term": "each",
+       "example": "each"
+      },
+      {
+       "term": "urith",
+       "example": "urith"
+      },
+      {
+       "term": "An",
+       "example": "An"
+      },
+      {
+       "term": "Lala",
+       "example": "Lala"
+      },
+      {
+       "term": "and",
+       "example": "and"
+      },
+      {
+       "term": "ab",
+       "example": "ab"
+      },
+      {
+       "term": "Pert",
+       "example": "Pert"
+      },
+      {
+       "term": "anmannee",
+       "example": "anmannee"
+      },
+      {
+       "term": "chea",
+       "example": "chea"
+      },
+      {
+       "term": "chips",
+       "example": "chips"
+      },
+      {
+       "term": "watch",
+       "example": "watch"
+      },
+      {
+       "term": "—_E|",
+       "example": "—_E|"
+      },
+      {
+       "term": "Spelling",
+       "example": "Spelling"
+      },
+      {
+       "term": "— re TO",
+       "example": "— re TO"
+      },
+      {
+       "term": "end",
+       "example": "end"
+      },
+      {
+       "term": "middle",
+       "example": "middle"
+      },
+      {
+       "term": "beginning",
+       "example": "beginning"
+      },
+      {
+       "term": "(finish)",
+       "example": "(finish)"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "G",
+     "title": "DGE (ledge)",
+     "body": "GE (rage),\n(page), (major)\nJ\n/d3/_ | J (jaw), G (general)\nTCH (watch)\n|\nCH (teacher), T (future)\n/tf{/\nCH (chair)\nUse\nae\nEnglish Pronunciation in",
+     "vocabulary": [
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4232,16 +5077,232 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 60,
    "gloss_count": 0
   },
   {
    "number": 13,
    "title": "Unit 13",
    "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "source_page": 35,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "long",
+     "body": "make\nmalra\nit\nit\ninto\ninten\nlane\ncontinuous\nnantinuane\nsound,\nonund\nand\nand\nthere\nthare\nis\nta\nvoice\nenine\nfrom\nfoam\nthe\ntha\nthroat.\nthenat\nyou\nwan\ncan\nnan\na\nA58b\nthe\nsound /I/ in the words below and\neach sic\nListen\nit with the words\nto\ntarget\n»\ncompare\non\ncarget\n///\nfries\nflies\nfries\n|\nppm\nem\naa\n| air\n|| jw\nsameee\nsores\n| UU\nI\nthe I\npasses\ncold\nof the tongue\ncode\ncode\n<a\nSS\nAS8¢\nListen and repeat these examples of the target sound.\n«\nlitre\nleave\nlife\nhelp\nslow\ncaller\n“Clara's really clever «\nfill\nfinal — whistle\nLilly's a little si\n= | B AS\nListen to the sound /r/. Look at the mouth diagram to see how to make this sound. Notice th\n—\n_\nwhen\nution\nmake\nwomen.\nHicon\nsound,\nned\nand\nweed\nthere\nBhawan\nis\nHe\nvoice\nernfion\nfrom\nPemen\nthe\nHee:\nthroat.\nFema’.\nBut\nBas?\nit\nto\ninto\nHvar\ncontinuous\nnee\nyou\ncomm\ncan\neran\na\noo\na little and the tongue\nfinish the sound, the jaw\nstraight again.\nopens\ngoes\nyou\neach side\nListen\nthe\nsound /r/ in the words below and\nit with the words\nto\ntarget\ncompare\non\n598 »\njaw\nmove tong\nmove\nrelaxed position down a little\nAS9¢\ne Listen and repeat these examples of the target sound.\nright\nwrote\nrhyme\ndress\ncarrot\nsorry\n“The rabbits raced rigt\nfaraway\nand\naround the ring\nwar\npeace\nimportant - “4\nfor listening\nNote:\nThe sound /r/ affects the vowel sound before it: see Units 14 and 19.",
+     "vocabulary": [
+      {
+       "term": "malra",
+       "example": "malra"
+      },
+      {
+       "term": "it",
+       "example": "it"
+      },
+      {
+       "term": "inten",
+       "example": "inten"
+      },
+      {
+       "term": "lane",
+       "example": "lane"
+      },
+      {
+       "term": "nantinuane",
+       "example": "nantinuane"
+      },
+      {
+       "term": "onund",
+       "example": "onund"
+      },
+      {
+       "term": "and",
+       "example": "and"
+      },
+      {
+       "term": "thare",
+       "example": "thare"
+      },
+      {
+       "term": "ta",
+       "example": "ta"
+      },
+      {
+       "term": "enine",
+       "example": "enine"
+      },
+      {
+       "term": "foam",
+       "example": "foam"
+      },
+      {
+       "term": "tha",
+       "example": "tha"
+      },
+      {
+       "term": "thenat",
+       "example": "thenat"
+      },
+      {
+       "term": "wan",
+       "example": "wan"
+      },
+      {
+       "term": "nan",
+       "example": "nan"
+      },
+      {
+       "term": "ppm",
+       "example": "ppm"
+      },
+      {
+       "term": "em",
+       "example": "em"
+      },
+      {
+       "term": "aa",
+       "example": "aa"
+      },
+      {
+       "term": "| air",
+       "example": "| air"
+      },
+      {
+       "term": "|| jw",
+       "example": "|| jw"
+      },
+      {
+       "term": "sameee",
+       "example": "sameee"
+      },
+      {
+       "term": "sores",
+       "example": "sores"
+      },
+      {
+       "term": "| UU",
+       "example": "| UU"
+      },
+      {
+       "term": "I",
+       "example": "I"
+      },
+      {
+       "term": "the I",
+       "example": "the I"
+      },
+      {
+       "term": "passes",
+       "example": "passes"
+      },
+      {
+       "term": "fill",
+       "example": "fill"
+      },
+      {
+       "term": "= | B AS",
+       "example": "= | B AS"
+      },
+      {
+       "term": "ution",
+       "example": "ution"
+      },
+      {
+       "term": "women",
+       "example": "women."
+      },
+      {
+       "term": "Hicon",
+       "example": "Hicon"
+      },
+      {
+       "term": "ned",
+       "example": "ned"
+      },
+      {
+       "term": "weed",
+       "example": "weed"
+      },
+      {
+       "term": "Bhawan",
+       "example": "Bhawan"
+      },
+      {
+       "term": "He",
+       "example": "He"
+      },
+      {
+       "term": "ernfion",
+       "example": "ernfion"
+      },
+      {
+       "term": "Pemen",
+       "example": "Pemen"
+      },
+      {
+       "term": "Hee",
+       "example": "Hee:"
+      },
+      {
+       "term": "Fema’",
+       "example": "Fema’."
+      },
+      {
+       "term": "Bas?",
+       "example": "Bas?"
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "Hvar",
+       "example": "Hvar"
+      },
+      {
+       "term": "nee",
+       "example": "nee"
+      },
+      {
+       "term": "comm",
+       "example": "comm"
+      },
+      {
+       "term": "eran",
+       "example": "eran"
+      },
+      {
+       "term": "oo",
+       "example": "oo"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "E",
+     "title": "Spelling",
+     "body": "frequently\nsometimes\nnotes\n(leg),\nA/ | L\nLL (cat)\nL can be silent (half, calm, talk, could).\n(rhyme)\nWR (wrong), RH\nR (run), RR (carrot)\n34",
+     "vocabulary": [
+      {
+       "term": "notes",
+       "example": "notes"
+      },
+      {
+       "term": "(leg)",
+       "example": "(leg),"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Add the sound  /I/ or /r/ to the beginning of these words and write the new words. Remember: think",
+     "body": "Letters and sounds\n\n          Exercises\n\n\n          Add the sound  /I/ or /r/ to the beginning of these words and write the new words. Remember: think\n          of sounds, not spelling. For example, if you add /I/ to the beginning of ache   you get lake\n          /letk/. The sound is similar but the spelling is completely different. There may be more than one\n          possibility. Then say the pairs of words.\n          EXAMPLE    ache _ lake (or rake)\n\n          2                                                                   B\n\n          Think of a computer which people speak into and it writes what they say. Here, the person speaking\n          didn't make the difference clear between R and L. The underlined words are wrong. Correct them.\n\n\n                                                                                                      &\n                                                                           FT     WN\n\n                                                                                       7\n\n\n           Follow up: Listen to the correct text. Then read it out yourself, making sure that you pronounce the\n           corrected words clearly. Record yourself if you can.\n\n         Circle the word in which the letters L or R are silent. (Imagine the accent is from South East England,\n         so the R is silent if there is no vowel sound after it.)\n         EXAMPLE    cold          collect  film\n         1 court   correct  curry   dairy                4 shoulder   should   sailor  slow\n         2 follow   fold   folk  file                    5 artist  arrow   arrive  around\n         3 hurry   hairy   hungry   hair\n\n         Listen and circle the word you hear. If you find any of these difficult, go to Section D4 Sound pairs\n         for further practice.\n\n\n         1 Surprise or supplies?  The  surprise / supplies came later.                   (=sound   pair 50)\n         2 Collect or correct?      correct / collect it tomorrow.                                 pair 50)\n         3 Flight or fright? We  had  a great flight / fright.                           (=sound  pair 50)\n         4 Trees or cheese?   I saw something  in the trees / cheese!                             pair 47)\n         5 Jaw  or drawer?   She broke  her lower jaw / drawer.                                   pair 47)\n          Follow up: Record yourself saying the sentences in 13.4, choosing one\n          of the two words. Make a note of which words you say. Then listen to\n                                                                                     | Now go to Unit 33  3\n          your recording in about two weeks. Is it clear which words you said?\n\n                                                                      English Pronunciation in Use      35",
+     "unlabelled": true
+    }
+   ],
    "answers": [
     {
      "number": 1,
@@ -4266,15 +5327,92 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 48,
    "gloss_count": 0
   },
   {
    "number": 14,
    "title": "Car, care /ax(r)/, /ea(r)/",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 37,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "|",
+     "body": "A62a\nthe mouth diagram\nhow make this long vowel\nthe sound /a:/. Look\nto see\nto\nsounc\nat\n¢ isten to\neach side.\nA62b\nsound /a:/ in the words below and\nit with the words\nthe\ntarget\ncompare\non\n¢ Listen to\nsound.\nA62c « Then listen and repeat\nthe examples of the\ntarget\nExamples\ncalm\ncard\ncart\n_\nStart\nstar\nStarve\nharm\nhalve\nhalf\njaw down\n(a little)\n“It's hard to park a car in a dark car park.\"\nL\nNote: Sometimes we get the sound /a:/ before too.\nAS)\n.\ngum\nImportant YY\nor listening)\n. B |\n¢\nhow make this sound.\nA644\nto\n| isten to the sound /e9/. Look at the mouth diagram to see\neach side.\nwith the words\nA64b\nListen to the target sound /ed/ in the words below and compare it\non\nA64e e Then listen and repeat the examples of the target sound.\nExamples\nsquare\nsquares\nwhere\nwhere’s\nfair\nfairly\njaw\ndowr (a little),\ntf\n\"Sarah and Mary share their pears fairly.\"\nA65\nlistening)\n=\n=\nSpelling\nsometimes\nfrequently\n(heart)\n(can\nEAR,\n/a:/_ |\nAR\n(half)\nA (ask, path, aunt): South East English accent\nAL\n(fair)\n(care),\nAIR\n/ea/_ |\nARE\n(bear),\n(where)\nEAR\nERE",
+     "vocabulary": [
+      {
+       "term": "A62a",
+       "example": "A62a"
+      },
+      {
+       "term": "the mouth diagram",
+       "example": "the mouth diagram"
+      },
+      {
+       "term": "how make this long vowel",
+       "example": "how make this long vowel"
+      },
+      {
+       "term": "the sound /a:/. Look",
+       "example": "the sound /a:/. Look"
+      },
+      {
+       "term": "to see",
+       "example": "to see"
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "sounc",
+       "example": "sounc"
+      },
+      {
+       "term": "at",
+       "example": "at"
+      },
+      {
+       "term": "¢ isten to",
+       "example": "¢ isten to"
+      },
+      {
+       "term": "B |",
+       "example": ". B |"
+      },
+      {
+       "term": "how make this sound",
+       "example": "how make this sound."
+      },
+      {
+       "term": "A644",
+       "example": "A644"
+      },
+      {
+       "term": "| isten to the sound /e9/. Look at the mouth diagram to see",
+       "example": "| isten to the sound /e9/. Look at the mouth diagram to see"
+      },
+      {
+       "term": "EAR",
+       "example": "EAR,"
+      },
+      {
+       "term": "AIR",
+       "example": "AIR"
+      },
+      {
+       "term": "ARE",
+       "example": "ARE"
+      },
+      {
+       "term": "ERE",
+       "example": "ERE"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -4299,17 +5437,103 @@
      "instructions": "1   heart            3 far              5 beer"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A065.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A065.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A65",
+     "unit": 14
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 17,
    "gloss_count": 0
   },
   {
    "number": 15,
    "title": "Some, sun, sung /m/, /n/,",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 39,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "46a . Listen to the sound /m/. Look at the mouth diagram to see how to make this sound.",
+     "body": "A Note: Always close your lips for /m/, even at the end of a word when the next word begins with /k/ or\n/g/, for example: cream cake; warm glow.\nA6%\nit with the words\neach side.\nListen to the target sound /m/ in the words below and\ncompare\non\n»\nthe examples of the target sound.\nA69% Then listen and\nrepeat\n¢\nExamples\nmice\nnice\nnice\nmiss\nmake\nmore\nee p the ga\nsun\nsome\nsun|\nsmoke\nharmed\n3\naap. jump\nwith thie lies\nautumn\n|\nfilm\nswing )\nswim\nswing comb\nair\nsO\ngoes\nthrough z nose\nhang\nham\nhang}\n, Mum made me move my models. i\n= S|\nA70a\nListen to the sound /n/. Look at the mouth diagram to see how to make this sound.\n»\nA70b\nthe target sound /n/ in the words below and\nit with the words\neach side.\nListen\nto\ncompare\non\n»\nsound.\nA70¢ Then listen and\nthe examples of the\ntarget\nrepeat\n»\n/\nvasBet rget\nn/\nExamples\n|\n—\nknow\nnight\nmight How\nnew\nmight\ndinner _—_ against .\nsnow\nwith ;\nstop the\nwarn\nwarm\ngap\nwarm\ni isten\nopen\ngone\ntongue and tooth\n;\n;\n:\nwin\nwing\nwing\nridge, so air goes\nthe\n“There\nthe\nwas no one on\nmoon on\nthrough nose\n=\nrang\ntang\nninth of June.\"\nJ\n7\nCc]\nhow to make this sound.\nthe mouth diagram\nthe sound /y/. Look\nA71a » Listen to\nto see\nat\nwill find that the air is\nIf\ndo this\nbreathe through\nNote:\nOpen your mouth but\nyou\nyour nose. you\nair make the sound /n/.\nto\nstopped at the back of the mouth. This is where you stop the\neach side.\nwords below and\nit with the words\nA71b ¢ Listen to the target sound /n/ in the\non\ncompare\nsound.\nthe\nA71c » Then listen and repeat the examples of\ntarget\nExamples\ncasget /py\nsink\nsinger\nsing\nbank\nsung\nsome | bang\nbanks\nsome\nwith\nstop the gap\nthink\nfinger\nback of tongue and\nthing\nKim\nking\nKim\ntop mouth, so air\nthin\nthing\nthin\ngoes through nose\n“Young King Kong\nstronger than strong.\"\nwas\nJ\nbe a silent\nsilent B\nN after /m/ (comb, autumn). There\nbe\nmay\nNotes on spelling: There may\nor\na\nsound after\nit is\n/k/\n/g/; the N in thin is\nK before /n/ (knife). In/ changes to /p/ when the next\nor\n/n/, but the N in think is /n/.\n38\nEnglish",
+     "vocabulary": [
+      {
+       "term": "swim",
+       "example": "swim"
+      },
+      {
+       "term": "ham",
+       "example": "ham"
+      },
+      {
+       "term": "= S|",
+       "example": "= S|"
+      },
+      {
+       "term": "A70a",
+       "example": "A70a"
+      },
+      {
+       "term": "night",
+       "example": "night"
+      },
+      {
+       "term": "warn",
+       "example": "warn"
+      },
+      {
+       "term": "warm",
+       "example": "warm"
+      },
+      {
+       "term": "gap",
+       "example": "gap"
+      },
+      {
+       "term": "win",
+       "example": "win"
+      },
+      {
+       "term": "Cc]",
+       "example": "Cc]"
+      },
+      {
+       "term": "the sound /y/. Look",
+       "example": "the sound /y/. Look"
+      },
+      {
+       "term": "A71a » Listen to",
+       "example": "A71a » Listen to"
+      },
+      {
+       "term": "Examples",
+       "example": "Examples"
+      },
+      {
+       "term": "sung",
+       "example": "sung"
+      },
+      {
+       "term": "king",
+       "example": "king"
+      },
+      {
+       "term": "thing",
+       "example": "thing"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -4334,17 +5558,119 @@
      "instructions": "1 Robin            2 ran              3 swim             4  son warned       5 sinking"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A006.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A006.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A6",
+     "unit": 15
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A069.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A069.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A69",
+     "unit": 15
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 17,
    "gloss_count": 0
   },
   {
    "number": 16,
    "title": "word not.",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "needs_title_review": false,
+   "source_page": 41,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "A75a",
+     "body": "the mouth diagram\nhow make this long vowel\nListen\nthe sound /ou/. Look\nto\nat\nto see\nto\n»\nee\n|\neee\nA75b\n¢« Listen to the target sound /au/ in the words below and compare it with the words on each side.\nmouth relaxed\nbought\nboat\nia\n‘ 0 round\nblouse\nblows\n/) shape\ncoast\ncost\n;\nmove jaw\n= up (a little)\nball\nbowl\nq\n3¢\nListen and repeat these examples of the target sound.\ne\ntoes\ntoast\ntoe\n“Rose knows Joe phones Sophie, but Sophie\n—_\ncomb\ncode\nand Joe don't know Rose knows.’\ncoat\nroll\n—- rope\nrose\nB | A76a\n» Listen to the sound /v/. Look at the mouth diagram to see how to make this short vowel sound.\nA76b\nListen to the target sound /v/ in the words below and compare it with the words on each side.\n(\nlips\nrounded\nxatBet /py\n(a little)\nES\nwon't\nwant\nwent\n—s\nluck\nlock\nlack\nlips forward\nget\ngot\ngoat\njaw down\nfond\nphoned\nA76c¢\nListen and repeat these examples of the target sound.\n»\nrob — rock\nwrong\nGod —\ngone\ngot\ndock\ndoll\ndog\n“John wants to watch Walter wash the doa.”\nmusortant\n——— a”\n—€]\nSpelling\n|\n|\nfrequently\nsometimes\nnotes\n/au/ | O (old), O-E (stone)\n|\nIf there is\nR after the letter O (and the R does\nan\nOW (show), OA (coat)\nit),\nnot have a vowel after O has a different\n(toe)\nOE\npronunciation. (See Unit 19.)\n| 0 (dog)\nA (wash)\no/",
+     "vocabulary": [
+      {
+       "term": "the mouth diagram",
+       "example": "the mouth diagram"
+      },
+      {
+       "term": "how make this long vowel",
+       "example": "how make this long vowel"
+      },
+      {
+       "term": "Listen",
+       "example": "Listen"
+      },
+      {
+       "term": "the sound /ou/. Look",
+       "example": "the sound /ou/. Look"
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "at",
+       "example": "at"
+      },
+      {
+       "term": "to see",
+       "example": "to see"
+      },
+      {
+       "term": "ee",
+       "example": "ee"
+      },
+      {
+       "term": "eee",
+       "example": "eee"
+      },
+      {
+       "term": "boat",
+       "example": "boat"
+      },
+      {
+       "term": "blows",
+       "example": "blows"
+      },
+      {
+       "term": "coast",
+       "example": "coast"
+      },
+      {
+       "term": "bowl",
+       "example": "bowl"
+      },
+      {
+       "term": "B | A76a",
+       "example": "B | A76a"
+      },
+      {
+       "term": "lock",
+       "example": "lock"
+      },
+      {
+       "term": "got",
+       "example": "got"
+      },
+      {
+       "term": "fond",
+       "example": "fond"
+      },
+      {
+       "term": "Spelling",
+       "example": "Spelling"
+      },
+      {
+       "term": "notes",
+       "example": "notes"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4379,17 +5705,115 @@
      "instructions": "1 coast           2 shut            3 boat            4 woke"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A078.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A078.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A78",
+     "unit": 16
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A079.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A079.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A79",
+     "unit": 16
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 19,
    "gloss_count": 0
   },
   {
    "number": 17,
    "title": "Arthur’s mother /0/,",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 43,
+   "sections": [
+    {
+     "letter": "B",
+     "title": "the sound /0/",
+     "body": "Listen\nthe\nsound /0/\nin\nthe words below and\nA80c ¢\nto\ntarget\ncompare it with the words on each side.\ncarget\nthick\nsick\nboth\nboat\nthree\nfree\nA80d » Listen and repeat these examples of the target sound.\nthank\nthink\nthought\nhealthy\nbirthday = maths\n—\nearth\nlength\nfourth\n“Martha Smith's\nauthor and\nathlete.\"\n]\nan\nan\n<= ea A81a\nListen\n.\nto\n4\non its own.\nA81b\nListen to\nthe\ntarget sound /0/ in the words below and compare it with the words on each side.\ncarget A)\nbreathe\nbreed\nbreed\n|\n|\nNae RSS, Oye)\n“en -\ncen\nthan\nvan\nvan\nA8tc\nListen and repeat these examples of the target sound.\n»\nthese — though\nthey\nother\nweather\nclothes\n\"My father and mother live\nbreathe\nwith — sunbathe\ntogether with\nother brother.”\nmy\nImportant “y\nfor listening,\nSpelling\n|\nalways\nnotes\n/0/\nTH (three)\nIn a few names of places and people, TH is pronounced\n/t/\nas\n(Thailand, Thomas).\n|_TH\n|\n(then)\nfi\n42\nEnglish\nPronunciation in\nUse",
+     "vocabulary": [
+      {
+       "term": "thick",
+       "example": "thick"
+      },
+      {
+       "term": "both",
+       "example": "both"
+      },
+      {
+       "term": "“Martha Smith's",
+       "example": "“Martha Smith's"
+      },
+      {
+       "term": "author and",
+       "example": "author and"
+      },
+      {
+       "term": "athlete.\"",
+       "example": "athlete.\""
+      },
+      {
+       "term": "an",
+       "example": "an"
+      },
+      {
+       "term": "<= ea A81a",
+       "example": "<= ea A81a"
+      },
+      {
+       "term": "Listen",
+       "example": "Listen"
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "on its own",
+       "example": "on its own."
+      },
+      {
+       "term": "breathe",
+       "example": "breathe"
+      },
+      {
+       "term": "Nae RSS, Oye)",
+       "example": "Nae RSS, Oye)"
+      },
+      {
+       "term": "“en -",
+       "example": "“en -"
+      },
+      {
+       "term": "cen",
+       "example": "cen"
+      },
+      {
+       "term": "than",
+       "example": "than"
+      },
+      {
+       "term": "notes",
+       "example": "notes"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4436,15 +5860,108 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 18,
    "gloss_count": 0
   },
   {
    "number": 18,
    "title": "Sun, full, June /al,",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 45,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "A84a",
+     "body": "Listen to the sound /a/. Look at the mouth diagram to see how to make this short vowel sound.\nA84b\n» Listen to the target sound /a/ in the words below and compare it with the words\neach side.\non\nA84c » Then listen and repeat the examples of the target sound.\nKare et / lay\nExamples\nblood\nlips and ja\n|\nshoot\nshut\nshirt COme\ncut\nin relaxed\ndoes\n| YOU\"S oun\nmust\nposition\nmatch\nmuch\nMarch\nlook\nluck\nlock\n“My mother's brother's my uncle;\nmy uncle's son's my cousin.\"\nImportant\n‘or listening)",
+     "vocabulary": [
+      {
+       "term": "shut",
+       "example": "shut"
+      },
+      {
+       "term": "much",
+       "example": "much"
+      },
+      {
+       "term": "luck",
+       "example": "luck"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "| A8Sa",
+     "body": "E Listen to the sound /u/. Look at the mouth diagram to see how to make this short vowel sound.\nA85b\ne Listen to the target sound /u/ in the words below and compare it with the words on each side.\ne Then listen and repeat the examples of the target sound.\nlips rounded\n(a little)\niN\nExamples\n<>\nfull\n_—_ foot\ngood\nforward\nwolf\nwould\nput\nlips\n(a little)\n“That cook couldn't cook if he didn't look\n(a littl little)\njaw j\nup\nat a cook book.\"\n£ |\nA86a » Listen to the sound /u:/. Look at the mouth diagram to see how to make this long vowel sound.\nA86b\neach side.\n¢ Listen to the target sound /u:/ in the words below and compare it with the words\non\nA86¢ ¢ Then listen and repeat the examples of the target sound.\nlips rounded\nfa\ncasget hu,\n<>\nExamples\ni=\nshoe\nshoes\nshoot\nlips forward\nlose\nnew\nsoup\njaw up\n“Sue knew too few new tunes on the flute. “\nae\nDi]\nNotes\nspelling: If there is\nR after the letter U (and the R does\nhave vowel after it),\non\nan\nnot\nA\nTILA}\nhas different\nAlffnnnne\nU\npronunciation.\ntet\n(See\nIC\nUnit\nTTL\n19.)\nANN\na\n2\n22 nee\n44\nEnglish",
+     "vocabulary": [
+      {
+       "term": "Di]",
+       "example": "Di]"
+      },
+      {
+       "term": "Notes",
+       "example": "Notes"
+      },
+      {
+       "term": "spelling: If there is",
+       "example": "spelling: If there is"
+      },
+      {
+       "term": "R after the letter U (and the R does",
+       "example": "R after the letter U (and the R does"
+      },
+      {
+       "term": "have vowel after it)",
+       "example": "have vowel after it),"
+      },
+      {
+       "term": "on",
+       "example": "on"
+      },
+      {
+       "term": "an",
+       "example": "an"
+      },
+      {
+       "term": "not",
+       "example": "not"
+      },
+      {
+       "term": "TILA}",
+       "example": "TILA}"
+      },
+      {
+       "term": "Alffnnnne",
+       "example": "Alffnnnne"
+      },
+      {
+       "term": "tet",
+       "example": "tet"
+      },
+      {
+       "term": "IC",
+       "example": "IC"
+      },
+      {
+       "term": "TTL",
+       "example": "TTL"
+      },
+      {
+       "term": "ANN",
+       "example": "ANN"
+      },
+      {
+       "term": "22 nee",
+       "example": "22 nee"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -4474,17 +5991,211 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_A086.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_A086.mp3",
+     "exists": true,
+     "section": null,
+     "track": "A86",
+     "unit": 18
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 19,
    "gloss_count": 0
   },
   {
    "number": 19,
    "title": "Shirt, short /ox(r)/",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 47,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "In other places, the R",
+     "body": "In\nin England, the letter R is\npronounced after vowel.\nmany accents\nnot\nOO\npronounced,\nwenanwennA\nfor\nCraw\nexample\nawasculix\nin\nHa\nNorth\nNui\nAmerica.\nMeowstes But Die\nboth\nfc\nthe\nalll\nletter\nfas\nin\nfer\nR\nie\nchanges\nOD\nthe\nvowel\n1\ncases,\n2ecue\nsound before it. If the vowel letter is E, I, O or U, we often get the vowel sounds in shirt\nshort.\nor\nB A%a\nListen to the sound /s:/. Look at the mouth diagram to see how to make this long vowel sound.\nA90b e Listen to the target sound /s:/ in the words below and compare it with the words on each side.\nlips, tongue and\nshort\nshirt\n;\njaw in relaxed\nwiéie\nposition\nwhere\nborn\nburn\nheard\n-_ +. Zee PS\n|\n|\nSE A\nhard\nhead\n|\nLa\n“vye\nListen and repeat these examples ot the target language.\nCL. SaEN|\nwere\nword\nworst\nbird\nburn\nbirth\nheard\nher\nhurt\n| Aig\nCc",
+     "vocabulary": [
+      {
+       "term": "in England, the letter R is",
+       "example": "in England, the letter R is"
+      },
+      {
+       "term": "pronounced after vowel",
+       "example": "pronounced after vowel."
+      },
+      {
+       "term": "many accents",
+       "example": "many accents"
+      },
+      {
+       "term": "not",
+       "example": "not"
+      },
+      {
+       "term": "OO",
+       "example": "OO"
+      },
+      {
+       "term": "wenanwennA",
+       "example": "wenanwennA"
+      },
+      {
+       "term": "Craw",
+       "example": "Craw"
+      },
+      {
+       "term": "awasculix",
+       "example": "awasculix"
+      },
+      {
+       "term": "Ha",
+       "example": "Ha"
+      },
+      {
+       "term": "Nui",
+       "example": "Nui"
+      },
+      {
+       "term": "Meowstes But Die",
+       "example": "Meowstes But Die"
+      },
+      {
+       "term": "fc",
+       "example": "fc"
+      },
+      {
+       "term": "alll",
+       "example": "alll"
+      },
+      {
+       "term": "fas",
+       "example": "fas"
+      },
+      {
+       "term": "fer",
+       "example": "fer"
+      },
+      {
+       "term": "ie",
+       "example": "ie"
+      },
+      {
+       "term": "OD",
+       "example": "OD"
+      },
+      {
+       "term": "2ecue",
+       "example": "2ecue"
+      },
+      {
+       "term": "B A%a",
+       "example": "B A%a"
+      },
+      {
+       "term": "burn",
+       "example": "burn"
+      },
+      {
+       "term": "heard",
+       "example": "heard"
+      },
+      {
+       "term": "-_ +. Zee PS",
+       "example": "-_ +. Zee PS"
+      },
+      {
+       "term": "SE A",
+       "example": "SE A"
+      },
+      {
+       "term": "hard",
+       "example": "hard"
+      },
+      {
+       "term": "head",
+       "example": "head"
+      },
+      {
+       "term": "“vye",
+       "example": "“vye"
+      },
+      {
+       "term": "Listen and repeat these examples ot the target language",
+       "example": "Listen and repeat these examples ot the target language."
+      },
+      {
+       "term": "CL. SaEN|",
+       "example": "CL. SaEN|"
+      },
+      {
+       "term": "| Aig",
+       "example": "| Aig"
+      },
+      {
+       "term": "Cc",
+       "example": "Cc"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "E",
+     "title": "Listen",
+     "body": "the sound /9:/. Look\nthe mouth diagram\nhow make this long vowel sound.\nto\nat\nto see\nto\nA91b\nthe\nsound /5:/ in the words below and\nit with the words\neach side.\nto\ntarget\ne\ncompare\non\nrude\ncoset /o,\nZS\nshirt\nwoke\n—\nlips foward\nfair\njaw down\nbowl\n¢\nand\nthe examples of\nthe target sound.\nrepeat\nbought\nbore\nbored\ncall\ncaught\ncause\n“Laura's daughter bought a\nwar\nwall\nwalk\nhorse\nand called it Laura.”\n492\n,\ntant\nfor listening) ;\nf\n.",
+     "vocabulary": [
+      {
+       "term": "the sound /9:/. Look",
+       "example": "the sound /9:/. Look"
+      },
+      {
+       "term": "the mouth diagram",
+       "example": "the mouth diagram"
+      },
+      {
+       "term": "how make this long vowel sound",
+       "example": "how make this long vowel sound."
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "at",
+       "example": "at"
+      },
+      {
+       "term": "to see",
+       "example": "to see"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "D",
+     "title": "|",
+     "body": "Spelling\nI/E/O/U+R\nother spellings\n(gir),\nIR\nER (hen, UR (hurt)\nOR (word),\nEAR\n(heard)\nOR (form)\nA\n(call),\nAR\n(war),\n(cause),\nAU\nAW (saw),\nAL (walk), AUGH (taught), OUGH (thought), OUR (four)\nEnglish",
+     "vocabulary": [
+      {
+       "term": "Spelling",
+       "example": "Spelling"
+      },
+      {
+       "term": "(gir)",
+       "example": "(gir),"
+      },
+      {
+       "term": "EAR",
+       "example": "EAR"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -4511,15 +6222,100 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 40,
    "gloss_count": 0
   },
   {
    "number": 20,
    "title": "Toy, town",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 49,
+   "sections": [
+    {
+     "letter": "F",
+     "title": "",
+     "body": "OVS \"a\n«\n> forwa",
+     "vocabulary": [
+      {
+       "term": "OVS \"a",
+       "example": "OVS \"a"
+      },
+      {
+       "term": "> forwa",
+       "example": "> forwa"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "A",
+     "title": "> forwa",
+     "body": "al\npay\ny\nlips\nfond\nfound\nphoned\n*_\\tounded\n7\n<S Siw\nknow\nstarts\nnew\nnow\ndown and\n-~\ncar\ncow\ncare\nmoves up\n|\n~——\nWay\n|\n| wv\nT\n{\nsound.\nAc E Listen and repeat these examples of the target\nhouse\nhow\nhouses\nP\n,\nsouth\nsound\n“Mrs Brown counted cows\nnow\n— ground\ncount\ncoming down the mountair.”\ntown\nimportant \"4 nen\nfor listening,\nAST\n=\nC| = Spelling\nee\nee\nfrequently\nnotes\n[>1/ | OY(boy), OI (coin)\nVarious different vowel sounds are spelt OW or OU.\nJauf | OW (cow), OU (loud)\n|\n43\nEnglish",
+     "vocabulary": [
+      {
+       "term": "al",
+       "example": "al"
+      },
+      {
+       "term": "pay",
+       "example": "pay"
+      },
+      {
+       "term": "found",
+       "example": "found"
+      },
+      {
+       "term": "now",
+       "example": "now"
+      },
+      {
+       "term": "cow",
+       "example": "cow"
+      },
+      {
+       "term": "Way",
+       "example": "Way"
+      },
+      {
+       "term": "| wv",
+       "example": "| wv"
+      },
+      {
+       "term": "sound",
+       "example": "sound."
+      },
+      {
+       "term": "Ac E Listen and repeat these examples of the target",
+       "example": "Ac E Listen and repeat these examples of the target"
+      },
+      {
+       "term": "house",
+       "example": "house"
+      },
+      {
+       "term": "how",
+       "example": "how"
+      },
+      {
+       "term": "houses",
+       "example": "houses"
+      },
+      {
+       "term": "C| = Spelling",
+       "example": "C| = Spelling"
+      },
+      {
+       "term": "ee",
+       "example": "ee"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -4551,15 +6347,128 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 17,
    "gloss_count": 0
   },
   {
    "number": 21,
-   "title": "Unit 21",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "| Introducing syllables",
+   "needs_title_review": false,
+   "source_page": 51,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "syllables. For example",
+     "body": "has one syllable, mother has\ndivide word into\nWe\nmum\none or more\ncan\nof\naf\nsounds.\ncannde\nthree\nhead\nsyllables.\naellahlao\nsyllable\noullahle\nis\nic\nand\n2d A\ngrandmother\nDab\nhas\nLan\nsyllables\nSW\none\nane\nor\nar\nmore\nmare\na\ngroup\narann\ntwo\n,\nvowel sound.\nThe essential part of a syllable is a vowel sound (V). Some syllables are just one\nFor example, these words have one syllable, and the syllable is just one vowel sound:\n/ai/,\n/av/.\nowe\neye\nsounds (C) before the V, after the V or before and after the V.\nhave\nA syllable\nconsonant\ncan\nsyllable).\nall\nwords of\nexamples (they\nHere are some more\none\nare\n—,-\n—\n—\n,cvc\nvc\nCV\nif /rf/\nten /ten/\n/gau/\ngo\n/eg/\n/mat/\nnose /nduz/\negg\nmy\n/ats/\nmouth /mau6/\nice\nknow /nou/\nknife /naif/\n/wel/\neight /eit/\nweigh\n(See\nC before\nafter the V.\nUnits 24, 25.)\nbe\nthan\nNote:\nThere may\nor\nmore\none\nand\nY\nRemember that letters\nmot the same as sounds. For example, the consonant letters W\nare\nafter the vowel sound in the syllable e.g. saw, say. They\nsounds if they\ncome\nare not consonant\nfor example South East English, the same is true\nsound.\nIn some accents,\nare part of the vowel\nsyllable and\nexamples. They\nwords of\nare\none\nfor the consonant letter R. Here are some more\nall\nhave the pattern CV.\nthey\n/pei/_ why /wai/_ car /ka:/_ hair /heo/\nhow /hau/ law /lo:/\npay\nof written word. But in this book,\nthe\nparts\na\nSome people use the word syllable to talk about\nthe writing. For example,\nthe word syllable is used to talk about the pronunciation of words, not\nthe\ndivide ‘chocolate’ into three parts like this: cho-co-late. But when we say\nin writing we can\nsyllables, like this: chocolate /t {ok.lot/. (The dot shows where the\nonly\nword, we pronounce\ntwo\nwords\nbe pronounced with fewer syllables\nmay\ntwo syllables are divided.) A number of other\nthan in writing. Listen to these examples.\ninteresting /‘in.tras.t1n/\ndifferent /‘dif .rant/\nB1_ chocolate /'t/pk.lot/\ncomfortable /‘kamf.ta.bol/\nsecretary /‘sek.ra.tri/\ngeneral /‘d3en.ral/.\nthe opposite order:\nbut\nin\nThe first syllable in these words has the same three sounds,\nkitchen /'kit {.1n/ chicken /'tSik.1n/.\n—\ndifficult\nto say.\nhas similar-sounding syllables like this in it, it may be\nIf\na sentence\ncalled ‘tongue-twisters’. Listen to this example.\nThese sentences are\nRichard checked the chicken in the kitchen.\np2\nOEE. OBB\n|\nnx T° A | Tis\nYou can find more about syllables in Units 24 to 27.\nNote:",
+     "vocabulary": [
+      {
+       "term": "has one syllable, mother has",
+       "example": "has one syllable, mother has"
+      },
+      {
+       "term": "divide word into",
+       "example": "divide word into"
+      },
+      {
+       "term": "We",
+       "example": "We"
+      },
+      {
+       "term": "mum",
+       "example": "mum"
+      },
+      {
+       "term": "one or more",
+       "example": "one or more"
+      },
+      {
+       "term": "can",
+       "example": "can"
+      },
+      {
+       "term": "af",
+       "example": "af"
+      },
+      {
+       "term": "cannde",
+       "example": "cannde"
+      },
+      {
+       "term": "head",
+       "example": "head"
+      },
+      {
+       "term": "aellahlao",
+       "example": "aellahlao"
+      },
+      {
+       "term": "oullahle",
+       "example": "oullahle"
+      },
+      {
+       "term": "ic",
+       "example": "ic"
+      },
+      {
+       "term": "2d A",
+       "example": "2d A"
+      },
+      {
+       "term": "Dab",
+       "example": "Dab"
+      },
+      {
+       "term": "Lan",
+       "example": "Lan"
+      },
+      {
+       "term": "SW",
+       "example": "SW"
+      },
+      {
+       "term": "ane",
+       "example": "ane"
+      },
+      {
+       "term": "ar",
+       "example": "ar"
+      },
+      {
+       "term": "mare",
+       "example": "mare"
+      },
+      {
+       "term": "arann",
+       "example": "arann"
+      },
+      {
+       "term": "all",
+       "example": "all"
+      },
+      {
+       "term": "egg",
+       "example": "egg"
+      },
+      {
+       "term": "weigh",
+       "example": "weigh"
+      },
+      {
+       "term": "(See",
+       "example": "(See"
+      },
+      {
+       "term": "OEE. OBB",
+       "example": "OEE. OBB"
+      },
+      {
+       "term": "nx T° A | Tis",
+       "example": "nx T° A | Tis"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4604,17 +6513,151 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B001.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B001.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B1",
+     "unit": 21
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B003.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B003.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B3",
+     "unit": 21
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 26,
    "gloss_count": 0
   },
   {
    "number": 22,
    "title": "Ain: wien",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "needs_title_review": false,
+   "source_page": 53,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "If A word has more than one syllable, you give stress to one of the syllables. To give it stress,",
+     "body": "_\ndo\nAin:\nal\nthese\nelves\nabe\nsyllable:\naol\none\nwien\nto the\nor\nwenn\nmore of\nMake itlonger. SS a=m7_curday\n¢\nRel\n[Sat\nurday\nMake it louder.\n=<\ne\n“TULL\nMake it higher.\ne\nWe\nshow stress with circles: each circle is syllable and the bigger circle shows which\ncan\na\nsyllable has the\nFor example, Saturday is Ooo.\nstress.\nListen\nthe conversation and listen\nthe\nof the words\nin\nbold\nBS\nto\nto\nstress patterns\ntype.\nA: When do\nbegin\nholiday?\nyou\nyour\nOoo\n0 O\nB: On the\nthirtieth\nof August.\nOoo Oo\nA: That’s\nSaturday!\nnext\nOoo\nB: We’re leaving in the afternoon.\n00 O\n> And when\ncoming back?\n:\nare you\nWye | SN \\\n: (a\nB: Saturday September the thirteenth.\nOo\nO\n0\n0\nA: Thirtieth?\nOoo\nB: No, thirteenth!\nO\n0\n‘BI\n_Be’ Different words have different stress patterns (patterns of stressed and unstressed syllables).\n——\nListen\nTiotan\nthese\nthacea\nand\nand\nthree-syllable\nthea omllahla\nwords.\nwrAeda\nto\ntr\ntwo-\nturn\nOo\nApril, thirty, morning, Sunday\noOo September,\neleventh\ntomorrow,\njuly, midday,\noO\nthirteen,\ntoday, thirteenth\n00O afternoon, seventeen, twenty-one\nOoo Saturday, thirtieth, yesterday, holiday, seventy\nNote: The stress pattern of numbers with -teen is sometimes different when the word is in a sentence.\nFor example, the normal stress pattern of nineteen is 00, but when it is followed by a noun, e.g. the\nnineteen nineties, nineteen people, the pattern is Oo.\n>\nNote:\nJanuary and February may be pronounced with the stress patterns Ooo or Oooo.\nCc\nStress patterns can help you hear the difference between similar words, for example, numbers\n———\nendina in _toou\ntar T ictan ta thace avamnlac\nar\nB7 1)\nOo\nthirteen\nthirty\nforty\nfourteen\nsixteen\nSIXTY\neighty\neighteen\nnineteen\nNote: You\nfind\nabout word stress in Units 28 to 31.\nninety\ncan\nmore\nEngiish",
+     "vocabulary": [
+      {
+       "term": "Ain",
+       "example": "Ain:"
+      },
+      {
+       "term": "al",
+       "example": "al"
+      },
+      {
+       "term": "elves",
+       "example": "elves"
+      },
+      {
+       "term": "abe",
+       "example": "abe"
+      },
+      {
+       "term": "aol",
+       "example": "aol"
+      },
+      {
+       "term": "wien",
+       "example": "wien"
+      },
+      {
+       "term": "wenn",
+       "example": "wenn"
+      },
+      {
+       "term": "Make itlonger. SS a=m7_curday",
+       "example": "Make itlonger. SS a=m7_curday"
+      },
+      {
+       "term": "[Sat",
+       "example": "[Sat"
+      },
+      {
+       "term": "begin",
+       "example": "begin"
+      },
+      {
+       "term": "holiday?",
+       "example": "holiday?"
+      },
+      {
+       "term": "thirtieth",
+       "example": "thirtieth"
+      },
+      {
+       "term": "Wye | SN \\",
+       "example": "Wye | SN \\"
+      },
+      {
+       "term": "(a",
+       "example": ": (a"
+      },
+      {
+       "term": "B: Saturday September the thirteenth",
+       "example": "B: Saturday September the thirteenth."
+      },
+      {
+       "term": "‘BI",
+       "example": "‘BI"
+      },
+      {
+       "term": "Tiotan",
+       "example": "Tiotan"
+      },
+      {
+       "term": "thacea",
+       "example": "thacea"
+      },
+      {
+       "term": "and",
+       "example": "and"
+      },
+      {
+       "term": "thea omllahla",
+       "example": "thea omllahla"
+      },
+      {
+       "term": "wrAeda",
+       "example": "wrAeda"
+      },
+      {
+       "term": "turn",
+       "example": "turn"
+      },
+      {
+       "term": "Cc",
+       "example": "Cc"
+      },
+      {
+       "term": "endina in _toou",
+       "example": "endina in _toou"
+      },
+      {
+       "term": "tar T ictan ta thace avamnlac",
+       "example": "tar T ictan ta thace avamnlac"
+      },
+      {
+       "term": "ar",
+       "example": "ar"
+      },
+      {
+       "term": "Engiish",
+       "example": "Engiish"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4649,17 +6692,246 @@
      "instructions": "117                3  50               5 30"
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B007.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B007.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B7",
+     "unit": 22
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 27,
    "gloss_count": 0
   },
   {
    "number": 23,
    "title": "same stress pattern. Listen to these examples.",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "needs_title_review": false,
+   "source_page": 55,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Note:",
+     "body": "For\nexamples,\nSection D5: Sentence stress phrasebook.\nmore\nsee",
+     "vocabulary": [],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "|",
+     "body": "There is normally\nbetween stressed syllables in\nUnstressed syllables\nbe\nA space\nA sentence.\ncan\nwr\nnutin that\nTha\nlace tha\nlanath erhathkan\nneennnnd\nonarca\neanare octave mara ar\ncama\nnan nn nen cen\nsyllables\nare pushed into it. So for example, these three sentences take about the same length of\ntime to say. Listen.\ntell\nMike.\nB11 OOO\nDon’t\n~ Oo000o\nGo and speak\nMary.\nto\nOooOo00o00 _—— Hurry and give it Jonathan.\nto",
+     "vocabulary": [
+      {
+       "term": "There is normally",
+       "example": "There is normally"
+      },
+      {
+       "term": "between stressed syllables in",
+       "example": "between stressed syllables in"
+      },
+      {
+       "term": "Unstressed syllables",
+       "example": "Unstressed syllables"
+      },
+      {
+       "term": "be",
+       "example": "be"
+      },
+      {
+       "term": "A space",
+       "example": "A space"
+      },
+      {
+       "term": "A sentence",
+       "example": "A sentence."
+      },
+      {
+       "term": "can",
+       "example": "can"
+      },
+      {
+       "term": "wr",
+       "example": "wr"
+      },
+      {
+       "term": "nutin that",
+       "example": "nutin that"
+      },
+      {
+       "term": "Tha",
+       "example": "Tha"
+      },
+      {
+       "term": "lace tha",
+       "example": "lace tha"
+      },
+      {
+       "term": "lanath erhathkan",
+       "example": "lanath erhathkan"
+      },
+      {
+       "term": "neennnnd",
+       "example": "neennnnd"
+      },
+      {
+       "term": "onarca",
+       "example": "onarca"
+      },
+      {
+       "term": "eanare octave mara ar",
+       "example": "eanare octave mara ar"
+      },
+      {
+       "term": "cama",
+       "example": "cama"
+      },
+      {
+       "term": "nan nn nen cen",
+       "example": "nan nn nen cen"
+      },
+      {
+       "term": "tell",
+       "example": "tell"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "D",
+     "title": "|",
+     "body": "Stress\nhelp\nhear the difference between similar\nFor example, verbs\npatterns can\nyou\nsentences.\n_\nwith\nwid\nthe\ndows\nending\naad ias\nalways\nallesnent\nstressed.\nemma!\nThis\nAMG\nnegative\nwaswelew\n-v’t\nati\nhelps\nKelis\nhear\nbaumalle\nthe difference\nDPBfb\nbetween\nBe\nto\nA\nare\nwen!\nus\nean\noo\ncan\nand can’t in the following two sentences, because the two sentences have different stress patterns.\n000\ntalk.\nHe can\n000\nHe can’t talk.\nfea SSS\nV\nff...\n\\\n¢\n/ {\njax\n~*\n—\nJno —_~\n>]\nN= “PbS oa\nI ee I \\\nwae\nA\nNote:\nYou\nfind\ncan\nmore about sentence stress in Units 32 to 40.\na\nEngissh",
+     "vocabulary": [
+      {
+       "term": "Stress",
+       "example": "Stress"
+      },
+      {
+       "term": "help",
+       "example": "help"
+      },
+      {
+       "term": "hear the difference between similar",
+       "example": "hear the difference between similar"
+      },
+      {
+       "term": "For example, verbs",
+       "example": "For example, verbs"
+      },
+      {
+       "term": "patterns can",
+       "example": "patterns can"
+      },
+      {
+       "term": "you",
+       "example": "you"
+      },
+      {
+       "term": "sentences",
+       "example": "sentences."
+      },
+      {
+       "term": "wid",
+       "example": "wid"
+      },
+      {
+       "term": "dows",
+       "example": "dows"
+      },
+      {
+       "term": "aad ias",
+       "example": "aad ias"
+      },
+      {
+       "term": "allesnent",
+       "example": "allesnent"
+      },
+      {
+       "term": "emma!",
+       "example": "emma!"
+      },
+      {
+       "term": "AMG",
+       "example": "AMG"
+      },
+      {
+       "term": "waswelew",
+       "example": "waswelew"
+      },
+      {
+       "term": "ati",
+       "example": "ati"
+      },
+      {
+       "term": "Kelis",
+       "example": "Kelis"
+      },
+      {
+       "term": "baumalle",
+       "example": "baumalle"
+      },
+      {
+       "term": "DPBfb",
+       "example": "DPBfb"
+      },
+      {
+       "term": "Be",
+       "example": "Be"
+      },
+      {
+       "term": "wen!",
+       "example": "wen!"
+      },
+      {
+       "term": "ean",
+       "example": "ean"
+      },
+      {
+       "term": "oo",
+       "example": "oo"
+      },
+      {
+       "term": "talk",
+       "example": "talk."
+      },
+      {
+       "term": "fea SSS",
+       "example": "fea SSS"
+      },
+      {
+       "term": "ff",
+       "example": "ff..."
+      },
+      {
+       "term": "jax",
+       "example": "jax"
+      },
+      {
+       "term": "Jno —_~",
+       "example": "Jno —_~"
+      },
+      {
+       "term": "N= “PbS oa",
+       "example": "N= “PbS oa"
+      },
+      {
+       "term": "I ee I \\",
+       "example": "I ee I \\"
+      },
+      {
+       "term": "wae",
+       "example": "wae"
+      },
+      {
+       "term": "Engissh",
+       "example": "Engissh"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4699,17 +6971,63 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B010.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B010.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B10",
+     "unit": 23
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_D005.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_D005.mp3",
+     "exists": true,
+     "section": null,
+     "track": "D5",
+     "unit": 23
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B011.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B011.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B11",
+     "unit": 23
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 49,
    "gloss_count": 0
   },
   {
    "number": 24,
-   "title": "Unit 24",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "syllable. Look at these examples.",
+   "needs_title_review": false,
+   "source_page": 57,
+   "sections": [
+    {
+     "letter": "C",
+     "title": "the beginning difficult",
+     "body": "find\nof these syllables with\nYou\nthan\nat\nmay\nsome\nmore\none\nto say.\nListen\nthese examples.\nto\nB16 /s/+C:\nspell stairs sleep small snack\nswim\nC+/I/,/t/,/w/ or /j/: blue\nfly dress ground quick swim view tune\n/s/+ CC: spring strange square scream\nWhen there\nthe beginning of syllable,\nare two or more Cs at\na\nmany learners add a V before the\nfirst C or between the Cs. Be careful!\ne If you add a V before the first C, you may get a different word. For example, if you add a\nvowel before sleep, it may become asleep.\nIf\nadd V between the Cs,\ndifferent word. For example, if\nadd vowel\ne you\na\nyou may get a\nyou\na\nbetween /s/ and /p/ in\nbecomes\nsport, it\nsupport.\nListen\nthe difference.\nto\nB17\nsyllable\n+ extra\nsleep\nasleep\ndress\naddress\nstreet\na street\nsport\nsupport\nThat ski.\nThat’s a key.\nThat smile.\nThat’s mile.\na\nWhat snake?\nWhat’s\nache?\nan\nEngitsh\nPronunciation in\nUse",
+     "vocabulary": [
+      {
+       "term": "syllable",
+       "example": "syllable"
+      },
+      {
+       "term": "Engitsh",
+       "example": "Engitsh"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4739,17 +7057,79 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B016.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B016.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B16",
+     "unit": 24
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B017.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B017.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B17",
+     "unit": 24
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B019.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B019.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B19",
+     "unit": 24
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 3,
    "gloss_count": 0
   },
   {
    "number": 25,
-   "title": "Go - goal",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Go - goal - gold",
+   "needs_title_review": false,
+   "source_page": 59,
+   "sections": [
+    {
+     "letter": "C",
+     "title": "of word,",
+     "body": "Sometimes, you\nif\ndo\nthe last\nfact\nnot pronounce\na\nyou in\nsay another word. For\nexample, if you do not pronounce the final /k/ in think /01nk/ you get thing /O1n/. Listen to the\nwords below. The words on the left sound the same as the words\nthe right without the final\non\nC,\nthat it is important\nthe final\nto pronounce\nso you can see\nconsonants.\nB20 |\nVCC\nvc\n/bel/\nbelt /belt/\nbell\nchange /t fernd3/\nchain /t fern/\n/reind3/\nrain /rein/\nrange\n/help/\n/hel/\nhelp\nhell\nfilm /ftlm/\nfill /f1l/\ntenth /ten6/\nten /ten/\nlearnt /Is:nt/\nlearn /isin/\nwolf /woltf/\nwool /wul/\nhold /hould/\nhole /haul/\nSome learners of English find it difficult to\ntwo Cs together at the end of syllable. If\npronounce\na\nhave this problem,\nfind it easier if\nword beginning with V after it and\nyou\nyou may\nyou put a\na\nthat the last\nof the first word\nfact the beginning of the\nsecond word. For\nimagine\nis in\nexample, if you find it difficult to say the /nt/ at the end of weren’t, imagine the /t/ at the start of\nthe next word:\nThey weren't able to do it.\nThey weren’\ntable to do it.\n—",
+     "vocabulary": [
+      {
+       "term": "bell",
+       "example": "bell"
+      },
+      {
+       "term": "help",
+       "example": "help"
+      },
+      {
+       "term": "hell",
+       "example": "hell"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "A",
+     "title": "Note:",
+     "body": "We often get the consonant pair /nt/ at the end of negative contractions, e.g. isn’t. (See Unit 35.)\nNote: There\noften two or more Cs at the end of verbs in the past tense. For example walked is\nare\npronounced /wa:kt/ so it has the pattern CVCC. Similarly with -es endings, likes is pronounced /latks/\n(CVCC).\nSome learners of English add a vowel after words ending in two Cs to make it easier to say.\nBut be careful: if\nadd\nextra V after the last C,\nget different word.\nyou\nan\nyou may\na\nB21 Listen\nthese examples.\nto\nhelp\nhelper\ncentre\nsent\ncook\ncooker\nmixer\nmix\npast\npasta\n58\nEnglish",
+     "vocabulary": [
+      {
+       "term": "are",
+       "example": "are"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4779,17 +7159,183 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B020.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B020.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B20",
+     "unit": 25
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B021.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B021.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B21",
+     "unit": 25
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B022.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B022.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B22",
+     "unit": 25
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 5,
    "gloss_count": 0
   },
   {
    "number": 26,
-   "title": "both just one syllable.",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Paul’s calls, Max’s faxes Syllables: plural and other endings",
+   "needs_title_review": false,
+   "source_page": 61,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "syllable and the plural calls /k9:1z/ is also only one syllable. Usually",
+     "body": "The\ncall /ko:// is\nnoun\none\nannthae\nsyllable.\naullahla\npronounced\narnnaunerod\nending\nsound\nnneend\n(C),\nIDV\nanother\nIt\nTe\nis\nto\n/s/\nlol\n/Z/.\nlal\nthe\naL.\nis\ntA\njust\nena\nnot\nant\nconsonant\nor\nar\n-s\n8 Aw\na\nAnn nnnne\nsingular\nFor example, the verb\nWhen\nadd\nmake the third\nit is the\npresent,\nsame.\nwe\n-s to\nperson\nform knows /nouz/ is also only\nsyllable.\nknow /nov/ is one syllable\nand the third\nperson\none\nexample Paul and Paul’s\nalso the\nWhen we add -’s to make the possessive it is\nsame. For\nare\nboth just one syllable.\nB23 Listen to\nthe\nexamples of -s endings in these rhymes.\nClaire’s chairs.\nBob’s jobs.\nDr’s pies.\nRose knows.\nPat’s hats.",
+     "vocabulary": [
+      {
+       "term": "call /ko:// is",
+       "example": "call /ko:// is"
+      },
+      {
+       "term": "noun",
+       "example": "noun"
+      },
+      {
+       "term": "annthae",
+       "example": "annthae"
+      },
+      {
+       "term": "aullahla",
+       "example": "aullahla"
+      },
+      {
+       "term": "arnnaunerod",
+       "example": "arnnaunerod"
+      },
+      {
+       "term": "nneend",
+       "example": "nneend"
+      },
+      {
+       "term": "IDV",
+       "example": "IDV"
+      },
+      {
+       "term": "Te",
+       "example": "Te"
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "lol",
+       "example": "lol"
+      },
+      {
+       "term": "lal",
+       "example": "lal"
+      },
+      {
+       "term": "tA",
+       "example": "tA"
+      },
+      {
+       "term": "ena",
+       "example": "ena"
+      },
+      {
+       "term": "ant",
+       "example": "ant"
+      },
+      {
+       "term": "ar",
+       "example": "ar"
+      },
+      {
+       "term": "8 Aw",
+       "example": "8 Aw"
+      },
+      {
+       "term": "Ann nnnne",
+       "example": "Ann nnnne"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "|",
+     "body": "Sometimes, plural, third person and possessive endings are another syllable. For example,\nA\nfaw Heakel ic\ncullahle hut favoe Ifek ci7/ ic turn evilahlec\nane\n24) The plural and other endings\nanother syllable when the original word ends in one of the\nare\nsounds below. Listen\nthe examples and rhymes.\nto\nChris’s kisses, the nurse’s\nMax’s faxes\n/s/_\npurses,\n/{/\nTrish’s wishes\n/z!\nRose’s roses\n/t{/ The witch’s watches\n/d3/_\n_George’s fridges\nA\nNote: When\nthe\nending is another syllable, it is pronounced /12/.\n-s\nj Important\nfor listening\n/senz/ birthday\ncards)\nbirthday cards. (sounds like:\nShe\nShe\nsends\nnever\nnever\nB25\n/lifs/ broken)\nIhe lift's broken. (sounds\nlike:\nThe\nlike:\nIt /te1s/ funny)\nIt tastes funny. (sounds\n(sound like:\nThat's what he /ik'speks/)\nThat's what he expects.\n= De\nTry to make sure you pronounce the -s ending. It is very important to the meaning. Listen to the\nacramealas and antina hau: the andina chanaec the meanina\n—¢\nverb\nnoun\nB26 Jane’s\nJane knows\nnose\nNick waits\nNick's weights\nsingular\nplural\nMy friend spends a lot. | My friends spend a lot.\nlate.\nlate.\nOur\nOur guests\ncame\nguest came\n60\nEnglish\nPronunciation in\nUse",
+     "vocabulary": [
+      {
+       "term": "faw Heakel ic",
+       "example": "faw Heakel ic"
+      },
+      {
+       "term": "cullahle hut favoe Ifek ci7/ ic turn evilahlec",
+       "example": "cullahle hut favoe Ifek ci7/ ic turn evilahlec"
+      },
+      {
+       "term": "ane",
+       "example": "ane"
+      },
+      {
+       "term": "Note: When",
+       "example": "Note: When"
+      },
+      {
+       "term": "cards)",
+       "example": "cards)"
+      },
+      {
+       "term": "She",
+       "example": "She"
+      },
+      {
+       "term": "sends",
+       "example": "sends"
+      },
+      {
+       "term": "like",
+       "example": "like:"
+      },
+      {
+       "term": "(sound like",
+       "example": "(sound like:"
+      },
+      {
+       "term": "= De",
+       "example": "= De"
+      },
+      {
+       "term": "acramealas and antina hau: the andina chanaec the meanina",
+       "example": "acramealas and antina hau: the andina chanaec the meanina"
+      },
+      {
+       "term": "plural",
+       "example": "plural"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -4834,14 +7380,39 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B023.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B023.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B23",
+     "unit": 26
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B025.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B025.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B25",
+     "unit": 26
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B026.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B026.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B26",
+     "unit": 26
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 31,
    "gloss_count": 0
   },
   {
    "number": 27,
-   "title": "Pete",
+   "title": "Pete played, Rita rested Syllables: adding past tense endings",
    "needs_title_review": false,
    "source_page": 63,
    "sections": [
@@ -4896,6 +7467,30 @@
    ],
    "audio": [
     {
+     "path": "sources/audio/pronunciation_intermediate/T_B030.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B030.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B30",
+     "unit": 27
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B031.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B031.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B31",
+     "unit": 27
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B032.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B032.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B32",
+     "unit": 27
+    },
+    {
      "path": "sources/audio/pronunciation_intermediate/T_B033.mp3",
      "extracted_path": "sources/audio/pronunciation_intermediate/T_B033.mp3",
      "exists": true,
@@ -4918,7 +7513,7 @@
   },
   {
    "number": 28,
-   "title": "words, the stress is on the syllable of the original word:",
+   "title": "REcord, reCORD in two-syllable words",
    "needs_title_review": false,
    "source_page": 65,
    "sections": [
@@ -5165,7 +7760,7 @@
   },
   {
    "number": 29,
-   "title": "Occuriu",
+   "title": "Second hand, bookshop Stress in compound words",
    "needs_title_review": false,
    "source_page": 67,
    "sections": [],
@@ -5214,7 +7809,7 @@
   },
   {
    "number": 30,
-   "title": "example below.",
+   "title": "Unforgettable Stress in longer words 1",
    "needs_title_review": false,
    "source_page": 69,
    "sections": [
@@ -5595,10 +8190,59 @@
   },
   {
    "number": 32,
-   "title": "Unit 32",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "sentence stress in these examples.",
+   "needs_title_review": false,
+   "source_page": 73,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Note:",
+     "body": "Positive auxiliary verbs such as be in Don’t be late! are not usually stressed.\n—C\nSentences with all the words\nstressed have A distinctive rhythm. You can hear this well in these\nOO\nchants.\nGass\nListen.\nTF Saws\nB56) © O,\nome)\nDon’t move! Take\ncare!\nKeep\ncalm!\nStay there!\nPe\nwey vsawiwe\nLt baie\nOOO\nGo straight on!\nDon’t look down!\nGo straight\non!\nDon’t turn round!\nO O,\nOoO0\nDon’t stop! — Carry on!\nRun! Run!\nGet away!\nQuick! Quick!\nHurry up!\n72\nEnglish\nPronunciation\nUse\nin",
+     "vocabulary": [
+      {
+       "term": "—C",
+       "example": "—C"
+      },
+      {
+       "term": "Sentences with all the words",
+       "example": "Sentences with all the words"
+      },
+      {
+       "term": "OO",
+       "example": "OO"
+      },
+      {
+       "term": "Gass",
+       "example": "Gass"
+      },
+      {
+       "term": "TF Saws",
+       "example": "TF Saws"
+      },
+      {
+       "term": "Pe",
+       "example": "Pe"
+      },
+      {
+       "term": "wey vsawiwe",
+       "example": "wey vsawiwe"
+      },
+      {
+       "term": "Lt baie",
+       "example": "Lt baie"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -5623,9 +8267,18 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B056.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B056.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B56",
+     "unit": 32
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 10,
    "gloss_count": 0
   },
   {
@@ -6059,7 +8712,7 @@
   },
   {
    "number": 37,
-   "title": "A PIECE",
+   "title": "A PIECE of CHEESE",
    "needs_title_review": false,
    "source_page": 83,
    "sections": [
@@ -6259,10 +8912,103 @@
   },
   {
    "number": 38,
-   "title": "Pets",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Pets enter, pet centre",
+   "needs_title_review": false,
+   "source_page": 85,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Note:",
+     "body": "The spelling may be different in the two\nphrases\nwhich sound the same. For example, the\nconsonant sound /s/ is\nspelt\nS in pets, but C in centre. The consonant sound /t/ is\nspelt\nD at the end of\nstopped, but T in taking.\nNote: The /h/ is often dropped from the beginning of pronouns, so that thanked him sounds like\nthank Tim.\nUN\n{ portant\n+\nLor listening, se\n\\\nyY\n|\n“veentnnantinrarenemanemnenc\nImportant\nFor listening}\n\\\nGot_up_at_ eight,\nGot_on_a bus,\nWent_ into work,\n| | 6\n|\n©, Worked_until two,\n|\n|\n.\n___ Went_out for lunch,\np\"\n|\nYL Wy. Y\nog\noe\n“|\n~ oe Worked_until oo. six,\n-\nSB 2\nI\nZ\nnA\nEZ:\nBB\nos\nBack_on\nDaal\nthe\nthe\nbus,\nhee\n-\nan\n=\nSwitched_on the box\",\nSlept_in_a chair.\n(\"box = television)\n84\nEnglish\nPronunciation in\nUse",
+     "vocabulary": [
+      {
+       "term": "phrases",
+       "example": "phrases"
+      },
+      {
+       "term": "spelt",
+       "example": "spelt"
+      },
+      {
+       "term": "©, Worked_until two",
+       "example": "©, Worked_until two,"
+      },
+      {
+       "term": "___ Went_out for lunch",
+       "example": "___ Went_out for lunch,"
+      },
+      {
+       "term": "p\"",
+       "example": "p\""
+      },
+      {
+       "term": "YL Wy. Y",
+       "example": "YL Wy. Y"
+      },
+      {
+       "term": "og",
+       "example": "og"
+      },
+      {
+       "term": "oe",
+       "example": "oe"
+      },
+      {
+       "term": "~ oe Worked_until oo. six",
+       "example": "~ oe Worked_until oo. six,"
+      },
+      {
+       "term": "SB 2",
+       "example": "SB 2"
+      },
+      {
+       "term": "I",
+       "example": "I"
+      },
+      {
+       "term": "nA",
+       "example": "nA"
+      },
+      {
+       "term": "EZ",
+       "example": "EZ:"
+      },
+      {
+       "term": "BB",
+       "example": "BB"
+      },
+      {
+       "term": "os",
+       "example": "os"
+      },
+      {
+       "term": "Daal",
+       "example": "Daal"
+      },
+      {
+       "term": "the",
+       "example": "the"
+      },
+      {
+       "term": "hee",
+       "example": "hee"
+      },
+      {
+       "term": "an",
+       "example": "an"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -6297,17 +9043,71 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B087.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B087.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B87",
+     "unit": 38
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 21,
    "gloss_count": 0
   },
   {
    "number": 39,
-   "title": "Don'T",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "examples. The added sound is in small letters.",
+   "needs_title_review": false,
+   "source_page": 87,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Note:",
+     "body": "Sometimes we pronounce an /r/ to separate vowel sounds even if there is\nR in the spelling. For\nno\nexample saw Alice can be pronounced /so:_‘zelts/.\nOK\nMR\nVio\ndb\n‘l saw her race:\n‘| saw her ace:\n-e\nImportant\nf\nlistenmg\n(890)\n/j/\n[j/\nno\nor /w/ pronounced\nsounds like\nor /w/ pronounced —\n...\nevery toe /evri tau/\nevery ear fevri ito]\nevery year\nhe saves /ht servz/\n/hi !3:nz/\nhe\nhe\nearns\nyearns\ndrank /ju: draenk/\n—\n/ju:\n“etk/\nyou\nyou ache\nyou wake\n/ju: hs:t/\nyou hurt\n86\nEnglish\nPronunciation in\nUse",
+     "vocabulary": [
+      {
+       "term": "OK",
+       "example": "OK"
+      },
+      {
+       "term": "MR",
+       "example": "MR"
+      },
+      {
+       "term": "Vio",
+       "example": "Vio"
+      },
+      {
+       "term": "db",
+       "example": "db"
+      },
+      {
+       "term": "/j/",
+       "example": "/j/"
+      },
+      {
+       "term": "[j/",
+       "example": "[j/"
+      },
+      {
+       "term": "sounds like",
+       "example": "sounds like"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -6342,9 +9142,34 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B088.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B088.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B88",
+     "unit": 39
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B089.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B089.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B89",
+     "unit": 39
+    },
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_B092.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_B092.mp3",
+     "exists": true,
+     "section": null,
+     "track": "B92",
+     "unit": 39
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 9,
    "gloss_count": 0
   },
   {
@@ -6834,7 +9659,7 @@
   },
   {
    "number": 44,
-   "title": "Showing",
+   "title": "Showing that you want to continue",
    "needs_title_review": false,
    "source_page": 97,
    "sections": [
@@ -6965,7 +9790,7 @@
   },
   {
    "number": 45,
-   "title": "“moortant",
+   "title": ": | nearly got arrested, you know, the other",
    "needs_title_review": false,
    "source_page": 99,
    "sections": [
@@ -7873,10 +10698,159 @@
   },
   {
    "number": 50,
-   "title": "Unit 50",
+   "title": "My name’s Schwartz ... Pedro Schwartz.",
    "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "source_page": 109,
+   "sections": [
+    {
+     "letter": "A",
+     "title": ":",
+     "body": "speaker ‘underlines’ certain words in this\nC42, Listen to the way the\ntext.\nPedro Schwartz.\nMy name’s Schwartz\n...\nthe South of Chile.\nI’m from Chile\n...\nwell,\nPuerto Montt.\nMontt\nI live in Puerto\nnear\n...\nisland\nisland called Chiloé.\nActually, I live\non an\n... an\nwell, Swiss-German, in fact.\nMy grandparents were German\n...\nSchwartz. In the first phrase, the speaker\nfirst line, both phrases contain the\nIn the\nname\ninformation.\nBut\nin the second phrase, he doesn’t,\n‘underlines’ this word because it is new\nthe\nsecond phrase Pedro,\nis\nbecause\nit is old information. The new information in the\nso\nnow\nspeaker ‘underlines’ this.\nNEW\nOLD\nPedro Schwartz.\nMy name’s Schwartz\n...\nNEW\nThere is similar pattern in each of the other examples above.\na\n_8\nBut\nin a conversation, one\nspeaker gives information and then adds new details.\nAbove, the\nsame\nadd\ndetails. In both cases, the speaker\nspeaker\ngive information and the other\nnew\ncan\ncan\nthis example.\nadded\ndetail.\nListen to\n‘underlines’ the\nA: [hear you’ve got a boat.\nsmall\nboat, yes.\nB: A\nA: And big house.\na\n—_\noO\nB:\nWell, it’s quite big, I\nPDL\nsuppose.\naT A\nimaa\nHollywood.\nA: And you live in\njel jO0)\n—\nB: Well, near Hollywood, yes.\nrl\n;\nbe\nhn\nrich\nwinh\nthen?\nhand nen\nA:\nRev\nSo\nCrs\nmust\nenn\nyou\ncoaws\nWell,\nrich I\nB:\nquite\nguess.\nWTA! SSB BROLIN",
+     "vocabulary": [
+      {
+       "term": "speaker ‘underlines’ certain words in this",
+       "example": "speaker ‘underlines’ certain words in this"
+      },
+      {
+       "term": "C42, Listen to the way the",
+       "example": "C42, Listen to the way the"
+      },
+      {
+       "term": "text",
+       "example": "text."
+      },
+      {
+       "term": "Montt",
+       "example": "Montt"
+      },
+      {
+       "term": "But",
+       "example": "But"
+      },
+      {
+       "term": "added",
+       "example": "added"
+      },
+      {
+       "term": "small",
+       "example": "small"
+      },
+      {
+       "term": "oO",
+       "example": "oO"
+      },
+      {
+       "term": "Well, it’s quite big, I",
+       "example": "Well, it’s quite big, I"
+      },
+      {
+       "term": "PDL",
+       "example": "PDL"
+      },
+      {
+       "term": "suppose",
+       "example": "suppose."
+      },
+      {
+       "term": "aT A",
+       "example": "aT A"
+      },
+      {
+       "term": "imaa",
+       "example": "imaa"
+      },
+      {
+       "term": "Hollywood",
+       "example": "Hollywood."
+      },
+      {
+       "term": "A: And you live in",
+       "example": "A: And you live in"
+      },
+      {
+       "term": "jel jO0)",
+       "example": "jel jO0)"
+      },
+      {
+       "term": "B: Well, near Hollywood, yes",
+       "example": "B: Well, near Hollywood, yes."
+      },
+      {
+       "term": "rl",
+       "example": "rl"
+      },
+      {
+       "term": "hn",
+       "example": "hn"
+      },
+      {
+       "term": "winh",
+       "example": "winh"
+      },
+      {
+       "term": "hand nen",
+       "example": "hand nen"
+      },
+      {
+       "term": "Rev",
+       "example": "Rev"
+      },
+      {
+       "term": "Crs",
+       "example": "Crs"
+      },
+      {
+       "term": "enn",
+       "example": "enn"
+      },
+      {
+       "term": "coaws",
+       "example": "coaws"
+      },
+      {
+       "term": "quite",
+       "example": "quite"
+      },
+      {
+       "term": "WTA! SSB BROLIN",
+       "example": "WTA! SSB BROLIN"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "| (ce",
+     "body": "that she doesn’t know anything\nListen to these two short conversations. A’s question shows\n4 haut urhere R\nfrom. C’s auestion shows that she knows he comes from India, so when B\ncames\nSouth India, he ‘underlines’ South because this is added information.\nsays\nfrom?\nA: Where\nare you\nB: South India.\nfrom?\nof India\nC: Which part\nare you\nB: South India.\n108\nEnglish\nPronunciation in\nUse",
+     "vocabulary": [
+      {
+       "term": "that she doesn’t know anything",
+       "example": "that she doesn’t know anything"
+      },
+      {
+       "term": "Listen to these two short conversations. A’s question shows",
+       "example": "Listen to these two short conversations. A’s question shows"
+      },
+      {
+       "term": "4 haut urhere R",
+       "example": "4 haut urhere R"
+      },
+      {
+       "term": "cames",
+       "example": "cames"
+      },
+      {
+       "term": "says",
+       "example": "says"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -7903,7 +10877,199 @@
    ],
    "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 33,
+   "gloss_count": 0
+  },
+  {
+   "number": 51,
+   "title": "important in their argument.",
+   "needs_title_review": true,
+   "source_page": 111,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "speakers ‘underline’ the words which",
+     "body": "| 47 Listen to this conversation. Notice that the\nare most\n—_—\neheai«\naca\ntheir\neee\nin\nimportant\n5\nargument.\narmimont\ney\nI think you’re in my seat.\nPRPrrreye Excuse\nme,\nboarding card.\nZA\nSorry, but it\nsays\non my\n\"7™\\\\\nasked for window\nright\nI\nOh, er\nseat, you see ...\n<<\na\n...\n...\nN\\\nere\nYeah, so did I. What’s\nseat number?\nyour\n;\nOh, it’s 8A.\nLet’s\nsee ...\nHy,\nbehindme.\n(fy\nyou’re in the\nSo I guess\nseat\nabout that.\n”,\n: Oh yes. Sorry\nza\nPi ake |. MEAT Fe.\nx\n‘ i\n\\\n\"ig ger\nWythe\nY,,\nBm\n\" thts\nNe\n“ad\nj f\n>\nyf\niy\n/\nj\ntl\n4\n—<—\nZ\nx\n’",
+     "vocabulary": [
+      {
+       "term": "| 47 Listen to this conversation. Notice that the",
+       "example": "| 47 Listen to this conversation. Notice that the"
+      },
+      {
+       "term": "are most",
+       "example": "are most"
+      },
+      {
+       "term": "eheai«",
+       "example": "eheai«"
+      },
+      {
+       "term": "aca",
+       "example": "aca"
+      },
+      {
+       "term": "eee",
+       "example": "eee"
+      },
+      {
+       "term": "armimont",
+       "example": "armimont"
+      },
+      {
+       "term": "ey",
+       "example": "ey"
+      },
+      {
+       "term": "ere",
+       "example": "ere"
+      },
+      {
+       "term": "your",
+       "example": "your"
+      },
+      {
+       "term": "(fy",
+       "example": "(fy"
+      },
+      {
+       "term": "za",
+       "example": "za"
+      },
+      {
+       "term": "Pi ake |. MEAT Fe",
+       "example": "Pi ake |. MEAT Fe."
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "C8",
+     "body": "the speaker ‘underlines’ different word in her second\nA\nListen to this conversation. Notice how\ndo. In the second\neeenne Ter tha Rent eannact urhat ic imnartant ic what the nassenser must\nve\nit is when he should do it.\nrequest,\noff,\nsir.\nA: I’m sorry, but you must switch that\nB: OK, just minute.\na\nplease!\nA: Switch it off\nnow,\nre Cc ee: | ($42) ip. The word which is\ndepends\nthe context. Listen .\n.\nto these sentences.\non\nmore important\nOO\n‘underlines’ different words in the different contexts.\nNatice that the cneaker\nContext\nSentence\njuice\nasked the stewardess for\nA passenger\na tomato\nCould I have a glass of water\ntoo,\nand wants water too.\nplease?\nthe\nasked for water and\nA\nnext\nnow\nCould Ihave glass of water\ntoo,\npassenger\na\nasking\nfor the same.\nis\nplease?\npassenger\ntelling\nA travel agent is\nfive.\nhave\ncheck in\na customer the check-in time.\nYou\nat\nto\ntalking\nfive.\nYou\ncheck in\nto your friend who is worried\nhave\nare\nYou\nat\nto\nflight\nis at five and she\nbecause she thinks her\ncould\nmiss\nit.\n110\nEnglish",
+     "vocabulary": [
+      {
+       "term": "the speaker ‘underlines’ different word in her second",
+       "example": "the speaker ‘underlines’ different word in her second"
+      },
+      {
+       "term": "Listen to this conversation. Notice how",
+       "example": "Listen to this conversation. Notice how"
+      },
+      {
+       "term": "do. In the second",
+       "example": "do. In the second"
+      },
+      {
+       "term": "ve",
+       "example": "ve"
+      },
+      {
+       "term": "off",
+       "example": "off,"
+      },
+      {
+       "term": "now",
+       "example": "now,"
+      },
+      {
+       "term": "re Cc ee: | ($42) ip. The word which is",
+       "example": "re Cc ee: | ($42) ip. The word which is"
+      },
+      {
+       "term": "depends",
+       "example": "depends"
+      },
+      {
+       "term": "the context. Listen",
+       "example": "the context. Listen ."
+      },
+      {
+       "term": "to these sentences",
+       "example": "to these sentences."
+      },
+      {
+       "term": "on",
+       "example": "on"
+      },
+      {
+       "term": "more important",
+       "example": "more important"
+      },
+      {
+       "term": "OO",
+       "example": "OO"
+      },
+      {
+       "term": "‘underlines’ different words in the different contexts",
+       "example": "‘underlines’ different words in the different contexts."
+      },
+      {
+       "term": "Natice that the cneaker",
+       "example": "Natice that the cneaker"
+      },
+      {
+       "term": "too",
+       "example": "too,"
+      },
+      {
+       "term": "passenger",
+       "example": "passenger"
+      },
+      {
+       "term": "asking",
+       "example": "asking"
+      },
+      {
+       "term": "telling",
+       "example": "telling"
+      },
+      {
+       "term": "talking",
+       "example": "talking"
+      },
+      {
+       "term": "are",
+       "example": "are"
+      },
+      {
+       "term": "flight",
+       "example": "flight"
+      },
+      {
+       "term": "English",
+       "example": "English"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "1.1      each of these conversations, A has to repeat the request, but ‘underlining’ a different word.",
+     "body": "Exercises\n\n     1.1      each of these conversations, A has to repeat the request, but ‘underlining’ a different word.\n     €50)   Which word?  Underline one word in the third line of each conversation. Then listen and check.\n           EXAMPLE   A:  Can  I have a donut?\n                     B:  What  do we  say, Benny?\n                     A:  Can  I have a donut, please?\n           1  A: A black coffee, please.\n              B: Sorry, do you want milk with  your coffee?\n              A: No, a black coffee please.\n           2  A: What’s your nationality?\n              B: Well. my wife’s an American  citizen.\n             A: Yes, but what’s your nationality, sir?\n           3 A: What   time is it?\n             B: Well, the clocks changed last night ...\n             A: So what  time is it then?\n\n\n            Follow up: Listen again and repeat A's lines.\n\n           The sentences in the contexts a and b below are the same, but with different pronunciation. You will\n           hear each sentence twice, once for context a and once for context b. Listen and decide which you\n           hear first, context a or context b. Write 1 and 2 in the boxes.\n           EXAMPLE                                                                —\n           a I think that’s my bag. | 2                  b  I think that’s my bag. | |\n             She’s not completely sure that it’s her bag.   Another  person is picking up her bag.\n           1 a Is that your phone? |_|                    1 b Is that your phone? |_|\n               He  can hear an electronic sound from          He can  see somebody’s mobile  phone  on\n               someone’s  pocket.                             the seat.\n          2  a Is your seat 29 F? [|                     2  b Is your seat 29 F? [ |\n               She is not sure she heard the number           She is not sure she heard the letter correctly.\n               correctly.\n          3 a  Is there a bank in this terminal? [|      3 b  Is there a bank in this terminal? [|\n               He knows   there is a bank in the other        He is looking for a bank.\n               terminal but not if there is one\n               in this terminal.\n          4  a Where’s the women’s  toilet? [ |          4 b Where’s  the women’s  toilet? [|\n               She is looking for the toilet.                 She can see the men’s toilet, but not the\n                                                             women’s.\n            Follow up: Record yourself saying the sentence for context a or b.\n            Make |         hich one you choose. Then use your     to do\n            the exercise again in about two weeks.\n                                                                                      Now go  to Unit 12. a\n\n                                                                       English Pronunciation in Use",
+     "unlabelled": true
+    }
+   ],
+   "answers": [
+    {
+     "number": 1,
+     "text": "1 A: A black  coffee please.\n                  B: Sorry, do you want  milk with your  coffee?\n                  A: No,  a black coffee, please.\n                2 A: What’s  your nationality?\n                  B: Well, my  wife’s an American citizen.\n                  A: Yes, but what’s your nationality, sir?\n                3 A: What  time is it?\n                  B: Well, the clocks changed last night ...\n                  A: So what  time is it then?\n\n\n                                                                                                              185\n                                                                             English Pronunciation in Use",
+     "instructions": ""
+    }
+   ],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_C008.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_C008.mp3",
+     "exists": true,
+     "section": null,
+     "track": "C8",
+     "unit": 51
+    }
+   ],
+   "unplaced_glosses": [],
+   "vocabulary_count": 35,
    "gloss_count": 0
   },
   {
@@ -8110,7 +11276,7 @@
   },
   {
    "number": 53,
-   "title": "I Fifty?",
+   "title": "I Fifty? No, fifteen!",
    "needs_title_review": false,
    "source_page": 115,
    "sections": [
@@ -8424,7 +11590,7 @@
   },
   {
    "number": 55,
-   "title": "important",
+   "title": "A: Where? voice goes down at the end.)",
    "needs_title_review": false,
    "source_page": 119,
    "sections": [
@@ -8497,7 +11663,7 @@
   },
   {
    "number": 56,
-   "title": "Where",
+   "title": "Where were you born?",
    "needs_title_review": false,
    "source_page": 121,
    "sections": [
@@ -8564,8 +11730,240 @@
    "gloss_count": 0
   },
   {
+   "number": 57,
+   "title": "Important 7",
+   "needs_title_review": true,
+   "source_page": 123,
+   "sections": [
+    {
+     "letter": "D",
+     "title": "| D",
+     "body": "|\n|\n|\nT\n2 SSSI SSR aa eR eT Eh ee ree Acai\nN eco A Oe ae eos SE eeu tr ieee ee sa‘(‘se:Ci‘(C;‘CiW;C*st*tisi‘“‘(CSC*C*éC;CiCC;C(C(COCt(# ee rhe ne ate pc Ceara ee ee er eet eter tty re ete sea ete\nC7,\ncamething we\ninfrematinn and GAine\neonvercation. LLrrtti‘C;yCO;O;*®COCO*s*Csti‘C(‘(‘#YRYRC*‘(‘(RCRCUC™C:C:tCszC we often reter hack\ncain hefare Thic ic\nJ\nOGRA, ae\nEC IC) UG athe\nEt? ta OUIHCCINITG cite\ndati Mens the tHe SL hh VOICE itpertt\n5\node om\nJUL NAVA ecient pee\nbed We alto ocd Salt ULI. Oita\nRath baa asia iid lvtyault osastih is ‘Ald’ Se Ui enieth HOt dnd I itn, otby.\n-\nah fect\npriest\nhe ee\nch Meal WR SEARS tat\ndea vadtiicstel) Cot\nle enact ali\nihaican pote\nWa\nahr riaeianeet be\nNd\nlial\ntila Seta Laake\nhide’ EEaclitadhen\nSe\nde E\nImportant 7\na\nLor\nlistening }\nA:\nI'll\nin\ntomorrow.\ncome\nB: We're closed tomorrow. 2%\nA: When are you closed?\nB: We're closed tomorrow. PS\n>\nLet's\nthe Viewmaster. It's really nice.\nget\no But the Megavision is\nnicer.\nSr\nBut the Viewmaster has a guarantee.\nnDnbrD They both have a\nguarantee.\nAnyway, the Megavision is\ntoo\nexpensive.\n:\n| know It's\nexpensive,\nbut it's better quality.\nPOP They're both good quality.\nThe Megavision has access to the internet.\nWe have\ninternet\nthe computer.\nto the\naccess\non\nA et oe\npou\nped\nbee\nfi\n8\n=\neee\npac os\nos\nSee\nSe A kp ae nt te ett at A cr\netre rere ee ST\n~\nf / Important\nleteniney\nfor\nanette\nSOs\nge aieeetmine\nA:\nI'm from\nCairo.\nB:\nReally?\nMy wife's\nfrom\nthere.\n122\nEnglish Pronunciation\nUse\nin",
+     "vocabulary": [
+      {
+       "term": "2 SSSI SSR aa eR eT Eh ee ree Acai",
+       "example": "2 SSSI SSR aa eR eT Eh ee ree Acai"
+      },
+      {
+       "term": "C7",
+       "example": "C7,"
+      },
+      {
+       "term": "camething we",
+       "example": "camething we"
+      },
+      {
+       "term": "infrematinn and GAine",
+       "example": "infrematinn and GAine"
+      },
+      {
+       "term": "cain hefare Thic ic",
+       "example": "cain hefare Thic ic"
+      },
+      {
+       "term": "OGRA, ae",
+       "example": "OGRA, ae"
+      },
+      {
+       "term": "EC IC) UG athe",
+       "example": "EC IC) UG athe"
+      },
+      {
+       "term": "Et? ta OUIHCCINITG cite",
+       "example": "Et? ta OUIHCCINITG cite"
+      },
+      {
+       "term": "dati Mens the tHe SL hh VOICE itpertt",
+       "example": "dati Mens the tHe SL hh VOICE itpertt"
+      },
+      {
+       "term": "ode om",
+       "example": "ode om"
+      },
+      {
+       "term": "JUL NAVA ecient pee",
+       "example": "JUL NAVA ecient pee"
+      },
+      {
+       "term": "bed We alto ocd Salt ULI. Oita",
+       "example": "bed We alto ocd Salt ULI. Oita"
+      },
+      {
+       "term": "ah fect",
+       "example": "ah fect"
+      },
+      {
+       "term": "priest",
+       "example": "priest"
+      },
+      {
+       "term": "he ee",
+       "example": "he ee"
+      },
+      {
+       "term": "ch Meal WR SEARS tat",
+       "example": "ch Meal WR SEARS tat"
+      },
+      {
+       "term": "dea vadtiicstel) Cot",
+       "example": "dea vadtiicstel) Cot"
+      },
+      {
+       "term": "le enact ali",
+       "example": "le enact ali"
+      },
+      {
+       "term": "ihaican pote",
+       "example": "ihaican pote"
+      },
+      {
+       "term": "Wa",
+       "example": "Wa"
+      },
+      {
+       "term": "ahr riaeianeet be",
+       "example": "ahr riaeianeet be"
+      },
+      {
+       "term": "Nd",
+       "example": "Nd"
+      },
+      {
+       "term": "lial",
+       "example": "lial"
+      },
+      {
+       "term": "tila Seta Laake",
+       "example": "tila Seta Laake"
+      },
+      {
+       "term": "hide’ EEaclitadhen",
+       "example": "hide’ EEaclitadhen"
+      },
+      {
+       "term": "Se",
+       "example": "Se"
+      },
+      {
+       "term": "de E",
+       "example": "de E"
+      },
+      {
+       "term": "I'll",
+       "example": "I'll"
+      },
+      {
+       "term": "nicer",
+       "example": "nicer."
+      },
+      {
+       "term": "guarantee",
+       "example": "guarantee."
+      },
+      {
+       "term": "expensive",
+       "example": "expensive,"
+      },
+      {
+       "term": "internet",
+       "example": "internet"
+      },
+      {
+       "term": "A et oe",
+       "example": "A et oe"
+      },
+      {
+       "term": "pou",
+       "example": "pou"
+      },
+      {
+       "term": "ped",
+       "example": "ped"
+      },
+      {
+       "term": "bee",
+       "example": "bee"
+      },
+      {
+       "term": "fi",
+       "example": "fi"
+      },
+      {
+       "term": "eee",
+       "example": "eee"
+      },
+      {
+       "term": "pac os",
+       "example": "pac os"
+      },
+      {
+       "term": "os",
+       "example": "os"
+      },
+      {
+       "term": "See",
+       "example": "See"
+      },
+      {
+       "term": "Se A kp ae nt te ett at A cr",
+       "example": "Se A kp ae nt te ett at A cr"
+      },
+      {
+       "term": "etre rere ee ST",
+       "example": "etre rere ee ST"
+      },
+      {
+       "term": "I'm from",
+       "example": "I'm from"
+      },
+      {
+       "term": "Really?",
+       "example": "Really?"
+      },
+      {
+       "term": "from",
+       "example": "from"
+      },
+      {
+       "term": "English Pronunciation",
+       "example": "English Pronunciation"
+      },
+      {
+       "term": "Use",
+       "example": "Use"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Read the short conversations. Do you think the voice goes up or down at the end?",
+     "body": "Exercises\n\n         Read the short conversations. Do you think the voice goes up or down at the end?\n         Draw  lines in the boxes. Then listen, check and repeat.\n         EXAMPLES\n                                                       A: This one’s big.\n         A:  This one’s nice.\n                                                       B: I know  it’s big, but the other one’s bigger.\n         B:  I know it’s nice, but it’s expensive.\n\n\n                                                        3 A: This one’s good.\n          1 A: This one’s slow.\n                                                          B: I know  it’s good, but\n            B: I know  it’s slow,\n                                                             the other one’s better. B®\n\n\n                                                        4 A: This one’s fast.\n          2 A: This one’s ugly.\n            R: T know  it’s                               B: | know  it’s fast,\n                                                             but it’s dangerous.\n               ugly, but it’s\n               comfortable.  |\n\n\n          The responses to the pairs of sentences a and b below are the same, but the speaker uses a different\n          tone in each response. For example, in the response to Example a, the voice goes up at the end of\n          the sentence, but in the response to Example b, the voice goes down. Draw lines to show if you think\n          the voice will go up or down. Then listen and check.\n          EXAMPLE\n                                                              Why  did you take the bus?\n            a — The  train’s cheap.\n                                                            — The bus was  cheaper.\n              — The  bus was cheaper.\n                                                        1 b—  Why  did you read the book?\n          1  a — Was the movie good?\n                                                            — The book  was  better.\n              — The  book was\n                                                        2          go swimming    at two.\n          2  a — What time’s lunch?\n                                                            — Lunch  is at two.\n              — Lunch  is at two.\n                                                        3 b—  Why  are they so expensive?\n          3         like a leather on\n                                                            — They’re all leather.\n               — They’re all leather.\n                                                        4  b— When   is it closed?\n          4  a -Let’s go tomorrow.\n                                                              It’s closed tomorrow. Bl\n               — It’s closed tomorrow.\n                                                        5     What’s  upstairs?\n          5  a— Where’s  menswear?\n                                                            — Menswear   is upstairs.\n               — Menswear  is upstairs.\n                                                        6  b— Why   didn’t you have steak?\n           6 a-— The fish is expensive.\n                                                            — The  steak’s more expensive.\n               — The steak’s more expensive\n                                                         7         one has a guarantee.\n           7 a — What  happens if one of them breaks?\n                                                            — They  all have a guarantee.\n               — They all have a guarantee.\n                                                                                     Now  go to Unit 18\n\n                                                                                                      123\n                                                                      English Pronunciation in Use",
+     "unlabelled": true
+    }
+   ],
+   "answers": [
+    {
+     "number": 1,
+     "text": "",
+     "instructions": ""
+    },
+    {
+     "number": 2,
+     "text": "",
+     "instructions": ""
+    }
+   ],
+   "audio": [],
+   "unplaced_glosses": [],
+   "vocabulary_count": 48,
+   "gloss_count": 0
+  },
+  {
    "number": 58,
-   "title": "ERS",
+   "title": "1 A: You know Max's grandfather died?",
    "needs_title_review": false,
    "source_page": 125,
    "sections": [
@@ -8786,10 +12184,315 @@
   },
   {
    "number": 59,
-   "title": "important",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Lor listening)",
+   "needs_title_review": false,
+   "source_page": 127,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "",
+     "body": ".\n.\n|\n|\nSS!\ncprareearnecareneneren age Fe re\nC8”\nLEECHED Mea acumumminereseieeinmasic\nPs RSC any\nile\nene eOh A ete ee ee\nUA AN SEE NC NT\nRes A ee ee\nDa Rn\nee MESA SORE Wells cae A el\nte\nree Cee ce Ne ec eee A eee once See\nune A tae\nimportant\n: Lor\n:\nree listening) 5\nboring, isn't it?\noP Football's\nso\n| know.\n| hate\nit.\nGe Yeah,\nge\n| mean, it's just 22 people running after a ball.\nBY Yeah, how can that be interesting?\nfe No, golf's much\nfun, isn’t it?\nmore\nWhen\nquestion\ntell\nexpression isn’t it? is called a question tag.\ntags\nto\nNote: The\nwe\nuse\nsomeone our\ndown at\nthe\nend.\nopinion, the voice\ngoes\nte Cosa caislues Meme CaScaar once\nocrores Ons ee\neR eRe\nse\nMeats gar\nI A\nSS\nA —s SS A ee EE\ner\nac cr ge ee A ee A A arg ee A ee A ee ee ee\nee\nimportant\n|\n/\n4\ni\nfor\nlistening,\n:\nB:\nyou?\nA: You like golf, don't\nB:\nIt's alright\n| suppose\na\n...\ni\nA: You don't sound very sure.\nknow.\nB: Well,\n|\nI'm not really sporting\nperson, you\nguess\na\nWhen\nquestion\nNote: The\nexpression don't you? is a question tag.\ntags\nto check information,\nwe\nuse\nthe\nend.\nthe\nvoice\ngoes\nup at\nSEES STI\nace Sg Rtg ee me\ncet tec as\niC\n‘C8 sesame\nni\nFhe\naS\nraeteaie\non OY } See nae ae MASI DU Orie A ee\nae\nsn) pproracnccnsrecscd nO\nORY CU 2D ee ee ee — I\nNAR RI\nI =>“ =\n__—___-_=-|_—-— =e\n(\nlmportant\nfor\nlistenin\neuros\n| think they're good.\n(That is\nopinion.)\n1\nmy\nthem.)\n(They're\nbad,\nbut there's a reason why I\ndon't\nlike\n| think they're good\nnot\ntoo\n2\n...\niA A nti A RoC Hate\nsesetses sez ease aca nenet cba) EAN ue\nea\nsac gncaceas tanta\nines\n|\n. D 8 ) le\npeas\noe:\n: Pe We\nmeaning\nOF A\naGueston\ntad\n“ne\nS\nLIS\nLO LNRSE..\nfan aso cnangde\nthie\nOv Cid\n\" SAY\nte\n;\nI Sw = ee ee\nI “ce ie\nimportant\nor listening\nA: We sometimes have\nin Morocco.\nA:\nIt's too hot,\nisn't it? (opinion)\nsnow\n(check question)\nB: But it's too hot, isn't it?\nB: Yeah, let's open the window!\nA: No, not in the mountains.\n126\nEnglish Pronunciation\nUse\nin",
+     "vocabulary": [
+      {
+       "term": "SS!",
+       "example": "SS!"
+      },
+      {
+       "term": "cprareearnecareneneren age Fe re",
+       "example": "cprareearnecareneneren age Fe re"
+      },
+      {
+       "term": "C8”",
+       "example": "C8”"
+      },
+      {
+       "term": "LEECHED Mea acumumminereseieeinmasic",
+       "example": "LEECHED Mea acumumminereseieeinmasic"
+      },
+      {
+       "term": "Ps RSC any",
+       "example": "Ps RSC any"
+      },
+      {
+       "term": "ile",
+       "example": "ile"
+      },
+      {
+       "term": "ene eOh A ete ee ee",
+       "example": "ene eOh A ete ee ee"
+      },
+      {
+       "term": "UA AN SEE NC NT",
+       "example": "UA AN SEE NC NT"
+      },
+      {
+       "term": "Res A ee ee",
+       "example": "Res A ee ee"
+      },
+      {
+       "term": "Da Rn",
+       "example": "Da Rn"
+      },
+      {
+       "term": "ee MESA SORE Wells cae A el",
+       "example": "ee MESA SORE Wells cae A el"
+      },
+      {
+       "term": "te",
+       "example": "te"
+      },
+      {
+       "term": "ree Cee ce Ne ec eee A eee once See",
+       "example": "ree Cee ce Ne ec eee A eee once See"
+      },
+      {
+       "term": "une A tae",
+       "example": "une A tae"
+      },
+      {
+       "term": "When",
+       "example": "When"
+      },
+      {
+       "term": "tell",
+       "example": "tell"
+      },
+      {
+       "term": "tags",
+       "example": "tags"
+      },
+      {
+       "term": "Note: The",
+       "example": "Note: The"
+      },
+      {
+       "term": "use",
+       "example": "use"
+      },
+      {
+       "term": "the",
+       "example": "the"
+      },
+      {
+       "term": "goes",
+       "example": "goes"
+      },
+      {
+       "term": "te Cosa caislues Meme CaScaar once",
+       "example": "te Cosa caislues Meme CaScaar once"
+      },
+      {
+       "term": "ocrores Ons ee",
+       "example": "ocrores Ons ee"
+      },
+      {
+       "term": "eR eRe",
+       "example": "eR eRe"
+      },
+      {
+       "term": "se",
+       "example": "se"
+      },
+      {
+       "term": "Meats gar",
+       "example": "Meats gar"
+      },
+      {
+       "term": "I A",
+       "example": "I A"
+      },
+      {
+       "term": "SS",
+       "example": "SS"
+      },
+      {
+       "term": "A —s SS A ee EE",
+       "example": "A —s SS A ee EE"
+      },
+      {
+       "term": "er",
+       "example": "er"
+      },
+      {
+       "term": "ac cr ge ee A ee A A arg ee A ee A ee ee ee",
+       "example": "ac cr ge ee A ee A A arg ee A ee A ee ee ee"
+      },
+      {
+       "term": "ee",
+       "example": "ee"
+      },
+      {
+       "term": "SEES STI",
+       "example": "SEES STI"
+      },
+      {
+       "term": "ace Sg Rtg ee me",
+       "example": "ace Sg Rtg ee me"
+      },
+      {
+       "term": "cet tec as",
+       "example": "cet tec as"
+      },
+      {
+       "term": "iC",
+       "example": "iC"
+      },
+      {
+       "term": "‘C8 sesame",
+       "example": "‘C8 sesame"
+      },
+      {
+       "term": "ni",
+       "example": "ni"
+      },
+      {
+       "term": "Fhe",
+       "example": "Fhe"
+      },
+      {
+       "term": "aS",
+       "example": "aS"
+      },
+      {
+       "term": "raeteaie",
+       "example": "raeteaie"
+      },
+      {
+       "term": "on OY } See nae ae MASI DU Orie A ee",
+       "example": "on OY } See nae ae MASI DU Orie A ee"
+      },
+      {
+       "term": "ae",
+       "example": "ae"
+      },
+      {
+       "term": "sn) pproracnccnsrecscd nO",
+       "example": "sn) pproracnccnsrecscd nO"
+      },
+      {
+       "term": "ORY CU 2D ee ee ee — I",
+       "example": "ORY CU 2D ee ee ee — I"
+      },
+      {
+       "term": "NAR RI",
+       "example": "NAR RI"
+      },
+      {
+       "term": "I =>“ =",
+       "example": "I =>“ ="
+      },
+      {
+       "term": "__—___-_=-|_—-— =e",
+       "example": "__—___-_=-|_—-— =e"
+      },
+      {
+       "term": "bad",
+       "example": "bad,"
+      },
+      {
+       "term": "like",
+       "example": "like"
+      },
+      {
+       "term": "not",
+       "example": "not"
+      },
+      {
+       "term": "iA A nti A RoC Hate",
+       "example": "iA A nti A RoC Hate"
+      },
+      {
+       "term": "sesetses sez ease aca nenet cba) EAN ue",
+       "example": "sesetses sez ease aca nenet cba) EAN ue"
+      },
+      {
+       "term": "ea",
+       "example": "ea"
+      },
+      {
+       "term": "sac gncaceas tanta",
+       "example": "sac gncaceas tanta"
+      },
+      {
+       "term": "ines",
+       "example": "ines"
+      },
+      {
+       "term": "D 8 ) le",
+       "example": ". D 8 ) le"
+      },
+      {
+       "term": "peas",
+       "example": "peas"
+      },
+      {
+       "term": "oe",
+       "example": "oe:"
+      },
+      {
+       "term": "Pe We",
+       "example": ": Pe We"
+      },
+      {
+       "term": "meaning",
+       "example": "meaning"
+      },
+      {
+       "term": "OF A",
+       "example": "OF A"
+      },
+      {
+       "term": "aGueston",
+       "example": "aGueston"
+      },
+      {
+       "term": "tad",
+       "example": "tad"
+      },
+      {
+       "term": "“ne",
+       "example": "“ne"
+      },
+      {
+       "term": "LIS",
+       "example": "LIS"
+      },
+      {
+       "term": "LO LNRSE",
+       "example": "LO LNRSE.."
+      },
+      {
+       "term": "fan aso cnangde",
+       "example": "fan aso cnangde"
+      },
+      {
+       "term": "thie",
+       "example": "thie"
+      },
+      {
+       "term": "Ov Cid",
+       "example": "Ov Cid"
+      },
+      {
+       "term": "\" SAY",
+       "example": "\" SAY"
+      },
+      {
+       "term": "I Sw = ee ee",
+       "example": "I Sw = ee ee"
+      },
+      {
+       "term": "I “ce ie",
+       "example": "I “ce ie"
+      },
+      {
+       "term": "English Pronunciation",
+       "example": "English Pronunciation"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 2,
@@ -8819,125 +12522,86 @@
      "instructions": ""
     }
    ],
-   "audio": [],
+   "audio": [
+    {
+     "path": "sources/audio/pronunciation_intermediate/T_C093.mp3",
+     "extracted_path": "sources/audio/pronunciation_intermediate/T_C093.mp3",
+     "exists": true,
+     "section": null,
+     "track": "C93",
+     "unit": 59
+    }
+   ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 74,
    "gloss_count": 0
   },
   {
-   "number": 71,
-   "title": "Eye, my,",
-   "needs_title_review": false,
-   "source_page": 51,
+   "number": 60,
+   "title": "Il WdS",
+   "needs_title_review": true,
+   "source_page": 129,
    "sections": [
     {
      "letter": "A",
-     "title": "syllables. For example",
-     "body": "has one syllable, mother has\ndivide word into\nWe\nmum\none or more\ncan\nof\naf\nsounds.\ncannde\nthree\nhead\nsyllables.\naellahlao\nsyllable\noullahle\nis\nic\nand\n2d A\ngrandmother\nDab\nhas\nLan\nsyllables\nSW\none\nane\nor\nar\nmore\nmare\na\ngroup\narann\ntwo\n,\nvowel sound.\nThe essential part of a syllable is a vowel sound (V). Some syllables are just one\nFor example, these words have one syllable, and the syllable is just one vowel sound:\n/ai/,\n/av/.\nowe\neye\nsounds (C) before the V, after the V or before and after the V.\nhave\nA syllable\nconsonant\ncan\nsyllable).\nall\nwords of\nexamples (they\nHere are some more\none\nare\n—,-\n—\n—\n,cvc\nvc\nCV\nif /rf/\nten /ten/\n/gau/\ngo\n/eg/\n/mat/\nnose /nduz/\negg\nmy\n/ats/\nmouth /mau6/\nice\nknow /nou/\nknife /naif/\n/wel/\neight /eit/\nweigh\n(See\nC before\nafter the V.\nUnits 24, 25.)\nbe\nthan\nNote:\nThere may\nor\nmore\none\nand\nY\nRemember that letters\nmot the same as sounds. For example, the consonant letters W\nare\nafter the vowel sound in the syllable e.g. saw, say. They\nsounds if they\ncome\nare not consonant\nfor example South East English, the same is true\nsound.\nIn some accents,\nare part of the vowel\nsyllable and\nexamples. They\nwords of\nare\none\nfor the consonant letter R. Here are some more\nall\nhave the pattern CV.\nthey\n/pei/_ why /wai/_ car /ka:/_ hair /heo/\nhow /hau/ law /lo:/\npay\nof written word. But in this book,\nthe\nparts\na\nSome people use the word syllable to talk about\nthe writing. For example,\nthe word syllable is used to talk about the pronunciation of words, not\nthe\ndivide ‘chocolate’ into three parts like this: cho-co-late. But when we say\nin writing we can\nsyllables, like this: chocolate /t {ok.lot/. (The dot shows where the\nonly\nword, we pronounce\ntwo\nwords\nbe pronounced with fewer syllables\nmay\ntwo syllables are divided.) A number of other\nthan in writing. Listen to these examples.\ninteresting /‘in.tras.t1n/\ndifferent /‘dif .rant/\nB1_ chocolate /'t/pk.lot/\ncomfortable /‘kamf.ta.bol/\nsecretary /‘sek.ra.tri/\ngeneral /‘d3en.ral/.\nthe opposite order:\nbut\nin\nThe first syllable in these words has the same three sounds,\nkitchen /'kit {.1n/ chicken /'tSik.1n/.\n—\ndifficult\nto say.\nhas similar-sounding syllables like this in it, it may be\nIf\na sentence\ncalled ‘tongue-twisters’. Listen to this example.\nThese sentences are\nRichard checked the chicken in the kitchen.\np2\nOEE. OBB\n|\nnx T° A | Tis\nYou can find more about syllables in Units 24 to 27.\nNote:",
+     "title": "thank",
+     "body": "which makes it\nthe end when he\nSometimes\nthe\nticket collector's voice\nsays\nyou,\nNote:\ngoes\nup at\ndoesn't\nreally\nit.\nAnd\nof course the woman in picture 3\nreally mean\nsound\nlike\na routine habit: he doesn't\nopposite!\nShe means the\nmean\nyou.\ngoons\naa\n_ NN we\n( important /\nfor\ni\nlistening\nXQ\nSo, how was your\ntrip?\nliz:\nClaire: Oh, it was quite nice.\nPaul: What do you mean, nice? It was brilliant!\nLiz:\nGood hotel?\nClaire: Quite pleasant, yes.\nPleasant? It was excellent! Superb!\nPaul:\n| How about the food?\nliz:\nOK.\nClaire: It\nwas\nPaul:\nOK? It\nabsolutely delicious!\nwas\nLiz:\nAnd the scenery?\nClaire: Quite pretty.\namazing! Beautiful!\nPaul:\nIt\nwas\nr\n‘important\nor | istening\n*eemesnnrsntennnamamannth\nOP} We've won a holiday for two in Jamaica!\nBrilliant! As\n3\nN\nDar Our flight has been cancelled!\nBrilliant! ——~»\na\nit!\nhigh\nnot\nadjectives, make your voice go\nNote:\nIf you use\nstrong\nor people may think you do\nmean\n128\nEnglish\nPronunciation in\nUse",
      "vocabulary": [
       {
-       "term": "has one syllable, mother has",
-       "example": "has one syllable, mother has"
+       "term": "the",
+       "example": "the"
       },
       {
-       "term": "divide word into",
-       "example": "divide word into"
+       "term": "goes",
+       "example": "goes"
       },
       {
-       "term": "We",
-       "example": "We"
+       "term": "really",
+       "example": "really"
       },
       {
-       "term": "mum",
-       "example": "mum"
+       "term": "And",
+       "example": "And"
       },
       {
-       "term": "one or more",
-       "example": "one or more"
+       "term": "really mean",
+       "example": "really mean"
       },
       {
-       "term": "can",
-       "example": "can"
+       "term": "like",
+       "example": "like"
       },
       {
-       "term": "af",
-       "example": "af"
+       "term": "She means the",
+       "example": "She means the"
       },
       {
-       "term": "cannde",
-       "example": "cannde"
+       "term": "goons",
+       "example": "goons"
       },
       {
-       "term": "head",
-       "example": "head"
+       "term": "it!",
+       "example": "it!"
       },
       {
-       "term": "aellahlao",
-       "example": "aellahlao"
+       "term": "high",
+       "example": "high"
       },
       {
-       "term": "oullahle",
-       "example": "oullahle"
+       "term": "not",
+       "example": "not"
       },
       {
-       "term": "ic",
-       "example": "ic"
+       "term": "strong",
+       "example": "strong"
       },
       {
-       "term": "2d A",
-       "example": "2d A"
+       "term": "English",
+       "example": "English"
       },
       {
-       "term": "Dab",
-       "example": "Dab"
-      },
-      {
-       "term": "Lan",
-       "example": "Lan"
-      },
-      {
-       "term": "SW",
-       "example": "SW"
-      },
-      {
-       "term": "ane",
-       "example": "ane"
-      },
-      {
-       "term": "ar",
-       "example": "ar"
-      },
-      {
-       "term": "mare",
-       "example": "mare"
-      },
-      {
-       "term": "arann",
-       "example": "arann"
-      },
-      {
-       "term": "all",
-       "example": "all"
-      },
-      {
-       "term": "egg",
-       "example": "egg"
-      },
-      {
-       "term": "weigh",
-       "example": "weigh"
-      },
-      {
-       "term": "(See",
-       "example": "(See"
-      },
-      {
-       "term": "OEE. OBB",
-       "example": "OEE. OBB"
-      },
-      {
-       "term": "nx T° A | Tis",
-       "example": "nx T° A | Tis"
+       "term": "Use",
+       "example": "Use"
       }
      ],
      "glosses": []
@@ -8946,32 +12610,64 @@
    "exercises": [
     {
      "number": 1,
-     "instructions": "Write these words in the correct column.",
-     "body": "Exercises\n\n          Write these words in the correct column.\n  21.1\n              aunt       cook        dad        doctor       grandfather        officer\n              passenger       sister      teacher       nce\n\n\n            1 syllable                      2 syllables                      3 syllables\n            aunt\n\n\n           Look at these one-syllable words. Write C where there is a consonant sound. There may be one before\n  21.2\n          V, after V or in both places.\n           Examptes    high                               5 through\n                       rice  €....V                       6  laugh\n           1 bought                                         CWO\n                                                          8  youth\n                                                          9  weigh   _..........\n           4 day                                         10  rhyme\n\n           The spelling changes if you change the order of sounds in these one-syllable words from CV to VC.\n\n           Write the missing words.\n                     CV                       VC\n           EXAMPLE        =                                alt.\n                                              /eid/ = aid\n           2 /nau/ =                                = own\n           3      =                                = ape\n           4      = tea\n           5       = may\n                                                   = ace\n\n           Read the text aloud. Record your voice if you can. Then      I went to an interesting restaurant\n   21.4\n           listen to the recording. Did you say the same number of      on Wednesday.   First I had chicken\n     B3\n           syllables in the underlined words as on the recording?       with a lot of different vegetables.\n                                                                        Then  I had a piece of chocolate\n           Listen to these tongue-twisters. How many syllables          cake. In general, I don’t like\n   21.5\n\n           are there in each? Write the number.                         chocolate, but the cake was lovely.\n           Then listen again and repeat.\n           EXAMPLE   She sells sea shells on the sea shore. =\n           1 Walter  walked towards  the waiter.          =\n           2 Betty bought  a better bit of butter.\n           3 The  fat cat sat on the vet’s wet hat.                                   _ Now go to Unit 41\n\n                                                                         English Pronunciation in Use",
+     "instructions": "Listen. What do Sue and Jim think about the people they are speaking about? Write the names in the",
+     "body": "Exercises\n\n            Listen. What do Sue and Jim think about the people they are speaking about? Write the names in the\n            correct column.\n\n             people they like                                 people they don't like\n                                                              deremy\n\n            SUE: Jeremy  is going to stay at the same hotel as us.\n            Jim: Oh  great!\n            Jim: Anne’s  invited us to a party.\n            SUE: Fantastic!\n            Jim: Kathleen’s coming  to stay with us for a few days.\n            SUE:         be fun!\n            Sue: Gail and  Tim want  to come  on holiday with  us.\n            Jim: That’ll be nice!\n\n            You will hear Claire (from part B on the opposite\n            page) giving her opinion about these things on\n            their holiday. Imagine you are Paul. Listen and\n            say stronger opinions. There are gaps on the\n            recording for you to speak. Don't forget to make\n            your voice high.\n\n\n            EXAMPLE:\n            You  hear Claire say The beach  was quite nice. You say Nice? It was absolutely fantastic!\n\n            The responses to the pairs of sentences a and b below are the same, but the speaker pronounces\n            them  differently. For example, in the response to Example a, the voice is flat, but in the response to\n            Example  b, the voice goes high. Draw lines to show if you think the voice will be flat or go high.\n            Then  listen and check.\n            EXAMPLE\n               a — We had  to stay in a five-star hotel.      b — We  had to spend  two days in the airport.\n                 — How  awful  for you! —»>                     — How   awful for you!\n            1  a — Forget the beach; it’s raining again!    1 b—  They  say we don’t have to pay; it’s free.\n                 — Brilliant!                                   — Brilliant!\n            2  a—I  got an A  in the exam!                  2         crashed  the car again!\n                 — Well done!                                   — Well done!\n            3  a —I can count  to three in German.          3 b—I   learnt how to fly a plane while we were\n                 — Amazing!                                       on holiday.\n                                                                — Amazing!\n            4  a       could pick fresh fruit off the trees 4     We  had a tiny bit of cheese on a dry, old\n                   in the garden.                                 piece of bread.\n                 — Delicious!                                   — Delicious!\n             5 a—Frank   says he’ll take us to the airport. 5     The  car’s broken down  and there are no\n                 ~ Excellent!                                     taxis.\n                                                                — Excellent!\n\n                                                                          English Pronunciation in Use     129",
+     "unlabelled": true
+    }
+   ],
+   "answers": [
+    {
+     "number": 1,
+     "text": "Anne    Kathleen                             Jeremy    Gail    Tim                       |",
+     "instructions": ""
+    },
+    {
+     "number": 2,
+     "text": "Possible answers\n          A:   The beach was quite nice.              A:   The shops were nice.\n          You: Nice? It was absolutely fantastic!     You: Nice? They were brilliant!\n          A:   The weather was good.                  A:   The people were OK.\n          You: Good?  It was brilliant!               You: OK?  They were absolutely fantastic!\n          A:  The  nightlife was OK.                  A:   The flight was good.\n          You: OK?  It was amazing!                   You: Good?  It was brilliant!",
+     "instructions": ""
+    },
+    {
+     "number": 3,
+     "text": "1 a Brilliant! —\n            b\n         2  a Well done!  AS\n            b Well done!  —\n         3  a Amazing!   —\n            b Amazing!\n         4  a Delicious!\n            b Delicious! —\n         5  a Excellent! “NS\n            b Excellent! —\n\n\n                                                                   English Pronunciation in Use  189",
+     "instructions": ""
+    }
+   ],
+   "audio": [],
+   "unplaced_glosses": [],
+   "vocabulary_count": 14,
+   "gloss_count": 0
+  },
+  {
+   "number": 61,
+   "title": "TO phonemic symbols",
+   "needs_title_review": true,
+   "source_page": 131,
+   "sections": [],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Phonemic      spellings    which    are  the  same    as  normal    spellings",
+     "body": "Exercises\n\n         Phonemic      spellings    which    are  the  same    as  normal    spellings\n D1.1       each of these groups of words, one word is exactly the same as in normal letters. Underline it.\n         Then write the others in normal letters.\n\n         EXAMPLE    Furniture:  /'tetbol   bed     '‘soufa\n\n\n         1 For writing:  /'pensal               pen\n\n\n         2 In the office:                                   'telifaun/\n\n\n         5  Colours:  /gri:n    blu:    red     blek/\n\n\n         6  Verbs:  /get             giv    gau/\n\n\n         7  Numbers:   /'sevan     ten     Ori:   farv/\n\n\n          Phonemic     spellings    which    are  very   different   from    normal    spellings\n D1.2    Some  phonemic  spellings are surprisingly different from normal spellings. For example, in phonemic\n         spelling, quick is      Can you find all the words in this wordsearch? The words are horizontal\n         or vertical | . Use all the letters.\n\n\n                                                              breathes        ocean\n                               g   Tors                       chair           question\n            m    k   we        s   tf   oa                    edge            quiek\n                          j   woz       b    s                English         quite\n            k             ow   s   f         I                future          school\n                          f    k   j        k                juice            shoe\n            t    |k/ar    9                                   mixed           sixth\n            e   dz    t   n    1   tf   z   0                 news            though\n            dj   us       f   uo        6   2\n          L_\n\n\n                                                                      English Pronunciation in Use   131",
      "unlabelled": true
     }
    ],
    "answers": [],
-   "audio": [
-    {
-     "path": "sources/audio/pronunciation_intermediate/T_B001.mp3",
-     "extracted_path": "sources/audio/pronunciation_intermediate/T_B001.mp3",
-     "exists": true,
-     "section": null,
-     "track": "B1",
-     "unit": 71
-    },
-    {
-     "path": "sources/audio/pronunciation_intermediate/T_B003.mp3",
-     "extracted_path": "sources/audio/pronunciation_intermediate/T_B003.mp3",
-     "exists": true,
-     "section": null,
-     "track": "B3",
-     "unit": 71
-    }
-   ],
+   "audio": [],
    "unplaced_glosses": [],
-   "vocabulary_count": 26,
+   "vocabulary_count": 0,
+   "gloss_count": 0
+  },
+  {
+   "number": 71,
+   "title": "Eye, my, mine",
+   "needs_title_review": true,
+   "source_page": null,
+   "sections": [],
+   "exercises": [],
+   "answers": [],
+   "audio": [],
+   "unplaced_glosses": [],
+   "vocabulary_count": 0,
    "gloss_count": 0
   }
  ]

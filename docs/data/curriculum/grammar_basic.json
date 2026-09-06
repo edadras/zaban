@@ -23180,7 +23180,7 @@
   },
   {
    "number": 2,
-   "title": "Affirmative Question",
+   "title": "am/is/are (questions)",
    "needs_title_review": false,
    "source_page": 15,
    "sections": [
@@ -23711,7 +23711,7 @@
   },
   {
    "number": 3,
-   "title": "The present continuous is:",
+   "title": "lam doing (present continuous)",
    "needs_title_review": false,
    "source_page": 17,
    "sections": [
@@ -23958,7 +23958,7 @@
   },
   {
    "number": 4,
-   "title": "are you doing?",
+   "title": "are you doing? (present continuous questions)",
    "needs_title_review": false,
    "source_page": 19,
    "sections": [],
@@ -24093,7 +24093,7 @@
   },
   {
    "number": 5,
-   "title": "| like ice cream.",
+   "title": "I do/work/like, etc. (simple present)",
    "needs_title_review": false,
    "source_page": 21,
    "sections": [
@@ -24519,7 +24519,7 @@
   },
   {
    "number": 6,
-   "title": "The simple present negative is don’t/doesn’t + verb:",
+   "title": "(simple present negative)",
    "needs_title_review": false,
    "source_page": 23,
    "sections": [
@@ -24745,7 +24745,7 @@
   },
   {
    "number": 7,
-   "title": "We use do/does in simple present questions:",
+   "title": "Do you...? (simple present questions)",
    "needs_title_review": false,
    "source_page": 25,
    "sections": [],
@@ -24869,7 +24869,7 @@
   },
   {
    "number": 8,
-   "title": "Jack is watching television.",
+   "title": "I am doing (present continuous) and I do (simple present)",
    "needs_title_review": false,
    "source_page": 27,
    "sections": [
@@ -25137,7 +25137,7 @@
   },
   {
    "number": 9,
-   "title": "You can say I have or I’ve got, he has or he’s got:",
+   "title": "Ihave... and I’ve got",
    "needs_title_review": false,
    "source_page": 29,
    "sections": [
@@ -25781,38 +25781,250 @@
    "number": 12,
    "title": "Ididn’t... Did you...? (simple past negative and questions)",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 35,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "and questions:",
+     "body": "We use did in simple past negatives\nPie\nies\nNegative\nQuestion\nOu1octinn\neee\nAffirmative\nAy\n1\nia\nsen\nBase Form\nplay?\nplay\n|\nplayed\n|\nplay\n| |\nstart?\n| started\nwe\nstart\nwe\nwe\nstart\nwatch\nwatch?\nwatch\nwatched\nyou\nyou |\nyou |\ndid\n4. not\nthey — have?\nhave\ndid\n.\nthey\nhad\nthey |\nhave\n(didn’t)\ncal\nhe\nsee?\nhe\nhe\nsee\nsaw\nsee\ndo?\nshe\ndo\nshe\nshe |\ndid\ndo\ngo?\nit\n|\nit\nit\ngo\nwent\ngo\nEe\ndid (past):\ndo/does (present) —\n7\nafren\n1 dan’) warch TV\nvery\nyesterday.\nwatch TV\ndidn’t\n|\nshe\n©\nDoes\ngo\nout often?\nlast night?\nDid\nshe\ngo out\nmes\nform (watch/play/go, etc.):\nWe use did/didn’t + base\nbeseeebad\nobit\n| didn’eaatch — (nat I didn’t warched)\n(not did\nthey went?)\ndid\nthey\ngo?\nthey\nwent\nhave\nhe didn’t\nhe\nhad\ndid\ndo?\ndid\nyou\nyou\ndidn’t win.\n©)\nplayed\ntennis yesterday, but |\n|\ntime.’\ndidn’t\nhave\nQO “Did you do your homework?” “No, |\nthe meal.\ndidn’t enjoy\nOQ. We\nnice restaurant, but we\nwent\nto a\n|\n|\norder questions:\nin\nStudy the word\nbase\nform\ndid +subjiect +\ncall\nyou?\nDid\nsister\nyour\n| you\ndo\nlast night?\ndid\nWhat |\ntheaccident |\nhappen?\ndid\nHow |\nvacation?\n|\n|\n|\ndid\nWhere\non\nyourparents\ngo\n|\n|",
+     "vocabulary": [
+      {
+       "term": "We use did in simple past negatives",
+       "example": "We use did in simple past negatives"
+      },
+      {
+       "term": "Pie",
+       "example": "Pie"
+      },
+      {
+       "term": "ies",
+       "example": "ies"
+      },
+      {
+       "term": "Ou1octinn",
+       "example": "Ou1octinn"
+      },
+      {
+       "term": "eee",
+       "example": "eee"
+      },
+      {
+       "term": "Ay",
+       "example": "Ay"
+      },
+      {
+       "term": "ia",
+       "example": "ia"
+      },
+      {
+       "term": "sen",
+       "example": "sen"
+      },
+      {
+       "term": "played",
+       "example": "played"
+      },
+      {
+       "term": "watched",
+       "example": "watched"
+      },
+      {
+       "term": "did",
+       "example": "did"
+      },
+      {
+       "term": "had",
+       "example": "had"
+      },
+      {
+       "term": "(didn’t)",
+       "example": "(didn’t)"
+      },
+      {
+       "term": "saw",
+       "example": "saw"
+      },
+      {
+       "term": "went",
+       "example": "went"
+      },
+      {
+       "term": "Ee",
+       "example": "Ee"
+      },
+      {
+       "term": "did (past)",
+       "example": "did (past):"
+      },
+      {
+       "term": "do/does (present) —",
+       "example": "do/does (present) —"
+      },
+      {
+       "term": "afren",
+       "example": "afren"
+      },
+      {
+       "term": "1 dan’) warch TV",
+       "example": "1 dan’) warch TV"
+      },
+      {
+       "term": "very",
+       "example": "very"
+      },
+      {
+       "term": "yesterday",
+       "example": "yesterday."
+      },
+      {
+       "term": "didn’t",
+       "example": "didn’t"
+      },
+      {
+       "term": "Does",
+       "example": "Does"
+      },
+      {
+       "term": "last night?",
+       "example": "last night?"
+      },
+      {
+       "term": "mes",
+       "example": "mes"
+      },
+      {
+       "term": "form (watch/play/go, etc.)",
+       "example": "form (watch/play/go, etc.):"
+      },
+      {
+       "term": "We use did/didn’t + base",
+       "example": "We use did/didn’t + base"
+      },
+      {
+       "term": "beseeebad",
+       "example": "beseeebad"
+      },
+      {
+       "term": "obit",
+       "example": "obit"
+      },
+      {
+       "term": "| didn’eaatch — (nat I didn’t warched)",
+       "example": "| didn’eaatch — (nat I didn’t warched)"
+      },
+      {
+       "term": "go?",
+       "example": "go?"
+      },
+      {
+       "term": "have",
+       "example": "have"
+      },
+      {
+       "term": "do?",
+       "example": "do?"
+      },
+      {
+       "term": "didn’t win",
+       "example": "didn’t win."
+      },
+      {
+       "term": "didn’t enjoy",
+       "example": "didn’t enjoy"
+      },
+      {
+       "term": "order questions",
+       "example": "order questions:"
+      },
+      {
+       "term": "in",
+       "example": "in"
+      },
+      {
+       "term": "Study the word",
+       "example": "Study the word"
+      },
+      {
+       "term": "base",
+       "example": "base"
+      },
+      {
+       "term": "form",
+       "example": "form"
+      },
+      {
+       "term": "did +subjiect +",
+       "example": "did +subjiect +"
+      },
+      {
+       "term": "call",
+       "example": "call"
+      },
+      {
+       "term": "happen?",
+       "example": "happen?"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "E",
+     "title": "|",
+     "body": "Short answers\nos A =\n\\/we/you/they\n\\/we/you/they\nNo,\ndidn’t.\n—\nYes,\ndid.\n:\nhelshe/it\nhe/she/it\n©\nyesterday?” “No, I didn’t.”\n“Did you\nsee Joe\n©\n“Did\nit rain on Sunday?” “Yes, it did.”\nshe\ndidn’t.\"\n©\nthe party?” “No,\n“Did Emma\ncome to\nthey\ndid.”\ngood trip?” “Yes,\n©\n“Did your\nparents have a\n(_ worked/got/went,\nUnit\n(past simple) >\n11\netc.",
+     "vocabulary": [
+      {
+       "term": "Short answers",
+       "example": "Short answers"
+      },
+      {
+       "term": "os A =",
+       "example": "os A ="
+      },
+      {
+       "term": "didn’t",
+       "example": "didn’t."
+      },
+      {
+       "term": "did",
+       "example": "did."
+      },
+      {
+       "term": "“Did you",
+       "example": "“Did you"
+      },
+      {
+       "term": "“Did",
+       "example": "“Did"
+      },
+      {
+       "term": "she",
+       "example": "she"
+      },
+      {
+       "term": "“Did Emma",
+       "example": "“Did Emma"
+      },
+      {
+       "term": "they",
+       "example": "they"
+      },
+      {
+       "term": "“Did your",
+       "example": "“Did your"
+      },
+      {
+       "term": "Unit",
+       "example": "Unit"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
      "instructions": "|} Complete these sentences with the verb in the negative.",
      "body": "|} Complete these sentences with the verb in the negative.\n             1       Rachel, but |...didn't see... Jenn.\n             2  They worked on Monday,  but they.......                       on Tuesday.\n             3  We went  to the post office, DUT We                           to the bank.\n             4  She had a pen, BUt She                             any paper.\n             5  Jack did some work in the yard, but he                            any work in the house.\n\n             Write questions with Did...?\n             1  | watched TV last night. How about you?        Did youwatch  TV lastnight...\n                                                                                                           ?\n             2  | enjoyed the party. How about you?\n                                                                                                           ?\n             3  | had a nice vacation. How about you?\n                                                                                                           ?\n             4 | finished work early. How about you?\n                                                                                                           ?\n             5  Islept well last night. How about you?\n                                                                                                           ?\n\n             What  did you do yesterday? Write affirmative or negative sentences.\n                (watch TV)                 |watched TV...  or\n\n                (get up before 7:00)\n                (take a shower)\n                (buy a\n                (eat meat)\n\n             Write B’s questions. Use:\n             ( cost   gettowork       go    gotobedlate                  haveanicetime      -stay     win 3\n\n              1  A: We went to Chicago last month.            5 A:          home  by taxi.\n                   Where  ....did you                           BE HOW  MUCH                              ?\n                 A: With some friends.                          A: Twenty dollars.\n\n              2  A: | was late for the meeting.               6 A: I'm tired this morning.\n                   Wat                                    ?                                               ?\n                 A: 9:30.                                       A: No, but | didn’t sleep very well.\n\n              3  A: | played tennis this afternoon.           7 A: We went  to the beach yesterday.\n                                                          ?     BS                                        ?\n                 A: No, | lost.                                 A: Yes, it was great.\n\n              4  a: |hada nice vacation.                      8 A: The window is broken.\n                                                          ?     B:                                        ?\n                 A: To the mountains.                           A: | don’t know.\n\n\n             Put the verb in the correct form — affirmative, negative, or question.\n              1 We  went to the movies, but the film wasn't very good.                 it. (enjoy)\n             2  TOM                       some new  clothes yesterday — two shirts, a jacket, and a sweater. (buy)\n                                      yesterday?” “No, it was a nice day.” (rain)\n             WW\n                We            SO WE                      long at the party. (stay)\n             NWN ON\n                It WaS Very     IN Che FOOM, $O I                    a window.  (open)\n                “Did                             \"NO; |                     time.” (have)\n                “heut my hand                 “HOW                      _that?” (do)\n                “Why  weren't you at the meeting yesterday?”                       about it.” (know)\n\n\n      -> Additional exercises 10-13 (page 242)                                                                25"
-    },
-    {
-     "number": 2,
-     "instructions": "now.",
-     "body": "now.\n              Amusttogo     Bhavego     Chavetogoing     Dhavetogo"
-    },
-    {
-     "number": 3,
-     "instructions": "Rachel decided                her car.",
-     "body": "Rachel decided                her car.\n             Asell    Btosell   Cselling  Dtoselling"
-    },
-    {
-     "number": 4,
-     "instructions": "early.",
-     "body": "early.\n             Agetup     Btogetup     Cgettingup    Dtogetting up"
-    },
-    {
-     "number": 5,
-     "instructions": "DO YOU                     early?",
-     "body": "DO YOU                     early?\n             Agetup     Btogetup                   Dtogetting up\n      126     Do you want       —          you some money?\n              Amelend     Bmelending     Cmetolend\n      127                  He:\n                           Bmelaughing                           laugh"
-    },
-    {
-     "number": 8,
-     "instructions": "SOMA       TNE                       some fruit.",
-     "body": "SOMA       TNE                       some fruit.\n             Aforget    Bfortoget    Cforgetting    Dtoget    Eget\n     Go, get, do, make, and have"
     }
    ],
    "answers": [
@@ -25929,7 +26141,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 55,
    "gloss_count": 0
   },
   {
@@ -28751,13 +28963,139 @@
    "number": 25,
    "title": "26 will",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
+   "source_page": 61,
+   "sections": [
+    {
+     "letter": "C",
+     "title": "Something is going happen",
+     "body": "to\n_—_—\nRate\nSomething is going to happen = we can see now\nee\nhappen:\nthat it is\nsure to\nB iv’egoing torain. —\nto\nae\n©. Look at the sky! It’s going rain.\nY ae\nee\n(black clouds now —> rain)\nSe\nA ee\nball\n5 gh Ae 2\nand I’m\nready.\n© Oh,\nIt’s\n9:00,\nno!\nnot\n_—_—\na=. po\nI’m going to be late.\n=\n-\n(9:00\nand\nready —> late)\non oe\nnot\nnow\n)\n(_ present for the future > Unit 24\nwill\n<>\nUnit\n26",
+     "vocabulary": [
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "Rate",
+       "example": "Rate"
+      },
+      {
+       "term": "Something is going to happen = we can see now",
+       "example": "Something is going to happen = we can see now"
+      },
+      {
+       "term": "ee",
+       "example": "ee"
+      },
+      {
+       "term": "that it is",
+       "example": "that it is"
+      },
+      {
+       "term": "sure to",
+       "example": "sure to"
+      },
+      {
+       "term": "B iv’egoing torain. —",
+       "example": "B iv’egoing torain. —"
+      },
+      {
+       "term": "ae",
+       "example": "ae"
+      },
+      {
+       "term": "©. Look at the sky! It’s going rain",
+       "example": "©. Look at the sky! It’s going rain."
+      },
+      {
+       "term": "Y ae",
+       "example": "Y ae"
+      },
+      {
+       "term": "(black clouds now —> rain)",
+       "example": "(black clouds now —> rain)"
+      },
+      {
+       "term": "Se",
+       "example": "Se"
+      },
+      {
+       "term": "A ee",
+       "example": "A ee"
+      },
+      {
+       "term": "ball",
+       "example": "ball"
+      },
+      {
+       "term": "5 gh Ae 2",
+       "example": "5 gh Ae 2"
+      },
+      {
+       "term": "and I’m",
+       "example": "and I’m"
+      },
+      {
+       "term": "ready",
+       "example": "ready."
+      },
+      {
+       "term": "© Oh",
+       "example": "© Oh,"
+      },
+      {
+       "term": "It’s",
+       "example": "It’s"
+      },
+      {
+       "term": "no!",
+       "example": "no!"
+      },
+      {
+       "term": "not",
+       "example": "not"
+      },
+      {
+       "term": "a=. po",
+       "example": "a=. po"
+      },
+      {
+       "term": "I’m going to be late",
+       "example": "I’m going to be late."
+      },
+      {
+       "term": "and",
+       "example": "and"
+      },
+      {
+       "term": "ready —> late)",
+       "example": "ready —> late)"
+      },
+      {
+       "term": "on oe",
+       "example": "on oe"
+      },
+      {
+       "term": "now",
+       "example": "now"
+      },
+      {
+       "term": "will",
+       "example": "will"
+      },
+      {
+       "term": "Unit",
+       "example": "Unit"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
-     "number": 4,
-     "instructions": "Write to or for.",
-     "body": "Write to or for.\n             1        to the           get some bread.\n             2  We went CO a restaurant      have dinner.\n             3  Robert wants to go to college............... study economics.\n             4  I'm going to Boston     an interview next week.\n             5  I'M     tO               visit some friends of mine.\n             6  Do you have            a cup of coffee?\n                | got up late this morning. | didn’t have      comb  my hair.\n\n                Everybody needs money        live.\n             8\n               We  didn’t have any             a taxi, So we walked home.\n             9\n               The office is very small.    only enough room.............. a desk and chair.\n             0\n               A: Excuse me, are you waiting      use the photocopier?\n             1\n                B: No, I’m finished, thanks.\n\n             Complete  these sentences. Choose from:\n             ( it / to arrive  you / tell me                     the movie / begin )\n\n             1 We  stopped at the light and waited ....\n             2  Isat down in the movie theater and Waited\n             3           an ambulance and waited\n             4  “Do you know what to do?”  “No, I’m waiting ..."
+     "number": 1,
+     "instructions": "What  are these people saying?",
+     "body": "Exercises\n             What  are these people saying?\n                   Lome                              22°               | |\n\n\n                                     _                     :\n                           to...\n\n\n             |                                        ig,\n\n                                                                                                       |\n\n\n             Complete  the sentences. Use going to + these verbs:\n               do     eat    give    liedown      stay   walk     -wash-     watch     -wear |\n                My hands are dirty. .....!'m. going to wash... them.\n             WO =\n                What  ....aré you.going to wear... to the party tonight?\n                It’s a nice day. | don’t want to take the DUS.                  —\n                Ryan is going to San Diego next Week. He                               with some friends.\n                                                            this sandwich.\n                It's Megan's birthday next Week. We                               her a present.\n                Sue says she's feeling very tired.                               for an hour.\n                The president's speech is ON TV tonight.          YOU                                 it?\n                                                                         when  she finishes school?\n             Look at the pictures. What is going to happen?\n\n\n                     going to rain.\n\n\n                   are you going to do today or tomorrow? Write three sentences.",
+     "unlabelled": true
     }
    ],
    "answers": [],
@@ -28852,7 +29190,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 29,
    "gloss_count": 0
   },
   {
@@ -30483,9 +30821,121 @@
    "number": 33,
    "title": "Vdrather",
    "needs_title_review": false,
-   "source_page": null,
-   "sections": [],
-   "exercises": [],
+   "source_page": 77,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Would",
+     "body": "like\nyou\n|\nto\nsit here? cess\nY\nWy, fe\noS\n(Ne\neat\nthanks.\nI'd\nsit on the floor_)\nAnna likes to sit on the floor. She doesn't\nchair. So she\nsays:\nwant to sit on a\n| would\nI'd\nrather sit on the floor. (=\nprefer\nthe floor.)\nsit\nto on\nI'd\nrather... =| would rather...\nprefer do something:\nto\n| would rather do something = | would\nQuestion\nNegative\nAffirmative\ndo...?\ndo\ndo\n| stay\nstay...?\n'd\nrather not\nI'd\nrather\nstay\nwould\nyou rather\nhave...?\nrather not) | have\n(|\nwould\nhave\n(| would rather)\nbe...?\nbe\nbe\nhome)\nI'd prefer\nI'd\nrather stay home. (=\n©. tdon't really want to go out.\nto stay\nuntil later.”\nI'd\nrather\nwait\nOQ “Should\nnow?” “No, not yet.\nwe go\nwait\nuntil later.\nwould\nrather\n©)\nI'd like to go now, but Tom\n© Idon't like to be late.\nI’d\nrather be early.\nout)\nI'd\nprefer\ntonight. (=\n©. I'm feeling tired.\nI’d\nrather\nnot to go\nnot\nout\ngo\ntonight.\n© Sue is feeling tired. She’d rather\nnot\nout\ngo\nC) We're\nhungry. We'd rather\nnot eat\nyet.\nnot\nout)\nI'd\nrather\n“I'd rather not.’ (=\nnot go\nQ “Would you like to go out tonight?”\njuice?”\n“Juice, please.”\n© “Would\nrather have milk\nor\nyou\nthe movie theater watch movie home?\nat\nCQ. Which would you rather do — go to\na\nor\nbo BB\nsomething):\nWe say “I'd rather do something” (not to do\n©. ldrather sit\nthe floor. (not I'd rather to sit)\non\ngo)\nCQ Sue would rather not go out. (not to\n“I'd\nprefer\nBut\nto do something”:\nwe say\n©. Vd\nprefer\nsit\nthe floor.\nto\non\n(©) Sue would\nprefer\nnot to go out.",
+     "vocabulary": [
+      {
+       "term": "like",
+       "example": "like"
+      },
+      {
+       "term": "you",
+       "example": "you"
+      },
+      {
+       "term": "to",
+       "example": "to"
+      },
+      {
+       "term": "sit here? cess",
+       "example": "sit here? cess"
+      },
+      {
+       "term": "I'd",
+       "example": "I'd"
+      },
+      {
+       "term": "rather not",
+       "example": "rather not"
+      },
+      {
+       "term": "wait",
+       "example": "wait"
+      },
+      {
+       "term": "I’d",
+       "example": "I’d"
+      },
+      {
+       "term": "not",
+       "example": "not"
+      },
+      {
+       "term": "out",
+       "example": "out"
+      },
+      {
+       "term": "not eat",
+       "example": "not eat"
+      },
+      {
+       "term": "bo BB",
+       "example": "bo BB"
+      },
+      {
+       "term": "something)",
+       "example": "something):"
+      },
+      {
+       "term": "We say “I'd rather do something” (not to do",
+       "example": "We say “I'd rather do something” (not to do"
+      },
+      {
+       "term": "©. ldrather sit",
+       "example": "©. ldrather sit"
+      },
+      {
+       "term": "the floor. (not I'd rather to sit)",
+       "example": "the floor. (not I'd rather to sit)"
+      },
+      {
+       "term": "on",
+       "example": "on"
+      },
+      {
+       "term": "prefer",
+       "example": "prefer"
+      },
+      {
+       "term": "sit",
+       "example": "sit"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "“I'd rather... than...”:",
+     "body": "You can say\n|\n© Vd rather go out than stay home.\n|\na cat.\ndog than\n©. Vd rather have\na\nwatch movie home.\nthan\n© We'd\nrather\nthe movie theater\na\nat\ngo to\nthan\nhere.\n©.\nI'd\nrather be at home right now\nMall IY pel\neye\n3\n©\n<2",
+     "vocabulary": [
+      {
+       "term": "You can say",
+       "example": "You can say"
+      },
+      {
+       "term": "© Vd rather go out than stay home",
+       "example": "© Vd rather go out than stay home."
+      },
+      {
+       "term": "dog than",
+       "example": "dog than"
+      }
+     ],
+     "glosses": []
+    }
+   ],
+   "exercises": [
+    {
+     "number": 1,
+     "instructions": "Look  at the pictures and complete B’s sentences. Use  rather....",
+     "body": "Exercises\n              Look  at the pictures and complete B’s sentences. Use  rather....\n                                 A                                                           B\n              1\n\n\n                                                                           ~~   No, thanks.     rather sit...\n                                                                                on the floor.\n\n\n              3\n\n                                                                              | coffee if you have some.   }\n              4\n\n\n              1  Do you want to go out, or .... would you rather sta\n              2 Should  we have dinner NOW, OF\n              3 Would  you  like a glass of juice, or.....\n              4  Do you want to go to the movies, or\n              5 Should we call your brother tonight, or\n\n              Complete  the sentences with a verb. Sometimes you  need to.\n                I'd rather...... GAY... home tonight. I'd prefer       out.\n              =\n                Do  you want me  to come with you, Or WOUId YOU                            alone?\n                Lauren doesn't want to go to college.    rather                      a job.\n                “Can | help you with your suitcase?” “No, thank you. ('d                          it myself.”\n                Fd rather NOt                     IM.   Vd Prefer                     him an email.\n              Answer these questions about yourself. Use I’d",
+     "unlabelled": true
+    }
+   ],
    "answers": [],
    "audio": [
     {
@@ -30634,7 +31084,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 22,
    "gloss_count": 0
   },
   {
