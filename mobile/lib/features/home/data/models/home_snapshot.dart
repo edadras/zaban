@@ -54,7 +54,7 @@ class HomeSnapshot {
           (point.studySeconds / 60).round(),
       ],
       highlights: <HomeHighlight>[
-        for (final ErrorSummary error in dashboard.topErrors)
+        for (final LearnerErrorSummary error in dashboard.topErrors)
           HomeHighlight(
             title: error.label ?? _errorTitle(error.errorType),
             body: '${error.occurrences} recent slips — the next session will '

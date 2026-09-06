@@ -95,12 +95,10 @@ class AuthInterceptor extends QueuedInterceptor {
     try {
       final response = await _refreshClient.post<dynamic>(
         ApiEndpoints.refresh,
-        data: <String, dynamic>{
-          if (refreshToken != null) 'refresh_token': refreshToken,
-        },
+        data: <String, dynamic>{'refresh_token': refreshToken},
         options: Options(
           headers: <String, dynamic>{
-            if (accessToken != null) 'Authorization': 'Bearer $accessToken',
+            'Authorization': 'Bearer $accessToken',
             'Accept': 'application/json',
           },
         ),

@@ -3,7 +3,9 @@
 build/
 .flutter-plugins
 .flutter-plugins-dependencies
-pubspec.lock
+# pubspec.lock is committed: this is an application, not a library, and a
+# deploy has to build the versions that were tested rather than whatever
+# resolves on the day.
 *.g.dart
 *.freezed.dart
 .idea/

@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/storage/preferences_store.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
+import 'package:zaban/features/auth/data/models/user.dart';
 import 'package:zaban/features/auth/domain/auth_state.dart';
 import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/auth/presentation/login_screen.dart';

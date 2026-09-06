@@ -14,9 +14,14 @@ display them.
 
 | Tool | Version |
 |---|---|
-| Flutter | 3.27 or newer (stable) |
-| Dart | 3.6 or newer |
+| Flutter | 3.32 or newer (stable) |
+| Dart | 3.8 or newer |
 | Backend | the `backend/` Laravel app, migrated and seeded |
+
+Dart 3.8 is the floor because `json_serializable` 6.11 writes null-aware
+elements into the generated code, and a package on an older language version
+will not compile them. The platform folders (`web/`, `android/`, `ios/`) are
+committed, so a clone builds without `flutter create`.
 
 ## 2. Setup
 
@@ -29,6 +34,13 @@ flutter pub get
 dart run build_runner build --delete-conflicting-outputs
 
 flutter run --dart-define=ZABAN_API_BASE_URL=http://localhost:8000
+```
+
+For the deployable web bundle:
+
+```bash
+flutter build web --release --dart-define=ZABAN_API_BASE_URL=https://learn.edadras.com
+# → build/web  (~25 MB, most of it CanvasKit)
 ```
 
 `*.freezed.dart` and `*.g.dart` are git-ignored, so **`build_runner` must be run
@@ -64,9 +76,8 @@ All requests are sent to `<base>/api/v1`.
 
 ### Platform notes
 
-- **Android**: add `<uses-permission android:name="android.permission.RECORD_AUDIO"/>`
-  and `INTERNET` to `AndroidManifest.xml` (needed by `record` for speech practice).
-- **iOS**: add `NSMicrophoneUsageDescription` to `Info.plist`.
+- **Android**: `RECORD_AUDIO` and `INTERNET` are declared in `AndroidManifest.xml`.
+- **iOS**: `NSMicrophoneUsageDescription` is set in `Info.plist`.
 - **Web**: microphone capture requires a secure context (`https://` or
   `localhost`). Recordings are read back from the browser blob and uploaded as
   bytes; the native platforms upload a file.

@@ -8,6 +8,7 @@ import 'package:zaban/core/widgets/app_scaffold.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
 import 'package:zaban/core/widgets/responsive.dart';
+import 'package:zaban/features/auth/data/models/user.dart';
 import 'package:zaban/features/auth/presentation/auth_controller.dart';
 
 /// Sets expectations before the adaptive test: it is short, it gets harder and

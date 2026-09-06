@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zaban/features/home/data/models/home_snapshot.dart';
 import 'package:zaban/features/home/data/models/learning_session.dart';
+import 'package:zaban/features/lesson/data/models/lesson_block.dart';
 import 'package:zaban/features/progress/data/models/progress_dashboard.dart';
 
 void main() {

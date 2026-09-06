@@ -42,9 +42,14 @@ class PatternForms extends StatelessWidget {
             children: <Widget>[
               Icon(Icons.data_object_rounded, size: 15, color: colors.accent),
               const SizedBox(width: Spacing.xs),
-              Text(
-                'The forms this lesson practises',
-                style: context.text.labelMedium?.copyWith(color: colors.accent),
+              // Expanded, not bare: the heading is a full sentence and the
+              // panel is as narrow as the phone it is read on.
+              Expanded(
+                child: Text(
+                  'The forms this lesson practises',
+                  style:
+                      context.text.labelMedium?.copyWith(color: colors.accent),
+                ),
               ),
             ],
           ),

@@ -56,7 +56,7 @@ class WeakAreaTile extends StatelessWidget {
 class ErrorPatternTile extends StatelessWidget {
   const ErrorPatternTile({required this.summary, super.key});
 
-  final ErrorSummary summary;
+  final LearnerErrorSummary summary;
 
   @override
   Widget build(BuildContext context) {

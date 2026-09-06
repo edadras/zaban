@@ -26,7 +26,7 @@ abstract class ProgressDashboard with _$ProgressDashboard {
     @Default(0) int conceptsTracked,
     @Default(<SkillProgress>[]) List<SkillProgress> skills,
     @Default(<WeakArea>[]) List<WeakArea> weakAreas,
-    @Default(<ErrorSummary>[]) List<ErrorSummary> topErrors,
+    @Default(<LearnerErrorSummary>[]) List<LearnerErrorSummary> topErrors,
   }) = _ProgressDashboard;
 
   factory ProgressDashboard.fromJson(Map<String, dynamic> json) =>
@@ -91,16 +91,16 @@ abstract class WeakArea with _$WeakArea {
 
 /// An unresolved error pattern, as classified by the remediation service.
 @freezed
-abstract class ErrorSummary with _$ErrorSummary {
+abstract class LearnerErrorSummary with _$LearnerErrorSummary {
   @JsonSerializable(fieldRename: FieldRename.snake)
-  const factory ErrorSummary({
+  const factory LearnerErrorSummary({
     required String errorType,
     @Default(0) int occurrences,
     String? label,
-  }) = _ErrorSummary;
+  }) = _LearnerErrorSummary;
 
-  factory ErrorSummary.fromJson(Map<String, dynamic> json) =>
-      _$ErrorSummaryFromJson(json);
+  factory LearnerErrorSummary.fromJson(Map<String, dynamic> json) =>
+      _$LearnerErrorSummaryFromJson(json);
 }
 
 /// One row of `GET /progress/history`.

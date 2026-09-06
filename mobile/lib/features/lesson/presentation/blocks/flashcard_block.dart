@@ -7,6 +7,7 @@ import 'package:zaban/core/theme/tokens/shadow_tokens.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
 import 'package:zaban/core/widgets/press_scale.dart';
 import 'package:zaban/features/lesson/data/models/lesson_block.dart';
+import 'package:zaban/features/lesson/data/models/media_ref.dart';
 import 'package:zaban/features/lesson/presentation/blocks/block_scope.dart';
 import 'package:zaban/features/lesson/presentation/widgets/audio_player_button.dart';
 import 'package:zaban/features/lesson/presentation/widgets/block_frame.dart';

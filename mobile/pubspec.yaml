@@ -4,9 +4,13 @@ publish_to: "none"
 version: 0.1.0+1
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
-  # 3.27 is the floor: the design system uses Color.withValues().
-  flutter: ">=3.27.0"
+  # 3.8 is the floor because json_serializable 6.11 emits null-aware elements
+  # ("'gateway': ?instance.gateway") into the generated code, and a package
+  # whose language version is older than that will not compile them.
+  sdk: ">=3.8.0 <4.0.0"
+  # 3.32 ships Dart 3.8; the design system also needs Color.withValues(), which
+  # arrived in 3.27.
+  flutter: ">=3.32.0"
 
 dependencies:
   flutter:

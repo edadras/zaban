@@ -166,8 +166,9 @@ void main() {
   group('ProgressRing', () {
     testWidgets('clamps out-of-range values and reports them to a11y',
         (WidgetTester tester) async {
+      // Disposed at the end of the body rather than in a tearDown: the
+      // check that an outstanding handle is a leak runs first.
       final handle = tester.ensureSemantics();
-      addTearDown(handle.dispose);
 
       await tester.pumpApp(
         const ProgressRing(
@@ -181,9 +182,14 @@ void main() {
       expect(find.text('12'), findsOneWidget);
 
       final semantics = tester.getSemantics(find.byType(ProgressRing));
-      expect(semantics.label, 'Daily goal');
+      // The ring's own label merges with what it is drawn around, so a screen
+      // reader hears "Daily goal, 12, 100%" - the caption, the figure, then the
+      // value. The label is checked for its own half.
+      expect(semantics.label, startsWith('Daily goal'));
+      expect(semantics.label, contains('12'));
       // 1.8 is clamped rather than overdrawn.
       expect(semantics.value, '100%');
+      handle.dispose();
     });
 
     testWidgets('handles a zero value without painting an arc',
@@ -198,8 +204,9 @@ void main() {
   group('SkillRadar', () {
     testWidgets('paints a chart for three or more axes',
         (WidgetTester tester) async {
+      // Disposed at the end of the body rather than in a tearDown: the
+      // check that an outstanding handle is a leak runs first.
       final handle = tester.ensureSemantics();
-      addTearDown(handle.dispose);
 
       await tester.pumpApp(
         const SkillRadar(
@@ -218,6 +225,7 @@ void main() {
       // exposes them to assistive technology.
       final semantics = tester.getSemantics(find.byType(SkillRadar));
       expect(semantics.value, contains('Reading 70 percent'));
+      handle.dispose();
     });
 
     testWidgets('falls back to a readable list below three axes',
@@ -240,8 +248,9 @@ void main() {
   group('StreakBadge', () {
     testWidgets('reads out whether today is banked',
         (WidgetTester tester) async {
+      // Disposed at the end of the body rather than in a tearDown: the
+      // check that an outstanding handle is a leak runs first.
       final handle = tester.ensureSemantics();
-      addTearDown(handle.dispose);
 
       await tester.pumpApp(
         const StreakBadge(days: 12, activeToday: true),
@@ -254,6 +263,7 @@ void main() {
             .label,
         contains('today complete'),
       );
+      handle.dispose();
     });
 
     testWidgets('compact form shows only the number',

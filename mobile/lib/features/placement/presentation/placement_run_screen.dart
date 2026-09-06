@@ -10,6 +10,7 @@ import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/features/lesson/data/models/attempt_result.dart';
 import 'package:zaban/features/lesson/presentation/exercises/exercise_renderer.dart';
 import 'package:zaban/features/lesson/presentation/widgets/exercise_shell.dart';
+import 'package:zaban/features/placement/data/models/placement_models.dart';
 import 'package:zaban/features/placement/presentation/placement_controller.dart';
 
 /// The adaptive test itself: one item at a time, no feedback between items.

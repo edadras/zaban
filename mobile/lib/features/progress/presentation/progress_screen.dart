@@ -32,8 +32,11 @@ class ProgressScreen extends ConsumerWidget {
         onRefresh: () async {
           ref
             ..invalidate(progressHistoryProvider)
-            ..invalidate(pronunciationTrendProvider);
-          await ref.refresh(progressDashboardProvider.future);
+            ..invalidate(pronunciationTrendProvider)
+            ..invalidate(progressDashboardProvider);
+          // Awaited so the pull-to-refresh spinner lasts as long as the fetch;
+          // the screen itself rebuilds from the provider, not from this value.
+          await ref.read(progressDashboardProvider.future);
         },
         child: async.when(
           loading: () => const LoadingView(),
@@ -263,7 +266,7 @@ class _Dashboard extends ConsumerWidget {
               if (data.topErrors.isNotEmpty) ...<Widget>[
                 const SizedBox(height: Spacing.xl),
                 const SectionHeader(title: 'Recurring mistakes'),
-                for (final ErrorSummary summary in data.topErrors)
+                for (final LearnerErrorSummary summary in data.topErrors)
                   Padding(
                     padding: const EdgeInsets.only(bottom: Spacing.sm),
                     child: ErrorPatternTile(summary: summary),

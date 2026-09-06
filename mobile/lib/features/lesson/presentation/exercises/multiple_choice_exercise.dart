@@ -177,7 +177,7 @@ class _OptionTile extends StatelessWidget {
                       : wrong
                           ? colors.danger
                           : colors.textPrimary,
-                  fontWeight: graded || selected
+                  weight: graded || selected
                       ? FontWeight.w600
                       : FontWeight.w400,
                 ),

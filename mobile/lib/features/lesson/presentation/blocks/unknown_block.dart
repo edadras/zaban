@@ -57,9 +57,13 @@ class UnknownBlock extends StatelessWidget {
                 color: colors.textTertiary,
               ),
               const SizedBox(width: Spacing.xs),
-              Text(
-                'Unsupported block: ${block.type}',
-                style: context.text.bodySmall,
+              // A block type this build does not know can be any length, and
+              // the fallback must not itself overflow.
+              Expanded(
+                child: Text(
+                  'Unsupported block: ${block.type}',
+                  style: context.text.bodySmall,
+                ),
               ),
             ],
           ),

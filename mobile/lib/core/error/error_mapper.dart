@@ -15,6 +15,9 @@ class ErrorMapper {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
+      // A response that arrives and then stalls mid-decode is still the server
+      // taking too long, and reads that way to the person waiting.
+      case DioExceptionType.transformTimeout:
         return const ApiException(
           code: 'timeout',
           message: 'The server took too long to respond.',

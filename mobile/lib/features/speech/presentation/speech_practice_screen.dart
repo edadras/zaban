@@ -8,6 +8,7 @@ import 'package:zaban/core/widgets/glow_button.dart';
 import 'package:zaban/core/widgets/responsive.dart';
 import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/features/lesson/presentation/widgets/audio_player_button.dart';
+import 'package:zaban/features/speech/data/models/speech_attempt.dart';
 import 'package:zaban/features/speech/presentation/speech_controller.dart';
 import 'package:zaban/features/speech/presentation/widgets/pronunciation_result_view.dart';
 import 'package:zaban/features/speech/presentation/widgets/record_button.dart';
