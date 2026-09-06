@@ -440,10 +440,17 @@ class BuildActivities extends Command
     private function linkSourceExercisesToConcepts(): void
     {
         $this->line('▸ linking source exercises to the concepts their unit teaches');
+        // Source items only. A derived item already names the one concept it
+        // was built from, and linking it to every concept in its unit as well
+        // would have the practice phase asking about "punctual" under the
+        // heading of "thrifty". On a first run the derived items do not exist
+        // yet and the distinction is invisible; on a re-run over a built
+        // corpus it is the difference between 76,000 links and 747,000.
         $rows = DB::table('exercises')
             ->join('lessons', 'lessons.id', '=', 'exercises.lesson_id')
             ->select('exercises.id as exercise_id', 'lessons.unit_id')
             ->whereNull('exercises.deleted_at')
+            ->where('exercises.generation_method', 'not like', 'derived%')
             ->get();
 
         $conceptsByUnit = DB::table('lesson_concept')
