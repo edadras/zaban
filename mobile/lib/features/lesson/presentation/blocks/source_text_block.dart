@@ -43,7 +43,11 @@ class SourceTextBlock extends StatelessWidget {
         children: <Widget>[
           if (audioUrl != null) ...<Widget>[
             Center(
-              child: AudioPlayerButton(url: audioUrl, label: 'Listen'),
+              child: AudioPlayerButton(
+                url: audioUrl,
+                label: 'Listen',
+                duration: block.audio?.duration,
+              ),
             ),
             const SizedBox(height: Spacing.xl),
           ],

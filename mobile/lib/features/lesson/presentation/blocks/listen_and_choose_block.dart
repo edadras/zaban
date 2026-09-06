@@ -34,7 +34,11 @@ class ListenAndChooseBlock extends StatelessWidget {
         : Center(
             child: Column(
               children: <Widget>[
-                AudioPlayerButton(url: audioUrl, label: 'Play the audio'),
+                AudioPlayerButton(
+                  url: audioUrl,
+                  label: 'Play the audio',
+                  duration: block.audio?.duration,
+                ),
                 const SizedBox(height: Spacing.sm),
                 Text('Play as many times as you need',
                     style: context.text.bodySmall),

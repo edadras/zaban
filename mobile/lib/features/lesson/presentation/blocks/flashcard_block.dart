@@ -159,7 +159,12 @@ class _FlashcardBlockState extends State<FlashcardBlock>
           ),
           if (audioUrl != null) ...<Widget>[
             const SizedBox(height: Spacing.lg),
-            AudioPlayerButton(url: audioUrl, label: 'Hear it', size: 52),
+            AudioPlayerButton(
+              url: audioUrl,
+              label: 'Hear it',
+              duration: block.audio?.duration,
+              size: 52,
+            ),
           ],
         ],
       ),

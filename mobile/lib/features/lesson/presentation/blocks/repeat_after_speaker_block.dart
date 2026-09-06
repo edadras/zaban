@@ -47,7 +47,11 @@ class RepeatAfterSpeakerBlock extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           if (audioUrl != null)
-            Center(child: AudioPlayerButton(url: audioUrl, label: 'Listen')),
+            Center(child: AudioPlayerButton(
+              url: audioUrl,
+              label: 'Listen',
+              duration: block.audio?.duration,
+            )),
           if (audioUrl != null) const SizedBox(height: Spacing.xl),
           for (final String target in targets)
             Padding(

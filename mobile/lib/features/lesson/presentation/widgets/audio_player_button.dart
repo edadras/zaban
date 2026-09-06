@@ -1,3 +1,5 @@
+import 'dart:ui' show FontFeature;
+
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:zaban/core/theme/theme_context.dart';
@@ -16,6 +18,7 @@ class AudioPlayerButton extends StatefulWidget {
     required this.url,
     super.key,
     this.label = 'Play',
+    this.duration,
     this.size = 64,
     this.autoPlay = false,
     this.onPlayed,
@@ -23,6 +26,12 @@ class AudioPlayerButton extends StatefulWidget {
 
   final String url;
   final String label;
+
+  /// The recording's length, when the server knows it. Shown under the button
+  /// so a learner can see what they are committing to before pressing play -
+  /// these run from five seconds to four minutes.
+  final Duration? duration;
+
   final double size;
   final bool autoPlay;
   final VoidCallback? onPlayed;
@@ -149,8 +158,25 @@ class _AudioPlayerButtonState extends State<AudioPlayerButton> {
             _error!,
             style: context.text.bodySmall?.copyWith(color: colors.warning),
           ),
+        ] else if (widget.duration != null) ...<Widget>[
+          const SizedBox(height: Spacing.sm),
+          Text(
+            _clock(widget.duration!),
+            style: context.text.labelSmall?.copyWith(
+              color: colors.textTertiary,
+              fontFeatures: const <FontFeature>[FontFeature.tabularFigures()],
+            ),
+          ),
         ],
       ],
     );
+  }
+
+  /// "1:24". Minutes and seconds, because that is how long these are.
+  static String _clock(Duration d) {
+    final minutes = d.inMinutes;
+    final seconds = d.inSeconds.remainder(60).toString().padLeft(2, '0');
+
+    return '$minutes:$seconds';
   }
 }
