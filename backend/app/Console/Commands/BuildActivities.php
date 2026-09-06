@@ -1056,7 +1056,13 @@ class BuildActivities extends Command
 
         $step = 0.5;
         $floor = -3.0;
-        $ceiling = 3.0;
+        // The top of the scale the levels themselves define, not a round
+        // number. C2 runs from 2.5 to 6.0 in the reference data, and the bank
+        // stopped at 3.0 - so every item above C1 fell outside every bin and
+        // was silently dropped, including all 50 of the grammar items that
+        // qualified. A learner at the top of the scale had nothing to be
+        // measured with, which is the fault this bank exists to fix.
+        $ceiling = (float) (DB::table('cefr_levels')->max('ability_max') ?: 3.0);
         $perBin = 20;
 
         $sameLesson = $this->itemsWithASiblingDistractor();
@@ -1113,7 +1119,7 @@ class BuildActivities extends Command
         $empty = [];
         $shape = [];
 
-        for ($i = 0, $bins = (int) round(($ceiling - $floor) / $step); $i < $bins; $i++) {
+        for ($i = 0, $bins = (int) ceil(($ceiling - $floor) / $step); $i < $bins; $i++) {
             $low = $floor + $i * $step;
             $bin = $candidates->get((string) $i, collect());
 
