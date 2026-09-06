@@ -4,6 +4,7 @@
  "series_title": "Grammar in Use",
  "course_title": "English Grammar",
  "skill": "grammar",
+ "concept_source": "pattern",
  "title": "English Grammar in Use — Intermediate",
  "cefr": "B1-B2",
  "course": "Intermediate",
@@ -14265,10 +14266,199 @@
   },
   {
    "number": 25,
-   "title": "Unit 25",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Unit",
+   "needs_title_review": false,
+   "source_page": 62,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Study this example:",
+     "body": "Amy is on a train.  She’s calling a friend.\n‘I’ll call you again later when I arrive’ is a sentence\nwith two parts:\nI’ll call you again later\nwhen I arrive\n.\nthe main part:\nI’ll call you again later\nand\nwhen\n… :\nwhen I arrive\nThe time is\nfuture\n(‘later’), but Amy says:\n…\nwhen I arrive\n(\nnot\nwhen I will arrive)\nWe say\nwhen\ndo\nI\nsomething  (\nnot\nwill do)\nwhen\nsomething\nhappens\n(\nnot\nwill happen)\nSome more examples:\nWe’ll go out\nwhen\nit\nstops\nraining.  (\nnot\nwhen it will stop)\nWhen\nyou\nare\nhere again, you must come and see us.  (\nnot\nWhen you will be)\nwhen\ngo\nDon’t forget to lock the door\nyou\nout.  (\nnot\nwill go)\nThe same thing happens a\nft\ner\nwhile\n/\nbefore\n/\na\nft\ner\n/\nas soon as\n/\nuntil\n:\nWhat are you going to do\nwhile\nI\n’m\naway?  (\nnot\nwhile I will be)\nBefore\nyou\ngo\n, there’s something I want to ask you.\nWait here\nuntil\nI\ncome\nback.\nor\n…\ntill\nI\ncome\nback.",
+     "vocabulary": [
+      {
+       "term": "when I arrive",
+       "example": "when I arrive"
+      },
+      {
+       "term": "when",
+       "example": "when"
+      },
+      {
+       "term": "do",
+       "example": "do"
+      },
+      {
+       "term": "happens",
+       "example": "happens"
+      },
+      {
+       "term": "stops",
+       "example": "stops"
+      },
+      {
+       "term": "are",
+       "example": "are"
+      },
+      {
+       "term": "go",
+       "example": "go"
+      },
+      {
+       "term": "while",
+       "example": "while"
+      },
+      {
+       "term": "before",
+       "example": "before"
+      },
+      {
+       "term": "ft",
+       "example": "ft"
+      },
+      {
+       "term": "er",
+       "example": "er"
+      },
+      {
+       "term": "as soon as",
+       "example": "as soon as"
+      },
+      {
+       "term": "until",
+       "example": "until"
+      },
+      {
+       "term": "’m",
+       "example": "’m"
+      },
+      {
+       "term": "come",
+       "example": "come"
+      },
+      {
+       "term": "till",
+       "example": "till"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "You can also use the",
+     "body": "present perfect\n(\nhave done\n) a\nft\ner\nwhen\n/\na\nft\ner\n/\nuntil\n/\nas soon as\n:\nCan I have the newspaper\nwhen\nyou\n’ve finished\nwith it?\nDon’t say anything while Ian is here.  Wait\nuntil\nhe\nhas gone\n.\nWe use the present perfect to show that one thing is complete\nbefore\nthe other.  The two things do\nnot\nhappen together:\nWhen\nI\n’ve phoned\nKate, we can go out.\n(= first I’ll phone Kate and\na\nft\ner that\nwe can go out)\nDo not use the present perfect if the two things happen together:\nWhen\nI\nphone\nKate, I’ll ask her about the party.  (\nnot\nwhen I’ve phoned)\nIt is o\nft\nen possible to use either the present simple or the present perfect:\nI’ll come\nas soon as I finish\n.\nor\nI’ll come\nas soon as I’ve finished\n.\nYou’ll feel better\na\nft\ner\nyou\nhave\nor\nYou’ll feel better\na\nft\ner\nyou\n’ve had\nsomething to eat.\nsomething to eat.",
+     "vocabulary": [
+      {
+       "term": "have done",
+       "example": "have done"
+      },
+      {
+       "term": "when",
+       "example": "when"
+      },
+      {
+       "term": "ft",
+       "example": "ft"
+      },
+      {
+       "term": "er",
+       "example": "er"
+      },
+      {
+       "term": "until",
+       "example": "until"
+      },
+      {
+       "term": "as soon as",
+       "example": "as soon as"
+      },
+      {
+       "term": "’ve finished",
+       "example": "’ve finished"
+      },
+      {
+       "term": "has gone",
+       "example": "has gone"
+      },
+      {
+       "term": "’ve phoned",
+       "example": "’ve phoned"
+      },
+      {
+       "term": "phone",
+       "example": "phone"
+      },
+      {
+       "term": "as soon as I finish",
+       "example": "as soon as I finish"
+      },
+      {
+       "term": "as soon as I’ve finished",
+       "example": "as soon as I’ve finished"
+      },
+      {
+       "term": "have",
+       "example": "have"
+      },
+      {
+       "term": "’ve had",
+       "example": "’ve had"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "if",
+     "body": "and\nwhen\nA\nft\ner\n, we normally use the present (\nI\ndo\n/\nI\nsee\netc.) for the future:\nI’ll be angry\nit\nhappens\nagain.  (\nnot\nif it will happen)\nHurry up!\nIf\nwe\ndon’t\nhurry, we’ll be late.\nWe use\n(\nnot\nwhen) for things that will\npossibly\nhappen (or not happen):\nIf\nit is raining this evening, I won’t go out.  (\nnot\nwhen it is raining)\nDon’t worry\nI’m late tonight.  (\nnot\nwhen I’m late)\nIf\nthey don’t come soon, I’m not going to wait for them.\nWe use\nwhen\nfor things which are\nsure\nto happen.  Compare:\nI might go out later.\n(it’s possible)\nIf\nI go out, I’ll get some bread.\nWhen\nI’m going out later.\n(for sure)\nI go out, I’ll get some bread.\n50\nUnits 38–40\neven if\n/\neven when\nUnit 112D\nunless\n→\nUnit 115\n➜\n➜",
+     "vocabulary": [
+      {
+       "term": "when",
+       "example": "when"
+      },
+      {
+       "term": "do",
+       "example": "do"
+      },
+      {
+       "term": "see",
+       "example": "see"
+      },
+      {
+       "term": "happens",
+       "example": "happens"
+      },
+      {
+       "term": "don’t",
+       "example": "don’t"
+      },
+      {
+       "term": "Units 38–40",
+       "example": "Units 38–40"
+      },
+      {
+       "term": "even if",
+       "example": "even if"
+      },
+      {
+       "term": "even when",
+       "example": "even when"
+      },
+      {
+       "term": "Unit 112D",
+       "example": "Unit 112D"
+      },
+      {
+       "term": "unless",
+       "example": "unless"
+      },
+      {
+       "term": "Unit 115",
+       "example": "Unit 115"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -14343,7 +14533,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 41,
    "gloss_count": 0
   },
   {
@@ -33124,10 +33314,339 @@
   },
   {
    "number": 88,
-   "title": "Unit 88",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Unit",
+   "needs_title_review": false,
+   "source_page": 188,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "all    some    any    most    much    many",
+     "body": "(\na\n)\nlittl e\n(\na\n)\nfew    no\nYou can use these words with a noun (\n/\netc.):\nsome food\nfew books\nhave wheels.\nAll cars\nSome cars\ncan go faster than others.\nMany people\ndrive too fast.\nI go away\nmost weekends\n.\nI feel really tired.  I’ve got\nno energy\n.\nWe do not say ‘all of cars’, ‘some of people’ etc. (see Section B):\nSome people\nlearn more easily than others.  (\nnot\nSome of people)",
+     "vocabulary": [
+      {
+       "term": "littl e",
+       "example": "littl e"
+      },
+      {
+       "term": "few    no",
+       "example": "few    no"
+      },
+      {
+       "term": "some food",
+       "example": "some food"
+      },
+      {
+       "term": "few books",
+       "example": "few books"
+      },
+      {
+       "term": "All cars",
+       "example": "All cars"
+      },
+      {
+       "term": "Some cars",
+       "example": "Some cars"
+      },
+      {
+       "term": "Many people",
+       "example": "Many people"
+      },
+      {
+       "term": "most weekends",
+       "example": "most weekends"
+      },
+      {
+       "term": "no energy",
+       "example": "no energy"
+      },
+      {
+       "term": "Some people",
+       "example": "Some people"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "all    half    some    any    most    much    many",
+     "body": "(\na\n)\nlittle\n(\na\n)\nfew\nnone\nYou can use these words with\nof\n(\nsome of\n/\nmost of\netc.):\n…\n…\nsome of\nthe\nmy\n+\n…\n…\nmost of\nthis\nthese\netc.\n…\n… etc.\nnone of\nthat\nthose\nSo you can say:\nsome\n, some\n(\nsome of people)\nof the people\nof those people\nbut not\nmost\n, most\n(\nmost of time)\nof my time\nof the time\nbut not\nSome of the people I work with\nare very strange.\nNone of this money\nis mine.\nHave you read\nany of these books\n?\nI was ill yesterday.  I spent\nmost of the day\nin bed.\nYou don’t need\nof\na\nft\ner\nall\nor\nhalf\n.  So you can say:\nAll my friends\nlive near here.\nor\nAll\nof\nmy friends …\nHalf this money\nis mine.\nor\nHalf\nof\nthis money …\nCompare:\nare beautiful.  (= all flowers in general)\nAll flowers\nAll\n(\nof\n)\nthese flowers\nare beautiful.  (= a specific group of flowers)\nMost problems\nhave a solution.  (= most problems in general)\nWe were able to solve\nmost of the problems we had\n.  (= a specific group of problems)",
+     "vocabulary": [
+      {
+       "term": "little",
+       "example": "little"
+      },
+      {
+       "term": "few",
+       "example": "few"
+      },
+      {
+       "term": "none",
+       "example": "none"
+      },
+      {
+       "term": "of",
+       "example": "of"
+      },
+      {
+       "term": "some of",
+       "example": "some of"
+      },
+      {
+       "term": "most of",
+       "example": "most of"
+      },
+      {
+       "term": "the",
+       "example": "the"
+      },
+      {
+       "term": "my",
+       "example": "my"
+      },
+      {
+       "term": "this",
+       "example": "this"
+      },
+      {
+       "term": "these",
+       "example": "these"
+      },
+      {
+       "term": "none of",
+       "example": "none of"
+      },
+      {
+       "term": "that",
+       "example": "that"
+      },
+      {
+       "term": "those",
+       "example": "those"
+      },
+      {
+       "term": "of the people",
+       "example": "of the people"
+      },
+      {
+       "term": "of those people",
+       "example": "of those people"
+      },
+      {
+       "term": "of my time",
+       "example": "of my time"
+      },
+      {
+       "term": "of the time",
+       "example": "of the time"
+      },
+      {
+       "term": "Some of the people I work with",
+       "example": "Some of the people I work with"
+      },
+      {
+       "term": "None of this money",
+       "example": "None of this money"
+      },
+      {
+       "term": "any of these books",
+       "example": "any of these books"
+      },
+      {
+       "term": "most of the day",
+       "example": "most of the day"
+      },
+      {
+       "term": "All my friends",
+       "example": "All my friends"
+      },
+      {
+       "term": "Half this money",
+       "example": "Half this money"
+      },
+      {
+       "term": "All flowers",
+       "example": "All flowers"
+      },
+      {
+       "term": "these flowers",
+       "example": "these flowers"
+      },
+      {
+       "term": "Most problems",
+       "example": "Most problems"
+      },
+      {
+       "term": "most of the problems we had",
+       "example": "most of the problems we had"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "You can use",
+     "body": "all of\n/\nsome of\n/\nnone of\netc. +\nit\n/\nus/you\n/\nthem\n:\nA\n:  Do you like this music?\nall of\nB\n:\nSome of it\n.  Not\nall of it\n.\nsome of\nit\nA\n:  How many of these people do you know?\nany of\nus\n+\nmost of\nyou\nB\n:\nNone of them\n. /\nA few of them\n.\nnone of\nthem\nDo\nany of you\nwant to come to a party tonight?\netc.\n(said to more than 2 people)\nWe say:\nall of us\n/\nall of you\n/\nhalf of it\n/\nhalf of them\netc.  You need\nof\nbefore\nit\n/\nus\n/\nyou\n/\nthem\n:\nAll of us\nwere late.  (\nnot\nall us)\nI haven’t finished the book yet.  I’ve only read\n.  (\nhalf it)\nhalf of it\nnot",
+     "vocabulary": [
+      {
+       "term": "all of",
+       "example": "all of"
+      },
+      {
+       "term": "some of",
+       "example": "some of"
+      },
+      {
+       "term": "none of",
+       "example": "none of"
+      },
+      {
+       "term": "it",
+       "example": "it"
+      },
+      {
+       "term": "us/you",
+       "example": "us/you"
+      },
+      {
+       "term": "them",
+       "example": "them"
+      },
+      {
+       "term": "Some of it",
+       "example": "Some of it"
+      },
+      {
+       "term": "all of it",
+       "example": "all of it"
+      },
+      {
+       "term": "any of",
+       "example": "any of"
+      },
+      {
+       "term": "most of",
+       "example": "most of"
+      },
+      {
+       "term": "None of them",
+       "example": "None of them"
+      },
+      {
+       "term": "A few of them",
+       "example": "A few of them"
+      },
+      {
+       "term": "any of you",
+       "example": "any of you"
+      },
+      {
+       "term": "all of us",
+       "example": "all of us"
+      },
+      {
+       "term": "all of you",
+       "example": "all of you"
+      },
+      {
+       "term": "half of it",
+       "example": "half of it"
+      },
+      {
+       "term": "half of them",
+       "example": "half of them"
+      },
+      {
+       "term": "of",
+       "example": "of"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "D",
+     "title": "We also use",
+     "body": "some\n/\nmost\netc. alone,\nwithout\na noun:\nSome cars have four doors and\nsome\nhave two.\nA few of the shops were open, but\nmost\n(of them) were closed.\nHalf this money is mine, and\nhalf\n(of it) is yours.  (\nnot\nthe half)\nall\nUnit 75B\n,\n90\n,\n110D\nsome\nand\nany\nUnit 85\nno\nand\nnone\nUnit 86\n➜\n➜\n➜\n176\nmuch\n/\nmany\n/\nlittle\n/\nfew\nUnit 87\nall of whom\n/\nmost of which\netc.\nUnit 96B\n➜\n➜",
+     "vocabulary": [
+      {
+       "term": "some",
+       "example": "some"
+      },
+      {
+       "term": "most",
+       "example": "most"
+      },
+      {
+       "term": "half",
+       "example": "half"
+      },
+      {
+       "term": "all",
+       "example": "all"
+      },
+      {
+       "term": "Unit 75B",
+       "example": "Unit 75B"
+      },
+      {
+       "term": "110D",
+       "example": "110D"
+      },
+      {
+       "term": "any",
+       "example": "any"
+      },
+      {
+       "term": "Unit 85",
+       "example": "Unit 85"
+      },
+      {
+       "term": "no",
+       "example": "no"
+      },
+      {
+       "term": "none",
+       "example": "none"
+      },
+      {
+       "term": "Unit 86",
+       "example": "Unit 86"
+      },
+      {
+       "term": "much",
+       "example": "much"
+      },
+      {
+       "term": "many",
+       "example": "many"
+      },
+      {
+       "term": "little",
+       "example": "little"
+      },
+      {
+       "term": "few",
+       "example": "few"
+      },
+      {
+       "term": "Unit 87",
+       "example": "Unit 87"
+      },
+      {
+       "term": "all of whom",
+       "example": "all of whom"
+      },
+      {
+       "term": "most of which",
+       "example": "most of which"
+      },
+      {
+       "term": "Unit 96B",
+       "example": "Unit 96B"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -33202,7 +33721,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 74,
    "gloss_count": 0
   },
   {
@@ -36432,10 +36951,187 @@
   },
   {
    "number": 101,
-   "title": "Unit 101",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "UnitAdjectives and adverbs 2",
+   "needs_title_review": false,
+   "source_page": 214,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "and",
+     "body": "good\nwell\nGood\nis an\nadjective\n.  The\nadverb\nis\nwell\n:\nYour English is\ngood\n.\nbut\nYou\nspeak\nEnglish\nwell\n.\nSophie is a\ngood\npianist.\nbut\nSophie\nplays\nthe piano\nwell\n.\nWe use\nwell\n(\nnot\ngood) with\npast participles\n(\nknown\n/\neducated\netc.).  For example:\nwell-known    well-educated    well-paid    well-behaved\nSophie’s father is a\nwell-known\nwriter.\nis also an adjective meaning ‘in good health’:\nWell\n‘How are you today?’  ‘I’m very\n, thanks.’\nwell",
+     "vocabulary": [
+      {
+       "term": "good",
+       "example": "good"
+      },
+      {
+       "term": "well",
+       "example": "well"
+      },
+      {
+       "term": "speak",
+       "example": "speak"
+      },
+      {
+       "term": "plays",
+       "example": "plays"
+      },
+      {
+       "term": "known",
+       "example": "known"
+      },
+      {
+       "term": "educated",
+       "example": "educated"
+      },
+      {
+       "term": "well-known    well-educated    well-paid    well-behaved",
+       "example": "well-known    well-educated    well-paid    well-behaved"
+      },
+      {
+       "term": "well-known",
+       "example": "well-known"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "fast",
+     "body": ",\nhard\nand\nlate\nThese words are both adjectives and adverbs:\nadjective\nadverb\nDarren\nis\na\nfast runner\n.\nDarren can\nrun fast\n.\nIt\n’s hard\nto find a job right now.\nKate\nworks hard\n.  (\nnot\nworks hardly)\nSorry I\n’m\nlate\n.\nI\ngot up late\n.\n= recently:\nlately\nHave you seen Kate\nlately\n?",
+     "vocabulary": [
+      {
+       "term": "hard",
+       "example": "hard"
+      },
+      {
+       "term": "late",
+       "example": "late"
+      },
+      {
+       "term": "is",
+       "example": "is"
+      },
+      {
+       "term": "fast runner",
+       "example": "fast runner"
+      },
+      {
+       "term": "run fast",
+       "example": "run fast"
+      },
+      {
+       "term": "’s hard",
+       "example": "’s hard"
+      },
+      {
+       "term": "works hard",
+       "example": "works hard"
+      },
+      {
+       "term": "’m",
+       "example": "’m"
+      },
+      {
+       "term": "got up late",
+       "example": "got up late"
+      },
+      {
+       "term": "lately",
+       "example": "lately"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "hardly",
+     "body": "= very little, almost not:\nSarah wasn’t very friendly at the party.  She\nspoke to me.\n(= she spoke to me very little)\nWe’ve only met once or twice.  We\nknow each other.\nCompare\nhard\nand\n:\nHe tried\nhard\nto find a job, but he had no luck.  (= he tried a lot, with a lo\nt of e\nff\nort)\nI’m not surprised he didn’t find a job.  He\ntried.  (= he tried very little)\nHardly\ngoes before the verb:\nWe\nhardly know\neach other.  (\nnot\nWe know each other hardly)\nI\ncan hardly\ndo something = it’s very di\nff\nicult for me, almost impossible:\nYour writing is terrible.  I\ncan hardly\nread it.  (= it is almost impossible to read it)\nMy leg was hurting.  I\ncould hardly\nwalk.",
+     "vocabulary": [
+      {
+       "term": "hardly know",
+       "example": "hardly know"
+      },
+      {
+       "term": "can hardly",
+       "example": "can hardly"
+      },
+      {
+       "term": "could hardly",
+       "example": "could hardly"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "D",
+     "title": "You can use",
+     "body": "hardly\n+\nany\n/\nanybody\n/\nanyone\n/\nanything\n/\nanywhere\n:\nThere’s\nhardly anything\nA\n:  How much money do we have?\nin the fridge.\nB\n:\nHardly any\n.  (= very little, almost none)\nhardly any\nThese two cameras are very similar.  There’s\ndi\nff\nerence between them.\nThe exam results were bad.\nHardly anybody\nin our\nclass passed.  (= very few students passed)\nShe was very quiet.  She said\nhardly anything\n.\nor\nShe\nhardly\nsaid\nanything\n.\nhardly ever\n= almost never:\nI’m nearly always at home in the evenings.  I\nhardly ever\ngo out.\nHardly\nalso means ‘certainly not’.  For example:\nIt’s\nhardly surprising\nthat you’re tired.  You haven’t slept for three days.\n(= it’s certainly not surprising)\nThe situation is serious, but it’s\nhardly a crisis\n.  (= it’s certainly not a crisis)\n202\nAdjectives a\nft\ner verbs (‘\nYou look tired\n’ etc.)\nUnit 99C\nAdjectives and adverbs 1\nUnit 100\n➜\n➜",
+     "vocabulary": [
+      {
+       "term": "hardly",
+       "example": "hardly"
+      },
+      {
+       "term": "any",
+       "example": "any"
+      },
+      {
+       "term": "anybody",
+       "example": "anybody"
+      },
+      {
+       "term": "anyone",
+       "example": "anyone"
+      },
+      {
+       "term": "anything",
+       "example": "anything"
+      },
+      {
+       "term": "anywhere",
+       "example": "anywhere"
+      },
+      {
+       "term": "hardly anything",
+       "example": "hardly anything"
+      },
+      {
+       "term": "Hardly any",
+       "example": "Hardly any"
+      },
+      {
+       "term": "Hardly anybody",
+       "example": "Hardly anybody"
+      },
+      {
+       "term": "hardly ever",
+       "example": "hardly ever"
+      },
+      {
+       "term": "hardly surprising",
+       "example": "hardly surprising"
+      },
+      {
+       "term": "hardly a crisis",
+       "example": "hardly a crisis"
+      },
+      {
+       "term": "You look tired",
+       "example": "You look tired"
+      },
+      {
+       "term": "Unit 99C",
+       "example": "Unit 99C"
+      },
+      {
+       "term": "Unit 100",
+       "example": "Unit 100"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -36525,7 +37221,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 36,
    "gloss_count": 0
   },
   {
@@ -39702,10 +40398,203 @@
   },
   {
    "number": 113,
-   "title": "Unit 113",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Unitalthough though even though",
+   "needs_title_review": false,
+   "source_page": 238,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "Study this example situation:",
+     "body": "Last year Paul and Sarah had a holiday by the sea.\nIt rained a lot, but they had a good time.\nYou can say:\na lot, they had a good time.\nAlthough it rained\n(= It rained a lot, but\nthey …)\nor\n⎫\nIn spite of\nthe rain\n, they had a good time.\n⎬\nDespite\n⎭",
+     "vocabulary": [
+      {
+       "term": "Although it rained",
+       "example": "Although it rained"
+      },
+      {
+       "term": "In spite of",
+       "example": "In spite of"
+      },
+      {
+       "term": "the rain",
+       "example": "the rain"
+      },
+      {
+       "term": "Despite",
+       "example": "Despite"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "A",
+     "body": "ft\ner\nalthough\nwe use a\nsubject\n+\nverb\n:\nAlthough it rained\na lot, they had a good time.\nI didn’t apply for the job\nalthough I had\nthe necessary qualifications.\nCompare the meaning of\nalthough\nand\nbecause\n:\nWe went out\nalthough\nit was raining heavily.\nWe didn’t go out\nbecause\nit was raining heavily.",
+     "vocabulary": [
+      {
+       "term": "although",
+       "example": "although"
+      },
+      {
+       "term": "Although it rained",
+       "example": "Although it rained"
+      },
+      {
+       "term": "although I had",
+       "example": "although I had"
+      },
+      {
+       "term": "because",
+       "example": "because"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "C",
+     "title": "A",
+     "body": "ft\ner\nin spite of\nor\ndespite\n, we use a\nnoun\n, a\npronoun\n(\nthis\n/\nthat\n/\nwhat\netc.) or -\ning\n:\nIn spite of the rain\n, we had a good time.\nShe wasn’t well, but\nin spite of this\nshe continued working.\nIn spite of what\nI said yesterday, I still love you.\nI didn’t apply for the job\nthe necessary qualifications.\nin spite of having\nDespite\nis the same as\nin spite of\n.  We say\nin spite of\n, but\ndespite\n(\nof):\nwithout\nShe wasn’t well, but\ndespite this\nshe continued working.  (\nnot\ndespite of this)\nYou can say\n‘\nin spite of the fact\n(that) …’ and ‘\ndespite the fact\n(that)\n…’ :\n⎧\n⎧\nin spite of the fact\n(that)\nI had the necessary qualifications.\nI didn’t apply for the job\n⎨\n⎨\ndespite the fact\n(that)\n⎩\n⎩\nCompare\nin spite of\nand\nbecause of\n:\nWe went out\nin spite of the rain\n.  (\nor\n…\ndespite the rain\n.)\nWe didn’t go out\nbecause of the rain\n.",
+     "vocabulary": [
+      {
+       "term": "in spite of",
+       "example": "in spite of"
+      },
+      {
+       "term": "despite",
+       "example": "despite"
+      },
+      {
+       "term": "this",
+       "example": "this"
+      },
+      {
+       "term": "that",
+       "example": "that"
+      },
+      {
+       "term": "what",
+       "example": "what"
+      },
+      {
+       "term": "ing",
+       "example": "ing"
+      },
+      {
+       "term": "In spite of the rain",
+       "example": "In spite of the rain"
+      },
+      {
+       "term": "in spite of this",
+       "example": "in spite of this"
+      },
+      {
+       "term": "In spite of what",
+       "example": "In spite of what"
+      },
+      {
+       "term": "in spite of having",
+       "example": "in spite of having"
+      },
+      {
+       "term": "despite this",
+       "example": "despite this"
+      },
+      {
+       "term": "in spite of the fact",
+       "example": "in spite of the fact"
+      },
+      {
+       "term": "despite the fact",
+       "example": "despite the fact"
+      },
+      {
+       "term": "because of",
+       "example": "because of"
+      },
+      {
+       "term": "despite the rain",
+       "example": "despite the rain"
+      },
+      {
+       "term": "because of the rain",
+       "example": "because of the rain"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "D",
+     "title": "Compare",
+     "body": "although\nand\nin spite of\n/\ndespite\n:\n⎧\nAlthough the tra\nff\nic was\nbad,\nwe arrived on time.\n(\nin spite of the tr\n⎨\nnot\na\nff\nic was bad)\nIn spite of the tra\nff\nic\n,\n⎩\n⎧\nalthough I was\nvery tired.\nI couldn’t sleep\n⎨\ndespite being\nvery tired.\n⎩\n(\nnot\ndespite I was tired)",
+     "vocabulary": [
+      {
+       "term": "although",
+       "example": "although"
+      },
+      {
+       "term": "in spite of",
+       "example": "in spite of"
+      },
+      {
+       "term": "despite",
+       "example": "despite"
+      },
+      {
+       "term": "Although the tra",
+       "example": "Although the tra"
+      },
+      {
+       "term": "ff",
+       "example": "ff"
+      },
+      {
+       "term": "ic was",
+       "example": "ic was"
+      },
+      {
+       "term": "In spite of the tra",
+       "example": "In spite of the tra"
+      },
+      {
+       "term": "ic",
+       "example": "ic"
+      },
+      {
+       "term": "although I was",
+       "example": "although I was"
+      },
+      {
+       "term": "despite being",
+       "example": "despite being"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "E",
+     "title": "though",
+     "body": "=\nalthough\n:\nI didn’t apply for the job\nI had the necessary qualifications.\nIn spoken English we o\nft\nen use\nat the end of a sentence:\nThe house isn’t so nice.  I like the garden\n.  (= but I like the garden)\nI see them every day.  I’ve never spoken to them\n.  (= but I’ve never spoken to them)\nEven though\n(\nbut not\n‘even’ alone) is similar to\nalthough\n:\nEven though\nI was really tired, I couldn’t sleep.  (\nnot\neven I was really tired)\n226\neven\nUnit 112\n➜",
+     "vocabulary": [
+      {
+       "term": "although",
+       "example": "although"
+      },
+      {
+       "term": "Even though",
+       "example": "Even though"
+      },
+      {
+       "term": "even",
+       "example": "even"
+      },
+      {
+       "term": "Unit 112",
+       "example": "Unit 112"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -39748,7 +40637,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 38,
    "gloss_count": 0
   },
   {
@@ -41745,10 +42634,103 @@
   },
   {
    "number": 122,
-   "title": "Unit 122",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "Unit",
+   "needs_title_review": false,
+   "source_page": 256,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "and",
+     "body": "on time\nin time\n= punctual, not late\non time\nIf something happens\non time\n, it happens at the time that was planned:\nThe 11.45 train le\nft\non time\n.  (= it le\nft\nat 11.45)\nPlease be\non time\n.  Don’t be late.\nThe conference was well-organised.  Everything began and finished\non time\n.\nin time\n(for something / to do something) = soon enough\nWill you be home\nin time for dinner\n?  (= soon enough for dinner)\nI sent Amy a birthday present.  I hope it arrives\nin time\n.\n(= on or before her birthday)\nI’m in a hurry.  I want to get home\nin time to watch\nthe game on TV.\n(= soon enough to see the game)\nThe opposite of\nis\n:\nin time\ntoo late\nI got home\nto watch the game on TV.\ntoo late\nYou can say\njust in time\n(= almost too late):\nWe got to the station\njust in time\nfor our train.\nA child ran into the road in front of the car, but I managed to stop\njust in time\n.",
+     "vocabulary": [
+      {
+       "term": "on time",
+       "example": "on time"
+      },
+      {
+       "term": "in time",
+       "example": "in time"
+      },
+      {
+       "term": "in time for dinner",
+       "example": "in time for dinner"
+      },
+      {
+       "term": "in time to watch",
+       "example": "in time to watch"
+      },
+      {
+       "term": "too late",
+       "example": "too late"
+      },
+      {
+       "term": "just in time",
+       "example": "just in time"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "at the end",
+     "body": "and\nin the end\n(of something) = at the time when something ends\nFor example:\nat the end of the month\nat the end of January\nat the end of the game\nat the end of the film\nat the end of the course\nat the end of the concert\nI’m going away\nat the end of January\n/\nat the end of the month\n.\nAt the end of the concert\n, everyone applauded.\nThe players shook hands\nat the end of the game\n.\nWe do not say ‘\nin\nthe end of …’ .  For example, we do not say ‘in the end of January’.\nThe opposite of\nis\n:\nat the beginning\nI’m going away\n.  (\nin the beginning)\nat the beginning of January\nnot\nin the end\n= finally\nWe use\nwhen we say what the final result of a situation was:\nin the end\nWe had a lot of problems with our car.  We sold it\n.  (= finally we sold it)\nin the end\nHe got more and more angry.\nhe just walked out of the room.\nIn the end\nAlan couldn’t decide where to go for his holidays.  He didn’t go anywhere\nin the end\n.\n(\nnot\nat the end)\nThe opposite of\nin the end\nis\nat first\n:\nAt first\nwe didn’t get on very well, but\nin the end\nwe became good friends.\n244\nat\n/\non\n/\nin\n(time)\nUnit 121\n➜",
+     "vocabulary": [
+      {
+       "term": "in the end",
+       "example": "in the end"
+      },
+      {
+       "term": "at the end of the month",
+       "example": "at the end of the month"
+      },
+      {
+       "term": "at the end of January",
+       "example": "at the end of January"
+      },
+      {
+       "term": "at the end of the game",
+       "example": "at the end of the game"
+      },
+      {
+       "term": "at the end of the film",
+       "example": "at the end of the film"
+      },
+      {
+       "term": "at the end of the course",
+       "example": "at the end of the course"
+      },
+      {
+       "term": "at the end of the concert",
+       "example": "at the end of the concert"
+      },
+      {
+       "term": "in",
+       "example": "in"
+      },
+      {
+       "term": "at the beginning",
+       "example": "at the beginning"
+      },
+      {
+       "term": "at the beginning of January",
+       "example": "at the beginning of January"
+      },
+      {
+       "term": "at first",
+       "example": "at first"
+      },
+      {
+       "term": "on",
+       "example": "on"
+      },
+      {
+       "term": "Unit 121",
+       "example": "Unit 121"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -41826,7 +42808,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 19,
    "gloss_count": 0
   },
   {

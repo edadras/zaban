@@ -297,7 +297,7 @@ def answerable(item) -> bool:
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--disc', required=True, help='the extracted CD-ROM directory')
-    ap.add_argument('--out', default='docs/data/curriculum/grammar_advanced_cdrom.json')
+    ap.add_argument('--out', default='docs/data/cdrom/grammar_advanced.json')
     args = ap.parse_args()
 
     root = Path(args.disc)

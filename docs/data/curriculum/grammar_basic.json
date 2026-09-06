@@ -4,6 +4,7 @@
  "series_title": "Grammar in Use",
  "course_title": "English Grammar",
  "skill": "grammar",
+ "concept_source": "pattern",
  "title": "Basic Grammar in Use",
  "cefr": "A1-A2",
  "course": "Basic",
@@ -25780,42 +25781,13 @@
    "number": 12,
    "title": "Ididn’t... Did you...? (simple past negative and questions)",
    "needs_title_review": false,
-   "source_page": 272,
-   "sections": [
-    {
-     "letter": "A",
-     "title": "out.",
-     "body": "7.14\nIt'S NICE MAY.\noeccmsessnnnnnnnnstnnneeeeee\nAletstogo\nBletsgo\nCLetsgoing DWego\nThere\nand it\n8.1\nEXCUSE ME,\na hotel near here?\nwnerennnnneernnnn\nB is there C there is\nD is it\nA has there\n8.2\na lot of accidents on this road. It’s very dangerous.\nAHave\nBlithas\nCTherehave\nDTheyare\nE Thereare\nhungry when\n8.3\n|\n|\nhome, but\nanything\nwas\ngot\nto eat.\nAthere wasn't\nBthereweren’t\nCitwasn’t D there hasn't been\nmiles from\nhouse downtown.\nre\ntwo\nour\nto\nAlt's\nB It has\nC There is D There\nare\n8.5\ntrue that you're moving to Dallas?\nAlsthere\nBlsit\nCls\nDAreyou\nAuxiliary verbs\n9.1\n| haven’t seen the movie, but my sister\nAdoes\nBis\nChasseen\nDhas_\nEhasn't\n92\n| don't like hot weather, but Sue\n.\nA does\nB doesn't Cdo\nDdoes like § Elikes\n“Nicole\nmarried last week.”\n“\n9,3\n? Really?”\ngot\nAGotshe\nBShegot\nCShedid\nDShehas\nYou haven’t met my mother,\n9.4\n?\nAhaven'tyou\nBhaveyou\nCdidyou\nDyouhave\nEyouhaven't\nBill\ndoesn’t watch TV. He doesn’t read\n95\nnewspapers,\nBeither\nCneither\nAtoo\nDnever\n261",
-     "vocabulary": [
-      {
-       "term": "There",
-       "example": "There"
-      },
-      {
-       "term": "Auxiliary verbs",
-       "example": "Auxiliary verbs"
-      },
-      {
-       "term": "Bis",
-       "example": "Bis"
-      },
-      {
-       "term": "got",
-       "example": "got"
-      },
-      {
-       "term": "Bill",
-       "example": "Bill"
-      }
-     ],
-     "glosses": []
-    }
-   ],
+   "source_page": null,
+   "sections": [],
    "exercises": [
     {
      "number": 1,
-     "instructions": "YOU                          so hard.",
-     "body": "YOU                          so hard.\n              Aworking    Bwork    Ctowork"
+     "instructions": "|} Complete these sentences with the verb in the negative.",
+     "body": "|} Complete these sentences with the verb in the negative.\n             1       Rachel, but |...didn't see... Jenn.\n             2  They worked on Monday,  but they.......                       on Tuesday.\n             3  We went  to the post office, DUT We                           to the bank.\n             4  She had a pen, BUt She                             any paper.\n             5  Jack did some work in the yard, but he                            any work in the house.\n\n             Write questions with Did...?\n             1  | watched TV last night. How about you?        Did youwatch  TV lastnight...\n                                                                                                           ?\n             2  | enjoyed the party. How about you?\n                                                                                                           ?\n             3  | had a nice vacation. How about you?\n                                                                                                           ?\n             4 | finished work early. How about you?\n                                                                                                           ?\n             5  Islept well last night. How about you?\n                                                                                                           ?\n\n             What  did you do yesterday? Write affirmative or negative sentences.\n                (watch TV)                 |watched TV...  or\n\n                (get up before 7:00)\n                (take a shower)\n                (buy a\n                (eat meat)\n\n             Write B’s questions. Use:\n             ( cost   gettowork       go    gotobedlate                  haveanicetime      -stay     win 3\n\n              1  A: We went to Chicago last month.            5 A:          home  by taxi.\n                   Where  ....did you                           BE HOW  MUCH                              ?\n                 A: With some friends.                          A: Twenty dollars.\n\n              2  A: | was late for the meeting.               6 A: I'm tired this morning.\n                   Wat                                    ?                                               ?\n                 A: 9:30.                                       A: No, but | didn’t sleep very well.\n\n              3  A: | played tennis this afternoon.           7 A: We went  to the beach yesterday.\n                                                          ?     BS                                        ?\n                 A: No, | lost.                                 A: Yes, it was great.\n\n              4  a: |hada nice vacation.                      8 A: The window is broken.\n                                                          ?     B:                                        ?\n                 A: To the mountains.                           A: | don’t know.\n\n\n             Put the verb in the correct form — affirmative, negative, or question.\n              1 We  went to the movies, but the film wasn't very good.                 it. (enjoy)\n             2  TOM                       some new  clothes yesterday — two shirts, a jacket, and a sweater. (buy)\n                                      yesterday?” “No, it was a nice day.” (rain)\n             WW\n                We            SO WE                      long at the party. (stay)\n             NWN ON\n                It WaS Very     IN Che FOOM, $O I                    a window.  (open)\n                “Did                             \"NO; |                     time.” (have)\n                “heut my hand                 “HOW                      _that?” (do)\n                “Why  weren't you at the meeting yesterday?”                       about it.” (know)\n\n\n      -> Additional exercises 10-13 (page 242)                                                                25"
     },
     {
      "number": 2,
@@ -25957,7 +25929,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 5,
+   "vocabulary_count": 0,
    "gloss_count": 0
   },
   {
@@ -28777,163 +28749,10 @@
   },
   {
    "number": 25,
-   "title": "Sofia wanted some fruit,",
+   "title": "26 will",
    "needs_title_review": false,
-   "source_page": 115,
-   "sections": [
-    {
-     "letter": "E",
-     "title": "",
-     "body": "Ce ee\nShe went to the store to get GS A\nfruit.\nsome\ndoes something:\netc.) tells why\n(to\n/ to see,\nget\nus\na person\nto\n...\nO “Why\nbuy\nbread.”\nsome\nare\nyou going out?” “To\n© Amy\nthe station to meet her friend.\nwent to\n©\nwatch the\nSue turned on the TV to\nnews.\n©) I'd like to go to Mexico to learn Spanish.\n(do something):\nmoney/time\nto\n© We need some\nbuy\nfood.\nto\nmoney\n©\n| don't have time watch TV.\nto\nee ee\n|\nfor G28\n.\n+\n9\nnoun\nsRaeeee\nto + verb\netc.)\n(for\nfood\n/\nfor\netc.)\na\nnewspaper,\n(to\n/\nget to\nsee,\n©\nfruit.\nfor some\n(©\n| went to the store\nthe\n|\nto get\nsome\nwent to\nstore\nfruit. (not for get)\nfor\n© They're going to Brazil to\ntheir\n© They're going to Brazil\na vacation.\nsee\nfriends.\n©\nfor food.\nneed\n© We need some money to\nbuy\nfood.\nWe\nsome money\nA ae ee\nwait for ...:\nMh ee\n2 A\nid\noy\n©)\nfor the bus?\nwaiting\nAre you\nwait\nto (do something):\n©\ntalk\nthe\nI'm\nwaiting\nto\nto\nmanager.\n©) Are you\nthe doctor?\nwaiting\nto\nsee\noe\nwait for (somebody/something) to\n.. .:\nA |\nae AY\n()\nchange.\nThe lichr is red You have to wait for it to\n©. Are\nfor the doctor to\ncome?\nwaiting\nyou\nwaiting\nfor the\nlight\nThey're\nchange.\nto\nUnit\ndo,\n<>\n77\n/\nnothing\nUnit\n53 something to\nto\netc.\neat\ngo to...and go for...-®\nUnit\n90\nUnit89 too\nto/for...>\nenough + to/for...->\n+",
-     "vocabulary": [
-      {
-       "term": "Ce ee",
-       "example": "Ce ee"
-      },
-      {
-       "term": "She went to the store to get GS A",
-       "example": "She went to the store to get GS A"
-      },
-      {
-       "term": "(to",
-       "example": "(to"
-      },
-      {
-       "term": "get",
-       "example": "get"
-      },
-      {
-       "term": "buy",
-       "example": "buy"
-      },
-      {
-       "term": "are",
-       "example": "are"
-      },
-      {
-       "term": "money/time",
-       "example": "money/time"
-      },
-      {
-       "term": "money",
-       "example": "money"
-      },
-      {
-       "term": "ee ee",
-       "example": "ee ee"
-      },
-      {
-       "term": "for G28",
-       "example": "for G28"
-      },
-      {
-       "term": "sRaeeee",
-       "example": "sRaeeee"
-      },
-      {
-       "term": "food",
-       "example": "food"
-      },
-      {
-       "term": "for",
-       "example": "for"
-      },
-      {
-       "term": "newspaper",
-       "example": "newspaper,"
-      },
-      {
-       "term": "see",
-       "example": "see,"
-      },
-      {
-       "term": "for some",
-       "example": "for some"
-      },
-      {
-       "term": "for food",
-       "example": "for food."
-      },
-      {
-       "term": "A ae ee",
-       "example": "A ae ee"
-      },
-      {
-       "term": "wait for",
-       "example": "wait for ...:"
-      },
-      {
-       "term": "Mh ee",
-       "example": "Mh ee"
-      },
-      {
-       "term": "2 A",
-       "example": "2 A"
-      },
-      {
-       "term": "id",
-       "example": "id"
-      },
-      {
-       "term": "oy",
-       "example": "oy"
-      },
-      {
-       "term": "waiting",
-       "example": "waiting"
-      },
-      {
-       "term": "wait",
-       "example": "wait"
-      },
-      {
-       "term": "oe",
-       "example": "oe"
-      },
-      {
-       "term": "wait for (somebody/something) to",
-       "example": "wait for (somebody/something) to"
-      },
-      {
-       "term": "A |",
-       "example": "A |"
-      },
-      {
-       "term": "ae AY",
-       "example": "ae AY"
-      },
-      {
-       "term": "change",
-       "example": "change."
-      },
-      {
-       "term": "The lichr is red You have to wait for it to",
-       "example": "The lichr is red You have to wait for it to"
-      },
-      {
-       "term": "come?",
-       "example": "come?"
-      },
-      {
-       "term": "light",
-       "example": "light"
-      },
-      {
-       "term": "Unit",
-       "example": "Unit"
-      },
-      {
-       "term": "eat",
-       "example": "eat"
-      },
-      {
-       "term": "Unit89 too",
-       "example": "Unit89 too"
-      }
-     ],
-     "glosses": []
-    }
-   ],
+   "source_page": null,
+   "sections": [],
    "exercises": [
     {
      "number": 4,
@@ -29033,12 +28852,12 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 36,
+   "vocabulary_count": 0,
    "gloss_count": 0
   },
   {
    "number": 26,
-   "title": "will",
+   "title": "Sarah goes to work every day. She is always there",
    "needs_title_review": false,
    "source_page": 63,
    "sections": [
@@ -29062,6 +28881,10 @@
       {
        "term": "will rain",
        "example": "will rain"
+      },
+      {
+       "term": "Will",
+       "example": "Will"
       },
       {
        "term": "won't",
@@ -29390,7 +29213,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 36,
+   "vocabulary_count": 37,
    "gloss_count": 0
   },
   {
@@ -30660,65 +30483,8 @@
    "number": 33,
    "title": "Vdrather",
    "needs_title_review": false,
-   "source_page": 266,
-   "sections": [
-    {
-     "letter": "A",
-     "title": "vs",
-     "body": "Xe = UD\n=\nShould we\nwalk home?\nYes, but not\nvery well.\nOO —aS fe\nSe\neee\nSe A\n7 a0\n7 CO\nA ee\nSo\ners ieee ee ec as Bee\n=\neee ey\nspasasnanececseescseccessensessenstssereneseees © fo\n255",
-     "vocabulary": [
-      {
-       "term": "Xe = UD",
-       "example": "Xe = UD"
-      },
-      {
-       "term": "OO —aS fe",
-       "example": "OO —aS fe"
-      },
-      {
-       "term": "Se",
-       "example": "Se"
-      },
-      {
-       "term": "eee",
-       "example": "eee"
-      },
-      {
-       "term": "Se A",
-       "example": "Se A"
-      },
-      {
-       "term": "7 a0",
-       "example": "7 a0"
-      },
-      {
-       "term": "7 CO",
-       "example": "7 CO"
-      },
-      {
-       "term": "A ee",
-       "example": "A ee"
-      },
-      {
-       "term": "So",
-       "example": "So"
-      },
-      {
-       "term": "ers ieee ee ec as Bee",
-       "example": "ers ieee ee ec as Bee"
-      },
-      {
-       "term": "eee ey",
-       "example": "eee ey"
-      },
-      {
-       "term": "spasasnanececseescseccessensessenstssereneseees © fo",
-       "example": "spasasnanececseescseccessensessenstssereneseees © fo"
-      }
-     ],
-     "glosses": []
-    }
-   ],
+   "source_page": null,
+   "sections": [],
    "exercises": [],
    "answers": [],
    "audio": [
@@ -30868,7 +30634,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 12,
+   "vocabulary_count": 0,
    "gloss_count": 0
   },
   {
@@ -42987,10 +42753,159 @@
   },
   {
    "number": 83,
-   "title": "Unit 83",
-   "needs_title_review": true,
-   "source_page": null,
-   "sections": [],
+   "title": "old/nice/interesting, etc. (adjectives)",
+   "needs_title_review": false,
+   "source_page": 177,
+   "sections": [
+    {
+     "letter": "A",
+     "title": "re",
+     "body": "Adjective + noun (nice day / blue eyes, etc.)\nadjective\n+ noun\ntoday.\nItsanice\nday\nbrown\nJessica has\neyes.\n=\nchurch in\nthis\nold\nThere's a very\ntown.\nlike Italian food?\nDo\nyou\nforeign languages.\n| don’t speak any\nflowers\nin the yard.\nbeautiful yellow\nThere\nare some\nThe adjective is before the noun:\nhouse.\n(not a house modern)\n©. They live ina modern\n(not people famous)\npeople?\nfamous\n©. Have you met any\nadjective is always the same:\nThe ending of\nan\ndifferent\nplaces (not differents)\nplace\ndifferent\na\n(> oY Ltertenery)",
+     "vocabulary": [
+      {
+       "term": "Adjective + noun (nice day / blue eyes, etc.)",
+       "example": "Adjective + noun (nice day / blue eyes, etc.)"
+      },
+      {
+       "term": "day",
+       "example": "day"
+      },
+      {
+       "term": "brown",
+       "example": "brown"
+      },
+      {
+       "term": "eyes",
+       "example": "eyes."
+      },
+      {
+       "term": "old",
+       "example": "old"
+      },
+      {
+       "term": "foreign languages",
+       "example": "foreign languages."
+      },
+      {
+       "term": "flowers",
+       "example": "flowers"
+      },
+      {
+       "term": "house",
+       "example": "house."
+      },
+      {
+       "term": "people?",
+       "example": "people?"
+      },
+      {
+       "term": "different",
+       "example": "different"
+      },
+      {
+       "term": "(> oY Ltertenery)",
+       "example": "(> oY Ltertenery)"
+      }
+     ],
+     "glosses": []
+    },
+    {
+     "letter": "B",
+     "title": "(> oY Ltertenery)",
+     "body": "_sbe (am/is/was, etc.) + adjective\n() The weather is nice today.\nbeautiful.\n©. These flowers\nare\nvery\n©.\nAre\nyou cold? Should | close the window?\neat?\nCan | have something\nVm\nhungry.\nto\n©\nboring.\ngood.\nIt\n©. The movie wasn’t very\nwas\nquiet.\nI'm reading.\n©) Please be\nage\n3\nlook/feel/smell/taste/sound adjective\n+\neae\neS\nae\nCG “Eh\n}\nANS yo pit tastes good.\nA\nfeel\ntired.’\n“|\n© “Youlooktired”\ninteresting.\njob. It sounds really\nabout his\n©) Eric told\nnew\nme\ndoesn’t smell good.\nfish.\nIt\nCQ. I'm not going to eat this\nCompare:\n|\nis\nis\nare\n|\n|\n| good.\nhappy.\nIt smells\ntired.\nThey look |\nfeels\nHe |\nsound\ntastes\nlooks\n)\nsomething/anybody adjective > Unit 77\n( get adjective\n+\nhungry/tired, etc.) -® Unit 54\n(get\n| get\n+\n+ aqjective (get nungry/ure]eu, cu.) “7 yee oe\nswrtewereerrpy were",
+     "vocabulary": [
+      {
+       "term": "_sbe (am/is/was, etc.) + adjective",
+       "example": "_sbe (am/is/was, etc.) + adjective"
+      },
+      {
+       "term": "() The weather is nice today",
+       "example": "() The weather is nice today."
+      },
+      {
+       "term": "are",
+       "example": "are"
+      },
+      {
+       "term": "hungry",
+       "example": "hungry."
+      },
+      {
+       "term": "boring",
+       "example": "boring."
+      },
+      {
+       "term": "good",
+       "example": "good."
+      },
+      {
+       "term": "was",
+       "example": "was"
+      },
+      {
+       "term": "quiet",
+       "example": "quiet."
+      },
+      {
+       "term": "age",
+       "example": "age"
+      },
+      {
+       "term": "look/feel/smell/taste/sound adjective",
+       "example": "look/feel/smell/taste/sound adjective"
+      },
+      {
+       "term": "eae",
+       "example": "eae"
+      },
+      {
+       "term": "eS",
+       "example": "eS"
+      },
+      {
+       "term": "ae",
+       "example": "ae"
+      },
+      {
+       "term": "CG “Eh",
+       "example": "CG “Eh"
+      },
+      {
+       "term": "ANS yo pit tastes good",
+       "example": "ANS yo pit tastes good."
+      },
+      {
+       "term": "feel",
+       "example": "feel"
+      },
+      {
+       "term": "interesting",
+       "example": "interesting."
+      },
+      {
+       "term": "happy",
+       "example": "happy."
+      },
+      {
+       "term": "feels",
+       "example": "feels"
+      },
+      {
+       "term": "(get",
+       "example": "(get"
+      },
+      {
+       "term": "| get",
+       "example": "| get"
+      },
+      {
+       "term": "swrtewereerrpy were",
+       "example": "swrtewereerrpy were"
+      }
+     ],
+     "glosses": []
+    }
+   ],
    "exercises": [
     {
      "number": 1,
@@ -43143,7 +43058,7 @@
     }
    ],
    "unplaced_glosses": [],
-   "vocabulary_count": 0,
+   "vocabulary_count": 33,
    "gloss_count": 0
   },
   {

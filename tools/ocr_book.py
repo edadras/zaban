@@ -521,6 +521,34 @@ def ocr_page(args):
         shutil.rmtree(work, ignore_errors=True)
 
 
+def dpi_for(pdf: Path, target_width: int, fallback: int) -> int:
+    """The resolution that gives a page of about `target_width` pixels.
+
+    Rendering resolution is meaningless on its own, because these PDFs do not
+    agree on how big a page is. Most declare A4 - 595 points across - and 300
+    dpi gives them a 2,479 pixel page, which is what a reader wants. One
+    declares its pages 1,918 points across, over three times that, so the same
+    300 dpi produced a 91-megapixel image of the same amount of text: fifteen
+    times the work for no more detail, and slow enough to hold up the whole
+    run.
+
+    Asking for a width instead makes every book arrive at the reader looking
+    the same size, whatever its own idea of a page is.
+    """
+    try:
+        out = subprocess.run(['pdfinfo', str(pdf)], capture_output=True, text=True,
+                             check=True).stdout
+        m = re.search(r'^Page size:\s+([\d.]+) x', out, re.M)
+        if not m:
+            return fallback
+        inches = float(m.group(1)) / 72.0
+        if inches <= 0:
+            return fallback
+        return max(72, min(600, int(round(target_width / inches))))
+    except Exception:                              # noqa: BLE001 - fall back, do not fail
+        return fallback
+
+
 def page_count(pdf: Path) -> int:
     out = subprocess.run(['pdfinfo', str(pdf)], capture_output=True, text=True, check=True).stdout
     m = re.search(r'^Pages:\s+(\d+)', out, re.M)
@@ -533,7 +561,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('pdf')
     ap.add_argument('--out', required=True, help='directory for the per-page JSON')
-    ap.add_argument('--dpi', type=int, default=300)
+    ap.add_argument('--dpi', type=int, default=300,
+                    help='fallback resolution when the page size cannot be read')
+    ap.add_argument('--target-width', type=int, default=2480,
+                    help='pixels across the page; 0 to use --dpi as given')
     ap.add_argument('--psm', type=int, default=1, help='tesseract page segmentation mode')
     ap.add_argument('--jobs', type=int, default=max(1, (os.cpu_count() or 2) - 1))
     ap.add_argument('--first', type=int, default=1)
@@ -544,11 +575,13 @@ def main():
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
 
+    dpi = args.dpi if args.target_width <= 0 else dpi_for(pdf, args.target_width, args.dpi)
     last = args.last or page_count(pdf)
     pages = list(range(args.first, last + 1))
     todo = [p for p in pages if not (out / f'{p:05d}.json').exists()]
 
-    print(f'{pdf.name}: {len(pages)} pages, {len(todo)} to read, {args.jobs} workers')
+    print(f'{pdf.name}: {len(pages)} pages, {len(todo)} to read, '
+          f'{args.jobs} workers, {dpi} dpi')
     if not todo:
         print('   already complete')
         return
@@ -556,7 +589,7 @@ def main():
     done = 0
     confs = []
     failures = []
-    work = [(str(pdf), p, args.dpi, out, args.psm) for p in todo]
+    work = [(str(pdf), p, dpi, out, args.psm) for p in todo]
     with ProcessPoolExecutor(max_workers=args.jobs) as pool:
         for page, status, conf in pool.map(ocr_page, work, chunksize=1):
             done += 1

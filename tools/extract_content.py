@@ -38,43 +38,58 @@ CACHE = Path('/tmp/extract')
 # books arrived six of the seven skills had no items at all behind them, so the
 # report was showing a starting guess and calling it a measurement.
 #
+# `concepts` says what a taught item is in this series, and it is the one place
+# the six genuinely disagree. A vocabulary, phrasal verb, collocation or idiom
+# book teaches words, and its bold runs are the headword list. A grammar or
+# pronunciation book teaches a pattern, and its bold runs are forms
+# illustrating that pattern: read as headwords they give "'m", "ing" and
+# "are +" - 3,494 of them from one book - which is not a vocabulary anyone can
+# learn. There the concept is the unit's own point, and the bold forms are kept
+# with the lesson as what it drills.
+#
 # `heading` says how the series prints a unit heading, which is the one thing
-# that genuinely differs between them - see `find_units`.
+# else that differs between them - see `find_units`.
 SERIES = {
     'vocabulary': {
         'family': 'English Vocabulary in Use',
         'course': 'English Vocabulary',
         'skill': 'vocabulary',
+        'concepts': 'headword',
         'heading': 'number_first',
     },
     'grammar': {
         'family': 'Grammar in Use',
         'course': 'English Grammar',
         'skill': 'grammar',
+        'concepts': 'pattern',
         'heading': 'unit_above',
     },
     'pronunciation': {
         'family': 'English Pronunciation in Use',
         'course': 'English Pronunciation',
         'skill': 'pronunciation',
+        'concepts': 'pattern',
         'heading': 'number_first',
     },
     'phrasal_verbs': {
         'family': 'English Phrasal Verbs in Use',
         'course': 'English Phrasal Verbs',
         'skill': 'vocabulary',
+        'concepts': 'headword',
         'heading': 'number_first',
     },
     'collocations': {
         'family': 'English Collocations in Use',
         'course': 'English Collocations',
         'skill': 'vocabulary',
+        'concepts': 'headword',
         'heading': 'number_first',
     },
     'idioms': {
         'family': 'English Idioms in Use',
         'course': 'English Idioms',
         'skill': 'vocabulary',
+        'concepts': 'headword',
         'heading': 'number_first',
     },
 }
@@ -539,6 +554,7 @@ def heading_on_page(head, style):
 # on. The page number is optional because the scanned books lose it to the
 # gutter as often as not.
 RE_CONTENTS_ENTRY = re.compile(r'^(\s{0,20})(\d{1,3})(\s{1,8})(\S.{1,70}?)(?:\s{2,}\d{1,3})?\s*$')
+RE_BARE_NUMBER = re.compile(r'^\s{0,30}(\d{1,3})\s*[|\]).]?\s*$')
 RE_CONTENTS_LINE = re.compile(r'^(\s{0,30})(\S.{1,70}?)(?:\s{2,}\d{1,3})?\s*$')
 
 
@@ -574,7 +590,25 @@ def contents_rows(page):
     numbers 2 to 9 came back as "WO WON HRW" while their titles read perfectly.
     """
     rows = []
+    pending_number = None
     for line in page.splitlines():
+        # A number alone on its line, with its title on the next. The contents
+        # of the pronunciation books come out this way whenever the number
+        # column and the title column are far enough apart for the reader to
+        # treat them as separate blocks.
+        bare = RE_BARE_NUMBER.match(line)
+        if bare:
+            pending_number = int(bare.group(1))
+            continue
+
+        if pending_number is not None:
+            m = RE_CONTENTS_LINE.match(line)
+            if m:
+                rows.append((pending_number, len(m.group(1)), tidy_title(m.group(2))))
+                pending_number = None
+                continue
+            pending_number = None
+
         m = RE_CONTENTS_ENTRY.match(line)
         if m:
             title = tidy_title(m.group(4))
@@ -633,6 +667,36 @@ def number_contents(rows):
     return out
 
 
+def contents_pages(layout_pages, horizon=None):
+    """Which pages are the contents list, in page order."""
+    if horizon is None:
+        # Contents live in the front matter of every book in this family.
+        horizon = max(8, int(len(layout_pages) * 0.15))
+    horizon = min(len(layout_pages), horizon)
+
+    found = []
+    for index, page in enumerate(layout_pages[:horizon]):
+        rows = contents_rows(page)
+        entries = [(n, t) for n, _, t in rows if n is not None and 1 <= n <= 200]
+        if len(entries) < 8 or max(n for n, _ in entries) < 10:
+            continue
+        ascending = sum(1 for a, b in zip(entries, entries[1:]) if b[0] > a[0])
+        if ascending < len(entries) - 2:
+            continue
+        found.append(index)
+
+    # Only the opening run counts. An exercises page deep in the book can look
+    # like a contents list - a column of ascending numbers, each with text
+    # beside it - and taking it would put the end of the front matter a hundred
+    # pages too late.
+    cluster = []
+    for index in found:
+        if cluster and index - cluster[-1] > 2:
+            break
+        cluster.append(index)
+    return cluster
+
+
 def titles_from_contents(layout_pages, horizon=None):
     """Unit titles as the book itself lists them.
 
@@ -655,21 +719,8 @@ def titles_from_contents(layout_pages, horizon=None):
     off an exercises page as the title of unit 2.
     """
     titles = {}
-    if horizon is None:
-        horizon = max(6, len(layout_pages) // 8)
-    horizon = min(len(layout_pages), horizon)
-
-    for page in layout_pages[:horizon]:
-        rows = contents_rows(page)
-        entries = [(n, t) for n, _, t in rows if n is not None and 1 <= n <= 200]
-
-        if len(entries) < 8 or max(n for n, _ in entries) < 10:
-            continue
-        ascending = sum(1 for a, b in zip(entries, entries[1:]) if b[0] > a[0])
-        if ascending < len(entries) - 2:
-            continue
-
-        for number, title in number_contents(rows):
+    for index in contents_pages(layout_pages, horizon):
+        for number, title in number_contents(contents_rows(layout_pages[index])):
             if 1 <= number <= 200:
                 titles.setdefault(number, title)
 
@@ -706,26 +757,36 @@ def candidate_headings(layout_pages, style):
 def find_units(layout_pages, style='number_first'):
     """unit number -> its teaching page (1-based).
 
-    Two rounds, because the two ways a heading can be wrong pull in opposite
-    directions. Front matter fakes headings - "60 units of vocabulary reference
-    and practice" on a cover reads exactly like unit 60 - so the first round
-    only accepts a page that also shows a lettered section or a numbered
-    exercise, which no cover does.
+    Three rounds, because a heading can be wrong in three different ways.
 
-    That test is strict enough to lose a real unit: Phrasal Verbs in Use unit
-    11 is a page of continuous prose with neither. So the second round takes
-    back any number the first round missed, on one condition - that its page
-    falls between the pages of the units either side of it. A book runs its
-    units in order, and a cover cannot be between unit 10 and unit 12.
+    Front matter fakes headings - "60 units of vocabulary reference and
+    practice" on a cover reads exactly like unit 60 - so the first round only
+    accepts a page past the contents list, or, where the contents could not be
+    read, one that shows a lettered section or a numbered exercise. No cover
+    does either.
+
+    That is strict enough to lose a real unit: Phrasal Verbs in Use unit 11 is
+    continuous prose on a page with neither marker. So the second round takes
+    back any number the first missed, on one condition - that its page falls
+    between the pages of the units either side of it. A book runs its units in
+    order, and a cover cannot be between unit 10 and unit 12.
+
+    The third round is for the books that print no unit number in their text at
+    all - see units_behind_exercises and units_by_sequence.
     """
     found = candidate_headings(layout_pages, style)
+    contents = contents_pages(layout_pages)
+    front_matter = (max(contents) + 1) if contents else 0
 
     units = {}
     for c in found:
-        if c['teaches'] and c['number'] not in units:
+        past_front_matter = c['teaching_page'] > front_matter if contents else c['teaches']
+        if past_front_matter and c['number'] not in units:
             units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
 
     if not units:
+        units.update(units_by_sequence(layout_pages, titles_from_contents(layout_pages)))
+        units.update(units_behind_exercises(layout_pages, units))
         return units
 
     for c in found:
@@ -739,10 +800,99 @@ def find_units(layout_pages, style='number_first'):
             units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
 
     units.update(units_behind_exercises(layout_pages, units))
+    units.update(units_by_sequence(layout_pages, titles_from_contents(layout_pages), units))
+    return drop_out_of_order(units)
+
+
+def drop_out_of_order(units):
+    """A book prints its units in order; a unit that does not is a mis-read.
+
+    Advanced Grammar in Use gave unit 3 page 113, from a stray line a hundred
+    pages into the answer key that happened to read like a heading, while units
+    2 and 4 sat on pages 15 and 19. A unit page that is out of order takes the
+    wrong page's sections, vocabulary and exercises with it, so the page is
+    dropped and the unit kept - it still has its title, its audio and its place
+    in the sequence, and it is flagged for review rather than pointed at the
+    wrong page.
+    """
+    ordered = sorted(units)
+    for index, number in enumerate(ordered):
+        page = units[number].get('teaching_page')
+        if page is None:
+            continue
+
+        before = next((units[n].get('teaching_page') for n in reversed(ordered[:index])
+                       if units[n].get('teaching_page')), None)
+        after = next((units[n].get('teaching_page') for n in ordered[index + 1:]
+                      if units[n].get('teaching_page')), None)
+
+        # Only when both neighbours agree the page is impossible: one neighbour
+        # could be the wrong one instead.
+        if before is not None and after is not None and not (before < page < after):
+            units[number]['teaching_page'] = None
+            units[number]['needs_title_review'] = units[number].get('title_source') != 'contents'
+
     return units
 
 
+def units_by_sequence(layout_pages, contents, taken=None):
+    """Number the units by counting their exercises pages.
+
+    Advanced Grammar in Use prints its unit number and its exercise numbers
+    inside coloured discs, which are artwork: eleven of its hundred exercises
+    pages give up a readable label and the rest give nothing, so neither the
+    heading rule nor the label rule can find the units. The book itself is
+    perfectly regular, though - one teaching page and one exercises page per
+    unit, in order - and its contents list says how many units there are.
+
+    So when the number of exercises pages matches the number of units the
+    contents lists exactly, the nth exercises page is the nth unit. The
+    equality is the whole safeguard: one page more or fewer and the mapping
+    would be off by one somewhere, quietly filing every later unit's exercises
+    under its neighbour, so nothing is assigned at all.
+    """
+    taken = taken or {}
+    if not contents:
+        return {}
+
+    # How many units the book has, rather than how many the contents gave up:
+    # a few entries are always lost to the scan, and the last number is what
+    # says where the list ends.
+    unit_count = max(contents)
+    pages = [i + 1 for i, page in enumerate(layout_pages) if is_exercises_page(page)]
+    if min(contents) != 1 or len(pages) != unit_count:
+        return {}
+
+    claimed = {u['teaching_page'] for u in taken.values() if u.get('teaching_page')}
+
+    found = {}
+    for number, page in zip(range(1, unit_count + 1), pages):
+        if number in taken or page - 1 < 1 or (page - 1) in claimed:
+            continue
+        title = contents.get(number)
+        found[number] = {
+            'number': number,
+            'title': title or f'Unit {number}',
+            'teaching_page': page - 1,
+            'title_source': 'contents' if title else None,
+            'needs_title_review': title is None,
+        }
+    return found
+
+
 RE_EXERCISES_HEADING = re.compile(r'^\W{0,4}exercises?\b', re.I)
+
+
+def is_exercises_page(page_text) -> bool:
+    """Does this page open the unit's exercises?
+
+    The heading is not always the first thing on the page: the pronunciation
+    books print a running section header above it ("Section A Sounds and
+    spelling"), so looking only at the first line found two exercises pages in
+    a book that has sixty.
+    """
+    head = [ln.strip() for ln in page_text.splitlines() if ln.strip()][:3]
+    return any(RE_EXERCISES_HEADING.match(ln) for ln in head)
 # An exercise label at the start of a line, allowing for the box the scanned
 # books print around it - the OCR reads its left edge as "|", "(" or "[".
 # An exercise label at the start of a line. The scanned books print a box
@@ -775,8 +925,7 @@ def units_behind_exercises(layout_pages, taken):
     claimed = {u['teaching_page'] for u in taken.values()}
 
     for i, page in enumerate(layout_pages):
-        head = next((ln for ln in page.splitlines() if ln.strip()), '')
-        if not RE_EXERCISES_HEADING.match(head.strip()):
+        if not is_exercises_page(page):
             continue
 
         numbers = [int(m[0]) for m in RE_LABEL_ANCHORED.findall(page)]
@@ -987,7 +1136,45 @@ def extract_exercises(layout_pages, unit_no, teaching_page, answer_start):
             target = ans if in_key else ex
             if num not in target:
                 target[num] = blk
+
+    if not ex and teaching_page:
+        whole = whole_exercises_page(layout_pages, teaching_page)
+        if whole is not None:
+            ex[1] = whole
+
     return ex, ans
+
+
+def whole_exercises_page(layout_pages, teaching_page):
+    """The unit's exercises page, kept entire when its labels cannot be read.
+
+    Advanced Grammar in Use numbers its exercises inside coloured discs, which
+    are artwork rather than text: eleven of its hundred exercises pages give up
+    a readable label. Splitting the page into numbered drills is impossible
+    there - but the drills themselves are on the page, and dropping a hundred
+    pages of practice because their numbering was printed as a picture is not
+    an option. The page is kept as one block, for review rather than for
+    serving, and the disc's own exercise data supplies the numbered items.
+    """
+    index = teaching_page          # the page after, 0-based
+    if index >= len(layout_pages):
+        return None
+
+    page = layout_pages[index]
+    if not is_exercises_page(page):
+        return None
+
+    lines = [ln for ln in page.splitlines() if ln.strip()]
+    rubric = next((ln.strip() for ln in lines
+                   if not RE_EXERCISES_HEADING.match(ln.strip()) and len(ln.strip()) > 25), '')
+    if not rubric:
+        return None
+
+    return {
+        'instructions': rubric,
+        'body': page.strip(),
+        'unlabelled': True,
+    }
 
 
 def find_answer_start(layout_pages):
@@ -1211,6 +1398,7 @@ def build(book):
         'series_title': series['family'],
         'course_title': series['course'],
         'skill': series['skill'],
+        'concept_source': series.get('concepts', 'headword'),
         'title': book['title'],
         'cefr': book['cefr'],
         'course': book['level'],

@@ -75,6 +75,7 @@ class ImportCurriculum extends Command
     private int $languageId;
     private int $vocabSkillId;
     private int $skillId;
+    private string $conceptSource = 'headword';
 
     public function handle(): int
     {
@@ -150,6 +151,7 @@ class ImportCurriculum extends Command
         // of the seven skills had nothing behind them at all - so the placement
         // report was showing a starting prior and calling it a measurement.
         $this->skillId = $this->skills[$data['skill'] ?? 'vocabulary'] ?? $this->vocabSkillId;
+        $this->conceptSource = $data['concept_source'] ?? 'headword';
 
         $doc = SourceDocument::updateOrCreate(
             ['title' => $data['title'] ?? "English Vocabulary in Use — {$data['course']}"],
@@ -354,11 +356,19 @@ class ImportCurriculum extends Command
                 ['type' => 'source_text', 'position' => 0],
                 [
                     'title' => $sec['title'] ?: null,
-                    'config' => [
+                    'config' => array_filter([
                         'source_segment_id' => $sectionSegment->id,
                         'text' => $sec['body'],
                         'glosses' => $sec['glosses'],
-                    ],
+                        // What the page sets in bold. In a vocabulary book
+                        // those are headwords and become concepts of their own;
+                        // in a grammar or pronunciation book they are the forms
+                        // this one pattern is shown in, and belong with the
+                        // lesson that teaches it.
+                        'target_forms' => $this->conceptSource === 'pattern'
+                            ? $this->targetForms($sec['vocabulary'])
+                            : [],
+                    ], fn ($v) => $v !== [] && $v !== null),
                     'estimated_seconds' => 90,
                 ],
             );
@@ -369,8 +379,12 @@ class ImportCurriculum extends Command
             );
 
             $conceptIds = [];
-            foreach ($sec['vocabulary'] as $v) {
-                $conceptIds[] = $this->importVocabulary($v, $doc, $u, $sec, $cefrCode, $counts, $lesson->id);
+            if ($this->conceptSource === 'pattern') {
+                $conceptIds[] = $this->importPattern($lesson, $u, $sec, $cefrCode, $counts);
+            } else {
+                foreach ($sec['vocabulary'] as $v) {
+                    $conceptIds[] = $this->importVocabulary($v, $doc, $u, $sec, $cefrCode, $counts, $lesson->id);
+                }
             }
             $conceptIds = array_values(array_filter(array_unique($conceptIds)));
             if ($conceptIds) {
@@ -401,6 +415,71 @@ class ImportCurriculum extends Command
         foreach ($u['exercises'] as $ex) {
             $this->importExercise($ex, $answers->get($ex['number']), $unit, $doc, $u, $cefrCode, $counts, $pageIds);
         }
+    }
+
+    /**
+     * The one thing a grammar or pronunciation lesson teaches.
+     *
+     * These books do not teach words. Reading their bold runs as vocabulary -
+     * which is right for the other four series - produced 3,494 "headwords"
+     * from a single grammar book, among them "'m", "ing", "are +" and
+     * "'s driving": forms of the pattern under discussion, not items anyone
+     * learns one at a time. The unit's own point is the thing being taught, so
+     * that is the concept, and the forms stay with the lesson as what it
+     * drills.
+     */
+    private function importPattern(Lesson $lesson, array $u, array $sec, string $cefrCode, array &$counts): ?int
+    {
+        $label = trim($sec['title'] ?: '');
+        $unitTitle = trim($u['title']);
+        if ($label === '' || Str::lower($label) === Str::lower($unitTitle)) {
+            $label = $unitTitle;
+        } elseif (! Str::contains(Str::lower($label), Str::lower($unitTitle))) {
+            $label = "{$unitTitle} — {$label}";
+        }
+        if ($label === '' || mb_strlen($label) > 190) {
+            $label = Str::limit($label ?: "Unit {$u['number']}", 190, '');
+        }
+
+        $concept = Concept::firstOrCreate(
+            ['conceptable_type' => Lesson::class, 'conceptable_id' => $lesson->id],
+            [
+                'language_id' => $this->languageId,
+                'skill_id' => $this->skillId,
+                'cefr_level_id' => $this->cefr[$cefrCode],
+                'label' => $label,
+                'difficulty' => $this->difficultyFor($cefrCode),
+                'importance' => 0.5,
+            ],
+        );
+        if ($concept->wasRecentlyCreated) {
+            $counts['concepts']++;
+        }
+
+        return $concept->id;
+    }
+
+    /**
+     * The forms a pattern lesson puts in bold, cleaned of the books' notation.
+     *
+     * "+ -ing" and "are +" are how these books write what a pattern takes;
+     * they are instructions to the reader, not language to produce.
+     */
+    private function targetForms(array $vocabulary): array
+    {
+        $forms = [];
+        foreach ($vocabulary as $v) {
+            $form = trim((string) ($v['term'] ?? ''), " \t\n\r\0\x0B.,;:+");
+            if ($form === '' || mb_strlen($form) > 60) {
+                continue;
+            }
+            if (! preg_match('/[A-Za-z]/', $form)) {
+                continue;
+            }
+            $forms[Str::lower($form)] = $form;
+        }
+
+        return array_values($forms);
     }
 
     private function importVocabulary(array $v, SourceDocument $doc, array $u, array $sec, string $cefrCode, array &$counts, ?int $lessonId = null): ?int

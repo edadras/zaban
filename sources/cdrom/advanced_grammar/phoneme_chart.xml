@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by Nik Goile (CDSM Interactive Solutions) -->
+<chart id="phonemic_symbols" styleName="chart" x="150" y="100" assets="assets/phoneme/phoneme_chart_button.swf">
+	<title styleName="phonemeTitle"><![CDATA[Phonemic Symbols]]></title>
+	<description styleName="description"><![CDATA[Select a phoneme button to hear the phoneme and examples of words where the phoneme is used.]]></description>
+	<buttonsStyle cornerRadius="9" width="80" height="54" border="2" padding="1" upSkin="upSkin" downSkin="downSkin" overSkin="overSkin" highlight="assets/highlight.png"/>
+	<!-- vowel sounds -->
+	<table id="vowels1" ordering="1" titleStyleName="tableTitle" styleName="tableStyle" title="Vowel Sounds" gaps="0" nbColumns="8">
+		<group id="greenRow" ordering="1" styleName="" buttonBGColor="#6FBB7A">
+			<button id="vowel_1_1" ordering="1" BGColor="">
+				<phoneme styleName="" asset="vowel_1_1_blend" assetSmall="assets/phoneme/phoneme_small.png" text=""/>
+				<exampleLeft styleName=""><![CDATA[fath<u>er</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>a</u>go]]></exampleRight>
+				<audioFile>assets/phoneme/0.mp3</audioFile>
+				<media default="audio1">
+					<link id="audio1" type="audio" title="Audio Link 1" icon="../assets/phoneme/audio_button.png">assets/phoneme/0.mp3</link>
+					<link id="audio2" type="audio" title="Audio Link 2">assets/phoneme/1.mp3</link>
+					<link id="audio3" type="audio" title="Audio Link 3">assets/phoneme/2.mp3</link>
+					<link id="external1" type="external" title="External Link 1">http://www.web-attitude.fr</link>
+				</media>
+			</button>
+			<button id="vowel_1_2" ordering="2" BGColor="">
+				<phoneme styleName="" asset="vowel_1_2_blend" text="" assetSmall="assets/phoneme/phoneme_small.png"  />
+				<exampleLeft styleName=""><![CDATA[<u>a</u>pple]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[c<u>a</u>t]]></exampleRight>
+				<audioFile>assets/phoneme/1.mp3</audioFile>
+				<media default="audio1">
+					<link id="audio1" type="audio" title="Audio Link 1" icon="../assets/phoneme/audio_button.png">assets/phoneme/0.mp3</link>
+					<link id="audio2" type="audio" title="Audio Link 2">assets/phoneme/1.mp3</link>
+					<link id="audio3" type="audio" title="Audio Link 3">assets/phoneme/2.mp3</link>
+					<link id="external1" type="external" title="External Link 1">http://www.web-attitude.fr</link>
+				</media>
+			</button>
+			<button id="vowel_1_3" ordering="3" BGColor="">
+				<phoneme styleName="" asset="vowel_1_3_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[b<u>oo</u>k]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[c<u>ou</u>ld]]></exampleRight>
+				<audioFile>assets/phoneme/2.mp3</audioFile>
+			</button>
+			<button id="vowel_1_4" ordering="4" BGColor="">
+				<phoneme styleName="" asset="vowel_1_4_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>o</u>n]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[g<u>o</u>t]]></exampleRight>
+				<audioFile>assets/phoneme/3.mp3</audioFile>
+			</button>
+			<button id="vowel_1_5" ordering="5" BGColor="">
+				<phoneme styleName="" asset="vowel_1_5_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>i</u>n]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[sw<u>i</u>m]]></exampleRight>
+				<audioFile>assets/phoneme/4.mp3</audioFile>
+			</button>
+			<button id="vowel_1_6" ordering="6" BGColor="">
+				<phoneme styleName="" asset="vowel_1_6_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[friendl<u>y</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[]]></exampleRight>
+				<audioFile>assets/phoneme/5.mp3</audioFile>
+			</button>
+			<button id="vowel_1_7" ordering="7" BGColor="">
+				<phoneme styleName="" asset="vowel_1_7_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[b<u>e</u>d]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>a</u>ny]]></exampleRight>
+				<audioFile>assets/phoneme/6.mp3</audioFile>
+			</button>
+			<button id="vowel_1_8" ordering="8" BGColor="">
+				<phoneme styleName="" asset="vowel_1_8_blend" assetSmall="assets/phoneme/phoneme_small.png" text=""/>
+				<exampleLeft styleName=""><![CDATA[c<u>u</u>p]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>u</u>nder]]></exampleRight>
+				<audioFile>assets/phoneme/7.mp3</audioFile>
+				<media default="audio1_1_8">
+					<link id="audio1_1_8" type="audio" title="Audio Link 1">assets/phoneme/0.mp3</link>
+					<link id="audio2_1_8" type="audio" title="Audio Link 2">assets/phoneme/1.mp3</link>
+					<link id="audio3_1_8" type="audio" title="Audio Link 3">assets/phoneme/2.mp3</link>
+					<link id="external1_1_8" type="external" title="External Link 1">http://www.web-attitude.fr</link>
+				</media>
+			</button>
+		</group>
+		<group id="redRow" ordering="2" styleName="" buttonBGColor="#CE8481">
+			<button id="vowel_2_1" ordering="1" BGColor="">
+				<phoneme styleName="" asset="vowel_2_1_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[h<u>e</u>r]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[sh<u>ir</u>t]]></exampleRight>
+				<audioFile>assets/phoneme/8.mp3</audioFile>
+			</button>
+			<button id="vowel_2_2" ordering="2" BGColor="">
+				<phoneme styleName="" asset="vowel_2_2_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[a<u>r</u>m]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[c<u>a</u>r]]></exampleRight>
+				<audioFile>assets/phoneme/9.mp3</audioFile>
+			</button>
+			<button id="vowel_2_3" ordering="3" BGColor="">
+				<phoneme styleName="" asset="vowel_2_3_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[bl<u>ue</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[t<u>oo</u>]]></exampleRight>
+				<audioFile>assets/phoneme/10.mp3</audioFile>
+			</button>
+			<button id="vowel_2_4" ordering="4" BGColor="">
+				<phoneme styleName="" asset="vowel_2_4_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[b<u>or</u>n]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[w<u>al</u>k]]></exampleRight>
+				<audioFile>assets/phoneme/11.mp3</audioFile>
+			</button>
+			<button id="vowel_2_5" ordering="5" BGColor="">
+				<phoneme styleName="" asset="vowel_2_5_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>ea</u>t]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[m<u>ee</u>t]]></exampleRight>
+				<audioFile>assets/phoneme/12.mp3</audioFile>
+			</button>
+		</group>
+		<group id="yellowRow" ordering="3" styleName="" buttonBGColor="#F1DF71">
+			<button id="vowel_3_1" ordering="1" BGColor="">
+				<phoneme styleName="" asset="vowel_3_1_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[ch<u>air</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[wh<u>ere</u>]]></exampleRight>
+				<audioFile>assets/phoneme/13.mp3</audioFile>
+			</button>
+			<button id="vowel_3_2" ordering="2" BGColor="">
+				<phoneme styleName="" asset="vowel_3_2_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[n<u>ear</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[w<u>e're</u>]]></exampleRight>
+				<audioFile>assets/phoneme/14.mp3</audioFile>
+			</button>
+			<button id="vowel_3_3" ordering="3" BGColor="">
+				<phoneme styleName="" asset="vowel_3_3_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[mat<u>ure</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[t<u>our</u>]]></exampleRight>
+				<audioFile>assets/phoneme/15.mp3</audioFile>
+			</button>
+			<button id="vowel_3_4" ordering="4" BGColor="">
+				<phoneme styleName="" asset="vowel_3_4_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[b<u>oy</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[n<u>oi</u>sy]]></exampleRight>
+				<audioFile>assets/phoneme/16.mp3</audioFile>
+			</button>
+			<button id="vowel_3_5" ordering="5" BGColor="">
+				<phoneme styleName="" asset="vowel_3_5_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[n<u>i</u>ne]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>eye</u>]]></exampleRight>
+				<audioFile>assets/phoneme/17.mp3</audioFile>
+			</button>
+			<button id="vowel_3_6" ordering="6" BGColor="">
+				<phoneme styleName="" asset="vowel_3_6_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>ei</u>ght]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[d<u>ay</u>]]></exampleRight>
+				<audioFile>assets/phoneme/18.mp3</audioFile>
+			</button>
+			<button id="vowel_3_7" ordering="7" BGColor="">
+				<phoneme styleName="" asset="vowel_3_7_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[g<u>o</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>o</u>ver]]></exampleRight>
+				<audioFile>assets/phoneme/19.mp3</audioFile>
+			</button>
+			<button id="vowel_3_8" ordering="8" BGColor="">
+				<phoneme styleName="" asset="vowel_3_8_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>ou</u>t]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[br<u>ow</u>n]]></exampleRight>
+				<audioFile>assets/phoneme/20.mp3</audioFile>
+			</button>
+		</group>
+	</table>
+	<!-- consonant sounds -->
+	<table id="consonants1" ordering="2" titleStyleName="tableTitle" styleName="tableStyle" title="Consonant Sounds" gaps="0" nbColumns="8">
+		<group id="blueGroup" ordering="1" styleName="" buttonBGColor="#77BFD5">
+			<button id="consonant_1_1" ordering="1" BGColor="">
+				<phoneme styleName="" asset="consonant_1_1_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>p</u>ark]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[sou<u>p</u>]]></exampleRight>
+				<audioFile>assets/phoneme/21.mp3</audioFile>
+			</button>
+			<button id="consonant_1_2" ordering="2" BGColor="">
+				<phoneme styleName="" asset="consonant_1_2_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>b</u>e]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[ro<u>b</u>]]></exampleRight>
+				<audioFile>assets/phoneme/22.mp3</audioFile>
+			</button>
+			<button id="consonant_1_3" ordering="3" BGColor="">
+				<phoneme styleName="" asset="consonant_1_3_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>f</u>ace]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[rou<u>gh</u>]]></exampleRight>
+				<audioFile>assets/phoneme/23.mp3</audioFile>
+				<relatedButtons>
+					<relatedButton ref="consonant_1_1"/>
+					<relatedButton ref="consonant_1_4"/>
+					<relatedButton ref="consonant_1_9"/>
+					<relatedButton ref="consonant_1_20"/>
+				</relatedButtons>
+			</button>
+			<button id="consonant_1_4" ordering="4" BGColor="">
+				<phoneme styleName="" asset="consonant_1_4_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>v</u>ery]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[li<u>v</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/24.mp3</audioFile>
+			</button>
+			<button id="consonant_1_5" ordering="5" BGColor="">
+				<phoneme styleName="" asset="consonant_1_5_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>t</u>ime]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[whi<u>t</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/25.mp3</audioFile>
+			</button>
+			<button id="consonant_1_6" ordering="6" BGColor="">
+				<phoneme styleName="" asset="consonant_1_6_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>d</u>og]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[re<u>d</u>]]></exampleRight>
+				<audioFile>assets/phoneme/26.mp3</audioFile>
+			</button>
+			<button id="consonant_1_7" ordering="7" BGColor="">
+				<phoneme styleName="" asset="consonant_1_7_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>c</u>old]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[loo<u>k</u>]]></exampleRight>
+				<audioFile>assets/phoneme/27.mp3</audioFile>
+			</button>
+			<button id="consonant_1_8" ordering="8" BGColor="">
+				<phoneme styleName="" asset="consonant_1_8_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>g</u>irl]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[ba<u>g</u>]]></exampleRight>
+				<audioFile>assets/phoneme/28.mp3</audioFile>
+			</button>
+			<button id="consonant_1_9" ordering="9" BGColor="">
+				<phoneme styleName="" asset="consonant_1_9_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>th</u>ink]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[bo<u>th</u>]]></exampleRight>
+				<audioFile>assets/phoneme/29.mp3</audioFile>
+			</button>
+			<button id="consonant_1_10" ordering="10" BGColor="">
+				<phoneme styleName="" asset="consonant_1_10_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[mo<u>th</u>er]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>th</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/30.mp3</audioFile>
+			</button>
+			<button id="consonant_1_11" ordering="11" BGColor="">
+				<phoneme styleName="" asset="consonant_1_11_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>ch</u>ips]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[tea<u>ch</u>]]></exampleRight>
+				<audioFile>assets/phoneme/31.mp3</audioFile>
+			</button>
+			<button id="consonant_1_12" ordering="12" BGColor="">
+				<phoneme styleName="" asset="consonant_1_12_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>j</u>ob]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[pa<u>g</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/32.mp3</audioFile>
+			</button>
+			<button id="consonant_1_13" ordering="13" BGColor="">
+				<phoneme styleName="" asset="consonant_1_13_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>s</u>ee]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[ri<u>c</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/33.mp3</audioFile>
+			</button>
+			<button id="consonant_1_14" ordering="14" BGColor="">
+				<phoneme styleName="" asset="consonant_1_14_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>z</u>oo]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[day<u>s</u>]]></exampleRight>
+				<audioFile>assets/phoneme/34.mp3</audioFile>
+			</button>
+			<button id="consonant_1_15" ordering="15" BGColor="">
+				<phoneme styleName="" asset="consonant_1_15_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>sh</u>oe]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[a<u>ct</u>ion]]></exampleRight>
+				<audioFile>assets/phoneme/35.mp3</audioFile>
+			</button>
+			<button id="consonant_1_16" ordering="16" BGColor="">
+				<phoneme styleName="" asset="consonant_1_16_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[televi<u>si</u>on]]></exampleLeft>
+				<exampleRight styleName=""/>
+				<audioFile>assets/phoneme/36.mp3</audioFile>
+			</button>
+			<button id="consonant_1_17" ordering="17" BGColor="">
+				<phoneme styleName="" asset="consonant_1_17_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>m</u>e]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[na<u>m</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/37.mp3</audioFile>
+			</button>
+			<button id="consonant_1_18" ordering="18" BGColor="">
+				<phoneme styleName="" asset="consonant_1_18_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>n</u>ow]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[rai<u>n</u>]]></exampleRight>
+				<audioFile>assets/phoneme/38.mp3</audioFile>
+			</button>
+			<button id="consonant_1_19" ordering="19" BGColor="">
+				<phoneme styleName="" asset="consonant_1_19_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[s<u>ing</u>]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[th<u>in</u>k]]></exampleRight>
+				<audioFile>assets/phoneme/39.mp3</audioFile>
+			</button>
+			<button id="consonant_1_20" ordering="20" BGColor="">
+				<phoneme styleName="" asset="consonant_1_20_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>h</u>ot]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>h</u>and]]></exampleRight>
+				<audioFile>assets/phoneme/40.mp3</audioFile>
+			</button>
+			<button id="consonant_1_21" ordering="21" BGColor="">
+				<phoneme styleName="" asset="consonant_1_21_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>l</u>ate]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[hote<u>l</u>]]></exampleRight>
+				<audioFile>assets/phoneme/41.mp3</audioFile>
+			</button>
+			<button id="consonant_1_22" ordering="22" BGColor="">
+				<phoneme styleName="" asset="consonant_1_22_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[ma<u>rr</u>y]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>wr</u>ite]]></exampleRight>
+				<audioFile>assets/phoneme/42.mp3</audioFile>
+			</button>
+			<button id="consonant_1_23" ordering="23" BGColor="">
+				<phoneme styleName="" asset="consonant_1_23_blend" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>wh</u>ite]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>w</u>e]]></exampleRight>
+				<audioFile>assets/phoneme/43.mp3</audioFile>
+			</button>
+			<button id="consonant_1_24" ordering="24" BGColor="">
+				<phoneme styleName="" asset="consonant_1_24_blend" assetSmall="assets/phoneme/phoneme_small.png" text=""/>
+				<exampleLeft styleName=""><![CDATA[<u>y</u>ou]]></exampleLeft>
+				<exampleRight styleName=""><![CDATA[<u>y</u>es]]></exampleRight>
+				<audioFile>assets/phoneme/44.mp3</audioFile>
+				<media default="audio1_1_24">
+					<link id="audio1_1_24" type="audio" title="Audio Link 1">assets/phoneme/0.mp3</link>
+					<link id="audio2_1_24" type="audio" title="Audio Link 2">assets/phoneme/1.mp3</link>
+					<link id="audio3_1_24" type="audio" title="Audio Link 3">assets/phoneme/2.mp3</link>
+					<link id="external1_1_24" type="external" title="External Link 1">http://www.web-attitude.fr</link>
+				</media>
+			</button>
+		</group>
+	</table>
+</chart>
