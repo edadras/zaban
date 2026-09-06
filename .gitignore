@@ -10,3 +10,6 @@
 # Python
 __pycache__/
 *.pyc
+
+# Staged new sources, extracted from the `new` branch (3.1 GB)
+sources/incoming/
