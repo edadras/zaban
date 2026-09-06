@@ -1,0 +1,158 @@
+name: CI
+
+# Nothing had ever built the client. The Flutter app had no platform folders,
+# sixteen compile errors and five failing tests, and none of it was visible
+# because no machine other than a developer's had ever run `flutter analyze`.
+# This is here so that cannot happen again to either half.
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # 8.3 is the composer floor and 8.4 is what production runs.
+        php: ['8.3', '8.4']
+
+    services:
+      mysql:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: root
+          MARIADB_DATABASE: zaban_test
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+      redis:
+        image: redis:7-alpine
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd="redis-cli ping" --health-interval=5s
+          --health-timeout=5s --health-retries=20
+
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          # The set the application actually needs; see docs/DEPLOYMENT.md §1.
+          extensions: pdo_mysql, mbstring, gd, intl, zip, bcmath, redis, pcntl
+          coverage: none
+          tools: composer:v2
+
+      - name: Cache composer
+        uses: actions/cache@v4
+        with:
+          path: backend/vendor
+          key: composer-${{ matrix.php }}-${{ hashFiles('backend/composer.lock') }}
+
+      - run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Prepare the environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+        env:
+          DB_HOST: 127.0.0.1
+          DB_DATABASE: zaban_test
+          DB_USERNAME: root
+          DB_PASSWORD: root
+
+      - name: Lint every PHP file
+        run: find app config database routes tests -name '*.php' -print0 | xargs -0 -n1 -P4 php -l > /dev/null
+
+      # No style gate. Pint's default preset would rewrite about a hundred and
+      # fifty files that were never written to it, and a first CI run that
+      # fails on brace placement teaches everyone to ignore CI. `php -l` above
+      # catches what actually breaks a deploy.
+
+      - run: php artisan migrate --force
+        env:
+          DB_HOST: 127.0.0.1
+          DB_DATABASE: zaban_test
+          DB_USERNAME: root
+          DB_PASSWORD: root
+
+      # The Content tests read the imported corpus through the `content`
+      # connection and skip when it is not there, which is the case here: the
+      # books are 900 MB of LFS and are not fetched for a unit run.
+      - name: Test
+        run: ./vendor/bin/phpunit --no-coverage
+        env:
+          DB_HOST: 127.0.0.1
+          DB_DATABASE: zaban_test
+          DB_USERNAME: root
+          DB_PASSWORD: root
+          CONTENT_DB_DATABASE: zaban_test
+
+  client:
+    name: Client
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: mobile
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          # Matches the floor in mobile/pubspec.yaml.
+          flutter-version: '3.32.0'
+          channel: stable
+          cache: true
+
+      - run: flutter pub get
+
+      # freezed and json_serializable output is not committed, so this has to
+      # run before anything reads the models.
+      - run: dart run build_runner build --delete-conflicting-outputs
+
+      - run: flutter analyze --no-fatal-infos
+
+      - run: flutter test
+
+      # The deployable artefact. Building it here is what proves the web target
+      # still compiles, which is the check that was missing entirely.
+      - run: flutter build web --release --dart-define=ZABAN_API_BASE_URL=https://learn.edadras.com
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-bundle
+          path: mobile/build/web
+          retention-days: 7
+
+  extraction:
+    name: Extraction tools
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # The extractors need poppler and tesseract to run, but importing them is
+      # enough to catch a syntax error or a broken module-level constant, which
+      # is what breaks a re-extraction most often.
+      - name: Compile the extractors
+        run: python3 -m compileall -q tools/
