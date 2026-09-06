@@ -41,30 +41,13 @@ from concurrent.futures import ProcessPoolExecutor
 from html.parser import HTMLParser
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from watermarks import is_watermark, scrub  # noqa: E402  (sibling module)
+
 # Stamps the scans carry that are not part of the book. They are watermarks
 # belonging to whoever digitised the file, and they have no business appearing
 # in a lesson, in a search index, or in anything a learner reads.
-WATERMARKS = [
-    re.compile(r'\b(?:www\.)?ir\s*language\s*\.?\s*com\b', re.I),
-    re.compile(r'\b(?:www\.)?shop\.?tabaenglish\.?ir\b', re.I),
-    re.compile(r'\blanguagecentre\b', re.I),
-    re.compile(r'\btabaenglish\b', re.I),
-]
-
-
-def scrub(text: str) -> str:
-    for pat in WATERMARKS:
-        text = pat.sub('', text)
-    return text
-
-
-def is_watermark(word: str) -> bool:
-    stripped = word.strip(' .,;:()[]|')
-    if not stripped:
-        return False
-    return any(pat.search(stripped) for pat in WATERMARKS)
-
-
 class HocrReader(HTMLParser):
     """Pull ocr_line / ocrx_word boxes out of tesseract's hOCR.
 

@@ -25,9 +25,14 @@ import itertools
 import json
 import re
 import subprocess
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 from xml.etree import ElementTree
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+from watermarks import scrub  # noqa: E402  (sibling module)
 
 ROOT = Path('/home/user/zaban')
 CACHE = Path('/tmp/extract')
@@ -331,11 +336,18 @@ def repair_line(text, repair):
 
 
 def load_layout(pdf, key):
+    """The pages of a PDF as `pdftotext -layout` renders them.
+
+    Scrubbed on the way in. Two of these books carry a digitiser's address in
+    their own text layer, so it arrives without going anywhere near the OCR
+    reader that strips it from the scans - and it was reaching the extracted
+    lessons.
+    """
     CACHE.mkdir(parents=True, exist_ok=True)
     txt = CACHE / f'{key}.txt'
     if not txt.exists():
         subprocess.run(['pdftotext', '-layout', str(pdf), str(txt)], check=True)
-    pages = txt.read_text(encoding='utf-8', errors='replace').split('\f')
+    pages = scrub(txt.read_text(encoding='utf-8', errors='replace')).split('\f')
     # the final form feed yields a trailing empty element that is not a page
     if pages and not pages[-1].strip():
         pages.pop()
@@ -343,7 +355,7 @@ def load_layout(pdf, key):
 
 
 def node_text(el):
-    return html.unescape(''.join(el.itertext())).strip()
+    return scrub(html.unescape(''.join(el.itertext()))).strip()
 
 
 def bold_spans(el):

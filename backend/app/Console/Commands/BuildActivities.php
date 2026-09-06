@@ -1063,22 +1063,43 @@ class BuildActivities extends Command
         $candidates = DB::table('exercises')
             ->join('exercise_options', 'exercise_options.exercise_id', '=', 'exercises.id')
             ->whereIn('exercises.status', Exercise::SERVABLE_STATUSES)
-            ->where('exercises.validation_score', '>=', 1.0)
-            ->where('exercises.generation_method', 'like', 'derived%')
             ->whereNull('exercises.deleted_at')
+            ->where(function ($q) {
+                // Items this builder derived, which it validated itself, and
+                // items lifted whole from a book, which the book validated.
+                //
+                // The second kind was excluded, and that cost the bank every
+                // grammar item in the corpus - so the placement report kept
+                // saying "vocabulary" and nothing else, which is the fault the
+                // whole exercise began with. The distractors on a book's own
+                // choice item are better than any this builder can derive:
+                // they were written to be tempting and are wrong on purpose.
+                $q->where(function ($d) {
+                    $d->where('exercises.generation_method', 'like', 'derived%')
+                        ->where('exercises.validation_score', '>=', 1.0);
+                })->orWhere('exercises.generation_method', 'extracted');
+            })
             ->groupBy('exercises.id', 'exercises.stem', 'exercises.difficulty', 'exercises.generation_method')
-            ->havingRaw('COUNT(exercise_options.id) >= 4')
+            // Four options for a derived item, three for a book's own: the
+            // books print three-way choices, and refusing them to keep one
+            // rule leaves the top of the scale empty again.
+            ->havingRaw("COUNT(exercise_options.id) >= CASE WHEN exercises.generation_method = 'extracted' THEN 3 ELSE 4 END")
             ->havingRaw('SUM(exercise_options.is_correct) = 1')
             ->select([
                 'exercises.id',
                 'exercises.stem',
                 'exercises.difficulty',
                 'exercises.generation_method',
+                DB::raw('COUNT(exercise_options.id) as option_count'),
             ])
             ->get()
             ->filter(fn ($e) => $this->quality->isPlacementGrade($e->stem))
             ->reject(fn ($e) => in_array($e->id, $sameLesson, true))
-            ->sortBy(fn ($e) => $e->generation_method === 'derived_example' ? 0 : 1)
+            ->sortBy(fn ($e) => match ($e->generation_method) {
+                'extracted' => 0,        // the book's own item, distractors and all
+                'derived_example' => 1,  // a sentence the book printed
+                default => 2,            // a sentence read back off the page
+            })
             ->groupBy(fn ($e) => (string) floor(((float) $e->difficulty - $floor) / $step));
 
         $total = 0;
@@ -1095,8 +1116,20 @@ class BuildActivities extends Command
                 continue;
             }
 
-            $ids = $bin->take($perBin)->pluck('id');
+            $chosen = $bin->take($perBin);
+            $ids = $chosen->pluck('id');
             DB::table('exercises')->whereIn('id', $ids)->update(['is_placement_eligible' => true]);
+
+            // A three-way choice is guessed right a third of the time and a
+            // four-way a quarter, and the estimator has to know which it is
+            // asking or it reads a lucky guess as knowledge. Live attempts
+            // recalibrate this; it is the prior, not the answer.
+            foreach ($chosen->groupBy('option_count') as $options => $items) {
+                DB::table('exercises')
+                    ->whereIn('id', $items->pluck('id'))
+                    ->update(['guessing' => round(1 / max(2, (int) $options), 3)]);
+            }
+
             $total += $ids->count();
             $shape[] = sprintf('%+.1f:%d', $low, $ids->count());
         }
