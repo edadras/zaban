@@ -132,10 +132,10 @@ class ProfileScreen extends ConsumerWidget {
                 if (_staffRoles.contains(user.role))
                   _row(
                     context,
-                    icon: Icons.library_books_rounded,
-                    title: 'Curriculum',
-                    subtitle: 'What is published, and what is ready to be',
-                    onTap: () => context.push(AppRoute.adminCurriculum.path),
+                    icon: Icons.admin_panel_settings_rounded,
+                    title: 'Admin',
+                    subtitle: 'The corpus, AI spend, review queue, publishing',
+                    onTap: () => context.push(AppRoute.admin.path),
                   ),
                 const SizedBox(height: Spacing.xl),
                 GlowButton(

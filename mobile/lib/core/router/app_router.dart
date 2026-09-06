@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/storage/preferences_store.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
+import 'package:zaban/features/admin/presentation/admin_home_screen.dart';
 import 'package:zaban/features/admin/presentation/book_lessons_screen.dart';
 import 'package:zaban/features/admin/presentation/curriculum_screen.dart';
 import 'package:zaban/features/auth/data/models/user.dart';
@@ -204,6 +205,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       // Admin. Outside the tab shell because it is not part of learning, and
       // redirected away from anyone whose account does not carry a staff role
       // - the server refuses them anyway, and a 403 is a worse way to find out.
+      GoRoute(
+        path: AppRoute.admin.path,
+        name: AppRoute.admin.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (_, __) => const AdminHomeScreen(),
+      ),
       GoRoute(
         path: AppRoute.adminCurriculum.path,
         name: AppRoute.adminCurriculum.name,

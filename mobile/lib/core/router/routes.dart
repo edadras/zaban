@@ -33,6 +33,7 @@ enum AppRoute {
   settings('/profile/settings', 'settings'),
 
   /// Admin. Hidden from a learner by the router and refused by the server.
+  admin('/admin', 'admin'),
   adminCurriculum('/admin/curriculum', 'adminCurriculum'),
   adminBook('/admin/curriculum/:bookId', 'adminBook');
 
