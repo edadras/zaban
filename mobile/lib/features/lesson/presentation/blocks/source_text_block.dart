@@ -7,6 +7,7 @@ import 'package:zaban/features/lesson/presentation/blocks/block_scope.dart';
 import 'package:zaban/features/lesson/presentation/widgets/audio_player_button.dart';
 import 'package:zaban/features/lesson/presentation/blocks/reading_view.dart';
 import 'package:zaban/features/lesson/presentation/widgets/block_frame.dart';
+import 'package:zaban/features/lesson/presentation/widgets/pattern_forms.dart';
 import 'package:zaban/features/lesson/presentation/widgets/word_sheet.dart';
 
 /// `source_text` — teaching prose lifted from the book, with the unit's own
@@ -25,6 +26,7 @@ class SourceTextBlock extends StatelessWidget {
   Widget build(BuildContext context) {
     final audioUrl = block.audioUrl;
     final reading = block.reading;
+    final forms = block.targetForms;
 
     return BlockFrame(
       eyebrow: scope.eyebrow ?? 'Read',
@@ -66,6 +68,13 @@ class SourceTextBlock extends StatelessWidget {
               block.text ?? '',
               style: context.text.bodyLarge?.copyWith(height: 1.7),
             ),
+          // A grammar page teaches a pattern rather than words, and says which
+          // forms of it in bold. Collected here, under the text, so the reader
+          // can see what the page was about before the practice starts.
+          if (forms.isNotEmpty) ...<Widget>[
+            const SizedBox(height: Spacing.xl),
+            PatternForms(forms: forms),
+          ],
         ],
       ),
     );

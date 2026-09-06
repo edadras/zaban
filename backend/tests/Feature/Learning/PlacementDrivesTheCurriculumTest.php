@@ -29,7 +29,9 @@ class PlacementDrivesTheCurriculumTest extends TestCase
         parent::setUp();
         $this->seed(ReferenceDataSeeder::class);
         $this->courses = app(CoursePlacementService::class);
-        $this->buildLadder();
+        // Built as the vocabulary series, because that is what the real import
+        // produces and what the spine ladder is.
+        $this->buildLadder('vocabulary');
     }
 
     public function test_a_beginner_and_an_advanced_learner_are_sent_to_different_books(): void
@@ -147,13 +149,67 @@ class PlacementDrivesTheCurriculumTest extends TestCase
         );
     }
 
+    /**
+     * The corpus grew from four books to sixteen, across six series that each
+     * run their own elementary-to-advanced ladder. Ordering all of them
+     * together by level would hand a learner placed at B1 whichever book
+     * sorted first at B1, and "finishing" it would move them sideways into a
+     * different subject and call that promotion.
+     */
+    public function test_a_second_series_does_not_get_into_the_spine_ladder(): void
+    {
+        $this->buildLadder('grammar', 'g-');
+
+        $spine = $this->courses->ladder('vocabulary');
+
+        $this->assertSame(
+            ['elementary', 'middle', 'upper', 'advanced'],
+            $spine->pluck('slug')->all(),
+            'the spine ladder picked up books from another series',
+        );
+
+        $grammar = $this->courses->ladder('grammar');
+        $this->assertSame(
+            ['g-elementary', 'g-middle', 'g-upper', 'g-advanced'],
+            $grammar->pluck('slug')->all(),
+        );
+    }
+
+    public function test_finishing_a_book_moves_a_learner_up_not_sideways(): void
+    {
+        $this->buildLadder('grammar', 'g-');
+
+        $firstGrammar = (int) $this->courses->ladder('grammar')->first()->version_id;
+
+        $this->assertSame(
+            'g-middle',
+            $this->slugOf($this->courses->nextVersionAfter($firstGrammar)),
+            'promotion left the series the learner was studying',
+        );
+    }
+
+    public function test_every_series_offers_the_learner_a_book_at_their_level(): void
+    {
+        $this->buildLadder('grammar', 'g-');
+
+        $strands = $this->courses->strandsForAbility(1.0);
+
+        $this->assertSame(['vocabulary', 'grammar'], array_keys($strands));
+        $this->assertSame('upper', $this->slugOf($strands['vocabulary']));
+        $this->assertSame(
+            'g-upper',
+            $this->slugOf($strands['grammar']),
+            'a B2 learner was offered the elementary book of the second series',
+        );
+    }
+
     // ------------------------------------------------------------- fixtures
 
     /**
      * Four courses spanning the ladder, each with one module, one unit and two
      * lessons, matching the shape the real import produces.
      */
-    private function buildLadder(): void
+    private function buildLadder(string $track = 'general', string $prefix = ''): void
     {
         $languageId = DB::table('languages')->where('code', 'en')->value('id');
         $levels = DB::table('cefr_levels')->pluck('id', 'code');
@@ -166,13 +222,17 @@ class PlacementDrivesTheCurriculumTest extends TestCase
         ];
 
         foreach ($books as $position => [$slug, $from, $to, $difficulty]) {
+            $slug = $prefix.$slug;
+            if (DB::table('courses')->where('slug', $slug)->exists()) {
+                continue;
+            }
             $courseId = DB::table('courses')->insertGetId([
                 'slug' => $slug,
                 'language_id' => $languageId,
                 'from_cefr_level_id' => $levels[$from],
                 'to_cefr_level_id' => $levels[$to],
                 'title' => ucfirst($slug),
-                'track' => 'general',
+                'track' => $track,
                 'is_active' => true,
                 'created_at' => now(), 'updated_at' => now(),
             ]);

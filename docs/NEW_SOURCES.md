@@ -1,98 +1,183 @@
-# The 26 new source files
+# The twelve new books
 
-Extracted from the `new` branch on 2026-09-06. Nothing is imported yet; this is
-what came out of the archives and what state each book is in.
+Extracted from the `new` branch on 2026-09-06, read, and imported. This is what
+came out of the archives, what state each book turned out to be in, and what
+had to be built to use it.
 
-Staged under `sources/incoming/` (3.1 GB, untracked). The archives themselves are
-in Git LFS on `new` and were deleted locally after extraction — nothing is lost
-by that, and re-extracting is one `git show … | git lfs smudge` away.
+## Correction to the first survey
 
-## What is genuinely new
+The first pass through these files sorted them by how many characters
+`pdftotext` returned, and got one of them wrong. `Pronunciation in Use
+Advanced` returns 484,237 characters and was counted as a book with a text
+layer. It is not. What it carries is an old OCR layer with the letters spaced
+apart, so "dictionary" is stored as `d i cti o n a ry` and `/stɔːk/` as
+`/st:): ki`. **A fifth of its tokens are stray single letters.**
 
-Eleven books across five series the corpus did not have, and 6,192 new
-recordings. The largest gap this closes is grammar: the corpus had **zero**
-grammar concepts and zero grammar items, and three grammar books arrive here.
+Measured rather than eyeballed, on three samples from each book:
 
-| Series | Book | Pages | Text layer |
-|---|---|---|---|
-| Grammar in Use | Basic (4th) | 319 | **scanned** |
-| Grammar in Use | Intermediate | 394 | text |
-| Grammar in Use | Advanced | 306 | **scanned** |
-| Pronunciation in Use | Elementary | 168 | **scanned** |
-| Pronunciation in Use | Intermediate | 201 | **scanned** |
-| Pronunciation in Use | Advanced | 191 | text |
-| Phrasal Verbs in Use | Intermediate | 202 | **scanned** |
-| Phrasal Verbs in Use | Advanced | 194 | text |
-| Collocations in Use | Intermediate | 193 | **scanned** |
-| Collocations in Use | Advanced | 189 | **scanned** |
-| Idioms in Use | Intermediate | 181 | **scanned** |
-| Idioms in Use | Advanced | 182 | **scanned** |
+| Book | Stray single letters | Words in a dictionary |
+|---|---|---|
+| Grammar in Use — Intermediate | 0.8% | 95% |
+| Phrasal Verbs in Use — Advanced | 0.7% | 97% |
+| **Pronunciation in Use — Advanced** | **20.4%** | 89% |
+| the other nine | — | no text at all |
 
-### Three books can be imported today
+So two books had a usable text layer, not three, and ten had to be read from
+their page images. Re-read with `tools/ocr_book.py`, the same page of
+Pronunciation in Use Advanced comes back as *"Use a dictionary with IPA to help
+you match the words with their pronunciations."*
 
-`English Grammar in Use — Intermediate` (956k characters), `Phrasal Verbs in Use
-— Advanced` (527k) and `Pronunciation in Use — Advanced` (484k) carry a real text
-layer and go through the existing extraction pipeline unchanged.
+## What is in the corpus now
 
-### Nine books are page images
+| Series | Book | Pages | Text from | Units |
+|---|---|---|---|---|
+| Vocabulary | Elementary | 176 | text layer | 60 |
+| Vocabulary | Pre-intermediate and Intermediate | 265 | text layer | 100 |
+| Vocabulary | Upper-intermediate | 280 | text layer | 101 |
+| Vocabulary | Advanced | 303 | text layer | 101 |
+| Grammar | Basic | 319 | OCR | 113 |
+| Grammar | Intermediate | 394 | text layer | 145 |
+| Grammar | Advanced | 306 | OCR | 99 |
+| Pronunciation | Elementary | 168 | OCR | 49 |
+| Pronunciation | Intermediate | 201 | OCR | 58 |
+| Pronunciation | Advanced | 191 | OCR | 60 |
+| Phrasal Verbs | Intermediate | 202 | OCR | 60 |
+| Phrasal Verbs | Advanced | 194 | text layer | 60 |
+| Collocations | Intermediate | 193 | OCR | — |
+| Collocations | Advanced | 189 | OCR | — |
+| Idioms | Intermediate | 181 | OCR | — |
+| Idioms | Advanced | 182 | OCR | — |
 
-1,941 pages with no text in them at all — one or two characters per page, which
-is the page number. `pdftotext` returns nothing usable and no amount of parser
-work changes that; they have to be read by OCR before any of the pipeline
-applies. No OCR tool is installed in this environment (`tesseract` and
-`ocrmypdf` are both absent), and the project's own vision path is the designed
-answer: `source_pages.used_vision` exists for exactly this, and the AI layer can
-read a page image. That is a real cost — roughly 1,941 page images through a
-vision model — and needs a decision before it is spent.
+Six series where there were one. Grammar is the largest gap this closes: the
+corpus had **zero** grammar concepts and zero grammar items, while claiming a
+grammar level in every placement report.
+
+## Reading a scanned page
+
+`tools/ocr_book.py` renders each page and reads it, and returns it in the shape
+the rest of the pipeline already expects — the page laid out on a character
+grid with its columns still side by side, plus every word with its box, its
+confidence and whether it is bold. Three things in it were not obvious.
+
+**Tesseract fights itself.** It is built against OpenMP and takes a thread per
+core. Run four readers at once and they spend their time spinning on each
+other: a page that reads in three seconds took over nine minutes, with all four
+cores pinned and nothing coming out. Each reader is now held to one thread and
+the pool provides the concurrency.
+
+**Reversed type defeats a reader twice.** The series prints its section spine
+as a white letter in a navy pill. The panel reads as a picture, so the letter
+in it is lost — and because the panel shares a line with the section title, it
+drags that down too: `A  Make` came back as `Ps nae` while every other word on
+the page read correctly. Painting the panels out costs more than it saves; with
+the table's header gone, the reader stopped recognising the table and dropped
+nine of its thirteen rows. So the page is left exactly as it is and only the
+strips containing a panel are lifted out, inverted and read again.
+
+**Bold is the headword list.** These books set every taught item in bold, and
+Tesseract 5 no longer reports font weight. It is recovered from the ink: a bold
+word fills more of its own box than a regular word of the same size on the same
+page. Checked against the printed page, the detection is exact on the
+Collocations table — every phrase the book bolds, and nothing else.
+
+Render resolution is set by page width rather than fixed, because these PDFs do
+not agree on how big a page is. Most declare A4; one declares its pages 1,918
+points across, so a fixed 300 dpi produced a 91-megapixel image of the same
+amount of text — fifteen times the work for no more detail.
+
+## Finding the units
+
+Four rules, each added because a book broke the one before it.
+
+* **Grammar in Use** prints `Unit` on its own line with the number below, and
+  puts the first half of a long title beside the word. Read with the
+  number-first rule it has no units at all.
+* **"60 units of vocabulary reference and practice"** on a cover reads exactly
+  like unit 60. A heading page now has to come after the contents list — except
+  that Phrasal Verbs unit 11 is prose on a page with no other marker, so a
+  second round takes back any unit whose page falls between its neighbours',
+  which a cover never does.
+* **Basic Grammar in Use prints no unit number on a teaching page at all.** The
+  number is in a coloured tab, which is artwork. All 113 units arrived
+  titleless. The facing page gives it away: exercises are numbered
+  `<unit>.<n>`, so the exercises page names the unit and the teaching page is
+  the one before it.
+* **Advanced Grammar prints its exercise numbers in coloured discs too**, and
+  only eleven of its hundred exercises pages give up a readable label. The book
+  is regular — one teaching page and one exercises page per unit — and its
+  contents says how many units there are, so when the exercises pages number
+  exactly as many as the units, the nth is the nth. That equality is the whole
+  safeguard.
+* **Pronunciation in Use Elementary** loses about three unit numbers in four to
+  a small pale figure beside a large title. Every unit that did come through
+  sat on page 2n+9, so the pitch is voted on and the rest filled in from it.
+
+Titles come from the book's own contents list, which beats any page heading and
+beats it badly on a scan, where the largest line is as likely to be a caption.
+The numeral column is the first thing a scan loses — units 2 to 9 of Basic
+Grammar came back as the single line `WO WON HRW` — so an entry with no number
+is given one only when the gap between its neighbours fills exactly.
 
 ## Audio
 
-| Source | Files | Format | Size |
-|---|---|---|---|
-| Advanced Grammar CD-ROM | 2,445 | mp3 | 355 MB |
-| Basic Grammar in Use | 2,421 | mp3 | 276 MB |
-| Grammar in Use Intermediate | 580 | mp3 | 288 MB |
-| Pronunciation in Use Advanced | 386 | mp3 | 214 MB |
-| Pronunciation in Use Intermediate | 360 | mp3 | 258 MB |
-| Pronunciation in Use Elementary | 351 | **wma** | 318 MB |
+| Book | Files | Named by |
+|---|---|---|
+| Advanced Grammar (disc) | 2,445 | the disc's own clip ids |
+| Basic Grammar | 2,421 | unit directory, section directory, printed page |
+| Grammar Intermediate | 580 | unit and section in the filename |
+| Pronunciation Advanced | 386 | CD and track |
+| Pronunciation Intermediate | 360 | CD and track |
+| Pronunciation Elementary | 351 | CD and track, as **WMA** |
 
-6,192 new mp3 plus 351 WMA, against the 1,162 recordings the project holds now.
+6,543 recordings, against the 1,162 the project had. `tools/place_audio.py`
+renames every one to a shape that says what it is, and records where it came
+from, so the renaming can be checked against the archive rather than believed.
+The WMA set is transcoded, since neither the application nor the project's own
+duration reader can open it. Two of the archives stamped a shop's address into
+every directory name; none of that travels into the project.
 
-The Elementary pronunciation set is Windows Media Audio, which neither the app
-nor `media:measure` can read. It needs transcoding to mp3, and `ffmpeg` is not
-installed here either.
+Nothing is filed on a hunch. The pronunciation books number their audio by CD
+track and say nothing about units, so those are attached only where the book
+itself prints the track beside an exercise. The marker is set inside a
+headphone icon, which is artwork, so about half of them are read — 168 of 386
+in the Advanced book. The rest stay in the inventory without a unit rather than
+being spread over the units in proportion, because a recording played in the
+wrong lesson is worse than one a learner has to find for themselves.
 
-## The Advanced Grammar CD-ROM is the find
+Everything is measured: **51.6 hours** of audio, every file sized and timed.
 
-`34-Advanced Grammar in Use CD_ROM.zip` is not a book — it is the interactive
-disc, and it holds the exercises as **structured data**:
+## The disc is the find
 
-- 226 exercise XML files across 14 thematic sections covering units 1–100
-- each carrying its rubric, its items, the wrong and corrected forms, and
-  per-item audio references
-- 2,445 mp3 files those items point at
+`Advanced Grammar in Use CD_ROM` is not a book. It is the same book's exercises
+published as data: 226 files across 14 sections covering units 1–100, each
+carrying its rubric, its items, which blank takes which words, the wrong form
+and the corrected form for the correction drills, the options for the choice
+drills, and a recording per item.
 
-For example, one file gives the instruction "Are the underlined phrases correct?
-If not, correct them with one of the phrases in brackets", then the wrong form
-"All of my family don't live", the right form "Not all of my family live", and
-the sentence they complete.
+That matters because the readiness report has been stuck on exactly this line:
+*answers exist as raw answer-key prose, not per-blank values*. A printed
+exercise imports as one row per instruction — its numbered parts are typography
+and its answers are sixty pages away — which is why no exercise from any book
+has ever been servable.
 
-This matters because the readiness report has been blocked on exactly this:
-*"answers exist as raw answer-key prose, not per-blank values"*. The books'
-printed exercises import as one row per instruction because their numbered parts
-live on the page. Here the parts and their answers are machine-readable.
+From the disc: **2,328 items, 2,302 of them markable, 2,281 imported as
+servable**, with 2,790 answers, 2,130 options and 1,956 recordings attached.
+17 items whose answer the disc does not state are flagged rather than guessed,
+and 25 are held as draft: marking a learner wrong on an answer we invented is
+worse than not asking them.
+
+Half of the correction drills — 170 of 360 — are sentences that are already
+right, because the rubric asks *whether* they are correct before asking to fix
+them. Those are marked as such, or an interface that only offers "edit this"
+would mark a learner wrong for correctly changing nothing.
+
+The disc's 226 exercise files and its 45-sound phonemic chart are kept in the
+repository at `sources/cdrom` — 5.6 MB of XML, against the 355 MB disc image —
+so the extraction can be rerun without it.
 
 ## What is a duplicate
 
-Five of the 26 files are copies of material already in the repository, verified
-by checksum rather than by name:
-
-- all four `English Vocabulary in Use` PDFs — byte-identical to `sources/*.pdf`
-- all four vocabulary audio archives — 1,162 of 1,162 files byte-identical to
-  `sources/audio/` (205 elementary, 318 pre-int/int, 351 upper-int, 288 advanced)
-
-They need no action.
-
-## Sizes
-
-3.1 GB extracted. The vocabulary duplicates were removed after verification.
+Five of the twenty-six files are copies of material already in the repository,
+verified by checksum rather than by name: all four `English Vocabulary in Use`
+PDFs are byte-identical to `sources/*.pdf`, and all four vocabulary audio
+archives are 1,162 of 1,162 files byte-identical to `sources/audio/`.

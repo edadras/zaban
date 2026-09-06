@@ -228,7 +228,11 @@ class ImportCurriculum extends Command
                 'to_cefr_level_id' => $this->cefr[$toCode],
                 'title' => "{$courseTitle} — {$data['course']}",
                 'description' => "Adaptive curriculum derived from the {$data['course']} book of {$strand}.",
-                'track' => 'general',
+                // The series is what keeps a ladder a ladder: a learner who
+                // finishes the elementary vocabulary book should move up to
+                // the next vocabulary book, not sideways into elementary
+                // grammar. See CoursePlacementService.
+                'track' => $series,
                 'is_active' => true,
             ],
         );

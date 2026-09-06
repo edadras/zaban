@@ -96,32 +96,97 @@ class SourceDocumentLabellingTest extends TestCase
         );
     }
 
-    public function test_a_level_word_identifies_exactly_one_book(): void
+    public function test_a_level_word_identifies_exactly_one_book_in_its_series(): void
     {
         // The real failure was "Advancing" answering a search for "Advanc"
         // while being a different book from the one the reader meant.
+        //
+        // The corpus now holds six series, and each runs the same ladder, so a
+        // level word on its own no longer picks out a book: there is an
+        // Elementary vocabulary book and an Elementary pronunciation book, and
+        // both should answer to "Elementary". What must stay unambiguous is a
+        // level within a series - two Advanced grammar books would be the old
+        // fault back again.
         $titles = $this->corpus()->table('source_documents')->pluck('title');
 
         if ($titles->isEmpty()) {
             $this->markTestSkipped('No corpus imported in this environment.');
         }
 
-        foreach (['Elementary', 'Upper-intermediate', 'Advanced'] as $word) {
-            $matches = $titles->filter(fn ($t) => str_contains($t, $word));
+        $series = ['Vocabulary', 'Grammar', 'Pronunciation', 'Phrasal Verbs',
+            'Collocations', 'Idioms'];
 
-            $this->assertLessThanOrEqual(
-                1,
-                $matches->count(),
-                "\"{$word}\" matches more than one book: ".$matches->implode(', '),
-            );
+        foreach ($series as $strand) {
+            $inSeries = $titles->filter(fn ($t) => str_contains($t, $strand));
+
+            foreach (['Elementary', 'Basic', 'Pre-intermediate', 'Upper-intermediate',
+                'Intermediate', 'Advanced'] as $word) {
+                $matches = $inSeries->filter(fn ($t) => str_contains($t, $word));
+
+                // "Intermediate" is inside "Pre-intermediate" and
+                // "Upper-intermediate", so it is only counted where it stands
+                // on its own.
+                if ($word === 'Intermediate') {
+                    $matches = $matches->reject(
+                        fn ($t) => str_contains($t, 'Pre-intermediate')
+                            || str_contains($t, 'Upper-intermediate'),
+                    );
+                }
+
+                $this->assertLessThanOrEqual(
+                    1,
+                    $matches->count(),
+                    "\"{$word}\" matches more than one {$strand} book: ".$matches->implode(', '),
+                );
+            }
         }
     }
 
-    public function test_every_book_actually_carries_vocabulary(): void
+    public function test_every_book_actually_teaches_something(): void
     {
         // The report that started this was "two books have zero senses". They
         // did not - but if one ever genuinely does, that should fail loudly
         // rather than be discovered by eye.
+        //
+        // What counts as a taught item depends on the book. A vocabulary,
+        // phrasal verb, collocation or idiom book teaches words, so its
+        // concepts hang off senses. A grammar or pronunciation book teaches a
+        // pattern - its concepts hang off the lesson that teaches it - and
+        // demanding senses of those books would fail every one of them for
+        // being what they are.
+        $rows = $this->corpus()->table('source_documents')
+            ->select('source_documents.id', 'source_documents.title')
+            ->selectRaw('(
+                select count(distinct concepts.id)
+                from lessons
+                join lesson_concept on lesson_concept.lesson_id = lessons.id
+                join concepts on concepts.id = lesson_concept.concept_id
+                where lessons.source_document_id = source_documents.id
+            ) as concepts')
+            ->get();
+
+        if ($rows->isEmpty()) {
+            $this->markTestSkipped('No corpus imported in this environment.');
+        }
+
+        foreach ($rows as $row) {
+            $this->assertGreaterThan(
+                0,
+                (int) $row->concepts,
+                "\"{$row->title}\" has nothing attached to any of its lessons to teach",
+            );
+        }
+    }
+
+    /**
+     * A word book must still carry words.
+     *
+     * Splitting the previous test by series is what keeps it honest: relaxing
+     * it to "concepts of any kind" for the grammar books would otherwise let a
+     * vocabulary book pass with no vocabulary in it at all.
+     */
+    public function test_every_word_book_carries_vocabulary(): void
+    {
         $rows = $this->corpus()->table('source_documents')
             ->select('source_documents.id', 'source_documents.title')
             ->selectRaw('(
@@ -139,7 +204,17 @@ class SourceDocumentLabellingTest extends TestCase
             $this->markTestSkipped('No corpus imported in this environment.');
         }
 
+        $wordBooks = ['Vocabulary', 'Phrasal Verbs', 'Collocations', 'Idioms'];
+
         foreach ($rows as $row) {
+            $teachesWords = false;
+            foreach ($wordBooks as $strand) {
+                $teachesWords = $teachesWords || str_contains($row->title, $strand);
+            }
+            if (! $teachesWords) {
+                continue;
+            }
+
             $this->assertGreaterThan(
                 0,
                 (int) $row->senses,

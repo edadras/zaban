@@ -159,6 +159,22 @@ extension LessonBlockConfigX on LessonBlock {
     return parsed.isEmpty ? null : parsed;
   }
 
+  /// `source_text` in a grammar or pronunciation lesson — the forms the page
+  /// sets in bold.
+  ///
+  /// These books do not teach words, they teach a pattern, and the bold runs
+  /// are the forms that pattern is shown in ("I'm doing", "he's been working").
+  /// Filed as vocabulary they were nonsense; shown together they are the point
+  /// of the lesson.
+  List<String> get targetForms {
+    final value = config['target_forms'];
+    if (value is! List) return const <String>[];
+    return value
+        .map((dynamic e) => '$e'.trim())
+        .where((String e) => e.isNotEmpty)
+        .toList(growable: false);
+  }
+
   /// `flashcard`
   String? get front => config['front'] as String?;
   String? get back => config['back'] as String?;

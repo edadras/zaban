@@ -21,6 +21,7 @@ list. Each run is attributed to a section by vertical position on the page.
 """
 import argparse
 import html
+import itertools
 import json
 import re
 import subprocess
@@ -623,6 +624,32 @@ def contents_rows(page):
             if len(t) >= 2 and sum(ch.isalpha() for ch in t) >= 2]
 
 
+def longest_run(pairs):
+    """Which of these entries are the run the contents page is listing.
+
+    A mis-read number is not merely a wrong title, it is a wrong title filed
+    under a real unit. The Pronunciation in Use contents lists units 41 to 50
+    on one page, and "41]" came back as "4]" - so unit 4, forty pages earlier,
+    was given unit 41's title. Contents entries run consecutively, so the
+    longest chain that does is the list, and anything outside it is a mis-read.
+
+    @param pairs list[(number, row index)] in page order
+    @return set of row indices to keep
+    """
+    if not pairs:
+        return set()
+
+    best = current = [pairs[0]]
+    for entry in pairs[1:]:
+        if 1 <= entry[0] - current[-1][0] <= 3:
+            current.append(entry)
+        else:
+            current = [entry]
+        if len(current) > len(best):
+            best = current
+    return {index for _, index in best}
+
+
 def number_contents(rows):
     """Give the unnumbered entries the numbers the scan lost.
 
@@ -638,9 +665,12 @@ def number_contents(rows):
     further left - while still keeping an entry whose own first words were lost
     to the scan and which therefore begins further right than its neighbours.
     """
-    numbered = [(n, c, t) for n, c, t in rows if n is not None]
-    if len(numbered) < 4:
+    numbered_at = [i for i, (n, _, _) in enumerate(rows) if n is not None]
+    kept = set(longest_run([(rows[i][0], i) for i in numbered_at]))
+    if len(kept) < 4:
         return []
+    rows = [row for i, row in enumerate(rows) if row[0] is None or i in kept]
+    numbered = [row for row in rows if row[0] is not None]
 
     columns = sorted(c for _, c, _ in numbered)
     title_column = columns[len(columns) // 2]
@@ -739,7 +769,10 @@ def candidate_headings(layout_pages, style):
         if number is None or not (1 <= number <= 200):
             continue
 
-        title = re.sub(r'\s{3,}.*$', '', title).strip()
+        # A scan spaces the words of a heading out, so cutting at three
+        # spaces truncated "Father and mother" to "Father". Only a gap wide
+        # enough to be a second column is a cut; the rest is closed up.
+        title = tidy_title(re.sub(r'\s{8,}.*$', '', title))
         # Two characters is a real unit title in this family: Phrasal Verbs in
         # Use has units called "In", "Up" and "On".
         if len(title) < 2 or RE_FOOTER.search(title):
@@ -799,9 +832,82 @@ def find_units(layout_pages, style='number_first'):
         if lower < c['teaching_page'] < upper:
             units[c['number']] = {k: c[k] for k in ('number', 'title', 'teaching_page')}
 
+    contents_titles = titles_from_contents(layout_pages)
     units.update(units_behind_exercises(layout_pages, units))
-    units.update(units_by_sequence(layout_pages, titles_from_contents(layout_pages), units))
+    units.update(units_by_sequence(layout_pages, contents_titles, units))
+    units.update(units_by_stride(found, contents_titles, len(layout_pages), front_matter, units))
     return drop_out_of_order(units)
+
+
+def units_by_stride(found, contents, page_count, front_matter, taken):
+    """Fill in the units whose heading the scan lost, from the book's pitch.
+
+    These books are laid out to a fixed pitch: one teaching page, one exercises
+    page, all the way through. So the pages of the units that were read state
+    where the rest are - in Pronunciation in Use Elementary every unit that came
+    through sat on page 2n+9, and only fourteen of its sixty came through,
+    because the number is set small and pale beside a large title and the reader
+    dropped it about three times in four.
+
+    The pitch is voted on rather than assumed: pairs of found units each imply a
+    stride and an offset, and the fit is only used when most of the units agree
+    on the same one. Two or three headings that happen to be evenly spaced
+    cannot carry it - and where a book is not laid out to a pitch, no majority
+    forms and nothing is filled.
+
+    Units placed this way are marked, because their page is inferred from the
+    book's rhythm rather than read off the page.
+    """
+    seen = [(c['number'], c['teaching_page']) for c in found
+            if c['teaching_page'] > front_matter]
+    if len(seen) < 6:
+        return {}
+
+    votes = Counter()
+    for (n1, p1), (n2, p2) in itertools.combinations(seen, 2):
+        if n1 == n2:
+            continue
+        span = p2 - p1
+        gap = n2 - n1
+        if gap == 0 or span % gap != 0:
+            continue
+        stride = span // gap
+        if not (1 <= stride <= 4):
+            continue
+        votes[(stride, p1 - stride * n1)] += 1
+
+    if not votes:
+        return {}
+
+    (stride, offset), _ = votes.most_common(1)[0]
+    agreeing = [n for n, page in seen if page == stride * n + offset]
+    if len(agreeing) < 6 or len(agreeing) < 0.6 * len(seen):
+        return {}
+
+    # How far the run of units goes. The contents says so when it was read;
+    # otherwise trust only as far as the headings themselves reach.
+    last = max(contents) if contents else max(agreeing)
+
+    claimed = {u['teaching_page'] for u in taken.values() if u.get('teaching_page')}
+    filled = {}
+    for number in range(1, last + 1):
+        if number in taken:
+            continue
+        page = stride * number + offset
+        if page <= front_matter or page + 1 > page_count or page in claimed:
+            continue
+        title = contents.get(number)
+        filled[number] = {
+            'number': number,
+            'title': title or f'Unit {number}',
+            'teaching_page': page,
+            'title_source': 'contents' if title else None,
+            'page_source': 'stride',
+            'needs_title_review': title is None,
+        }
+        claimed.add(page)
+
+    return filled
 
 
 def drop_out_of_order(units):
@@ -858,9 +964,16 @@ def units_by_sequence(layout_pages, contents, taken=None):
     # How many units the book has, rather than how many the contents gave up:
     # a few entries are always lost to the scan, and the last number is what
     # says where the list ends.
-    unit_count = max(contents)
+    # One exercises page per unit, so counting them counts the units. The
+    # contents is the check on that rather than the source of it: a scan always
+    # loses entries - Advanced Grammar lost its first eight and Pronunciation in
+    # Use Advanced its last eight - so the contents' largest number is a floor,
+    # not the total. It has to fall inside the count and close to it, or the
+    # pages being counted are not one per unit and nothing is assigned.
     pages = [i + 1 for i, page in enumerate(layout_pages) if is_exercises_page(page)]
-    if min(contents) != 1 or len(pages) != unit_count:
+    unit_count = len(pages)
+    listed = max(contents)
+    if unit_count == 0 or listed > unit_count or listed < 0.8 * unit_count:
         return {}
 
     claimed = {u['teaching_page'] for u in taken.values() if u.get('teaching_page')}
@@ -1260,6 +1373,56 @@ def audio_map(book):
     return by_unit, unattached
 
 
+# How the pronunciation books cite a recording: the CD's letter and the track
+# number, printed inside a small headphone icon beside the exercise.
+RE_TRACK_MARKER = re.compile(r'(?<![A-Za-z0-9])([A-E])\s?(\d{1,3})(?![0-9A-Za-z])')
+
+
+def attach_tracks(units, layout, unattached):
+    """Give the pronunciation recordings to the units that cite them.
+
+    These three books number their audio by CD track, not by unit, so a
+    filename says "CD B, track 17" and nothing about where it belongs. The
+    books themselves say: each exercise prints the track it needs beside it.
+
+    The marker is set inside a headphone icon, which is artwork, so the reader
+    gets perhaps half of them - 213 markers against 386 tracks in the Advanced
+    book. Half is what is attached. The rest stay in the inventory without a
+    unit rather than being spread over the units in proportion, because a
+    recording played in the wrong lesson is worse than one a learner has to
+    find for themselves.
+
+    @return number of recordings attached
+    """
+    by_label = {}
+    for entry in unattached:
+        label = entry.get('track')
+        if label:
+            by_label.setdefault(label, entry)
+    if not by_label:
+        return 0
+
+    attached = 0
+    for unit in units:
+        page = unit.get('source_page')
+        if not page:
+            continue
+
+        # The unit's own spread: the teaching page and the exercises facing it.
+        text = ' '.join(layout[i] for i in (page - 1, page)
+                        if 0 <= i < len(layout))
+
+        for letter, number in RE_TRACK_MARKER.findall(text):
+            entry = by_label.get(f'{letter}{int(number)}')
+            if entry is None or entry.get('unit') is not None:
+                continue
+            entry['unit'] = unit['number']
+            unit['audio'].append({**entry, 'section': None})
+            attached += 1
+
+    return attached
+
+
 def load_pages(book):
     """Everything the parsers need to read this book, however it was stored."""
     key = book['key']
@@ -1385,6 +1548,8 @@ def build(book):
             'char_count': len(body),
             'is_answer_key': answer_start is not None and i >= answer_start,
         })
+
+    attach_tracks(units, layout, unattached_audio)
 
     all_audio = []
     for unit_no, files in sorted(audio.items()):

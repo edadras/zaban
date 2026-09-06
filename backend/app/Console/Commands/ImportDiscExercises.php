@@ -170,6 +170,13 @@ class ImportDiscExercises extends Command
                 'cefr_level_id' => $cefr,
                 'stem' => Str::limit($stem, 1000, ''),
                 'instructions' => Str::limit($exercise['rubric'] ?: 'Complete the sentence.', 1000, ''),
+                // Half the sentences in a correction drill are already right -
+                // the rubric asks whether they are, not to change them - and
+                // an interface that only offers "edit this" cannot express
+                // that answer, so it has to be told.
+                'payload' => $item['shape'] === 'correction'
+                    ? ['already_correct' => (bool) ($item['unchanged'] ?? false)]
+                    : null,
                 'difficulty' => $this->difficultyFor($cefr),
                 'status' => $servable ? 'approved' : 'draft',
                 'generation_method' => 'extracted',

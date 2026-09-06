@@ -166,10 +166,18 @@ def read_question(block: str, kind: str):
     start = first('start_text', block)
     correct = first('correct_text', block)
     if start or correct:
+        wrong = plain(start)
+        right = plain(correct) or None
         return {
             'shape': 'correction',
-            'stem': plain(start),
-            'answer': plain(correct) or None,
+            'stem': wrong,
+            'answer': right,
+            # Some sentences in a correction drill are already right - the
+            # rubric asks whether they are, not to change them - so an item
+            # where the two forms match is a real item whose answer is "leave
+            # it alone", not a broken one. Saying so here is what lets the
+            # application present it as a judgement rather than an edit.
+            'unchanged': right is not None and wrong == right,
             'model_answer': model,
             'audio': audio,
             'is_example': is_example,
@@ -315,6 +323,7 @@ def main():
             exercises.append(parsed)
 
     shapes = Counter()
+    unchanged = 0
     marked = 0
     unmarkable = []
     audio = 0
@@ -323,6 +332,8 @@ def main():
             shapes[item['shape']] += 1
             if item.get('audio'):
                 audio += 1
+            if item.get('unchanged'):
+                unchanged += 1
             if answerable(item):
                 marked += 1
             elif not item['is_example']:
@@ -343,6 +354,7 @@ def main():
             'markable_items': marked,
             'items_with_audio': audio,
             'shapes': dict(shapes),
+            'corrections_already_right': unchanged,
             'unmarkable': unmarkable,
         },
     }
@@ -356,6 +368,7 @@ def main():
     print(f"items {total}, markable {marked} ({marked / total:.0%}), with audio {audio}")
     for shape, n in shapes.most_common():
         print(f'   {shape:16s} {n:>5}')
+    print(f'   {unchanged} correction item(s) are already right and ask to be left alone')
     if unmarkable:
         print(f'   {len(unmarkable)} item(s) carry no answer and are flagged, not guessed')
 
