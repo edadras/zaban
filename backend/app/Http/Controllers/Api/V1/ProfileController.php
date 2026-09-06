@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Resources\UserResource;
 use App\Models\Language;
 use App\Models\PrivacyRequest;
+use App\Services\Privacy\PrivacyRequestService;
 use App\Models\UserProfile;
 use App\Models\UserSetting;
 use Illuminate\Http\Request;
@@ -117,6 +118,53 @@ class ProfileController extends ApiController
         ]);
 
         return $this->created(['request_id' => $req->id, 'status' => $req->status]);
+    }
+
+    /**
+     * What this person has asked for, and where each request got to.
+     *
+     * Without this an export is a promise into the dark: the row was created,
+     * the file was written, and nobody could see either.
+     */
+    public function privacyRequests(Request $request)
+    {
+        return $this->ok(
+            PrivacyRequest::where('user_id', $request->user()->id)
+                ->orderByDesc('id')
+                ->get()
+                ->map(fn (PrivacyRequest $r) => [
+                    'id' => $r->id,
+                    'type' => $r->type,
+                    'status' => $r->status,
+                    'requested_at' => $r->created_at?->toIso8601String(),
+                    'completed_at' => $r->completed_at?->toIso8601String(),
+                    'expires_at' => $r->expires_at?->toIso8601String(),
+                    'downloadable' => $r->type === 'export'
+                        && $r->status === 'completed'
+                        && $r->export_path !== null,
+                    'error' => $r->error,
+                ]),
+        );
+    }
+
+    /** The export file itself, for the person who asked for it and nobody else. */
+    public function downloadExport(Request $request, PrivacyRequest $privacyRequest)
+    {
+        abort_unless($privacyRequest->user_id === $request->user()->id, 404);
+
+        if ($privacyRequest->export_path === null
+            || $privacyRequest->status !== 'completed') {
+            return $this->fail(
+                'export_not_ready',
+                'This export is not ready, or its download window has closed.',
+                404,
+            );
+        }
+
+        return Storage::disk(PrivacyRequestService::DISK)->download(
+            $privacyRequest->export_path,
+            'zaban-export.json',
+        );
     }
 
     public function requestDeletion(Request $request)

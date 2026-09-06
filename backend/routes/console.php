@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\Privacy\ProcessPrivacyRequests;
 use App\Models\Subscription;
 use App\Services\Billing\SubscriptionService;
 use App\Services\Speech\SpeechRetentionService;
@@ -10,7 +11,9 @@ use Illuminate\Support\Facades\Schedule;
  *
  * The billing entries exist because a missed webhook must not leave someone
  * entitled to something they stopped paying for; the retention entry exists
- * because a learner's recordings must age out even if they never ask.
+ * because a learner's recordings must age out even if they never ask; the
+ * privacy entry exists because an export or an erasure someone asked for is a
+ * promise, and a promise that only runs when an operator remembers is not one.
  */
 
 Schedule::call(fn (SubscriptionService $s) => $s->expireLapsed())
@@ -30,4 +33,11 @@ Schedule::call(function (SubscriptionService $s) {
 Schedule::call(fn (SpeechRetentionService $r) => $r->purgeExpired())
     ->dailyAt('02:40')
     ->name('speech.purge-expired-audio')
+    ->withoutOverlapping();
+
+// Export and erasure requests. Hourly rather than nightly: a person who has
+// asked to be forgotten should not have to wait for the small hours.
+Schedule::job(new ProcessPrivacyRequests)
+    ->hourly()
+    ->name('privacy.process-requests')
     ->withoutOverlapping();

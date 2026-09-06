@@ -51,6 +51,9 @@ Route::prefix('v1')->group(function () {
         Route::post('profile/avatar', [ProfileController::class, 'uploadAvatar']);
         Route::post('profile/export', [ProfileController::class, 'requestExport']);
         Route::post('profile/delete', [ProfileController::class, 'requestDeletion']);
+        Route::get('profile/privacy', [ProfileController::class, 'privacyRequests']);
+        Route::get('profile/privacy/{privacyRequest}/download',
+            [ProfileController::class, 'downloadExport']);
 
         // placement (adaptive test)
         Route::post('placement/start', [PlacementController::class, 'start']);
