@@ -85,6 +85,22 @@ All requests are sent to `<base>/api/v1`.
   token), not cookies, so the backend needs `Authorization` allowed in CORS and
   `auth:sanctum` on the v1 routes.
 
+## 2.5 Languages
+
+The interface is English and Persian. Strings are looked up by the English
+sentence the widget says (`context.t('Continue')`), so a missing entry shows
+that sentence rather than a key — see `lib/core/i18n/strings.dart` for why that
+trade was made against ARB identifiers.
+
+Adding a language is two steps: a catalogue beside `fa.dart`, and its locale in
+`Strings.supported`. Right-to-left needs no work of its own — the locale carries
+the direction and Flutter mirrors the layout — but it does need checking, which
+is what `test/core/i18n/localisation_test.dart` does.
+
+The picker in Settings names each language in itself ("فارسی", "English"),
+because someone who cannot read the current interface has to be able to find
+their way out of it.
+
 ## 3. Architecture
 
 Feature-first, with a shared core. Nothing in `core/` imports from `features/`.

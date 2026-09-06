@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/ambient_background.dart';
@@ -333,7 +334,7 @@ class _GlassNavRail extends StatelessWidget {
                   Icon(Icons.blur_on_rounded, color: colors.accent),
                   if (extended) ...<Widget>[
                     const SizedBox(width: Spacing.sm),
-                    Text('Zaban', style: context.text.titleLarge),
+                    Text(context.t('Zaban'), style: context.text.titleLarge),
                   ],
                 ],
               ),

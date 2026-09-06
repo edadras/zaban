@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -45,7 +46,7 @@ class SessionRunnerScreen extends ConsumerWidget {
     return ZabanScaffold(
       ambientIntensity: 0.6,
       body: async.when(
-        loading: () => const LoadingView(message: 'Composing your session…'),
+        loading: () => LoadingView(message: context.t('Composing your session…')),
         error: (Object error, StackTrace _) => ErrorView(
           error: error,
           onRetry: () => ref.invalidate(sessionControllerProvider),
@@ -293,16 +294,16 @@ class _ActivityBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text('Nothing to show here', style: context.text.titleLarge),
+          Text(context.t('Nothing to show here'), style: context.text.titleLarge),
           const SizedBox(height: Spacing.sm),
           Text(
-            'This step could not be loaded. Moving on to the next one.',
+            context.t('This step could not be loaded. Moving on to the next one.'),
             style: context.text.bodyMedium,
           ),
           const SizedBox(height: Spacing.lg),
           Align(
             alignment: Alignment.centerRight,
-            child: TextButton(onPressed: onContinue, child: const Text('Skip')),
+            child: TextButton(onPressed: onContinue, child: Text(context.t('Skip'))),
           ),
         ],
       ),
@@ -333,7 +334,7 @@ class _SessionHeader extends ConsumerWidget {
         child: Row(
           children: <Widget>[
             IconButton(
-              tooltip: 'Leave session',
+              tooltip: context.t('Leave session'),
               icon: const Icon(Icons.close_rounded),
               onPressed: () => _confirmExit(context, ref),
             ),
@@ -370,18 +371,18 @@ class _SessionHeader extends ConsumerWidget {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         backgroundColor: context.colors.canvasRaised,
-        title: const Text('Leave this session?'),
-        content: const Text(
-          'Your progress so far is saved. You can pick it up again from Today.',
+        title: Text(context.t('Leave this session?')),
+        content: Text(
+          context.t('Your progress so far is saved. You can pick it up again from Today.'),
         ),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Keep going'),
+            child: Text(context.t('Keep going')),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            child: const Text('Leave'),
+            child: Text(context.t('Leave')),
           ),
         ],
       ),

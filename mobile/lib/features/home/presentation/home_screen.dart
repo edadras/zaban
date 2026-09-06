@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -103,12 +104,12 @@ class _HomeBody extends ConsumerWidget {
                 },
               ),
               const SizedBox(height: Spacing.xxl),
-              const SectionHeader(title: 'Practice', eyebrow: 'Also available'),
+              SectionHeader(title: context.t('Practice'), eyebrow: context.t('Also available')),
               ResponsiveGrid(
                 minTileWidth: 300,
                 children: <Widget>[
                   QuickActionTile(
-                    label: 'Reviews due',
+                    label: context.t('Reviews due'),
                     description: snapshot.dueReviews == 0
                         ? 'Nothing due right now'
                         : 'Items your memory is about to drop',
@@ -119,20 +120,20 @@ class _HomeBody extends ConsumerWidget {
                     onTap: () => context.go(AppRoute.review.path),
                   ),
                   QuickActionTile(
-                    label: 'Speaking',
-                    description: 'Record a phrase and get per-word feedback',
+                    label: context.t('Speaking'),
+                    description: context.t('Record a phrase and get per-word feedback'),
                     icon: Icons.mic_none_rounded,
                     onTap: () => context.push(AppRoute.speech.path),
                   ),
                   QuickActionTile(
-                    label: 'Conversation',
-                    description: 'Roleplay a real situation with the tutor',
+                    label: context.t('Conversation'),
+                    description: context.t('Roleplay a real situation with the tutor'),
                     icon: Icons.forum_outlined,
                     onTap: () => context.go(AppRoute.conversation.path),
                   ),
                   QuickActionTile(
-                    label: 'Exam practice',
-                    description: 'Timed sections with band-scored feedback',
+                    label: context.t('Exam practice'),
+                    description: context.t('Timed sections with band-scored feedback'),
                     icon: Icons.workspace_premium_outlined,
                     onTap: () => context.push(AppRoute.exam.path),
                   ),
@@ -140,7 +141,7 @@ class _HomeBody extends ConsumerWidget {
               ),
               if (snapshot.highlights.isNotEmpty) ...<Widget>[
                 const SizedBox(height: Spacing.xxl),
-                const SectionHeader(title: 'Worth knowing'),
+                SectionHeader(title: context.t('Worth knowing')),
                 for (final HomeHighlight highlight in snapshot.highlights)
                   Padding(
                     padding: const EdgeInsets.only(bottom: Spacing.md),
@@ -215,7 +216,7 @@ class _WeekPanel extends StatelessWidget {
           Row(
             children: <Widget>[
               Expanded(
-                child: Text('LAST 7 DAYS', style: context.text.labelSmall),
+                child: Text(context.t('LAST 7 DAYS'), style: context.text.labelSmall),
               ),
               Text('$total min', style: context.text.titleMedium),
             ],

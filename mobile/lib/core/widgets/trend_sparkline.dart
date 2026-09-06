@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 
 /// A minimal line chart for a short series (pronunciation scores over the last
@@ -28,7 +29,7 @@ class TrendSparkline extends StatelessWidget {
         height: height,
         child: Center(
           child: Text(
-            'Not enough data yet',
+            context.t('Not enough data yet'),
             style: context.text.bodySmall,
           ),
         ),

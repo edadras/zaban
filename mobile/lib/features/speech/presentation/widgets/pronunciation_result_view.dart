@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
@@ -34,7 +35,7 @@ class PronunciationResultView extends StatelessWidget {
                 size: 140,
                 strokeWidth: 10,
                 color: colors.forScore((overall ?? 0) / 100),
-                semanticLabel: 'Overall pronunciation score',
+                semanticLabel: context.t('Overall pronunciation score'),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
@@ -42,7 +43,7 @@ class PronunciationResultView extends StatelessWidget {
                       overall == null ? '—' : '${overall.round()}',
                       style: context.text.displaySmall,
                     ),
-                    Text('OVERALL', style: context.text.labelSmall),
+                    Text(context.t('OVERALL'), style: context.text.labelSmall),
                   ],
                 ),
               ),
@@ -53,19 +54,19 @@ class PronunciationResultView extends StatelessWidget {
                 alignment: WrapAlignment.center,
                 children: <Widget>[
                   _MiniScore(
-                    label: 'Pronunciation',
+                    label: context.t('Pronunciation'),
                     value: scores?.pronunciation,
                   ),
-                  _MiniScore(label: 'Fluency', value: scores?.fluency),
+                  _MiniScore(label: context.t('Fluency'), value: scores?.fluency),
                   _MiniScore(
-                    label: 'Completeness',
+                    label: context.t('Completeness'),
                     value: scores?.completeness,
                   ),
                   if (attempt.fluency?.speechRateWpm != null)
                     _MiniScore(
-                      label: 'Pace',
+                      label: context.t('Pace'),
                       value: attempt.fluency!.speechRateWpm,
-                      unit: 'wpm',
+                      unit: context.t('wpm'),
                       raw: true,
                     ),
                 ],
@@ -80,7 +81,7 @@ class PronunciationResultView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('WORD BY WORD', style: context.text.labelSmall),
+                Text(context.t('WORD BY WORD'), style: context.text.labelSmall),
                 const SizedBox(height: Spacing.md),
                 WordScoreText(
                   words: attempt.words,
@@ -88,7 +89,7 @@ class PronunciationResultView extends StatelessWidget {
                 ),
                 if (attempt.transcript != null) ...<Widget>[
                   const SizedBox(height: Spacing.lg),
-                  Text('WE HEARD', style: context.text.labelSmall),
+                  Text(context.t('WE HEARD'), style: context.text.labelSmall),
                   const SizedBox(height: Spacing.xs),
                   Text(attempt.transcript!, style: context.text.bodyMedium),
                 ],
@@ -121,8 +122,7 @@ class PronunciationResultView extends StatelessWidget {
                 Text(word.display, style: context.text.headlineSmall),
                 const SizedBox(height: Spacing.xs),
                 Text(
-                  'Outcome: ${word.outcome}'
-                  '${word.stressCorrect == false ? ' · stress misplaced' : ''}',
+                  'Outcome: ${word.outcome}${word.stressCorrect == false ? ' · stress misplaced' : ''}',
                   style: context.text.bodyMedium,
                 ),
                 const SizedBox(height: Spacing.lg),
@@ -190,10 +190,10 @@ class _FeedbackPanel extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Expanded(child: Text('COACH', style: context.text.labelSmall)),
+              Expanded(child: Text(context.t('COACH'), style: context.text.labelSmall)),
               if (feedback.narrativeSource == 'rules')
                 Text(
-                  'basic feedback',
+                  context.t('basic feedback'),
                   style: context.text.labelSmall
                       ?.copyWith(color: colors.textTertiary),
                 ),
@@ -239,7 +239,7 @@ class _FeedbackPanel extends StatelessWidget {
             ),
           if (feedback.phonemeNotes.isNotEmpty) ...<Widget>[
             const SizedBox(height: Spacing.lg),
-            Text('SOUNDS TO WORK ON', style: context.text.labelSmall),
+            Text(context.t('SOUNDS TO WORK ON'), style: context.text.labelSmall),
             for (final PhonemeNote note in feedback.phonemeNotes)
               Padding(
                 padding: const EdgeInsets.only(top: Spacing.sm),

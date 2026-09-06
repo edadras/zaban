@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
@@ -37,11 +38,11 @@ class ListenAndChooseBlock extends StatelessWidget {
               children: <Widget>[
                 AudioPlayerButton(
                   url: audioUrl,
-                  label: 'Play the audio',
+                  label: context.t('Play the audio'),
                   duration: block.audio?.duration,
                 ),
                 const SizedBox(height: Spacing.sm),
-                Text('Play as many times as you need',
+                Text(context.t('Play as many times as you need'),
                     style: context.text.bodySmall),
               ],
             ),
@@ -64,7 +65,7 @@ class ListenAndChooseBlock extends StatelessWidget {
       title: block.title,
       instructions: block.instructions ?? 'Listen and follow along.',
       footer: GlowButton(
-        label: 'Continue',
+        label: context.t('Continue'),
         size: GlowButtonSize.large,
         expand: true,
         trailingIcon: Icons.arrow_forward_rounded,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -84,17 +85,16 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text('Create your account',
+                        Text(context.t('Create your account'),
                             style: context.text.headlineSmall),
                         const SizedBox(height: Spacing.xs),
                         Text(
-                          'We place you with a short adaptive test, then build '
-                          'your course around what you actually know.',
+                          context.t('We place you with a short adaptive test, then build your course around what you actually know.'),
                           style: context.text.bodyMedium,
                         ),
                         const SizedBox(height: Spacing.xl),
                         AuthField(
-                          label: 'Name',
+                          label: context.t('Name'),
                           controller: _name,
                           textInputAction: TextInputAction.next,
                           autofillHints: const <String>[AutofillHints.name],
@@ -106,7 +106,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         ),
                         const SizedBox(height: Spacing.lg),
                         AuthField(
-                          label: 'Email',
+                          label: context.t('Email'),
                           controller: _email,
                           keyboardType: TextInputType.emailAddress,
                           textInputAction: TextInputAction.next,
@@ -119,7 +119,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         ),
                         const SizedBox(height: Spacing.lg),
                         AuthField(
-                          label: 'Password',
+                          label: context.t('Password'),
                           controller: _password,
                           obscure: true,
                           textInputAction: TextInputAction.next,
@@ -134,7 +134,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         ),
                         const SizedBox(height: Spacing.lg),
                         AuthField(
-                          label: 'Confirm password',
+                          label: context.t('Confirm password'),
                           controller: _confirm,
                           obscure: true,
                           textInputAction: TextInputAction.done,
@@ -154,7 +154,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                         ],
                         const SizedBox(height: Spacing.xl),
                         GlowButton(
-                          label: 'Create account',
+                          label: context.t('Create account'),
                           size: GlowButtonSize.large,
                           expand: true,
                           isLoading: _submitting,
@@ -168,11 +168,11 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Already have an account?',
+                    Text(context.t('Already have an account?'),
                         style: context.text.bodyMedium),
                     TextButton(
                       onPressed: () => context.go(AppRoute.login.path),
-                      child: const Text('Sign in'),
+                      child: Text(context.t('Sign in')),
                     ),
                   ],
                 ),

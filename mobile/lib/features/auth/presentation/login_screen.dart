@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -82,7 +83,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text('Welcome back', style: context.text.headlineSmall),
+                          Text(context.t('Welcome back'), style: context.text.headlineSmall),
                           const SizedBox(height: Spacing.xs),
                           Text(
                             expired
@@ -92,9 +93,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                           const SizedBox(height: Spacing.xl),
                           AuthField(
-                            label: 'Email',
+                            label: context.t('Email'),
                             controller: _email,
-                            hint: 'you@example.com',
+                            hint: context.t('you@example.com'),
                             keyboardType: TextInputType.emailAddress,
                             textInputAction: TextInputAction.next,
                             autofillHints: const <String>[AutofillHints.email],
@@ -106,7 +107,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ),
                           const SizedBox(height: Spacing.lg),
                           AuthField(
-                            label: 'Password',
+                            label: context.t('Password'),
                             controller: _password,
                             obscure: _obscure,
                             textInputAction: TextInputAction.done,
@@ -141,7 +142,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           ],
                           const SizedBox(height: Spacing.xl),
                           GlowButton(
-                            label: 'Sign in',
+                            label: context.t('Sign in'),
                             size: GlowButtonSize.large,
                             expand: true,
                             isLoading: _submitting,
@@ -156,10 +157,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('New here?', style: context.text.bodyMedium),
+                    Text(context.t('New here?'), style: context.text.bodyMedium),
                     TextButton(
                       onPressed: () => context.go(AppRoute.register.path),
-                      child: const Text('Create an account'),
+                      child: Text(context.t('Create an account')),
                     ),
                   ],
                 ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
@@ -42,7 +43,7 @@ class SpeechPracticeScreen extends ConsumerWidget {
     final attempt = state.attempt;
 
     return ZabanScaffold(
-      title: 'Speaking',
+      title: context.t('Speaking'),
       ambientIntensity: 0.7,
       leading: IconButton(
         icon: const Icon(Icons.close_rounded),
@@ -64,8 +65,7 @@ class SpeechPracticeScreen extends ConsumerWidget {
                     const SizedBox(height: Spacing.md),
                     Text(
                       targetText ??
-                          'Speak for a few seconds — you will get fluency and '
-                              'pronunciation feedback on whatever you say.',
+                          'Speak for a few seconds — you will get fluency and pronunciation feedback on whatever you say.',
                       textAlign: TextAlign.center,
                       style: context.reading(size: 24, height: 1.35),
                     ),
@@ -73,7 +73,7 @@ class SpeechPracticeScreen extends ConsumerWidget {
                       const SizedBox(height: Spacing.lg),
                       AudioPlayerButton(
                         url: referenceAudioUrl!,
-                        label: 'Hear it first',
+                        label: context.t('Hear it first'),
                         size: 52,
                       ),
                     ],
@@ -130,7 +130,7 @@ class SpeechPracticeScreen extends ConsumerWidget {
                 PronunciationResultView(attempt: attempt),
                 const SizedBox(height: Spacing.xl),
                 GlowButton(
-                  label: 'Done',
+                  label: context.t('Done'),
                   size: GlowButtonSize.large,
                   expand: true,
                   onPressed: () => Navigator.of(context).maybePop(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
@@ -50,7 +51,7 @@ class RepeatAfterSpeakerBlock extends StatelessWidget {
           if (audioUrl != null)
             Center(child: AudioPlayerButton(
               url: audioUrl,
-              label: 'Listen',
+              label: context.t('Listen'),
               duration: block.audio?.duration,
             )),
           if (audioUrl != null) const SizedBox(height: Spacing.xl),
@@ -71,7 +72,7 @@ class RepeatAfterSpeakerBlock extends StatelessWidget {
                     ),
                     const SizedBox(width: Spacing.sm),
                     GlowButton(
-                      label: 'Say it',
+                      label: context.t('Say it'),
                       size: GlowButtonSize.small,
                       icon: Icons.mic_none_rounded,
                       onPressed:

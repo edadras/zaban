@@ -16,6 +16,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Material's own strings, and the right-to-left machinery Persian needs.
+  flutter_localizations:
+    sdk: flutter
+
   # State management. Pinned to the Riverpod 2.x API (Notifier / AsyncNotifier);
   # no riverpod_generator, so providers are plain top-level finals.
   flutter_riverpod: ^2.6.1
@@ -42,7 +46,7 @@ dependencies:
 
   # Misc
   collection: ^1.19.0
-  intl: ^0.19.0
+  intl: ^0.20.2
   url_launcher: ^6.3.1
 
 dev_dependencies:

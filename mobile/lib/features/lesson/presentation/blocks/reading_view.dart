@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/features/lesson/data/models/lesson_block.dart';
@@ -57,7 +57,7 @@ class ReadingView extends StatelessWidget {
               const SizedBox(width: Spacing.xs),
               Expanded(
                 child: Text(
-                  'Tap any underlined word to see what it means.',
+                  context.t('Tap any underlined word to see what it means.'),
                   style: context.text.bodySmall?.copyWith(
                     color: colors.textTertiary,
                   ),

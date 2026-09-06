@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/press_scale.dart';
@@ -79,7 +80,7 @@ class _SentenceReorderExerciseState extends State<SentenceReorderExercise> {
             child: _chosen.isEmpty
                 ? Center(
                     child: Text(
-                      'Tap the words in the right order',
+                      context.t('Tap the words in the right order'),
                       style: context.text.bodySmall,
                     ),
                   )

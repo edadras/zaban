@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
@@ -86,15 +87,15 @@ class ErrorView extends StatelessWidget {
     final actions = <Widget>[
       if (kind == ApiErrorKind.paywall && onUpgrade != null)
         GlowButton(
-          label: 'See plans',
+          label: context.t('See plans'),
           onPressed: onUpgrade,
           icon: Icons.workspace_premium_rounded,
         ),
       if (kind == ApiErrorKind.unauthorized && onSignIn != null)
-        GlowButton(label: 'Sign in', onPressed: onSignIn),
+        GlowButton(label: context.t('Sign in'), onPressed: onSignIn),
       if (onRetry != null && kind != ApiErrorKind.paywall)
         GlowButton(
-          label: 'Try again',
+          label: context.t('Try again'),
           onPressed: onRetry,
           variant: kind == ApiErrorKind.unauthorized
               ? GlowButtonVariant.ghost

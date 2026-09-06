@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -80,15 +81,15 @@ class ProfileScreen extends ConsumerWidget {
                     child: Row(
                       children: <Widget>[
                         _MiniStat(
-                          label: 'XP',
+                          label: context.t('XP'),
                           value: '${learner.xp}',
                         ),
                         _MiniStat(
-                          label: 'Minutes',
+                          label: context.t('Minutes'),
                           value: '${learner.totalStudyMinutes}',
                         ),
                         _MiniStat(
-                          label: 'Best streak',
+                          label: context.t('Best streak'),
                           value: '${learner.longestStreakDays}',
                         ),
                       ],
@@ -108,23 +109,23 @@ class ProfileScreen extends ConsumerWidget {
                   orElse: () => _row(
                     context,
                     icon: Icons.workspace_premium_outlined,
-                    title: 'Plans',
-                    subtitle: 'See what a paid plan unlocks',
+                    title: context.t('Plans'),
+                    subtitle: context.t('See what a paid plan unlocks'),
                     onTap: () => context.push(AppRoute.plans.path),
                   ),
                 ),
                 _row(
                   context,
                   icon: Icons.tune_rounded,
-                  title: 'Settings',
-                  subtitle: 'Daily goal, appearance, notifications, privacy',
+                  title: context.t('Settings'),
+                  subtitle: context.t('Daily goal, appearance, notifications, privacy'),
                   onTap: () => context.push(AppRoute.settings.path),
                 ),
                 _row(
                   context,
                   icon: Icons.insights_rounded,
-                  title: 'Your progress',
-                  subtitle: 'Level, skills and study history',
+                  title: context.t('Your progress'),
+                  subtitle: context.t('Level, skills and study history'),
                   onTap: () => context.go(AppRoute.progress.path),
                 ),
                 // Staff only, and only as a shortcut: the router refuses the
@@ -133,13 +134,13 @@ class ProfileScreen extends ConsumerWidget {
                   _row(
                     context,
                     icon: Icons.admin_panel_settings_rounded,
-                    title: 'Admin',
-                    subtitle: 'The corpus, AI spend, review queue, publishing',
+                    title: context.t('Admin'),
+                    subtitle: context.t('The corpus, AI spend, review queue, publishing'),
                     onTap: () => context.push(AppRoute.admin.path),
                   ),
                 const SizedBox(height: Spacing.xl),
                 GlowButton(
-                  label: 'Sign out',
+                  label: context.t('Sign out'),
                   variant: GlowButtonVariant.danger,
                   expand: true,
                   onPressed: () =>

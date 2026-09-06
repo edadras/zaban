@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/press_scale.dart';
@@ -85,7 +86,7 @@ class _ErrorCorrectionExerciseState extends State<ErrorCorrectionExercise> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text(
-            'Tap the word that is wrong',
+            context.t('Tap the word that is wrong'),
             style: context.text.labelSmall,
           ),
           const SizedBox(height: Spacing.sm),
@@ -106,7 +107,7 @@ class _ErrorCorrectionExerciseState extends State<ErrorCorrectionExercise> {
             ],
           ),
           const SizedBox(height: Spacing.xl),
-          Text('Write it correctly', style: context.text.labelSmall),
+          Text(context.t('Write it correctly'), style: context.text.labelSmall),
           const SizedBox(height: Spacing.sm),
           TextField(
             controller: _controller,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/features/exam/data/models/exam_models.dart';
@@ -34,7 +35,7 @@ class EstimateNoticePanel extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text(
-                  'ESTIMATE, NOT AN OFFICIAL RESULT',
+                  context.t('ESTIMATE, NOT AN OFFICIAL RESULT'),
                   style: context.text.labelSmall?.copyWith(
                     color: colors.warning,
                   ),
@@ -44,8 +45,7 @@ class EstimateNoticePanel extends StatelessWidget {
                 if (notice.projectedSections.isNotEmpty) ...<Widget>[
                   const SizedBox(height: Spacing.xs),
                   Text(
-                    'Projected sections: '
-                    '${notice.projectedSections.join(', ')}',
+                    'Projected sections: ${notice.projectedSections.join(', ')}',
                     style: context.text.bodySmall
                         ?.copyWith(color: colors.textTertiary),
                   ),

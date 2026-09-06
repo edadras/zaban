@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
@@ -57,9 +58,9 @@ class LessonScreen extends ConsumerWidget {
         ),
         data: (LessonRunState state) {
           if (state.lesson.blocks.isEmpty) {
-            return const EmptyView(
-              title: 'This lesson has no activities yet',
-              message: 'It is still being prepared.',
+            return EmptyView(
+              title: context.t('This lesson has no activities yet'),
+              message: context.t('It is still being prepared.'),
               icon: Icons.hourglass_empty_rounded,
             );
           }
@@ -207,27 +208,25 @@ class _LessonComplete extends StatelessWidget {
                 const ProgressRing(value: 1, size: 120),
                 const SizedBox(height: Spacing.lg),
                 Text(
-                  'Lesson complete',
+                  context.t('Lesson complete'),
                   style: context.text.headlineSmall,
                 ),
                 const SizedBox(height: Spacing.sm),
                 Text(
-                  '${state.lesson.blocks.length} steps'
-                  '${speaking > 0 ? ', including $speaking speaking' : ''}. '
-                  'What you practised feeds straight into tomorrow’s session.',
+                  '${state.lesson.blocks.length} steps${speaking > 0 ? ', including $speaking speaking' : ''}. What you practised feeds straight into tomorrow’s session.',
                   textAlign: TextAlign.center,
                   style: context.text.bodyMedium,
                 ),
                 const SizedBox(height: Spacing.xl),
                 GlowButton(
-                  label: 'Done',
+                  label: context.t('Done'),
                   size: GlowButtonSize.large,
                   expand: true,
                   onPressed: () => Navigator.of(context).maybePop(),
                 ),
                 const SizedBox(height: Spacing.sm),
                 GlowButton(
-                  label: 'Go through it again',
+                  label: context.t('Go through it again'),
                   variant: GlowButtonVariant.ghost,
                   expand: true,
                   onPressed: onRestart,

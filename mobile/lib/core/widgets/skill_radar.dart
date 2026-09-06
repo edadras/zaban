@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/color_tokens.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -73,7 +74,7 @@ class SkillRadar extends StatelessWidget {
     }
 
     return Semantics(
-      label: 'Skill profile',
+      label: context.t('Skill profile'),
       value: axes
           .map((RadarAxis a) =>
               '${a.label} ${(a.value.clamp(0.0, 1.0) * 100).round()} percent')

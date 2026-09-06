@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/storage/preferences_store.dart';
 import 'package:zaban/core/theme/theme_context.dart';
@@ -90,23 +91,22 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
         data: (OnboardingOptions options) {
           final steps = <Widget>[
             _Step(
-              title: 'Welcome to Zaban',
+              title: context.t('Welcome to Zaban'),
               subtitle:
-                  'A course that is rebuilt around you every single day — not '
-                  'a fixed list of lessons.',
+                  context.t('A course that is rebuilt around you every single day — not a fixed list of lessons.'),
               header: const BrandMark(showWordmark: false),
               action: GlowButton(
-                label: 'Get started',
+                label: context.t('Get started'),
                 size: GlowButtonSize.large,
                 expand: true,
                 onPressed: _next,
               ),
             ),
             _Step(
-              title: 'What should the app speak?',
-              subtitle: 'You can change this later in settings.',
+              title: context.t('What should the app speak?'),
+              subtitle: context.t('You can change this later in settings.'),
               action: GlowButton(
-                label: 'Continue',
+                label: context.t('Continue'),
                 size: GlowButtonSize.large,
                 expand: true,
                 onPressed: _interfaceLanguage == null ? null : _next,
@@ -123,9 +123,9 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
             _Step(
-              title: 'What are you learning?',
+              title: context.t('What are you learning?'),
               action: GlowButton(
-                label: 'Continue',
+                label: context.t('Continue'),
                 size: GlowButtonSize.large,
                 expand: true,
                 onPressed: _targetLanguage == null ? null : _next,
@@ -141,10 +141,10 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
             _Step(
-              title: 'Why are you learning?',
-              subtitle: 'This shapes the material you see, not the difficulty.',
+              title: context.t('Why are you learning?'),
+              subtitle: context.t('This shapes the material you see, not the difficulty.'),
               action: GlowButton(
-                label: 'Continue',
+                label: context.t('Continue'),
                 size: GlowButtonSize.large,
                 expand: true,
                 onPressed: _goal == null ? null : _next,
@@ -159,12 +159,11 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               ),
             ),
             _Step(
-              title: 'How much time a day?',
+              title: context.t('How much time a day?'),
               subtitle:
-                  'Your session length is built from this — and shortened '
-                  'automatically on the days you are struggling.',
+                  context.t('Your session length is built from this — and shortened automatically on the days you are struggling.'),
               action: GlowButton(
-                label: 'Find my level',
+                label: context.t('Find my level'),
                 size: GlowButtonSize.large,
                 expand: true,
                 isLoading: _submitting,

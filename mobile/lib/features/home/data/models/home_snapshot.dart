@@ -57,8 +57,7 @@ class HomeSnapshot {
         for (final LearnerErrorSummary error in dashboard.topErrors)
           HomeHighlight(
             title: error.label ?? _errorTitle(error.errorType),
-            body: '${error.occurrences} recent slips — the next session will '
-                'work on this.',
+            body: '${error.occurrences} recent slips — the next session will work on this.',
             kind: 'weakness',
           ),
       ],

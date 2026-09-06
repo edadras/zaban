@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
@@ -50,7 +51,7 @@ class TurnBubble extends StatelessWidget {
                       const SizedBox(height: Spacing.md),
                       AudioPlayerButton(
                         url: turn.audioUrl!,
-                        label: 'Play',
+                        label: context.t('Play'),
                         size: 40,
                       ),
                     ],

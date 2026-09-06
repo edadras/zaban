@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -34,7 +35,7 @@ class PlacementResultScreen extends ConsumerWidget {
         data: (PlacementRunState state) {
           final result = state.result;
           if (result == null) {
-            return const LoadingView(message: 'Scoring…');
+            return LoadingView(message: context.t('Scoring…'));
           }
           return _ResultBody(result: result);
         },
@@ -59,7 +60,7 @@ class _ResultBody extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text('Your level', style: context.text.labelSmall),
+            Text(context.t('Your level'), style: context.text.labelSmall),
             const SizedBox(height: Spacing.sm),
             Row(
               children: <Widget>[
@@ -82,7 +83,7 @@ class _ResultBody extends ConsumerWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    'How your skills compare',
+                    context.t('How your skills compare'),
                     style: context.text.titleMedium,
                   ),
                   const SizedBox(height: Spacing.lg),
@@ -118,7 +119,7 @@ class _ResultBody extends ConsumerWidget {
                         Padding(
                           padding: const EdgeInsets.only(right: Spacing.sm),
                           child: Text(
-                            'estimate',
+                            context.t('estimate'),
                             style: context.text.labelSmall
                                 ?.copyWith(color: colors.warning),
                           ),
@@ -130,7 +131,7 @@ class _ResultBody extends ConsumerWidget {
               ),
             const SizedBox(height: Spacing.xl),
             GlowButton(
-              label: 'Start learning',
+              label: context.t('Start learning'),
               size: GlowButtonSize.large,
               expand: true,
               trailingIcon: Icons.arrow_forward_rounded,

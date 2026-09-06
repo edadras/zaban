@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -26,13 +27,13 @@ class ExamResultScreen extends ConsumerWidget {
     final async = ref.watch(examResultProvider(attemptId));
 
     return ZabanScaffold(
-      title: 'Result',
+      title: context.t('Result'),
       leading: IconButton(
         icon: const Icon(Icons.close_rounded),
         onPressed: () => context.go(AppRoute.home.path),
       ),
       body: async.when(
-        loading: () => const LoadingView(message: 'Marking your paper…'),
+        loading: () => LoadingView(message: context.t('Marking your paper…')),
         error: (Object error, StackTrace _) => ErrorView(
           error: error,
           onRetry: () => ref.invalidate(examResultProvider(attemptId)),
@@ -63,7 +64,7 @@ class _ResultBody extends StatelessWidget {
             GlassPanel(
               child: Column(
                 children: <Widget>[
-                  Text('ESTIMATED SCORE', style: context.text.labelSmall),
+                  Text(context.t('ESTIMATED SCORE'), style: context.text.labelSmall),
                   const SizedBox(height: Spacing.sm),
                   Text(
                     overall.estimatedScore?.toString() ?? '—',
@@ -82,8 +83,7 @@ class _ResultBody extends StatelessWidget {
                     const SizedBox(height: Spacing.md),
                     Text(
                       overall.unavailableReason == 'incomplete_sections'
-                          ? 'Some sections were not attempted, so no overall '
-                              'estimate could be produced.'
+                          ? 'Some sections were not attempted, so no overall estimate could be produced.'
                           : overall.unavailableReason!,
                       textAlign: TextAlign.center,
                       style: context.text.bodySmall,
@@ -103,7 +103,7 @@ class _ResultBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text('BY SECTION', style: context.text.labelSmall),
+                    Text(context.t('BY SECTION'), style: context.text.labelSmall),
                     const SizedBox(height: Spacing.sm),
                     for (final ExamSkillScore skill in result.skills)
                       Padding(
@@ -121,7 +121,7 @@ class _ResultBody extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.only(right: Spacing.sm),
                                 child: Text(
-                                  'ran out of time',
+                                  context.t('ran out of time'),
                                   style: context.text.labelSmall
                                       ?.copyWith(color: colors.warning),
                                 ),
@@ -131,7 +131,7 @@ class _ResultBody extends StatelessWidget {
                                 padding:
                                     const EdgeInsets.only(right: Spacing.sm),
                                 child: Text(
-                                  'projected',
+                                  context.t('projected'),
                                   style: context.text.labelSmall
                                       ?.copyWith(color: colors.info),
                                 ),
@@ -197,7 +197,7 @@ class _ResultBody extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text('BY QUESTION TYPE', style: context.text.labelSmall),
+                    Text(context.t('BY QUESTION TYPE'), style: context.text.labelSmall),
                     const SizedBox(height: Spacing.sm),
                     for (final QuestionTypeStat stat in result.questionTypes)
                       Padding(
@@ -238,7 +238,7 @@ class _ResultBody extends StatelessWidget {
             ],
             const SizedBox(height: Spacing.xl),
             GlowButton(
-              label: 'Back to Today',
+              label: context.t('Back to Today'),
               size: GlowButtonSize.large,
               expand: true,
               onPressed: () => context.go(AppRoute.home.path),

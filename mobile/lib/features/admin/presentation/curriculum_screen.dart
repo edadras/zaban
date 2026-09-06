@@ -240,9 +240,7 @@ class _BookCardState extends ConsumerState<_BookCard> {
 
                           return result.heldBack == 0
                               ? '${result.published} lessons published.'
-                              : '${result.published} published, '
-                                  '${result.heldBack} held back — they have '
-                                  'nothing for a learner to do.';
+                              : '${result.published} published, ${result.heldBack} held back — they have nothing for a learner to do.';
                         }),
               ),
               GlowButton(

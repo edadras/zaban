@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -33,7 +34,7 @@ class PlacementRunScreen extends ConsumerWidget {
     return ZabanScaffold(
       ambientIntensity: 0.7,
       body: async.when(
-        loading: () => const LoadingView(message: 'Preparing your first item…'),
+        loading: () => LoadingView(message: context.t('Preparing your first item…')),
         error: (Object error, StackTrace _) => ErrorView(
           error: error,
           onRetry: () => ref.invalidate(placementControllerProvider),
@@ -41,7 +42,7 @@ class PlacementRunScreen extends ConsumerWidget {
         data: (PlacementRunState state) {
           final item = state.step.item;
           if (item == null) {
-            return const LoadingView(message: 'Working out your level…');
+            return LoadingView(message: context.t('Working out your level…'));
           }
 
           return Column(

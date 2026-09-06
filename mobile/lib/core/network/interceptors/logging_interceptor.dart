@@ -28,8 +28,7 @@ class LoggingInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     debugPrint(
-      '✖ ${err.response?.statusCode ?? '-'} ${err.requestOptions.uri} :: '
-      '${err.error ?? err.message}',
+      '✖ ${err.response?.statusCode ?? '-'} ${err.requestOptions.uri} :: ${err.error ?? err.message}',
     );
     handler.next(err);
   }

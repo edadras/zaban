@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -124,7 +125,7 @@ class _ReviewRunner extends ConsumerWidget {
                       ? ExerciseRenderer(
                           key: ValueKey<int>(exercise.id),
                           exercise: exercise,
-                          eyebrow: 'Due for review',
+                          eyebrow: context.t('Due for review'),
                           result: state.result,
                           submitting: state.submitting,
                           onSubmit: (ExerciseResponse response) =>
@@ -153,11 +154,11 @@ class _RecallCard extends StatelessWidget {
     final colors = context.colors;
 
     return BlockFrame(
-      eyebrow: 'Due for review',
+      eyebrow: context.t('Due for review'),
       title: item.label ?? 'Concept ${item.conceptId}',
       instructions: 'No practice item is ready for this one yet.',
       footer: GlowButton(
-        label: 'Continue',
+        label: context.t('Continue'),
         size: GlowButtonSize.large,
         expand: true,
         trailingIcon: Icons.arrow_forward_rounded,
@@ -169,8 +170,7 @@ class _RecallCard extends StatelessWidget {
           const SizedBox(width: Spacing.sm),
           Expanded(
             child: Text(
-              'Last interval ${item.intervalDays} days · mastery '
-              '${(item.masteryScore * 100).round()}%',
+              'Last interval ${item.intervalDays} days · mastery ${(item.masteryScore * 100).round()}%',
               style: context.text.bodySmall,
             ),
           ),
@@ -187,11 +187,10 @@ class _NothingDue extends StatelessWidget {
   Widget build(BuildContext context) {
     return EmptyView(
       icon: Icons.check_circle_outline_rounded,
-      title: 'Nothing due right now',
-      message: 'Reviews appear here when the memory model says you are about '
-          'to forget something.',
+      title: context.t('Nothing due right now'),
+      message: context.t('Reviews appear here when the memory model says you are about to forget something.'),
       action: GlowButton(
-        label: 'Back to Today',
+        label: context.t('Back to Today'),
         onPressed: () => context.go(AppRoute.home.path),
       ),
     );
@@ -221,23 +220,22 @@ class _ReviewFinished extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: Spacing.lg),
-              Text('Queue cleared', style: context.text.headlineSmall),
+              Text(context.t('Queue cleared'), style: context.text.headlineSmall),
               const SizedBox(height: Spacing.sm),
               Text(
-                'Everything in this batch has been reviewed. When the next one '
-                'is due depends on how you did just now.',
+                context.t('Everything in this batch has been reviewed. When the next one is due depends on how you did just now.'),
                 textAlign: TextAlign.center,
                 style: context.text.bodyMedium,
               ),
               const SizedBox(height: Spacing.xl),
               GlowButton(
-                label: 'Back to Today',
+                label: context.t('Back to Today'),
                 expand: true,
                 onPressed: () => context.go(AppRoute.home.path),
               ),
               const SizedBox(height: Spacing.sm),
               GlowButton(
-                label: 'Check for more',
+                label: context.t('Check for more'),
                 variant: GlowButtonVariant.ghost,
                 expand: true,
                 onPressed: () => ref.invalidate(reviewControllerProvider),

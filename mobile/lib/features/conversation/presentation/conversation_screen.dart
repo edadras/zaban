@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
@@ -63,7 +64,7 @@ class _ConversationScreenState extends ConsumerState<ConversationScreen> {
       actions: <Widget>[
         TextButton(
           onPressed: async.valueOrNull == null ? null : controller.finish,
-          child: const Text('End & review'),
+          child: Text(context.t('End & review')),
         ),
       ],
       body: async.when(
@@ -185,17 +186,17 @@ class _Composer extends StatelessWidget {
                     onSubmitted: (_) => onSend(),
                     style: context.text.bodyLarge,
                     cursorColor: colors.accent,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       filled: false,
                       border: InputBorder.none,
                       enabledBorder: InputBorder.none,
                       focusedBorder: InputBorder.none,
-                      hintText: 'Say something…',
+                      hintText: context.t('Say something…'),
                     ),
                   ),
                 ),
                 GlowButton(
-                  label: 'Send',
+                  label: context.t('Send'),
                   size: GlowButtonSize.small,
                   isLoading: sending,
                   onPressed: recording ? null : onSend,
@@ -226,7 +227,7 @@ class _SummaryPanel extends StatelessWidget {
           Row(
             children: <Widget>[
               Expanded(
-                child: Text('How that went', style: context.text.titleLarge),
+                child: Text(context.t('How that went'), style: context.text.titleLarge),
               ),
               if (summary.overallScore != null)
                 Text(
@@ -239,19 +240,19 @@ class _SummaryPanel extends StatelessWidget {
           ),
           if (summary.objectivesMet.isNotEmpty) ...<Widget>[
             const SizedBox(height: Spacing.lg),
-            Text('ACHIEVED', style: context.text.labelSmall),
+            Text(context.t('ACHIEVED'), style: context.text.labelSmall),
             for (final String item in summary.objectivesMet)
               _Line(text: item, icon: Icons.check_rounded, color: colors.success),
           ],
           if (summary.objectivesMissed.isNotEmpty) ...<Widget>[
             const SizedBox(height: Spacing.md),
-            Text('NOT YET', style: context.text.labelSmall),
+            Text(context.t('NOT YET'), style: context.text.labelSmall),
             for (final String item in summary.objectivesMissed)
               _Line(text: item, icon: Icons.remove_rounded, color: colors.warning),
           ],
           if (summary.errors.isNotEmpty) ...<Widget>[
             const SizedBox(height: Spacing.md),
-            Text('CORRECTIONS', style: context.text.labelSmall),
+            Text(context.t('CORRECTIONS'), style: context.text.labelSmall),
             for (final ObservedError error in summary.errors)
               _Line(
                 text: error.correction ?? error.note ?? error.type,

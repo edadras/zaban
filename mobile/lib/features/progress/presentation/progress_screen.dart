@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -91,7 +92,7 @@ class _Dashboard extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text('Your progress',
+                        Text(context.t('Your progress'),
                             style: context.text.displaySmall),
                         const SizedBox(height: Spacing.xs),
                         Text(
@@ -114,7 +115,7 @@ class _Dashboard extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        Text('SKILL PROFILE', style: context.text.labelSmall),
+                        Text(context.t('SKILL PROFILE'), style: context.text.labelSmall),
                         const SizedBox(height: Spacing.lg),
                         if (measured.isEmpty)
                           Padding(
@@ -122,8 +123,7 @@ class _Dashboard extends ConsumerWidget {
                               vertical: Spacing.xl,
                             ),
                             child: Text(
-                              'No skill has been measured yet. The placement '
-                              'test fills this in.',
+                              context.t('No skill has been measured yet. The placement test fills this in.'),
                               style: context.text.bodyMedium,
                             ),
                           )
@@ -149,29 +149,29 @@ class _Dashboard extends ConsumerWidget {
                     minTileWidth: 150,
                     children: <Widget>[
                       StatTile(
-                        label: 'Study time',
+                        label: context.t('Study time'),
                         value: hours > 0 ? '$hours' : '$minutes',
                         unit: hours > 0 ? 'h' : 'min',
                         caption: hours > 0 ? '$minutes min more' : null,
                         icon: Icons.schedule_rounded,
                       ),
                       StatTile(
-                        label: 'Today',
+                        label: context.t('Today'),
                         value: '${(today.studySeconds / 60).floor()}',
-                        unit: 'min',
+                        unit: context.t('min'),
                         caption: 'goal ${today.goalMinutes} min',
                         icon: Icons.today_rounded,
                       ),
                       StatTile(
-                        label: 'Vocabulary',
+                        label: context.t('Vocabulary'),
                         value: '${data.vocabularyLearned}',
                         caption: '${data.conceptsTracked} tracked',
                         icon: Icons.menu_book_rounded,
                       ),
                       StatTile(
-                        label: 'Streak',
+                        label: context.t('Streak'),
                         value: '${data.streakDays}',
-                        unit: 'days',
+                        unit: context.t('days'),
                         caption: 'best ${data.longestStreakDays}',
                         icon: Icons.local_fire_department_rounded,
                         accentColor: colors.accentSoft,
@@ -201,9 +201,9 @@ class _Dashboard extends ConsumerWidget {
                 },
               ),
               const SizedBox(height: Spacing.xxl),
-              const SectionHeader(
-                title: 'Pronunciation',
-                eyebrow: 'Your last attempts',
+              SectionHeader(
+                title: context.t('Pronunciation'),
+                eyebrow: context.t('Your last attempts'),
               ),
               GlassPanel(
                 child: trend.when(
@@ -212,7 +212,7 @@ class _Dashboard extends ConsumerWidget {
                     child: LoadingView(),
                   ),
                   error: (Object error, StackTrace _) => Text(
-                    'Pronunciation history is unavailable right now.',
+                    context.t('Pronunciation history is unavailable right now.'),
                     style: context.text.bodyMedium,
                   ),
                   data: (List<double> scores) {
@@ -239,7 +239,7 @@ class _Dashboard extends ConsumerWidget {
                             ),
                             const SizedBox(width: Spacing.xs),
                             Text(
-                              'average of your recent recordings',
+                              context.t('average of your recent recordings'),
                               style: context.text.bodyMedium,
                             ),
                           ],
@@ -253,9 +253,9 @@ class _Dashboard extends ConsumerWidget {
               ),
               if (data.weakAreas.isNotEmpty) ...<Widget>[
                 const SizedBox(height: Spacing.xxl),
-                const SectionHeader(
-                  title: 'Worth working on',
-                  eyebrow: 'Chosen by the mastery model',
+                SectionHeader(
+                  title: context.t('Worth working on'),
+                  eyebrow: context.t('Chosen by the mastery model'),
                 ),
                 for (final WeakArea area in data.weakAreas)
                   Padding(
@@ -265,7 +265,7 @@ class _Dashboard extends ConsumerWidget {
               ],
               if (data.topErrors.isNotEmpty) ...<Widget>[
                 const SizedBox(height: Spacing.xl),
-                const SectionHeader(title: 'Recurring mistakes'),
+                SectionHeader(title: context.t('Recurring mistakes')),
                 for (final LearnerErrorSummary summary in data.topErrors)
                   Padding(
                     padding: const EdgeInsets.only(bottom: Spacing.sm),
@@ -273,12 +273,12 @@ class _Dashboard extends ConsumerWidget {
                   ),
               ],
               const SizedBox(height: Spacing.xxl),
-              const SectionHeader(title: 'Consistency', eyebrow: 'Last 30 days'),
+              SectionHeader(title: context.t('Consistency'), eyebrow: context.t('Last 30 days')),
               GlassPanel(
                 child: history.when(
                   loading: () => const SizedBox(height: 84, child: LoadingView()),
                   error: (Object error, StackTrace _) => Text(
-                    'History is unavailable right now.',
+                    context.t('History is unavailable right now.'),
                     style: context.text.bodyMedium,
                   ),
                   data: (List<DailyPoint> points) => TrendSparkline(

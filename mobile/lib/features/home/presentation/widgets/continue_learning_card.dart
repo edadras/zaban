@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_card.dart';
@@ -38,7 +39,7 @@ class ContinueLearningCard extends StatelessWidget {
             value: snapshot.goalProgress,
             size: 96,
             strokeWidth: 8,
-            semanticLabel: 'Daily goal progress',
+            semanticLabel: context.t('Daily goal progress'),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[

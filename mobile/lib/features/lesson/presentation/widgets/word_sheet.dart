@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/features/lesson/data/models/lesson_block.dart';
@@ -87,8 +88,7 @@ class _WordSheet extends StatelessWidget {
                 const SizedBox(width: Spacing.xs),
                 Expanded(
                   child: Text(
-                    'This is one of the words this lesson teaches. It will come '
-                    'back in the practice below.',
+                    context.t('This is one of the words this lesson teaches. It will come back in the practice below.'),
                     style: context.text.bodySmall?.copyWith(
                       color: colors.textTertiary,
                     ),

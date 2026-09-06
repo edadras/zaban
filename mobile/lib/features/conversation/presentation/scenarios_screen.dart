@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -33,9 +34,9 @@ class ScenariosScreen extends ConsumerWidget {
         ),
         data: (List<ConversationScenario> scenarios) {
           if (scenarios.isEmpty) {
-            return const EmptyView(
-              title: 'No scenarios yet',
-              message: 'Conversation practice unlocks as your course fills in.',
+            return EmptyView(
+              title: context.t('No scenarios yet'),
+              message: context.t('Conversation practice unlocks as your course fills in.'),
               icon: Icons.forum_outlined,
             );
           }
@@ -51,11 +52,10 @@ class ScenariosScreen extends ConsumerWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    Text('Talk', style: context.text.displaySmall),
+                    Text(context.t('Talk'), style: context.text.displaySmall),
                     const SizedBox(height: Spacing.xs),
                     Text(
-                      'Speak or type your way through a real situation. The '
-                      'tutor stays in role and corrects afterwards.',
+                      context.t('Speak or type your way through a real situation. The tutor stays in role and corrects afterwards.'),
                       style: context.text.bodyMedium,
                     ),
                     const SizedBox(height: Spacing.xl),
@@ -143,7 +143,7 @@ class _ScenarioCardState extends ConsumerState<_ScenarioCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text('GOALS', style: context.text.labelSmall),
+                Text(context.t('GOALS'), style: context.text.labelSmall),
                 const SizedBox(height: Spacing.xs),
                 for (final String objective in scenario.objectives)
                   Padding(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/network/network_providers.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -27,7 +28,7 @@ class PlansScreen extends ConsumerWidget {
     final subscription = ref.watch(subscriptionProvider);
 
     return ZabanScaffold(
-      title: 'Plans',
+      title: context.t('Plans'),
       leading: IconButton(
         icon: const Icon(Icons.close_rounded),
         onPressed: () => Navigator.of(context).maybePop(),
@@ -90,7 +91,7 @@ class _CurrentPlanPanel extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text('CURRENT ACCESS', style: context.text.labelSmall),
+          Text(context.t('CURRENT ACCESS'), style: context.text.labelSmall),
           const SizedBox(height: Spacing.xs),
           Text(state.planName, style: context.text.headlineSmall),
           if (subscription?.currentPeriodEnd != null) ...<Widget>[
@@ -128,8 +129,7 @@ class _CurrentPlanPanel extends ConsumerWidget {
                     ),
                     if (entry.value.limit != null)
                       Text(
-                        '${entry.value.used}/${entry.value.limit} '
-                        'per ${entry.value.period}',
+                        '${entry.value.used}/${entry.value.limit} per ${entry.value.period}',
                         style: context.text.bodySmall,
                       ),
                   ],
@@ -144,7 +144,7 @@ class _CurrentPlanPanel extends ConsumerWidget {
                   await ref.read(subscriptionRepositoryProvider).cancel();
                   ref.invalidate(subscriptionProvider);
                 },
-                child: const Text('Cancel at period end'),
+                child: Text(context.t('Cancel at period end')),
               ),
             ),
         ],
@@ -191,8 +191,8 @@ class _PlanCardState extends ConsumerState<_PlanCard> {
         }
       } else if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('This gateway needs the web checkout page.'),
+          SnackBar(
+            content: Text(context.t('This gateway needs the web checkout page.')),
           ),
         );
       }
@@ -270,9 +270,7 @@ class _PlanCardState extends ConsumerState<_PlanCard> {
                     child: Text(
                       entitlement.limit == null
                           ? EntitlementLabels.of(entitlement.feature)
-                          : '${EntitlementLabels.of(entitlement.feature)} · '
-                              '${entitlement.limit}'
-                              '${entitlement.period == null ? '' : '/${entitlement.period}'}',
+                          : '${EntitlementLabels.of(entitlement.feature)} · ${entitlement.limit}${entitlement.period == null ? '' : '/${entitlement.period}'}',
                       style: context.text.bodyMedium,
                     ),
                   ),

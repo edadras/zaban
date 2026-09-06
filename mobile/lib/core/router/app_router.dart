@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/storage/preferences_store.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
@@ -300,7 +301,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
     ],
     errorBuilder: (BuildContext context, GoRouterState state) => ZabanScaffold(
-      title: 'Lost',
+      title: context.t('Lost'),
       body: Center(
         child: Text('No screen for ${state.uri}'),
       ),
@@ -330,33 +331,33 @@ class _AppShell extends ConsumerWidget {
         initialLocation: index == shell.currentIndex,
       ),
       destinations: <ShellDestination>[
-        const ShellDestination(
-          label: 'Today',
+        ShellDestination(
+          label: context.t('Today'),
           icon: Icons.bolt_outlined,
           selectedIcon: Icons.bolt_rounded,
           route: '/home',
         ),
         ShellDestination(
-          label: 'Review',
+          label: context.t('Review'),
           icon: Icons.replay_outlined,
           selectedIcon: Icons.replay_rounded,
           route: '/review',
           badgeCount: dueReviews,
         ),
-        const ShellDestination(
-          label: 'Talk',
+        ShellDestination(
+          label: context.t('Talk'),
           icon: Icons.forum_outlined,
           selectedIcon: Icons.forum_rounded,
           route: '/conversation',
         ),
-        const ShellDestination(
-          label: 'Progress',
+        ShellDestination(
+          label: context.t('Progress'),
           icon: Icons.insights_outlined,
           selectedIcon: Icons.insights_rounded,
           route: '/progress',
         ),
-        const ShellDestination(
-          label: 'You',
+        ShellDestination(
+          label: context.t('You'),
           icon: Icons.person_outline_rounded,
           selectedIcon: Icons.person_rounded,
           route: '/profile',

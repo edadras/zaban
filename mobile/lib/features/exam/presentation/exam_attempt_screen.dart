@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -137,7 +138,7 @@ class _ExamAttemptScreenState extends ConsumerState<ExamAttemptScreen> {
         onPressed: () => Navigator.of(context).maybePop(),
       ),
       body: async.when(
-        loading: () => const LoadingView(message: 'Preparing your paper…'),
+        loading: () => LoadingView(message: context.t('Preparing your paper…')),
         error: (Object error, StackTrace _) => ErrorView(
           error: error,
           onRetry: () => ref.invalidate(provider),
@@ -145,14 +146,14 @@ class _ExamAttemptScreenState extends ConsumerState<ExamAttemptScreen> {
         ),
         data: (ExamRunState state) {
           if (state.isFinished || state.task.complete) {
-            return const LoadingView(message: 'Marking your paper…');
+            return LoadingView(message: context.t('Marking your paper…'));
           }
 
           final envelope = state.task;
           final task = envelope.task;
           if (task == null) {
-            return const EmptyView(
-              title: 'This sitting has no tasks',
+            return EmptyView(
+              title: context.t('This sitting has no tasks'),
               icon: Icons.error_outline_rounded,
             );
           }
@@ -197,7 +198,7 @@ class _ExamAttemptScreenState extends ConsumerState<ExamAttemptScreen> {
                             ),
                           const SizedBox(height: Spacing.xl),
                           GlowButton(
-                            label: 'Submit and continue',
+                            label: context.t('Submit and continue'),
                             size: GlowButtonSize.large,
                             expand: true,
                             isLoading: state.submitting,
@@ -258,8 +259,7 @@ class _TaskHeader extends StatelessWidget {
                   Text(
                     progress == null
                         ? 'Task'
-                        : '${progress.tasksRemainingInSection} task(s) left '
-                            'in this section',
+                        : '${progress.tasksRemainingInSection} task(s) left in this section',
                     style: context.text.bodyMedium,
                   ),
                 ],
@@ -357,7 +357,7 @@ class _WritingTask extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Text('YOUR ANSWER', style: context.text.labelSmall),
+          Text(context.t('YOUR ANSWER'), style: context.text.labelSmall),
           const SizedBox(height: Spacing.sm),
           TextField(
             controller: controller,
@@ -365,8 +365,8 @@ class _WritingTask extends StatelessWidget {
             maxLines: null,
             style: context.text.bodyLarge,
             cursorColor: context.colors.accent,
-            decoration: const InputDecoration(
-              hintText: 'Write your response here',
+            decoration: InputDecoration(
+              hintText: context.t('Write your response here'),
             ),
           ),
         ],

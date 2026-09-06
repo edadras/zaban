@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
@@ -31,7 +32,7 @@ class UnknownBlock extends StatelessWidget {
       eyebrow: scope.eyebrow,
       title: block.title ?? 'Something new',
       footer: GlowButton(
-        label: 'Continue',
+        label: context.t('Continue'),
         size: GlowButtonSize.large,
         expand: true,
         trailingIcon: Icons.arrow_forward_rounded,
@@ -45,7 +46,7 @@ class UnknownBlock extends StatelessWidget {
             Text(body, style: context.text.bodyLarge)
           else
             Text(
-              'This activity needs a newer version of the app.',
+              context.t('This activity needs a newer version of the app.'),
               style: context.text.bodyLarge,
             ),
           const SizedBox(height: Spacing.lg),

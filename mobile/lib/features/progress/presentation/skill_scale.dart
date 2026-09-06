@@ -15,7 +15,7 @@ class SkillScale {
 
   static double normalise(double ability) {
     if (ability.isNaN) return 0;
-    final span = maxAbility - minAbility;
+    const span = maxAbility - minAbility;
     return ((ability - minAbility) / span).clamp(0.0, 1.0);
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/theme/tokens/shadow_tokens.dart';
@@ -75,7 +76,7 @@ class _FlashcardBlockState extends State<FlashcardBlock>
         builder: (BuildContext context, _) {
           if (!_revealed) {
             return GlowButton(
-              label: 'Reveal',
+              label: context.t('Reveal'),
               size: GlowButtonSize.large,
               expand: true,
               variant: GlowButtonVariant.ghost,
@@ -85,7 +86,7 @@ class _FlashcardBlockState extends State<FlashcardBlock>
 
           if (onRate == null) {
             return GlowButton(
-              label: 'Continue',
+              label: context.t('Continue'),
               size: GlowButtonSize.large,
               expand: true,
               trailingIcon: Icons.arrow_forward_rounded,
@@ -97,7 +98,7 @@ class _FlashcardBlockState extends State<FlashcardBlock>
             children: <Widget>[
               Expanded(
                 child: GlowButton(
-                  label: 'Again',
+                  label: context.t('Again'),
                   variant: GlowButtonVariant.ghost,
                   expand: true,
                   onPressed: () => onRate(1),
@@ -106,7 +107,7 @@ class _FlashcardBlockState extends State<FlashcardBlock>
               const SizedBox(width: Spacing.sm),
               Expanded(
                 child: GlowButton(
-                  label: 'Hard',
+                  label: context.t('Hard'),
                   variant: GlowButtonVariant.ghost,
                   expand: true,
                   onPressed: () => onRate(3),
@@ -115,7 +116,7 @@ class _FlashcardBlockState extends State<FlashcardBlock>
               const SizedBox(width: Spacing.sm),
               Expanded(
                 child: GlowButton(
-                  label: 'Easy',
+                  label: context.t('Easy'),
                   expand: true,
                   onPressed: () => onRate(5),
                 ),
@@ -162,7 +163,7 @@ class _FlashcardBlockState extends State<FlashcardBlock>
             const SizedBox(height: Spacing.lg),
             AudioPlayerButton(
               url: audioUrl,
-              label: 'Hear it',
+              label: context.t('Hear it'),
               duration: block.audio?.duration,
               size: 52,
             ),

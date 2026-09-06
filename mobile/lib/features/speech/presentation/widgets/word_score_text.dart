@@ -55,8 +55,7 @@ class _WordChip extends StatelessWidget {
     final omitted = word.outcome == 'omitted';
 
     return Semantics(
-      label: '${word.display}, ${word.outcome}, '
-          '${(word.score * 100).round()} percent',
+      label: '${word.display}, ${word.outcome}, ${(word.score * 100).round()} percent',
       excludeSemantics: true,
       child: GestureDetector(
         onTap: onTap,

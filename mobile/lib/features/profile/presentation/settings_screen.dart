@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/locale_controller.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/theme_controller.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -48,13 +50,14 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     final user = ref.watch(currentUserProvider);
     final settings = user?.settings;
     final themeMode = ref.watch(themeModeProvider);
+    final locale = ref.watch(localeProvider);
 
     if (settings == null) {
-      return const ZabanScaffold(title: 'Settings', body: LoadingView());
+      return ZabanScaffold(title: context.t('Settings'), body: const LoadingView());
     }
 
     return ZabanScaffold(
-      title: 'Settings',
+      title: context.t('Settings'),
       leading: IconButton(
         icon: const Icon(Icons.arrow_back_rounded),
         onPressed: () => Navigator.of(context).maybePop(),
@@ -66,7 +69,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                const SectionHeader(title: 'Daily goal'),
+                SectionHeader(title: context.t('Daily goal')),
                 GlassPanel(
                   child: _DailyTarget(
                     minutes: settings.dailyTargetMinutes,
@@ -76,7 +79,35 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                 ),
                 const SizedBox(height: Spacing.xl),
-                const SectionHeader(title: 'Appearance'),
+                SectionHeader(title: context.t('Language')),
+                GlassPanel(
+                  child: Column(
+                    children: <Widget>[
+                      // "Match my device" is null rather than a language code:
+                      // it means "stop choosing", which is a different thing
+                      // from choosing whatever the device happens to say now.
+                      _LanguageChoice(
+                        label: context.t('Match my device'),
+                        value: null,
+                        selected: locale,
+                      ),
+                      for (final Locale option in Strings.supported)
+                        _LanguageChoice(
+                          // Each language names itself in itself: someone who
+                          // cannot read the current interface has to be able to
+                          // find their way out of it.
+                          label: switch (option.languageCode) {
+                            'fa' => 'فارسی',
+                            _ => 'English',
+                          },
+                          value: option,
+                          selected: locale,
+                        ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: Spacing.xl),
+                SectionHeader(title: context.t('Appearance')),
                 GlassPanel(
                   child: Column(
                     children: <Widget>[
@@ -88,9 +119,9 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                           contentPadding: EdgeInsets.zero,
                           title: Text(
                             switch (mode) {
-                              ThemeMode.dark => 'Dark',
-                              ThemeMode.light => 'Light',
-                              ThemeMode.system => 'Match my device',
+                              ThemeMode.dark => context.t('Dark'),
+                              ThemeMode.light => context.t('Light'),
+                              ThemeMode.system => context.t('Match my device'),
                             },
                             style: context.text.bodyLarge,
                           ),
@@ -103,26 +134,26 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                 ),
                 const SizedBox(height: Spacing.xl),
-                const SectionHeader(title: 'Reminders'),
+                SectionHeader(title: context.t('Reminders')),
                 GlassPanel(
                   child: Column(
                     children: <Widget>[
                       _Toggle(
-                        label: 'Practice reminders',
+                        label: context.t('Practice reminders'),
                         value: settings.reminderEnabled,
                         onChanged: (bool value) => _save(
                           <String, dynamic>{'reminder_enabled': value},
                         ),
                       ),
                       _Toggle(
-                        label: 'Push notifications',
+                        label: context.t('Push notifications'),
                         value: settings.notificationsPush,
                         onChanged: (bool value) => _save(
                           <String, dynamic>{'notifications_push': value},
                         ),
                       ),
                       _Toggle(
-                        label: 'Email',
+                        label: context.t('Email'),
                         value: settings.notificationsEmail,
                         onChanged: (bool value) => _save(
                           <String, dynamic>{'notifications_email': value},
@@ -132,23 +163,23 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                   ),
                 ),
                 const SizedBox(height: Spacing.xl),
-                const SectionHeader(
-                  title: 'Speech & privacy',
-                  eyebrow: 'Your recordings',
+                SectionHeader(
+                  title: context.t('Speech & privacy'),
+                  eyebrow: context.t('Your recordings'),
                 ),
                 GlassPanel(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       _Toggle(
-                        label: 'Allow pronunciation scoring',
+                        label: context.t('Allow pronunciation scoring'),
                         value: settings.speechConsentGiven,
                         onChanged: (bool value) => _save(
                           <String, dynamic>{'speech_consent_given': value},
                         ),
                       ),
                       _Toggle(
-                        label: 'Help improve the models',
+                        label: context.t('Help improve the models'),
                         value: settings.allowSpeechForModelImprovement,
                         onChanged: (bool value) => _save(
                           <String, dynamic>{
@@ -158,10 +189,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                       ),
                       const SizedBox(height: Spacing.md),
                       Text(
-                        'Recordings are deleted after '
-                        '${settings.speechRetentionDays} days. The scores '
-                        'derived from them are kept so your pronunciation '
-                        'history survives.',
+                        'Recordings are deleted after ${settings.speechRetentionDays} days. The scores derived from them are kept so your pronunciation history survives.',
                         style: context.text.bodySmall,
                       ),
                       const SizedBox(height: Spacing.md),
@@ -230,7 +258,7 @@ class _DailyTargetState extends State<_DailyTarget> {
           children: <Widget>[
             Text('${_value.round()}', style: context.text.displaySmall),
             const SizedBox(width: Spacing.xs),
-            Text('minutes a day', style: context.text.bodyMedium),
+            Text(context.t('minutes a day'), style: context.text.bodyMedium),
           ],
         ),
         Slider(
@@ -246,8 +274,7 @@ class _DailyTargetState extends State<_DailyTarget> {
           onChangeEnd: (double value) => widget.onChanged(value.round()),
         ),
         Text(
-          'Your session length is built from this, along with how much you '
-          'have due for review.',
+          context.t('Your session length is built from this, along with how much you have due for review.'),
           style: context.text.bodySmall,
         ),
       ],
@@ -274,6 +301,33 @@ class _Toggle extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       activeColor: context.colors.accent,
       title: Text(label, style: context.text.bodyLarge),
+    );
+  }
+}
+
+
+/// One row of the language picker.
+class _LanguageChoice extends ConsumerWidget {
+  const _LanguageChoice({
+    required this.label,
+    required this.value,
+    required this.selected,
+  });
+
+  final String label;
+  final Locale? value;
+  final Locale? selected;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return RadioListTile<Locale?>(
+      value: value,
+      groupValue: selected,
+      activeColor: context.colors.accent,
+      contentPadding: EdgeInsets.zero,
+      title: Text(label, style: context.text.bodyLarge),
+      onChanged: (Locale? chosen) =>
+          ref.read(localeProvider.notifier).set(chosen),
     );
   }
 }

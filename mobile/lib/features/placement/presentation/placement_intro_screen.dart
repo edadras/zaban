@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -30,14 +31,12 @@ class PlacementIntroScreen extends ConsumerWidget {
       (
         Icons.tune_rounded,
         'It adapts as you go',
-        'Each question is chosen from how you answered the last one, so it '
-            'should feel neither easy nor impossible for long.',
+        'Each question is chosen from how you answered the last one, so it should feel neither easy nor impossible for long.',
       ),
       (
         Icons.insights_rounded,
         'You get a profile, not a score',
-        'Reading, listening, grammar, vocabulary and speaking are measured '
-            'separately — they are rarely at the same level.',
+        'Reading, listening, grammar, vocabulary and speaking are measured separately — they are rarely at the same level.',
       ),
     ];
 
@@ -56,7 +55,7 @@ class PlacementIntroScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: Spacing.sm),
                 Text(
-                  'Everything you study afterwards is built from this.',
+                  context.t('Everything you study afterwards is built from this.'),
                   style: context.text.bodyLarge,
                 ),
                 const SizedBox(height: Spacing.xxl),

@@ -9,6 +9,7 @@ class PreferencesStore {
   PreferencesStore(this._prefs);
 
   static const _themeModeKey = 'zaban.theme_mode';
+  static const _localeKey = 'zaban.locale';
   static const _onboardingSeenKey = 'zaban.onboarding_seen';
   static const _lastSessionIdKey = 'zaban.last_session_id';
   static const _reduceMotionKey = 'zaban.reduce_motion';
@@ -18,6 +19,21 @@ class PreferencesStore {
   String get themeMode => _prefs.getString(_themeModeKey) ?? 'dark';
   Future<void> setThemeMode(String value) =>
       _prefs.setString(_themeModeKey, value);
+
+  /// The interface language, remembered on the device.
+  ///
+  /// Held here as well as on the account because the app has to paint its
+  /// first frame - the splash, and the sign-in screen - before it knows who is
+  /// using it. Null means "follow the device".
+  String? get locale => _prefs.getString(_localeKey);
+  Future<void> setLocale(String? value) async {
+    if (value == null) {
+      await _prefs.remove(_localeKey);
+
+      return;
+    }
+    await _prefs.setString(_localeKey, value);
+  }
 
   bool get onboardingSeen => _prefs.getBool(_onboardingSeenKey) ?? false;
   Future<void> setOnboardingSeen(bool value) =>

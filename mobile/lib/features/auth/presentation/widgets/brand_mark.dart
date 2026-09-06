@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/theme/tokens/shadow_tokens.dart';
@@ -38,10 +39,10 @@ class BrandMark extends StatelessWidget {
         ),
         if (showWordmark) ...<Widget>[
           const SizedBox(height: Spacing.lg),
-          Text('Zaban', style: context.text.displaySmall),
+          Text(context.t('Zaban'), style: context.text.displaySmall),
           const SizedBox(height: Spacing.xs),
           Text(
-            'Learn a language the way you actually learn',
+            context.t('Learn a language the way you actually learn'),
             textAlign: TextAlign.center,
             style: context.text.bodyMedium,
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 
@@ -46,7 +47,7 @@ class PatternForms extends StatelessWidget {
               // panel is as narrow as the phone it is read on.
               Expanded(
                 child: Text(
-                  'The forms this lesson practises',
+                  context.t('The forms this lesson practises'),
                   style:
                       context.text.labelMedium?.copyWith(color: colors.accent),
                 ),

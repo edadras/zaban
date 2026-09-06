@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/press_scale.dart';
@@ -135,7 +136,7 @@ class _MatchExerciseState extends State<MatchExercise> {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Text('Terms', style: context.text.labelSmall),
+                Text(context.t('Terms'), style: context.text.labelSmall),
                 const SizedBox(height: Spacing.sm),
                 for (int i = 0; i < _left.length; i++)
                   Padding(
@@ -149,7 +150,7 @@ class _MatchExerciseState extends State<MatchExercise> {
                     ),
                   ),
                 const SizedBox(height: Spacing.lg),
-                Text('Definitions', style: context.text.labelSmall),
+                Text(context.t('Definitions'), style: context.text.labelSmall),
                 const SizedBox(height: Spacing.sm),
                 for (int i = 0; i < _right.length; i++)
                   Padding(

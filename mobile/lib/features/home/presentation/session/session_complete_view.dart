@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -44,7 +45,7 @@ class SessionCompleteView extends ConsumerWidget {
                       '+${summary.xpEarned}',
                       style: context.text.displaySmall,
                     ),
-                    Text('XP', style: context.text.labelSmall),
+                    Text(context.t('XP'), style: context.text.labelSmall),
                   ],
                 ),
               ),
@@ -60,19 +61,19 @@ class SessionCompleteView extends ConsumerWidget {
               minTileWidth: 150,
               children: <Widget>[
                 StatTile(
-                  label: 'Activities',
+                  label: context.t('Activities'),
                   value: '${summary.activitiesCompleted}',
                   caption: 'of $planned planned',
                   icon: Icons.check_rounded,
                 ),
                 StatTile(
-                  label: 'Time',
+                  label: context.t('Time'),
                   value: '${summary.minutes}',
-                  unit: 'min',
+                  unit: context.t('min'),
                   icon: Icons.schedule_rounded,
                 ),
                 StatTile(
-                  label: 'XP',
+                  label: context.t('XP'),
                   value: '${summary.xpEarned}',
                   icon: Icons.auto_awesome_rounded,
                 ),
@@ -85,7 +86,7 @@ class SessionCompleteView extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text('What this session was made of',
+                    Text(context.t('What this session was made of'),
                         style: context.text.titleMedium),
                     const SizedBox(height: Spacing.sm),
                     for (final String note in summary.notes)
@@ -113,7 +114,7 @@ class SessionCompleteView extends ConsumerWidget {
             ],
             const SizedBox(height: Spacing.xl),
             GlowButton(
-              label: 'Back to Today',
+              label: context.t('Back to Today'),
               size: GlowButtonSize.large,
               expand: true,
               onPressed: () {
@@ -126,7 +127,7 @@ class SessionCompleteView extends ConsumerWidget {
             ),
             const SizedBox(height: Spacing.md),
             GlowButton(
-              label: 'One more round',
+              label: context.t('One more round'),
               variant: GlowButtonVariant.ghost,
               size: GlowButtonSize.large,
               expand: true,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -24,7 +25,7 @@ class ExamHomeScreen extends ConsumerWidget {
     final async = ref.watch(examTypesProvider);
 
     return ZabanScaffold(
-      title: 'Exam practice',
+      title: context.t('Exam practice'),
       leading: IconButton(
         icon: const Icon(Icons.arrow_back_rounded),
         onPressed: () => Navigator.of(context).maybePop(),
@@ -38,9 +39,9 @@ class ExamHomeScreen extends ConsumerWidget {
         ),
         data: (List<ExamType> types) {
           if (types.isEmpty) {
-            return const EmptyView(
-              title: 'No exams available yet',
-              message: 'Exam material is added as the course library grows.',
+            return EmptyView(
+              title: context.t('No exams available yet'),
+              message: context.t('Exam material is added as the course library grows.'),
               icon: Icons.workspace_premium_outlined,
             );
           }
@@ -57,8 +58,7 @@ class ExamHomeScreen extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     Text(
-                      'Every score here is an automated estimate, never an '
-                      'official band.',
+                      context.t('Every score here is an automated estimate, never an official band.'),
                       style: context.text.bodyMedium,
                     ),
                     const SizedBox(height: Spacing.lg),
@@ -129,7 +129,7 @@ class _ExamCardState extends ConsumerState<_ExamCard> {
       title: type.name,
       subtitle: type.description,
       footer: GlowButton(
-        label: 'Start full practice',
+        label: context.t('Start full practice'),
         expand: true,
         isLoading: _starting,
         onPressed: () => _start(),
@@ -140,13 +140,12 @@ class _ExamCardState extends ConsumerState<_ExamCard> {
         children: <Widget>[
           if (scale != null) ...<Widget>[
             Text(
-              'Scored ${scale.min}–${scale.max}'
-              '${scale.type == null ? '' : ' (${scale.type})'}',
+              'Scored ${scale.min}–${scale.max}${scale.type == null ? '' : ' (${scale.type})'}',
               style: context.text.bodyMedium,
             ),
             const SizedBox(height: Spacing.md),
           ],
-          Text('SECTIONS', style: context.text.labelSmall),
+          Text(context.t('SECTIONS'), style: context.text.labelSmall),
           const SizedBox(height: Spacing.xs),
           for (final ExamSection section in type.sections)
             Padding(
@@ -163,7 +162,7 @@ class _ExamCardState extends ConsumerState<_ExamCard> {
                   TextButton(
                     onPressed:
                         _starting ? null : () => _start(sectionId: section.id),
-                    child: const Text('Practise'),
+                    child: Text(context.t('Practise')),
                   ),
                 ],
               ),

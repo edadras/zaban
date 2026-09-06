@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
@@ -28,7 +29,7 @@ class ImageSceneBlock extends StatelessWidget {
       title: block.title,
       instructions: block.instructions,
       footer: GlowButton(
-        label: 'Continue',
+        label: context.t('Continue'),
         size: GlowButtonSize.large,
         expand: true,
         trailingIcon: Icons.arrow_forward_rounded,

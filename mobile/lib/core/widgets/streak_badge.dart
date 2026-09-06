@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/theme/tokens/shadow_tokens.dart';
@@ -69,7 +70,7 @@ class StreakBadge extends StatelessWidget {
           if (!compact) ...<Widget>[
             const SizedBox(width: Spacing.xs),
             Text(
-              'streak',
+              context.t('streak'),
               style: text.labelSmall?.copyWith(color: colors.textTertiary),
             ),
           ],
@@ -78,8 +79,7 @@ class StreakBadge extends StatelessWidget {
     );
 
     final semantics = Semantics(
-      label: 'Study streak: $label'
-          '${activeToday ? ', today complete' : ', today not complete yet'}',
+      label: 'Study streak: $label${activeToday ? ', today complete' : ', today not complete yet'}',
       excludeSemantics: true,
       child: badge,
     );
