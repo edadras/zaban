@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Writing;
 
+use App\Events\AttemptScored;
 use App\Models\WritingAttempt;
 use App\Services\Writing\HandwritingRecogniser;
 use App\Services\Writing\WritingAnalysisService;
@@ -59,6 +60,10 @@ class ProcessWritingAttempt implements ShouldQueue
         }
 
         $analysis->analyse($attempt);
+
+        AttemptScored::dispatch(
+            $attempt->user_id, 'writing', $attempt->id, $attempt->fresh()->status,
+        );
     }
 
     public function failed(\Throwable $e): void
@@ -69,5 +74,12 @@ class ProcessWritingAttempt implements ShouldQueue
                 'status' => WritingAttempt::STATUS_FAILED,
                 'error' => 'The attempt could not be processed: '.$e->getMessage(),
             ]);
+
+        $attempt = WritingAttempt::find($this->writingAttemptId);
+        if ($attempt !== null) {
+            AttemptScored::dispatch(
+                $attempt->user_id, 'writing', $attempt->id, WritingAttempt::STATUS_FAILED,
+            );
+        }
     }
 }

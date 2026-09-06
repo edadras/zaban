@@ -2,6 +2,7 @@
 
 namespace App\Jobs\Speech;
 
+use App\Events\AttemptScored;
 use App\Models\SpeechAttempt;
 use App\Services\Speech\SpeechAnalysisService;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -48,6 +49,13 @@ class ProcessSpeechAttempt implements ShouldQueue
         }
 
         $analysis->analyse($attempt);
+
+        // The learner is waiting on this one: scoring a recording is a
+        // transcription, an alignment and a model call. Polling still works and
+        // is still the fallback; this is what lets the client stop.
+        AttemptScored::dispatch(
+            $attempt->user_id, 'speech', $attempt->id, $attempt->fresh()->status,
+        );
     }
 
     public function failed(\Throwable $e): void
@@ -59,5 +67,12 @@ class ProcessSpeechAttempt implements ShouldQueue
                 'error' => mb_substr($e->getMessage(), 0, 1000),
                 'updated_at' => now(),
             ]);
+
+        $attempt = SpeechAttempt::find($this->speechAttemptId);
+        if ($attempt !== null) {
+            // A failure is news too. Without it the client waits for a score
+            // that is never coming.
+            AttemptScored::dispatch($attempt->user_id, 'speech', $attempt->id, 'failed');
+        }
     }
 }

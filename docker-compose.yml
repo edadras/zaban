@@ -66,7 +66,7 @@ x-app-env: &app-env
 
   MAIL_MAILER: log
 
-  # Broadcasting. See the `reverb` service below for what is and is not wired up.
+  # Broadcasting. `log` by default; see the `reverb` service below.
   BROADCAST_CONNECTION: "${BROADCAST_CONNECTION:-log}"
   REVERB_APP_ID: "${REVERB_APP_ID:-zaban}"
   REVERB_APP_KEY: "${REVERB_APP_KEY:-zaban-local-key}"
@@ -272,16 +272,15 @@ services:
 
   # ----------------------------------------------------------------- reverb
   #
-  # Websockets for the live parts of the product — a tutor reply streaming in, a
-  # conversation turn being scored, a long media generation finishing.
+  # Websockets. One event is pushed today — `attempt.scored`, on a private
+  # per-learner channel — because a recording and a piece of writing are the
+  # only two things a learner waits on; everything else is graded in the
+  # request that submitted it.
   #
-  # STATUS: laravel/reverb is NOT in backend/composer.json yet, so
-  # `php artisan reverb:start` does not exist and this container would exit
-  # immediately. It is therefore behind the `realtime` profile: the default
-  # `make up` does not start it, and `docker compose --profile realtime up`
-  # starts it once the package is installed. The REVERB_* variables it uses are
-  # already read by the framework's broadcasting config, so nothing else has to
-  # change when the package lands.
+  # Behind the `realtime` profile because listening is an optimisation, not a
+  # requirement: the clients poll if nothing arrives, so the default `make up`
+  # does not need this container. `docker compose --profile realtime up`
+  # starts it, and BROADCAST_CONNECTION=reverb turns the app's side on.
   reverb:
     build: *app-build
     image: zaban/app:dev
