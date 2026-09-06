@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\ExerciseController;
 use App\Http\Controllers\Api\V1\MediaController;
 use App\Http\Controllers\Api\V1\PlacementController;
+use App\Http\Controllers\Api\V1\OnboardingController;
 use App\Http\Controllers\Api\V1\ProfileController;
 use App\Http\Controllers\Api\V1\ProgressController;
 use App\Http\Controllers\Api\V1\ReviewController;
@@ -43,6 +44,10 @@ Route::prefix('v1')->group(function () {
         Route::get('auth/me', [AuthController::class, 'me']);
         Route::post('auth/resend-verification', [AuthController::class, 'resendVerification'])
             ->middleware('throttle:auth');
+
+        // onboarding: asked once, before anything else
+        Route::get('onboarding/options', [OnboardingController::class, 'options']);
+        Route::post('onboarding', [OnboardingController::class, 'store']);
 
         // profile
         Route::get('profile', [ProfileController::class, 'show']);

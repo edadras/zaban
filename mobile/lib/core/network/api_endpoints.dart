@@ -119,11 +119,7 @@ class ApiEndpoints {
   static String conversationFinish(int sessionId) =>
       '/conversation/$sessionId/finish';
 
-  // ------------------------------------------------- awaiting the backend
-  // Onboarding is built client-side against the shapes documented in its
-  // models; the routes do not exist on the server. Calls fail with a normal
-  // 404 -> ApiException, which the screen renders as an error rather than
-  // crashing.
+  // ----------------------------------------------------------- onboarding
   static const String onboardingOptions = '/onboarding/options';
   static const String onboarding = '/onboarding';
 }

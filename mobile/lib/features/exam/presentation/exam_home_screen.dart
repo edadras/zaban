@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -99,13 +101,15 @@ class _ExamCardState extends ConsumerState<_ExamCard> {
             sectionId: sectionId,
           );
       if (!mounted) return;
-      context.push(AppRoute.examAttempt.examAttemptPath(attempt.id));
+      // See scenarios_screen: awaiting a push holds the spinner for the life of
+      // the screen it opened.
+      unawaited(context.push(AppRoute.examAttempt.examAttemptPath(attempt.id)));
     } on ApiException catch (error) {
       if (!mounted) return;
       // Access to exam prep is an entitlement the server owns; a paywall error
       // is a routing instruction, not a failure to explain away.
       if (error.kind == ApiErrorKind.paywall) {
-        context.push(AppRoute.plans.path);
+        unawaited(context.push(AppRoute.plans.path));
         return;
       }
       ScaffoldMessenger.of(context)

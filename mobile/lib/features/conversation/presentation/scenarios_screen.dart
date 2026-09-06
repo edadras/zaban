@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -94,11 +96,14 @@ class _ScenarioCardState extends ConsumerState<_ScenarioCard> {
           .read(conversationRepositoryProvider)
           .start(scenarioId: widget.scenario.id);
       if (!mounted) return;
-      context.push(AppRoute.conversation.conversationPath(session.id));
+      // Not awaited on purpose: the future returned by push completes when the
+      // conversation is popped, and awaiting it would hold the button in its
+      // loading state for the whole of it.
+      unawaited(context.push(AppRoute.conversation.conversationPath(session.id)));
     } on ApiException catch (error) {
       if (!mounted) return;
       if (error.kind == ApiErrorKind.paywall) {
-        context.push(AppRoute.plans.path);
+        unawaited(context.push(AppRoute.plans.path));
         return;
       }
       ScaffoldMessenger.of(context)
