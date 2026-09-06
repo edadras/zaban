@@ -82,6 +82,52 @@ void main() {
       expect(recorder.continues, 1);
     });
 
+    testWidgets('a grammar lesson shows the forms it drills',
+        (WidgetTester tester) async {
+      // A grammar page teaches a pattern rather than words, and says which
+      // forms of it in bold. Those used to be imported as vocabulary, which
+      // produced headwords like "'m" and "ing"; they belong with the lesson.
+      final recorder = _Recorder();
+
+      await tester.pumpApp(
+        LessonBlockRenderer(
+          block: const LessonBlock(
+            id: 11,
+            type: BlockTypes.sourceText,
+            title: 'Present perfect continuous',
+            config: <String, dynamic>{
+              'text': 'We use have/has been + -ing for a recent activity.',
+              'target_forms': <String>['have been doing', "he's been working"],
+            },
+          ),
+          scope: recorder.scope(),
+        ),
+      );
+
+      expect(find.text('The forms this lesson practises'), findsOneWidget);
+      expect(find.text('have been doing'), findsOneWidget);
+      expect(find.text("he's been working"), findsOneWidget);
+    });
+
+    testWidgets('a vocabulary lesson shows no forms panel',
+        (WidgetTester tester) async {
+      final recorder = _Recorder();
+
+      await tester.pumpApp(
+        LessonBlockRenderer(
+          block: const LessonBlock(
+            id: 12,
+            type: BlockTypes.sourceText,
+            title: 'Describing people',
+            config: <String, dynamic>{'text': 'Thrifty means careful.'},
+          ),
+          scope: recorder.scope(),
+        ),
+      );
+
+      expect(find.text('The forms this lesson practises'), findsNothing);
+    });
+
     testWidgets('image_scene renders the artwork and its caption',
         (WidgetTester tester) async {
       final recorder = _Recorder();

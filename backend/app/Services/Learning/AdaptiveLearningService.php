@@ -273,6 +273,16 @@ class AdaptiveLearningService
             }
         }
 
+        // A grammar or pronunciation question from the strand book at this
+        // learner's level. The corpus is six series now, but a session is
+        // built around one lesson of one of them, so without this a learner
+        // placed on the vocabulary spine never meets a grammar item at all -
+        // which is exactly what the platform was asked about: where does it
+        // teach grammar?
+        if ($out->count() < $count) {
+            $out = $out->concat($this->strandActivities($userId, $count - $out->count()));
+        }
+
         if ($out->count() < $count) {
             $out = $out->concat($this->conversationActivity($userId));
         }
@@ -286,6 +296,75 @@ class AdaptiveLearningService
         }
 
         return $out->take($count)->values();
+    }
+
+    /**
+     * A question from each of the other series, at the level this learner is at.
+     *
+     * The books are a ladder per subject: a learner placed at B2 has a B2
+     * grammar book and a B2 pronunciation book waiting, and no reason to work
+     * through the elementary ones to reach them. One item from each strand,
+     * hardest-first within reach, so a session that studies vocabulary still
+     * asks a grammar question.
+     *
+     * Silent when a strand has nothing servable, which is the honest state for
+     * the books whose exercises are still printed prose.
+     */
+    private function strandActivities(int $userId, int $count): Collection
+    {
+        if ($count <= 0) {
+            return collect();
+        }
+
+        $profile = LearnerProfile::where('user_id', $userId)->first();
+        if (! $profile) {
+            return collect();
+        }
+
+        $spine = $profile->active_course_version_id;
+        $ability = $this->difficulty->abilityFor($userId);
+        $strands = $this->courses->strandsForAbility(
+            $profile->ability === null ? null : (float) $profile->ability,
+        );
+
+        $out = collect();
+        foreach ($strands as $series => $versionId) {
+            if ($out->count() >= $count || $versionId === $spine) {
+                continue;
+            }
+
+            $exercise = $this->difficulty->choose(
+                $this->answerable(
+                    Exercise::query()
+                        ->join('lessons', 'lessons.id', '=', 'exercises.lesson_id')
+                        ->join('units', 'units.id', '=', 'lessons.unit_id')
+                        ->join('modules', 'modules.id', '=', 'units.module_id')
+                        ->where('modules.course_version_id', $versionId),
+                )->select('exercises.*')->distinct()->limit(25)->get(),
+                $ability,
+            );
+
+            if (! $exercise) {
+                continue;
+            }
+
+            $out->push([
+                'type' => 'practice',
+                'subject_type' => Exercise::class,
+                'subject_id' => $exercise->id,
+                'concept_id' => $exercise->concepts()->value('concepts.id'),
+                'priority' => 38.0,
+                'predicted' => $this->difficulty->successProbability($ability, (float) $exercise->difficulty),
+                'rationale' => 'A '.str_replace('_', ' ', $series).' question at your level.',
+                'reason' => [
+                    'driver' => 'other_strand',
+                    'series' => $series,
+                    'course_version_id' => $versionId,
+                ],
+            ]);
+        }
+
+        return $out->values();
     }
 
     /**

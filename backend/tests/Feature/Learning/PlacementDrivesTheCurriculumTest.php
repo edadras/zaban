@@ -203,7 +203,82 @@ class PlacementDrivesTheCurriculumTest extends TestCase
         );
     }
 
+    /**
+     * A session is built around one lesson of one book. With six series in the
+     * corpus that leaves five of them unreachable: a learner placed on the
+     * vocabulary spine would never meet a grammar question, which is precisely
+     * what the platform was asked - where does it teach grammar?
+     */
+    public function test_a_session_reaches_the_other_series_at_the_learners_level(): void
+    {
+        $this->buildLadder('grammar', 'g-');
+        $grammarVersion = $this->courses->ladder('grammar')
+            ->firstWhere('slug', 'g-upper')->version_id;
+        $this->makeServableExercise((int) $grammarVersion, 'grammar');
+
+        $userId = $this->makeUser();
+        $profile = LearnerProfile::create([
+            'user_id' => $userId,
+            'language_id' => DB::table('languages')->where('code', 'en')->value('id'),
+            'ability' => 1.0,
+        ]);
+        $this->courses->assign($profile);
+
+        $session = app(AdaptiveLearningService::class)->buildNextSession($userId, 20);
+
+        $drivers = DB::table('session_activities')
+            ->where('learning_session_id', $session->id)
+            ->pluck('selection_reason')
+            ->map(fn ($r) => json_decode((string) $r, true)['driver'] ?? null);
+
+        $this->assertContains(
+            'other_strand',
+            $drivers->all(),
+            'the session never left the book the learner was placed into',
+        );
+    }
+
     // ------------------------------------------------------------- fixtures
+
+    /**
+     * One approved, answerable item in the first lesson of a course version.
+     */
+    private function makeServableExercise(int $versionId, string $skillCode): int
+    {
+        $lessonId = DB::table('lessons')
+            ->join('units', 'units.id', '=', 'lessons.unit_id')
+            ->join('modules', 'modules.id', '=', 'units.module_id')
+            ->where('modules.course_version_id', $versionId)
+            ->orderBy('lessons.id')
+            ->value('lessons.id');
+
+        $exerciseId = DB::table('exercises')->insertGetId([
+            'lesson_id' => $lessonId,
+            'exercise_template_id' => DB::table('exercise_templates')->where('code', 'fill_blank')->value('id'),
+            'language_id' => DB::table('languages')->where('code', 'en')->value('id'),
+            'skill_id' => DB::table('skills')->where('code', $skillCode)->value('id'),
+            'cefr_level_id' => DB::table('cefr_levels')->where('code', 'B2')->value('id'),
+            'stem' => 'She ______ here since 2019.',
+            'instructions' => 'Complete the sentence.',
+            'difficulty' => 0.8,
+            'status' => 'approved',
+            'generation_method' => 'extracted',
+            'copyright_status' => 'owned',
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+
+        DB::table('exercise_answers')->insert([
+            'exercise_id' => $exerciseId,
+            'blank_index' => 0,
+            'value' => 'has lived',
+            'match_mode' => 'normalised',
+            'is_primary' => true,
+            'credit' => 1.000,
+            'created_at' => now(), 'updated_at' => now(),
+        ]);
+
+        return $exerciseId;
+    }
 
     /**
      * Four courses spanning the ladder, each with one module, one unit and two

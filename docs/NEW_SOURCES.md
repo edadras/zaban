@@ -39,18 +39,25 @@ you match the words with their pronunciations."*
 | Grammar | Intermediate | 394 | text layer | 145 |
 | Grammar | Advanced | 306 | OCR | 99 |
 | Pronunciation | Elementary | 168 | OCR | 49 |
-| Pronunciation | Intermediate | 201 | OCR | 58 |
+| Pronunciation | Intermediate | 201 | OCR | 62 |
 | Pronunciation | Advanced | 191 | OCR | 60 |
-| Phrasal Verbs | Intermediate | 202 | OCR | 60 |
+| Phrasal Verbs | Intermediate | 202 | OCR | 69 |
 | Phrasal Verbs | Advanced | 194 | text layer | 60 |
-| Collocations | Intermediate | 193 | OCR | — |
-| Collocations | Advanced | 189 | OCR | — |
-| Idioms | Intermediate | 181 | OCR | — |
-| Idioms | Advanced | 182 | OCR | — |
+| Collocations | Intermediate | 193 | OCR | 60 |
+| Collocations | Advanced | 189 | OCR | 60 |
+| Idioms | Intermediate | 181 | OCR | 58 |
+| Idioms | Advanced | 182 | OCR | 60 |
 
-Six series where there were one. Grammar is the largest gap this closes: the
+Six series where there were one, 1,257 units where there were 362, and 10.8
+million characters of source text. Grammar is the largest gap this closes: the
 corpus had **zero** grammar concepts and zero grammar items, while claiming a
 grammar level in every placement report.
+
+Ten of those books were read from their page images: 2,132 pages, 924,538
+words, at a mean word confidence between 77 and 90 depending on the scan. 107
+pages - five per cent - came back below 70, and 63 of those are in Basic
+Grammar in Use, which teaches through pictures. Every page carries its own
+confidence, so a weak one can be found rather than silently trusted.
 
 ## Reading a scanned page
 
@@ -111,6 +118,19 @@ Four rules, each added because a book broke the one before it.
 * **Pronunciation in Use Elementary** loses about three unit numbers in four to
   a small pale figure beside a large title. Every unit that did come through
   sat on page 2n+9, so the pitch is voted on and the rest filled in from it.
+* **Collocations, Idioms and Phrasal Verbs Intermediate** print their unit
+  numbers *and* their contents numbers in coloured boxes, so neither survives:
+  Collocations gave 44 units of 60 and Phrasal Verbs 68 of 70, eight of which
+  were not units and one of which put unit 1 on unit 6's page. Each of these
+  books states its own shape on its first page — *the book has 60 two-page
+  units* — and that shape is visible without reading it, in the exercises pages
+  coming every second page from the first to the last. Where the fit explains
+  almost every exercises page and the headings explain almost none, the fit
+  takes over rather than merely filling gaps.
+
+A unit's page also has to lie where the book's own spacing puts it. Checking
+only that both neighbours agree misses the ends of a run — nothing came before
+unit 1 to contradict it — so units that fall off the line are put back on it.
 
 Titles come from the book's own contents list, which beats any page heading and
 beats it badly on a scan, where the largest line is as likely to be a caption.

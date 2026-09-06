@@ -30,7 +30,6 @@ have to start over.
 """
 import argparse
 import json
-import math
 import os
 import re
 import shutil
