@@ -231,7 +231,9 @@ class SessionShapeTest extends TestCase
 
         $this->lessonId = DB::table('lessons')->insertGetId([
             'unit_id' => $unitId, 'title' => 'Jobs', 'cefr_level_id' => $levelId,
-            'kind' => 'vocabulary', 'position' => 1, 'status' => 'draft',
+            // Published, because a session is built only from released
+            // lessons - a draft is not something a learner is handed.
+            'kind' => 'vocabulary', 'position' => 1, 'status' => 'published',
             'copyright_status' => 'owned', 'created_at' => now(), 'updated_at' => now(),
         ]);
 

@@ -342,7 +342,8 @@ class PlacementDrivesTheCurriculumTest extends TestCase
                     'cefr_level_id' => $levels[$to],
                     'kind' => 'vocabulary',
                     'position' => $n,
-                    'status' => 'draft',
+                    // The engine serves only what is published.
+                    'status' => 'published',
                     'copyright_status' => 'owned',
                     'created_at' => now(), 'updated_at' => now(),
                 ]);

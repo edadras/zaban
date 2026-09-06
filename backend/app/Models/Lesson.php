@@ -27,6 +27,22 @@ class Lesson extends Model
         'copyright_status',
     ];
 
+    /**
+     * Only what a learner is allowed to see.
+     *
+     * Everything imports as a draft, because the pipeline reads scanned pages
+     * and some of what it produces is a heading the scanner invented. Staff see
+     * drafts so they can look before releasing; nobody else does, or the switch
+     * in the admin screen would decide nothing.
+     */
+    public function scopeVisibleTo($query, ?User $user)
+    {
+        return $query->when(
+            ! ($user?->isAdmin() ?? false),
+            fn ($q) => $q->where('lessons.status', 'published'),
+        );
+    }
+
     public function unit(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Unit::class);

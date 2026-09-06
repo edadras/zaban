@@ -65,7 +65,9 @@ class CourseController extends ApiController
 
     public function unit(Request $request, Unit $unit)
     {
-        $lessons = $unit->lessons()->orderBy('position')->get();
+        $lessons = $unit->lessons()
+            ->visibleTo($request->user())
+            ->orderBy('position')->get();
 
         return $this->ok([
             'id' => $unit->id,
@@ -85,6 +87,13 @@ class CourseController extends ApiController
 
     public function lesson(Request $request, Lesson $lesson)
     {
+        // 404 rather than 403: a draft is not something a learner has been
+        // refused, it is something that is not there yet.
+        abort_unless(
+            $lesson->status === 'published' || $request->user()->isAdmin(),
+            404,
+        );
+
         $blocks = $lesson->blocks()->orderBy('position')->get();
         $userId = $request->user()->id;
 

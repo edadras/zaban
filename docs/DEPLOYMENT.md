@@ -208,14 +208,25 @@ php artisan content:import
 # 3. Derive interactive blocks and gradable items from what was imported
 php artisan content:build-activities
 
-# 4. Prove nothing was lost — re-reads the PDFs and audio tree from disk
+# 4. Release it to learners. NOT optional after step 2: everything imports as a
+#    draft, and the learner-facing endpoints and the session engine serve only
+#    what is published — so a re-import withdraws the whole course until this
+#    runs.
+php artisan content:publish --everything
+#    (no flag)      only lessons that teach something and carry an activity
+#    --everything   also the pages that are only pages: study skills, and the
+#                   sections whose headings the scanner could not read
+#    --withdraw     take it all back to draft
+#    --book=<id>    one source document
+
+# 5. Prove nothing was lost — re-reads the PDFs and audio tree from disk
 php artisan content:audit
 
-# 5. Prove the engines can actually run on it
+# 6. Prove the engines can actually run on it
 php artisan content:readiness
 ```
 
-**Treat steps 4 and 5 as release gates.** `content:audit` exits non-zero when a
+**Treat steps 5 and 6 as release gates.** `content:audit` exits non-zero when a
 page or audio file is unaccounted for; `content:readiness` reports whether
 exercises are concept-linked, whether items are gradable, whether lessons have
 interactive blocks, and whether there are enough placement-eligible items to run
@@ -566,11 +577,11 @@ false. If you find that again, the code is right and this file is wrong.
    first there is no speech-to-text and speech practice is unavailable; without
    the second, phoneme-level scoring returns an explicit "not configured"
    failure and the attempt is scored on everything else.
-4. **Every lesson is a draft.** 2,421 of them. Nothing is visible to a learner
-   until someone publishes it — `/admin/curriculum` in the app, or
-   `POST /admin/curriculum/books/{id}/publish` per book. This is a decision, not
-   a bug: the pipeline reads scanned pages and a person should look before a
-   learner does.
+4. **Publishing is a pipeline step, not a memory.** Everything imports as a
+   draft and `content:import --fresh` puts it back to draft, so
+   `content:publish` has to run after every import or the course disappears
+   from every learner. `make content` does it in order; a hand-run import does
+   not.
 
 **Still genuinely unbuilt**
 

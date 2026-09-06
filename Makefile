@@ -136,6 +136,10 @@ import-fresh: ## Delete previously imported curriculum, then import
 activities: ## Derive lesson blocks and gradable exercises from imported content
 	$(ARTISAN) content:build-activities
 
+.PHONY: publish
+publish: ## Release the imported curriculum to learners (import resets it to draft)
+	$(ARTISAN) content:publish --everything
+
 .PHONY: audit
 audit: ## Prove nothing from the source books was lost on import
 	$(ARTISAN) content:audit
@@ -145,7 +149,7 @@ readiness: ## Report whether stored content can actually drive the adaptive engi
 	$(ARTISAN) content:readiness
 
 .PHONY: content
-content: import activities audit readiness ## Full content pipeline: import, derive, audit, report
+content: import activities publish audit readiness ## Full content pipeline: import, derive, publish, audit, report
 
 # ------------------------------------------------------------------ queues
 

@@ -776,6 +776,10 @@ class AdaptiveLearningService
             // silently yielding none.
             ->where('lessons.kind', '!=', 'study_skills')
             ->where('concepts.is_active', true)
+            // A session is what a learner is handed, so it is built only from
+            // what has been released. Without this the publish switch in the
+            // admin screen decides nothing and every draft is taught anyway.
+            ->where('lessons.status', 'published')
             ->whereNull('lessons.deleted_at')
             ->when($completed->isNotEmpty(), fn ($q) => $q->whereNotIn('lessons.id', $completed))
             ->groupBy('lessons.id', 'modules.position', 'units.position', 'lessons.position')

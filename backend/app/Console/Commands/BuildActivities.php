@@ -149,6 +149,7 @@ class BuildActivities extends Command
         $this->classifyLessons();
         $this->indexCorpusSentences();
         $this->buildPatternActivities();
+        $this->nameTheSectionsTheScannerCouldNotRead();
         $this->deriveWordFamilyPrerequisites();
         $this->markPlacementBank();
 
@@ -1031,6 +1032,75 @@ class BuildActivities extends Command
         }
         $this->line('   skipped, no usable example sentence: '.$skipped['no_usable_example']);
         $this->line('   cloze kept but no provable choice item: '.$skipped['no_safe_distractors']);
+    }
+
+    /**
+     * Give a name to the sections whose heading came off the scan as noise.
+     *
+     * A section's title is one short run at the top of a column, which is the
+     * first thing a scanner loses: the corpus holds lessons titled "|", "..",
+     * "—", "\\" and "D". The page under them is intact - one of them carries
+     * six thousand characters of readable text - so the lesson is real content
+     * with an unreadable label, and hiding it would lose a page of the book to
+     * save a heading.
+     *
+     * The unit knows what it is about and the lesson knows which lettered
+     * section of it this is, so those two make a name: "Purposes and results:
+     * in order to, so as to, etc — section E".
+     *
+     * The test is deliberately crude - three letters, and one word of three
+     * letters or more - and it is not perfect: "ele PETS SSeS pc Grrr Eu A" has
+     * four words long enough to pass and is still noise. It catches the ones
+     * that are unarguable and leaves the rest alone, which is the right way
+     * round for something that overwrites a title.
+     */
+    private function nameTheSectionsTheScannerCouldNotRead(): void
+    {
+        $this->line('▸ naming the sections the scanner could not read');
+
+        $renamed = 0;
+
+        Lesson::with('unit:id,title')
+            ->whereNull('deleted_at')
+            ->chunkById(500, function ($lessons) use (&$renamed) {
+                foreach ($lessons as $lesson) {
+                    if ($this->readsAsATitle((string) $lesson->title)) {
+                        continue;
+                    }
+
+                    $unit = trim((string) $lesson->unit?->title);
+                    $section = trim((string) $lesson->source_section);
+
+                    if ($unit === '' || ! $this->readsAsATitle($unit)) {
+                        continue;
+                    }
+
+                    $lesson->update([
+                        'title' => $section === ''
+                            ? $unit
+                            : "{$unit} — section {$section}",
+                    ]);
+                    $renamed++;
+                }
+            });
+
+        $this->line("   sections renamed after their unit: {$renamed}");
+    }
+
+    /** Is this a heading, or is it what the scanner made of one? */
+    private function readsAsATitle(string $text): bool
+    {
+        if (preg_match_all('/\p{L}/u', $text) < 3) {
+            return false;
+        }
+
+        foreach ($this->wordsIn($text) as $word) {
+            if (preg_match('/^\p{L}{3,}$/u', $word)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
