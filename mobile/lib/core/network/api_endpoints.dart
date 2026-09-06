@@ -110,18 +110,20 @@ class ApiEndpoints {
   static const String adminReviewQueue = '/admin/content/queue';
   static const String adminAiOverview = '/admin/ai/overview';
 
+  // -------------------------------------------------------- conversation
+  static const String conversationScenarios = '/conversation/scenarios';
+  static const String conversationStart = '/conversation/start';
+  static String conversationSession(int id) => '/conversation/$id';
+  static String conversationRespond(int sessionId) =>
+      '/conversation/$sessionId/respond';
+  static String conversationFinish(int sessionId) =>
+      '/conversation/$sessionId/finish';
+
   // ------------------------------------------------- awaiting the backend
-  // These two features are built client-side against the shapes documented in
-  // their models, but the routes do not exist on the server yet. Calls fail
-  // with a normal 404 -> ApiException, which the screens render as an error
-  // rather than crashing.
+  // Onboarding is built client-side against the shapes documented in its
+  // models; the routes do not exist on the server. Calls fail with a normal
+  // 404 -> ApiException, which the screen renders as an error rather than
+  // crashing.
   static const String onboardingOptions = '/onboarding/options';
   static const String onboarding = '/onboarding';
-  static const String conversationScenarios = '/conversation/scenarios';
-  static const String conversationSessions = '/conversation/sessions';
-  static String conversationSession(int id) => '/conversation/sessions/$id';
-  static String conversationTurns(int sessionId) =>
-      '/conversation/sessions/$sessionId/turns';
-  static String conversationComplete(int sessionId) =>
-      '/conversation/sessions/$sessionId/complete';
 }

@@ -116,7 +116,7 @@ class ConversationController
     try {
       final closed = await ref
           .read(conversationRepositoryProvider)
-          .complete(current.session.id);
+          .finish(current.session.id);
       state = AsyncData<ConversationState>(
         current.copyWith(session: closed, sending: false),
       );

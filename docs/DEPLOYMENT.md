@@ -293,10 +293,18 @@ Exactly **one** scheduler per environment. Two means every daily job fires twice
 or, in a container, `php artisan schedule:work` as PID 1
 ([`docker/scheduler/entrypoint.sh`](../docker/scheduler/entrypoint.sh)).
 
-> **Gap:** `routes/console.php` currently registers no scheduled tasks, so the
-> scheduler runs an empty schedule. The container exists so the first scheduled
-> task — speech-audio retention purging, streak rollover, AI spend rollup — has a
-> home that has already been exercised.
+Four tasks are registered in `routes/console.php`:
+
+| Task | When | Why it cannot be manual |
+|---|---|---|
+| `billing.expire-lapsed` | hourly | a missed webhook must not leave someone entitled to what they stopped paying for |
+| `billing.reconcile` | 03:20 daily | subscriptions within a day of renewal are re-read from the gateway |
+| `speech.purge-expired-audio` | 02:40 daily | a learner's recordings must age out even if they never ask |
+| `privacy.process-requests` | hourly | an export or an erasure someone asked for is a promise |
+
+Each runs `withoutOverlapping`, so a long run does not stack on the next tick.
+**If the scheduler is not running, none of them happen** — including the two
+that are legal obligations rather than conveniences.
 
 ---
 
@@ -316,10 +324,7 @@ AWS_ENDPOINT=…              # non-AWS S3 (MinIO, R2, Spaces)
 AWS_USE_PATH_STYLE_ENDPOINT=true   # MinIO needs this; AWS does not
 ```
 
-> **Gap:** the `s3` driver needs `league/flysystem-aws-s3-v3`, which Laravel only
-> *suggests* and which is **not** in `backend/composer.json`. Install it before
-> setting either disk to `s3`:
-> `composer require league/flysystem-aws-s3-v3`.
+`league/flysystem-aws-s3-v3` is installed, so `s3` works on both disks.
 
 **The bucket must not be public.** Nothing in this repository serves media
 directly: `docker/nginx/default.conf` deliberately exposes no path into
@@ -521,14 +526,14 @@ Work through this before the platform carries real users.
       especially `POST /admin/ai/limits`, content publish decisions and user
       record edits. The table and endpoint exist; make sure new admin write paths
       populate it.
-- [ ] Honour `privacy_requests`: export and deletion are recorded by
-      `POST /profile/export` and `POST /profile/delete`, and deletion revokes all
-      tokens immediately, but **the asynchronous processing of those requests is
-      not implemented yet**. Do not launch in a jurisdiction with erasure
-      obligations until it is.
+- [ ] `privacy_requests` are fulfilled hourly by `ProcessPrivacyRequests`.
+      Confirm the scheduler is actually running before launching anywhere with
+      erasure obligations: the code is there, and a stopped scheduler makes it
+      a promise again. An erasure empties the account row rather than deleting
+      it, because invoices are joined to it and must survive.
 - [ ] Speech recordings are personal data. Respect `speech_consent_given` and
-      `speech_retention_days` (1–730), and confirm `PurgeExpiredSpeechAudio` is
-      actually scheduled — it exists as a job but nothing schedules it yet.
+      `speech_retention_days` (1–730). `PurgeExpiredSpeechAudio` is scheduled
+      at 02:40 daily — again, only if the scheduler runs.
 - [ ] Keep transcription local (the default `whisper` chain) unless a learner has
       consented to something else.
 
@@ -539,21 +544,41 @@ Work through this before the platform carries real users.
 
 ---
 
-## 11. Pre-launch gaps, collected
+## 11. What is still missing, collected
 
-Everything flagged above, in one place:
+Everything flagged above, in one place. The list is deliberately short now;
+what was on it before — unattached rate limiters, no S3 adapter, no media
+delivery, no gateways, an empty schedule, unprocessed privacy requests, no
+Reverb — has been built, and this section said otherwise long after it was
+false. If you find that again, the code is right and this file is wrong.
 
-1. The `api`, `ai` and `speech` rate limiters are defined but not attached to any
-   route group.
-2. `league/flysystem-aws-s3-v3` is not installed, so `FILESYSTEM_DISK=s3` cannot
-   be used yet.
-3. Media delivery (entitlement + signed URL) is not implemented.
-4. No payment gateway is integrated; webhook routes are reserved but absent.
-5. No scheduled tasks are registered, including the speech-retention purge.
-6. Privacy export/deletion requests are recorded but not processed.
-7. `laravel/reverb` is not installed, so websocket delivery is configuration only.
-8. Only the `speech` queue has producers; `content`, `media`, `ai-high` and
-   `ai-low` workers idle.
+**Needs a decision or a credential, not code**
+
+1. **No payment gateway is configured.** Stripe, iyzico and PayTR drivers exist
+   and `GatewayManager` resolves them, but nothing in this repository holds
+   credentials, so nothing charges a card. Supply them in `backend/.env` and
+   test against the gateway's sandbox before taking money.
+2. **`ANTHROPIC_API_KEY` is unset.** Nothing AI-backed works without it:
+   marking, the tutor, handwriting recognition, the AI examiner. The
+   orchestrator falls through its chain and fails honestly rather than
+   inventing a score, so the failure is visible — but the feature is off.
+3. **`whisper-cli` and a forced aligner are not provisioned.** Without the
+   first there is no speech-to-text and speech practice is unavailable; without
+   the second, phoneme-level scoring returns an explicit "not configured"
+   failure and the attempt is scored on everything else.
+4. **Every lesson is a draft.** 2,421 of them. Nothing is visible to a learner
+   until someone publishes it — `/admin/curriculum` in the app, or
+   `POST /admin/curriculum/books/{id}/publish` per book. This is a decision, not
+   a bug: the pipeline reads scanned pages and a person should look before a
+   learner does.
+
+**Still genuinely unbuilt**
+
+5. Only the `speech`, `writing` and `media` queues have producers. The
+   `content`, `ai-high` and `ai-low` workers are installed and idle; that is
+   cheap and it means the queue names are already right when work arrives.
+6. Artwork covers 113 of 2,421 lessons and lesson audio 1,708 — the books'
+   own recordings. Generated media is the AI layer's job and has not been run.
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for why the system is shaped this way and
 [API.md](API.md) for the endpoint-by-endpoint state.

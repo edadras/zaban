@@ -182,19 +182,17 @@ Named limiters are defined in `App\Providers\AppServiceProvider::rateLimits()`:
 |---|---|---|---|
 | `auth` | 5/min | IP **and** submitted email | register, login, forgot/reset password, resend verification |
 | `webhooks` | 300/min | IP | the webhook route group |
-| `api` | 120/min | user id, else IP | *defined but not currently attached to a route group* |
-| `ai` | 20/min | user id, else IP | *defined; for AI-backed endpoints when they land* |
-| `speech` | 12/min | user id, else IP | *defined; for recording upload when it lands* |
+| `api` | 120/min | user id, else IP | the whole API group, appended in `bootstrap/app.php` |
+| `ai` | 20/min | user id, else IP | exam marking and the AI examiner's speaking routes |
+| `speech` | 12/min | user id, else IP | recording upload and writing submission |
 
 The two-key `auth` limiter is the important one: limiting by IP alone lets an
 attacker spread a credential-stuffing run across a botnet, and limiting by email
 alone lets them enumerate freely from one address.
 
-> **Gap, stated plainly:** the `api`, `ai` and `speech` limiters exist but no
-> route group currently applies them — `bootstrap/app.php` does not add a
-> `throttle` middleware to the API group. Until that changes, authenticated
-> endpoints are unthrottled. This is on the pre-production checklist in
-> [DEPLOYMENT.md](DEPLOYMENT.md).
+Writing submission is throttled on the `speech` limiter rather than a limiter of
+its own, because it may carry a photograph of a page and costs a model call to
+read: the same shape of request, so the same budget.
 
 ---
 
@@ -208,8 +206,16 @@ alone lets them enumerate freely from one address.
 | PATCH | `/profile` | name, timezone, locale, country, date of birth, native/target language, learning objective, profession, interests, favourite topics |
 | PATCH | `/profile/settings` | daily/weekly goals, preferred study time, theme, notification flags, **speech consent and retention** |
 | POST | `/profile/avatar` | multipart `avatar`; jpg/png/webp, max 4 MB; returns `avatar_url` |
-| POST | `/profile/export` | creates a `privacy_requests` row (`type: export`), processed asynchronously |
+| POST | `/profile/export` | creates a `privacy_requests` row (`type: export`), fulfilled hourly |
 | POST | `/profile/delete` | requires `confirm: true`; creates a deletion request **and revokes every token immediately** |
+| GET | `/profile/privacy` | what this person has asked for, and where each request got to |
+| GET | `/profile/privacy/{request}/download` | the export file, for the person who asked and nobody else |
+
+`ProcessPrivacyRequests` runs hourly. An export is written to the private disk
+and stays downloadable for fourteen days; an erasure deletes the learning
+record and the recordings' audio files, and empties the account row rather than
+deleting it, because invoices are joined to it by a foreign key and have to
+survive. See `App\Services\Privacy\PrivacyRequestService`.
 
 Personalisation inputs are limited to declared, non-sensitive categories —
 interests and favourite topics are capped at 12 entries of 40 characters. Nothing
@@ -424,89 +430,55 @@ call.
 | PATCH | `/admin/users/{user}` |
 | GET | `/admin/audit-log` |
 
+**Curriculum and publishing**
+
+| Method | Path |
+|---|---|
+| GET | `/admin/curriculum/books` |
+| GET | `/admin/curriculum/books/{document}/lessons` |
+| POST | `/admin/curriculum/books/{document}/publish` |
+| POST | `/admin/curriculum/books/{document}/withdraw` |
+| PATCH | `/admin/curriculum/lessons/{lesson}` |
+
+Everything imports as a draft. `publish` releases only the lessons that teach an
+active concept and hold at least one block that is not the printed page, and
+returns `held_back` for the rest — it never releases a lesson a learner would
+arrive at with nothing to do. `PATCH` on one lesson refuses the same case with
+`422 lesson_not_ready`.
+
+Coverage in `books` is counted the way the engine reads it: a lesson can be
+asked a recognition item when *any* exercise linked to one of its concepts has
+options, because `AdaptiveLearningService` and `RemediationService` both select
+by concept and never by `exercises.lesson_id`.
+
 ---
 
-## 6. Groups still being built
+## 6. The modules that were "still being built"
 
-`routes/api.php` already contains the loader for these modules — each is
-`require`d from `routes/api/<module>.php` when that file exists — so they will
-appear without further wiring. As of this document only `routes/api/admin.php`
-exists.
+Every group this document once listed as planned now exists. They are recorded
+here with what is actually behind them, because the previous version of this
+section said they were absent and anyone reading it would have built against
+nothing.
 
-### 6.1 Subscription and billing — **Planned**
+| Group | Routes | Behind it |
+|---|---|---|
+| Billing | `routes/api/billing.php`, 11 | plans, subscription, checkout, coupons, invoices, and one webhook route per gateway. `GatewayManager` resolves Stripe, iyzico or PayTR. **No gateway credentials are configured anywhere in this repository**, so nothing charges a card until they are supplied. |
+| Speech | `routes/api/speech.php`, 7 | upload, attempt status, the pronunciation profile and its drills. Upload is throttled on the `speech` limiter and gated on `speech_consent_given`. |
+| Writing | `routes/api/writing.php`, 4 | typed submission and photographed handwriting, both marked asynchronously. |
+| Exam | `routes/api/exam.php`, 12 | exam types, attempts, section submission, the AI examiner's speaking routes and progress. Marking and speaking are throttled on the `ai` limiter. |
+| Conversation | `routes/api.php`, 5 | `GET /conversation/scenarios`, `POST /conversation/start`, `GET /conversation/{session}`, `POST /conversation/{session}/respond`, `POST /conversation/{session}/finish`. A spoken turn is uploaded to `/speech/attempts` first and passed in as `speech_attempt_id`: one upload path for audio in the whole app, so consent and retention are enforced in one place. |
+| Media | `routes/api.php`, 3 | a playable URL for a `media_asset`, entitlement-checked and signed. `MediaController` refuses a request whose signature has expired, so a link cannot be shared beyond its window. |
+| Admin curriculum | `routes/api/admin.php`, 5 | coverage per book, the lessons of one book with what each carries, and publishing — see §5.8. |
 
-Route file: `routes/api/billing.php` *(not present)*.
-Services present: `SubscriptionService`, `EntitlementService`, `InvoiceService`,
-`CouponService`, `WebhookService`, `GatewayManager`.
-Schema present: `plans`, `plan_prices`, `plan_entitlements`, `coupons`,
-`subscriptions`, `subscription_transactions`, `payment_attempts`, `invoices`,
-`coupon_redemptions`, `payment_webhooks`, `entitlement_usage`.
+Two constraints that are still true and still show in the API:
 
-Intended surface: list plans, current subscription, subscribe, change plan,
-cancel/resume, invoices, redeem a coupon, entitlement status.
+**Phoneme-level pronunciation scoring needs a configured forced aligner.**
+Without one, `AiOrchestrator::align()` returns an explicit "no forced-alignment
+provider is configured" failure rather than approximating phoneme scores from a
+transcript. The attempt is still scored on everything else.
 
-**No payment gateway is integrated.** No gateway credentials are read anywhere in
-`config/`, so nothing charges a card today.
-
-### 6.2 Speech — **Planned (partly built)**
-
-Route file: `routes/api/speech.php` *(not present)*. Controller directory
-`Api/V1/Speech/` exists but is empty.
-
-Already built: `App\Jobs\Speech\ProcessSpeechAttempt` and `PurgeExpiredSpeechAudio`
-(both dispatched to the `speech` queue), and a full analysis stack under
-`app/Services/Speech` — `SpeechAnalysisService`, `SpeechScorer`, `PhonemeScorer`,
-`WordAligner`, `SequenceAligner`, `FluencyAnalyser`, `TranscriptErrorDetector`,
-`SpeechFeedbackService`, `PronunciationProfileService`, `SpeechRetentionService`.
-Schema: `speech_attempts`, `speech_words`, `speech_phonemes`,
-`pronunciation_errors`.
-
-Intended surface: upload a recording, poll or receive its score, fetch the
-pronunciation profile, list weak phonemes.
-
-Two constraints that will show in the API: consent (`speech_consent_given` in
-settings) gates recording, and **phoneme-level scoring requires a configured
-forced aligner**. Without one, `AiOrchestrator::align()` returns an explicit
-"no forced-alignment provider is configured" failure rather than approximating
-phoneme scores from a transcript.
-
-### 6.3 Conversation — **Planned**
-
-Schema present: `conversation_sessions`, `conversation_turns`,
-`conversation_scenarios`, `characters`, `dialogues`, `dialogue_turns`.
-No controller, no routes, no service.
-
-Intended surface: start a scenario, exchange turns, close a session with
-feedback. Turns will run on the `ai-high` queue because a learner is waiting.
-
-### 6.4 Exam preparation — **Planned (partly built)**
-
-Route file: `routes/api/exam.php` *(not present)*. Controller directory
-`Api/V1/Exam/` exists but is empty.
-Services present: `ObjectiveGrader`, `SectionScoring`, `ExamEstimate`.
-Schema: `exam_types`, `exam_score_bands`, `exam_sections`, `exam_task_types`,
-`exam_tasks`, `exam_attempts`, `exam_section_attempts`, `exam_scores`.
-
-Intended surface: list exam types, start an attempt, submit sections, retrieve
-scores and band estimates.
-
-### 6.5 Media — **Planned**
-
-No routes, no controller.
-
-Intended surface: request a playable URL for a `media_asset`, with an entitlement
-check and either a signed object-store URL or an `X-Accel-Redirect`. Deliberately
-not built yet, and deliberately not worked around: `docker/nginx/default.conf`
-exposes no path into `storage/`, and `docker/minio/init.sh` creates the bucket
-private. See [ARCHITECTURE.md §10](ARCHITECTURE.md).
-
-### 6.6 Webhooks — **Planned**
-
-`routes/api.php` reserves `/api/v1/webhooks/*` **outside** the authenticated
-group, throttled at 300/min per IP, loading `routes/api/webhooks.php` *(not
-present)*. Each gateway's controller is responsible for verifying its own
-signature — a webhook authenticates by signature, never by session. Received
-payloads are recorded in `payment_webhooks`.
+**Nothing AI-backed works without a provider key.** The orchestrator falls
+through its chain and then fails honestly; it does not invent a score.
 
 ---
 
