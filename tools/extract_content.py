@@ -207,6 +207,12 @@ OCR_ROOT = ROOT / 'sources' / 'ocr'
 # means the same thing on a scan.
 OCR_DPI = 300
 
+#: How sure the reader has to be of a scanned word before it is taught as one.
+#: Tesseract's own confidence, 0 to 100. The headwords that were not words came
+#: back below 45 almost without exception, and the ones that were came back
+#: above 80; the line is drawn between them rather than at either.
+HEADWORD_CONFIDENCE = 70
+
 RE_EXERCISE = re.compile(r'^\s{0,6}(\d{1,3})\.(\d{1,2})\s+(.*)$', re.M)
 RE_GLOSS = re.compile(r'\[([^\[\]]{3,200})\]')
 RE_SECTION_LETTER = re.compile(r'^[A-H]$')
@@ -456,10 +462,11 @@ def runs_from_words(words, scale):
                     runs.append(current)
                 current = {'top': int(round(top)), 'left': int(round(left)),
                            'text': word['text'], 'bold': word['bold'],
-                           'right': left + width}
+                           'right': left + width, 'conf': word['conf']}
             else:
                 current['text'] += ' ' + word['text']
                 current['right'] = left + width
+                current['conf'] = min(current['conf'], word['conf'])
         if current is not None:
             runs.append(current)
 
@@ -470,6 +477,9 @@ def runs_from_words(words, scale):
             'left': run['left'],
             'text': run['text'],
             'bold': [run['text']] if run['bold'] else [],
+            # The weakest word in the run. A born-digital page has no such
+            # doubt, so the runs from one are read as certain.
+            'conf': run['conf'],
         })
     out.sort(key=lambda r: (r['top'], r['left']))
     return out
@@ -1405,6 +1415,14 @@ def extract_unit(runs, unit, secs):
             continue
         if line != sec['title'] and line != sec['letter']:
             bucket['lines'].append(line)
+        if r.get('conf', 100) < HEADWORD_CONFIDENCE:
+            # The reader was not sure enough of these letters to teach them as
+            # a word. "ae", "oe", "eas" and "un cad" are what a page of scanned
+            # italics leaves behind, and each one became a headword with a
+            # flashcard, a place on the ability scale and a turn as somebody
+            # else's wrong answer. The line itself is kept - it is still part
+            # of the page a learner reads - but nothing is taught from it.
+            continue
         for b in r['bold']:
             b = unligature(b).strip(' .,;:')
             if not b or RE_NOISE.match(b) or len(b) > 60 or not is_headword(b):

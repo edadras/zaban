@@ -58,6 +58,21 @@ class BuildActivities extends Command
     /** Distractor candidates by CEFR level id, loaded once. */
     private array $pool = [];
 
+    /**
+     * How many sentences the corpus index keeps for one word.
+     *
+     * A common word appears in thousands of sentences and only the first that
+     * fits is ever used, so keeping them all would cost a gigabyte to answer a
+     * question the first dozen already answer.
+     */
+    private const CORPUS_SENTENCES_PER_WORD = 12;
+
+    /** Sentences read off every page of every book: [text, source document id]. */
+    private array $corpusPool = [];
+
+    /** Lowercased word -> offsets into the pool of sentences containing it. */
+    private array $corpusIndex = [];
+
     public function __construct(
         private SentenceQuality $quality,
         private DistractorPolicy $distractors,
@@ -132,6 +147,7 @@ class BuildActivities extends Command
         $this->buildFromVocabulary();
         $this->buildReadingViews();
         $this->classifyLessons();
+        $this->indexCorpusSentences();
         $this->buildPatternActivities();
         $this->deriveWordFamilyPrerequisites();
         $this->markPlacementBank();
@@ -288,12 +304,22 @@ class BuildActivities extends Command
      *
      * The rows are kept. They came out of the book and the body text they title
      * is still taught; they are simply no longer taught as words.
+     *
+     * Only the words are judged this way. A grammar or pronunciation unit's
+     * concept is the point the unit makes, and it is labelled the way the book
+     * labels it - "Present continuous (I am doing)", "What is she doing?" - so
+     * the headword test rejected seven hundred and nine of the eight hundred
+     * and thirty-eight of them. The engine selects concepts that are active,
+     * which meant the whole grammar and pronunciation curriculum was in the
+     * database and invisible to it.
      */
     private function deactivateNonTerms(): void
     {
         $this->line('▸ separating headwords from headings');
 
-        $labels = DB::table('concepts')->pluck('label', 'id');
+        $labels = DB::table('concepts')
+            ->where('conceptable_type', VocabularySense::class)
+            ->pluck('label', 'id');
 
         $headings = $labels
             ->reject(fn ($label) => $this->distractors->isUsableTerm((string) $label))
@@ -307,7 +333,7 @@ class BuildActivities extends Command
             );
         }
 
-        $this->line('   headings set aside: '.$headings->count().' of '.$labels->count());
+        $this->line('   headings set aside: '.$headings->count().' of '.$labels->count().' headwords');
     }
 
     /**
@@ -474,7 +500,7 @@ class BuildActivities extends Command
                 if ($made >= self::CARDS_PER_PATTERN_LESSON) {
                     break;
                 }
-                $sentence = $this->sentenceShowing($text, $form);
+                $sentence = $this->sentenceShowing($text, $form, $lesson->source_document_id);
                 if ($sentence === null) {
                     continue;
                 }
@@ -527,8 +553,16 @@ class BuildActivities extends Command
         }
     }
 
-    /** The lesson's own sentence showing this form, if the page prints one. */
-    private function sentenceShowing(string $text, string $form): ?string
+    /**
+     * A sentence showing this form: the lesson's own page first, then the rest
+     * of the corpus.
+     *
+     * A page that drills a pattern in a table of endings prints no sentence of
+     * its own to blank, and there were a hundred and forty-two of those. The
+     * same form is used in a sentence somewhere in the sixteen books, and the
+     * learner's own book is preferred over another.
+     */
+    private function sentenceShowing(string $text, string $form, ?int $documentId = null): ?string
     {
         foreach ($this->miner->sentences($text) as $sentence) {
             if (mb_strlen($sentence) < 25 || mb_strlen($sentence) > 200) {
@@ -544,7 +578,9 @@ class BuildActivities extends Command
             return $sentence;
         }
 
-        return null;
+        $elsewhere = $this->corpusExample($form, $documentId);
+
+        return $elsewhere !== null && mb_strlen($elsewhere) >= 25 ? $elsewhere : null;
     }
 
     private function hasAudio(Lesson $lesson): bool
@@ -627,6 +663,9 @@ class BuildActivities extends Command
         if ($batch) {
             DB::table('exercise_concepts')->insertOrIgnore($batch);
         }
+
+        $this->linkStudyGuideToEveryUnitItNames($conceptsByUnit, $now);
+
         $this->line('   linked: '.DB::table('exercise_concepts')->count());
     }
 
@@ -790,6 +829,7 @@ class BuildActivities extends Command
         $this->pool = $this->loadDistractorPool();
         $pages = $this->loadPageText();
         $glosses = $this->loadGlosses();
+        $this->indexCorpusSentences();
 
         $limit = (int) $this->option('limit');
         $lessons = Lesson::with([
@@ -802,7 +842,8 @@ class BuildActivities extends Command
             $lessons->limit($limit);
         }
 
-        $made = ['cloze' => 0, 'mcq_proven' => 0, 'mcq_plausible' => 0, 'flashcard' => 0, 'listen' => 0, 'speak' => 0];
+        $made = ['cloze' => 0, 'mcq_proven' => 0, 'mcq_plausible' => 0, 'flashcard' => 0,
+            'listen' => 0, 'speak' => 0, 'from_corpus' => 0];
         $skipped = ['no_usable_example' => 0, 'no_safe_distractors' => 0];
 
         $lessons->chunk(100, function ($chunk) use (&$made, &$skipped, $pages, $glosses) {
@@ -855,6 +896,18 @@ class BuildActivities extends Command
                                 $provenance = 'derived_mined';
                                 break;
                             }
+                        }
+                    }
+
+                    // Still nothing: the page teaches this word in a list or a
+                    // table and never puts it in a sentence. Somewhere in the
+                    // other three thousand pages it is used in one, and that
+                    // sentence is as much the books' own English as this page is.
+                    if ($example === null) {
+                        $example = $this->corpusExample($term, $lesson->source_document_id);
+                        if ($example !== null) {
+                            $provenance = 'derived_corpus';
+                            $made['from_corpus']++;
                         }
                     }
 
@@ -978,6 +1031,186 @@ class BuildActivities extends Command
         }
         $this->line('   skipped, no usable example sentence: '.$skipped['no_usable_example']);
         $this->line('   cloze kept but no provable choice item: '.$skipped['no_safe_distractors']);
+    }
+
+    /**
+     * A study-guide item belongs to every unit its margin sends a learner to.
+     *
+     * The guide is written that way on purpose: "1, 3" means the sentence is in
+     * unit 1 and unit 3 bears on it too. The item is filed under the first, and
+     * without this the second never gets to ask it.
+     *
+     * @param  \Illuminate\Support\Collection  $conceptsByUnit  unit id -> its concepts
+     */
+    private function linkStudyGuideToEveryUnitItNames($conceptsByUnit, $now): void
+    {
+        $rows = DB::table('exercises')
+            ->where('source_reference', 'like', 'study_guide:%')
+            ->whereNull('deleted_at')
+            ->select('id', 'source_document_id', 'payload')
+            ->get();
+
+        if ($rows->isEmpty()) {
+            return;
+        }
+
+        $unitIds = DB::table('lessons')
+            ->join('units', 'units.id', '=', 'lessons.unit_id')
+            ->select('units.id', 'lessons.source_document_id', 'units.position')
+            ->distinct()
+            ->get()
+            ->groupBy('source_document_id')
+            ->map(fn ($us) => $us->pluck('id', 'position'));
+
+        $batch = [];
+        foreach ($rows as $row) {
+            $named = json_decode((string) $row->payload, true)['study_guide_units'] ?? [];
+            foreach ($named as $number) {
+                $unitId = $unitIds[$row->source_document_id][$number] ?? null;
+                if ($unitId === null) {
+                    continue;
+                }
+                foreach ($conceptsByUnit->get($unitId, collect()) as $c) {
+                    $batch[] = [
+                        'exercise_id' => $row->id,
+                        'concept_id' => $c->concept_id,
+                        'weight' => 1.000,
+                        'is_primary' => false,
+                        'created_at' => $now,
+                        'updated_at' => $now,
+                    ];
+                }
+            }
+            if (count($batch) >= 2000) {
+                DB::table('exercise_concepts')->insertOrIgnore($batch);
+                $batch = [];
+            }
+        }
+        if ($batch) {
+            DB::table('exercise_concepts')->insertOrIgnore($batch);
+        }
+    }
+
+    /**
+     * Read every page of every book once and keep the sentences.
+     *
+     * Two thirds of the taught terms were reaching the end of the loop with no
+     * example: their own page teaches them in a list, a table or a picture
+     * caption and never puts them in a sentence, so there was nothing to blank
+     * and no item to build. But these are sixteen books by the same publisher
+     * about the same language, and a word a table introduces on one page is
+     * used in a sentence on another - often in the very next unit, often in the
+     * book above it in the series.
+     *
+     * So the corpus is indexed once, by the first word of each taught term, and
+     * a term with no example at home is looked up in it. The sentence that comes
+     * back is still the books' own English, checked by the same gate as any
+     * other: nothing is written here that a person did not print.
+     */
+    private function indexCorpusSentences(): void
+    {
+        if ($this->corpusIndex !== []) {
+            return;
+        }
+
+        // Only the words some term actually begins with are worth indexing;
+        // everything else is a sentence nobody will ask for.
+        $wanted = [];
+        foreach (DB::table('concepts')
+            ->where('conceptable_type', VocabularySense::class)
+            ->pluck('label') as $label) {
+            $first = $this->firstWord((string) $label);
+            if ($first !== '') {
+                $wanted[$first] = true;
+            }
+        }
+        // The pattern lessons ask the same question of the corpus - a sentence
+        // showing the form they drill - so their forms are indexed too.
+        foreach (DB::table('lesson_blocks')
+            ->where('type', 'source_text')
+            ->selectRaw("JSON_EXTRACT(config, '$.target_forms') AS forms")
+            ->pluck('forms') as $forms) {
+            foreach (json_decode((string) $forms, true) ?: [] as $form) {
+                $first = $this->firstWord((string) $form);
+                if ($first !== '') {
+                    $wanted[$first] = true;
+                }
+            }
+        }
+
+        if ($wanted === []) {
+            return;
+        }
+
+        DB::table('source_pages')
+            ->join('source_files', 'source_files.id', '=', 'source_pages.source_file_id')
+            ->select('source_pages.text', 'source_files.source_document_id')
+            ->orderBy('source_pages.id')
+            ->chunk(300, function ($pages) use ($wanted) {
+                foreach ($pages as $page) {
+                    foreach ($this->miner->sentences($page->text) as $sentence) {
+                        $offset = null;
+                        foreach ($this->wordsIn($sentence) as $word) {
+                            if (! isset($wanted[$word])) {
+                                continue;
+                            }
+                            if (count($this->corpusIndex[$word] ?? []) >= self::CORPUS_SENTENCES_PER_WORD) {
+                                continue;
+                            }
+                            if ($offset === null) {
+                                $this->corpusPool[] = [$sentence, (int) $page->source_document_id];
+                                $offset = array_key_last($this->corpusPool);
+                            }
+                            $this->corpusIndex[$word][] = $offset;
+                        }
+                    }
+                }
+            });
+
+        $this->line('   corpus sentences indexed: '.count($this->corpusPool)
+            .' under '.count($this->corpusIndex).' words');
+    }
+
+    /**
+     * A sentence from elsewhere in the corpus that uses this term.
+     *
+     * The learner's own book is preferred over another: the same book is written
+     * at the level they are reading it at, and its sentences are about the
+     * things its units are about.
+     */
+    private function corpusExample(string $term, ?int $documentId): ?string
+    {
+        $first = $this->firstWord($term);
+        if ($first === '' || ! isset($this->corpusIndex[$first])) {
+            return null;
+        }
+
+        $elsewhere = null;
+        foreach ($this->corpusIndex[$first] as $offset) {
+            [$sentence, $document] = $this->corpusPool[$offset];
+            if (! $this->quality->containsTerm($sentence, $term)) {
+                continue;
+            }
+            if ($document === $documentId) {
+                return $sentence;
+            }
+            $elsewhere ??= $sentence;
+        }
+
+        return $elsewhere;
+    }
+
+    /** @return list<string> */
+    private function wordsIn(string $text): array
+    {
+        $words = preg_split('/[^\p{L}\p{N}]+/u', mb_strtolower($text), -1, PREG_SPLIT_NO_EMPTY);
+
+        return $words === false ? [] : $words;
+    }
+
+    private function firstWord(string $term): string
+    {
+        return $this->wordsIn($term)[0] ?? '';
     }
 
     /**

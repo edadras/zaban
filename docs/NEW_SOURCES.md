@@ -197,6 +197,81 @@ The disc's 226 exercise files and its 45-sound phonemic chart are kept in the
 repository at `sources/cdrom` — 5.6 MB of XML, against the 355 MB disc image —
 so the extraction can be rerun without it.
 
+## The guide at the back of the grammar book
+
+`English Grammar in Use` ends with a Study guide: 158 numbered sentences with a
+gap, two to five printed alternatives each, the units that teach the point set
+in the margin, and a key a few dozen pages later. It is the only place in the
+corpus where the people who wrote the units also wrote the wrong answers.
+
+**157 of the 158 are read**, covering 140 of the book's 145 units. A third of
+them have more than one right answer, which the guide says in capitals on its
+own first page and which the imported item records rather than flattens. The
+one that is lost prints `A in   B for     Ca        D the` — the label of the
+third alternative is set against its text with no space, and a rule that let
+that through would also read the D of "C Did you eat" as a fourth alternative.
+
+The scanned grammars print the same guide and are deliberately **not** read
+from it. Their keys come back as `152   8B` and `20.2  €E`: the item numbers
+lose their points and the letters gain neighbours. A key that is wrong once
+marks a right answer wrong, which is worse than having no item at all.
+
+## A sentence from somewhere else in the corpus
+
+Two thirds of the taught words had no example. Their own page teaches them in a
+table, a list or a picture caption and never puts them in a sentence, so there
+was nothing to blank and no item to build — 11,561 of them.
+
+But these are sixteen books about one language, and a word a table introduces on
+one page is used in a sentence on another. Every page of every book is now read
+once for its sentences and indexed by the words they contain, and a word with no
+example at home is looked up in it; the learner's own book is preferred over
+another. **18,163 sentences under 6,919 words**, and the count of words with no
+usable example falls from 11,561 to 6,244 — 5,317 items that exist because
+another book had already printed the sentence.
+
+## A word the reader was not sure of is not a word
+
+The scanned books were contributing headwords that are not words: `ae`, `oe`,
+`eas`, `un cad`, `ele PETS SSeS pc Grrr Eu A`. Each one became a concept with a
+flashcard, a place on the ability scale and a turn as somebody else's wrong
+answer, and one of them was the whole of what a lesson taught.
+
+Tesseract states how sure it was of every word it read, and the answer separates
+them cleanly: a sample of the bold runs between 45 and 70 reads `Comolete`,
+`camathina`, `daerriha`, `fean`; the same sample above 70 reads `tendency`,
+`investors`, `originally`, `flying`. **A scanned run is now only taught as a
+headword when the weakest word in it scored 70 or better.** Taught vocabulary
+falls from 35,185 to 29,654 — the four born-digital books are untouched, because
+a text layer has no such doubt — and the words with no usable example fall with
+them, from 6,244 to 4,294.
+
+The lines themselves are kept. They are still part of the page a learner reads;
+they are simply no longer offered as things to learn.
+
+## What is still not askable
+
+Two capabilities in `content:readiness` are short, and the residue is one shape.
+
+**275 of 2,353 teaching lessons have no recognition-format item**: 96 in
+`Basic Grammar in Use`, 136 across the three pronunciation books, 7 in
+`Advanced Grammar in Use`, and 36 scattered. Every one of those books prints a
+bank of choice questions — the grammars a Study guide, the pronunciation books
+*circle the word you hear* — and every one of them is a scan. Their keys come
+back as `152   8B` and `20.2  €E`; their alternatives come back as
+`Ahaveto  Bhadto  Cmust`. Re-rendering those pages at 600 dpi recovers the
+layout and still glues the words, and turns `It's a nice day` into
+`I'S A MICE GAY`. An item built on a misread key marks a right answer wrong, so
+these are left unasked rather than asked badly. The way to close it is a better
+scan of five books, not a cleverer reader.
+
+**24 lessons hold nothing a learner can do**: sections whose heading came off
+the scan as `|`, `..` or `ele PETS SSeS pc Grrr Eu A`, and pronunciation units
+whose page is a table of sounds with no sentence anywhere on it.
+
+Both numbers are held by `CurriculumReachabilityTest`, which fails if either
+grows.
+
 ## What is a duplicate
 
 Five of the twenty-six files are copies of material already in the repository,

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Exercise;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -43,24 +44,39 @@ class CheckContentReadiness extends Command
             ->distinct()->count('exercises.id');
         $checks[] = ['exercise: has a gradable answer', $answerable, $linkable,
             'answers exist as raw answer-key prose, not per-blank values'];
-        // Not every item is multiple choice; what matters is that each lesson can
-        // offer at least one, so the engine has a recognition-format option.
-        $lessonsWithMcq = DB::table('lessons')
-            ->join('exercises', 'exercises.lesson_id', '=', 'lessons.id')
+        // A lesson with nothing active to teach - a prose-only section, or one
+        // whose bold runs were all headings - cannot yield an activity of any
+        // kind, so it is not counted against these two targets.
+        $teaches = DB::table('lessons')
+            ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->where('concepts.is_active', true)
+            ->whereNull('lessons.deleted_at');
+        $teachable = (clone $teaches)->distinct()->count('lessons.id');
+
+        // Not every item is multiple choice; what matters is that each lesson
+        // can offer at least one, so the engine has a recognition-format
+        // option. Reached the way the engine reaches it: AdaptiveLearningService
+        // and RemediationService both select an item by the concept it drills,
+        // never by the lesson it was printed under, so a unit's own exercise
+        // serves every lesson in that unit. Counting only items whose
+        // `lesson_id` pointed at the lesson measured a join the engine does not
+        // make, and reported a third of the corpus as having no recognition
+        // item while the engine was serving one.
+        $lessonsWithMcq = (clone $teaches)
+            ->join('exercise_concepts', 'exercise_concepts.concept_id', '=', 'lesson_concept.concept_id')
+            ->join('exercises', 'exercises.id', '=', 'exercise_concepts.exercise_id')
             ->join('exercise_options', 'exercise_options.exercise_id', '=', 'exercises.id')
+            ->whereIn('exercises.status', Exercise::SERVABLE_STATUSES)
+            ->whereNull('exercises.deleted_at')
             ->distinct()->count('lessons.id');
-        $checks[] = ['exercise: lessons offering a multiple-choice item', $lessonsWithMcq, $lessons,
+        $checks[] = ['exercise: lessons offering a multiple-choice item', $lessonsWithMcq, $teachable,
             'no distractors, so no recognition-format item can be rendered'];
 
         // --- Lesson engine: interactive blocks, not textbook pages ---
-        $interactive = DB::table('lessons')
+        $interactive = (clone $teaches)
             ->join('lesson_blocks', 'lesson_blocks.lesson_id', '=', 'lessons.id')
             ->whereNotIn('lesson_blocks.type', ['source_text', 'image_scene'])
-            ->distinct()->count('lessons.id');
-        // A lesson with no taught vocabulary (prose-only section) cannot yield
-        // derived activities, so it is not counted against this target.
-        $teachable = DB::table('lessons')
-            ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
             ->distinct()->count('lessons.id');
         $checks[] = ['lesson: has an interactive block', $interactive, $teachable,
             'lessons hold source text and artwork only - nothing a learner can do'];
@@ -91,10 +107,7 @@ class CheckContentReadiness extends Command
         $checks[] = ['knowledge graph: concepts with prerequisites', $withPrereq, (int) ($provable * 0.5),
             'no prerequisite edges, so the mastery loop cannot gate or sequence'];
 
-        $lessonsWithConcepts = DB::table('lessons')
-            ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
-            ->distinct()->count('lessons.id');
-        $checks[] = ['lesson: teaches at least one concept', $lessonsWithConcepts, $lessons, ''];
+        $checks[] = ['lesson: teaches at least one concept', $teachable, $lessons, ''];
 
         // --- Media availability per lesson ---
         $withAudio = DB::table('lessons')

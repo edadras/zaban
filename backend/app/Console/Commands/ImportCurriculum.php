@@ -288,6 +288,8 @@ class ImportCurriculum extends Command
             }
         });
 
+        $this->importStudyGuide($data, $doc, $toCode, $counts);
+
         $this->importImages($key, $doc, $counts);
 
         // Sweep the complete audio inventory. Files whose unit resolved were mapped
@@ -299,6 +301,105 @@ class ImportCurriculum extends Command
         $this->recordStages($job, $counts);
 
         $this->stats[$key] = $counts;
+    }
+
+    /**
+     * The multiple-choice bank the book prints at the back.
+     *
+     * This is the only place in the corpus where the people who wrote the units
+     * also wrote the wrong answers. Everywhere else a distractor has to be
+     * argued for - two glosses that do not overlap, another gap's answer from
+     * the same drill - and here it is simply stated, along with which units
+     * teach the point. More than one alternative is right in a third of them,
+     * which the book says in capitals on its first page and which the item
+     * records rather than flattens.
+     */
+    private function importStudyGuide(array $data, SourceDocument $doc, string $cefrCode, array &$counts): void
+    {
+        $items = $data['study_guide'] ?? [];
+        if ($items === []) {
+            return;
+        }
+
+        // A unit's number in the book is its position; the document it came
+        // from is recorded on its lessons.
+        $units = DB::table('lessons')
+            ->join('units', 'units.id', '=', 'lessons.unit_id')
+            ->where('lessons.source_document_id', $doc->id)
+            ->distinct()
+            ->pluck('units.id', 'units.position');
+        $template = ExerciseTemplate::where('code', 'multiple_choice')->first();
+
+        foreach ($items as $item) {
+            $numbers = array_values(array_filter(
+                $item['units'] ?? [],
+                fn ($n) => $units->has($n),
+            ));
+            if ($numbers === []) {
+                continue;
+            }
+
+            // The book says the sentence itself is in the first unit listed.
+            $lesson = Lesson::where('unit_id', $units[$numbers[0]])->orderBy('position')->first();
+            if ($lesson === null) {
+                continue;
+            }
+
+            $row = Exercise::updateOrCreate(
+                [
+                    'source_document_id' => $doc->id,
+                    'source_reference' => "study_guide:{$item['number']}",
+                ],
+                [
+                    'lesson_id' => $lesson->id,
+                    'exercise_template_id' => $template?->id,
+                    'language_id' => $this->languageId,
+                    'skill_id' => $this->skillId,
+                    'cefr_level_id' => $this->cefr[$cefrCode],
+                    'stem' => Str::limit($item['stem'], 1000, ''),
+                    'instructions' => 'Choose the alternative that completes the sentence.',
+                    'difficulty' => $this->difficultyFor($cefrCode),
+                    'status' => 'approved',
+                    'generation_method' => 'extracted',
+                    'copyright_status' => $doc->copyright_status,
+                    // The other units the guide sends a learner to. The activity
+                    // builder links the item to every one of them, so a unit that
+                    // shares the point can offer it too.
+                    'payload' => ['study_guide_units' => $numbers],
+                ],
+            );
+            $counts['items']++;
+
+            $row->answers()->delete();
+            $row->options()->delete();
+            $primary = true;
+            foreach ($item['options'] as $position => $option) {
+                ExerciseOption::create([
+                    'exercise_id' => $row->id,
+                    'position' => $position,
+                    'text' => Str::limit($option['text'], 500, ''),
+                    'is_correct' => (bool) $option['is_correct'],
+                ]);
+                $counts['options']++;
+                if (! $option['is_correct']) {
+                    continue;
+                }
+                // Every alternative the key names is a right answer, and each
+                // is worth full credit: the book offers them as equals.
+                ExerciseAnswer::create([
+                    'exercise_id' => $row->id,
+                    'blank_index' => 0,
+                    'value' => Str::limit($option['text'], 500, ''),
+                    'match_mode' => 'exact',
+                    'is_primary' => $primary,
+                    'credit' => 1.000,
+                ]);
+                $primary = false;
+            }
+            $row->update(['guessing' => round(
+                count(array_filter($item['options'], fn ($o) => $o['is_correct']))
+                / count($item['options']), 3)]);
+        }
     }
 
     private function importUnit(array $u, Module $module, SourceDocument $doc, string $cefrCode, array &$counts, array $pageIds = []): void
