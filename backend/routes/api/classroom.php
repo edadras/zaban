@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Classroom\ClassGroupController;
 use App\Http\Controllers\Api\V1\Classroom\ClassRoomController;
 use App\Http\Controllers\Api\V1\Classroom\ClassSessionController;
+use App\Http\Controllers\Api\V1\Classroom\ForumController;
 use App\Http\Controllers\Api\V1\Classroom\LiveWebhookController;
 use App\Http\Controllers\Api\V1\Classroom\MyClassesController;
 use App\Http\Controllers\Api\V1\Classroom\RealtimeController;
@@ -126,6 +127,36 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('classroom.')->group(fun
         ->name('room.lock');
     Route::post('class-sessions/{session}/room/unlock', [ClassRoomController::class, 'releasePractice'])
         ->name('room.unlock');
+
+    // ---------------------------------------------------------- the board
+    /*
+     * A class's own forum. Every route asks the same first question the rest
+     * of the module asks - are you on this roll - so a class's questions
+     * cannot leak to a class that is not theirs.
+     */
+    Route::get('classes/{group}/threads', [ForumController::class, 'index'])->name('forum.index');
+    Route::post('classes/{group}/threads', [ForumController::class, 'store'])->name('forum.store');
+
+    Route::get('threads/{thread}', [ForumController::class, 'show'])->name('forum.show');
+    Route::patch('threads/{thread}', [ForumController::class, 'update'])->name('forum.update');
+    Route::delete('threads/{thread}', [ForumController::class, 'destroy'])->name('forum.destroy');
+
+    Route::post('threads/{thread}/replies', [ForumController::class, 'reply'])->name('forum.reply');
+    Route::delete('threads/{thread}/replies/{reply}', [ForumController::class, 'removeReply'])
+        ->name('forum.reply.destroy');
+    Route::post('threads/{thread}/replies/{reply}/accept', [ForumController::class, 'accept'])
+        ->name('forum.accept');
+    Route::post('threads/{thread}/replies/{reply}/helpful', [ForumController::class, 'vote'])
+        ->name('forum.vote');
+
+    Route::post('threads/{thread}/hide', [ForumController::class, 'hide'])->name('forum.hide');
+    Route::post('threads/{thread}/restore', [ForumController::class, 'restore'])->name('forum.restore');
+    Route::post('threads/{thread}/replies/{reply}/hide', [ForumController::class, 'hideReply'])
+        ->name('forum.reply.hide');
+    Route::post('threads/{thread}/replies/{reply}/endorse', [ForumController::class, 'endorse'])
+        ->name('forum.endorse');
+    Route::post('threads/{thread}/pin', [ForumController::class, 'pin'])->name('forum.pin');
+    Route::post('threads/{thread}/lock', [ForumController::class, 'lock'])->name('forum.lock');
 
     // ---------------------------------------------------------- the learner
     Route::get('my/classes', [MyClassesController::class, 'index'])->name('my.classes');

@@ -61,7 +61,7 @@ class MaterialService
      * so the existing signed-URL streaming endpoint serves it and there is not
      * a second way to hand a file to a learner.
      */
-    public function storeUpload(UploadedFile $file, string $kind): MediaAsset
+    public function storeUpload(UploadedFile $file, string $kind, string $origin = 'coach_upload'): MediaAsset
     {
         $disk = config('filesystems.default');
         $path = $file->store('class-materials/'.now()->format('Y/m'), $disk);
@@ -75,9 +75,11 @@ class MaterialService
                 'image' => 'image',
                 default => 'document',
             },
-            'mime' => $file->getClientMimeType(),
+            // Sniffed rather than taken on trust: the client's mime type is
+            // the one field of an upload the uploader chooses.
+            'mime' => $file->getMimeType() ?: $file->getClientMimeType(),
             'bytes' => $file->getSize(),
-            'origin' => 'coach_upload',
+            'origin' => $origin,
             'copyright_status' => 'owned',
             'checksum' => hash_file('sha256', Storage::disk($disk)->path($path)),
         ]);

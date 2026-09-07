@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\ClassGroup;
+use App\Models\ClassSession;
+use App\Services\Classroom\SchoolService;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -22,7 +25,7 @@ Broadcast::channel('user.{id}', fn ($user, $id) => (int) $user->id === (int) $id
  * same school in a different class.
  */
 Broadcast::channel('class-session.{id}', function ($user, $id) {
-    $session = \App\Models\ClassSession::with('group.school')->find($id);
+    $session = ClassSession::with('group.school')->find($id);
 
     if ($session === null) {
         return false;
@@ -30,10 +33,37 @@ Broadcast::channel('class-session.{id}', function ($user, $id) {
     if ($session->coach_id === $user->id) {
         return ['id' => $user->id, 'name' => $user->name, 'role' => 'coach'];
     }
-    if (app(\App\Services\Classroom\SchoolService::class)->isManager($session->group->school, $user)) {
+    if (app(SchoolService::class)->isManager($session->group->school, $user)) {
         return ['id' => $user->id, 'name' => $user->name, 'role' => 'coach'];
     }
     if ($session->group?->students()->whereKey($user->id)->exists()) {
+        return ['id' => $user->id, 'name' => $user->name, 'role' => 'student'];
+    }
+
+    return false;
+});
+
+/*
+ * A class's board and its homework.
+ *
+ * The group rather than a session: the board outlives any one lesson, and a
+ * learner reading it on the bus is not in a room. Same three answers as the
+ * room's channel - the coach, a manager of the school, somebody on the roll -
+ * because it is the same question about the same people.
+ */
+Broadcast::channel('class-group.{id}', function ($user, $id) {
+    $group = ClassGroup::with('school')->find($id);
+
+    if ($group === null) {
+        return false;
+    }
+    if ($group->coach_id === $user->id) {
+        return ['id' => $user->id, 'name' => $user->name, 'role' => 'coach'];
+    }
+    if (app(SchoolService::class)->isManager($group->school, $user)) {
+        return ['id' => $user->id, 'name' => $user->name, 'role' => 'coach'];
+    }
+    if ($group->students()->whereKey($user->id)->exists()) {
         return ['id' => $user->id, 'name' => $user->name, 'role' => 'student'];
     }
 
