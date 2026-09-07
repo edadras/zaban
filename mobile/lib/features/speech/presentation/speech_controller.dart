@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:record/record.dart';
 import 'package:zaban/core/error/api_exception.dart';
+import 'package:zaban/features/auth/presentation/auth_controller.dart';
+import 'package:zaban/features/profile/data/profile_repository.dart';
 import 'package:zaban/features/speech/data/models/speech_attempt.dart';
 import 'package:zaban/features/speech/data/recorder_service.dart';
 import 'package:zaban/features/speech/data/speech_repository.dart';
@@ -75,7 +77,9 @@ class SpeechController extends AutoDisposeNotifier<SpeechState> {
     } on RecorderPermissionDenied catch (error) {
       state = state.copyWith(phase: SpeechPhase.failed, error: error);
       return;
-    } on Exception catch (error) {
+    } catch (error) {
+      // Browser MediaRecorder throws Errors (not Exception) for unsupported
+      // codecs; catching only Exception left the mic UI stuck on a blank failure.
       state = state.copyWith(phase: SpeechPhase.failed, error: error);
       return;
     }
@@ -125,6 +129,8 @@ class SpeechController extends AutoDisposeNotifier<SpeechState> {
     final repository = ref.read(speechRepositoryProvider);
 
     try {
+      await _ensureSpeechConsent();
+
       final pending = await repository.upload(
         recording: recording,
         expectedText: expectedText,
@@ -149,7 +155,21 @@ class SpeechController extends AutoDisposeNotifier<SpeechState> {
       );
     } on ApiException catch (error) {
       state = state.copyWith(phase: SpeechPhase.failed, error: error);
+    } catch (error) {
+      state = state.copyWith(phase: SpeechPhase.failed, error: error);
     }
+  }
+
+  /// Voice storage requires an explicit setting. Saving consent here when the
+  /// learner already chose to record avoids a dead-end 403 mid-upload.
+  Future<void> _ensureSpeechConsent() async {
+    final user = ref.read(currentUserProvider);
+    if (user?.settings?.speechConsentGiven ?? false) return;
+
+    await ref.read(profileRepositoryProvider).updateSettings(
+      <String, dynamic>{'speech_consent_given': true},
+    );
+    await ref.read(authControllerProvider.notifier).refreshUser();
   }
 
   Future<void> cancel() async {

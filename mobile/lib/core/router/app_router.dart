@@ -6,6 +6,11 @@ import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/storage/preferences_store.dart';
 import 'package:zaban/core/widgets/app_scaffold.dart';
 import 'package:zaban/features/admin/presentation/admin_home_screen.dart';
+import 'package:zaban/features/admin/presentation/admin_payments_screen.dart';
+import 'package:zaban/features/admin/presentation/admin_revenue_screen.dart';
+import 'package:zaban/features/admin/presentation/admin_rial_settings_screen.dart';
+import 'package:zaban/features/admin/presentation/admin_user_detail_screen.dart';
+import 'package:zaban/features/admin/presentation/admin_users_screen.dart';
 import 'package:zaban/features/admin/presentation/book_lessons_screen.dart';
 import 'package:zaban/features/admin/presentation/curriculum_screen.dart';
 import 'package:zaban/features/auth/data/models/user.dart';
@@ -21,6 +26,7 @@ import 'package:zaban/features/exam/presentation/exam_home_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_result_screen.dart';
 import 'package:zaban/features/home/presentation/home_screen.dart';
 import 'package:zaban/features/home/presentation/session/session_runner_screen.dart';
+import 'package:zaban/features/learn/presentation/learn_studio_screen.dart';
 import 'package:zaban/features/lesson/presentation/lesson_screen.dart';
 import 'package:zaban/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:zaban/features/placement/presentation/placement_intro_screen.dart';
@@ -46,7 +52,11 @@ bool _staff(Ref ref) => _staffRoles.contains(
     );
 
 /// Routes that a signed-out user may see.
-const Set<String> _publicPaths = <String>{'/login', '/register', '/splash'};
+///
+/// `/splash` is deliberately NOT public: it exists only while auth is still
+/// `unknown`. Once the session check finishes, an unsigned visitor must leave
+/// for `/login` — otherwise the splash spinner runs forever.
+const Set<String> _publicPaths = <String>{'/login', '/register'};
 
 /// Routes that stay reachable while placement is still outstanding, so the
 /// learner can read the intro, sign out or manage their plan.
@@ -230,6 +240,44 @@ final routerProvider = Provider<GoRouter>((ref) {
           bookId: int.parse(state.pathParameters['bookId']!),
         ),
       ),
+      GoRoute(
+        path: AppRoute.adminUsers.path,
+        name: AppRoute.adminUsers.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (_, __) => const AdminUsersScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.adminUser.path,
+        name: AppRoute.adminUser.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (BuildContext context, GoRouterState state) =>
+            AdminUserDetailScreen(
+          userId: int.parse(state.pathParameters['userId']!),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.adminPayments.path,
+        name: AppRoute.adminPayments.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (_, __) => const AdminPaymentsScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.adminRevenue.path,
+        name: AppRoute.adminRevenue.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (_, __) => const AdminRevenueScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.adminRialSettings.path,
+        name: AppRoute.adminRialSettings.name,
+        redirect: (BuildContext context, GoRouterState state) =>
+            _staff(ref) ? null : AppRoute.home.path,
+        builder: (_, __) => const AdminRialSettingsScreen(),
+      ),
 
       // The tabbed part of the app. IndexedStack keeps each tab's scroll
       // position and in-flight requests alive when switching.
@@ -247,6 +295,15 @@ final routerProvider = Provider<GoRouter>((ref) {
                 path: AppRoute.home.path,
                 name: AppRoute.home.name,
                 builder: (_, __) => const HomeScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                path: AppRoute.learn.path,
+                name: AppRoute.learn.name,
+                builder: (_, __) => const LearnStudioScreen(),
               ),
             ],
           ),
@@ -336,6 +393,12 @@ class _AppShell extends ConsumerWidget {
           icon: Icons.bolt_outlined,
           selectedIcon: Icons.bolt_rounded,
           route: '/home',
+        ),
+        ShellDestination(
+          label: context.t('Learn'),
+          icon: Icons.auto_stories_outlined,
+          selectedIcon: Icons.auto_stories_rounded,
+          route: '/learn',
         ),
         ShellDestination(
           label: context.t('Review'),

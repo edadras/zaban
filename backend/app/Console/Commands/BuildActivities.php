@@ -637,8 +637,24 @@ class BuildActivities extends Command
             fn ($ids) => DB::table('lessons')->whereIn('id', $ids->all())->update(['kind' => 'vocabulary']),
         );
 
+        // Grammar and pronunciation units teach a pattern, not a word list.
+        // They were left as study_skills because they rarely hit the vocabulary
+        // flashcard threshold — and the session engine then refused to open them.
+        $pattern = DB::table('lessons')
+            ->join('lesson_concept', 'lesson_concept.lesson_id', '=', 'lessons.id')
+            ->join('concepts', 'concepts.id', '=', 'lesson_concept.concept_id')
+            ->where('concepts.conceptable_type', Lesson::class)
+            ->whereNull('lessons.deleted_at')
+            ->distinct()
+            ->pluck('lessons.id');
+
+        $pattern->chunk(1000)->each(
+            fn ($ids) => DB::table('lessons')->whereIn('id', $ids->all())->update(['kind' => 'pattern']),
+        );
+
         $total = DB::table('lessons')->count();
         $this->line("   vocabulary lessons: {$teaching->count()} of {$total}");
+        $this->line("   pattern lessons: {$pattern->count()} of {$total}");
     }
 
     /**

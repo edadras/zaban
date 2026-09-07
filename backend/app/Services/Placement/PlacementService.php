@@ -78,24 +78,40 @@ class PlacementService
 
     /**
      * The next item, or null when every dimension has converged.
+     *
+     * The chosen item is reserved immediately (a response row with
+     * answered_at = null) so a refresh / retry of GET next returns the same
+     * question instead of picking a new one and making the test feel random.
      */
     public function nextItem(PlacementSession $session): ?Exercise
     {
+        $pending = PlacementResponse::where('placement_session_id', $session->id)
+            ->whereNull('answered_at')
+            ->orderByDesc('id')
+            ->first();
+        if ($pending) {
+            return Exercise::find($pending->exercise_id);
+        }
+
         $state = $this->pickDimension($session);
         if (! $state) {
             return null;
         }
 
-        $asked = PlacementResponse::where('placement_session_id', $session->id)->pluck('exercise_id')->all();
+        $asked = PlacementResponse::where('placement_session_id', $session->id)
+            ->pluck('exercise_id')
+            ->all();
 
         $candidates = Exercise::query()
             ->where('is_placement_eligible', true)
             ->where('skill_id', $state->skill_id)
+            ->whereIn('status', Exercise::SERVABLE_STATUSES)
             ->when($asked, fn ($q) => $q->whereNotIn('id', $asked))
             ->whereNull('deleted_at')
             // Only look near the current estimate: items far from it carry
             // almost no information and waste the learner's time.
             ->whereBetween('difficulty', [(float) $state->ability - 2.0, (float) $state->ability + 2.0])
+            ->orderBy('id')
             ->limit(40)
             ->get();
 
@@ -108,36 +124,59 @@ class PlacementService
         }
 
         // Maximum-information selection: the item that most reduces uncertainty.
-        return $candidates
+        /** @var Exercise $item */
+        $item = $candidates
             ->sortByDesc(fn (Exercise $e) => $this->difficulty->information((float) $state->ability, $e))
             ->first();
+
+        $sequence = (int) PlacementResponse::where('placement_session_id', $session->id)->max('sequence') + 1;
+        PlacementResponse::create([
+            'placement_session_id' => $session->id,
+            'exercise_id' => $item->id,
+            'skill_id' => $item->skill_id,
+            'sequence' => $sequence,
+            'ability_before' => (float) $state->ability,
+            'se_before' => (float) $state->ability_se,
+            'item_information' => $this->difficulty->information((float) $state->ability, $item),
+            'presented_at' => now(),
+            'answered_at' => null,
+        ]);
+
+        return $item;
     }
 
     /**
      * Grade one response, update that dimension and the global estimate.
+     *
+     * Idempotent for a given exercise in the session: a network retry that
+     * re-posts the same answer does not score the item twice.
      */
     public function submit(PlacementSession $session, Exercise $item, bool $correct, ?float $score = null, ?int $responseMs = null): PlacementResponse
     {
         return DB::transaction(function () use ($session, $item, $correct, $score, $responseMs) {
+            $existing = PlacementResponse::where('placement_session_id', $session->id)
+                ->where('exercise_id', $item->id)
+                ->lockForUpdate()
+                ->first();
+
+            if ($existing && $existing->answered_at !== null) {
+                return $existing;
+            }
+
             /** @var PlacementSkillState $state */
             $state = PlacementSkillState::where('placement_session_id', $session->id)
                 ->where('skill_id', $item->skill_id)
                 ->lockForUpdate()
                 ->firstOrFail();
 
-            $abilityBefore = (float) $state->ability;
-            $seBefore = (float) $state->ability_se;
-            $information = $this->difficulty->information($abilityBefore, $item);
+            $abilityBefore = (float) ($existing?->ability_before ?? $state->ability);
+            $seBefore = (float) ($existing?->se_before ?? $state->ability_se);
+            $information = $existing?->item_information
+                ?? $this->difficulty->information($abilityBefore, $item);
 
             [$abilityAfter, $seAfter] = $this->difficulty->updateAbility($abilityBefore, $seBefore, $item, $correct);
 
-            $sequence = (int) PlacementResponse::where('placement_session_id', $session->id)->max('sequence') + 1;
-
-            $response = PlacementResponse::create([
-                'placement_session_id' => $session->id,
-                'exercise_id' => $item->id,
-                'skill_id' => $item->skill_id,
-                'sequence' => $sequence,
+            $payload = [
                 'is_correct' => $correct,
                 'score' => $score ?? ($correct ? 1.0 : 0.0),
                 'response_ms' => $responseMs,
@@ -146,9 +185,22 @@ class PlacementService
                 'se_before' => $seBefore,
                 'se_after' => $seAfter,
                 'item_information' => $information,
-                'presented_at' => now(),
                 'answered_at' => now(),
-            ]);
+            ];
+
+            if ($existing) {
+                $existing->forceFill($payload)->save();
+                $response = $existing;
+            } else {
+                $sequence = (int) PlacementResponse::where('placement_session_id', $session->id)->max('sequence') + 1;
+                $response = PlacementResponse::create($payload + [
+                    'placement_session_id' => $session->id,
+                    'exercise_id' => $item->id,
+                    'skill_id' => $item->skill_id,
+                    'sequence' => $sequence,
+                    'presented_at' => now(),
+                ]);
+            }
 
             $state->update([
                 'ability' => $abilityAfter,
@@ -345,9 +397,21 @@ class PlacementService
 
     private function levelFor(float $ability): ?CefrLevel
     {
-        return CefrLevel::where('ability_min', '<=', $ability)
+        $level = CefrLevel::where('ability_min', '<=', $ability)
             ->where('ability_max', '>', $ability)
             ->orderBy('ordinal')
+            ->first();
+
+        if ($level) {
+            return $level;
+        }
+
+        // Ability is clamped to 6.0 and C2's ability_max is also 6.0, so the
+        // exclusive upper bound above misses the top of the scale and used to
+        // fall through to Pre-A1. Prefer the highest band that still covers θ.
+        return CefrLevel::where('ability_min', '<=', $ability)
+            ->where('ability_max', '>=', $ability)
+            ->orderByDesc('ordinal')
             ->first()
             ?? CefrLevel::orderBy('ordinal')->first();
     }

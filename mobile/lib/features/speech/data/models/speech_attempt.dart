@@ -163,17 +163,43 @@ abstract class SpeechFeedback with _$SpeechFeedback {
     /// `model` or `rules` — a failed AI call degrades the wording, never the
     /// accuracy, and the client can say which produced it.
     String? narrativeSource,
+    String? summary,
+    String? summaryFa,
     @Default(<String>[]) List<String> strengths,
+    @Default(<String>[]) List<String> strengthsFa,
     @Default(<SpeechCorrection>[]) List<SpeechCorrection> corrections,
     @Default(<PhonemeNote>[]) List<PhonemeNote> phonemeNotes,
     @Default(<PracticeSuggestion>[]) List<PracticeSuggestion> practice,
 
-    /// Measurements that were not available for this recording.
-    @Default(<String>[]) List<String> notMeasured,
+    /// Why each unmeasured dimension was skipped, keyed by name
+    /// (e.g. `pronunciation` → "No forced-alignment provider is configured.").
+    ///
+    /// The API sends a map; older stubs used a list of names. Accept both so
+    /// a scored attempt never crashes the result screen.
+    @JsonKey(fromJson: _notMeasuredFromJson)
+    @Default(<String, String>{})
+    Map<String, String> notMeasured,
   }) = _SpeechFeedback;
 
   factory SpeechFeedback.fromJson(Map<String, dynamic> json) =>
       _$SpeechFeedbackFromJson(json);
+}
+
+Map<String, String> _notMeasuredFromJson(Object? raw) {
+  if (raw is Map) {
+    return raw.map(
+      (Object? key, Object? value) => MapEntry(
+        key.toString(),
+        value?.toString() ?? '',
+      ),
+    );
+  }
+  if (raw is List) {
+    return <String, String>{
+      for (final Object? item in raw) item.toString(): '',
+    };
+  }
+  return const <String, String>{};
 }
 
 @freezed
@@ -181,8 +207,11 @@ abstract class SpeechCorrection with _$SpeechCorrection {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory SpeechCorrection({
     required String issue,
+    String? issueFa,
     required String why,
+    String? whyFa,
     required String fix,
+    String? fixFa,
   }) = _SpeechCorrection;
 
   factory SpeechCorrection.fromJson(Map<String, dynamic> json) =>
@@ -196,6 +225,7 @@ abstract class PhonemeNote with _$PhonemeNote {
     required String phoneme,
     @Default(<String>[]) List<String> words,
     required String tip,
+    String? tipFa,
   }) = _PhonemeNote;
 
   factory PhonemeNote.fromJson(Map<String, dynamic> json) =>
@@ -207,7 +237,9 @@ abstract class PracticeSuggestion with _$PracticeSuggestion {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory PracticeSuggestion({
     required String activity,
+    String? activityFa,
     required String reason,
+    String? reasonFa,
   }) = _PracticeSuggestion;
 
   factory PracticeSuggestion.fromJson(Map<String, dynamic> json) =>

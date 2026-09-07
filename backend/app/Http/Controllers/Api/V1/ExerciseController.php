@@ -7,6 +7,7 @@ use App\Models\ExerciseAttempt;
 use App\Models\LearnerProfile;
 use App\Services\Learning\DifficultyService;
 use App\Services\Learning\MasteryService;
+use App\Services\Learning\ProgressService;
 use App\Services\Learning\RemediationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -25,6 +26,7 @@ class ExerciseController extends ApiController
         private MasteryService $mastery,
         private DifficultyService $difficulty,
         private RemediationService $remediation,
+        private ProgressService $progress,
         private \App\Services\Content\SentenceQuality $quality,
     ) {}
 
@@ -135,6 +137,8 @@ class ExerciseController extends ApiController
 
         $this->updateAbility($user->id, $exercise, $grade['correct']);
 
+        $this->progress->recordExerciseAttempt($attempt);
+
         return $this->ok([
             'attempt_id' => $attempt->id,
             'correct' => $grade['correct'],
@@ -151,6 +155,9 @@ class ExerciseController extends ApiController
                 'mastery_score' => (float) $s->mastery_score,
                 'next_review_at' => $s->next_review_at?->toIso8601String(),
             ])->values(),
+            'xp_earned' => $grade['correct']
+                ? ProgressService::XP_EXERCISE_CORRECT
+                : ProgressService::XP_EXERCISE_ATTEMPT,
         ]);
     }
 
@@ -220,7 +227,9 @@ class ExerciseController extends ApiController
                 'correct' => (bool) $correct,
                 'score' => $correct ? 1.0 : 0.0,
                 'expected' => $correctOption?->text,
-                'feedback' => array_filter([
+                // Always a JSON object: an empty PHP [] becomes [] in JSON and
+                // the Flutter client crashes casting it to Map, leaving Check spinning.
+                'feedback' => (object) array_filter([
                     'distractor_rationale' => (! $correct && $chosen) ? $chosen->distractor_rationale : null,
                 ]),
             ];
@@ -230,11 +239,11 @@ class ExerciseController extends ApiController
             // Open-ended item: it needs AI or human grading, so do not pretend
             // to have scored it.
             return ['correct' => false, 'score' => 0.0, 'expected' => null,
-                    'feedback' => ['requires_review' => true,
+                    'feedback' => (object) ['requires_review' => true,
                                    'message' => 'This response needs review before it can be scored.']];
         }
 
-        $given = (string) (is_array($response) ? reset($response) : $response);
+        $given = (string) (is_array($response) ? ($response['value'] ?? reset($response)) : $response);
         $best = ['correct' => false, 'score' => 0.0, 'expected' => $answers->first()->value];
 
         foreach ($answers as $answer) {
@@ -250,7 +259,7 @@ class ExerciseController extends ApiController
             }
         }
 
-        return $best + ['feedback' => []];
+        return $best + ['feedback' => new \stdClass()];
     }
 
     /** Tolerate a single typo, but not a different word. */

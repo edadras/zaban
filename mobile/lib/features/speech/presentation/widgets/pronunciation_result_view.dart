@@ -5,6 +5,7 @@ import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
 import 'package:zaban/core/widgets/progress_ring.dart';
 import 'package:zaban/features/speech/data/models/speech_attempt.dart';
+import 'package:zaban/features/speech/presentation/widgets/bilingual_text.dart';
 import 'package:zaban/features/speech/presentation/widgets/word_score_text.dart';
 
 /// The scored attempt: overall, per-dimension, per-word and the coach's notes.
@@ -191,7 +192,13 @@ class _FeedbackPanel extends StatelessWidget {
           Row(
             children: <Widget>[
               Expanded(child: Text(context.t('COACH'), style: context.text.labelSmall)),
-              if (feedback.narrativeSource == 'rules')
+              if (feedback.narrativeSource == 'model')
+                Text(
+                  context.t('AI coach'),
+                  style: context.text.labelSmall
+                      ?.copyWith(color: colors.accentSoft),
+                )
+              else if (feedback.narrativeSource == 'rules')
                 Text(
                   context.t('basic feedback'),
                   style: context.text.labelSmall
@@ -199,11 +206,24 @@ class _FeedbackPanel extends StatelessWidget {
                 ),
             ],
           ),
-          for (final String strength in feedback.strengths)
-            _Line(
-              text: strength,
-              icon: Icons.check_rounded,
-              color: colors.success,
+          for (int i = 0; i < feedback.strengths.length; i++)
+            Padding(
+              padding: const EdgeInsets.only(top: Spacing.sm),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Icon(Icons.check_rounded, size: 14, color: colors.success),
+                  const SizedBox(width: Spacing.sm),
+                  Expanded(
+                    child: BilingualText(
+                      english: feedback.strengths[i],
+                      persian: i < feedback.strengthsFa.length
+                          ? feedback.strengthsFa[i]
+                          : (i == 0 ? feedback.summaryFa : null),
+                    ),
+                  ),
+                ],
+              ),
             ),
           for (final SpeechCorrection correction in feedback.corrections)
             Padding(
@@ -212,9 +232,16 @@ class _FeedbackPanel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  Text(correction.issue, style: context.text.titleMedium),
+                  BilingualText(
+                    english: correction.issue,
+                    persian: correction.issueFa,
+                    style: context.text.titleMedium,
+                  ),
                   const SizedBox(height: 2),
-                  Text(correction.why, style: context.text.bodyMedium),
+                  BilingualText(
+                    english: correction.why,
+                    persian: correction.whyFa,
+                  ),
                   const SizedBox(height: Spacing.xs),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -226,8 +253,9 @@ class _FeedbackPanel extends StatelessWidget {
                       ),
                       const SizedBox(width: Spacing.sm),
                       Expanded(
-                        child: Text(
-                          correction.fix,
+                        child: BilingualText(
+                          english: correction.fix,
+                          persian: correction.fixFa,
                           style: context.text.bodyMedium
                               ?.copyWith(color: colors.textPrimary),
                         ),
@@ -270,7 +298,10 @@ class _FeedbackPanel extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Text(note.tip, style: context.text.bodyMedium),
+                          BilingualText(
+                            english: note.tip,
+                            persian: note.tipFa,
+                          ),
                           if (note.words.isNotEmpty)
                             Text(
                               note.words.join(' · '),
@@ -284,15 +315,29 @@ class _FeedbackPanel extends StatelessWidget {
               ),
           ],
           for (final PracticeSuggestion practice in feedback.practice)
-            _Line(
-              text: '${practice.activity} — ${practice.reason}',
-              icon: Icons.repeat_rounded,
-              color: colors.info,
+            Padding(
+              padding: const EdgeInsets.only(top: Spacing.sm),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Icon(Icons.repeat_rounded, size: 14, color: colors.info),
+                  const SizedBox(width: Spacing.sm),
+                  Expanded(
+                    child: BilingualText(
+                      english: '${practice.activity} — ${practice.reason}',
+                      persian: (practice.activityFa == null &&
+                              practice.reasonFa == null)
+                          ? null
+                          : '${practice.activityFa ?? practice.activity} — ${practice.reasonFa ?? practice.reason}',
+                    ),
+                  ),
+                ],
+              ),
             ),
           if (feedback.notMeasured.isNotEmpty) ...<Widget>[
             const SizedBox(height: Spacing.lg),
             Text(
-              'Not measured this time: ${feedback.notMeasured.join(', ')}',
+              'Not measured this time: ${feedback.notMeasured.keys.join(', ')}',
               style: context.text.bodySmall,
             ),
           ],
@@ -341,29 +386,6 @@ class _MiniScore extends StatelessWidget {
           style: context.text.labelSmall,
         ),
       ],
-    );
-  }
-}
-
-class _Line extends StatelessWidget {
-  const _Line({required this.text, required this.icon, required this.color});
-
-  final String text;
-  final IconData icon;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: Spacing.sm),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Icon(icon, size: 14, color: color),
-          const SizedBox(width: Spacing.sm),
-          Expanded(child: Text(text, style: context.text.bodyMedium)),
-        ],
-      ),
     );
   }
 }

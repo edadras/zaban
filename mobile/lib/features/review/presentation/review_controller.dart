@@ -102,7 +102,8 @@ class ReviewController extends AsyncNotifier<ReviewRunState> {
       state = AsyncData<ReviewRunState>(
         current.copyWith(result: result, submitting: false),
       );
-    } on Exception catch (error) {
+    } catch (error) {
+      // Catch Object: JSON TypeErrors are Errors and left submitting spinning.
       // Keep the item on screen so the answer is not lost to a transient
       // failure; the banner tells the learner what happened.
       state = AsyncData<ReviewRunState>(current.copyWith(submitting: false));

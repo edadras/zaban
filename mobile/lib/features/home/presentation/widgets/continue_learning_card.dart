@@ -75,6 +75,29 @@ class ContinueLearningCard extends StatelessWidget {
                     style: context.text.bodySmall,
                   ),
                 ],
+                const SizedBox(height: Spacing.md),
+                Wrap(
+                  spacing: Spacing.xs,
+                  runSpacing: Spacing.xs,
+                  children: <Widget>[
+                    for (final String phase in <String>[
+                      context.t('Study'),
+                      context.t('Practice'),
+                      context.t('Use it'),
+                    ])
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Spacing.sm,
+                          vertical: Spacing.xs,
+                        ),
+                        decoration: BoxDecoration(
+                          color: colors.accent.withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(Radii.xs),
+                        ),
+                        child: Text(phase, style: context.text.labelSmall),
+                      ),
+                  ],
+                ),
                 const SizedBox(height: Spacing.lg),
                 GlowButton(
                   label: resuming ? 'Resume' : 'Continue learning',

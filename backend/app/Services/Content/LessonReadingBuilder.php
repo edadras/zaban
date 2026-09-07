@@ -115,7 +115,9 @@ class LessonReadingBuilder
                     // The word in the learner's own language, by language code.
                     // Carried per word rather than fetched per tap: the reader
                     // works offline once the lesson is open.
-                    'meanings' => $entry['meanings'] ?? [],
+                    'meanings' => empty($entry['meanings'] ?? null)
+                        ? new \stdClass()
+                        : $entry['meanings'],
                 ];
 
                 // One highlight per word per paragraph: marking every repeat

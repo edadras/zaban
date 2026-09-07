@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
@@ -198,7 +199,9 @@ class _SkillRadarPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2
       ..color = accent.withValues(alpha: 0.55)
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
+      ..maskFilter = kIsWeb
+          ? null
+          : const MaskFilter.blur(BlurStyle.normal, 8);
     canvas.drawPath(dataPath, bloom);
 
     final stroke = Paint()

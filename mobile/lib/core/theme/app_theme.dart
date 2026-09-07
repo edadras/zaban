@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:zaban/core/theme/tokens/color_tokens.dart';
@@ -13,15 +14,20 @@ import 'package:zaban/core/theme/tokens/typography_tokens.dart';
 class AppTheme {
   const AppTheme._();
 
+  /// On web, backdrop blur is off (flat glass). Soft shadows stay light via
+  /// [ZabanShadows]; GPU CanvasKit is preferred in `flutter_bootstrap.js`.
+  static ZabanGlass get _glass =>
+      kIsWeb ? ZabanGlass.flat() : ZabanGlass.standard();
+
   static ThemeData dark({ZabanGlass? glass, ZabanMotion? motion}) => _build(
         ZabanColors.dark(),
-        glass ?? ZabanGlass.standard(),
+        glass ?? _glass,
         motion ?? ZabanMotion.standard(),
       );
 
   static ThemeData light({ZabanGlass? glass, ZabanMotion? motion}) => _build(
         ZabanColors.light(),
-        glass ?? ZabanGlass.standard(),
+        glass ?? _glass,
         motion ?? ZabanMotion.standard(),
       );
 
@@ -65,16 +71,20 @@ class AppTheme {
       scaffoldBackgroundColor: colors.canvas,
       canvasColor: colors.canvas,
       textTheme: textTheme,
-      splashFactory: InkSparkle.splashFactory,
+      // InkSparkle needs a healthy WebGL context; on remote desktops / VMs
+      // that fall back to CPU rendering it is needlessly expensive.
+      splashFactory: InkRipple.splashFactory,
       // Glass panels supply their own surface treatment; Material's tonal
       // elevation overlay would fight it.
       applyElevationOverlayColor: false,
       extensions: <ThemeExtension<dynamic>>[colors, glass, motion],
       pageTransitionsTheme: const PageTransitionsTheme(
         builders: <TargetPlatform, PageTransitionsBuilder>{
+          // Flutter 3.47+ dropped CupertinoPageTransitionsBuilder from
+          // material.dart; Zoom keeps a consistent transition on every target.
           TargetPlatform.android: ZoomPageTransitionsBuilder(),
-          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-          TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+          TargetPlatform.iOS: ZoomPageTransitionsBuilder(),
+          TargetPlatform.macOS: ZoomPageTransitionsBuilder(),
           TargetPlatform.windows: ZoomPageTransitionsBuilder(),
           TargetPlatform.linux: ZoomPageTransitionsBuilder(),
         },
@@ -84,9 +94,13 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         scrolledUnderElevation: 0,
-        centerTitle: false,
+        // Centered titles leave clear gutters for back/close and actions,
+        // which matters for long Persian labels on narrow web viewports.
+        centerTitle: true,
+        titleSpacing: 12,
         titleTextStyle: textTheme.titleLarge,
         iconTheme: IconThemeData(color: colors.textSecondary),
+        actionsIconTheme: IconThemeData(color: colors.textSecondary),
         systemOverlayStyle: colors.isDark
             ? SystemUiOverlayStyle.light
             : SystemUiOverlayStyle.dark,

@@ -11,7 +11,7 @@ return [
     'storage_disk' => env('AI_STORAGE_DISK', 'local'),
 
     'chains' => [
-        'text' => array_values(array_filter(explode(',', env('AI_CHAIN_TEXT', 'anthropic')))),
+        'text' => array_values(array_filter(explode(',', env('AI_CHAIN_TEXT', 'openai,anthropic')))),
         'image' => array_values(array_filter(explode(',', env('AI_CHAIN_IMAGE', 'higgsfield,placeholder')))),
         'video' => array_values(array_filter(explode(',', env('AI_CHAIN_VIDEO', 'higgsfield')))),
         'audio' => array_values(array_filter(explode(',', env('AI_CHAIN_AUDIO', 'higgsfield,espeak')))),
@@ -19,6 +19,17 @@ return [
     ],
 
     'providers' => [
+        'openai' => [
+            'driver' => App\AI\Providers\OpenAiTextProvider::class,
+            'api_key' => env('OPENAI_API_KEY'),
+            'model' => env('OPENAI_MODEL', 'gpt-4o-mini'),
+            'max_tokens' => (int) env('OPENAI_MAX_TOKENS', 4000),
+            'base_url' => env('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
+            // Approximate gpt-4o-mini list prices for the cost ledger.
+            'input_cost_per_mtok' => (float) env('OPENAI_INPUT_COST', 0.15),
+            'output_cost_per_mtok' => (float) env('OPENAI_OUTPUT_COST', 0.60),
+        ],
+
         'anthropic' => [
             'driver' => App\AI\Providers\AnthropicTextProvider::class,
             'api_key' => env('ANTHROPIC_API_KEY'),

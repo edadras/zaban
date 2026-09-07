@@ -13,6 +13,7 @@ enum AppRoute {
   placementResult('/placement/result', 'placementResult'),
 
   home('/home', 'home'),
+  learn('/learn', 'learn'),
   session('/session', 'session'),
   lesson('/lesson/:lessonId', 'lesson'),
 
@@ -28,6 +29,7 @@ enum AppRoute {
   examResult('/exam/result/:attemptId', 'examResult'),
 
   plans('/plans', 'plans'),
+  manualRialPay('/plans/rial/:planCode', 'manualRialPay'),
 
   profile('/profile', 'profile'),
   settings('/profile/settings', 'settings'),
@@ -35,7 +37,12 @@ enum AppRoute {
   /// Admin. Hidden from a learner by the router and refused by the server.
   admin('/admin', 'admin'),
   adminCurriculum('/admin/curriculum', 'adminCurriculum'),
-  adminBook('/admin/curriculum/:bookId', 'adminBook');
+  adminBook('/admin/curriculum/:bookId', 'adminBook'),
+  adminUsers('/admin/users', 'adminUsers'),
+  adminUser('/admin/users/:userId', 'adminUser'),
+  adminPayments('/admin/payments', 'adminPayments'),
+  adminRevenue('/admin/revenue', 'adminRevenue'),
+  adminRialSettings('/admin/rial-settings', 'adminRialSettings');
 
   const AppRoute(this.path, this.name);
 
@@ -47,4 +54,6 @@ enum AppRoute {
   String conversationPath(int sessionId) => '/conversation/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';
   String examResultPath(int attemptId) => '/exam/result/$attemptId';
+  String manualRialPayPath(String planCode) => '/plans/rial/$planCode';
+  String adminUserPath(int userId) => '/admin/users/$userId';
 }

@@ -12,6 +12,7 @@ use App\Models\Exercise;
 use App\Models\ExerciseAttempt;
 use App\Models\SpeechAttempt;
 use App\Services\Learning\DifficultyService;
+use App\Services\Learning\ProgressService;
 use App\Services\Learning\RemediationService;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -223,7 +224,10 @@ class ExamService
             'duration_seconds' => max(0, now()->diffInSeconds($attempt->started_at, absolute: true)),
         ]);
 
-        return $scoring->scoreAttempt($attempt->fresh(['sectionAttempts.section', 'scores']));
+        $scored = $scoring->scoreAttempt($attempt->fresh(['sectionAttempts.section', 'scores']));
+        app(ProgressService::class)->recordExamCompleted($scored);
+
+        return $scored;
     }
 
     public function abandon(ExamAttempt $attempt): ExamAttempt

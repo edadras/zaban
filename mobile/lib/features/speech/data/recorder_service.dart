@@ -8,7 +8,12 @@ import 'package:record/record.dart';
 /// A finished recording, in whichever form the platform produced it.
 @immutable
 class Recording {
-  const Recording({required this.durationMs, this.path, this.bytes});
+  const Recording({
+    required this.durationMs,
+    this.path,
+    this.bytes,
+    this.filename = 'attempt.m4a',
+  });
 
   /// Native platforms record straight to a file.
   final String? path;
@@ -17,6 +22,10 @@ class Recording {
   /// upload path is identical everywhere.
   final Uint8List? bytes;
   final int durationMs;
+
+  /// Name (with extension) sent as the multipart filename so the API MIME
+  /// sniff matches the encoder we actually used.
+  final String filename;
 
   bool get isEmpty => path == null && bytes == null;
 }
@@ -36,6 +45,7 @@ class RecorderService {
   final Dio _blobReader;
 
   DateTime? _startedAt;
+  AudioEncoder _encoder = AudioEncoder.aacLc;
 
   Future<bool> hasPermission() => _recorder.hasPermission();
 
@@ -48,15 +58,16 @@ class RecorderService {
       throw const RecorderPermissionDenied();
     }
 
-    // AAC in an m4a container: small, and accepted by the Whisper-based
-    // scoring provider without a transcode step.
-    const config = RecordConfig(
-      encoder: AudioEncoder.aacLc,
-      sampleRate: 16000,
+    _encoder = await _pickEncoder();
+    final config = RecordConfig(
+      encoder: _encoder,
+      // Browser MediaRecorder is picky about custom rates; leave defaults on
+      // web so Chrome/Safari actually start. Native still uses 16 kHz mono.
+      sampleRate: kIsWeb ? 44100 : 16000,
       numChannels: 1,
     );
 
-    final path = kIsWeb ? '' : await _tempFilePath();
+    final path = kIsWeb ? '' : await _tempFilePath(_encoder);
     await _recorder.start(config, path: path);
     _startedAt = DateTime.now();
   }
@@ -70,7 +81,13 @@ class RecorderService {
 
     if (location == null) return null;
 
-    if (!kIsWeb) return Recording(path: location, durationMs: duration);
+    if (!kIsWeb) {
+      return Recording(
+        path: location,
+        durationMs: duration,
+        filename: 'attempt.${_extensionFor(_encoder)}',
+      );
+    }
 
     // On web `location` is a blob: URL owned by this document; XHR (Dio's
     // browser adapter) can read it back as bytes.
@@ -81,8 +98,37 @@ class RecorderService {
     return Recording(
       bytes: Uint8List.fromList(response.data ?? const <int>[]),
       durationMs: duration,
+      filename: 'attempt.${_extensionFor(_encoder)}',
     );
   }
+
+  /// AAC works on native; browsers only reliably support wav (and sometimes
+  /// opus/webm). Picking an unsupported encoder throws and left the UI on
+  /// "Something went wrong" with no usable mic session.
+  Future<AudioEncoder> _pickEncoder() async {
+    const preferred = kIsWeb
+        ? <AudioEncoder>[
+            AudioEncoder.wav,
+            AudioEncoder.opus,
+          ]
+        : <AudioEncoder>[
+            AudioEncoder.aacLc,
+            AudioEncoder.wav,
+          ];
+
+    for (final encoder in preferred) {
+      if (await _recorder.isEncoderSupported(encoder)) {
+        return encoder;
+      }
+    }
+    throw const RecorderUnsupportedEncoder();
+  }
+
+  static String _extensionFor(AudioEncoder encoder) => switch (encoder) {
+        AudioEncoder.wav => 'wav',
+        AudioEncoder.opus => 'webm',
+        _ => 'm4a',
+      };
 
   Future<void> cancel() async {
     if (await _recorder.isRecording()) await _recorder.cancel();
@@ -91,10 +137,10 @@ class RecorderService {
 
   Future<void> dispose() => _recorder.dispose();
 
-  Future<String> _tempFilePath() async {
+  Future<String> _tempFilePath(AudioEncoder encoder) async {
     final directory = await getTemporaryDirectory();
     final stamp = DateTime.now().millisecondsSinceEpoch;
-    return '${directory.path}/zaban-speech-$stamp.m4a';
+    return '${directory.path}/zaban-speech-$stamp.${_extensionFor(encoder)}';
   }
 }
 
@@ -102,7 +148,16 @@ class RecorderPermissionDenied implements Exception {
   const RecorderPermissionDenied();
 
   @override
-  String toString() => 'Microphone permission was not granted.';
+  String toString() =>
+      'Microphone permission was not granted. Allow the mic for this site and try again.';
+}
+
+class RecorderUnsupportedEncoder implements Exception {
+  const RecorderUnsupportedEncoder();
+
+  @override
+  String toString() =>
+      'This browser cannot record audio in a supported format. Try Chrome or Edge.';
 }
 
 final recorderServiceProvider = Provider<RecorderService>((ref) {

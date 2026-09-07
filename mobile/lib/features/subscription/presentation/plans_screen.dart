@@ -14,6 +14,7 @@ import 'package:zaban/core/widgets/responsive.dart';
 import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/features/subscription/data/models/subscription_models.dart';
 import 'package:zaban/features/subscription/data/subscription_repository.dart';
+import 'package:zaban/features/subscription/presentation/manual_rial_pay_screen.dart';
 
 /// Plans and current access.
 ///
@@ -171,6 +172,62 @@ class _PlanCard extends ConsumerStatefulWidget {
 class _PlanCardState extends ConsumerState<_PlanCard> {
   bool _busy = false;
 
+  Future<void> _chooseMethod() async {
+    if (widget.isCurrent) return;
+    final method = await showModalBottomSheet<String>(
+      context: context,
+      showDragHandle: true,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              Spacing.lg,
+              0,
+              Spacing.lg,
+              Spacing.xl,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                Text(
+                  context.t('How do you want to pay?'),
+                  style: context.text.titleLarge,
+                ),
+                const SizedBox(height: Spacing.lg),
+                ListTile(
+                  leading: const Icon(Icons.account_balance_wallet_rounded),
+                  title: Text(context.t('Pay with Rial (card transfer)')),
+                  subtitle: Text(
+                    context.t('Transfer to our card, upload the receipt'),
+                  ),
+                  onTap: () => Navigator.pop(context, 'rial'),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.credit_card_rounded),
+                  title: Text(context.t('Online payment')),
+                  subtitle: Text(context.t('Card via payment gateway')),
+                  onTap: () => Navigator.pop(context, 'gateway'),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+    if (!mounted || method == null) return;
+    if (method == 'rial') {
+      await Navigator.of(context).push<void>(
+        MaterialPageRoute<void>(
+          builder: (_) => ManualRialPayScreen(planCode: widget.plan.code),
+        ),
+      );
+      ref.invalidate(subscriptionProvider);
+      return;
+    }
+    await _checkout();
+  }
+
   Future<void> _checkout() async {
     setState(() => _busy = true);
     try {
@@ -229,7 +286,7 @@ class _PlanCardState extends ConsumerState<_PlanCard> {
         variant: widget.isCurrent
             ? GlowButtonVariant.ghost
             : GlowButtonVariant.primary,
-        onPressed: widget.isCurrent ? null : _checkout,
+        onPressed: widget.isCurrent ? null : _chooseMethod,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

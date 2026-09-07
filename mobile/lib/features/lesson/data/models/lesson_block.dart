@@ -97,14 +97,21 @@ class ReadingTerm {
         end: (json['end'] as num?)?.toInt() ?? 0,
         conceptId: (json['concept_id'] as num?)?.toInt(),
         gloss: json['gloss'] as String?,
-        meanings: <String, String>{
-          for (final MapEntry<String, dynamic> e
-              in (json['meanings'] as Map<String, dynamic>? ??
-                      const <String, dynamic>{})
-                  .entries)
-            if (e.value is String) e.key: e.value as String,
-        },
+        meanings: _meaningsFromJson(json['meanings']),
       );
+
+  /// The API used to emit `meanings: []` (a JSON array) when a word had no
+  /// translation. Casting that to `Map` threw during build and blanked the
+  /// whole lesson body in release. Accept map, list, or null.
+  static Map<String, String> _meaningsFromJson(Object? raw) {
+    if (raw is Map) {
+      return <String, String>{
+        for (final MapEntry<dynamic, dynamic> e in raw.entries)
+          if (e.key is String && e.value is String) e.key as String: e.value as String,
+      };
+    }
+    return const <String, String>{};
+  }
 
   final String term;
   final int start;
@@ -177,8 +184,13 @@ extension LessonBlockConfigX on LessonBlock {
   LessonReading? get reading {
     final raw = config['reading'];
     if (raw is! Map) return null;
-    final parsed = LessonReading.fromJson(Map<String, dynamic>.from(raw));
-    return parsed.isEmpty ? null : parsed;
+    try {
+      final parsed = LessonReading.fromJson(Map<String, dynamic>.from(raw));
+      return parsed.isEmpty ? null : parsed;
+    } catch (e) {
+      // Corrupt reading payload must not blank the lesson; fall back to [text].
+      return null;
+    }
   }
 
   /// `source_text` in a grammar or pronunciation lesson — the forms the page

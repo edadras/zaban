@@ -50,7 +50,8 @@ abstract class ConversationSession with _$ConversationSession {
 abstract class ConversationTurn with _$ConversationTurn {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory ConversationTurn({
-    required int id,
+    /// Some API payloads omit id on opening turns; fall back to position.
+    @JsonKey(fromJson: _turnIdFromJson) @Default(0) int id,
     @Default(0) int position,
     /// learner | ai
     required String speaker,
@@ -63,6 +64,12 @@ abstract class ConversationTurn with _$ConversationTurn {
 
   factory ConversationTurn.fromJson(Map<String, dynamic> json) =>
       _$ConversationTurnFromJson(json);
+}
+
+int _turnIdFromJson(Object? raw) {
+  if (raw is int) return raw;
+  if (raw is num) return raw.toInt();
+  return 0;
 }
 
 /// A mistake the tutor noticed but did not necessarily interrupt for.

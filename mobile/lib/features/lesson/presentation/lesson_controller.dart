@@ -97,7 +97,8 @@ class LessonController extends FamilyAsyncNotifier<LessonRunState, int> {
       state = AsyncData<LessonRunState>(
         current.copyWith(result: result, submitting: false),
       );
-    } on Exception catch (error) {
+    } catch (error) {
+      // Catch Object: JSON TypeErrors are Errors and left submitting spinning.
       state = AsyncData<LessonRunState>(current.copyWith(submitting: false));
       ref.read(lessonErrorProvider.notifier).state = error;
     }

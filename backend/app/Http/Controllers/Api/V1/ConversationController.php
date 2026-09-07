@@ -24,12 +24,15 @@ class ConversationController extends ApiController
             'id' => $s->id,
             'slug' => $s->slug,
             'title' => $s->title,
+            'description' => $s->situation,
             'setting' => $s->setting,
             'situation' => $s->situation,
             'learner_role' => $s->learner_role,
             'cefr' => $s->cefrLevel?->code,
             'target_turns' => $s->target_turns,
-            'objectives' => $s->objectives,
+            'objectives' => $s->objectives ?? [],
+            'estimated_minutes' => max(5, (int) ceil(($s->target_turns ?? 10) / 2)),
+            'is_locked' => false,
         ])->values());
     }
 
@@ -43,7 +46,7 @@ class ConversationController extends ApiController
         $scenario = ConversationScenario::findOrFail($data['scenario_id']);
         $session = $this->conversations->start($request->user()->id, $scenario, $data['mode'] ?? 'voice');
 
-        return $this->created($this->present($session));
+        return $this->created($this->present($session->load('turns', 'scenario')));
     }
 
     public function respond(Request $request, ConversationSession $session)
@@ -72,18 +75,10 @@ class ConversationController extends ApiController
             return $this->fail('no_transcript', 'That recording has not been transcribed yet.', 422);
         }
 
-        $reply = $this->conversations->respond($session, $text, $speech);
+        $this->conversations->respond($session, $text, $speech);
 
-        return $this->ok([
-            'reply' => [
-                'position' => $reply->position,
-                'speaker' => $reply->speaker,
-                'text' => $reply->text,
-            ],
-            // Deliberately absent mid-conversation: observed errors. Corrections
-            // arrive in the debrief so the learner keeps talking (spec 26).
-            'turn_count' => $session->fresh()->turn_count,
-        ]);
+        // Client expects a full session (turns + status), not a single reply.
+        return $this->ok($this->present($session->fresh()->load('turns', 'scenario')));
     }
 
     public function finish(Request $request, ConversationSession $session)
@@ -91,42 +86,72 @@ class ConversationController extends ApiController
         $this->assertOwned($request, $session);
         $session = $this->conversations->finish($session);
 
-        return $this->ok([
-            'id' => $session->id,
-            'status' => $session->status,
-            'overall_score' => $session->overall_score !== null ? (float) $session->overall_score : null,
-            'objectives_met' => $session->objectives_met,
-            'debrief' => $session->summary,
-        ]);
+        return $this->ok($this->present($session->load('turns', 'scenario')));
     }
 
     public function show(Request $request, ConversationSession $session)
     {
         $this->assertOwned($request, $session);
 
-        return $this->ok($this->present($session->load('turns')));
+        return $this->ok($this->present($session->load('turns', 'scenario')));
     }
 
     private function present(ConversationSession $session): array
     {
+        $session->loadMissing('scenario');
+
+        $turns = ($session->relationLoaded('turns')
+            ? $session->turns
+            : $session->turns()->orderBy('position')->get()
+        )->sortBy('position')->values();
+
+        $summary = null;
+        if ($session->status === 'completed') {
+            $debrief = is_array($session->summary) ? $session->summary : [];
+            $corrections = collect($debrief['corrections'] ?? [])->map(fn ($c) => [
+                'type' => (string) ($c['type'] ?? 'grammar'),
+                'note' => $c['note'] ?? null,
+                'input' => $c['said'] ?? null,
+                'correction' => $c['expected'] ?? null,
+                'severity' => ! empty($c['blocked']) ? 4 : 2,
+            ])->values()->all();
+
+            $notes = array_values(array_filter([
+                ...((array) ($debrief['went_well'] ?? [])),
+                ...((array) ($debrief['pronunciation'] ?? [])),
+                ...((array) ($debrief['recommended_practice'] ?? [])),
+            ], fn ($n) => is_string($n) && $n !== ''));
+
+            $met = is_array($session->objectives_met) ? array_values($session->objectives_met) : [];
+            $all = is_array($session->scenario?->objectives) ? array_values($session->scenario->objectives) : [];
+            $missed = array_values(array_diff($all, $met));
+
+            $summary = [
+                'overall_score' => $session->overall_score !== null ? (float) $session->overall_score : null,
+                'objectives_met' => $met,
+                'objectives_missed' => $missed,
+                'notes' => $notes,
+                'errors' => $corrections,
+            ];
+        }
+
         return [
             'id' => $session->id,
             'status' => $session->status,
             'mode' => $session->mode,
-            'turn_count' => $session->turn_count,
+            'turn_count' => (int) $session->turn_count,
+            'scenario_id' => $session->conversation_scenario_id ?? $session->scenario?->id,
+            'scenario_title' => $session->scenario?->title,
             'scenario' => $session->scenario?->only(['id', 'title', 'setting', 'learner_role']),
-            'turns' => $session->relationLoaded('turns')
-                ? $session->turns->sortBy('position')->map(fn (ConversationTurn $t) => [
-                    'position' => $t->position,
-                    'speaker' => $t->speaker,
-                    'text' => $t->text,
-                ])->values()
-                : $session->turns()->orderBy('position')->get()
-                    ->map(fn (ConversationTurn $t) => [
-                        'position' => $t->position,
-                        'speaker' => $t->speaker,
-                        'text' => $t->text,
-                    ])->values(),
+            'turns' => $turns->map(fn (ConversationTurn $t) => [
+                'id' => $t->id,
+                'position' => (int) $t->position,
+                'speaker' => $t->speaker,
+                'text' => (string) $t->text,
+                'observed_errors' => is_array($t->observed_errors) ? $t->observed_errors : [],
+                'blocked_communication' => (bool) ($t->blocked_communication ?? false),
+            ])->values()->all(),
+            'summary' => $summary,
         ];
     }
 

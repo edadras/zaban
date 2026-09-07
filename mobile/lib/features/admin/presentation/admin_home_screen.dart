@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
@@ -12,6 +13,7 @@ import 'package:zaban/core/widgets/stat_tile.dart';
 import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/features/admin/data/admin_repository.dart';
 import 'package:zaban/features/admin/data/models/admin_overview.dart';
+import 'package:zaban/features/admin/data/models/billing_overview.dart';
 
 /// The operator's first screen: what was imported, what it is costing, and
 /// what is waiting for a person.
@@ -52,6 +54,69 @@ class AdminHomeScreen extends ConsumerWidget {
             const SizedBox(height: Spacing.md),
             _ReviewPanel(),
             const SizedBox(height: Spacing.lg),
+            const SectionHeader(
+              title: 'Operations',
+              eyebrow: 'manage the product',
+            ),
+            const SizedBox(height: Spacing.md),
+            _BillingStrip(),
+            const SizedBox(height: Spacing.md),
+            GlassPanel(
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(
+                  Icons.payments_rounded,
+                  color: context.colors.accent,
+                ),
+                title: Text(context.t('Rial payments')),
+                subtitle: Text(context.t('Approve or reject receipts')),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.go(AppRoute.adminPayments.path),
+              ),
+            ),
+            const SizedBox(height: Spacing.sm),
+            GlassPanel(
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(
+                  Icons.account_balance_rounded,
+                  color: context.colors.accent,
+                ),
+                title: Text(context.t('Rial account settings')),
+                subtitle: Text(context.t('Card number, holder and FX rate')),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.go(AppRoute.adminRialSettings.path),
+              ),
+            ),
+            const SizedBox(height: Spacing.sm),
+            GlassPanel(
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(
+                  Icons.insights_rounded,
+                  color: context.colors.accent,
+                ),
+                title: Text(context.t('Revenue & stats')),
+                subtitle: Text(context.t('Income, users and daily charts')),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.go(AppRoute.adminRevenue.path),
+              ),
+            ),
+            const SizedBox(height: Spacing.sm),
+            GlassPanel(
+              child: ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: Icon(
+                  Icons.people_alt_rounded,
+                  color: context.colors.accent,
+                ),
+                title: Text(context.t('Users')),
+                subtitle: Text(context.t('Profiles, plans and activity')),
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.go(AppRoute.adminUsers.path),
+              ),
+            ),
+            const SizedBox(height: Spacing.sm),
             GlassPanel(
               child: ListTile(
                 contentPadding: EdgeInsets.zero,
@@ -59,12 +124,44 @@ class AdminHomeScreen extends ConsumerWidget {
                   Icons.library_books_rounded,
                   color: context.colors.accent,
                 ),
-                title: const Text('Curriculum'),
-                subtitle:
-                    const Text('What is published, and what is ready to be'),
+                title: Text(context.t('Curriculum')),
+                subtitle: Text(context.t('What is published, and what is ready to be')),
                 trailing: const Icon(Icons.chevron_right_rounded),
                 onTap: () => context.go(AppRoute.adminCurriculum.path),
               ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _BillingStrip extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final async = ref.watch(billingOverviewProvider);
+
+    return async.when(
+      loading: () => const SizedBox.shrink(),
+      error: (Object _, StackTrace __) => const SizedBox.shrink(),
+      data: (BillingOverview o) => GlassPanel(
+        child: Wrap(
+          spacing: Spacing.lg,
+          runSpacing: Spacing.md,
+          children: <Widget>[
+            StatTile(label: 'IRR revenue', value: o.irrDisplay),
+            StatTile(
+              label: 'Pending receipts',
+              value: '${o.pendingReview}',
+              accentColor: o.pendingReview > 0
+                  ? context.colors.warning
+                  : context.colors.success,
+            ),
+            StatTile(label: 'Users', value: '${o.usersTotal}'),
+            StatTile(
+              label: 'Active plans',
+              value: '${o.activeSubscriptions}',
             ),
           ],
         ),

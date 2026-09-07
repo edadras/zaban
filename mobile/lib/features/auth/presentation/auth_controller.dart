@@ -21,6 +21,13 @@ class AuthController extends Notifier<AuthState> {
     });
     ref.onDispose(subscription.cancel);
 
+    // Web: leave splash immediately. Session restore upgrades to authenticated
+    // in the background; the router no longer treats /splash as a place to wait.
+    if (kIsWeb) {
+      unawaited(restore());
+      return const AuthState.unauthenticated();
+    }
+
     // Resolve the stored session after the first frame's providers are built,
     // so the router sees `unknown` and shows the splash instead of the login
     // screen while the token is read.
@@ -32,6 +39,19 @@ class AuthController extends Notifier<AuthState> {
   AuthRepository get _repository => ref.read(authRepositoryProvider);
 
   Future<void> restore() async {
+    try {
+      await _restoreSession().timeout(const Duration(seconds: 8));
+    } catch (error) {
+      // Never leave the router stuck on splash: a hung keystore / offline
+      // probe must resolve to signed-out so the login screen can appear.
+      debugPrint('AuthController.restore timed out or failed: $error');
+      if (!state.isResolved) {
+        state = const AuthState.unauthenticated();
+      }
+    }
+  }
+
+  Future<void> _restoreSession() async {
     if (!await _repository.hasStoredSession()) {
       state = const AuthState.unauthenticated();
       return;
@@ -45,7 +65,7 @@ class AuthController extends Notifier<AuthState> {
       if (error.kind == ApiErrorKind.unauthorized) {
         state = const AuthState.unauthenticated(sessionExpired: true);
       } else {
-        debugPrint('AuthController.restore: ${error.code} — staying signed in');
+        debugPrint('AuthController.restore: ${error.code} — signing out');
         state = const AuthState.unauthenticated();
       }
     }

@@ -6,6 +6,7 @@ import 'package:zaban/core/router/routes.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_panel.dart';
+import 'package:zaban/core/widgets/glow_button.dart';
 import 'package:zaban/core/widgets/level_badge.dart';
 import 'package:zaban/core/widgets/responsive.dart';
 import 'package:zaban/core/widgets/section_header.dart';
@@ -15,6 +16,7 @@ import 'package:zaban/core/widgets/trend_sparkline.dart';
 import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/home/data/models/home_snapshot.dart';
 import 'package:zaban/features/home/presentation/home_controller.dart';
+import 'package:zaban/features/home/presentation/session/session_controller.dart';
 import 'package:zaban/features/home/presentation/widgets/continue_learning_card.dart';
 import 'package:zaban/features/home/presentation/widgets/quick_action_tile.dart';
 
@@ -76,7 +78,11 @@ class _HomeBody extends ConsumerWidget {
                 builder: (BuildContext context, ScreenSize size, _) {
                   final primary = ContinueLearningCard(
                     snapshot: snapshot,
-                    onStart: () => context.push(AppRoute.session.path),
+                    onStart: () {
+                      ref.read(sessionFocusProvider.notifier).state = null;
+                      ref.invalidate(sessionControllerProvider);
+                      context.push(AppRoute.session.path);
+                    },
                   );
                   final side = _WeekPanel(snapshot: snapshot);
 
@@ -102,6 +108,35 @@ class _HomeBody extends ConsumerWidget {
                     ],
                   );
                 },
+              ),
+              const SizedBox(height: Spacing.xxl),
+              SectionHeader(
+                title: context.t('How you learn'),
+                eyebrow: context.t('Grammar · words · sound · talk'),
+                action: TextButton(
+                  onPressed: () => context.go(AppRoute.learn.path),
+                  child: Text(context.t('All studios')),
+                ),
+              ),
+              GlassPanel(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      context.t(
+                        'Grammar, vocabulary, listening and speaking are woven into today’s session — not a separate chapter list. Open Learn to pick a studio.',
+                      ),
+                      style: context.text.bodyMedium,
+                    ),
+                    const SizedBox(height: Spacing.lg),
+                    GlowButton(
+                      label: context.t('Open Learn studio'),
+                      expand: true,
+                      trailingIcon: Icons.auto_stories_rounded,
+                      onPressed: () => context.go(AppRoute.learn.path),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(height: Spacing.xxl),
               SectionHeader(title: context.t('Practice'), eyebrow: context.t('Also available')),

@@ -197,11 +197,20 @@ class _PhaseBanner extends StatelessWidget {
               ],
             ),
             const SizedBox(height: Spacing.sm),
-            Text(
-              phase.purpose,
-              style: context.text.bodySmall?.copyWith(
-                color: colors.textSecondary,
-                height: 1.4,
+            // Phase copy is English from the server; under a Persian locale the
+            // trailing period would otherwise flip to the visual start.
+            Directionality(
+              textDirection: TextDirection.ltr,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  phase.purpose,
+                  textAlign: TextAlign.left,
+                  style: context.text.bodySmall?.copyWith(
+                    color: colors.textSecondary,
+                    height: 1.4,
+                  ),
+                ),
               ),
             ),
           ],
@@ -276,8 +285,11 @@ class _ActivityBody extends StatelessWidget {
 
     final exercise = activity.exercise;
     if (exercise != null) {
+      // Key by activity, not exercise: the composer can place the same
+      // exercise in several slots, and a shared exercise id would reuse
+      // StatefulWidget state so Continue looks stuck on the same item.
       return ExerciseRenderer(
-        key: ValueKey<int>(exercise.id),
+        key: ValueKey<int>(activity.id),
         exercise: exercise,
         onSubmit: onSubmit,
         onContinue: onContinue,

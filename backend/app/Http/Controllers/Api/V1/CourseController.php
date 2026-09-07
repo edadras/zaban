@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Api\V1;
 use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Unit;
+use App\Services\Media\MediaPresenter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CourseController extends ApiController
 {
+    public function __construct(private MediaPresenter $media) {}
     public function index(Request $request)
     {
         $courses = Course::with(['fromLevel', 'toLevel'])
@@ -118,6 +120,10 @@ class CourseController extends ApiController
                 'instructions' => $b->instructions,
                 'config' => $b->config,
                 'media_asset_id' => $b->media_asset_id,
+                'media' => $this->media->presentId($b->media_asset_id),
+                'audio' => $this->media->presentId(
+                    $b->config['audio_media_asset_id'] ?? null,
+                ),
                 'exercise_id' => $b->exercise_id,
                 'estimated_seconds' => $b->estimated_seconds,
                 'is_optional' => (bool) $b->is_optional,

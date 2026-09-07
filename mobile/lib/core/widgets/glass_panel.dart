@@ -73,8 +73,11 @@ class GlassPanel extends StatelessWidget {
 
     Widget surface = DecoratedBox(
       decoration: BoxDecoration(
-        gradient: gradient ?? colors.glassGradient,
-        color: tint,
+        // When blur is off (web CPU CanvasKit), a near-transparent glass fill
+        // reads as an empty hole. Prefer a solid surface so lesson text paints.
+        gradient: glass.enabled ? (gradient ?? colors.glassGradient) : null,
+        color: tint ??
+            (glass.enabled ? null : colors.surface.withValues(alpha: 0.94)),
         borderRadius: borderRadius,
         border: showBorder
             ? Border.all(
@@ -135,7 +138,12 @@ class GlassPanel extends StatelessWidget {
       margin: margin,
       decoration: BoxDecoration(
         borderRadius: borderRadius,
-        boxShadow: shadows ?? ZabanShadows.ambient(colors),
+        // Flat glass on web already skips BackdropFilter; keep shadows light
+        // via ZabanShadows, and skip them entirely on compact list rows.
+        boxShadow: shadows ??
+            (padding == Spacing.cardTight
+                ? const <BoxShadow>[]
+                : ZabanShadows.ambient(colors)),
       ),
       child: clipped,
     );

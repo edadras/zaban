@@ -6,8 +6,10 @@ use App\Models\Exercise;
 use App\Models\LearningSession;
 use App\Models\SessionActivity;
 use App\Services\Learning\AdaptiveLearningService;
+use App\Services\Learning\ProgressService;
 use App\Services\Learning\SessionShape;
 use App\Services\Learning\SpacedRepetitionService;
+use App\Services\Media\MediaPresenter;
 use Illuminate\Http\Request;
 
 /**
@@ -24,6 +26,8 @@ class SessionController extends ApiController
     public function __construct(
         private AdaptiveLearningService $engine,
         private SpacedRepetitionService $srs,
+        private MediaPresenter $media,
+        private ProgressService $progress,
     ) {}
 
     /** The active session, or a freshly composed one. */
@@ -41,6 +45,7 @@ class SessionController extends ApiController
             $session = $this->engine->buildNextSession(
                 $userId,
                 $request->integer('minutes') ?: null,
+                $request->string('focus')->toString() ?: null,
             );
             $session->load(['activities' => fn ($q) => $q->orderBy('position')]);
         }
@@ -59,7 +64,11 @@ class SessionController extends ApiController
             ->where('status', 'active')
             ->update(['status' => 'abandoned']);
 
-        $session = $this->engine->buildNextSession($userId, $request->integer('minutes') ?: null);
+        $session = $this->engine->buildNextSession(
+            $userId,
+            $request->integer('minutes') ?: null,
+            $request->string('focus')->toString() ?: null,
+        );
 
         return $this->created($this->present($session->load(['activities' => fn ($q) => $q->orderBy('position')])));
     }
@@ -99,22 +108,37 @@ class SessionController extends ApiController
     public function complete(Request $request, LearningSession $session)
     {
         $this->assertOwned($request, $session);
-        $this->finish($session, $request->integer('seconds'));
+        $this->finish($session, $request->integer('seconds') ?: null);
 
         return $this->ok($this->present($session->fresh(['activities'])));
     }
 
     private function finish(LearningSession $session, ?int $seconds = null): void
     {
+        $elapsed = $seconds;
+        if ($elapsed === null || $elapsed <= 0) {
+            $elapsed = $session->started_at ? now()->diffInSeconds($session->started_at) : (int) $session->actual_seconds;
+        }
+        $elapsed = abs((int) $elapsed);
+
         if ($session->status === 'completed') {
+            // Last activity often auto-finishes before the client POSTs seconds;
+            // accept a later duration so study time is not stuck at ~0.
+            if ($elapsed > (int) $session->actual_seconds) {
+                $session->update(['actual_seconds' => $elapsed]);
+                $this->progress->recordSessionCompleted($session->fresh());
+            }
+
             return;
         }
-        $elapsed = $seconds ?: ($session->started_at ? now()->diffInSeconds($session->started_at) : 0);
+
         $session->update([
             'status' => 'completed',
-            'actual_seconds' => abs((int) $elapsed),
+            'actual_seconds' => $elapsed,
             'completed_at' => now(),
         ]);
+
+        $this->progress->recordSessionCompleted($session->fresh());
     }
 
     private function assertOwned(Request $request, LearningSession $session): void
@@ -146,6 +170,8 @@ class SessionController extends ApiController
             'status' => $session->status,
             'kind' => $session->kind,
             'planned_minutes' => $session->planned_minutes,
+            'actual_seconds' => (int) $session->actual_seconds,
+            'xp_earned' => (int) $session->xp_earned,
             'composition' => $session->composition,
             'activities_planned' => $session->activities_planned,
             'activities_completed' => $session->activities_completed,
@@ -240,6 +266,13 @@ class SessionController extends ApiController
                 'instructions' => $subject->instructions,
                 'config' => $subject->config,
                 'media_asset_id' => $subject->media_asset_id,
+                // Resolve artwork / primary media so the client can paint an
+                // Image.network without a second round trip. Without this the
+                // study image_scene is a blank muted rectangle.
+                'media' => $this->media->presentId($subject->media_asset_id),
+                'audio' => $this->media->presentId(
+                    $subject->config['audio_media_asset_id'] ?? null,
+                ),
                 'estimated_seconds' => $subject->estimated_seconds,
             ],
             \App\Models\ConversationScenario::class => [

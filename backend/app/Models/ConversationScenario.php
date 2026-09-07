@@ -31,4 +31,9 @@ class ConversationScenario extends Model
             'objectives' => 'array',
         ];
     }
+
+    public function cefrLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(CefrLevel::class, 'cefr_level_id');
+    }
 }

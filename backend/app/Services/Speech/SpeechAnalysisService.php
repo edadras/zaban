@@ -8,19 +8,17 @@ use App\Models\Language;
 use App\Models\LearnerProfile;
 use App\Models\SpeechAttempt;
 use App\Models\SpeechWord;
+use App\Services\Learning\ProgressService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 /**
- * The speech pipeline: recording in, measured and explained attempt out (spec 20-21).
+ * The speech pipeline: recording in, measured and explained attempt out.
  *
- * Order matters. Transcription establishes what was said; the word diff against
- * the expected text establishes what was meant to be said; forced alignment - and
- * only forced alignment - establishes how it was pronounced. When the last stage
- * is unavailable the attempt is still scored on everything the first two
- * measured, and the pronunciation score is left null with the reason attached.
- * A number invented from a transcript would be indistinguishable from a real one
- * to the learner, which is precisely why it must not exist.
+ * Order: transcription → word diff → fluency → optional forced alignment →
+ * scores. When alignment / timings are missing, [SpeechAiCoachService] fills
+ * score gaps and writes coaching from the transcript (and target text if any).
+ * Real phoneme measurements always win over model estimates.
  */
 class SpeechAnalysisService
 {
@@ -34,7 +32,9 @@ class SpeechAnalysisService
         private TranscriptErrorDetector $detector,
         private PronunciationProfileService $profile,
         private SpeechFeedbackService $feedback,
+        private SpeechAiCoachService $aiCoach,
         private SpeechRetentionService $retention,
+        private ProgressService $progress,
     ) {}
 
     public function analyse(SpeechAttempt $attempt): SpeechAttempt
@@ -150,8 +150,72 @@ class SpeechAnalysisService
             'vocabulary' => $vocabulary['score'],
         ];
 
-        $measurement = $components + [
+        // When instruments left gaps (no MFA aligner, open speech, missing
+        // timings), ask the AI coach for scores + teachable notes. Measured
+        // values always win; the model only fills nulls.
+        $measurementForCoach = $components + [
             'overall_score' => $this->scorer->overall($components),
+            'pronunciation_score' => $components['pronunciation'],
+            'fluency_score' => $components['fluency'],
+            'grammar_score' => $components['grammar'],
+            'vocabulary_score' => $components['vocabulary'],
+            'completeness_score' => $components['completeness'],
+            'speech_rate_wpm' => $fluencyMetrics['speech_rate_wpm'],
+            'pause_count' => $fluencyMetrics['pause_count'],
+            'total_pause_ms' => $fluencyMetrics['total_pause_ms'],
+            'filler_count' => $fluencyMetrics['filler_count'],
+            'word_rows' => $wordRows,
+            'phoneme_issues' => $phonemeResult['issues'],
+            'findings' => $recorded['findings'],
+            'not_measured' => $notMeasured,
+        ];
+
+        // Persist transcript early so the coach prompt can read it off the model.
+        $attempt->forceFill([
+            'transcript' => $stt->transcript,
+            'duration_ms' => $durationMs ?? $fluencyMetrics['speaking_ms'],
+        ])->save();
+
+        $coach = $this->aiCoach->coach($attempt, $measurementForCoach);
+        $scoringSource = null;
+        $fallbackOverall = null;
+
+        if ($coach['ok'] && is_array($coach['scores'])) {
+            [$components, $notMeasured] = $this->aiCoach->fillGaps(
+                $components,
+                $coach['scores'],
+                $notMeasured,
+            );
+            $scoringSource = 'model';
+            $fallbackOverall = $coach['scores']['overall'] ?? null;
+        } elseif ($expectedTokens === [] && trim((string) ($stt->transcript ?? '')) !== '') {
+            // Free speech + AI down: still fill scores so the UI is not empty.
+            $heuristic = $this->aiCoach->heuristicFreeSpeechScores(
+                (string) $stt->transcript,
+                $durationMs,
+                $fluencyMetrics['speech_rate_wpm'] ?? null,
+                $fluencyMetrics['pause_count'] ?? null,
+                $fluencyMetrics['filler_count'] ?? null,
+            );
+            [$components, $notMeasured] = $this->aiCoach->fillGaps(
+                $components,
+                $heuristic,
+                $notMeasured,
+            );
+            $scoringSource = 'heuristic';
+            $fallbackOverall = $heuristic['overall'] ?? null;
+        } elseif ($components['pronunciation'] === null && $expectedTokens !== []) {
+            // Aligner absent but we have a target: at least score the transcript match.
+            $match = $this->aiCoach->transcriptMatchScore($wordRows, count($expectedTokens));
+            if ($match !== null) {
+                $components['pronunciation'] = $match;
+                unset($notMeasured['pronunciation']);
+                $scoringSource = 'transcript_match';
+            }
+        }
+
+        $measurement = $components + [
+            'overall_score' => $this->scorer->overall($components) ?? $fallbackOverall,
             'pronunciation_score' => $components['pronunciation'],
             'fluency_score' => $components['fluency'],
             'grammar_score' => $components['grammar'],
@@ -167,6 +231,19 @@ class SpeechAnalysisService
             'findings' => $recorded['findings'],
             'not_measured' => $notMeasured,
         ];
+
+        // Prefer AI / heuristic overall when instruments still produced nothing.
+        if ($measurement['overall_score'] === null && $fallbackOverall !== null) {
+            $measurement['overall_score'] = $fallbackOverall;
+        }
+
+        $feedbackPayload = ($coach['ok'] && is_array($coach['feedback']))
+            ? $this->mergeCoachFeedback($coach['feedback'], $measurement, $scoringSource)
+            : $this->feedback->build($attempt, $measurement);
+
+        if ($scoringSource && empty($feedbackPayload['scoring_source'])) {
+            $feedbackPayload['scoring_source'] = $scoringSource;
+        }
 
         $attempt->forceFill([
             'transcript' => $stt->transcript,
@@ -184,7 +261,8 @@ class SpeechAnalysisService
             'total_pause_ms' => $fluencyMetrics['total_pause_ms'],
             'filler_count' => $fluencyMetrics['filler_count'],
             'stt_provider' => $this->trim($stt->model, 48),
-            'aligner' => $this->trim($alignerName, 48),
+            'aligner' => $this->trim($alignerName ?? (in_array($scoringSource, ['model', 'heuristic'], true) ? ($scoringSource === 'model' ? 'ai_coach' : 'heuristic') : null), 48),
+            'feedback' => $feedbackPayload,
             'scored_at' => now(),
         ])->save();
 
@@ -195,9 +273,37 @@ class SpeechAnalysisService
             $this->profile->record((int) $attempt->user_id, $phonemeResult['observations']);
         }
 
-        $attempt->forceFill(['feedback' => $this->feedback->build($attempt, $measurement)])->save();
+        $this->progress->recordSpeechScored($attempt->fresh());
 
         return $attempt->refresh();
+    }
+
+    /**
+     * Refresh measured/not_measured on the AI coach payload after gap-fill.
+     *
+     * @param  array<string,mixed>  $feedback
+     * @param  array<string,mixed>  $measurement
+     * @return array<string,mixed>
+     */
+    private function mergeCoachFeedback(array $feedback, array $measurement, ?string $scoringSource): array
+    {
+        $feedback['measured'] = array_filter([
+            'overall_score' => $measurement['overall_score'] ?? null,
+            'pronunciation_score' => $measurement['pronunciation_score'] ?? null,
+            'fluency_score' => $measurement['fluency_score'] ?? null,
+            'grammar_score' => $measurement['grammar_score'] ?? null,
+            'vocabulary_score' => $measurement['vocabulary_score'] ?? null,
+            'completeness_score' => $measurement['completeness_score'] ?? null,
+            'speech_rate_wpm' => $measurement['speech_rate_wpm'] ?? null,
+            'pause_count' => $measurement['pause_count'] ?? null,
+            'filler_count' => $measurement['filler_count'] ?? null,
+        ], fn ($v) => $v !== null);
+        $feedback['not_measured'] = $measurement['not_measured'] ?? [];
+        if ($scoringSource) {
+            $feedback['scoring_source'] = $scoringSource;
+        }
+
+        return $feedback;
     }
 
     /** @return array<int,SpeechWord> keyed by row position */

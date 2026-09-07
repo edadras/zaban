@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\V1\Billing\CheckoutController;
 use App\Http\Controllers\Api\V1\Billing\CouponController;
 use App\Http\Controllers\Api\V1\Billing\InvoiceController;
+use App\Http\Controllers\Api\V1\Billing\ManualTransferController;
 use App\Http\Controllers\Api\V1\Billing\PlanController;
 use App\Http\Controllers\Api\V1\Billing\SubscriptionController;
 use App\Http\Controllers\Api\V1\Billing\WebhookController;
@@ -27,5 +28,12 @@ Route::prefix('v1')->group(function () {
         Route::post('billing/coupons/apply', [CouponController::class, 'store']);
         Route::get('billing/invoices', [InvoiceController::class, 'index']);
         Route::get('billing/invoices/{number}', [InvoiceController::class, 'show']);
+
+        // Card-to-card Rial: instructions → create → upload receipt → admin approves.
+        Route::get('billing/manual/instructions', [ManualTransferController::class, 'instructions']);
+        Route::get('billing/manual/submissions', [ManualTransferController::class, 'mine']);
+        Route::post('billing/manual/submissions', [ManualTransferController::class, 'store']);
+        Route::get('billing/manual/submissions/{submission}', [ManualTransferController::class, 'show']);
+        Route::post('billing/manual/submissions/{submission}/receipt', [ManualTransferController::class, 'uploadReceipt']);
     });
 });

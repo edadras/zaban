@@ -79,6 +79,11 @@ class Exercise extends Model
         return $this->belongsTo(ExerciseTemplate::class, 'exercise_template_id');
     }
 
+    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Skill::class);
+    }
+
     public function lesson(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Lesson::class);

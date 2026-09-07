@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\Admin\AiUsageController;
+use App\Http\Controllers\Api\V1\Admin\BillingAdminController;
 use App\Http\Controllers\Api\V1\Admin\ContentReviewController;
 use App\Http\Controllers\Api\V1\Admin\CurriculumController;
 use App\Http\Controllers\Api\V1\Admin\IngestionController;
@@ -51,4 +52,13 @@ Route::prefix('v1/admin')->middleware(['auth:sanctum', 'admin'])->group(function
     Route::get('users/{user}', [UserAdminController::class, 'show']);
     Route::patch('users/{user}', [UserAdminController::class, 'update']);
     Route::get('audit-log', [UserAdminController::class, 'auditLog']);
+
+    // billing / revenue / Rial receipt queue
+    Route::get('billing/overview', [BillingAdminController::class, 'overview']);
+    Route::get('billing/manual-payments', [BillingAdminController::class, 'manualPayments']);
+    Route::post('billing/manual-payments/{submission}/approve', [BillingAdminController::class, 'approve']);
+    Route::post('billing/manual-payments/{submission}/reject', [BillingAdminController::class, 'reject']);
+    Route::get('billing/manual-payments/{submission}/receipt', [BillingAdminController::class, 'receipt']);
+    Route::get('billing/rial-settings', [BillingAdminController::class, 'rialSettings']);
+    Route::patch('billing/rial-settings', [BillingAdminController::class, 'updateRialSettings']);
 });

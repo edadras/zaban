@@ -108,6 +108,13 @@ class _ScenarioCardState extends ConsumerState<_ScenarioCard> {
       }
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(error.message)));
+    } catch (error) {
+      // Parse/type errors used to exit silently (only ApiException was caught),
+      // so Start appeared to do nothing.
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(error.toString())),
+      );
     } finally {
       if (mounted) setState(() => _starting = false);
     }

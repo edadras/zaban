@@ -44,16 +44,25 @@ class SessionRepository {
   ///
   /// [minutes] is only a request; the server decides the real length from the
   /// learner's target, backlog and recent performance.
-  Future<LearningSession> next({int? minutes}) => _client.get(
+  Future<LearningSession> next({int? minutes, String? focus}) => _client.get(
         ApiEndpoints.sessionNext,
-        query: minutes == null ? null : <String, dynamic>{'minutes': minutes},
+        query: <String, dynamic>{
+          if (minutes != null) 'minutes': minutes,
+          if (focus != null && focus.isNotEmpty) 'focus': focus,
+        },
         decode: Decode.object(LearningSession.fromJson),
       );
 
   /// Abandons any active session and composes a fresh one.
-  Future<LearningSession> start({int? minutes}) => _client.post(
+  ///
+  /// [focus] pins the session to one course series (`grammar`, `vocabulary`, …)
+  /// so Learn Studio modes are not the same daily path under a new label.
+  Future<LearningSession> start({int? minutes, String? focus}) => _client.post(
         ApiEndpoints.sessionStart,
-        body: minutes == null ? null : <String, dynamic>{'minutes': minutes},
+        body: <String, dynamic>{
+          if (minutes != null) 'minutes': minutes,
+          if (focus != null && focus.isNotEmpty) 'focus': focus,
+        },
         decode: Decode.object(LearningSession.fromJson),
       );
 

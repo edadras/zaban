@@ -63,17 +63,38 @@ class SessionRunnerState {
   }
 }
 
+/// Optional series focus for the next composed session (`grammar`, …).
+///
+/// Set by Learn Studio before opening `/session`. Cleared when Today resumes
+/// the ordinary daily path so the two entry points stay distinct.
+final sessionFocusProvider = StateProvider<String?>((Ref ref) => null);
+
+/// When true, the next open calls `POST /session/start` even without a focus
+/// (fresh daily). Focused studios always start fresh.
+final sessionFreshStartProvider = StateProvider<bool>((Ref ref) => false);
+
 /// Runs one composed session.
 ///
 /// The controller never decides what comes next: it walks
-/// `session.activities` in the order `GET /session/next` returned, reports each
+/// `session.activities` in the order the server returned, reports each
 /// completion, and closes the session when the list runs out.
 class SessionController extends AsyncNotifier<SessionRunnerState> {
   final Stopwatch _sessionTimer = Stopwatch();
 
   @override
   Future<SessionRunnerState> build() async {
-    final session = await ref.watch(sessionRepositoryProvider).next();
+    final focus = ref.watch(sessionFocusProvider);
+    final fresh = ref.read(sessionFreshStartProvider);
+    if (fresh) {
+      ref.read(sessionFreshStartProvider.notifier).state = false;
+    }
+    final repo = ref.watch(sessionRepositoryProvider);
+    final LearningSession session;
+    if ((focus != null && focus.isNotEmpty) || fresh) {
+      session = await repo.start(focus: focus);
+    } else {
+      session = await repo.next();
+    }
     _sessionTimer
       ..reset()
       ..start();
@@ -109,9 +130,11 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
       state = AsyncData<SessionRunnerState>(
         _state.copyWith(result: result, submitting: false),
       );
-    } on Exception catch (error, stack) {
+    } catch (error, stack) {
       // Keep the session on screen: a failed submission is retryable, and
       // losing the learner's answer to a full-screen error is worse.
+      // Catch Object, not Exception: JSON TypeErrors are Errors and used to
+      // leave `submitting: true` forever (Check spinning).
       state = AsyncData<SessionRunnerState>(
         _state.copyWith(submitting: false),
       );
@@ -126,9 +149,25 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
     final activity = current.current;
     if (activity == null) return;
 
-    // Move immediately: the learner should never wait on a bookkeeping call.
+    // Mark done locally first so a provider rebuild (which re-opens on the
+    // first pending activity) cannot yank the learner back to this item.
+    final updatedActivities = <SessionActivity>[
+      for (final SessionActivity item in current.session.activities)
+        if (item.id == activity.id)
+          item.copyWith(status: 'completed')
+        else
+          item,
+    ];
+
     state = AsyncData<SessionRunnerState>(
-      current.copyWith(index: current.index + 1, clearResult: true),
+      current.copyWith(
+        session: current.session.copyWith(
+          activities: updatedActivities,
+          activitiesCompleted: current.session.activitiesCompleted + 1,
+        ),
+        index: current.index + 1,
+        clearResult: true,
+      ),
     );
 
     try {
@@ -143,11 +182,13 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
         _state.copyWith(
           session: _state.session.copyWith(
             status: receipt.sessionStatus,
-            activitiesCompleted: _state.session.activitiesCompleted + 1,
+            activitiesCompleted: receipt.remaining == 0
+                ? _state.session.activities.length
+                : _state.session.activitiesCompleted,
           ),
         ),
       );
-    } on Exception catch (error) {
+    } catch (error) {
       // The activity is done from the learner's point of view; surface the
       // failure without rewinding them.
       ref.read(sessionErrorProvider.notifier).state = error;
@@ -194,7 +235,11 @@ class SessionController extends AsyncNotifier<SessionRunnerState> {
   Future<void> restart() async {
     state = const AsyncLoading<SessionRunnerState>();
     state = await AsyncValue.guard(() async {
-      final session = await ref.read(sessionRepositoryProvider).next();
+      final focus = ref.read(sessionFocusProvider);
+      final repo = ref.read(sessionRepositoryProvider);
+      final session = (focus == null || focus.isEmpty)
+          ? await repo.start()
+          : await repo.start(focus: focus);
       _sessionTimer
         ..reset()
         ..start();

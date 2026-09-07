@@ -24,11 +24,11 @@ class SpeechRepository {
     final file = recording.path != null
         ? await MultipartFile.fromFile(
             recording.path!,
-            filename: 'attempt.m4a',
+            filename: recording.filename,
           )
         : MultipartFile.fromBytes(
             recording.bytes ?? const <int>[],
-            filename: 'attempt.m4a',
+            filename: recording.filename,
           );
 
     final form = FormData.fromMap(<String, dynamic>{

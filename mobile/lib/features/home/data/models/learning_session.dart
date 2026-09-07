@@ -136,7 +136,16 @@ extension SessionActivityX on SessionActivity {
   LessonBlock? get block {
     final payload = subject;
     if (payload == null || payload['kind'] != 'lesson_block') return null;
-    return LessonBlock.fromJson(payload);
+    try {
+      return LessonBlock.fromJson(payload);
+    } catch (error, stack) {
+      assert(() {
+        // ignore: avoid_print
+        print('SessionActivity.block parse failed: $error\n$stack');
+        return true;
+      }());
+      return null;
+    }
   }
 
   /// The one-line reason shown under the activity.

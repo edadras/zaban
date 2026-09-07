@@ -2,97 +2,31 @@
 
 namespace App\Services\Speech;
 
-use App\AI\AiOrchestrator;
-use App\AI\Support\TextRequest;
 use App\Models\SpeechAttempt;
 
 /**
- * Turns the measurements into something teachable.
+ * Rules / secondary narrative when the AI coach is unavailable.
  *
- * The division of labour is strict: measurement produces every number and every
- * observation, and the model is only allowed to phrase them. It is given the
- * findings and told to work from them, and if it is unavailable the rules-based
- * summary below is used instead - which is why a failed AI call degrades the
- * wording of the feedback and never its accuracy (spec 20).
+ * Preferred path is [SpeechAiCoachService] (scores + coaching). This class
+ * remains as a thin, observation-only fallback so a failed model call still
+ * returns something teachable rather than an empty panel.
  */
 class SpeechFeedbackService
 {
-    private const SCHEMA = [
-        'type' => 'object',
-        'required' => ['strengths', 'corrections', 'phoneme_notes', 'practice'],
-        'properties' => [
-            'strengths' => [
-                'type' => 'array',
-                'maxItems' => 3,
-                'items' => ['type' => 'string'],
-            ],
-            'corrections' => [
-                'type' => 'array',
-                'maxItems' => 3,
-                'items' => [
-                    'type' => 'object',
-                    'required' => ['issue', 'why', 'fix'],
-                    'properties' => [
-                        'issue' => ['type' => 'string'],
-                        'why' => ['type' => 'string'],
-                        'fix' => ['type' => 'string'],
-                    ],
-                ],
-            ],
-            'phoneme_notes' => [
-                'type' => 'array',
-                'maxItems' => 4,
-                'items' => [
-                    'type' => 'object',
-                    'required' => ['phoneme', 'words', 'tip'],
-                    'properties' => [
-                        'phoneme' => ['type' => 'string'],
-                        'words' => ['type' => 'array', 'items' => ['type' => 'string']],
-                        'tip' => ['type' => 'string'],
-                    ],
-                ],
-            ],
-            'practice' => [
-                'type' => 'array',
-                'maxItems' => 3,
-                'items' => [
-                    'type' => 'object',
-                    'required' => ['activity', 'reason'],
-                    'properties' => [
-                        'activity' => ['type' => 'string'],
-                        'reason' => ['type' => 'string'],
-                    ],
-                ],
-            ],
-        ],
-    ];
-
-    private const SYSTEM = <<<'TXT'
-    You are a speech coach for English learners. You are given measurements taken
-    from a learner's recording. Write the human-readable parts of the feedback.
-
-    Rules:
-    - Use only the observations supplied. Do not invent errors, words or sounds.
-    - Never state, estimate or re-word a numeric score; the app shows those itself.
-    - If a measurement is marked unavailable, do not comment on it at all.
-    - Be concrete: name the word or sound, then say what to do differently.
-    - Encouraging, plain English, second person, no jargon beyond phoneme symbols.
-    TXT;
-
-    public function __construct(private AiOrchestrator $ai) {}
-
     /**
-     * @param  array<string,mixed>  $measurement  output of SpeechAnalysisService
-     * @return array<string,mixed> the feedback payload stored on the attempt
+     * @param  array<string,mixed>  $measurement
+     * @return array<string,mixed>
      */
     public function build(SpeechAttempt $attempt, array $measurement): array
     {
         $observations = $this->observations($attempt, $measurement);
-        $narrative = $this->narrative($attempt, $observations) ?? $this->fallbackNarrative($observations);
+        $narrative = $this->fallbackNarrative($observations);
 
         return [
             'generated_at' => now()->toIso8601String(),
             'narrative_source' => $narrative['source'],
+            'scoring_source' => null,
+            'summary' => $narrative['strengths'][0] ?? null,
             'strengths' => $narrative['strengths'],
             'corrections' => $narrative['corrections'],
             'phoneme_notes' => $narrative['phoneme_notes'],
@@ -107,12 +41,7 @@ class SpeechFeedbackService
         ];
     }
 
-    /**
-     * Everything the narrative is allowed to draw on, in one structure. This is
-     * also what gets stored, so the feedback is auditable after the fact.
-     *
-     * @return array<string,mixed>
-     */
+    /** @return array<string,mixed> */
     private function observations(SpeechAttempt $attempt, array $measurement): array
     {
         $measured = array_filter([
@@ -157,7 +86,6 @@ class SpeechFeedbackService
         ];
     }
 
-    /** One entry per problem sound, carrying the words it went wrong in. */
     private function groupPhonemeIssues(array $issues): array
     {
         $byPhoneme = [];
@@ -178,54 +106,15 @@ class SpeechFeedbackService
         return array_values($byPhoneme);
     }
 
-    /** @return array<string,mixed>|null null when no model was available */
-    private function narrative(SpeechAttempt $attempt, array $observations): ?array
-    {
-        $payload = json_encode([
-            'target_text' => $observations['expected_text'],
-            'transcript' => $observations['transcript'],
-            'word_errors' => $observations['word_errors'],
-            'phoneme_issues' => $observations['phoneme_issues'],
-            'language_errors' => $observations['language_errors'],
-            'unavailable_measurements' => $observations['not_measured'],
-        ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-
-        $result = $this->ai->text(new TextRequest(
-            feature: 'speech.feedback',
-            prompt: "Learner attempt observations:\n{$payload}",
-            system: self::SYSTEM,
-            schema: self::SCHEMA,
-            temperature: 0.4,
-            maxTokens: 900,
-            userId: $attempt->user_id,
-            // Feedback is about one learner's recording; reusing another
-            // attempt's wording would be wrong even for identical text.
-            cacheable: false,
-        ));
-
-        if (! $result->ok || ! is_array($result->json)) {
-            return null;
-        }
-
-        return [
-            'source' => 'model',
-            'strengths' => array_values(array_filter((array) ($result->json['strengths'] ?? []), 'is_string')),
-            'corrections' => $this->normaliseList($result->json['corrections'] ?? [], ['issue', 'why', 'fix']),
-            'phoneme_notes' => $this->normaliseList($result->json['phoneme_notes'] ?? [], ['phoneme', 'words', 'tip']),
-            'practice' => $this->normaliseList($result->json['practice'] ?? [], ['activity', 'reason']),
-        ];
-    }
-
-    /**
-     * Rules-based feedback used whenever the model is unavailable. It is thinner
-     * than the generated version but it is built from the same observations, so
-     * it is never wrong.
-     */
     private function fallbackNarrative(array $observations): array
     {
         $strengths = [];
         $measured = $observations['measured'];
+        $transcript = trim((string) ($observations['transcript'] ?? ''));
 
+        if ($transcript !== '') {
+            $strengths[] = 'We heard: "'.$this->shorten($transcript, 120).'"';
+        }
         if ($observations['word_errors'] === [] && $observations['expected_text']) {
             $strengths[] = 'Every word of the target sentence came through clearly.';
         }
@@ -238,7 +127,7 @@ class SpeechFeedbackService
             $strengths[] = 'Your speaking pace was in a natural conversational range.';
         }
         if ($strengths === []) {
-            $strengths[] = 'You completed the recording - that is the part that builds speaking confidence.';
+            $strengths[] = 'You completed the recording — keep speaking; more speech gives the coach more to work with.';
         }
 
         $corrections = [];
@@ -250,6 +139,21 @@ class SpeechFeedbackService
                     ? "Say it again with \"{$e['expected']}\" in place."
                     : 'Say the sentence again, matching the target text exactly.',
             ];
+        }
+        foreach (array_slice($observations['word_errors'], 0, 2) as $w) {
+            if (($w['outcome'] ?? '') === WordAligner::OMITTED && $w['expected']) {
+                $corrections[] = [
+                    'issue' => "You skipped \"{$w['expected']}\".",
+                    'why' => 'That word was in the target sentence.',
+                    'fix' => "Practise the sentence again and include \"{$w['expected']}\".",
+                ];
+            } elseif (($w['outcome'] ?? '') === WordAligner::SUBSTITUTED && $w['expected']) {
+                $corrections[] = [
+                    'issue' => 'Heard "'.($w['spoken'] ?? '?')."\" where \"{$w['expected']}\" was expected.",
+                    'why' => 'A different word reached the transcript.',
+                    'fix' => "Slow down and aim for \"{$w['expected']}\".",
+                ];
+            }
         }
 
         $notes = [];
@@ -271,45 +175,44 @@ class SpeechFeedbackService
         }
         if ($corrections !== []) {
             $practice[] = [
-                'activity' => 'Read the target sentence aloud twice more, slowly.',
-                'reason' => 'The words that went wrong were structural, not just fast speech.',
+                'activity' => 'Read the same sentence aloud twice more, slowly.',
+                'reason' => 'The words that went wrong need another clean take.',
+            ];
+        }
+        $wordCount = count(preg_split('/\s+/u', $transcript, -1, PREG_SPLIT_NO_EMPTY) ?: []);
+        if ($practice === [] && $transcript !== '' && $wordCount < 8) {
+            $practice[] = [
+                'activity' => 'Say a little more next time — add one extra sentence about how you feel or what you did today.',
+                'reason' => 'Your words were understood; a longer turn gives richer fluency and vocabulary feedback.',
+            ];
+        } elseif ($practice === [] && $transcript !== '') {
+            $practice[] = [
+                'activity' => 'Try the same idea again, but expand with one reason or example.',
+                'reason' => 'Building on a clear turn is the fastest way to raise fluency and vocabulary scores.',
             ];
         }
         if ($practice === []) {
             $practice[] = [
-                'activity' => 'Record a longer answer on the same topic.',
-                'reason' => 'Nothing measurable went wrong here; more speech gives more to work with.',
+                'activity' => 'Try again with a full sentence.',
+                'reason' => 'Short clips leave little for coaching.',
             ];
         }
 
         return [
             'source' => 'rules',
-            'strengths' => $strengths,
-            'corrections' => $corrections,
+            'strengths' => array_slice($strengths, 0, 3),
+            'corrections' => array_slice($corrections, 0, 4),
             'phoneme_notes' => $notes,
-            'practice' => $practice,
+            'practice' => array_slice($practice, 0, 3),
         ];
     }
 
-    /** @param string[] $keys */
-    private function normaliseList(mixed $rows, array $keys): array
+    private function shorten(string $text, int $max): string
     {
-        if (! is_array($rows)) {
-            return [];
+        if (mb_strlen($text) <= $max) {
+            return $text;
         }
 
-        $out = [];
-        foreach ($rows as $row) {
-            if (! is_array($row)) {
-                continue;
-            }
-            $entry = [];
-            foreach ($keys as $key) {
-                $entry[$key] = $row[$key] ?? null;
-            }
-            $out[] = $entry;
-        }
-
-        return $out;
+        return rtrim(mb_substr($text, 0, $max - 1)).'…';
     }
 }

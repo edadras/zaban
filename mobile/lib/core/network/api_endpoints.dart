@@ -63,6 +63,12 @@ class ApiEndpoints {
   static String speechRecording(int id) => '/speech/attempts/$id/recording';
   static const String pronunciationProfile = '/speech/profile';
   static const String pronunciationDrills = '/speech/profile/drills';
+  static const String speechCoachChat = '/speech/coach-chat';
+  static String speechCoachChatSession(int id) => '/speech/coach-chat/$id';
+  static String speechCoachChatRespond(int id) =>
+      '/speech/coach-chat/$id/respond';
+  static String speechCoachChatFinish(int id) =>
+      '/speech/coach-chat/$id/finish';
 
   // ----------------------------------------------------------------- exam
   static const String examTypes = '/exams/types';
@@ -86,6 +92,12 @@ class ApiEndpoints {
   static const String cancelSubscription = '/billing/subscription/cancel';
   static const String resumeSubscription = '/billing/subscription/resume';
   static const String invoices = '/billing/invoices';
+  static const String manualPayInstructions = '/billing/manual/instructions';
+  static const String manualPaySubmissions = '/billing/manual/submissions';
+  static String manualPaySubmission(int id) =>
+      '/billing/manual/submissions/$id';
+  static String manualPayReceipt(int id) =>
+      '/billing/manual/submissions/$id/receipt';
 
   // -------------------------------------------------------------- profile
   static const String profile = '/profile';
@@ -109,6 +121,17 @@ class ApiEndpoints {
   static const String adminIngestionSummary = '/admin/ingestion/summary';
   static const String adminReviewQueue = '/admin/content/queue';
   static const String adminAiOverview = '/admin/ai/overview';
+  static const String adminUsers = '/admin/users';
+  static String adminUser(int id) => '/admin/users/$id';
+  static const String adminBillingOverview = '/admin/billing/overview';
+  static const String adminManualPayments = '/admin/billing/manual-payments';
+  static String adminManualPaymentApprove(int id) =>
+      '/admin/billing/manual-payments/$id/approve';
+  static String adminManualPaymentReject(int id) =>
+      '/admin/billing/manual-payments/$id/reject';
+  static String adminManualPaymentReceipt(int id) =>
+      '/admin/billing/manual-payments/$id/receipt';
+  static const String adminRialSettings = '/admin/billing/rial-settings';
 
   // -------------------------------------------------------- conversation
   static const String conversationScenarios = '/conversation/scenarios';

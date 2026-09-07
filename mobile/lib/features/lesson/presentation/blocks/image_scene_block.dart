@@ -53,34 +53,41 @@ class ImageSceneBlock extends StatelessWidget {
                         ),
                       ),
                     )
-                  : Image.network(
-                      url,
-                      fit: BoxFit.cover,
-                      loadingBuilder: (
-                        BuildContext context,
-                        Widget child,
-                        ImageChunkEvent? progress,
-                      ) {
-                        if (progress == null) return child;
-                        return ColoredBox(
-                          color: colors.surfaceMuted,
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: colors.accent,
+                  : LayoutBuilder(
+                      builder: (BuildContext context, BoxConstraints constraints) {
+                        final dpr = MediaQuery.devicePixelRatioOf(context);
+                        final cacheW = (constraints.maxWidth * dpr).round();
+                        return Image.network(
+                          url,
+                          fit: BoxFit.cover,
+                          cacheWidth: cacheW > 0 ? cacheW : null,
+                          loadingBuilder: (
+                            BuildContext context,
+                            Widget child,
+                            ImageChunkEvent? progress,
+                          ) {
+                            if (progress == null) return child;
+                            return ColoredBox(
+                              color: colors.surfaceMuted,
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: colors.accent,
+                                ),
+                              ),
+                            );
+                          },
+                          errorBuilder: (_, __, ___) => ColoredBox(
+                            color: colors.surfaceMuted,
+                            child: Center(
+                              child: Icon(
+                                Icons.broken_image_outlined,
+                                color: colors.textTertiary,
+                              ),
                             ),
                           ),
                         );
                       },
-                      errorBuilder: (_, __, ___) => ColoredBox(
-                        color: colors.surfaceMuted,
-                        child: Center(
-                          child: Icon(
-                            Icons.broken_image_outlined,
-                            color: colors.textTertiary,
-                          ),
-                        ),
-                      ),
                     ),
             ),
           ),

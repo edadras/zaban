@@ -1,33 +1,53 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zaban/core/theme/tokens/color_tokens.dart';
 
 /// Shadows do two jobs here: lift glass off the background, and make the accent
 /// look like it emits light. They are always soft and never black-on-dark
 /// enough to read as a drop shadow from a 2010 UI kit.
+///
+/// Soft blurs are expensive on Flutter web (especially CanvasKit CPU fallback),
+/// so web gets a hairline lift or none at all.
 class ZabanShadows {
   const ZabanShadows._();
 
-  static List<BoxShadow> ambient(ZabanColors colors) => <BoxShadow>[
+  static List<BoxShadow> ambient(ZabanColors colors) {
+    if (kIsWeb) {
+      return <BoxShadow>[
         BoxShadow(
           color: colors.isDark
-              ? const Color(0x66000000)
-              : const Color(0x14000000),
-          blurRadius: 32,
-          spreadRadius: -8,
-          offset: const Offset(0, 18),
+              ? const Color(0x33000000)
+              : const Color(0x0A000000),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
         ),
       ];
+    }
+    return <BoxShadow>[
+      BoxShadow(
+        color: colors.isDark
+            ? const Color(0x66000000)
+            : const Color(0x14000000),
+        blurRadius: 32,
+        spreadRadius: -8,
+        offset: const Offset(0, 18),
+      ),
+    ];
+  }
 
-  static List<BoxShadow> lifted(ZabanColors colors) => <BoxShadow>[
-        BoxShadow(
-          color: colors.isDark
-              ? const Color(0x80000000)
-              : const Color(0x1F000000),
-          blurRadius: 48,
-          spreadRadius: -12,
-          offset: const Offset(0, 28),
-        ),
-      ];
+  static List<BoxShadow> lifted(ZabanColors colors) {
+    if (kIsWeb) return ambient(colors);
+    return <BoxShadow>[
+      BoxShadow(
+        color: colors.isDark
+            ? const Color(0x80000000)
+            : const Color(0x1F000000),
+        blurRadius: 48,
+        spreadRadius: -12,
+        offset: const Offset(0, 28),
+      ),
+    ];
+  }
 
   /// The signature: a wide, low-opacity bloom in the accent colour.
   /// [intensity] 0 removes it entirely, which is how disabled state is drawn.
@@ -37,6 +57,17 @@ class ZabanShadows {
     Color? color,
   }) {
     if (intensity <= 0) return const <BoxShadow>[];
+    // Soft multi-layer glow is a scroll killer on web.
+    if (kIsWeb) {
+      final base = color ?? colors.accent;
+      return <BoxShadow>[
+        BoxShadow(
+          color: base.withValues(alpha: 0.28 * intensity),
+          blurRadius: 12 * intensity,
+          spreadRadius: -2,
+        ),
+      ];
+    }
     final base = color ?? colors.accent;
     return <BoxShadow>[
       BoxShadow(

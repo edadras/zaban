@@ -36,7 +36,8 @@ class PublishCurriculum extends Command
     protected $signature = 'content:publish
                             {--everything : also release lessons whose only content is the printed page}
                             {--withdraw : take everything back to draft instead}
-                            {--book= : limit to one source document id}';
+                            {--book= : limit to one source document id}
+                            {--track= : limit to one course track (e.g. grammar, vocabulary)}';
 
     protected $description = 'Publish the imported curriculum to learners';
 
@@ -47,7 +48,16 @@ class PublishCurriculum extends Command
     {
         $scope = Lesson::query()
             ->whereNull('deleted_at')
-            ->when($this->option('book'), fn ($q, $id) => $q->where('source_document_id', $id));
+            ->when($this->option('book'), fn ($q, $id) => $q->where('source_document_id', $id))
+            ->when($this->option('track'), function ($q, $track) {
+                $q->whereIn('id', DB::table('lessons')
+                    ->join('units', 'units.id', '=', 'lessons.unit_id')
+                    ->join('modules', 'modules.id', '=', 'units.module_id')
+                    ->join('course_versions', 'course_versions.id', '=', 'modules.course_version_id')
+                    ->join('courses', 'courses.id', '=', 'course_versions.course_id')
+                    ->where('courses.track', $track)
+                    ->pluck('lessons.id'));
+            });
 
         if ($this->option('withdraw')) {
             $count = (clone $scope)->where('status', 'published')->update(['status' => 'draft']);

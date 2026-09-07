@@ -41,10 +41,37 @@ class UserAdminController extends ApiController
     {
         $user->load(['profile', 'settings', 'learnerProfile.cefrLevel', 'subscriptions.plan']);
 
+        $subscription = $user->subscriptions->sortByDesc('id')->first();
+        $manualPayments = \App\Models\ManualPaymentSubmission::with('plan')
+            ->where('user_id', $user->id)
+            ->orderByDesc('id')
+            ->limit(20)
+            ->get()
+            ->map(fn ($s) => [
+                'id' => $s->id,
+                'status' => $s->status,
+                'plan' => $s->plan?->code,
+                'amount_irr' => $s->amount_irr,
+                'amount_irr_display' => number_format((int) $s->amount_irr).' IRR',
+                'has_receipt' => filled($s->receipt_path),
+                'created_at' => $s->created_at?->toIso8601String(),
+                'reviewed_at' => $s->reviewed_at?->toIso8601String(),
+            ]);
+
         return $this->ok([
             'user' => [
-                'id' => $user->id, 'name' => $user->name, 'email' => $user->email,
-                'role' => $user->role, 'status' => $user->status,
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'role' => $user->role,
+                'status' => $user->status,
+                'created_at' => $user->created_at?->toIso8601String(),
+                'last_active_at' => $user->last_active_at?->toIso8601String(),
+                'locale' => $user->locale,
+                'timezone' => $user->timezone,
+                'country' => $user->profile?->country_code,
+                'learning_objective' => $user->profile?->learning_objective,
+                'profession' => $user->profile?->profession,
             ],
             'learner' => [
                 'cefr' => $user->learnerProfile?->cefrLevel?->code,
@@ -52,9 +79,20 @@ class UserAdminController extends ApiController
                 'mastery_score' => (float) ($user->learnerProfile->mastery_score ?? 0),
                 'xp' => (int) ($user->learnerProfile->xp ?? 0),
                 'streak_days' => (int) ($user->learnerProfile->streak_days ?? 0),
+                'total_study_minutes' => (int) ($user->learnerProfile->total_study_minutes ?? 0),
+                'placement_status' => $user->learnerProfile?->placement_status,
                 'concepts_tracked' => DB::table('learner_concepts')->where('user_id', $user->id)->count(),
             ],
-            'subscription' => $user->subscriptions->sortByDesc('id')->first(),
+            'subscription' => $subscription ? [
+                'id' => $subscription->id,
+                'status' => $subscription->status,
+                'plan_code' => $subscription->plan?->code,
+                'plan_name' => $subscription->plan?->name,
+                'gateway' => $subscription->gateway,
+                'current_period_end' => $subscription->current_period_end?->toIso8601String(),
+                'cancel_at_period_end' => (bool) $subscription->cancel_at_period_end,
+            ] : null,
+            'manual_payments' => $manualPayments,
             'activity' => [
                 'sessions' => DB::table('learning_sessions')->where('user_id', $user->id)->count(),
                 'exercise_attempts' => DB::table('exercise_attempts')->where('user_id', $user->id)->count(),

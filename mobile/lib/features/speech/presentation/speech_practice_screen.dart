@@ -10,15 +10,17 @@ import 'package:zaban/core/widgets/responsive.dart';
 import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/features/lesson/presentation/widgets/audio_player_button.dart';
 import 'package:zaban/features/speech/data/models/speech_attempt.dart';
+import 'package:zaban/features/speech/presentation/coach_chat_controller.dart';
+import 'package:zaban/features/speech/presentation/coach_chat_panel.dart';
 import 'package:zaban/features/speech/presentation/speech_controller.dart';
+import 'package:zaban/features/speech/presentation/widgets/bilingual_text.dart';
 import 'package:zaban/features/speech/presentation/widgets/pronunciation_result_view.dart';
 import 'package:zaban/features/speech/presentation/widgets/record_button.dart';
 
-/// Record a phrase, upload it, and read the server's per-word verdict.
-///
-/// Reached from a repeat-after block inside a session, or on its own from the
-/// home screen for free practice.
-class SpeechPracticeScreen extends ConsumerWidget {
+enum _SpeechHubMode { score, chat }
+
+/// Speaking hub: score a recording, or chat with the coach for live corrections.
+class SpeechPracticeScreen extends ConsumerStatefulWidget {
   const SpeechPracticeScreen({
     super.key,
     this.targetText,
@@ -28,8 +30,95 @@ class SpeechPracticeScreen extends ConsumerWidget {
     this.lessonBlockId,
   });
 
-  /// What the learner is meant to say. Null means open practice: the backend
-  /// transcribes and scores whatever comes in.
+  final String? targetText;
+  final String? referenceAudioUrl;
+  final int? exerciseId;
+  final int? sessionId;
+  final int? lessonBlockId;
+
+  @override
+  ConsumerState<SpeechPracticeScreen> createState() =>
+      _SpeechPracticeScreenState();
+}
+
+class _SpeechPracticeScreenState extends ConsumerState<SpeechPracticeScreen> {
+  _SpeechHubMode _mode = _SpeechHubMode.score;
+
+  bool get _lockedToScore => widget.targetText != null;
+
+  @override
+  Widget build(BuildContext context) {
+    final mode = _lockedToScore ? _SpeechHubMode.score : _mode;
+
+    return ZabanScaffold(
+      title: context.t('Speaking'),
+      ambientIntensity: 0.7,
+      leading: IconButton(
+        icon: const Icon(Icons.close_rounded),
+        onPressed: () => Navigator.of(context).maybePop(),
+      ),
+      body: Column(
+        children: <Widget>[
+          if (!_lockedToScore)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                Spacing.lg,
+                Spacing.md,
+                Spacing.lg,
+                0,
+              ),
+              child: ResponsiveContent(
+                padding: EdgeInsets.zero,
+                child: SegmentedButton<_SpeechHubMode>(
+                  segments: <ButtonSegment<_SpeechHubMode>>[
+                    ButtonSegment<_SpeechHubMode>(
+                      value: _SpeechHubMode.score,
+                      label: Text(context.t('Score')),
+                      icon: const Icon(Icons.graphic_eq_rounded, size: 18),
+                    ),
+                    ButtonSegment<_SpeechHubMode>(
+                      value: _SpeechHubMode.chat,
+                      label: Text(context.t('Coach chat')),
+                      icon: const Icon(Icons.forum_outlined, size: 18),
+                    ),
+                  ],
+                  selected: <_SpeechHubMode>{mode},
+                  onSelectionChanged: (Set<_SpeechHubMode> next) {
+                    final value = next.first;
+                    setState(() => _mode = value);
+                    if (value == _SpeechHubMode.chat) {
+                      ref.invalidate(coachChatControllerProvider);
+                    }
+                  },
+                ),
+              ),
+            ),
+          Expanded(
+            child: mode == _SpeechHubMode.chat
+                ? const CoachChatPanel()
+                : _ScoreModeBody(
+                    targetText: widget.targetText,
+                    referenceAudioUrl: widget.referenceAudioUrl,
+                    exerciseId: widget.exerciseId,
+                    sessionId: widget.sessionId,
+                    lessonBlockId: widget.lessonBlockId,
+                  ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _ScoreModeBody extends ConsumerWidget {
+  const _ScoreModeBody({
+    this.targetText,
+    this.referenceAudioUrl,
+    this.exerciseId,
+    this.sessionId,
+    this.lessonBlockId,
+  });
+
   final String? targetText;
   final String? referenceAudioUrl;
   final int? exerciseId;
@@ -41,103 +130,104 @@ class SpeechPracticeScreen extends ConsumerWidget {
     final state = ref.watch(speechControllerProvider);
     final controller = ref.read(speechControllerProvider.notifier);
     final attempt = state.attempt;
+    final isFa = Strings.of(context).locale.languageCode == 'fa';
 
-    return ZabanScaffold(
-      title: context.t('Speaking'),
-      ambientIntensity: 0.7,
-      leading: IconButton(
-        icon: const Icon(Icons.close_rounded),
-        onPressed: () => Navigator.of(context).maybePop(),
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.only(top: Spacing.xl, bottom: Spacing.huge),
-        child: ResponsiveContent(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              GlassPanel(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      targetText == null ? 'SAY ANYTHING' : 'SAY THIS',
-                      style: context.text.labelSmall,
-                    ),
-                    const SizedBox(height: Spacing.md),
-                    Text(
-                      targetText ??
-                          'Speak for a few seconds — you will get fluency and pronunciation feedback on whatever you say.',
-                      textAlign: TextAlign.center,
-                      style: context.reading(size: 24, height: 1.35),
-                    ),
-                    if (referenceAudioUrl != null) ...<Widget>[
-                      const SizedBox(height: Spacing.lg),
-                      AudioPlayerButton(
-                        url: referenceAudioUrl!,
-                        label: context.t('Hear it first'),
-                        size: 52,
-                      ),
-                    ],
-                  ],
-                ),
-              ),
-              const SizedBox(height: Spacing.xxl),
-              Center(
-                child: Column(
-                  children: <Widget>[
-                    RecordButton(
-                      recording: state.isRecording,
-                      busy: state.isBusy,
-                      level: state.level,
-                      onPressed: () {
-                        if (state.isRecording) {
-                          controller.stopAndScore(
-                            expectedText: targetText,
-                            exerciseId: exerciseId,
-                            sessionId: sessionId,
-                            lessonBlockId: lessonBlockId,
-                          );
-                        } else {
-                          controller.startRecording();
-                        }
-                      },
-                    ),
-                    const SizedBox(height: Spacing.md),
-                    Text(
-                      switch (state.phase) {
-                        SpeechPhase.recording =>
-                          '${state.elapsed.inSeconds}s · tap to stop',
-                        SpeechPhase.uploading => 'Uploading…',
-                        SpeechPhase.scoring => 'Scoring your pronunciation…',
-                        SpeechPhase.scored => 'Tap to try again',
-                        SpeechPhase.failed => 'Tap to try again',
-                        SpeechPhase.idle => 'Tap to record',
-                      },
-                      style: context.text.bodyMedium,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.only(top: Spacing.xl, bottom: Spacing.huge),
+      child: ResponsiveContent(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            GlassPanel(
+              child: Column(
+                children: <Widget>[
+                  Text(
+                    targetText == null
+                        ? context.t('SAY ANYTHING')
+                        : context.t('SAY THIS'),
+                    style: context.text.labelSmall,
+                  ),
+                  const SizedBox(height: Spacing.md),
+                  BilingualText(
+                    english: targetText ??
+                        'Speak for a few seconds — an AI coach will score fluency, clarity and language, and tell you what to practise next.',
+                    persian: targetText != null
+                        ? null
+                        : (isFa
+                            ? 'چند ثانیه صحبت کنید — مربی هوش مصنوعی روانی، وضوح و زبان را امتیاز می‌دهد و می‌گوید بعد چه تمرین کنید.'
+                            : null),
+                    textAlign: TextAlign.center,
+                    style: context.reading(size: 24, height: 1.35),
+                  ),
+                  if (referenceAudioUrl != null) ...<Widget>[
+                    const SizedBox(height: Spacing.lg),
+                    AudioPlayerButton(
+                      url: referenceAudioUrl!,
+                      label: context.t('Hear it first'),
+                      size: 52,
                     ),
                   ],
-                ),
+                ],
               ),
-              if (state.error != null) ...<Widget>[
-                const SizedBox(height: Spacing.xl),
-                ErrorView(
-                  error: state.error!,
-                  compact: true,
-                  onRetry: controller.reset,
-                ),
-              ],
-              if (attempt != null && attempt.isScored) ...<Widget>[
-                const SizedBox(height: Spacing.xxl),
-                PronunciationResultView(attempt: attempt),
-                const SizedBox(height: Spacing.xl),
-                GlowButton(
-                  label: context.t('Done'),
-                  size: GlowButtonSize.large,
-                  expand: true,
-                  onPressed: () => Navigator.of(context).maybePop(),
-                ),
-              ],
+            ),
+            const SizedBox(height: Spacing.xxl),
+            Center(
+              child: Column(
+                children: <Widget>[
+                  RecordButton(
+                    recording: state.isRecording,
+                    busy: state.isBusy,
+                    level: state.level,
+                    onPressed: () {
+                      if (state.isRecording) {
+                        controller.stopAndScore(
+                          expectedText: targetText,
+                          exerciseId: exerciseId,
+                          sessionId: sessionId,
+                          lessonBlockId: lessonBlockId,
+                        );
+                      } else {
+                        controller.startRecording();
+                      }
+                    },
+                  ),
+                  const SizedBox(height: Spacing.md),
+                  Text(
+                    switch (state.phase) {
+                      SpeechPhase.recording =>
+                        '${state.elapsed.inSeconds}s · ${context.t('tap to stop')}',
+                      SpeechPhase.uploading => context.t('Uploading…'),
+                      SpeechPhase.scoring =>
+                        context.t('Scoring your pronunciation…'),
+                      SpeechPhase.scored => context.t('Tap to try again'),
+                      SpeechPhase.failed => context.t('Tap to try again'),
+                      SpeechPhase.idle => context.t('Tap to record'),
+                    },
+                    style: context.text.bodyMedium,
+                  ),
+                ],
+              ),
+            ),
+            if (state.error != null) ...<Widget>[
+              const SizedBox(height: Spacing.xl),
+              ErrorView(
+                error: state.error!,
+                compact: true,
+                onRetry: controller.reset,
+              ),
             ],
-          ),
+            if (attempt != null && attempt.isScored) ...<Widget>[
+              const SizedBox(height: Spacing.xxl),
+              PronunciationResultView(attempt: attempt),
+              const SizedBox(height: Spacing.xl),
+              GlowButton(
+                label: context.t('Done'),
+                size: GlowButtonSize.large,
+                expand: true,
+                onPressed: () => Navigator.of(context).maybePop(),
+              ),
+            ],
+          ],
         ),
       ),
     );

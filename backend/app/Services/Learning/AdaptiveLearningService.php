@@ -42,12 +42,13 @@ class AdaptiveLearningService
         private RemediationService $remediation,
     ) {}
 
-    public function buildNextSession(int $userId, ?int $minutes = null): LearningSession
+    public function buildNextSession(int $userId, ?int $minutes = null, ?string $focus = null): LearningSession
     {
         $profile = LearnerProfile::firstOrCreate(['user_id' => $userId], [
             'language_id' => \App\Models\Language::where('code', 'en')->value('id'),
         ]);
         $minutes = $minutes ?: $this->plannedMinutes($userId);
+        $focus = $this->normalizeFocus($focus);
 
         $due = $this->srs->dueCount($userId);
         $slots = SessionShape::slots($minutes, $due, (float) $profile->frustration_index);
@@ -58,29 +59,55 @@ class AdaptiveLearningService
         // session came from the review queue - so the learner was studying one
         // thing and being tested on another, which is what made the screen feel
         // like a quiz rather than a lesson.
-        $lesson = $this->nextLesson($userId, $profile);
+        //
+        // A focused studio (grammar, vocabulary, …) picks the lesson from that
+        // series instead of the vocabulary spine, so "Pattern lab" is not the
+        // same daily path with a different label.
+        $lesson = $this->nextLesson($userId, $profile, $focus);
 
-        return DB::transaction(function () use ($userId, $profile, $minutes, $slots, $lesson, $due) {
+        return DB::transaction(function () use ($userId, $profile, $minutes, $slots, $lesson, $due, $focus) {
             $session = LearningSession::create([
                 'user_id' => $userId,
-                'course_version_id' => $profile->active_course_version_id,
+                'course_version_id' => $focus
+                    ? ($this->courses->versionForAbility(
+                        $profile->ability === null ? null : (float) $profile->ability,
+                        $focus,
+                    ) ?? $profile->active_course_version_id)
+                    : $profile->active_course_version_id,
                 'status' => 'active',
-                'kind' => 'daily',
+                'kind' => $focus ? 'focused' : 'daily',
                 'composition' => [
                     'slots' => $slots,
                     'due_reviews' => $due,
                     'lesson_id' => $lesson?->id,
                     'lesson' => $lesson?->title,
+                    'focus' => $focus,
                 ],
                 'planned_minutes' => $minutes,
                 'started_at' => now(),
             ]);
 
+            $practise = $this->practiseActivities($userId, $lesson, $slots[SessionShape::PRACTISE]);
+            if ($focus && $practise->count() < $slots[SessionShape::PRACTISE]) {
+                $practise = $practise->concat(
+                    $this->seriesPracticeActivities(
+                        $userId,
+                        $focus,
+                        $slots[SessionShape::PRACTISE] - $practise->count(),
+                    ),
+                );
+            }
+
             $byPhase = [
                 SessionShape::WARM_UP => $this->warmUpActivities($userId, $slots[SessionShape::WARM_UP]),
                 SessionShape::STUDY => $this->studyActivities($lesson, $slots[SessionShape::STUDY]),
-                SessionShape::PRACTISE => $this->practiseActivities($userId, $lesson, $slots[SessionShape::PRACTISE]),
-                SessionShape::USE => $this->useActivities($userId, $lesson, $slots[SessionShape::USE]),
+                SessionShape::PRACTISE => $practise,
+                SessionShape::USE => $this->useActivities(
+                    $userId,
+                    $lesson,
+                    $slots[SessionShape::USE],
+                    $focus,
+                ),
                 SessionShape::CONSOLIDATE => $this->consolidateActivities($userId, $slots[SessionShape::CONSOLIDATE]),
             ];
 
@@ -89,24 +116,39 @@ class AdaptiveLearningService
             // ability band, a course with no blocks yet - fall back to the best
             // available material rather than handing back an empty session.
             if (collect($byPhase)->every(fn ($p) => $p->isEmpty())) {
-                $byPhase[SessionShape::PRACTISE] = $this->fallbackActivities(
-                    $userId,
-                    max(4, (int) round($minutes * 0.6)),
-                );
+                $byPhase[SessionShape::PRACTISE] = $focus
+                    ? $this->seriesPracticeActivities($userId, $focus, max(4, (int) round($minutes * 0.6)))
+                    : $this->fallbackActivities(
+                        $userId,
+                        max(4, (int) round($minutes * 0.6)),
+                    );
             }
 
             $position = 0;
+            $seenSubjects = [];
             foreach (SessionShape::order() as $phase) {
                 $withinPhase = 0;
                 foreach ($byPhase[$phase] ?? [] as $a) {
+                    $subjectType = $a['subject_type'] ?? null;
+                    $subjectId = $a['subject_id'] ?? null;
+                    // One graded item per session is enough; repeating the same
+                    // exercise across concepts made Continue look broken.
+                    if ($subjectType && $subjectId) {
+                        $subjectKey = $subjectType.'#'.$subjectId;
+                        if (isset($seenSubjects[$subjectKey])) {
+                            continue;
+                        }
+                        $seenSubjects[$subjectKey] = true;
+                    }
+
                     SessionActivity::create([
                         'learning_session_id' => $session->id,
                         'position' => $position++,
                         'phase' => $phase,
                         'phase_position' => $withinPhase++,
                         'activity_type' => $a['type'],
-                        'subject_type' => $a['subject_type'] ?? null,
-                        'subject_id' => $a['subject_id'] ?? null,
+                        'subject_type' => $subjectType,
+                        'subject_id' => $subjectId,
                         'concept_id' => $a['concept_id'] ?? null,
                         'selection_reason' => $a['reason'],
                         'rationale' => $a['rationale'] ?? null,
@@ -121,6 +163,22 @@ class AdaptiveLearningService
 
             return $session->fresh('activities');
         });
+    }
+
+    /**
+     * Studio focus values the client may ask for. Anything else is ignored so a
+     * typo cannot invent a series and hand back an empty session.
+     */
+    private function normalizeFocus(?string $focus): ?string
+    {
+        if ($focus === null || $focus === '') {
+            return null;
+        }
+
+        $focus = strtolower(str_replace('-', '_', trim($focus)));
+        $allowed = $this->courses->series();
+
+        return in_array($focus, $allowed, true) ? $focus : null;
     }
 
     /**
@@ -203,16 +261,22 @@ class AdaptiveLearningService
 
         $ability = $this->difficulty->abilityFor($userId);
         $out = collect();
+        // Several lesson concepts often share one graded item; without an
+        // exclusion list the same exercise fills every practise slot and the
+        // learner cannot tell Continue from "same question again".
+        $usedExerciseIds = [];
 
         foreach ($lesson->concepts()->where('concepts.is_active', true)->get() as $concept) {
             if ($out->count() >= $count) {
                 break;
             }
 
-            $exercise = $this->pickExerciseForConcept($userId, $concept->id);
+            $exercise = $this->pickExerciseForConcept($userId, $concept->id, $usedExerciseIds);
             if (! $exercise) {
                 continue;
             }
+
+            $usedExerciseIds[] = $exercise->id;
 
             $out->push([
                 'type' => 'practice',
@@ -239,7 +303,7 @@ class AdaptiveLearningService
      * The roleplay scenarios existed on their own screen and were never part of
      * a session, so a learner had to know to go and find them.
      */
-    private function useActivities(int $userId, ?Lesson $lesson, int $count): Collection
+    private function useActivities(int $userId, ?Lesson $lesson, int $count, ?string $focus = null): Collection
     {
         if ($count <= 0) {
             return collect();
@@ -273,17 +337,18 @@ class AdaptiveLearningService
             }
         }
 
-        // A grammar or pronunciation question from the strand book at this
-        // learner's level. The corpus is six series now, but a session is
-        // built around one lesson of one of them, so without this a learner
-        // placed on the vocabulary spine never meets a grammar item at all -
-        // which is exactly what the platform was asked about: where does it
-        // teach grammar?
+        // Focused studios stay inside one series. The daily path still dips into
+        // the other strands so a vocabulary day still meets a grammar item.
         if ($out->count() < $count) {
-            $out = $out->concat($this->strandActivities($userId, $count - $out->count()));
+            $need = $count - $out->count();
+            $out = $out->concat(
+                $focus
+                    ? $this->seriesPracticeActivities($userId, $focus, $need)
+                    : $this->strandActivities($userId, $need),
+            );
         }
 
-        if ($out->count() < $count) {
+        if (! $focus && $out->count() < $count) {
             $out = $out->concat($this->conversationActivity($userId));
         }
 
@@ -296,6 +361,88 @@ class AdaptiveLearningService
         }
 
         return $out->take($count)->values();
+    }
+
+    /**
+     * Several graded items from one series at the learner's ability.
+     *
+     * Used by focused studios (Pattern lab → grammar) when the lesson's own
+     * concept links are thin, and to fill the Use phase without wandering into
+     * other subjects.
+     */
+    private function seriesPracticeActivities(int $userId, string $series, int $count): Collection
+    {
+        if ($count <= 0) {
+            return collect();
+        }
+
+        $profile = LearnerProfile::where('user_id', $userId)->first();
+        $ability = $this->difficulty->abilityFor($userId);
+        $versionId = $this->courses->versionForAbility(
+            $profile?->ability === null ? null : (float) $profile->ability,
+            $series,
+        );
+
+        if ($versionId === null) {
+            return collect();
+        }
+
+        // A low-ability learner lands on the elementary book; some grammar
+        // books only have interactive drills from intermediate up. Climb the
+        // ladder until there is something answerable rather than returning an
+        // empty Pattern lab.
+        $ladder = $this->courses->ladder($series)->values();
+        $at = $ladder->search(fn ($c) => (int) $c->version_id === $versionId);
+        if ($at === false) {
+            $at = 0;
+        }
+
+        $candidates = collect();
+        for ($i = $at; $i < $ladder->count(); $i++) {
+            $versionId = (int) $ladder[$i]->version_id;
+            $candidates = $this->answerable(
+                Exercise::query()
+                    ->join('lessons', 'lessons.id', '=', 'exercises.lesson_id')
+                    ->join('units', 'units.id', '=', 'lessons.unit_id')
+                    ->join('modules', 'modules.id', '=', 'units.module_id')
+                    ->where('modules.course_version_id', $versionId),
+            )->select('exercises.*')->distinct()->limit(max(40, $count * 8))->get();
+
+            if ($candidates->isNotEmpty()) {
+                break;
+            }
+        }
+
+        if ($candidates->isEmpty()) {
+            return collect();
+        }
+
+        $out = collect();
+        $used = [];
+        for ($i = 0; $i < $count; $i++) {
+            $pool = $candidates->reject(fn (Exercise $e) => isset($used[$e->id]))->values();
+            $exercise = $this->difficulty->choose($pool, $ability);
+            if (! $exercise) {
+                break;
+            }
+            $used[$exercise->id] = true;
+            $out->push([
+                'type' => 'practice',
+                'subject_type' => Exercise::class,
+                'subject_id' => $exercise->id,
+                'concept_id' => $exercise->concepts()->value('concepts.id'),
+                'priority' => 45.0,
+                'predicted' => $this->difficulty->successProbability($ability, (float) $exercise->difficulty),
+                'rationale' => 'A '.str_replace('_', ' ', $series).' pattern at your level.',
+                'reason' => [
+                    'driver' => 'focused_series',
+                    'series' => $series,
+                    'course_version_id' => $versionId,
+                ],
+            ]);
+        }
+
+        return $out->values();
     }
 
     /**
@@ -343,6 +490,27 @@ class AdaptiveLearningService
                 )->select('exercises.*')->distinct()->limit(25)->get(),
                 $ability,
             );
+
+            // Elementary grammar/pronunciation books may have no interactive
+            // drills yet. Try the next rung of the same series before skipping.
+            if (! $exercise) {
+                $next = $this->courses->nextVersionAfter($versionId);
+                if ($next !== null && $next !== $versionId) {
+                    $exercise = $this->difficulty->choose(
+                        $this->answerable(
+                            Exercise::query()
+                                ->join('lessons', 'lessons.id', '=', 'exercises.lesson_id')
+                                ->join('units', 'units.id', '=', 'lessons.unit_id')
+                                ->join('modules', 'modules.id', '=', 'units.module_id')
+                                ->where('modules.course_version_id', $next),
+                        )->select('exercises.*')->distinct()->limit(25)->get(),
+                        $ability,
+                    );
+                    if ($exercise) {
+                        $versionId = $next;
+                    }
+                }
+            }
 
             if (! $exercise) {
                 continue;
@@ -712,8 +880,45 @@ class AdaptiveLearningService
      * pitched well above where they currently are is passed over and comes back
      * later, once their ability has caught up with it.
      */
-    private function nextLesson(int $userId, LearnerProfile $profile): ?Lesson
+    private function nextLesson(int $userId, LearnerProfile $profile, ?string $series = null): ?Lesson
     {
+        // Focused studios ask for a series without moving the learner off the
+        // vocabulary spine they are placed and promoted on.
+        if ($series !== null && $series !== CoursePlacementService::SPINE) {
+            $version = $this->courses->versionForAbility(
+                $profile->ability === null ? null : (float) $profile->ability,
+                $series,
+            );
+            if ($version === null) {
+                return null;
+            }
+
+            $completed = DB::table('lesson_attempts')
+                ->where('user_id', $userId)->where('status', 'completed')->pluck('lesson_id');
+
+            $remaining = $this->lessonsInOrder($version, $completed);
+            $guard = 0;
+            while ($remaining->isEmpty() && $guard++ < 4) {
+                $next = $this->courses->nextVersionAfter($version);
+                if ($next === null || $next === $version) {
+                    break;
+                }
+                $version = $next;
+                $remaining = $this->lessonsInOrder($version, $completed);
+            }
+
+            if ($remaining->isEmpty()) {
+                return null;
+            }
+
+            $ability = $this->difficulty->abilityFor($userId);
+            $ceiling = $ability + self::REACH;
+            $withinReach = $remaining->first(fn ($l) => (float) $l->difficulty <= $ceiling);
+            $chosen = $withinReach ?? $remaining->sortBy('difficulty')->first();
+
+            return $chosen ? Lesson::find($chosen->id) : null;
+        }
+
         $version = $profile->active_course_version_id
             ?? $this->courses->assign($profile);
 

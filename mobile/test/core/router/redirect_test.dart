@@ -80,6 +80,7 @@ void main() {
     addTearDown(c.dispose);
 
     expect(where(c, AppRoute.home.path), AppRoute.login.path);
+    expect(where(c, AppRoute.splash.path), AppRoute.login.path);
     expect(where(c, AppRoute.login.path), isNull);
     expect(where(c, AppRoute.register.path), isNull);
   });

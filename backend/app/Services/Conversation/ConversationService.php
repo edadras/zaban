@@ -9,6 +9,7 @@ use App\Models\ConversationSession;
 use App\Models\ConversationTurn;
 use App\Models\LearnerProfile;
 use App\Models\SpeechAttempt;
+use App\Services\Learning\ProgressService;
 use App\Services\Learning\RemediationService;
 use Illuminate\Support\Facades\DB;
 
@@ -26,6 +27,7 @@ class ConversationService
     public function __construct(
         private AiOrchestrator $ai,
         private RemediationService $remediation,
+        private ProgressService $progress,
     ) {}
 
     public function start(int $userId, ConversationScenario $scenario, string $mode = 'voice'): ConversationSession
@@ -121,7 +123,10 @@ class ConversationService
             'overall_score' => $this->score($session, $errors->count(), $objectives),
         ]);
 
-        return $session->fresh();
+        $fresh = $session->fresh();
+        $this->progress->recordConversationCompleted($fresh);
+
+        return $fresh;
     }
 
     // ------------------------------------------------------------- internals

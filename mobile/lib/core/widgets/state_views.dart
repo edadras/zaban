@@ -82,7 +82,10 @@ class ErrorView extends StatelessWidget {
       _ => Icons.error_outline_rounded,
     };
 
-    final message = api?.message ?? 'Please try again.';
+    final message = api?.message ??
+        (error is Exception || error is Error
+            ? error.toString().replaceFirst(RegExp(r'^Exception:\s*'), '')
+            : 'Please try again.');
 
     final actions = <Widget>[
       if (kind == ApiErrorKind.paywall && onUpgrade != null)

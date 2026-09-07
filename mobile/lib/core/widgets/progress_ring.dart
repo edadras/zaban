@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/color_tokens.dart';
@@ -114,7 +115,7 @@ class _ProgressRingPainter extends CustomPainter {
       stops: const <double>[0.0, 0.6, 1.0],
     ).createShader(arcRect);
 
-    if (glow) {
+    if (glow && !kIsWeb) {
       final bloom = Paint()
         ..style = PaintingStyle.stroke
         ..strokeWidth = strokeWidth

@@ -221,7 +221,7 @@ const Map<String, String> faStrings = <String, String>{
   'Queue cleared':
       'صف خالی شد',
   'Record a phrase and get per-word feedback':
-      'یک عبارت ضبط کنید و بازخورد کلمه‌به‌کلمه بگیرید',
+      'عبارت را ضبط کنید و امتیاز بگیرید، یا با مربی گفت‌وگو کنید',
   'Recurring mistakes':
       'اشتباه‌های تکرارشونده',
   'Reminders':
@@ -270,6 +270,34 @@ const Map<String, String> faStrings = <String, String>{
       'یک موقعیت واقعی را با گفتن یا نوشتن پیش ببرید. مربی در نقش می‌ماند و در پایان اصلاح می‌کند.',
   'Speaking':
       'گفتار',
+  'Score':
+      'امتیاز',
+  'Coach chat':
+      'گفت‌وگو با مربی',
+  'SAY ANYTHING':
+      'هر چیزی بگویید',
+  'SAY THIS':
+      'این را بگویید',
+  'BETTER AS':
+      'بهتر این‌طور',
+  'GRAMMAR':
+      'دستور زبان',
+  'WORDS':
+      'واژه‌ها',
+  'PRONUNCIATION':
+      'تلفظ',
+  'Chat ended':
+      'گفت‌وگو تمام شد',
+  'tap to stop':
+      'برای توقف بزنید',
+  'Uploading…':
+      'در حال بارگذاری…',
+  'Scoring your pronunciation…':
+      'در حال امتیازدهی تلفظ…',
+  'Tap to try again':
+      'برای تلاش دوباره بزنید',
+  'Tap to record':
+      'برای ضبط بزنید',
   'Speech & privacy':
       'گفتار و حریم خصوصی',
   'Start full practice':
@@ -382,8 +410,8 @@ const Map<String, String> faStrings = <String, String>{
       'میانگین ضبط‌های اخیر شما',
   'basic feedback':
       'بازخورد پایه',
-  'days':
-      'روز',
+  'Speak for a few seconds — an AI coach will score fluency, clarity and language, and tell you what to practise next.':
+      'چند ثانیه صحبت کنید — مربی هوش مصنوعی روانی، وضوح و زبان را نمره می‌دهد و می‌گوید بعد چه تمرین کنید.',
   'estimate':
       'برآورد',
   'min':
@@ -400,4 +428,269 @@ const Map<String, String> faStrings = <String, String>{
       'کلمه در دقیقه',
   'you@example.com':
       'you@example.com',
+  'Pay with Rial':
+      'پرداخت ریالی',
+  'Pay with Rial (card transfer)':
+      'پرداخت ریالی (کارت به کارت)',
+  'Transfer to our card, upload the receipt':
+      'به کارت واریز کنید و فیش را بارگذاری کنید',
+  'Online payment':
+      'پرداخت آنلاین',
+  'Card via payment gateway':
+      'کارت از طریق درگاه پرداخت',
+  'How do you want to pay?':
+      'چطور می‌خواهید پرداخت کنید؟',
+  'Transfer to this card':
+      'به این کارت واریز کنید',
+  'Copy card number':
+      'کپی شماره کارت',
+  'Copied':
+      'کپی شد',
+  'Upload receipt':
+      'بارگذاری فیش',
+  'Replace receipt':
+      'تعویض فیش',
+  'Receipt uploaded. Waiting for admin approval.':
+      'فیش بارگذاری شد. منتظر تایید ادمین بمانید.',
+  'Waiting for your transfer':
+      'منتظر واریز شما',
+  'Waiting for admin approval':
+      'منتظر تایید ادمین',
+  'Approved — plan upgraded':
+      'تایید شد — پلن ارتقا یافت',
+  'Receipt rejected':
+      'فیش رد شد',
+  'Status':
+      'وضعیت',
+  'Could not read that file.':
+      'خواندن فایل ممکن نشد.',
+  'Rial payments':
+      'پرداخت‌های ریالی',
+  'No pending payments':
+      'پرداخت معلقی نیست',
+  'Receipts waiting for review appear here.':
+      'فیش‌های در انتظار بررسی اینجا دیده می‌شوند.',
+  'Approve':
+      'تایید',
+  'Reject':
+      'رد',
+  'Open receipt':
+      'مشاهده فیش',
+  'Receipt':
+      'فیش',
+  'Close':
+      'بستن',
+  'Users':
+      'کاربرها',
+  'Search name or email':
+      'جستجوی نام یا ایمیل',
+  'No users found':
+      'کاربری پیدا نشد',
+  'Try another search.':
+      'جستجوی دیگری امتحان کنید.',
+  'Suspend':
+      'مسدود کردن',
+  'Activate':
+      'فعال کردن',
+  'Revenue':
+      'درآمد',
+  'Payments':
+      'پرداخت‌ها',
+  'Subscriptions':
+      'اشتراک‌ها',
+  'New users':
+      'کاربرهای جدید',
+  'Active 7d':
+      'فعال ۷ روز',
+  'Active by plan':
+      'فعال به تفکیک پلن',
+  'Daily revenue':
+      'درآمد روزانه',
+  'No payments in this window yet.':
+      'در این بازه هنوز پرداختی نیست.',
+  'Rial account settings':
+      'تنظیمات حساب ریالی',
+  'Enable Rial transfers':
+      'فعال‌سازی واریز ریالی',
+  'When off, learners cannot start a card transfer':
+      'اگر خاموش باشد کاربر نمی‌تواند کارت‌به‌کارت شروع کند',
+  'Card number':
+      'شماره کارت',
+  'Card holder name':
+      'نام صاحب کارت',
+  'Bank name':
+      'نام بانک',
+  'TRY to IRR rate':
+      'نرخ تبدیل لیر به ریال',
+  'How many Rials for 1 Turkish Lira':
+      'چند ریال برای هر ۱ لیر ترکیه',
+  'Note for learners':
+      'یادداشت برای کاربر',
+  'Save settings':
+      'ذخیره تنظیمات',
+  'Settings saved':
+      'تنظیمات ذخیره شد',
+  'Approve or reject receipts':
+      'تایید یا رد فیش‌ها',
+  'Card number, holder and FX rate':
+      'شماره کارت، صاحب کارت و نرخ تبدیل',
+  'Income, users and daily charts':
+      'درآمد، کاربرها و نمودار روزانه',
+  'Profiles, plans and activity':
+      'پروفایل، پلن و فعالیت',
+  'What is published, and what is ready to be':
+      'آنچه منتشر شده و آنچه آماده است',
+  'Awaiting approval':
+      'منتظر تایید',
+  'Awaiting transfer':
+      'منتظر واریز',
+  'Approved':
+      'تاییدشده',
+  'Rejected':
+      'ردشده',
+  'All':
+      'همه',
+  'No payments in this filter':
+      'در این فیلتر پرداختی نیست',
+  'Receipts waiting for review appear under Awaiting approval.':
+      'فیش‌های در انتظار در تب «منتظر تایید» هستند.',
+  'Approve & upgrade plan':
+      'تایید و ارتقای پلن',
+  'Reject payment':
+      'رد پرداخت',
+  'Reason':
+      'دلیل',
+  'Cancel':
+      'انصراف',
+  'User':
+      'کاربر',
+  'Role':
+      'نقش',
+  'Country':
+      'کشور',
+  'Joined':
+      'تاریخ عضویت',
+  'Last active':
+      'آخرین فعالیت',
+  'Change role':
+      'تغییر نقش',
+  'Learning':
+      'یادگیری',
+  'Study min':
+      'دقیقه مطالعه',
+  'Concepts':
+      'مفاهیم',
+  'Placement':
+      'تعیین سطح',
+  'Subscription':
+      'اشتراک',
+  'No paid subscription':
+      'اشتراک پولی ندارد',
+  'Gateway':
+      'درگاه',
+  'Period end':
+      'پایان دوره',
+  'Activity':
+      'فعالیت',
+  'Sessions':
+      'جلسات',
+  'Exercises':
+      'تمرین‌ها',
+  'Speech':
+      'گفتار',
+  'No Rial payments yet':
+      'هنوز پرداخت ریالی ندارد',
+  'Revenue & stats':
+      'درآمد و آمار',
+
+  // Learn studio — discoverable grammar / vocab / speech / talk lenses
+  'Learn':
+      'آموزش',
+  'How you learn':
+      'چطور یاد می‌گیرید',
+  'Grammar · words · sound · talk':
+      'دستور · واژه · صدا · گفتگو',
+  'All studios':
+      'همهٔ استودیوها',
+  'Open Learn studio':
+      'باز کردن استودیوی آموزش',
+  'Grammar, vocabulary, listening and speaking are woven into today’s session — not a separate chapter list. Open Learn to pick a studio.':
+      'دستور زبان، واژگان، شنیدن و صحبت در جلسهٔ امروز بافته شده‌اند — نه فهرست جداگانهٔ فصل‌ها. برای انتخاب استودیو، «آموزش» را باز کنید.',
+  'Language is not a menu of chapters. Pick how you want to train — the engine still adapts the material to you.':
+      'زبان منوی فصل‌ها نیست. انتخاب کنید چطور تمرین کنید — موتور همچنان محتوا را با شما تطبیق می‌دهد.',
+  'How a day is built':
+      'یک روز چطور ساخته می‌شود',
+  'Inside the session':
+      'داخل جلسه',
+  'Studios':
+      'استودیوها',
+  'Choose a lens':
+      'یک لنز انتخاب کنید',
+  'Recommended':
+      'پیشنهادی',
+  'Today’s path':
+      'مسیر امروز',
+  'Warm-up → Study the lesson → Practice the new words → Listen & speak → Lock it in. Built for you each day.':
+      'گرم‌کردن → مطالعهٔ درس → تمرین واژه‌های تازه → شنیدن و گفتن → تثبیت. هر روز مخصوص شما.',
+  'Open today’s session':
+      'باز کردن جلسهٔ امروز',
+  'Word atelier':
+      'کارگاه واژه',
+  'Meet words in a scene, flip them as cards, then use them before they cool. Memory model decides what returns.':
+      'واژه‌ها را در صحنه ببینید، مثل کارت ورق بزنید، بعد قبل از سرد شدن به‌کار ببرید. مدل حافظه تصمیم می‌گیرد چه چیزی برگردد.',
+  'Train words':
+      'تمرین واژه‌ها',
+  'Due reviews':
+      'مرورهای سررسید',
+  'Grammar':
+      'دستور زبان',
+  'Pattern lab':
+      'آزمایشگاه الگو',
+  'See the pattern in real sentences, then bend it: fill gaps, fix errors, reorder. Not a rule dump — a workshop.':
+      'الگو را در جمله‌های واقعی ببینید، بعد خم کنیدش: جای خالی، اصلاح خطا، جابه‌جایی. انبوه قانون نیست — کارگاه است.',
+  'Work a pattern':
+      'کار روی یک الگو',
+  'Listening & speaking':
+      'شنیدن و صحبت',
+  'Echo chamber':
+      'اتاق پژواک',
+  'Hear the book’s own voice, shadow it, get scored word by word. Speaking is a skill, not a checkbox.':
+      'صدای خود کتاب را بشنوید، سایه‌اش کنید، کلمه به کلمه نمره بگیرید. صحبت مهارت است، نه تیک.',
+  'Open sound studio':
+      'باز کردن استودیوی صدا',
+  'Inside today’s path':
+      'داخل مسیر امروز',
+  'Scene studio':
+      'استودیوی صحنه',
+  'Step into a situation — café, airport, interview — and talk with an AI tutor that pushes you just past comfort.':
+      'وارد موقعیت شوید — کافه، فرودگاه، مصاحبه — و با مربی هوش مصنوعی حرف بزنید که کمی از منطقهٔ راحتتان بیرونتان می‌کشد.',
+  'Pick a scene':
+      'انتخاب صحنه',
+  'Challenge':
+      'چالش',
+  'Pressure room':
+      'اتاق فشار',
+  'Timed exam sections with band scores. Use it when you want the cold measure of how ready you are.':
+      'بخش‌های آزمون زمان‌دار با نمرهٔ باند. وقتی می‌خواهید سنجش سرد آمادگی‌تان را ببینید.',
+  'Start a challenge':
+      'شروع چالش',
+  'Warm-up':
+      'گرم‌کردن',
+  'Easy recalls':
+      'یادآوری‌های آسان',
+  'Study':
+      'مطالعه',
+  'Text · scene · words':
+      'متن · صحنه · واژه',
+  'Use new forms':
+      'به‌کار بردن شکل‌های تازه',
+  'Use it':
+      'به‌کار بردن',
+  'Listen · say · talk':
+      'بشنو · بگو · حرف بزن',
+  'Consolidate':
+      'تثبیت',
+  'Due + weak spots':
+      'سررسید + نقاط ضعف',
 };
+

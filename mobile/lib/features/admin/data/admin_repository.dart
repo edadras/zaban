@@ -3,7 +3,9 @@ import 'package:zaban/core/network/api_client.dart';
 import 'package:zaban/core/network/api_endpoints.dart';
 import 'package:zaban/core/network/network_providers.dart';
 import 'package:zaban/features/admin/data/models/admin_overview.dart';
+import 'package:zaban/features/admin/data/models/billing_overview.dart';
 import 'package:zaban/features/admin/data/models/curriculum_book.dart';
+import 'package:zaban/features/subscription/data/models/manual_payment.dart';
 
 /// The admin half of the API. Reachable only by an admin, editor or reviewer;
 /// the server enforces that and the router hides it.
@@ -77,6 +79,88 @@ class AdminRepository {
 
     return (result['withdrawn'] as num?)?.toInt() ?? 0;
   }
+
+  Future<BillingOverview> billingOverview({int days = 30}) => _client.get(
+        ApiEndpoints.adminBillingOverview,
+        query: <String, dynamic>{'days': days},
+        decode: Decode.object(BillingOverview.fromJson),
+      );
+
+  Future<List<ManualPaymentSubmission>> manualPayments({String? status}) =>
+      _client.get(
+        ApiEndpoints.adminManualPayments,
+        query: <String, dynamic>{
+          if (status != null) 'status': status,
+          'per_page': 50,
+        },
+        decode: (Object? data) {
+          final rows = data is Map ? data['data'] : data;
+          return Decode.list(ManualPaymentSubmission.fromJson)(rows);
+        },
+      );
+
+  Future<ManualPaymentSubmission> approveManualPayment(
+    int id, {
+    String? note,
+  }) =>
+      _client.post(
+        ApiEndpoints.adminManualPaymentApprove(id),
+        body: <String, dynamic>{if (note != null) 'note': note},
+        decode: Decode.object(ManualPaymentSubmission.fromJson),
+      );
+
+  Future<ManualPaymentSubmission> rejectManualPayment(
+    int id, {
+    String? note,
+  }) =>
+      _client.post(
+        ApiEndpoints.adminManualPaymentReject(id),
+        body: <String, dynamic>{if (note != null) 'note': note},
+        decode: Decode.object(ManualPaymentSubmission.fromJson),
+      );
+
+  Future<List<AdminUserRow>> users({String? q}) => _client.get(
+        ApiEndpoints.adminUsers,
+        query: <String, dynamic>{
+          if (q != null && q.isNotEmpty) 'q': q,
+          'per_page': 50,
+        },
+        decode: (Object? data) {
+          final rows = data is Map ? data['data'] : data;
+          return Decode.list(AdminUserRow.fromJson)(rows);
+        },
+      );
+
+  Future<Map<String, dynamic>> userDetail(int id) => _client.get(
+        ApiEndpoints.adminUser(id),
+        decode: Decode.map,
+      );
+
+  Future<void> updateUser(
+    int id, {
+    String? role,
+    String? status,
+  }) =>
+      _client.patch(
+        ApiEndpoints.adminUser(id),
+        body: <String, dynamic>{
+          if (role != null) 'role': role,
+          if (status != null) 'status': status,
+        },
+        decode: Decode.none,
+      );
+
+  Future<Map<String, dynamic>> rialSettings() => _client.get(
+        ApiEndpoints.adminRialSettings,
+        decode: Decode.map,
+      );
+
+  Future<Map<String, dynamic>> updateRialSettings(Map<String, dynamic> body) =>
+      _client.patch(
+        ApiEndpoints.adminRialSettings,
+        body: body,
+        decode: Decode.map,
+      );
 }
 
 final adminRepositoryProvider = Provider<AdminRepository>(
@@ -102,4 +186,17 @@ final reviewQueueProvider = FutureProvider<List<ReviewItem>>(
 final curriculumLessonsProvider =
     FutureProvider.family<List<CurriculumLesson>, int>(
   (ref, bookId) => ref.watch(adminRepositoryProvider).lessons(bookId),
+);
+
+final billingOverviewProvider = FutureProvider<BillingOverview>(
+  (ref) => ref.watch(adminRepositoryProvider).billingOverview(),
+);
+
+final adminManualPaymentsProvider =
+    FutureProvider<List<ManualPaymentSubmission>>(
+  (ref) => ref.watch(adminRepositoryProvider).manualPayments(),
+);
+
+final adminUsersProvider = FutureProvider<List<AdminUserRow>>(
+  (ref) => ref.watch(adminRepositoryProvider).users(),
 );

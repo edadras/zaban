@@ -30,7 +30,12 @@ abstract class AttemptResult with _$AttemptResult {
 
     /// Grader detail, e.g. `{"distractor_rationale": "…"}` or
     /// `{"requires_review": true, "message": "…"}` for open items.
-    @Default(<String, dynamic>{}) Map<String, dynamic> feedback,
+    ///
+    /// The API historically emitted `feedback: []` for "no detail"; accept
+    /// either a map or a list so Check never hangs on a parse throw.
+    @JsonKey(fromJson: _feedbackFromJson)
+    @Default(<String, dynamic>{})
+    Map<String, dynamic> feedback,
 
     /// How each concept the item touches moved.
     @Default(<AttemptMastery>[]) List<AttemptMastery> mastery,
@@ -39,6 +44,13 @@ abstract class AttemptResult with _$AttemptResult {
 
   factory AttemptResult.fromJson(Map<String, dynamic> json) =>
       _$AttemptResultFromJson(json);
+}
+
+Map<String, dynamic> _feedbackFromJson(Object? raw) {
+  if (raw is Map) {
+    return raw.map((key, value) => MapEntry(key.toString(), value));
+  }
+  return const <String, dynamic>{};
 }
 
 extension AttemptResultX on AttemptResult {

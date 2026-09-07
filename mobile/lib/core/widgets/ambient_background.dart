@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 
@@ -7,20 +8,23 @@ import 'package:zaban/core/theme/theme_context.dart';
 /// out-of-focus light sources drifting behind the glass.
 ///
 /// The drift is deliberately slow (a full cycle takes ~9 s) and stops entirely
-/// when the platform asks for reduced motion or the theme disables animation.
+/// when the platform asks for reduced motion, the theme disables animation, or
+/// we are on web (continuous CustomPaint under IndexedStack tabs is janky).
 class AmbientBackground extends StatefulWidget {
   const AmbientBackground({
     required this.child,
     super.key,
     this.intensity = 1,
-    this.animate = true,
+    this.animate,
   });
 
   final Widget child;
 
   /// Scales the bloom opacity; screens with a lot of content dial it down.
   final double intensity;
-  final bool animate;
+
+  /// Defaults to off on web, on elsewhere.
+  final bool? animate;
 
   @override
   State<AmbientBackground> createState() => _AmbientBackgroundState();
@@ -33,13 +37,25 @@ class _AmbientBackgroundState extends State<AmbientBackground>
     duration: const Duration(seconds: 9),
   );
 
+  bool get _wantAnimate =>
+      (widget.animate ?? !kIsWeb) &&
+      context.motion.enabled &&
+      !context.prefersReducedMotion;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final shouldAnimate = widget.animate &&
-        context.motion.enabled &&
-        !context.prefersReducedMotion;
+    _syncAnimation();
+  }
 
+  @override
+  void didUpdateWidget(covariant AmbientBackground oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _syncAnimation();
+  }
+
+  void _syncAnimation() {
+    final shouldAnimate = _wantAnimate;
     if (shouldAnimate && !_controller.isAnimating) {
       _controller.repeat(reverse: true);
     } else if (!shouldAnimate && _controller.isAnimating) {
@@ -56,6 +72,14 @@ class _AmbientBackgroundState extends State<AmbientBackground>
   @override
   Widget build(BuildContext context) {
     final colors = context.colors;
+    final painter = _AmbientPainter(
+      t: _wantAnimate ? _controller.value : 0,
+      accent: colors.accent,
+      deep: colors.accentDeep,
+      canvas: colors.canvas,
+      raised: colors.canvasRaised,
+      intensity: widget.intensity,
+    );
 
     return DecoratedBox(
       decoration: BoxDecoration(color: colors.canvas),
@@ -63,21 +87,23 @@ class _AmbientBackgroundState extends State<AmbientBackground>
         fit: StackFit.expand,
         children: <Widget>[
           RepaintBoundary(
-            child: AnimatedBuilder(
-              animation: _controller,
-              builder: (BuildContext context, _) {
-                return CustomPaint(
-                  painter: _AmbientPainter(
-                    t: _controller.value,
-                    accent: colors.accent,
-                    deep: colors.accentDeep,
-                    canvas: colors.canvas,
-                    raised: colors.canvasRaised,
-                    intensity: widget.intensity,
-                  ),
-                );
-              },
-            ),
+            child: _wantAnimate
+                ? AnimatedBuilder(
+                    animation: _controller,
+                    builder: (BuildContext context, _) {
+                      return CustomPaint(
+                        painter: _AmbientPainter(
+                          t: _controller.value,
+                          accent: colors.accent,
+                          deep: colors.accentDeep,
+                          canvas: colors.canvas,
+                          raised: colors.canvasRaised,
+                          intensity: widget.intensity,
+                        ),
+                      );
+                    },
+                  )
+                : CustomPaint(painter: painter),
           ),
           widget.child,
         ],

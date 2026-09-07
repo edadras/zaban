@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zaban/core/theme/theme_context.dart';
 
@@ -11,14 +12,16 @@ class PressScale extends StatefulWidget {
     this.onTap,
     this.onLongPress,
     this.scale = 0.975,
-    this.enableHover = true,
+    this.enableHover,
   });
 
   final Widget child;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final double scale;
-  final bool enableHover;
+
+  /// Defaults to off on web (hover setState on every tile is needless jank).
+  final bool? enableHover;
 
   @override
   State<PressScale> createState() => _PressScaleState();
@@ -29,6 +32,7 @@ class _PressScaleState extends State<PressScale> {
   bool _hovered = false;
 
   bool get _enabled => widget.onTap != null || widget.onLongPress != null;
+  bool get _hoverOn => widget.enableHover ?? !kIsWeb;
 
   @override
   Widget build(BuildContext context) {
@@ -37,12 +41,12 @@ class _PressScaleState extends State<PressScale> {
         ? 1.0
         : _pressed
             ? widget.scale
-            : (_hovered && widget.enableHover ? 1.005 : 1.0);
+            : (_hovered && _hoverOn ? 1.005 : 1.0);
 
     return MouseRegion(
       cursor: _enabled ? SystemMouseCursors.click : MouseCursor.defer,
-      onEnter: (_) => _setHovered(true),
-      onExit: (_) => _setHovered(false),
+      onEnter: _hoverOn ? (_) => _setHovered(true) : null,
+      onExit: _hoverOn ? (_) => _setHovered(false) : null,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: widget.onTap,
@@ -66,7 +70,7 @@ class _PressScaleState extends State<PressScale> {
   }
 
   void _setHovered(bool value) {
-    if (!widget.enableHover || _hovered == value) return;
+    if (!_hoverOn || _hovered == value) return;
     setState(() => _hovered = value);
   }
 }

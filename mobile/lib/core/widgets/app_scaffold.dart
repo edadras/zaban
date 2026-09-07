@@ -38,11 +38,21 @@ class ZabanScaffold extends StatelessWidget {
 
     final content = Scaffold(
       backgroundColor: Colors.transparent,
-      extendBodyBehindAppBar: true,
+      // Keep the body below the app bar. With a transparent bar +
+      // extendBodyBehindAppBar, page titles were drawing under the back/close
+      // control on every screen that uses this chrome.
+      extendBodyBehindAppBar: false,
       extendBody: true,
       appBar: hasBar
           ? AppBar(
-              title: title == null ? null : Text(title!),
+              titleSpacing: Spacing.md,
+              title: title == null
+                  ? null
+                  : Text(
+                      title!,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
               leading: leading,
               actions: <Widget>[
                 ...actions,

@@ -25,6 +25,20 @@ return [
         'padding' => (int) env('BILLING_INVOICE_PADDING', 6),
     ],
 
+    /*
+     * Card-to-card Rial transfers. The learner pays to the Iranian card below;
+     * TRY catalogue prices are converted with try_to_irr_rate (IRR per 1 TRY).
+     */
+    'manual_transfer' => [
+        'enabled' => (bool) env('BILLING_IRR_ENABLED', true),
+        'card_number' => env('BILLING_IRR_CARD_NUMBER', '6037-XXXX-XXXX-XXXX'),
+        'card_holder' => env('BILLING_IRR_CARD_HOLDER', 'نام صاحب کارت'),
+        'bank_name' => env('BILLING_IRR_BANK_NAME', ''),
+        'note' => env('BILLING_IRR_NOTE', 'پس از واریز، تصویر فیش را بارگذاری کنید. پلن بعد از تایید ادمین فعال می‌شود.'),
+        // Whole Iranian Rials for one Turkish Lira (major unit).
+        'try_to_irr_rate' => (float) env('BILLING_TRY_TO_IRR_RATE', 3500),
+    ],
+
     'gateways' => [
         'stripe' => [
             'driver' => App\Billing\Gateways\StripeGateway::class,

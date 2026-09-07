@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zaban/core/i18n/strings.dart';
 import 'package:zaban/core/theme/theme_context.dart';
@@ -124,7 +125,9 @@ class _SparklinePainter extends CustomPainter {
         ..strokeWidth = 2
         ..strokeCap = StrokeCap.round
         ..color = color.withValues(alpha: 0.5)
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6),
+        ..maskFilter = kIsWeb
+            ? null
+            : const MaskFilter.blur(BlurStyle.normal, 6),
     );
     canvas.drawPath(
       path,

@@ -6,6 +6,7 @@ use App\AI\AiOrchestrator;
 use App\AI\Providers\AnthropicTextProvider;
 use App\AI\Providers\EspeakTtsProvider;
 use App\AI\Providers\HiggsfieldProvider;
+use App\AI\Providers\OpenAiTextProvider;
 use App\AI\Providers\PlaceholderImageProvider;
 use App\AI\Providers\WhisperSpeechProvider;
 use App\AI\ProviderRegistry;
@@ -17,6 +18,15 @@ class AiServiceProvider extends ServiceProvider
     {
         $this->app->singleton(ProviderRegistry::class);
         $this->app->singleton(AiOrchestrator::class);
+
+        $this->app->bind(OpenAiTextProvider::class, fn () => new OpenAiTextProvider(
+            apiKey: config('ai.providers.openai.api_key'),
+            model: config('ai.providers.openai.model'),
+            maxTokens: config('ai.providers.openai.max_tokens'),
+            inputCostPerMTok: config('ai.providers.openai.input_cost_per_mtok'),
+            outputCostPerMTok: config('ai.providers.openai.output_cost_per_mtok'),
+            baseUrl: config('ai.providers.openai.base_url', 'https://api.openai.com/v1'),
+        ));
 
         $this->app->bind(AnthropicTextProvider::class, fn () => new AnthropicTextProvider(
             apiKey: config('ai.providers.anthropic.api_key'),
