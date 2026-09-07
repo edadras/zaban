@@ -9,6 +9,11 @@
 
 @section('content')
 
+    <div class="flex flex-wrap gap-2">
+        <a class="btn-ghost" href="{{ route('panel.forum.index', $group) }}">تابلوی کلاس</a>
+        <a class="btn-ghost" href="{{ route('panel.homework.index', $group) }}">مشق‌ها</a>
+    </div>
+
     <div class="grid gap-6 lg:grid-cols-3">
 
         {{-- ------------------------------------------------------- timetable --}}

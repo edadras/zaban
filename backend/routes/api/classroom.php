@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\V1\Classroom\ClassGroupController;
 use App\Http\Controllers\Api\V1\Classroom\ClassRoomController;
 use App\Http\Controllers\Api\V1\Classroom\ClassSessionController;
 use App\Http\Controllers\Api\V1\Classroom\ForumController;
+use App\Http\Controllers\Api\V1\Classroom\HomeworkController;
 use App\Http\Controllers\Api\V1\Classroom\LiveWebhookController;
 use App\Http\Controllers\Api\V1\Classroom\MyClassesController;
 use App\Http\Controllers\Api\V1\Classroom\RealtimeController;
@@ -157,6 +158,32 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('classroom.')->group(fun
         ->name('forum.endorse');
     Route::post('threads/{thread}/pin', [ForumController::class, 'pin'])->name('forum.pin');
     Route::post('threads/{thread}/lock', [ForumController::class, 'lock'])->name('forum.lock');
+
+    // ---------------------------------------------------------- homework
+    Route::get('classes/{group}/homework', [HomeworkController::class, 'index'])->name('homework.index');
+    Route::post('classes/{group}/homework', [HomeworkController::class, 'store'])->name('homework.store');
+
+    Route::get('homework/{assignment}', [HomeworkController::class, 'show'])->name('homework.show');
+    Route::patch('homework/{assignment}', [HomeworkController::class, 'update'])->name('homework.update');
+    Route::delete('homework/{assignment}', [HomeworkController::class, 'destroy'])->name('homework.destroy');
+
+    Route::post('homework/{assignment}/items', [HomeworkController::class, 'addItem'])->name('homework.items.store');
+    Route::delete('homework/{assignment}/items/{item}', [HomeworkController::class, 'removeItem'])
+        ->name('homework.items.destroy');
+    Route::post('homework/{assignment}/publish', [HomeworkController::class, 'publish'])->name('homework.publish');
+
+    // The learner handing it in.
+    Route::post('homework/{assignment}/submit', [HomeworkController::class, 'submit'])->name('homework.submit');
+
+    // The coach reading and returning it.
+    Route::get('homework/{assignment}/submissions/{submission}', [HomeworkController::class, 'submission'])
+        ->name('homework.submission');
+    Route::post('homework/{assignment}/submissions/{submission}/mark', [HomeworkController::class, 'mark'])
+        ->name('homework.mark');
+    Route::post('homework/{assignment}/return-all', [HomeworkController::class, 'releaseAll'])
+        ->name('homework.return-all');
+
+    Route::get('my/homework', [HomeworkController::class, 'mine'])->name('my.homework');
 
     // ---------------------------------------------------------- the learner
     Route::get('my/classes', [MyClassesController::class, 'index'])->name('my.classes');

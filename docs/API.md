@@ -580,6 +580,64 @@ about who may listen is re-implemented. `GET /realtime` answers
 `{"driver":"null","enabled":false}` on an installation with no socket server,
 which is a legitimate answer rather than an error.
 
+### 5.10 The class board and homework — **Live**
+
+`routes/api/classroom.php`. Both are scoped to a class group, and every route
+asks the same first question the rest of the module asks: are you on this roll.
+
+**The board**
+
+| Method | Path |
+|---|---|
+| GET / POST | `/classes/{group}/threads` |
+| GET / PATCH / DELETE | `/threads/{thread}` |
+| POST | `/threads/{thread}/replies` |
+| DELETE | `/threads/{thread}/replies/{reply}` |
+| POST | `/threads/{thread}/replies/{reply}/accept`, `/helpful`, `/endorse`, `/hide` |
+| POST | `/threads/{thread}/hide`, `/restore`, `/pin`, `/lock` |
+
+Questions, answers, and images, video or recordings on either — half of what a
+learner is stuck on is a photograph of a page. Moderation **hides rather than
+deletes**: a post taken down disappears for the class and stays visible, with
+its reason, to the coach and the school. A coach may take a post down and may
+not rewrite it; a learner may edit their own for thirty minutes. Nobody accepts
+their own answer — that belongs to whoever asked, or to the coach.
+
+Replies carry `is_ai_answer` and `ai_endorsed`. The assistant answers a question
+nobody has answered, three minutes late, and what it writes is rendered as the
+assistant's own words until a coach endorses it. With no AI provider configured
+it never speaks.
+
+**Homework**
+
+| Method | Path |
+|---|---|
+| GET / POST | `/classes/{group}/homework` |
+| GET / PATCH / DELETE | `/homework/{assignment}` |
+| POST | `/homework/{assignment}/items`, `/publish` |
+| DELETE | `/homework/{assignment}/items/{item}` |
+| POST | `/homework/{assignment}/submit` |
+| GET | `/homework/{assignment}/submissions/{submission}` |
+| POST | `/homework/{assignment}/submissions/{submission}/mark`, `/return-all` |
+| GET | `/my/homework` |
+
+Six kinds — `writing`, `speaking`, `exercises`, `upload`, `practice`, `reading`
+— because homework in a language class is not one thing. Publishing writes a
+submission row for **every learner on the roll**, which is what lets a coach see
+who has not begun.
+
+`marked` and `returned` are different states, and the difference is the whole
+design: the coach marks, then decides to give it back, so a learner is never
+shown a number no person chose to show them. A learner's payload carries no
+`score` until it is returned, and no `correct_options` ever.
+
+The machine's first pass writes `ai_score` and `ai_feedback` *next to*, never
+over, the coach's columns. Written homework goes through the same writing
+analyser as the learner's own practice and spoken homework through the same
+speech analyser — a learner marked 60 on homework and 80 on identical practice
+has learnt only that the numbers are noise. Exercise sets are marked by
+arithmetic and can be set to `auto_release`.
+
 **The learner's view, and the bell**
 
 | Method | Path |

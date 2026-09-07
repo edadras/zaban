@@ -3,6 +3,8 @@
 use App\Http\Controllers\Panel\ClassGroupController;
 use App\Http\Controllers\Panel\ClassSessionController;
 use App\Http\Controllers\Panel\DashboardController;
+use App\Http\Controllers\Panel\ForumController;
+use App\Http\Controllers\Panel\HomeworkController;
 use App\Http\Controllers\Panel\LoginController;
 use App\Http\Controllers\Panel\NotificationController;
 use App\Http\Controllers\Panel\PlatformController;
@@ -70,6 +72,39 @@ Route::prefix('panel')->name('panel.')->group(function () {
             ->name('classes.rules.destroy');
         Route::post('classes/{group}/generate', [ClassGroupController::class, 'generate'])
             ->name('classes.generate');
+
+        // ------------------------------------------------------------- board
+        Route::get('classes/{group}/board', [ForumController::class, 'index'])->name('forum.index');
+        Route::post('classes/{group}/board', [ForumController::class, 'store'])->name('forum.store');
+        Route::get('board/{thread}', [ForumController::class, 'show'])->name('forum.show');
+        Route::post('board/{thread}/replies', [ForumController::class, 'reply'])->name('forum.reply');
+        Route::post('board/{thread}/replies/{reply}/accept', [ForumController::class, 'accept'])
+            ->name('forum.accept');
+        Route::post('board/{thread}/replies/{reply}/endorse', [ForumController::class, 'endorse'])
+            ->name('forum.endorse');
+        Route::post('board/{thread}/replies/{reply}/hide', [ForumController::class, 'hideReply'])
+            ->name('forum.reply.hide');
+        Route::post('board/{thread}/hide', [ForumController::class, 'hide'])->name('forum.hide');
+        Route::post('board/{thread}/restore', [ForumController::class, 'restore'])->name('forum.restore');
+        Route::post('board/{thread}/pin', [ForumController::class, 'pin'])->name('forum.pin');
+        Route::post('board/{thread}/lock', [ForumController::class, 'lock'])->name('forum.lock');
+
+        // ---------------------------------------------------------- homework
+        Route::get('classes/{group}/homework', [HomeworkController::class, 'index'])->name('homework.index');
+        Route::post('classes/{group}/homework', [HomeworkController::class, 'store'])->name('homework.store');
+        Route::get('homework/{assignment}', [HomeworkController::class, 'show'])->name('homework.show');
+        Route::post('homework/{assignment}/items', [HomeworkController::class, 'addItem'])
+            ->name('homework.items.store');
+        Route::delete('homework/{assignment}/items/{item}', [HomeworkController::class, 'removeItem'])
+            ->name('homework.items.destroy');
+        Route::post('homework/{assignment}/publish', [HomeworkController::class, 'publish'])
+            ->name('homework.publish');
+        Route::get('homework/{assignment}/submissions/{submission}', [HomeworkController::class, 'submission'])
+            ->name('homework.submission');
+        Route::post('homework/{assignment}/submissions/{submission}/mark', [HomeworkController::class, 'mark'])
+            ->name('homework.mark');
+        Route::post('homework/{assignment}/return-all', [HomeworkController::class, 'releaseAll'])
+            ->name('homework.return-all');
 
         // ---------------------------------------------------------- sessions
         Route::get('sessions', [ClassSessionController::class, 'index'])->name('sessions.index');
