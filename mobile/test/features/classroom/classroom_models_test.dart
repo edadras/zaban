@@ -206,6 +206,66 @@ void main() {
     });
   });
 
+  group('the recording', () {
+    test('a class being recorded reads as recording', () {
+      final ClassRecording recording = ClassRecording.fromJson(<String, dynamic>{
+        'status': 'recording',
+        'is_recording': true,
+        'is_ready': false,
+        'available': true,
+        'started_at': '2026-09-08T14:35:00+00:00',
+      });
+
+      expect(recording.isRecording, isTrue);
+      expect(recording.isReady, isFalse);
+      expect(recording.url, isNull);
+    });
+
+    test('a finished one carries a link and a length', () {
+      final ClassRecording recording = ClassRecording.fromJson(<String, dynamic>{
+        'status': 'ready',
+        'is_recording': false,
+        'is_ready': true,
+        'available': true,
+        'duration_ms': 5400000,
+        'url': 'https://api.example.test/media/9?signature=abc',
+        'expires_in': 3600,
+      });
+
+      expect(recording.isReady, isTrue);
+      expect(recording.duration, const Duration(minutes: 90));
+      expect(recording.url, contains('signature'));
+    });
+
+    test('a failed one says why', () {
+      final ClassRecording recording = ClassRecording.fromJson(<String, dynamic>{
+        'status': 'failed',
+        'available': true,
+        'error': 'no egress worker available',
+      });
+
+      expect(recording.isReady, isFalse);
+      expect(recording.error, contains('egress'));
+    });
+
+    test('history says what can be replayed', () {
+      final AttendedClass past = AttendedClass.fromJson(<String, dynamic>{
+        'id': 12,
+        'title': 'Tuesday B1',
+        'coach': 'Roya',
+        'starts_at': '2026-09-01T14:30:00+00:00',
+        'seconds_present': 0,
+        'has_recording': true,
+        'recording_duration_ms': 5400000,
+      });
+
+      // Nought seconds present and a recording: the learner missed it, which
+      // is exactly the case a recording exists for.
+      expect(past.secondsPresent, 0);
+      expect(past.hasRecording, isTrue);
+    });
+  });
+
   group('the bell', () {
     test('reads the class a notification points at', () {
       final AppNotification item = AppNotification.fromJson(<String, dynamic>{

@@ -67,4 +67,21 @@ class NullRoomProvider implements LiveRoomProvider
     {
         $this->calls[] = ['removeParticipant', compact('room', 'identity')];
     }
+
+    public function canRecord(): bool
+    {
+        return false;
+    }
+
+    public function startRecording(RecordingRequest $request): ?string
+    {
+        $this->calls[] = ['startRecording', ['room' => $request->room, 'output' => $request->output]];
+
+        return null;
+    }
+
+    public function stopRecording(string $egressId): void
+    {
+        $this->calls[] = ['stopRecording', compact('egressId')];
+    }
 }

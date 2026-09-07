@@ -14,6 +14,7 @@ use App\Models\Exercise;
 use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\ClassroomService;
 use App\Services\Classroom\PracticeLockService;
+use App\Services\Classroom\RecordingService;
 use App\Services\Classroom\SchoolService;
 use Illuminate\Http\Request;
 
@@ -31,6 +32,7 @@ class ClassRoomController extends ApiController
         private readonly ClassroomService $classroom,
         private readonly PracticeLockService $locks,
         private readonly SchoolService $schools,
+        private readonly RecordingService $recordings,
     ) {}
 
     /**
@@ -69,6 +71,7 @@ class ClassRoomController extends ApiController
             'materials' => ($isCoach ? $session->materials : $session->materials->whereNotNull('shared_at'))
                 ->values()
                 ->map(fn (ClassMaterial $m) => $this->presentMaterial($m)),
+            'recording' => $this->recordings->present($session),
             'shared_material_id' => $shared?->id,
             'open_question' => $this->openQuestionFor($session, $request->user()->id, $isCoach),
         ]);
@@ -380,6 +383,36 @@ class ClassRoomController extends ApiController
         }
 
         return [$texts, $texts === [] ? [] : $correct];
+    }
+
+    // ---------------------------------------------------------- recording
+
+    public function startRecording(Request $request, ClassSession $session)
+    {
+        $this->assertCoach($request, $session);
+
+        return $this->created($this->recordings->present($this->recordings->start($session)));
+    }
+
+    public function stopRecording(Request $request, ClassSession $session)
+    {
+        $this->assertCoach($request, $session);
+
+        return $this->ok($this->recordings->present($this->recordings->stop($session)));
+    }
+
+    /**
+     * Watch the class again.
+     *
+     * Open to everyone who was entitled to be in the room, including a learner
+     * who missed it - catching up is most of the point of recording one.
+     */
+    public function recording(Request $request, ClassSession $session)
+    {
+        return $this->ok(
+            $this->recordings->present($session)
+                + $this->recordings->playback($session, $request->user())
+        );
     }
 
     // ------------------------------------------------------- practice lock

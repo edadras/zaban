@@ -39,6 +39,7 @@ class PanelPagesTest extends PanelTestCase
             route('panel.sessions.show', $session),
             route('panel.sessions.show', $session).'?lesson=word',
             route('panel.sessions.attendance', $session),
+            route('panel.sessions.recording', $session),
             route('panel.sessions.room', $session),
             route('panel.notifications'),
         ];

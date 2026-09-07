@@ -532,6 +532,8 @@ it and there is not a second way to hand a file to a learner.
 | POST | `/class-sessions/{session}/room/questions` |
 | POST | `/class-sessions/{session}/room/questions/{question}/answer`, `/close` |
 | GET | `/class-sessions/{session}/room/questions/{question}` |
+| POST | `/class-sessions/{session}/room/record`, `/record/stop` |
+| GET | `/class-sessions/{session}/recording` |
 | GET | `/class-sessions/{session}/room/lock-preview` |
 | POST | `/class-sessions/{session}/room/lock`, `/unlock` |
 
@@ -553,6 +555,30 @@ Anything the coach passes explicitly still wins.
 adaptive engine draws only from the concepts this session taught, so the daily
 practice in the app *is* the afternoon's lesson. It carries its own expiry — a
 coach who forgets to lift it does not freeze somebody's curriculum.
+
+Recording needs `LIVE_RECORDING=true` and LiveKit's egress service; `GET /room`
+carries a `recording` block saying whether it is available, running or ready, so
+a console never shows a record button that would quietly do nothing.
+`GET /recording` returns a signed, short-lived playback URL and is open to
+everyone who was entitled to be in the room — the coach, a manager of the
+school, and anyone on the roll, **including a learner who missed the class**.
+The media server reports a finished file to `POST /v1/webhooks/live`, which is
+unauthenticated in the session sense and verifies LiveKit's signature on the
+body before reading a field.
+
+**Live updates**
+
+| Method | Path |
+|---|---|
+| GET | `/realtime` |
+| POST | `/realtime/auth` |
+
+Laravel's own `/broadcasting/auth` is behind the session guard, which is right
+for the web panel and useless to a bearer-token client. These are the same
+channel callbacks reached the way the app authenticates everything else; nothing
+about who may listen is re-implemented. `GET /realtime` answers
+`{"driver":"null","enabled":false}` on an installation with no socket server,
+which is a legitimate answer rather than an error.
 
 **The learner's view, and the bell**
 

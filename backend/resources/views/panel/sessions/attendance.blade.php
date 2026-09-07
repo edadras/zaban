@@ -8,7 +8,15 @@
     <section class="card">
         <div class="card-head">
             <h2 class="card-title">چه کسی و چقدر در اتاق بود</h2>
-            <a class="btn-ghost" href="{{ route('panel.sessions.show', $session) }}">بازگشت به جلسه</a>
+            <div class="flex items-center gap-2">
+                @include('panel.partials.recording-badge')
+                @if ($recording['is_ready'])
+                    <a class="btn-primary" href="{{ route('panel.sessions.recording', $session) }}">
+                        تماشای ضبط کلاس
+                    </a>
+                @endif
+                <a class="btn-ghost" href="{{ route('panel.sessions.show', $session) }}">بازگشت به جلسه</a>
+            </div>
         </div>
 
         @if ($session->participants->isEmpty())

@@ -28,6 +28,7 @@ enum AppRoute {
   /// the administrator's screens are the web panel, not this client.
   classes('/classes', 'classes'),
   classRoom('/classes/:sessionId', 'classRoom'),
+  classRecording('/classes/:sessionId/recording', 'classRecording'),
   notifications('/notifications', 'notifications'),
 
   exam('/exam', 'exam'),
@@ -57,6 +58,7 @@ enum AppRoute {
 
   String lessonPath(int lessonId) => '/lesson/$lessonId';
   String classRoomPath(int sessionId) => '/classes/$sessionId';
+  String classRecordingPath(int sessionId) => '/classes/$sessionId/recording';
   String bookPath(int bookId) => '/admin/curriculum/$bookId';
   String conversationPath(int sessionId) => '/conversation/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';

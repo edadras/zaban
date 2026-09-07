@@ -112,6 +112,7 @@ abstract class RoomState with _$RoomState {
     @Default(<RoomMaterial>[]) List<RoomMaterial> materials,
     int? sharedMaterialId,
     RoomQuestion? openQuestion,
+    ClassRecording? recording,
   }) = _RoomState;
 
   factory RoomState.fromJson(Map<String, dynamic> json) =>
@@ -226,6 +227,35 @@ abstract class RoomQuestion with _$RoomQuestion {
   bool get isPoll => (options ?? const <String>[]).isNotEmpty;
 }
 
+/// Whether this class is being recorded, and whether it can be watched back.
+@freezed
+abstract class ClassRecording with _$ClassRecording {
+  const ClassRecording._();
+
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory ClassRecording({
+    @Default('none') String status,
+    @Default(false) bool isRecording,
+    @Default(false) bool isReady,
+    @Default(false) bool available,
+    DateTime? startedAt,
+    DateTime? endedAt,
+    int? durationMs,
+    String? error,
+
+    /// Present only on `GET /class-sessions/{id}/recording`, and short-lived.
+    String? url,
+    int? expiresIn,
+    String? mime,
+  }) = _ClassRecording;
+
+  factory ClassRecording.fromJson(Map<String, dynamic> json) =>
+      _$ClassRecordingFromJson(json);
+
+  Duration? get duration =>
+      durationMs == null ? null : Duration(milliseconds: durationMs!);
+}
+
 /// What comes back from `POST /room/join`: the seat, and the key to the room.
 @freezed
 abstract class RoomJoin with _$RoomJoin {
@@ -275,6 +305,11 @@ abstract class AttendedClass with _$AttendedClass {
     String? coach,
     DateTime? startsAt,
     @Default(0) int secondsPresent,
+
+    /// A learner who missed the class is exactly who a recording is for, so
+    /// this is on the history rather than on the attendance.
+    @Default(false) bool hasRecording,
+    int? recordingDurationMs,
   }) = _AttendedClass;
 
   factory AttendedClass.fromJson(Map<String, dynamic> json) =>

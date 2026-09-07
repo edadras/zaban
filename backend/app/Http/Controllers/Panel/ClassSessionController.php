@@ -10,6 +10,7 @@ use App\Services\Classroom\ClassNotifier;
 use App\Services\Classroom\ClassroomService;
 use App\Services\Classroom\ClassScheduleService;
 use App\Services\Classroom\MaterialService;
+use App\Services\Classroom\RecordingService;
 use App\Support\PanelAccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -28,6 +29,7 @@ class ClassSessionController extends PanelController
         private readonly ClassroomService $classroom,
         private readonly MaterialService $materials,
         private readonly ClassNotifier $notifier,
+        private readonly RecordingService $recordings,
     ) {
         parent::__construct($access);
     }
@@ -86,6 +88,7 @@ class ClassSessionController extends PanelController
 
         return view('panel.sessions.show', [
             'session' => $session,
+            'recording' => $this->recordings->present($session),
             'kinds' => ClassMaterial::KINDS,
             'lessonSearch' => $search,
             'lessonResults' => $search === '' ? collect() : Lesson::with('unit.module')
@@ -206,6 +209,31 @@ class ClassSessionController extends PanelController
 
         $session->load(['group.school', 'participants.user']);
 
-        return view('panel.sessions.attendance', ['session' => $session]);
+        return view('panel.sessions.attendance', [
+            'session' => $session,
+            'recording' => $this->recordings->present($session),
+        ]);
+    }
+
+    /**
+     * Watching a class back.
+     *
+     * Its own page rather than a player bolted onto the attendance table: a
+     * coach reviewing their own teaching and an administrator looking into a
+     * complaint both want the video and nothing else.
+     */
+    public function recording(ClassSession $session)
+    {
+        $this->allow($this->access->canRunSession($this->me(), $session));
+
+        $session->load(['group.school', 'coach', 'recording']);
+
+        return view('panel.sessions.recording', [
+            'session' => $session,
+            'recording' => $this->recordings->present($session),
+            'playback' => $session->hasRecording()
+                ? $this->recordings->playback($session, $this->me())
+                : null,
+        ]);
     }
 }

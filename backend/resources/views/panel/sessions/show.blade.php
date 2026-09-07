@@ -28,6 +28,12 @@
             </form>
         @endif
 
+        @include('panel.partials.recording-badge')
+
+        @if ($recording['is_ready'])
+            <a class="btn-ghost" href="{{ route('panel.sessions.recording', $session) }}">تماشای ضبط</a>
+        @endif
+
         <a class="btn-ghost" href="{{ route('panel.sessions.attendance', $session) }}">حضور و غیاب</a>
         <a class="btn-ghost" href="{{ route('panel.classes.show', $session->group) }}">کلاس</a>
 

@@ -22,6 +22,56 @@ return [
         'token_ttl' => (int) env('LIVEKIT_TOKEN_TTL', 21600),
     ],
 
+    /*
+     * Recording a class.
+     *
+     * LiveKit's egress service composites the room into one video file. Two
+     * ways out of it: `file`, which writes into a directory this application
+     * can also read - the usual arrangement is one Docker volume mounted into
+     * both containers - or `s3`, which hands it to object storage. `file` is
+     * the default because it needs nothing bought.
+     *
+     * Off by default: recording a classroom is a decision about the people in
+     * it, not a default anyone should acquire by upgrading.
+     */
+    'recording' => [
+        'enabled' => (bool) env('LIVE_RECORDING', false),
+
+        // Whether a class starts recording the moment the coach opens it, or
+        // waits for them to press record.
+        'auto_start' => (bool) env('LIVE_RECORDING_AUTOSTART', false),
+
+        // 'file' or 's3'.
+        'output' => env('LIVE_RECORDING_OUTPUT', 'file'),
+
+        // 'grid', 'speaker' or 'single-speaker'. Speaker follows whoever is
+        // talking, which is what a lesson mostly wants.
+        'layout' => env('LIVE_RECORDING_LAYOUT', 'speaker'),
+
+        // Where LiveKit writes, as LiveKit sees it.
+        'directory' => env('LIVE_RECORDING_DIR', '/recordings'),
+
+        // The same place, as this application sees it. Only differs when the
+        // two run in separate containers.
+        'local_directory' => env('LIVE_RECORDING_LOCAL_DIR', storage_path('app/recordings')),
+
+        's3' => [
+            'bucket' => env('LIVE_RECORDING_S3_BUCKET', ''),
+            'region' => env('LIVE_RECORDING_S3_REGION', ''),
+            'endpoint' => env('LIVE_RECORDING_S3_ENDPOINT', ''),
+            'access_key' => env('LIVE_RECORDING_S3_KEY', ''),
+            'secret' => env('LIVE_RECORDING_S3_SECRET', ''),
+        ],
+    ],
+
+    /*
+     * Where the browser and the app connect for live updates. Read from the
+     * broadcasting config so there is one place a Reverb host is set.
+     */
+    'realtime' => [
+        'driver' => env('BROADCAST_CONNECTION', 'null'),
+    ],
+
     'room' => [
         // How long an empty room survives. A coach whose laptop reboots comes
         // back to the same room rather than to a swept-away one.

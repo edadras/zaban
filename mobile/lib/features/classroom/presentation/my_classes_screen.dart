@@ -154,7 +154,12 @@ class _PastClasses extends ConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: Spacing.md),
                     child: GlassCard(
-                      leading: const Icon(Icons.history_rounded),
+                      leading: Icon(
+                        past.hasRecording
+                            ? Icons.play_circle_outline_rounded
+                            : Icons.history_rounded,
+                        color: past.hasRecording ? context.colors.accent : null,
+                      ),
                       title: past.title,
                       subtitle: <String>[
                         if (past.startsAt != null)
@@ -162,6 +167,23 @@ class _PastClasses extends ConsumerWidget {
                         '${past.secondsPresent ~/ 60} ${context.t('min')}',
                         if (past.coach != null) past.coach!,
                       ].join(' · '),
+                      // A learner who missed the class is exactly who the
+                      // recording is for, so the card is tappable either way.
+                      onTap: past.hasRecording
+                          ? () => context.push(
+                                AppRoute.classRecording
+                                    .classRecordingPath(past.id),
+                              )
+                          : null,
+                      trailing: past.hasRecording
+                          ? Text(
+                              context.t('Watch again'),
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: context.colors.accent,
+                              ),
+                            )
+                          : null,
                     ),
                   ),
               ],

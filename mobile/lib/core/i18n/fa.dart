@@ -780,5 +780,13 @@ const Map<String, String> faStrings = <String, String>{
       'مورد از کلاس شما',
   'Classes you attended':
       'کلاس‌هایی که شرکت کردید',
+  'Class recording':
+      'ضبط کلاس',
+  'Watch again':
+      'تماشای دوباره',
+  'Not ready yet':
+      'هنوز آماده نیست',
+  'When your coach finishes recording, the class appears here.':
+      'وقتی مربی ضبط را تمام کند، کلاس اینجا دیده می‌شود.',
 };
 

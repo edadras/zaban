@@ -4,6 +4,7 @@ namespace Tests\Feature\Panel;
 
 use App\Models\ClassMaterial;
 use App\Models\ClassSession;
+use App\Models\MediaAsset;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -171,6 +172,59 @@ class PanelSessionTest extends PanelTestCase
 
         $this->assertDatabaseHas('notifications', ['notifiable_id' => $this->student->id]);
         $this->assertDatabaseMissing('notifications', ['notifiable_id' => $this->otherStudent->id]);
+    }
+
+    /**
+     * The replay page.
+     *
+     * A class with no recording is a page that says so rather than a broken
+     * player, and one with a recording hands out a link that expires.
+     */
+    public function test_the_replay_page_says_when_there_is_nothing_to_replay(): void
+    {
+        $session = $this->makeSession();
+
+        $this->actingAs($this->coach)
+            ->get(route('panel.sessions.recording', $session))
+            ->assertOk()
+            ->assertSee('ضبط نشده');
+    }
+
+    public function test_the_replay_page_plays_a_finished_recording(): void
+    {
+        $session = $this->makeSession();
+
+        $asset = MediaAsset::create([
+            'disk' => 'recordings',
+            'path' => 'class-1.mp4',
+            'type' => 'video',
+            'mime' => 'video/mp4',
+            'bytes' => 18,
+            'origin' => 'class_recording',
+            'copyright_status' => 'owned',
+        ]);
+
+        $session->forceFill([
+            'status' => ClassSession::ENDED,
+            'recording_media_asset_id' => $asset->id,
+            'recording_status' => ClassSession::RECORDING_READY,
+            'recording_duration_ms' => 5_400_000,
+        ])->save();
+
+        $this->actingAs($this->owner)
+            ->get(route('panel.sessions.recording', $session))
+            ->assertOk()
+            ->assertSee('<video', false)
+            ->assertSee('signature');
+    }
+
+    public function test_somebody_elses_recording_is_not_yours_to_watch(): void
+    {
+        $session = $this->makeSession();
+
+        $this->actingAs($this->outsider)
+            ->get(route('panel.sessions.recording', $session))
+            ->assertForbidden();
     }
 
     public function test_the_shelf_can_be_reordered(): void

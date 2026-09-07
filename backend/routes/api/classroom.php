@@ -3,7 +3,9 @@
 use App\Http\Controllers\Api\V1\Classroom\ClassGroupController;
 use App\Http\Controllers\Api\V1\Classroom\ClassRoomController;
 use App\Http\Controllers\Api\V1\Classroom\ClassSessionController;
+use App\Http\Controllers\Api\V1\Classroom\LiveWebhookController;
 use App\Http\Controllers\Api\V1\Classroom\MyClassesController;
+use App\Http\Controllers\Api\V1\Classroom\RealtimeController;
 use App\Http\Controllers\Api\V1\Classroom\SchoolController;
 use App\Http\Controllers\Api\V1\NotificationController;
 use Illuminate\Support\Facades\Route;
@@ -107,6 +109,16 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('classroom.')->group(fun
     Route::get('class-sessions/{session}/room/questions/{question}',
         [ClassRoomController::class, 'questionResults'])->name('room.question.show');
 
+    // Recording, and watching it back. The playback route is deliberately not
+    // under the coach's half: a learner who missed the class is exactly who it
+    // is for, and `RecordingService` decides who that includes.
+    Route::post('class-sessions/{session}/room/record', [ClassRoomController::class, 'startRecording'])
+        ->name('room.record.start');
+    Route::post('class-sessions/{session}/room/record/stop', [ClassRoomController::class, 'stopRecording'])
+        ->name('room.record.stop');
+    Route::get('class-sessions/{session}/recording', [ClassRoomController::class, 'recording'])
+        ->name('room.recording');
+
     // The class reaching into the learner's own day.
     Route::get('class-sessions/{session}/room/lock-preview', [ClassRoomController::class, 'lockPreview'])
         ->name('room.lock.preview');
@@ -119,8 +131,30 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('classroom.')->group(fun
     Route::get('my/classes', [MyClassesController::class, 'index'])->name('my.classes');
     Route::get('my/classes/history', [MyClassesController::class, 'history'])->name('my.history');
 
+    /*
+     * Live updates.
+     *
+     * Laravel's own /broadcasting/auth is behind the session guard, which is
+     * right for the panel and useless to a bearer-token client. This is the
+     * same authorisation - the callbacks in routes/channels.php - reached the
+     * way the app authenticates everything else.
+     */
+    Route::get('realtime', [RealtimeController::class, 'show'])->name('realtime.show');
+    Route::post('realtime/auth', [RealtimeController::class, 'authorise'])->name('realtime.auth');
+
     // ------------------------------------------------------------- the bell
     Route::get('notifications', [NotificationController::class, 'index'])->name('notifications.index');
     Route::post('notifications/read-all', [NotificationController::class, 'readAll'])->name('notifications.read-all');
     Route::post('notifications/{id}/read', [NotificationController::class, 'read'])->name('notifications.read');
 });
+
+/*
+ * The media server reporting a finished recording.
+ *
+ * Outside the authenticated group on purpose: it is a server calling a server.
+ * It authenticates by the signature LiveKit puts on the body, which the
+ * controller checks before reading a single field.
+ */
+Route::post('v1/webhooks/live', LiveWebhookController::class)
+    ->middleware('throttle:60,1')
+    ->name('classroom.webhooks.live');

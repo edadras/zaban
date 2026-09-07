@@ -12,6 +12,7 @@ use App\Services\Live\RoomIdentity;
 use App\Services\Live\RoomPermissions;
 use App\Services\Live\RoomToken;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 /**
  * The live class: opening the room, letting people in, and what the coach may
@@ -32,6 +33,7 @@ class ClassroomService
 {
     public function __construct(
         private readonly LiveRoomProvider $rooms,
+        private readonly RecordingService $recordings,
     ) {}
 
     /**
@@ -64,6 +66,24 @@ class ClassroomService
             );
         }
 
+        /*
+         * A school that has asked for every class to be recorded gets it
+         * without the coach remembering. A failure here is logged and not
+         * thrown: the class is already open with people arriving, and losing
+         * the recording is better than losing the lesson. The console shows
+         * the failed state, so it is not a silent loss either.
+         */
+        if ($this->recordings->startsAutomatically()) {
+            try {
+                $this->recordings->start($session);
+            } catch (ClassroomException $e) {
+                Log::warning('a class opened but could not start recording', [
+                    'class_session_id' => $session->id,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+        }
+
         event(new ClassroomEvent($session->id, ClassroomEvent::SESSION_STARTED, [
             'room_available' => $this->rooms->isConfigured(),
         ]));
@@ -73,6 +93,12 @@ class ClassroomService
 
     public function end(ClassSession $session): ClassSession
     {
+        // Before the room goes: an egress against a deleted room produces a
+        // truncated file and an error nobody can act on.
+        if ($session->isRecording()) {
+            $this->recordings->stop($session);
+        }
+
         $session->forceFill([
             'status' => ClassSession::ENDED,
             'ended_at_actual' => now(),

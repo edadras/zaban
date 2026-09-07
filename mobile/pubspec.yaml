@@ -53,6 +53,12 @@ dependencies:
   permission_handler: ^11.3.1
   path_provider: ^2.1.5
 
+  # Live updates. A plain socket rather than a native Pusher plugin: Reverb
+  # speaks the Pusher wire protocol, which is small enough to talk directly,
+  # and this keeps web, Android and iOS on one code path with no platform
+  # channel to configure.
+  web_socket_channel: ^3.0.3
+
   # Misc
   collection: ^1.19.0
   intl: ^0.20.2

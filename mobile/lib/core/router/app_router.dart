@@ -19,6 +19,7 @@ import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/auth/presentation/login_screen.dart';
 import 'package:zaban/features/auth/presentation/register_screen.dart';
 import 'package:zaban/features/auth/presentation/splash_screen.dart';
+import 'package:zaban/features/classroom/presentation/class_recording_screen.dart';
 import 'package:zaban/features/classroom/presentation/class_room_screen.dart';
 import 'package:zaban/features/classroom/presentation/my_classes_screen.dart';
 import 'package:zaban/features/classroom/presentation/notifications_screen.dart';
@@ -210,6 +211,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoute.classRoom.path,
         name: AppRoute.classRoom.name,
         builder: (BuildContext _, GoRouterState state) => ClassRoomScreen(
+          sessionId: int.parse(state.pathParameters['sessionId']!),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.classRecording.path,
+        name: AppRoute.classRecording.name,
+        builder: (BuildContext _, GoRouterState state) => ClassRecordingScreen(
           sessionId: int.parse(state.pathParameters['sessionId']!),
         ),
       ),

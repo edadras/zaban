@@ -90,6 +90,8 @@ Route::prefix('panel')->name('panel.')->group(function () {
         Route::post('sessions/{session}/end', [ClassSessionController::class, 'end'])->name('sessions.end');
         Route::get('sessions/{session}/attendance', [ClassSessionController::class, 'attendance'])
             ->name('sessions.attendance');
+        Route::get('sessions/{session}/recording', [ClassSessionController::class, 'recording'])
+            ->name('sessions.recording');
 
         // -------------------------------------------------------- the studio
         Route::get('sessions/{session}/room', [RoomController::class, 'show'])->name('sessions.room');

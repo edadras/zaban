@@ -22,6 +22,7 @@
     <button id="toggle-mic" class="btn-ghost" data-on="true">🎤 میکروفون</button>
     <button id="toggle-cam" class="btn-ghost" data-on="true">🎥 دوربین</button>
     <button class="btn-ghost" data-mute-all>ساکت کردن همه</button>
+    <button id="record" class="btn-ghost" hidden></button>
 
     <form method="POST" action="{{ route('panel.sessions.end', $session) }}" data-confirm="کلاس بسته شود؟">
         @csrf
@@ -51,6 +52,7 @@
         <p id="room-status" class="rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-600">
             در حال باز کردن اتاق…
         </p>
+        <p id="record-status" class="text-xs text-ink-400"></p>
     </div>
 
     <aside class="space-y-4">

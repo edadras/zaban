@@ -85,8 +85,13 @@ class MyClassesController extends ApiController
         $user = $request->user();
 
         $sessions = ClassSession::with(['group', 'coach'])
-            ->whereHas('participants', fn ($q) => $q->where('user_id', $user->id))
             ->where('status', ClassSession::ENDED)
+            ->where(function ($q) use ($user) {
+                // Somebody who was in the room, or who was on the roll and
+                // missed it - the second is the case a recording exists for.
+                $q->whereHas('participants', fn ($p) => $p->where('user_id', $user->id))
+                    ->orWhereHas('group.students', fn ($g) => $g->whereKey($user->id));
+            })
             ->orderByDesc('starts_at')
             ->limit(50)
             ->get();
@@ -97,6 +102,10 @@ class MyClassesController extends ApiController
             'coach' => $s->coach?->name,
             'starts_at' => $s->starts_at?->toIso8601String(),
             'seconds_present' => $s->participants->firstWhere('user_id', $user->id)?->seconds_present ?? 0,
+            // A learner who missed the class is exactly who a recording is
+            // for, so this is on the history rather than on the attendance.
+            'has_recording' => $s->hasRecording(),
+            'recording_duration_ms' => $s->recording_duration_ms,
         ]));
     }
 }

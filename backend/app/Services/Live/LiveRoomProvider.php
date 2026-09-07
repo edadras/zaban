@@ -51,6 +51,25 @@ interface LiveRoomProvider
     public function removeParticipant(string $room, string $identity): void;
 
     /**
+     * Whether this provider can record a room at all.
+     *
+     * Separate from `isConfigured` because recording is a second service with
+     * its own deployment: a LiveKit that is running happily may have no egress
+     * container behind it, and the coach should be told that rather than shown
+     * a record button that quietly does nothing.
+     */
+    public function canRecord(): bool;
+
+    /**
+     * Begin recording. Returns the provider's id for the job, or null when it
+     * could not be started - the caller reports it, and the class carries on.
+     */
+    public function startRecording(RecordingRequest $request): ?string;
+
+    /** Stop a recording. Safe to call on one that has already stopped. */
+    public function stopRecording(string $egressId): void;
+
+    /**
      * Whether the provider is configured well enough to be used.
      *
      * Checked before a class is started so the coach is told the room is not

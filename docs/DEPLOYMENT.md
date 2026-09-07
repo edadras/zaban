@@ -625,11 +625,53 @@ Native builds need the camera: `CAMERA`, `MODIFY_AUDIO_SETTINGS`,
 `NSCameraUsageDescription` in the iOS plist. flutter_webrtc raises the iOS
 floor to 13.0.
 
+### Recording a class
+
+Off unless `LIVE_RECORDING=true`, and needs LiveKit's **egress** service running
+alongside LiveKit itself. The coach presses record in the console, or
+`LIVE_RECORDING_AUTOSTART=true` starts it with the class; ending the class stops
+the recording before the room is torn down, because an egress against a deleted
+room produces a truncated file.
+
+Two ways the file comes back.
+
+* **`LIVE_RECORDING_OUTPUT=file`** (the default, and needs nothing bought).
+  LiveKit writes to `LIVE_RECORDING_DIR` as it sees it; this application reads
+  `LIVE_RECORDING_LOCAL_DIR`. The usual arrangement is one Docker volume
+  mounted into both containers at possibly different paths.
+* **`LIVE_RECORDING_OUTPUT=s3`.** Point `FILESYSTEM_DISK` at the same bucket, or
+  the finished file cannot be served back.
+
+LiveKit then calls `POST /api/v1/webhooks/live`. Configure that URL in
+LiveKit's `webhook.urls` with the same API key. **The endpoint verifies the
+signature LiveKit puts on the body before reading a single field** — without
+that it would be a way for anyone who learns an egress id to mark a class
+recorded and point it at a file of their choosing. It is idempotent: LiveKit
+retries a delivery it did not get a 2xx for.
+
+The finished recording becomes an ordinary `media_asset`, so it is served by the
+same signed, short-lived streaming route as everything else the app plays.
+
+**Who may watch it back:** the coach who taught it, a manager of the school that
+ran it, and anyone on the class roll — including a learner who missed it, which
+is most of the point of recording one. The panel plays it at
+`/panel/sessions/{id}/recording`; the app at `/classes/{id}/recording`, reached
+from the class history.
+
 ### Websockets
 
-The console listens on the private channel `class-session.{id}` through Reverb,
-using the same `REVERB_*` settings as the app. Without them the page falls back
-to reloading its own state after each action rather than being told.
+Both clients listen on the private channel `class-session.{id}` through Reverb,
+so the roster changes when the coach mutes somebody rather than up to three
+seconds later. The web panel authorises through Laravel's own
+`/broadcasting/auth` (session); the app through `POST /api/v1/realtime/auth`
+(bearer token), which runs the same callbacks in `routes/channels.php` — the
+second route exists because widening the first one would have meant loosening
+the CSRF rules the panel depends on.
+
+`GET /api/v1/realtime` tells a client where to connect. Without `REVERB_*`
+configured it answers `{"driver":"null","enabled":false}` and both clients fall
+back to asking the API periodically, which is a slower classroom and not a
+broken one.
 
 ## 11. What is still missing, collected
 

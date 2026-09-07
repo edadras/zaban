@@ -96,6 +96,13 @@ class ClassroomRepository {
         decode: Decode.none,
       );
 
+  /// Watch a class again. Refused unless this person was entitled to be in
+  /// the room — the server decides, and being on the roll is enough.
+  Future<ClassRecording> recording(int sessionId) => _client.get(
+        ApiEndpoints.classRecording(sessionId),
+        decode: Decode.object(ClassRecording.fromJson),
+      );
+
   /// Resolve a material's asset to something playable. The link is signed and
   /// short-lived, so it is fetched when the material goes on screen rather
   /// than cached with the room.

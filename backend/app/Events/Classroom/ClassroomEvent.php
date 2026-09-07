@@ -39,6 +39,7 @@ class ClassroomEvent implements ShouldBroadcast
     public const ANSWER_RECEIVED = 'answer.received';
     public const PRACTICE_LOCKED = 'practice.locked';
     public const PRACTICE_RELEASED = 'practice.released';
+    public const RECORDING_CHANGED = 'recording.changed';
 
     public function __construct(
         public readonly int $classSessionId,

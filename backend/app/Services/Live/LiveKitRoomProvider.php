@@ -140,6 +140,130 @@ class LiveKitRoomProvider implements LiveRoomProvider
         $this->admin('RemoveParticipant', ['room' => $room, 'identity' => $identity]);
     }
 
+    // --------------------------------------------------------------- egress
+
+    /**
+     * Egress is a second service behind the same API key.
+     *
+     * There is no cheap way to ask whether it is running without starting a
+     * job, so this reports what the deployment claims rather than probing: a
+     * recording that fails to start is reported to the coach when they press
+     * record, which is the moment they can do something about it.
+     */
+    public function canRecord(): bool
+    {
+        return $this->isConfigured() && $this->httpUrl !== '';
+    }
+
+    public function startRecording(RecordingRequest $request): ?string
+    {
+        $output = $request->output === 's3'
+            ? ['file' => [
+                'filepath' => $request->filepath,
+                's3' => array_filter([
+                    'access_key' => $request->s3['access_key'] ?? '',
+                    'secret' => $request->s3['secret'] ?? '',
+                    'bucket' => $request->s3['bucket'] ?? '',
+                    'region' => $request->s3['region'] ?? '',
+                    'endpoint' => $request->s3['endpoint'] ?? '',
+                ]),
+            ]]
+            : ['file' => ['filepath' => $request->filepath]];
+
+        $response = $this->egress('StartRoomCompositeEgress', [
+            'room_name' => $request->room,
+            'layout' => $request->layout,
+            'audio_only' => $request->audioOnly,
+            // Old field and new both accepted by the server; sending the
+            // repeated form is what current LiveKit expects.
+            'file_outputs' => [$output['file']],
+        ]);
+
+        $egressId = $response['egressId'] ?? $response['egress_id'] ?? null;
+
+        return is_string($egressId) && $egressId !== '' ? $egressId : null;
+    }
+
+    public function stopRecording(string $egressId): void
+    {
+        $this->egress('StopEgress', ['egress_id' => $egressId]);
+    }
+
+    /**
+     * One call against the egress service.
+     *
+     * Unlike the room calls this one does not swallow a transport failure
+     * silently: the caller turns a null into "recording could not be started"
+     * and tells the coach, because a class that believes it is being recorded
+     * and is not is worse than one that knows it is not.
+     */
+    private function egress(string $method, array $payload): ?array
+    {
+        if (! $this->canRecord()) {
+            return null;
+        }
+
+        try {
+            $response = $this->client(['roomRecord' => true])
+                ->post("/twirp/livekit.Egress/{$method}", $payload);
+
+            if ($response->failed()) {
+                Log::warning('livekit egress call failed', [
+                    'method' => $method,
+                    'status' => $response->status(),
+                    'body' => mb_substr($response->body(), 0, 500),
+                ]);
+
+                return null;
+            }
+
+            return $response->json();
+        } catch (\Throwable $e) {
+            Log::warning('livekit egress unreachable', ['method' => $method, 'error' => $e->getMessage()]);
+
+            return null;
+        }
+    }
+
+    /**
+     * Check that a webhook really came from our own media server.
+     *
+     * LiveKit signs the body: the bearer JWT carries a `sha256` claim holding
+     * the digest of the exact bytes posted. Without this the endpoint is a way
+     * for anyone who learns a session's egress id to mark a class recorded.
+     */
+    public function verifyWebhook(string $body, string $authorization): bool
+    {
+        $parts = explode('.', trim(str_ireplace('Bearer ', '', $authorization)));
+
+        if (count($parts) !== 3) {
+            return false;
+        }
+
+        [$header, $claims, $signature] = $parts;
+
+        $expected = rtrim(strtr(base64_encode(
+            hash_hmac('sha256', "{$header}.{$claims}", $this->apiSecret, true)
+        ), '+/', '-_'), '=');
+
+        if (! hash_equals($expected, $signature)) {
+            return false;
+        }
+
+        $payload = json_decode(base64_decode(strtr($claims, '-_', '+/')) ?: '[]', true);
+
+        if (! is_array($payload) || ($payload['iss'] ?? null) !== $this->apiKey) {
+            return false;
+        }
+        if (isset($payload['exp']) && (int) $payload['exp'] < time() - 60) {
+            return false;
+        }
+
+        $digest = base64_encode(hash('sha256', $body, true));
+
+        return isset($payload['sha256']) && hash_equals($payload['sha256'], $digest);
+    }
+
     /**
      * One call against the room service.
      *
@@ -176,7 +300,7 @@ class LiveKitRoomProvider implements LiveRoomProvider
         }
     }
 
-    private function client(): PendingRequest
+    private function client(array $extraGrants = []): PendingRequest
     {
         // A room-admin token with no room named: the admin API authorises per
         // call, and scoping this to one room would need a token per request.
@@ -185,7 +309,7 @@ class LiveKitRoomProvider implements LiveRoomProvider
             'sub' => 'server',
             'nbf' => time() - 10,
             'exp' => time() + 60,
-            'video' => ['roomCreate' => true, 'roomAdmin' => true, 'roomList' => true],
+            'video' => ['roomCreate' => true, 'roomAdmin' => true, 'roomList' => true] + $extraGrants,
         ]);
 
         return Http::baseUrl(rtrim($this->httpUrl, '/'))

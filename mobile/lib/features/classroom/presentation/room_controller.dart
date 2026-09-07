@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
+import 'package:zaban/core/realtime/realtime_client.dart';
+import 'package:zaban/core/realtime/realtime_models.dart';
 import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/classroom/data/classroom_repository.dart';
 import 'package:zaban/features/classroom/data/models/classroom_models.dart';
@@ -14,11 +16,11 @@ import 'package:zaban/features/classroom/data/models/classroom_models.dart';
 /// Keeping them apart is what makes the room survive a bad network: a learner
 /// whose video drops still sees the material and still answers the question.
 ///
-/// The room's state is polled rather than pushed. The client has no websocket
-/// of its own, and the one thing where a delay would actually matter — being
-/// muted — is enforced by the media server the moment the coach decides it, so
-/// what arrives on the next poll is the label catching up with the microphone
-/// rather than the microphone catching up with the label.
+/// The room's state arrives on a websocket: the coach mutes somebody and the
+/// roster changes at once rather than up to three seconds later. The poll is
+/// still there, slowed to half a minute, because a socket that has quietly died
+/// looks exactly like a class where nothing is happening — and because an
+/// installation without a socket server has to keep working.
 class LiveRoom {
   const LiveRoom({
     required this.state,
@@ -94,6 +96,9 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   bool _leaving = false;
   bool _reconnecting = false;
 
+  StreamSubscription<RealtimeEvent>? _live;
+  String? _channel;
+
   @override
   Future<LiveRoom> build(int sessionId) async {
     _sessionId = sessionId;
@@ -117,6 +122,7 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
       room = await _connectMedia(room, join.room);
     }
 
+    await _listen(state);
     _startPolling();
 
     return room;
@@ -218,9 +224,42 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
 
   // ------------------------------------------------------------ the state
 
+  /*
+   * Live updates, with a heartbeat behind them.
+   *
+   * The channel name comes from the server rather than being built here, so
+   * there is one place that decides what a class's channel is called.
+   */
+  Future<void> _listen(RoomState room) async {
+    final channel = room.channel.isEmpty ? null : 'private-${room.channel}';
+    if (channel == null) return;
+
+    _channel = channel;
+
+    final realtime = ref.read(realtimeClientProvider);
+
+    _live = realtime.events
+        .where((RealtimeEvent event) => event.channel == channel)
+        .listen(_onLiveEvent);
+
+    await realtime.subscribe(channel);
+  }
+
+  void _onLiveEvent(RealtimeEvent event) {
+    if (event.type == 'session.ended') _poll?.cancel();
+
+    // Every one of these means "the room changed, here is how". Asking the
+    // server what it looks like now beats patching a copy of it here, and at
+    // socket speed one round trip is not worth avoiding.
+    refresh();
+  }
+
+  /// Slow, because the socket does the work. This is what notices a socket
+  /// that died quietly, and what carries an installation with no socket
+  /// server at all.
   void _startPolling() {
     _poll?.cancel();
-    _poll = Timer.periodic(const Duration(seconds: 3), (_) => refresh());
+    _poll = Timer.periodic(const Duration(seconds: 30), (_) => refresh());
   }
 
   Future<void> refresh() async {
@@ -326,6 +365,12 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   void _teardown() {
     _leaving = true;
     _poll?.cancel();
+
+    _live?.cancel();
+    _live = null;
+
+    final channel = _channel;
+    if (channel != null) ref.read(realtimeClientProvider).unsubscribe(channel);
 
     _mediaEvents?.dispose();
     _mediaEvents = null;

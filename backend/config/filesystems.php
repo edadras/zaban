@@ -30,6 +30,18 @@ return [
 
     'disks' => [
 
+        /*
+         * Class recordings, written by LiveKit's egress service rather than by
+         * this application. Its own disk because the directory is shared with
+         * another container and is not part of `local`.
+         */
+        'recordings' => [
+            'driver' => 'local',
+            'root' => env('LIVE_RECORDING_LOCAL_DIR', storage_path('app/recordings')),
+            'serve' => false,
+            'throw' => false,
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app/private'),

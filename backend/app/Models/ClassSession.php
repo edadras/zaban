@@ -17,10 +17,27 @@ class ClassSession extends Model
     public const ENDED = 'ended';
     public const CANCELLED = 'cancelled';
 
+    // The life of a recording, from the coach pressing record to a file that
+    // can be played. `processing` is the gap the media server needs after the
+    // class ends to finish writing the file.
+    public const RECORDING_OFF = 'none';
+
+    public const RECORDING_STARTING = 'starting';
+
+    public const RECORDING_ON = 'recording';
+
+    public const RECORDING_PROCESSING = 'processing';
+
+    public const RECORDING_READY = 'ready';
+
+    public const RECORDING_FAILED = 'failed';
+
     protected $fillable = [
         'class_group_id', 'coach_id', 'schedule_rule_id', 'title', 'agenda',
         'starts_at', 'ends_at', 'status', 'room_name', 'started_at',
         'ended_at_actual', 'notified_at', 'recording_media_asset_id',
+        'recording_egress_id', 'recording_status', 'recording_started_at',
+        'recording_ended_at', 'recording_duration_ms', 'recording_error',
     ];
 
     protected function casts(): array
@@ -31,6 +48,8 @@ class ClassSession extends Model
             'started_at' => 'datetime',
             'ended_at_actual' => 'datetime',
             'notified_at' => 'datetime',
+            'recording_started_at' => 'datetime',
+            'recording_ended_at' => 'datetime',
         ];
     }
 
@@ -42,6 +61,23 @@ class ClassSession extends Model
     public function coach(): BelongsTo
     {
         return $this->belongsTo(User::class, 'coach_id');
+    }
+
+    public function recording(): BelongsTo
+    {
+        return $this->belongsTo(MediaAsset::class, 'recording_media_asset_id');
+    }
+
+    /** Whether there is something to play back. */
+    public function hasRecording(): bool
+    {
+        return $this->recording_status === self::RECORDING_READY
+            && $this->recording_media_asset_id !== null;
+    }
+
+    public function isRecording(): bool
+    {
+        return in_array($this->recording_status, [self::RECORDING_STARTING, self::RECORDING_ON], true);
     }
 
     public function materials(): HasMany

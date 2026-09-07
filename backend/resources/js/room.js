@@ -31,6 +31,8 @@ const el = {
     question: document.getElementById('question'),
     lock: document.getElementById('lock-preview'),
     status: document.getElementById('room-status'),
+    recordButton: document.getElementById('record'),
+    recordStatus: document.getElementById('record-status'),
     micButton: document.getElementById('toggle-mic'),
     camButton: document.getElementById('toggle-cam'),
 };
@@ -42,6 +44,7 @@ const state = {
     materials: [],
     sharedMaterialId: null,
     openQuestion: null,
+    recording: null,
     askable: [],
     me: config.userId,
     mediaUrls: new Map(),
@@ -106,6 +109,7 @@ async function refresh() {
     state.materials = data.materials;
     state.sharedMaterialId = data.shared_material_id;
     state.openQuestion = data.open_question;
+    state.recording = data.recording;
 
     render();
 }
@@ -116,6 +120,7 @@ function render() {
     renderAskable();
     renderStage();
     renderQuestion();
+    renderRecording();
     labelTiles();
     syncLocalPublishing();
 }
@@ -466,6 +471,52 @@ function layoutTiles() {
     el.tiles.style.gridTemplateColumns = `repeat(${columns}, minmax(0, 1fr))`;
 }
 
+// ----------------------------------------------------------- the recording
+
+/*
+ * A class that believes it is being recorded and is not is worse than one that
+ * knows it is not, so the button says what is actually happening rather than
+ * what was last clicked, and a failure stays on screen.
+ */
+function renderRecording() {
+    const recording = state.recording;
+
+    if (!el.recordButton || !recording || !state.isCoach) return;
+
+    if (!recording.available) {
+        el.recordButton.hidden = true;
+        el.recordStatus.textContent =
+            'ضبط کلاس روی این نصب فعال نیست.';
+        return;
+    }
+
+    el.recordButton.hidden = false;
+
+    const labels = {
+        none: ['⏺ شروع ضبط', 'start'],
+        failed: ['⏺ تلاش دوباره برای ضبط', 'start'],
+        starting: ['در حال آغاز…', null],
+        recording: ['⏹ توقف ضبط', 'stop'],
+        processing: ['در حال آماده‌سازی…', null],
+        ready: ['ضبط آماده است', null],
+    };
+
+    const [label, action] = labels[recording.status] ?? labels.none;
+
+    el.recordButton.textContent = label;
+    el.recordButton.disabled = action === null;
+    el.recordButton.dataset.record = action ?? '';
+    el.recordButton.classList.toggle('!text-red-700', recording.status === 'recording');
+
+    el.recordStatus.textContent = recording.error
+        ? `ضبط نشد: ${recording.error}`
+        : recording.status === 'recording'
+            ? 'این کلاس در حال ضبط است.'
+            : recording.status === 'processing'
+                ? 'کلاس ضبط شد؛ فایل در حال آماده‌سازی است.'
+                : '';
+}
+
 // -------------------------------------------------------------- the socket
 
 function listen() {
@@ -502,7 +553,7 @@ function listen() {
 document.addEventListener('click', async (event) => {
     const target = event.target.closest('[data-media],[data-remove],[data-share-material],'
         + '[data-close-material],[data-close-question],[data-mute-all],[data-lock],[data-unlock],'
-        + '[data-hand],[data-ask-exercise]');
+        + '[data-hand],[data-ask-exercise],[data-record]');
 
     if (!target) return;
 
@@ -538,6 +589,11 @@ document.addEventListener('click', async (event) => {
         } else if (target.hasAttribute('data-unlock')) {
             await api('/room/unlock', { method: 'POST' });
             note('قفل تمرین برداشته شد.');
+        } else if (target.dataset.record) {
+            await api(
+                target.dataset.record === 'stop' ? '/room/record/stop' : '/room/record',
+                { method: 'POST' },
+            );
         } else if (target.hasAttribute('data-hand')) {
             await api('/room/hand', { method: 'POST', body: { raised: true } });
         }
