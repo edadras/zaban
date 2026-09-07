@@ -24,7 +24,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->alias([
             'admin' => App\Http\Middleware\EnsureAdmin::class,
+            'panel' => App\Http\Middleware\EnsurePanelUser::class,
         ]);
+
+        // The only session-authenticated part of the installation is the web
+        // panel, so an unauthenticated browser belongs at its login page. API
+        // requests never reach here: they answer 401 in JSON above.
+        $middleware->redirectGuestsTo(fn () => route('panel.login'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

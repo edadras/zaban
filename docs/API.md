@@ -451,6 +451,110 @@ asked a recognition item when *any* exercise linked to one of its concepts has
 options, because `AdaptiveLearningService` and `RemediationService` both select
 by concept and never by `exercises.lesson_id`.
 
+### 5.9 The live classroom — **Live**
+
+`routes/api/classroom.php`. **No `admin` middleware anywhere in this group.** A
+school's owner is not a platform administrator and a coach is not one either;
+authorisation is "do you manage this school" and "is this your class", asked per
+row inside the controllers. Putting the platform's admin gate in front would let
+any editor into every school and keep every school's own owner out.
+
+**Schools and their people**
+
+| Method | Path |
+|---|---|
+| GET / POST | `/schools` |
+| GET / PATCH | `/schools/{school}` |
+| GET / POST | `/schools/{school}/members` |
+| DELETE | `/schools/{school}/members/{member}` |
+| GET / POST | `/schools/{school}/coaches/{coach}/students` |
+| DELETE | `/schools/{school}/coaches/{coach}/students/{student}` |
+
+A member is added by email and only an account that already exists is attached —
+an unknown address is `404 no_such_account`, never a user with a password nobody
+chose. Adding somebody as a coach does not touch `users.role`: teaching at one
+school and studying at another are both true at once. A school cannot be left
+without an owner (`409`).
+
+**Classes and timetables**
+
+| Method | Path |
+|---|---|
+| GET / POST | `/classes` |
+| GET / PATCH / DELETE | `/classes/{group}` |
+| POST | `/classes/{group}/students` |
+| DELETE | `/classes/{group}/students/{student}` |
+| POST | `/classes/{group}/rules` |
+| DELETE | `/classes/{group}/rules/{rule}` |
+| POST | `/classes/{group}/generate` |
+
+A weekly rule fills the calendar immediately rather than waiting for the nightly
+`classes:generate`. Withdrawing a rule cancels the classes it produced that have
+not been taught yet and leaves the past alone — those happened, and they are the
+attendance record. Enrolment only takes learners the school already knows, and
+never more than the class seats.
+
+**Preparing a session**
+
+| Method | Path |
+|---|---|
+| GET / POST | `/class-sessions` |
+| GET / PATCH | `/class-sessions/{session}` |
+| POST | `/class-sessions/{session}/cancel` |
+| GET | `/class-sessions/{session}/attendance` |
+| POST | `/class-sessions/{session}/materials` |
+| DELETE | `/class-sessions/{session}/materials/{material}` |
+| POST | `/class-sessions/{session}/materials/reorder` |
+
+A material is a video, PDF, image, audio, text, quiz, or a reference to a lesson
+or exercise already in the corpus. An upload becomes a `media_asset` on the same
+disk as everything else the app plays, so the existing signed-URL endpoint serves
+it and there is not a second way to hand a file to a learner.
+
+**The room**
+
+| Method | Path |
+|---|---|
+| POST | `/class-sessions/{session}/start`, `/end`, `/summon` |
+| GET | `/class-sessions/{session}/room` |
+| POST | `/class-sessions/{session}/room/join`, `/leave`, `/token`, `/hand` |
+| POST | `/class-sessions/{session}/room/participants/{participant}/media` |
+| POST | `/class-sessions/{session}/room/mute-all` |
+| DELETE | `/class-sessions/{session}/room/participants/{participant}` |
+| POST | `/class-sessions/{session}/room/materials/{material}/share`, `/close` |
+| POST | `/class-sessions/{session}/room/questions` |
+| POST | `/class-sessions/{session}/room/questions/{question}/answer`, `/close` |
+| GET | `/class-sessions/{session}/room/questions/{question}` |
+| GET | `/class-sessions/{session}/room/lock-preview` |
+| POST | `/class-sessions/{session}/room/lock`, `/unlock` |
+
+`join` returns the participant row *and* a media-server token. A learner arrives
+able to hear and see and to say nothing; the coach hands out the microphone. The
+permission is a row here, not a message to the media server, so a learner who is
+muted and then reloads comes back muted. `GET /room` gives a coach their whole
+shelf and a learner only what is on screen, and the open question without its
+answers or its correct option.
+
+`lock` is the class reaching into the learner's evening: for the next N hours the
+adaptive engine draws only from the concepts this session taught, so the daily
+practice in the app *is* the afternoon's lesson. It carries its own expiry — a
+coach who forgets to lift it does not freeze somebody's curriculum.
+
+**The learner's view, and the bell**
+
+| Method | Path |
+|---|---|
+| GET | `/my/classes`, `/my/classes/history` |
+| GET | `/notifications` |
+| POST | `/notifications/read-all`, `/notifications/{id}/read` |
+
+Everything the room does also broadcasts on the private channel
+`class-session.{id}` as `classroom`, carrying the fact and the ids and never the
+content: a learner shown a material still fetches it through the API, so one
+place decides whether they may have it.
+
+---
+
 ---
 
 ## 6. The modules that were "still being built"

@@ -2,18 +2,19 @@
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
+     * The installation's front door.
+     *
+     * There is no marketing site here: the learner's half of the product is the
+     * app, and the only thing served over HTTP to a person is the school's
+     * panel. So the root sends a browser to its login page.
      */
-    public function test_the_application_returns_a_successful_response(): void
+    public function test_the_root_sends_a_browser_to_the_panel(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this->get('/')->assertRedirect(route('panel.login'));
     }
 }

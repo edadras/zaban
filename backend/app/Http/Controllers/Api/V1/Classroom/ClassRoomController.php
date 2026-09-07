@@ -208,7 +208,7 @@ class ClassRoomController extends ApiController
         // not retype a question the system already holds.
         $prompt = $data['prompt'] ?? null;
         if ($prompt === null && ! empty($data['exercise_id'])) {
-            $prompt = (string) (Exercise::find($data['exercise_id'])?->prompt ?? 'Answer the exercise.');
+            $prompt = (string) (Exercise::find($data['exercise_id'])?->stem ?? 'Answer the exercise.');
         }
 
         $question = $session->questions()->create([

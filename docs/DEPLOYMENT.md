@@ -132,6 +132,12 @@ injected as environment variables at start. Notes:
 # 1. Build
 composer install --no-dev --optimize-autoloader --no-interaction
 
+# 1b. The admin and coach website. Blade and Tailwind, served by the same
+#     Laravel app at /panel — see §12. Without this step every panel page
+#     500s on a missing Vite manifest.
+npm ci
+npm run build
+
 # 2. Cache the framework's derived config (must run AFTER env is in place)
 php artisan config:cache
 php artisan route:cache
@@ -559,6 +565,49 @@ Work through this before the platform carries real users.
       `pint` and PHPUnit have no business on a production host.
 
 ---
+
+## 12. The school panel
+
+`/panel` is a server-rendered website for the two people who work at a desk: the
+school's administrator and the coach. The learner's half of the product stays in
+the app; this is not a second copy of it.
+
+* **Who may open it.** Anyone who is an active owner, admin or coach at a
+  school, or who carries a platform role. Session authentication, not bearer
+  tokens. A learner who signs in is refused and signed straight back out.
+* **What it does.** Schools and their people, coach↔learner assignment, classes
+  and their weekly timetables, session preparation (uploading video, PDF, image
+  and audio, writing text, picking a lesson out of the corpus), the live class
+  console, attendance, and the practice lock. Platform accounts also get an
+  overview, user management and the audit log.
+* **Authorisation.** The panel calls the classroom services directly rather than
+  its own API over HTTP, so there is one set of rules however a school comes in.
+  A platform administrator is *not* automatically a school's manager: the
+  platform section and the school section are different rooms.
+* **The live console.** JavaScript talking to the same `/api/v1/class-sessions/*`
+  endpoints the mobile client uses. The page mints one Sanctum token named
+  `panel-room`, scoped to `classroom`, expiring in six hours, replaced on each
+  visit and revoked on sign-out.
+
+### The media server
+
+Video and audio go through a `LiveRoomProvider`. `LIVE_PROVIDER=null` — the
+default — records the intent and sends nothing: the timetable, the materials,
+the questions, the microphone permissions and the practice lock all still work,
+and only faces and voices are missing. Set `LIVE_PROVIDER=livekit` and give it
+`LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`, `LIVEKIT_WS_URL` and
+`LIVEKIT_HTTP_URL` to turn them on.
+
+LiveKit is self-hosted; it needs UDP as well as the HTTPS port, so the reverse
+proxy in front of Laravel is not enough on its own. Muting is pushed to the
+media server *and* written as a row here, because the row is what makes a muted
+learner who reloads come back muted.
+
+### Websockets
+
+The console listens on the private channel `class-session.{id}` through Reverb,
+using the same `REVERB_*` settings as the app. Without them the page falls back
+to reloading its own state after each action rather than being told.
 
 ## 11. What is still missing, collected
 

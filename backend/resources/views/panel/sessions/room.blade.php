@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>اتاق کلاس — {{ $session->title ?: $session->group?->title }}</title>
+    @fonts
+    @vite(['resources/css/panel.css'])
+</head>
+<body class="min-h-screen bg-ink-100 text-ink-900 antialiased">
+
+<header class="flex flex-wrap items-center gap-3 border-b border-ink-200 bg-white px-5 py-3">
+    <div class="min-w-0 flex-1">
+        <h1 class="truncate text-sm font-semibold">{{ $session->title ?: $session->group?->title }}</h1>
+        <p class="truncate text-xs text-ink-400">
+            {{ $session->group?->school?->name }} ·
+            <span class="tabular">{{ $session->starts_at?->format('Y-m-d H:i') }}</span>
+        </p>
+    </div>
+
+    <button id="toggle-mic" class="btn-ghost" data-on="true">🎤 میکروفون</button>
+    <button id="toggle-cam" class="btn-ghost" data-on="true">🎥 دوربین</button>
+    <button class="btn-ghost" data-mute-all>ساکت کردن همه</button>
+
+    <form method="POST" action="{{ route('panel.sessions.end', $session) }}" data-confirm="کلاس بسته شود؟">
+        @csrf
+        <button class="btn-danger">پایان کلاس</button>
+    </form>
+
+    <a class="btn-ghost" href="{{ route('panel.sessions.show', $session) }}">خروج</a>
+</header>
+
+@unless ($mediaConfigured)
+    <p class="border-b border-amber-200 bg-amber-50 px-5 py-2 text-sm text-amber-800">
+        سرور تصویر (<span dir="ltr">{{ $provider }}</span>) پیکربندی نشده است؛ صدا و تصویر منتقل نمی‌شود،
+        اما محتوا، پرسش‌ها، مدیریت میکروفون و قفل تمرین کار می‌کنند.
+    </p>
+@endunless
+
+<main class="grid gap-4 p-4 lg:grid-cols-[minmax(0,1fr)_20rem]">
+
+    <div class="space-y-4">
+        <div id="tiles" class="grid gap-3" style="grid-template-columns: repeat(1, minmax(0, 1fr));"></div>
+
+        <section class="card overflow-hidden">
+            <div class="card-head"><h2 class="card-title">روی صفحه</h2></div>
+            <div id="stage" class="min-h-40"></div>
+        </section>
+
+        <p id="room-status" class="rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-600">
+            در حال باز کردن اتاق…
+        </p>
+    </div>
+
+    <aside class="space-y-4">
+
+        <section class="card">
+            <div class="card-head"><h2 class="card-title">حاضران</h2></div>
+            <ul id="roster" class="divide-y divide-ink-100"></ul>
+        </section>
+
+        <section class="card" data-coach-only>
+            <div class="card-head"><h2 class="card-title">محتوای جلسه</h2></div>
+            <ul id="shelf" class="divide-y divide-ink-100"></ul>
+        </section>
+
+        <section class="card">
+            <div class="card-head"><h2 class="card-title">پرسش</h2></div>
+            <div id="question"></div>
+
+            <form id="ask" class="space-y-3 border-t border-ink-100 p-4">
+                <div>
+                    <label class="label" for="prompt">صورت پرسش</label>
+                    <textarea class="field" id="prompt" name="prompt" rows="2" required></textarea>
+                </div>
+                <div>
+                    <label class="label" for="options_text">گزینه‌ها (هر خط یک گزینه؛ خالی یعنی پاسخ تشریحی)</label>
+                    <textarea class="field" id="options_text" name="options_text" rows="3"></textarea>
+                </div>
+                <div>
+                    <label class="label" for="correct">شمارهٔ گزینه‌های درست</label>
+                    <input class="field tabular" id="correct" name="correct" placeholder="مثلاً: 2">
+                </div>
+                <button class="btn-primary w-full">پرسیدن</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="card-head"><h2 class="card-title">قفل تمرین امروز</h2></div>
+            <div class="space-y-3 p-4">
+                <p id="lock-preview" class="text-xs text-ink-400">…</p>
+                <div>
+                    <label class="label" for="lock-note">یادداشت برای زبان‌آموز</label>
+                    <input class="field" id="lock-note" placeholder="امشب همین‌ها را مرور کنید.">
+                </div>
+                <div>
+                    <label class="label" for="lock-hours">تا چند ساعت</label>
+                    <input class="field tabular" id="lock-hours" type="number" min="1" max="168" value="24">
+                </div>
+                <div class="flex gap-2">
+                    <button class="btn-primary flex-1" data-lock>قفل کردن</button>
+                    <button class="btn-ghost" data-unlock>برداشتن</button>
+                </div>
+                <p class="text-xs text-ink-400">
+                    تمرین روزانهٔ زبان‌آموزان در اپلیکیشن، تا پایان این مدت، از همین جلسه ساخته می‌شود.
+                </p>
+            </div>
+        </section>
+
+    </aside>
+</main>
+
+@php
+    $bootstrap = [
+        'sessionId' => $session->id,
+        'userId' => auth()->id(),
+        'token' => $apiToken,
+        'reverb' => $reverb,
+    ];
+@endphp
+<script>
+    window.__ROOM__ = @json($bootstrap);
+</script>
+@vite(['resources/js/panel.js', 'resources/js/room.js'])
+
+</body>
+</html>

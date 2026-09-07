@@ -9,6 +9,7 @@ use App\Models\ClassSession;
 use App\Models\School;
 use App\Models\SchoolMember;
 use App\Models\User;
+use App\Services\Classroom\ClassGroupService;
 use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\ClassScheduleService;
 use App\Services\Classroom\SchoolService;
@@ -26,6 +27,7 @@ class ClassGroupController extends ApiController
     public function __construct(
         private readonly SchoolService $schools,
         private readonly ClassScheduleService $schedule,
+        private readonly ClassGroupService $groups,
     ) {}
 
     /** Classes this person teaches, or all of a school's if they manage it. */
@@ -150,43 +152,16 @@ class ClassGroupController extends ApiController
             'user_ids.*' => ['integer', 'exists:users,id'],
         ]);
 
-        // Only learners the school already knows. Enrolment is not a way to
-        // pull an arbitrary account into a school's roll.
-        $eligible = SchoolMember::where('school_id', $group->school_id)
-            ->where('role', SchoolMember::STUDENT)
-            ->where('status', 'active')
-            ->whereIn('user_id', $data['user_ids'])
-            ->pluck('user_id');
+        $result = $this->groups->enrol($group, $data['user_ids']);
 
-        $rejected = collect($data['user_ids'])->diff($eligible)->values();
-
-        $room = $group->capacity - $group->students()->count();
-        if ($eligible->count() > $room) {
-            throw new ClassroomException(
-                "This class has room for {$room} more.",
-            );
-        }
-
-        foreach ($eligible as $id) {
-            $group->students()->syncWithoutDetaching([
-                $id => ['status' => 'enrolled', 'enrolled_at' => now(), 'withdrawn_at' => null],
-            ]);
-        }
-
-        return $this->ok([
-            'enrolled' => $eligible->values(),
-            'rejected' => $rejected,
-        ]);
+        return $this->ok($result);
     }
 
     public function withdraw(Request $request, ClassGroup $group, User $student)
     {
         $this->assertCanManage($request, $group);
 
-        $group->students()->newPivotStatement()
-            ->where('class_group_id', $group->id)
-            ->where('user_id', $student->id)
-            ->update(['status' => 'withdrawn', 'withdrawn_at' => now()]);
+        $this->groups->withdraw($group, $student);
 
         return $this->ok(['withdrawn' => true]);
     }
@@ -206,11 +181,7 @@ class ClassGroupController extends ApiController
             'generate_weeks' => ['nullable', 'integer', 'min:1', 'max:52'],
         ]);
 
-        $rule = $group->rules()->create($data + ['is_active' => true]);
-
-        // Fill the calendar straight away: a coach who adds a time expects to
-        // see the classes, not to wait for a nightly job.
-        $created = $this->schedule->generate($group, (int) ($data['generate_weeks'] ?? 8));
+        ['rule' => $rule, 'created' => $created] = $this->groups->addRule($group, $data);
 
         return $this->created($this->presentRule($rule) + ['sessions_created' => $created]);
     }
@@ -219,20 +190,7 @@ class ClassGroupController extends ApiController
     {
         $this->assertCanManage($request, $group);
 
-        if ($rule->class_group_id !== $group->id) {
-            throw new ClassroomException('That schedule belongs to another class.', 404);
-        }
-
-        /*
-         * The rule stops, and the classes it has already produced but not yet
-         * taught are cancelled. Past sessions stay: they happened, and they are
-         * the attendance record.
-         */
-        $rule->update(['is_active' => false]);
-        $cancelled = ClassSession::where('schedule_rule_id', $rule->id)
-            ->where('starts_at', '>', now())
-            ->where('status', ClassSession::SCHEDULED)
-            ->update(['status' => ClassSession::CANCELLED]);
+        $cancelled = $this->groups->removeRule($group, $rule);
 
         return $this->ok(['cancelled_sessions' => $cancelled]);
     }

@@ -6,15 +6,14 @@ use App\Http\Controllers\Api\V1\ApiController;
 use App\Models\ClassMaterial;
 use App\Models\ClassParticipant;
 use App\Models\ClassSession;
-use App\Models\MediaAsset;
 use App\Services\Classroom\ClassNotifier;
 use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\ClassroomService;
 use App\Services\Classroom\ClassScheduleService;
+use App\Services\Classroom\MaterialService;
 use App\Services\Classroom\PracticeLockService;
 use App\Services\Classroom\SchoolService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * One meeting of a class: preparing it, running it, and closing it.
@@ -30,6 +29,7 @@ class ClassSessionController extends ApiController
         private readonly PracticeLockService $locks,
         private readonly ClassNotifier $notifier,
         private readonly SchoolService $schools,
+        private readonly MaterialService $materials,
     ) {}
 
     /** The coach's own diary. */
@@ -144,33 +144,12 @@ class ClassSessionController extends ApiController
             'position' => ['nullable', 'integer', 'min:0', 'max:999'],
         ]);
 
-        $mediaId = $data['media_asset_id'] ?? null;
-
-        if ($request->hasFile('file')) {
-            $mediaId = $this->storeUpload($request->file('file'), $data['kind'])->id;
-        }
-
-        $pointsAtSomething = $mediaId
-            || ! empty($data['lesson_id'])
-            || ! empty($data['exercise_id'])
-            || filled($data['body'] ?? null);
-
-        if (! $pointsAtSomething) {
-            throw new ClassroomException(
-                'A material needs a file, a lesson, an exercise, or some text.'
-            );
-        }
-
-        $material = $session->materials()->create([
-            'uploaded_by' => $request->user()->id,
-            'kind' => $data['kind'],
-            'title' => $data['title'],
-            'body' => $data['body'] ?? null,
-            'media_asset_id' => $mediaId,
-            'lesson_id' => $data['lesson_id'] ?? null,
-            'exercise_id' => $data['exercise_id'] ?? null,
-            'position' => $data['position'] ?? ($session->materials()->max('position') + 1),
-        ]);
+        $material = $this->materials->add(
+            $session,
+            $request->user(),
+            $data,
+            $request->file('file'),
+        );
 
         return $this->created($this->presentMaterial($material->fresh('media')));
     }
@@ -294,35 +273,6 @@ class ClassSessionController extends ApiController
         }
     }
 
-    /**
-     * Store a coach's upload as a media asset.
-     *
-     * On the same disk and in the same table as everything else the app plays,
-     * so the existing signed-URL streaming endpoint serves it and there is not
-     * a second way to hand a file to a learner.
-     */
-    private function storeUpload(\Illuminate\Http\UploadedFile $file, string $kind): MediaAsset
-    {
-        $disk = config('filesystems.default');
-        $path = $file->store('class-materials/'.now()->format('Y/m'), $disk);
-
-        return MediaAsset::create([
-            'disk' => $disk,
-            'path' => $path,
-            'type' => match ($kind) {
-                'video' => 'video',
-                'audio' => 'audio',
-                'image' => 'image',
-                default => 'document',
-            },
-            'mime' => $file->getClientMimeType(),
-            'bytes' => $file->getSize(),
-            'origin' => 'coach_upload',
-            'copyright_status' => 'owned',
-            'checksum' => hash_file('sha256', Storage::disk($disk)->path($path)),
-        ]);
-    }
-
     private function present(ClassSession $session): array
     {
         return [
@@ -343,17 +293,6 @@ class ClassSessionController extends ApiController
 
     private function presentMaterial(ClassMaterial $material): array
     {
-        return [
-            'id' => $material->id,
-            'kind' => $material->kind,
-            'title' => $material->title,
-            'body' => $material->body,
-            'media_asset_id' => $material->media_asset_id,
-            'mime' => $material->media?->mime,
-            'lesson_id' => $material->lesson_id,
-            'exercise_id' => $material->exercise_id,
-            'position' => $material->position,
-            'is_shared' => $material->shared_at !== null,
-        ];
+        return $this->materials->present($material);
     }
 }

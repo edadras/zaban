@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@source '../views/panel/**/*.blade.php';
+@source '../js/panel.js';
+@source '../js/room.js';
+
+/*
+ * The panel is Persian and right-to-left. Numerals stay Latin: a coach reading
+ * a timetable copies times into other systems, and mixed numeral sets are how
+ * 08:30 becomes ۰۸:۳۰ in one place and neither in the next.
+ */
+@theme {
+    --font-sans: 'Vazirmatn', 'Instrument Sans', ui-sans-serif, system-ui, 'Segoe UI', Tahoma, sans-serif;
+
+    --color-ink-50: oklch(0.985 0.002 265);
+    --color-ink-100: oklch(0.96 0.004 265);
+    --color-ink-200: oklch(0.91 0.006 265);
+    --color-ink-400: oklch(0.68 0.02 265);
+    --color-ink-600: oklch(0.48 0.03 265);
+    --color-ink-800: oklch(0.28 0.03 265);
+    --color-ink-900: oklch(0.19 0.03 265);
+
+    --color-brand-50: oklch(0.96 0.03 250);
+    --color-brand-100: oklch(0.92 0.06 250);
+    --color-brand-500: oklch(0.58 0.16 250);
+    --color-brand-600: oklch(0.51 0.16 250);
+    --color-brand-700: oklch(0.43 0.14 250);
+}
+
+@layer base {
+    body {
+        font-feature-settings: 'ss01';
+    }
+
+    /* Latin digits inside Persian text, in both directions. */
+    .tabular {
+        font-variant-numeric: tabular-nums;
+        direction: ltr;
+        display: inline-block;
+        unicode-bidi: isolate;
+    }
+}
+
+@layer components {
+    .field {
+        @apply w-full rounded-lg border border-ink-200 bg-white px-3 py-2 text-sm text-ink-900
+               shadow-sm outline-none transition
+               focus:border-brand-500 focus:ring-2 focus:ring-brand-100
+               disabled:bg-ink-50 disabled:text-ink-400;
+    }
+
+    .label {
+        @apply mb-1 block text-xs font-medium text-ink-600;
+    }
+
+    /*
+     * The three buttons repeat the base rather than @apply-ing .btn: Tailwind 4
+     * resolves @apply against utilities, not against other component classes.
+     */
+    .btn {
+        @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm
+               font-medium transition disabled:cursor-not-allowed disabled:opacity-50;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm
+               font-medium transition disabled:cursor-not-allowed disabled:opacity-50
+               bg-brand-600 text-white hover:bg-brand-700;
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm
+               font-medium transition disabled:cursor-not-allowed disabled:opacity-50
+               border border-ink-200 bg-white text-ink-800 hover:bg-ink-50;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm
+               font-medium transition disabled:cursor-not-allowed disabled:opacity-50
+               border border-red-200 bg-white text-red-700 hover:bg-red-50;
+    }
+
+    .card {
+        @apply rounded-xl border border-ink-200 bg-white shadow-sm;
+    }
+
+    .card-head {
+        @apply flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 px-5 py-3.5;
+    }
+
+    .card-title {
+        @apply text-sm font-semibold text-ink-900;
+    }
+
+    .chip {
+        @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+    }
+
+    .th {
+        @apply px-4 py-2.5 text-right text-xs font-medium text-ink-600;
+    }
+
+    .td {
+        @apply px-4 py-3 text-sm text-ink-800;
+    }
+}
