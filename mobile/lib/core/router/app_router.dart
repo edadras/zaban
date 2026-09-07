@@ -19,8 +19,12 @@ import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/auth/presentation/login_screen.dart';
 import 'package:zaban/features/auth/presentation/register_screen.dart';
 import 'package:zaban/features/auth/presentation/splash_screen.dart';
+import 'package:zaban/features/classroom/presentation/class_board_screen.dart';
 import 'package:zaban/features/classroom/presentation/class_recording_screen.dart';
 import 'package:zaban/features/classroom/presentation/class_room_screen.dart';
+import 'package:zaban/features/classroom/presentation/class_thread_screen.dart';
+import 'package:zaban/features/classroom/presentation/homework_screen.dart';
+import 'package:zaban/features/classroom/presentation/homework_task_screen.dart';
 import 'package:zaban/features/classroom/presentation/my_classes_screen.dart';
 import 'package:zaban/features/classroom/presentation/notifications_screen.dart';
 import 'package:zaban/features/conversation/presentation/conversation_screen.dart';
@@ -82,7 +86,11 @@ const Set<String> _prePlacementPaths = <String>{
 /// somewhere to be now, and bouncing them to an adaptive test is how they miss
 /// the lesson. Matched by prefix because the room carries a session id.
 bool _isClassroom(String location) =>
-    location == '/classes' || location.startsWith('/classes/');
+    location == '/classes' ||
+    location.startsWith('/classes/') ||
+    location.startsWith('/board') ||
+    location == '/homework' ||
+    location.startsWith('/homework/');
 
 final routerProvider = Provider<GoRouter>((ref) {
   // GoRouter needs a Listenable; bridging Riverpod through a counter keeps the
@@ -219,6 +227,32 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: AppRoute.classRecording.name,
         builder: (BuildContext _, GoRouterState state) => ClassRecordingScreen(
           sessionId: int.parse(state.pathParameters['sessionId']!),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.homework.path,
+        name: AppRoute.homework.name,
+        builder: (_, __) => const HomeworkScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.homeworkTask.path,
+        name: AppRoute.homeworkTask.name,
+        builder: (BuildContext _, GoRouterState state) => HomeworkTaskScreen(
+          assignmentId: int.parse(state.pathParameters['assignmentId']!),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.classThread.path,
+        name: AppRoute.classThread.name,
+        builder: (BuildContext _, GoRouterState state) => ClassThreadScreen(
+          threadId: int.parse(state.pathParameters['threadId']!),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.classBoard.path,
+        name: AppRoute.classBoard.name,
+        builder: (BuildContext _, GoRouterState state) => ClassBoardScreen(
+          groupId: int.parse(state.pathParameters['groupId']!),
         ),
       ),
       GoRoute(

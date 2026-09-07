@@ -8,7 +8,9 @@ import 'package:zaban/core/theme/theme_context.dart';
 import 'package:zaban/core/theme/tokens/dimension_tokens.dart';
 import 'package:zaban/core/widgets/glass_card.dart';
 import 'package:zaban/core/widgets/glow_button.dart';
+import 'package:zaban/features/classroom/data/models/board_models.dart';
 import 'package:zaban/features/classroom/data/models/classroom_models.dart';
+import 'package:zaban/features/classroom/presentation/board_controller.dart';
 import 'package:zaban/features/classroom/presentation/classroom_controller.dart';
 
 /// The school, on the home screen — and nothing at all for a learner who has
@@ -77,10 +79,53 @@ class ClassStrip extends ConsumerWidget {
                     .join('، '),
                 onTap: () => context.push(AppRoute.classes.path),
               ),
+            const _HomeworkDue(),
             const SizedBox(height: Spacing.xxl),
           ],
         );
       },
     );
+  }
+}
+
+/// Homework still owed, and nothing at all when there is none.
+///
+/// A permanent "no homework" card is furniture; a learner who owes three
+/// pieces on Thursday needs to be told on Wednesday.
+class _HomeworkDue extends ConsumerWidget {
+  const _HomeworkDue();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ref.watch(myHomeworkProvider).maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          data: (List<HomeworkEntry> entries) {
+            final owed = entries
+                .where((HomeworkEntry e) =>
+                    e.assignment.acceptsWork &&
+                    !(e.submission?.isHandedIn ?? false))
+                .toList();
+
+            if (owed.isEmpty) return const SizedBox.shrink();
+
+            return Padding(
+              padding: const EdgeInsets.only(top: Spacing.lg),
+              child: GlassCard(
+                leading: Icon(
+                  Icons.assignment_outlined,
+                  color: context.colors.accent,
+                ),
+                title: owed.length == 1
+                    ? owed.first.assignment.title
+                    : '${owed.length} ${context.t('pieces of homework to do')}',
+                subtitle: owed.first.assignment.dueAt == null
+                    ? null
+                    : '${context.t('due')} '
+                        '${DateFormat('EEEE HH:mm').format(owed.first.assignment.dueAt!.toLocal())}',
+                onTap: () => context.push(AppRoute.homework.path),
+              ),
+            );
+          },
+        );
   }
 }

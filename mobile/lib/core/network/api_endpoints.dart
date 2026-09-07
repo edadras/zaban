@@ -168,6 +168,22 @@ class ApiEndpoints {
   /// media by id, never by path, so storage cannot be enumerated.
   static String media(int id) => '/media/$id';
 
+  // -------------------------------------------------------- the class board
+  static String threads(int groupId) => '/classes/$groupId/threads';
+  static String thread(int threadId) => '/threads/$threadId';
+  static String threadReplies(int threadId) => '/threads/$threadId/replies';
+  static String threadAccept(int threadId, int replyId) =>
+      '/threads/$threadId/replies/$replyId/accept';
+  static String threadHelpful(int threadId, int replyId) =>
+      '/threads/$threadId/replies/$replyId/helpful';
+
+  // ------------------------------------------------------------- homework
+  static String classHomework(int groupId) => '/classes/$groupId/homework';
+  static String homework(int assignmentId) => '/homework/$assignmentId';
+  static String homeworkSubmit(int assignmentId) =>
+      '/homework/$assignmentId/submit';
+  static const String myHomework = '/my/homework';
+
   // --------------------------------------------------------------- the bell
   static const String notifications = '/notifications';
   static const String notificationsReadAll = '/notifications/read-all';

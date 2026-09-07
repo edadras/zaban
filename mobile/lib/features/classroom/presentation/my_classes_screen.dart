@@ -98,6 +98,31 @@ class MyClassesScreen extends ConsumerWidget {
                               group.coach,
                               group.cefr,
                             ].whereType<String>().join(' · '),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: Spacing.md),
+                              child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: OutlinedButton.icon(
+                                      icon: const Icon(Icons.forum_outlined, size: 18),
+                                      label: Text(context.t('Board')),
+                                      onPressed: () => context.push(
+                                        AppRoute.classBoard.classBoardPath(group.id),
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: Spacing.sm),
+                                  Expanded(
+                                    child: OutlinedButton.icon(
+                                      icon: const Icon(Icons.assignment_outlined, size: 18),
+                                      label: Text(context.t('Homework')),
+                                      onPressed: () =>
+                                          context.push(AppRoute.homework.path),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ),
 

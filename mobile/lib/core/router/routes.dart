@@ -29,6 +29,13 @@ enum AppRoute {
   classes('/classes', 'classes'),
   classRoom('/classes/:sessionId', 'classRoom'),
   classRecording('/classes/:sessionId/recording', 'classRecording'),
+
+  /// The class's board and its homework. Keyed by the class group rather than
+  /// a session: both outlive any one lesson.
+  classBoard('/board/:groupId', 'classBoard'),
+  classThread('/board/thread/:threadId', 'classThread'),
+  homework('/homework', 'homework'),
+  homeworkTask('/homework/:assignmentId', 'homeworkTask'),
   notifications('/notifications', 'notifications'),
 
   exam('/exam', 'exam'),
@@ -59,6 +66,9 @@ enum AppRoute {
   String lessonPath(int lessonId) => '/lesson/$lessonId';
   String classRoomPath(int sessionId) => '/classes/$sessionId';
   String classRecordingPath(int sessionId) => '/classes/$sessionId/recording';
+  String classBoardPath(int groupId) => '/board/$groupId';
+  String classThreadPath(int threadId) => '/board/thread/$threadId';
+  String homeworkTaskPath(int assignmentId) => '/homework/$assignmentId';
   String bookPath(int bookId) => '/admin/curriculum/$bookId';
   String conversationPath(int sessionId) => '/conversation/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';

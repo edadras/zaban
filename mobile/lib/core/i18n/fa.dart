@@ -788,5 +788,85 @@ const Map<String, String> faStrings = <String, String>{
       'هنوز آماده نیست',
   'When your coach finishes recording, the class appears here.':
       'وقتی مربی ضبط را تمام کند، کلاس اینجا دیده می‌شود.',
+  'Class board':
+      'تابلوی کلاس',
+  'Board':
+      'تابلو',
+  'Ask the class':
+      'از کلاس بپرس',
+  'Nothing on the board yet':
+      'هنوز چیزی روی تابلو نیست',
+  'Ask the first question. Your classmates and your coach can see it.':
+      'اولین پرسش را بپرسید. هم‌کلاسی‌ها و مربی‌تان آن را می‌بینند.',
+  'From your coach':
+      'از مربی',
+  'Answered':
+      'پاسخ داده شد',
+  'replies':
+      'پاسخ',
+  'What are you stuck on?':
+      'کجا گیر کرده‌اید؟',
+  'Say a bit more':
+      'کمی بیشتر بنویسید',
+  'Add a photo or video':
+      'افزودن عکس یا ویدیو',
+  'Add a photo or file':
+      'افزودن عکس یا فایل',
+  'Post':
+      'گذاشتن',
+  'Question':
+      'پرسش',
+  'Your coach':
+      'مربی شما',
+  'Assistant — checked by your coach':
+      'دستیار هوشمند — تأیید مربی',
+  'Assistant — not checked yet':
+      'دستیار هوشمند — هنوز تأیید نشده',
+  'This answered it':
+      'همین پاسخ بود',
+  'Helpful':
+      'مفید بود',
+  'Your answer':
+      'پاسخ شما',
+  'Your coach closed this thread.':
+      'مربی این گفت‌وگو را بسته است.',
+  'Loading':
+      'در حال بارگذاری',
+  'Homework':
+      'مشق',
+  'No homework right now':
+      'الان مشقی ندارید',
+  'What your coach sets will appear here.':
+      'هر مشقی که مربی بدهد اینجا دیده می‌شود.',
+  'To do':
+      'برای انجام',
+  'With your coach':
+      'نزد مربی',
+  'Marked':
+      'تصحیح‌شده',
+  'due':
+      'مهلت',
+  'Writing':
+      'نوشتن',
+  'Upload':
+      'بارگذاری',
+  'Reading':
+      'خواندن',
+  'Handed in':
+      'تحویل داده شد',
+  'Your coach has it. You will be told when it comes back.':
+      'نزد مربی است. وقتی برگردد به شما خبر داده می‌شود.',
+  'This homework is closed.':
+      'مهلت این مشق تمام شده است.',
+  'Write your answer here':
+      'پاسخ خود را اینجا بنویسید',
+  'Hand in':
+      'تحویل',
+  'What to work on next':
+      'قدم بعدی',
+  'What you wrote':
+      'آنچه نوشتید',
+  'pieces of homework to do':
+      'مشق برای انجام',
 };
 
