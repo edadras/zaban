@@ -140,13 +140,21 @@ class SpeechAnalysisTest extends SpeechTestCase
         $attempt->refresh();
 
         $this->assertSame('scored', $attempt->status);
-        $this->assertNull($attempt->pronunciation_score);
+
+        /*
+         * A number is shown rather than a blank, because an empty screen tells
+         * a learner nothing - but it is an estimate from the words recognised,
+         * and it says so. What must never happen is a word-match presented as a
+         * measured pronunciation score: no phonemes were heard, so none are
+         * stored and the learner's pronunciation history is untouched.
+         */
         $this->assertNull($attempt->aligner);
+        $this->assertSame('transcript_match', $attempt->feedback['scoring_source'] ?? null);
         $this->assertSame(0, SpeechPhoneme::count());
         $this->assertSame(0, PronunciationError::where('user_id', $user->id)->count());
 
         $reason = $attempt->feedback['not_measured']['pronunciation'] ?? null;
-        $this->assertNotNull($reason);
+        $this->assertNotNull($reason, 'the estimate is labelled as one');
         $this->assertStringContainsString('align', strtolower($reason));
 
         // Everything that could be measured still was.
@@ -195,9 +203,16 @@ class SpeechAnalysisTest extends SpeechTestCase
 
         $this->assertSame('scored', $attempt->status);
         $this->assertNotNull($attempt->vocabulary_score);
+
+        /*
+         * Open speech has no target text, so completeness and grammar - which
+         * are both deviation from a target - stay unmeasured and say so. What
+         * the learner is shown for the rest is an estimate, marked as one:
+         * without an aligner nothing here was measured from the sounds.
+         */
         $this->assertNull($attempt->completeness_score);
         $this->assertNull($attempt->grammar_score);
-        $this->assertNull($attempt->pronunciation_score);
+        $this->assertSame('heuristic', $attempt->feedback['scoring_source'] ?? null);
         $this->assertArrayHasKey('completeness', $attempt->feedback['not_measured']);
         $this->assertArrayHasKey('grammar', $attempt->feedback['not_measured']);
         $this->assertStringContainsString('open speech', $attempt->feedback['not_measured']['pronunciation']);

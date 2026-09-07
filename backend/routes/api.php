@@ -124,6 +124,7 @@ Route::prefix('v1')->group(function () {
  *   routes/api/speech.php  - recording upload, scoring, pronunciation profile
  *   routes/api/writing.php - typed writing, photographed paper practice, marking
  *   routes/api/admin.php   - ingestion, review queue, AI cost, users
+ *   routes/api/classroom.php - schools, coaches, classes, the live room
  */
 /*
  * Streaming sits outside auth:sanctum because the signature is the
@@ -132,7 +133,7 @@ Route::prefix('v1')->group(function () {
 Route::get('v1/media/{media}/stream', [MediaController::class, 'stream'])
     ->name('media.stream');
 
-foreach (['billing', 'exam', 'speech', 'writing', 'admin'] as $module) {
+foreach (['billing', 'exam', 'speech', 'writing', 'admin', 'classroom'] as $module) {
     $path = base_path("routes/api/{$module}.php");
     if (file_exists($path)) {
         require $path;

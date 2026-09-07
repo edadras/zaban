@@ -7,6 +7,7 @@ use App\Models\Exercise;
 use App\Models\LearnerConcept;
 use App\Models\LearnerError;
 use App\Models\LearnerProfile;
+use App\Models\PracticeLock;
 use App\Models\LearningSession;
 use App\Models\Lesson;
 use App\Models\SessionActivity;
@@ -65,7 +66,20 @@ class AdaptiveLearningService
         // same daily path with a different label.
         $lesson = $this->nextLesson($userId, $profile, $focus);
 
-        return DB::transaction(function () use ($userId, $profile, $minutes, $slots, $lesson, $due, $focus) {
+        /*
+         * A coach can point this learner's own practice at what was taught in
+         * class today. While that lock is in force the engine stops choosing
+         * for itself and draws from the concepts the lock names - the same
+         * five phases, the same item bank, a narrowed pool. Nothing else about
+         * the session changes, so the learner sees their ordinary evening with
+         * their afternoon's material in it.
+         */
+        $lock = PracticeLock::forUser($userId);
+        if ($lock !== null) {
+            $lesson = $this->lessonForLock($lock) ?? $lesson;
+        }
+
+        return DB::transaction(function () use ($userId, $profile, $minutes, $slots, $lesson, $due, $focus, $lock) {
             $session = LearningSession::create([
                 'user_id' => $userId,
                 'course_version_id' => $focus
@@ -82,6 +96,8 @@ class AdaptiveLearningService
                     'lesson_id' => $lesson?->id,
                     'lesson' => $lesson?->title,
                     'focus' => $focus,
+                    'practice_lock_id' => $lock?->id,
+                    'class_session_id' => $lock?->class_session_id,
                 ],
                 'planned_minutes' => $minutes,
                 'started_at' => now(),
@@ -98,7 +114,7 @@ class AdaptiveLearningService
                 );
             }
 
-            $byPhase = [
+            $byPhase = $lock !== null ? $this->lockedPhases($userId, $lock, $lesson, $slots) : [
                 SessionShape::WARM_UP => $this->warmUpActivities($userId, $slots[SessionShape::WARM_UP]),
                 SessionShape::STUDY => $this->studyActivities($lesson, $slots[SessionShape::STUDY]),
                 SessionShape::PRACTISE => $practise,
@@ -846,6 +862,87 @@ class AdaptiveLearningService
         return $query
             ->whereIn('exercises.status', Exercise::SERVABLE_STATUSES)
             ->whereNull('exercises.deleted_at');
+    }
+
+    /**
+     * The five phases, drawn only from what a coach locked this learner onto.
+     *
+     * The shape is deliberately the ordinary one. A learner whose coach has set
+     * their homework should not be handed a different-looking screen; they
+     * should get their usual session, made of the right material.
+     *
+     * Warm-up and consolidate keep their normal jobs - recall first, review
+     * last - but both are filled from the locked concepts, so nothing in the
+     * session wanders off the class.
+     *
+     * @param  array<string, int>  $slots
+     * @return array<string, Collection<int, array<string, mixed>>>
+     */
+    private function lockedPhases(int $userId, PracticeLock $lock, ?Lesson $lesson, array $slots): array
+    {
+        $concepts = Concept::whereIn('id', $lock->concept_ids)
+            ->where('is_active', true)
+            ->get();
+
+        if ($concepts->isEmpty()) {
+            // The lock names nothing the engine can teach. Rather than hand
+            // back an empty evening, fall through to the ordinary session.
+            return [
+                SessionShape::WARM_UP => $this->warmUpActivities($userId, $slots[SessionShape::WARM_UP]),
+                SessionShape::STUDY => $this->studyActivities($lesson, $slots[SessionShape::STUDY]),
+                SessionShape::PRACTISE => $this->practiseActivities($userId, $lesson, $slots[SessionShape::PRACTISE]),
+                SessionShape::USE => $this->useActivities($userId, $lesson, $slots[SessionShape::USE]),
+                SessionShape::CONSOLIDATE => $this->consolidateActivities($userId, $slots[SessionShape::CONSOLIDATE]),
+            ];
+        }
+
+        $note = $lock->note ?: 'Set by your coach after class.';
+        $used = [];
+
+        $draw = function (int $count) use ($userId, $concepts, $note, &$used): Collection {
+            $out = collect();
+
+            foreach ($concepts->shuffle() as $concept) {
+                if ($out->count() >= $count) {
+                    break;
+                }
+
+                $exercise = $this->pickExerciseForConcept($userId, $concept->id, $used);
+                if ($exercise === null) {
+                    continue;
+                }
+
+                $used[] = $exercise->id;
+                $out->push([
+                    'type' => 'exercise',
+                    'subject_type' => Exercise::class,
+                    'subject_id' => $exercise->id,
+                    'concept_id' => $concept->id,
+                    'reason' => 'practice_lock',
+                    'rationale' => $note,
+                ]);
+            }
+
+            return $out;
+        };
+
+        return [
+            SessionShape::WARM_UP => $draw($slots[SessionShape::WARM_UP]),
+            // Study still reads: the coach's own lesson when they named one,
+            // and nothing invented when they did not.
+            SessionShape::STUDY => $this->studyActivities($lesson, $slots[SessionShape::STUDY]),
+            SessionShape::PRACTISE => $draw($slots[SessionShape::PRACTISE]),
+            SessionShape::USE => $draw($slots[SessionShape::USE]),
+            SessionShape::CONSOLIDATE => $draw($slots[SessionShape::CONSOLIDATE]),
+        ];
+    }
+
+    /** The lesson a lock points at, so the Study phase reads the right page. */
+    private function lessonForLock(PracticeLock $lock): ?Lesson
+    {
+        $ids = $lock->lesson_ids ?: [];
+
+        return $ids === [] ? null : Lesson::find($ids[0]);
     }
 
     public function pickExerciseForConcept(int $userId, int $conceptId, array $excludeIds = []): ?Exercise

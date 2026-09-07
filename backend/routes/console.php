@@ -41,3 +41,20 @@ Schedule::job(new ProcessPrivacyRequests)
     ->hourly()
     ->name('privacy.process-requests')
     ->withoutOverlapping();
+
+/*
+ * Live classes.
+ *
+ * The calendar is filled ahead so a session is a row a coach can prepare
+ * against, and the announcement runs every minute because "your class starts in
+ * fifteen minutes" is only useful at that minute.
+ */
+Schedule::command('classes:generate')
+    ->dailyAt('01:10')
+    ->name('classes.generate')
+    ->withoutOverlapping();
+
+Schedule::command('classes:notify')
+    ->everyMinute()
+    ->name('classes.notify')
+    ->withoutOverlapping();

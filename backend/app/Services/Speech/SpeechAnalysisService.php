@@ -180,11 +180,22 @@ class SpeechAnalysisService
         $scoringSource = null;
         $fallbackOverall = null;
 
+        // With no target text there is nothing for completeness or grammar to
+        // be measured against, so neither the model nor the heuristic may put a
+        // number there.
+        $unanswerable = $expectedTokens === [] ? ['completeness', 'grammar'] : [];
+
+        // Why pronunciation was never measured, kept aside before the gap-fill
+        // hands it a number. The estimate is welcome; losing the sentence that
+        // says it is an estimate is not.
+        $pronunciationCaveat = $notMeasured['pronunciation'] ?? null;
+
         if ($coach['ok'] && is_array($coach['scores'])) {
             [$components, $notMeasured] = $this->aiCoach->fillGaps(
                 $components,
                 $coach['scores'],
                 $notMeasured,
+                $unanswerable,
             );
             $scoringSource = 'model';
             $fallbackOverall = $coach['scores']['overall'] ?? null;
@@ -201,17 +212,34 @@ class SpeechAnalysisService
                 $components,
                 $heuristic,
                 $notMeasured,
+                $unanswerable,
             );
             $scoringSource = 'heuristic';
             $fallbackOverall = $heuristic['overall'] ?? null;
         } elseif ($components['pronunciation'] === null && $expectedTokens !== []) {
-            // Aligner absent but we have a target: at least score the transcript match.
+            // Aligner absent but we have a target: at least score the transcript
+            // match, so the screen is not empty.
             $match = $this->aiCoach->transcriptMatchScore($wordRows, count($expectedTokens));
             if ($match !== null) {
                 $components['pronunciation'] = $match;
-                unset($notMeasured['pronunciation']);
                 $scoringSource = 'transcript_match';
+
+                /*
+                 * The caveat stays. This number says the right words were said,
+                 * not that they were said well - a learner with a perfect
+                 * transcript and a heavy accent scores highly here. Dropping the
+                 * note would present a word-match as a measured pronunciation
+                 * score, which is the one thing the speech engine promised not
+                 * to do. The client reads `scoring_source` and labels it an
+                 * estimate.
+                 */
+                $notMeasured['pronunciation'] = 'No forced aligner was available, so this is estimated from the '
+                    .'words recognised rather than measured from the sounds produced.';
             }
+        }
+
+        if ($alignerName === null && $pronunciationCaveat !== null) {
+            $notMeasured['pronunciation'] = $pronunciationCaveat;
         }
 
         $measurement = $components + [

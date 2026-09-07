@@ -6,6 +6,7 @@ use App\Models\ConversationSession;
 use App\Models\DailyProgress;
 use App\Models\ExamAttempt;
 use App\Models\ExerciseAttempt;
+use App\Models\Language;
 use App\Models\LearnerProfile;
 use App\Models\LearningSession;
 use App\Models\SpeechAttempt;
@@ -273,6 +274,11 @@ class ProgressService
         return LearnerProfile::firstOrCreate(
             ['user_id' => $userId],
             [
+                // Not nullable, and this is often the first thing to reach for a
+                // profile - crediting an exam for someone who has not yet
+                // started a lesson. Every other creator of a profile supplies
+                // it; leaving it out here made the credit itself throw.
+                'language_id' => Language::where('code', 'en')->value('id'),
                 'xp' => 0,
                 'streak_days' => 0,
                 'longest_streak_days' => 0,

@@ -274,10 +274,21 @@ class SpeechAiCoachService
      * @param  array<string,string>  $notMeasured
      * @return array{0: array<string,?float>, 1: array<string,string>}
      */
-    public function fillGaps(array $components, array $aiScores, array $notMeasured): array
+    public function fillGaps(array $components, array $aiScores, array $notMeasured, array $protected = []): array
     {
         foreach (['pronunciation', 'fluency', 'grammar', 'vocabulary', 'completeness'] as $key) {
             if (($components[$key] ?? null) !== null) {
+                continue;
+            }
+            /*
+             * Some gaps are instrumental - no aligner, the model unreachable -
+             * and an estimate is better than a blank. Others are structural:
+             * completeness and grammar are both deviation from a target text,
+             * and open speech has none, so there is nothing to be right or
+             * wrong about. Filling those would not be estimating a number, it
+             * would be inventing the question it answers.
+             */
+            if (in_array($key, $protected, true)) {
                 continue;
             }
             if (! isset($aiScores[$key]) || $aiScores[$key] === null) {
