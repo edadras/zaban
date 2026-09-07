@@ -24,6 +24,12 @@ enum AppRoute {
   progress('/progress', 'progress'),
   speech('/speech', 'speech'),
 
+  /// The school's classes. The learner's half only — the coach's console and
+  /// the administrator's screens are the web panel, not this client.
+  classes('/classes', 'classes'),
+  classRoom('/classes/:sessionId', 'classRoom'),
+  notifications('/notifications', 'notifications'),
+
   exam('/exam', 'exam'),
   examAttempt('/exam/attempt/:attemptId', 'examAttempt'),
   examResult('/exam/result/:attemptId', 'examResult'),
@@ -50,6 +56,7 @@ enum AppRoute {
   final String name;
 
   String lessonPath(int lessonId) => '/lesson/$lessonId';
+  String classRoomPath(int sessionId) => '/classes/$sessionId';
   String bookPath(int bookId) => '/admin/curriculum/$bookId';
   String conversationPath(int sessionId) => '/conversation/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';

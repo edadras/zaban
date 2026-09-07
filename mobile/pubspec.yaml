@@ -38,8 +38,17 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   shared_preferences: ^2.3.3
 
-  # Media: recording for speech practice, playback for listening blocks.
+  # The live classroom. 2.6.4 is the last release that resolves against the
+  # Flutter floor above: 2.6.5 wants meta 1.17, which flutter_localizations
+  # pins to 1.16 on 3.32, and 2.12 wants Flutter 3.38. Moving the whole app
+  # to a new SDK for a newer WebRTC wrapper is not a trade worth making.
+  livekit_client: ^2.6.4
+
+  # Media: recording for speech practice, playback for listening blocks, and
+  # the coach's uploaded video on the classroom stage. video_player is held at
+  # 2.10 for the same Flutter floor as livekit_client above.
   record: ^5.2.0
+  video_player: ^2.10.1
   just_audio: ^0.9.42
   permission_handler: ^11.3.1
   path_provider: ^2.1.5

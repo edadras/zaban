@@ -692,5 +692,91 @@ const Map<String, String> faStrings = <String, String>{
       'تثبیت',
   'Due + weak spots':
       'سررسید + نقاط ضعف',
+
+  // --------------------------------------------------- the live classroom
+  'Camera off':
+      'دوربین بسته',
+  'Camera off by your coach':
+      'دوربین را مربی بسته است',
+  'Camera on':
+      'دوربین باز',
+  'Class':
+      'کلاس',
+  'Class reminders and messages from your school appear here.':
+      'یادآوری کلاس‌ها و پیام‌های آموزشگاه اینجا دیده می‌شود.',
+  'Correct':
+      'درست',
+  'Hand raised':
+      'دستتان بالاست',
+  'In':
+      'تا',
+  'In the room':
+      'در اتاق',
+  'Join the class':
+      'ورود به کلاس',
+  'Live now':
+      'هم‌اکنون در جریان',
+  'Mark all read':
+      'همه خوانده شد',
+  'Microphone off':
+      'میکروفون بسته',
+  'Microphone on':
+      'میکروفون باز',
+  'Muted by your coach':
+      'مربی صدایتان را بسته است',
+  'My classes':
+      'کلاس‌های من',
+  'My coach':
+      'مربی من',
+  'Next up':
+      'در پیش',
+  'Not this time':
+      'این‌بار نه',
+  'Nothing yet':
+      'هنوز چیزی نیست',
+  'Notification':
+      'اعلان',
+  'Notifications':
+      'اعلان‌ها',
+  'On screen':
+      'روی صفحه',
+  'Open the file your coach shared from the class page.':
+      'فایلی که مربی به اشتراک گذاشته را از صفحهٔ کلاس باز کنید.',
+  'Raise hand':
+      'بالا بردن دست',
+  'Starting':
+      'در حال شروع',
+  'The class has ended':
+      'کلاس تمام شد',
+  'This material could not be opened.':
+      'این محتوا باز نشد.',
+  "Today's practice is set by your coach":
+      'تمرین امروز را مربی‌تان تعیین کرده است',
+  'Type your answer':
+      'پاسخ خود را بنویسید',
+  'When a school adds you to one, its timetable appears here.':
+      'وقتی آموزشگاهی شما را به کلاسی اضافه کند، برنامه‌اش اینجا دیده می‌شود.',
+  'You are not in a class yet':
+      'هنوز در کلاسی نیستید',
+  'Your answer is with your coach.':
+      'پاسخ شما نزد مربی است.',
+  'Your coach asks':
+      'مربی می‌پرسد',
+  'Your coach closed the room.':
+      'مربی اتاق را بست.',
+  'Your coach is teaching from a lesson in the course.':
+      'مربی از یکی از درس‌های سامانه تدریس می‌کند.',
+  'Your next class':
+      'کلاس بعدی شما',
+  'days':
+      'روز',
+  'h':
+      'ساعت',
+  'in':
+      'تا',
+  'is starting now':
+      'هم‌اکنون آغاز می‌شود',
+  'items from your class':
+      'مورد از کلاس شما',
 };
 

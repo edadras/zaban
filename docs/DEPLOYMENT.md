@@ -603,6 +603,28 @@ proxy in front of Laravel is not enough on its own. Muting is pushed to the
 media server *and* written as a row here, because the row is what makes a muted
 learner who reloads come back muted.
 
+### The learner's side
+
+The app has the other half: `/classes`, the room, and the bell. It joins the
+same LiveKit room through the same endpoints, and renders whatever the coach
+puts on screen.
+
+Two differences from the panel worth knowing about.
+
+* **It polls.** The client has no websocket of its own, so the room's state is
+  re-read every three seconds. The one thing where a delay would matter — being
+  muted — is enforced by the media server the moment the coach decides it, so
+  what arrives on the next poll is the label catching up with the microphone
+  rather than the other way round.
+* **Placement does not gate it.** A learner summoned into a class that starts
+  now is not sent to sit the adaptive test first; the course itself is still
+  gated.
+
+Native builds need the camera: `CAMERA`, `MODIFY_AUDIO_SETTINGS`,
+`ACCESS_NETWORK_STATE` and `BLUETOOTH_CONNECT` are in the Android manifest, and
+`NSCameraUsageDescription` in the iOS plist. flutter_webrtc raises the iOS
+floor to 13.0.
+
 ### Websockets
 
 The console listens on the private channel `class-session.{id}` through Reverb,

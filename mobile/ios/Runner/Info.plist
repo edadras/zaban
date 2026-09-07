@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Zaban records you reading a line aloud so it can score your pronunciation. Recordings are deleted after the retention window you set.</string>
+	<string>Zaban records you reading a line aloud so it can score your pronunciation, and carries your voice in a live class. Recordings are deleted after the retention window you set.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Zaban shows your camera to your coach and classmates during a live class, and only while you are in one.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

@@ -19,6 +19,9 @@ import 'package:zaban/features/auth/presentation/auth_controller.dart';
 import 'package:zaban/features/auth/presentation/login_screen.dart';
 import 'package:zaban/features/auth/presentation/register_screen.dart';
 import 'package:zaban/features/auth/presentation/splash_screen.dart';
+import 'package:zaban/features/classroom/presentation/class_room_screen.dart';
+import 'package:zaban/features/classroom/presentation/my_classes_screen.dart';
+import 'package:zaban/features/classroom/presentation/notifications_screen.dart';
 import 'package:zaban/features/conversation/presentation/conversation_screen.dart';
 import 'package:zaban/features/conversation/presentation/scenarios_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_attempt_screen.dart';
@@ -68,7 +71,17 @@ const Set<String> _prePlacementPaths = <String>{
   '/plans',
   '/profile',
   '/profile/settings',
+  '/notifications',
 };
+
+/// A school's class does not wait on the placement test.
+///
+/// Placement gates the *course*, which is the app's own curriculum. A learner
+/// whose school has just put them in a class and summoned them into it has
+/// somewhere to be now, and bouncing them to an adaptive test is how they miss
+/// the lesson. Matched by prefix because the room carries a session id.
+bool _isClassroom(String location) =>
+    location == '/classes' || location.startsWith('/classes/');
 
 final routerProvider = Provider<GoRouter>((ref) {
   // GoRouter needs a Listenable; bridging Riverpod through a counter keeps the
@@ -115,7 +128,9 @@ final routerProvider = Provider<GoRouter>((ref) {
 
       // Placement is the gate to the course: the server decides when it is
       // done, and until then the learning routes are not meaningful.
-      if (needsPlacement && !_prePlacementPaths.contains(location)) {
+      if (needsPlacement &&
+          !_prePlacementPaths.contains(location) &&
+          !_isClassroom(location)) {
         return onboardingSeen
             ? AppRoute.placement.path
             : AppRoute.onboarding.path;
@@ -180,6 +195,23 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: AppRoute.speech.path,
         name: AppRoute.speech.name,
         builder: (_, __) => const SpeechPracticeScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.notifications.path,
+        name: AppRoute.notifications.name,
+        builder: (_, __) => const NotificationsScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.classes.path,
+        name: AppRoute.classes.name,
+        builder: (_, __) => const MyClassesScreen(),
+      ),
+      GoRoute(
+        path: AppRoute.classRoom.path,
+        name: AppRoute.classRoom.name,
+        builder: (BuildContext _, GoRouterState state) => ClassRoomScreen(
+          sessionId: int.parse(state.pathParameters['sessionId']!),
+        ),
       ),
       GoRoute(
         path: AppRoute.plans.path,

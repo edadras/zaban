@@ -145,4 +145,29 @@ class ApiEndpoints {
   // ----------------------------------------------------------- onboarding
   static const String onboardingOptions = '/onboarding/options';
   static const String onboarding = '/onboarding';
+
+  // ------------------------------------------------------ the live classroom
+  /// The learner's side. `routes/api/classroom.php`; the coach's and the
+  /// administrator's side is the web panel rather than this client.
+  static const String myClasses = '/my/classes';
+  static const String myClassHistory = '/my/classes/history';
+
+  static String room(int sessionId) => '/class-sessions/$sessionId/room';
+  static String roomJoin(int sessionId) => '/class-sessions/$sessionId/room/join';
+  static String roomLeave(int sessionId) =>
+      '/class-sessions/$sessionId/room/leave';
+  static String roomToken(int sessionId) =>
+      '/class-sessions/$sessionId/room/token';
+  static String roomHand(int sessionId) => '/class-sessions/$sessionId/room/hand';
+  static String roomAnswer(int sessionId, int questionId) =>
+      '/class-sessions/$sessionId/room/questions/$questionId/answer';
+
+  /// A short-lived signed playback URL for one asset. Materials reference
+  /// media by id, never by path, so storage cannot be enumerated.
+  static String media(int id) => '/media/$id';
+
+  // --------------------------------------------------------------- the bell
+  static const String notifications = '/notifications';
+  static const String notificationsReadAll = '/notifications/read-all';
+  static String notificationRead(String id) => '/notifications/$id/read';
 }

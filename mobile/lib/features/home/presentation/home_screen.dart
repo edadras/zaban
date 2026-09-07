@@ -14,6 +14,7 @@ import 'package:zaban/core/widgets/state_views.dart';
 import 'package:zaban/core/widgets/streak_badge.dart';
 import 'package:zaban/core/widgets/trend_sparkline.dart';
 import 'package:zaban/features/auth/presentation/auth_controller.dart';
+import 'package:zaban/features/classroom/presentation/widgets/class_strip.dart';
 import 'package:zaban/features/home/data/models/home_snapshot.dart';
 import 'package:zaban/features/home/presentation/home_controller.dart';
 import 'package:zaban/features/home/presentation/session/session_controller.dart';
@@ -110,6 +111,7 @@ class _HomeBody extends ConsumerWidget {
                 },
               ),
               const SizedBox(height: Spacing.xxl),
+              const ClassStrip(),
               SectionHeader(
                 title: context.t('How you learn'),
                 eyebrow: context.t('Grammar · words · sound · talk'),

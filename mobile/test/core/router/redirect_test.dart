@@ -107,6 +107,21 @@ void main() {
     expect(where(c, AppRoute.profile.path), isNull);
   });
 
+  /// Placement gates the app's own curriculum, not a school's timetable. A
+  /// learner summoned into a class that starts now must not be sent to sit an
+  /// adaptive test instead.
+  test('a school class is not held behind placement', () {
+    final c = containerFor(AuthState.authenticated(learner(placement: 'not_started')));
+    addTearDown(c.dispose);
+
+    expect(where(c, AppRoute.classes.path), isNull);
+    expect(where(c, AppRoute.classRoom.classRoomPath(12)), isNull);
+    expect(where(c, AppRoute.notifications.path), isNull);
+
+    // The course itself is still gated.
+    expect(where(c, AppRoute.session.path), AppRoute.placement.path);
+  });
+
   test('onboarding comes before placement, and only once', () {
     final c = containerFor(
       AuthState.authenticated(learner(placement: 'not_started')),

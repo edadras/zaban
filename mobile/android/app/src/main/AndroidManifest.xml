@@ -5,6 +5,17 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
+    <!-- A live class: the learner's camera, and the audio-mode and network
+         state WebRTC needs to route a call and to survive a change of
+         network mid-lesson. The camera is optional hardware, so a tablet
+         without one still installs and can still watch. -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+
     <application
         android:label="Zaban"
         android:name="${applicationName}"
