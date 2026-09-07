@@ -2,6 +2,8 @@
 
 namespace App\Services\Classroom;
 
+use App\Models\ClassGroup;
+use App\Models\ClassSession;
 use App\Models\CoachStudent;
 use App\Models\School;
 use App\Models\SchoolMember;
@@ -79,6 +81,27 @@ class SchoolService
             throw new ClassroomException('A school cannot be left without an owner.', 409);
         }
 
+        /*
+         * A class always has a coach - the column is not nullable - so letting
+         * the last one leave would strand every class they teach at a person
+         * the school no longer employs. The admin reassigns them first; the
+         * error says how many, so they know what they are looking for.
+         */
+        if ($role === SchoolMember::COACH) {
+            $teaching = ClassGroup::where('school_id', $school->id)
+                ->where('coach_id', $user->id)
+                ->where('is_active', true)
+                ->count();
+
+            if ($teaching > 0) {
+                throw new ClassroomException(
+                    "This coach still teaches {$teaching} active class(es). "
+                        .'Move them to another coach, or close them, first.',
+                    409,
+                );
+            }
+        }
+
         SchoolMember::where('school_id', $school->id)
             ->where('user_id', $user->id)
             ->where('role', $role)
@@ -120,6 +143,34 @@ class SchoolService
         ])->save();
 
         return $link;
+    }
+
+    /**
+     * Hand a class to a different coach.
+     *
+     * Sessions that have not been taught follow the class; the ones already
+     * taught keep the coach who taught them, because they are the attendance
+     * record of what actually happened.
+     *
+     * @return int how many future sessions moved with it
+     */
+    public function reassignClass(ClassGroup $group, User $coach): int
+    {
+        $this->assertMember(
+            $group->school,
+            $coach,
+            SchoolMember::COACH,
+            'That person is not a coach at this school.',
+        );
+
+        return DB::transaction(function () use ($group, $coach) {
+            $group->update(['coach_id' => $coach->id]);
+
+            return ClassSession::where('class_group_id', $group->id)
+                ->where('status', ClassSession::SCHEDULED)
+                ->where('starts_at', '>', now())
+                ->update(['coach_id' => $coach->id]);
+        });
     }
 
     public function unassignStudent(School $school, User $coach, User $student): void

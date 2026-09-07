@@ -24,6 +24,7 @@ const csrf = document.querySelector('meta[name=csrf-token]')?.content ?? '';
 
 const el = {
     stage: document.getElementById('stage'),
+    askable: document.getElementById('askable'),
     tiles: document.getElementById('tiles'),
     roster: document.getElementById('roster'),
     shelf: document.getElementById('shelf'),
@@ -41,11 +42,28 @@ const state = {
     materials: [],
     sharedMaterialId: null,
     openQuestion: null,
+    askable: [],
     me: config.userId,
     mediaUrls: new Map(),
 };
 
 let room = null;
+
+/*
+ * A room key lasts six hours and a class can be scheduled for eight, so a
+ * dropped media connection is re-made with a *fresh* key rather than the one
+ * the page was handed. `leaving` stops the class's own ending from looking
+ * like a network failure worth retrying.
+ */
+let reconnecting = false;
+let leaving = false;
+
+/*
+ * A playback link is signed and lasts an hour. A class can run longer than
+ * that, so the cache holds when it was fetched and lets a stale one go rather
+ * than putting a dead URL on the screen an hour into the lesson.
+ */
+const MEDIA_URL_TTL_MS = 45 * 60 * 1000;
 
 // ---------------------------------------------------------------- the API
 
@@ -95,9 +113,27 @@ async function refresh() {
 function render() {
     renderRoster();
     renderShelf();
+    renderAskable();
     renderStage();
     renderQuestion();
+    labelTiles();
     syncLocalPublishing();
+}
+
+/*
+ * Tiles are created the moment a track arrives, which is often before the
+ * roster row naming that person does. Relabelling on every render is what
+ * stops a learner who joined mid-lesson from staying anonymous for the rest
+ * of it.
+ */
+function labelTiles() {
+    el.tiles.querySelectorAll('[data-identity]').forEach((tile) => {
+        const userId = Number(String(tile.dataset.identity).replace(/^u/, ''));
+        const person = state.participants.find((p) => p.user_id === userId);
+        const label = tile.querySelector('[data-tile-name]');
+
+        if (label && person) label.textContent = person.name ?? '';
+    });
 }
 
 const escape = (value) => String(value ?? '').replace(/[&<>"']/g,
@@ -163,6 +199,25 @@ function renderShelf() {
         '<li class="px-4 py-6 text-center text-sm text-ink-400">محتوایی افزوده نشده است.</li>';
 }
 
+/*
+ * The questions today's material can be asked.
+ *
+ * Asking one sends only its id: the server takes the wording, the options and
+ * the right answer from the corpus, so the room marks itself and nobody
+ * decides twice what right looks like.
+ */
+function renderAskable() {
+    if (!el.askable) return;
+
+    el.askable.innerHTML = state.askable.map((exercise) => `
+        <li class="flex items-start justify-between gap-2 px-4 py-2.5">
+            <span class="min-w-0 flex-1 text-sm">${escape(exercise.stem)}</span>
+            <button class="btn-ghost shrink-0" data-ask-exercise="${exercise.id}">بپرس</button>
+        </li>`).join('') ||
+        '<li class="px-4 py-4 text-center text-xs text-ink-400">'
+        + 'درسی از سامانه به این جلسه اضافه نشده است.</li>';
+}
+
 // -------------------------------------------------------------------- stage
 
 async function renderStage() {
@@ -211,7 +266,8 @@ async function renderStage() {
 
 /** Media is fetched by id and served through a short-lived signed link. */
 async function mediaUrl(id) {
-    if (state.mediaUrls.has(id)) return state.mediaUrls.get(id);
+    const cached = state.mediaUrls.get(id);
+    if (cached && Date.now() - cached.at < MEDIA_URL_TTL_MS) return cached.url;
 
     const response = await fetch(`/api/v1/media/${id}`, {
         headers: { Accept: 'application/json', Authorization: `Bearer ${config.token}` },
@@ -219,7 +275,7 @@ async function mediaUrl(id) {
     const payload = await response.json();
     const url = payload?.data?.url ?? '';
 
-    state.mediaUrls.set(id, url);
+    state.mediaUrls.set(id, { url, at: Date.now() });
 
     return url;
 }
@@ -291,13 +347,39 @@ async function connectMedia() {
             if (connectionState === ConnectionState.Reconnecting) note('در حال اتصال دوباره…');
             if (connectionState === ConnectionState.Connected) note('متصل.');
         })
-        .on(RoomEvent.Disconnected, () => note('ارتباط تصویری قطع شد.', true));
+        .on(RoomEvent.Disconnected, () => {
+            if (leaving) return;
+
+            note('ارتباط تصویری قطع شد؛ در حال اتصال دوباره…', true);
+            setTimeout(reconnectMedia, 2000);
+        });
 
     await room.connect(joined.room.url, joined.room.token);
     note('متصل.');
 
     await syncLocalPublishing();
     render();
+}
+
+async function reconnectMedia() {
+    if (reconnecting || leaving || room === null) return;
+    if (state.session?.status !== 'live') return;
+
+    reconnecting = true;
+
+    try {
+        const key = await api('/room/token', { method: 'POST' });
+
+        if (key.provider === 'null' || !key.url || !key.token) return;
+
+        await room.connect(key.url, key.token);
+        note('متصل.');
+        await syncLocalPublishing();
+    } catch {
+        note('ارتباط تصویری برقرار نشد. صفحه را تازه کنید.', true);
+    } finally {
+        reconnecting = false;
+    }
 }
 
 /**
@@ -344,8 +426,8 @@ function attach(track, identity, isLocal = false) {
         tile = document.createElement('div');
         tile.dataset.identity = identity;
         tile.className = 'relative overflow-hidden rounded-xl bg-ink-900 aspect-video';
-        tile.innerHTML = `<span class="absolute bottom-2 start-2 z-10 rounded bg-black/60 px-2 py-0.5
-                                       text-xs text-white">${escape(person?.name ?? '')}</span>`;
+        tile.innerHTML = `<span data-tile-name class="absolute bottom-2 start-2 z-10 rounded bg-black/60
+                                       px-2 py-0.5 text-xs text-white">${escape(person?.name ?? '')}</span>`;
         el.tiles.append(tile);
     }
 
@@ -405,6 +487,7 @@ function listen() {
     echo.private(`class-session.${config.sessionId}`).listen('.classroom', (event) => {
         if (event.type === 'session.ended') {
             note('کلاس پایان یافت.');
+            leaving = true;
             room?.disconnect();
         }
 
@@ -419,7 +502,7 @@ function listen() {
 document.addEventListener('click', async (event) => {
     const target = event.target.closest('[data-media],[data-remove],[data-share-material],'
         + '[data-close-material],[data-close-question],[data-mute-all],[data-lock],[data-unlock],'
-        + '[data-hand]');
+        + '[data-hand],[data-ask-exercise]');
 
     if (!target) return;
 
@@ -438,6 +521,14 @@ document.addEventListener('click', async (event) => {
             await api(`/room/materials/${target.dataset.shareMaterial}/share`, { method: 'POST' });
         } else if (target.dataset.closeMaterial) {
             await api(`/room/materials/${target.dataset.closeMaterial}/close`, { method: 'POST' });
+        } else if (target.dataset.askExercise) {
+            await api('/room/questions', {
+                method: 'POST',
+                body: {
+                    kind: 'exercise',
+                    exercise_id: Number(target.dataset.askExercise),
+                },
+            });
         } else if (target.dataset.closeQuestion) {
             await api(`/room/questions/${target.dataset.closeQuestion}/close`, { method: 'POST' });
         } else if (target.hasAttribute('data-mute-all')) {
@@ -506,6 +597,8 @@ document.getElementById('ask')?.addEventListener('submit', async (event) => {
 
 /* Leaving the page is leaving the room, so attendance is not overstated. */
 window.addEventListener('pagehide', () => {
+    leaving = true;
+
     // keepalive rather than sendBeacon: the leave endpoint authenticates by
     // bearer token, and a beacon cannot carry a header.
     fetch(`/api/v1/class-sessions/${config.sessionId}/room/leave`, {
@@ -529,6 +622,9 @@ window.addEventListener('pagehide', () => {
             const preview = await api('/room/lock-preview');
             el.lock.textContent =
                 `${preview.concept_count} مفهوم از این جلسه، برای ${preview.student_count} زبان‌آموز.`;
+
+            state.askable = await api('/room/askable');
+            renderAskable();
         }
     } catch (error) {
         note(error.message ?? 'اتاق باز نشد.', true);

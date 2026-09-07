@@ -14,6 +14,7 @@ use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\ClassScheduleService;
 use App\Services\Classroom\SchoolService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 /**
  * Classes and their timetables.
@@ -120,7 +121,8 @@ class ClassGroupController extends ApiController
     {
         $this->assertCanManage($request, $group);
 
-        $group->update($request->validate([
+        $data = $request->validate([
+            'coach_id' => ['sometimes', 'integer', 'exists:users,id'],
             'title' => ['sometimes', 'string', 'max:160'],
             'description' => ['sometimes', 'nullable', 'string', 'max:2000'],
             'cefr_level_id' => ['sometimes', 'nullable', 'integer', 'exists:cefr_levels,id'],
@@ -128,7 +130,23 @@ class ClassGroupController extends ApiController
             'capacity' => ['sometimes', 'integer', 'min:1', 'max:500'],
             'timezone' => ['sometimes', 'string', 'max:64'],
             'is_active' => ['sometimes', 'boolean'],
-        ]));
+        ]);
+
+        // Handing the class to somebody else takes its untaught sessions with
+        // it, and is checked against the school's own coaches rather than the
+        // whole user table.
+        if (isset($data['coach_id']) && $data['coach_id'] !== $group->coach_id) {
+            // Only the school moves a class. A coach may run their own class
+            // and change its details, but handing it to somebody else is a
+            // staffing decision rather than a teaching one.
+            if (! $this->schools->isManager($group->school, $request->user())) {
+                throw new ClassroomException('Only a school manager can change a class\'s coach.', 403);
+            }
+
+            $this->schools->reassignClass($group, User::findOrFail($data['coach_id']));
+        }
+
+        $group->update(Arr::except($data, ['coach_id']));
 
         return $this->ok($this->present($group->fresh(['school', 'coach', 'level'])));
     }

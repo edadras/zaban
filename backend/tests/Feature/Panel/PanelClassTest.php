@@ -150,6 +150,57 @@ class PanelClassTest extends PanelTestCase
             ->assertSessionHasErrors('classroom');
     }
 
+    /**
+     * Handing a class over from the browser.
+     *
+     * The select only exists for a school manager, and the server refuses it
+     * for anyone else — hiding the control is not the defence.
+     */
+    public function test_the_manager_hands_a_class_to_another_coach(): void
+    {
+        $successor = $this->makeUser('Successor');
+        app(SchoolService::class)
+            ->addMember($this->school, $successor, SchoolMember::COACH);
+
+        $this->actingAs($this->owner)
+            ->get(route('panel.classes.show', $this->group))
+            ->assertOk()
+            ->assertSee('مربی کلاس');
+
+        $this->actingAs($this->owner)
+            ->patch(route('panel.classes.update', $this->group), [
+                'coach_id' => $successor->id,
+                'title' => $this->group->title,
+                'capacity' => $this->group->capacity,
+                'is_active' => '1',
+            ])
+            ->assertSessionHas('status');
+
+        $this->assertSame($successor->id, $this->group->fresh()->coach_id);
+    }
+
+    public function test_a_coach_is_not_offered_the_handover_and_cannot_force_it(): void
+    {
+        $successor = $this->makeUser('Successor');
+        app(SchoolService::class)
+            ->addMember($this->school, $successor, SchoolMember::COACH);
+
+        $this->actingAs($this->coach)
+            ->get(route('panel.classes.show', $this->group))
+            ->assertOk()
+            ->assertDontSee('مربی کلاس');
+
+        $this->actingAs($this->coach)
+            ->patch(route('panel.classes.update', $this->group), [
+                'coach_id' => $successor->id,
+                'title' => $this->group->title,
+                'is_active' => '1',
+            ])
+            ->assertForbidden();
+
+        $this->assertSame($this->coach->id, $this->group->fresh()->coach_id);
+    }
+
     public function test_a_learner_can_be_withdrawn(): void
     {
         $this->actingAs($this->coach)

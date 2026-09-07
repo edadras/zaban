@@ -9,8 +9,8 @@ use App\Models\ClassMaterial;
 use App\Models\ClassParticipant;
 use App\Models\ClassQuestion;
 use App\Models\ClassSession;
+use App\Models\Concept;
 use App\Models\Exercise;
-use App\Models\PracticeLock;
 use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\ClassroomService;
 use App\Services\Classroom\PracticeLockService;
@@ -204,12 +204,30 @@ class ClassRoomController extends ApiController
             'user_ids.*' => ['integer'],
         ]);
 
-        // An exercise from the corpus brings its own wording, so the coach does
-        // not retype a question the system already holds.
+        /*
+         * An exercise from the corpus brings its own wording, its own options
+         * and its own answer, so the coach does not retype a question the
+         * system already holds - and the room's answers are marked without
+         * anyone deciding twice what right looks like. Anything the coach
+         * passed explicitly still wins.
+         */
         $prompt = $data['prompt'] ?? null;
-        if ($prompt === null && ! empty($data['exercise_id'])) {
-            $prompt = (string) (Exercise::find($data['exercise_id'])?->stem ?? 'Answer the exercise.');
+        $options = $data['options'] ?? null;
+        $correct = $data['correct_options'] ?? null;
+
+        if (! empty($data['exercise_id'])) {
+            $exercise = Exercise::with('options')->find($data['exercise_id']);
+
+            if ($exercise !== null) {
+                $prompt ??= (string) ($exercise->stem ?: 'Answer the exercise.');
+
+                if ($options === null) {
+                    [$options, $correct] = $this->optionsOf($exercise);
+                }
+            }
         }
+
+        $prompt ??= 'Answer the exercise.';
 
         $question = $session->questions()->create([
             'asked_by' => $request->user()->id,
@@ -217,8 +235,8 @@ class ClassRoomController extends ApiController
             'class_material_id' => $data['class_material_id'] ?? null,
             'kind' => $data['kind'],
             'prompt' => $prompt,
-            'options' => $data['options'] ?? null,
-            'correct_options' => $data['correct_options'] ?? null,
+            'options' => $options,
+            'correct_options' => $correct,
             'addressed_user_ids' => $data['user_ids'] ?? null,
             'opened_at' => now(),
         ]);
@@ -303,6 +321,67 @@ class ClassRoomController extends ApiController
         return $this->ok($this->presentQuestion($question, forCoach: true));
     }
 
+    /**
+     * The corpus questions this class can be asked.
+     *
+     * Drawn from what the coach put on the shelf - the lessons and exercises
+     * they chose - rather than from the whole bank, so "ask from the course"
+     * means "ask from today's course" and not "search fifty thousand items".
+     */
+    public function askable(Request $request, ClassSession $session)
+    {
+        $this->assertCoach($request, $session);
+
+        $lessonIds = $session->materials()->whereNotNull('lesson_id')->pluck('lesson_id');
+        $exerciseIds = $session->materials()->whereNotNull('exercise_id')->pluck('exercise_id');
+
+        if ($lessonIds->isEmpty() && $exerciseIds->isEmpty()) {
+            return $this->ok([]);
+        }
+
+        $exercises = Exercise::with('options')
+            ->where('status', 'published')
+            ->where(fn ($q) => $q->whereIn('lesson_id', $lessonIds)->orWhereIn('id', $exerciseIds))
+            ->orderBy('id')
+            ->limit(60)
+            ->get();
+
+        return $this->ok($exercises->map(function (Exercise $exercise) {
+            [$options, $correct] = $this->optionsOf($exercise);
+
+            return [
+                'id' => $exercise->id,
+                'stem' => $exercise->stem,
+                'options' => $options,
+                'correct_options' => $correct,
+            ];
+        }));
+    }
+
+    /**
+     * An exercise's answers, in the shape a room question stores them:
+     * the option texts in order, and the positions of the correct ones.
+     *
+     * @return array{0: list<string>, 1: list<int>}
+     */
+    private function optionsOf(Exercise $exercise): array
+    {
+        $ordered = $exercise->options->sortBy('position')->values();
+
+        $texts = [];
+        $correct = [];
+
+        foreach ($ordered as $index => $option) {
+            $texts[] = (string) $option->text;
+
+            if ($option->is_correct) {
+                $correct[] = $index;
+            }
+        }
+
+        return [$texts, $texts === [] ? [] : $correct];
+    }
+
     // ------------------------------------------------------- practice lock
 
     public function lockPractice(Request $request, ClassSession $session)
@@ -355,7 +434,7 @@ class ClassRoomController extends ApiController
 
         return $this->ok([
             'concept_count' => count($conceptIds),
-            'concepts' => \App\Models\Concept::whereIn('id', array_slice($conceptIds, 0, 40))
+            'concepts' => Concept::whereIn('id', array_slice($conceptIds, 0, 40))
                 ->pluck('label'),
             'student_count' => $session->group?->students()->count() ?? 0,
         ]);

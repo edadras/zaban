@@ -66,6 +66,14 @@
         </section>
 
         <section class="card">
+            <div class="card-head"><h2 class="card-title">پرسش از محتوای درس</h2></div>
+            <ul id="askable" class="max-h-64 divide-y divide-ink-100 overflow-y-auto"></ul>
+            <p class="border-t border-ink-100 px-4 py-2 text-xs text-ink-400">
+                صورت پرسش، گزینه‌ها و پاسخ درست از خود سامانه برداشته می‌شوند و پاسخ‌ها خودکار تصحیح می‌شوند.
+            </p>
+        </section>
+
+        <section class="card">
             <div class="card-head"><h2 class="card-title">پرسش</h2></div>
             <div id="question"></div>
 

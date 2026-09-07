@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1\Classroom;
 
 use App\Http\Controllers\Api\V1\ApiController;
+use App\Models\ClassGroup;
 use App\Models\ClassMaterial;
 use App\Models\ClassParticipant;
 use App\Models\ClassSession;
@@ -13,6 +14,7 @@ use App\Services\Classroom\ClassScheduleService;
 use App\Services\Classroom\MaterialService;
 use App\Services\Classroom\PracticeLockService;
 use App\Services\Classroom\SchoolService;
+use Carbon\CarbonImmutable;
 use Illuminate\Http\Request;
 
 /**
@@ -59,10 +61,10 @@ class ClassSessionController extends ApiController
             'duration_minutes' => ['required', 'integer', 'min:10', 'max:480'],
         ]);
 
-        $group = \App\Models\ClassGroup::findOrFail($data['class_group_id']);
+        $group = ClassGroup::findOrFail($data['class_group_id']);
         $this->assertCoachOrManager($request, $group->coach_id, $group->school);
 
-        $starts = \Carbon\CarbonImmutable::parse($data['starts_at']);
+        $starts = CarbonImmutable::parse($data['starts_at']);
 
         $session = ClassSession::create([
             'class_group_id' => $group->id,

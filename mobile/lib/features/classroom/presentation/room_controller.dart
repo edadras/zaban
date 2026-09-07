@@ -80,6 +80,7 @@ class LiveRoom {
 class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   Timer? _poll;
   lk.Room? _media;
+  lk.EventsListener<lk.RoomEvent>? _mediaEvents;
   int? _sessionId;
 
   /// Captured at build time rather than read through `ref` on the way out:
@@ -87,6 +88,11 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   /// by then `ref` is no longer safe to touch.
   late final ClassroomRepository _repository;
   int? _myUserId;
+
+  /// True while the room is deliberately being left, so the class's own
+  /// ending does not look like a network failure worth retrying.
+  bool _leaving = false;
+  bool _reconnecting = false;
 
   @override
   Future<LiveRoom> build(int sessionId) async {
@@ -124,6 +130,11 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
         roomOptions: const lk.RoomOptions(adaptiveStream: true, dynacast: true),
       );
 
+      // A room key lasts six hours and a class may be scheduled for eight, so
+      // a dropped connection is re-made with a fresh key rather than this one.
+      _mediaEvents = media.createListener()
+        ..on<lk.RoomDisconnectedEvent>((_) => _reconnect());
+
       await media.connect(key.url, key.token);
       _media = media;
 
@@ -138,6 +149,29 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
         mediaAvailable: false,
         mediaProblem: 'ارتباط تصویری برقرار نشد؛ بقیهٔ کلاس کار می‌کند.',
       );
+    }
+  }
+
+  Future<void> _reconnect() async {
+    final current = state.value;
+
+    if (_leaving || _reconnecting || _media == null || current == null) return;
+    if (current.state.session.status != 'live') return;
+
+    _reconnecting = true;
+
+    try {
+      final key = await _repository.refreshToken(_sessionId!);
+      if (!key.isUsable) return;
+
+      await _media!.connect(key.url, key.token);
+      await _syncPublishing(current);
+    } catch (_) {
+      state = AsyncData(current.copyWith(
+        mediaProblem: 'ارتباط تصویری برقرار نشد؛ بقیهٔ کلاس کار می‌کند.',
+      ));
+    } finally {
+      _reconnecting = false;
     }
   }
 
@@ -272,6 +306,7 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   /// Leaving is explicit, so the attendance record is not the tab being open.
   Future<void> leave() async {
     final sessionId = _sessionId;
+    _leaving = true;
     _poll?.cancel();
 
     await _media?.disconnect();
@@ -289,7 +324,11 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   /// Closing the tab is leaving the room too, so attendance is time present
   /// rather than time with the app open.
   void _teardown() {
+    _leaving = true;
     _poll?.cancel();
+
+    _mediaEvents?.dispose();
+    _mediaEvents = null;
 
     _media?.disconnect();
     _media?.dispose();

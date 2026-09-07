@@ -182,6 +182,23 @@
                         <label class="label" for="c-title">عنوان</label>
                         <input class="field" id="c-title" name="title" value="{{ old('title', $group->title) }}" required>
                     </div>
+                    @if ($isManager)
+                        <div class="sm:col-span-2">
+                            <label class="label" for="c-coach">مربی کلاس</label>
+                            <select class="field" id="c-coach" name="coach_id">
+                                @foreach ($coaches as $member)
+                                    <option value="{{ $member->user_id }}"
+                                            @selected($group->coach_id === $member->user_id)>
+                                        {{ $member->display_name ?: $member->user?->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <p class="mt-1 text-xs text-ink-400">
+                                جلسه‌های آیندهٔ این کلاس هم به مربی تازه سپرده می‌شوند؛ جلسه‌های برگزارشده
+                                به نام مربی قبلی می‌مانند.
+                            </p>
+                        </div>
+                    @endif
                     <div>
                         <label class="label" for="c-level">سطح</label>
                         <select class="field" id="c-level" name="cefr_level_id">

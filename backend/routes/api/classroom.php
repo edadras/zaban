@@ -94,6 +94,10 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('classroom.')->group(fun
     Route::post('class-sessions/{session}/room/materials/{material}/close',
         [ClassRoomController::class, 'closeMaterial'])->name('room.close');
 
+    // What today's shelf can be asked, so a coach picks a corpus question
+    // rather than retyping one the system already holds.
+    Route::get('class-sessions/{session}/room/askable', [ClassRoomController::class, 'askable'])
+        ->name('room.askable');
     Route::post('class-sessions/{session}/room/questions', [ClassRoomController::class, 'askQuestion'])
         ->name('room.ask');
     Route::post('class-sessions/{session}/room/questions/{question}/answer',

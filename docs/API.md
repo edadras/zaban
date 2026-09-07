@@ -474,7 +474,12 @@ A member is added by email and only an account that already exists is attached �
 an unknown address is `404 no_such_account`, never a user with a password nobody
 chose. Adding somebody as a coach does not touch `users.role`: teaching at one
 school and studying at another are both true at once. A school cannot be left
-without an owner (`409`).
+without an owner (`409`), and a coach who still teaches an active class cannot
+be removed either (`409`, naming how many): `class_groups.coach_id` is not
+nullable, so letting them go would leave classes pointing at somebody the
+school no longer employs. `PATCH /classes/{group}` with `coach_id` hands the
+class over first — its untaught sessions follow the new coach, the taught ones
+keep the person who taught them, and only a school manager may do it.
 
 **Classes and timetables**
 
@@ -482,6 +487,7 @@ without an owner (`409`).
 |---|---|
 | GET / POST | `/classes` |
 | GET / PATCH / DELETE | `/classes/{group}` |
+| PATCH | `/classes/{group}` with `coach_id` — hand the class over |
 | POST | `/classes/{group}/students` |
 | DELETE | `/classes/{group}/students/{student}` |
 | POST | `/classes/{group}/rules` |
@@ -522,6 +528,7 @@ it and there is not a second way to hand a file to a learner.
 | POST | `/class-sessions/{session}/room/mute-all` |
 | DELETE | `/class-sessions/{session}/room/participants/{participant}` |
 | POST | `/class-sessions/{session}/room/materials/{material}/share`, `/close` |
+| GET | `/class-sessions/{session}/room/askable` |
 | POST | `/class-sessions/{session}/room/questions` |
 | POST | `/class-sessions/{session}/room/questions/{question}/answer`, `/close` |
 | GET | `/class-sessions/{session}/room/questions/{question}` |
@@ -534,6 +541,13 @@ permission is a row here, not a message to the media server, so a learner who is
 muted and then reloads comes back muted. `GET /room` gives a coach their whole
 shelf and a learner only what is on screen, and the open question without its
 answers or its correct option.
+
+`askable` lists the corpus questions *today's shelf* can be asked — the
+exercises belonging to the lessons the coach put on it, not the whole bank.
+Asking one sends only `kind: exercise` and its id: the server takes the
+wording, the options and the correct answer from the corpus, so the room marks
+itself and a coach's transcription slip cannot mark a right answer wrong.
+Anything the coach passes explicitly still wins.
 
 `lock` is the class reaching into the learner's evening: for the next N hours the
 adaptive engine draws only from the concepts this session taught, so the daily

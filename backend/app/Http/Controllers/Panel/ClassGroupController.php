@@ -11,6 +11,7 @@ use App\Models\SchoolMember;
 use App\Models\User;
 use App\Services\Classroom\ClassGroupService;
 use App\Services\Classroom\ClassScheduleService;
+use App\Services\Classroom\SchoolService;
 use App\Support\PanelAccess;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,7 @@ class ClassGroupController extends PanelController
         PanelAccess $access,
         private readonly ClassGroupService $groups,
         private readonly ClassScheduleService $schedule,
+        private readonly SchoolService $schools,
     ) {
         parent::__construct($access);
     }
@@ -100,6 +102,14 @@ class ClassGroupController extends PanelController
         return view('panel.classes.show', [
             'group' => $group,
             'levels' => CefrLevel::orderBy('id')->get(),
+            'isManager' => $this->access->canManageSchool($this->me(), $group->school),
+            'coaches' => SchoolMember::with('user')
+                ->where('school_id', $group->school_id)
+                ->where('role', SchoolMember::COACH)
+                ->where('status', 'active')
+                ->get()
+                ->sortBy(fn (SchoolMember $m) => $m->user?->name ?? '')
+                ->values(),
             'rules' => $group->rules->where('is_active', true)->values(),
             'sessions' => ClassSession::withCount(['materials', 'participants'])
                 ->where('class_group_id', $group->id)
@@ -120,13 +130,37 @@ class ClassGroupController extends PanelController
     {
         $this->allow($this->access->canManageGroup($this->me(), $group));
 
-        $group->update($request->validate([
+        $data = $request->validate([
+            'coach_id' => ['nullable', 'integer', 'exists:users,id'],
             'title' => ['required', 'string', 'max:160'],
             'description' => ['nullable', 'string', 'max:2000'],
             'cefr_level_id' => ['nullable', 'integer', 'exists:cefr_levels,id'],
             'capacity' => ['nullable', 'integer', 'min:1', 'max:200'],
             'is_active' => ['nullable', 'boolean'],
-        ]) + ['is_active' => $request->boolean('is_active')]);
+        ]);
+
+        $newCoach = $data['coach_id'] ?? null;
+        unset($data['coach_id']);
+
+        // Handing a class over is a staffing decision, so it belongs to the
+        // school rather than to the coach currently holding it.
+        if ($newCoach !== null && $newCoach !== $group->coach_id) {
+            $this->allow(
+                $this->access->canManageSchool($this->me(), $group->school),
+                'تغییر مربی کلاس تنها از عهدهٔ مدیر آموزشگاه برمی‌آید.',
+            );
+
+            return $this->attempt(
+                function () use ($group, $newCoach, $data, $request) {
+                    $this->schools->reassignClass($group, User::findOrFail($newCoach));
+                    $group->update($data + ['is_active' => $request->boolean('is_active')]);
+                },
+                route('panel.classes.show', $group),
+                'کلاس به مربی تازه سپرده شد.',
+            );
+        }
+
+        $group->update($data + ['is_active' => $request->boolean('is_active')]);
 
         return back()->with('status', 'ذخیره شد.');
     }

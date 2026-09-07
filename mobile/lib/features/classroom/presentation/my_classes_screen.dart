@@ -101,6 +101,8 @@ class MyClassesScreen extends ConsumerWidget {
                           ),
                         ),
 
+                      const _PastClasses(),
+
                       if (data.coaches.isNotEmpty) ...<Widget>[
                         const SizedBox(height: Spacing.lg),
                         SectionHeader(title: context.t('My coach')),
@@ -125,6 +127,47 @@ class MyClassesScreen extends ConsumerWidget {
         },
       ),
     );
+  }
+}
+
+/// What this learner has already sat through, and for how long.
+///
+/// Renders nothing until there is a history, so a first-week learner is not
+/// shown an empty heading.
+class _PastClasses extends ConsumerWidget {
+  const _PastClasses();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ref.watch(classHistoryProvider).maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          data: (List<AttendedClass> attended) {
+            if (attended.isEmpty) return const SizedBox.shrink();
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                const SizedBox(height: Spacing.lg),
+                SectionHeader(title: context.t('Classes you attended')),
+                const SizedBox(height: Spacing.sm),
+                for (final AttendedClass past in attended)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: Spacing.md),
+                    child: GlassCard(
+                      leading: const Icon(Icons.history_rounded),
+                      title: past.title,
+                      subtitle: <String>[
+                        if (past.startsAt != null)
+                          DateFormat('y/MM/dd').format(past.startsAt!.toLocal()),
+                        '${past.secondsPresent ~/ 60} ${context.t('min')}',
+                        if (past.coach != null) past.coach!,
+                      ].join(' · '),
+                    ),
+                  ),
+              ],
+            );
+          },
+        );
   }
 }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zaban/features/classroom/data/models/classroom_models.dart';
@@ -26,12 +27,19 @@ void main() {
     );
   }
 
-  Future<void> show(WidgetTester tester, MyClasses data) async {
+  Future<void> show(
+    WidgetTester tester,
+    MyClasses data, {
+    List<AttendedClass> attended = const <AttendedClass>[],
+    Size surface = const Size(420, 900),
+  }) async {
     await tester.pumpApp(
       const MyClassesScreen(),
       scrollable: false,
+      surfaceSize: surface,
       overrides: <Override>[
         myClassesProvider.overrideWith((Ref ref) async => data),
+        classHistoryProvider.overrideWith((Ref ref) async => attended),
       ],
     );
     await tester.pumpAndSettle();
@@ -77,6 +85,41 @@ void main() {
     // GlassCard shouts its eyebrow.
     expect(find.text('LIVE NOW'), findsOneWidget);
     expect(find.text('Join the class'), findsOneWidget);
+  });
+
+  /// A first-week learner is shown no heading rather than an empty one.
+  testWidgets('no history means no heading', (WidgetTester tester) async {
+    await show(
+      tester,
+      const MyClasses(
+        classes: <ClassGroupSummary>[ClassGroupSummary(id: 1, title: 'Tuesday B1')],
+      ),
+    );
+
+    expect(find.text('CLASSES YOU ATTENDED'), findsNothing);
+  });
+
+  testWidgets('a class already sat through shows the time present', (
+    WidgetTester tester,
+  ) async {
+    await show(
+      tester,
+      const MyClasses(
+        classes: <ClassGroupSummary>[ClassGroupSummary(id: 1, title: 'Tuesday B1')],
+      ),
+      attended: const <AttendedClass>[
+        AttendedClass(
+          id: 9,
+          title: 'Last Tuesday',
+          coach: 'Roya',
+          secondsPresent: 3600,
+        ),
+      ],
+      surface: const Size(420, 1600),
+    );
+
+    expect(find.text('Last Tuesday'), findsOneWidget);
+    expect(find.textContaining('60 min'), findsOneWidget);
   });
 
   /// Without this a locked learner opens the app, finds their curriculum has

@@ -2,13 +2,23 @@
 
 namespace Tests\Feature\Classroom;
 
+use App\Models\CefrLevel;
 use App\Models\ClassMaterial;
 use App\Models\ClassSession;
 use App\Models\Concept;
+use App\Models\Course;
+use App\Models\CourseVersion;
 use App\Models\Exercise;
+use App\Models\ExerciseOption;
+use App\Models\ExerciseTemplate;
+use App\Models\Language;
 use App\Models\Lesson;
+use App\Models\Module;
 use App\Models\PracticeLock;
 use App\Models\SessionActivity;
+use App\Models\Skill;
+use App\Models\Unit;
+use App\Models\VocabularyItem;
 use App\Models\VocabularySense;
 use App\Services\Learning\AdaptiveLearningService;
 use Illuminate\Support\Facades\DB;
@@ -211,10 +221,10 @@ class PracticeLockTest extends ClassroomTestCase
      */
     private function makeLessonWithConcepts(string $title, int $count, ?array &$conceptIds = null): Lesson
     {
-        $level = \App\Models\CefrLevel::where('code', 'B1')->firstOrFail();
-        $language = \App\Models\Language::where('code', 'en')->firstOrFail();
+        $level = CefrLevel::where('code', 'B1')->firstOrFail();
+        $language = Language::where('code', 'en')->firstOrFail();
 
-        $course = \App\Models\Course::create([
+        $course = Course::create([
             'language_id' => $language->id,
             'title' => $title.' course',
             'slug' => str($title)->slug().'-'.uniqid(),
@@ -222,13 +232,13 @@ class PracticeLockTest extends ClassroomTestCase
             'to_cefr_level_id' => $level->id,
             'is_active' => true,
         ]);
-        $version = \App\Models\CourseVersion::create([
+        $version = CourseVersion::create([
             'course_id' => $course->id, 'version' => 1, 'status' => 'published', 'published_at' => now(),
         ]);
-        $module = \App\Models\Module::create([
+        $module = Module::create([
             'course_version_id' => $version->id, 'title' => $title, 'position' => 0,
         ]);
-        $unit = \App\Models\Unit::create([
+        $unit = Unit::create([
             'module_id' => $module->id, 'title' => $title, 'position' => 1,
         ]);
         $lesson = Lesson::create([
@@ -242,7 +252,7 @@ class PracticeLockTest extends ClassroomTestCase
         $conceptIds = [];
 
         for ($i = 0; $i < $count; $i++) {
-            $item = \App\Models\VocabularyItem::create([
+            $item = VocabularyItem::create([
                 'language_id' => $language->id,
                 'headword' => "{$title} word {$i}",
                 'normalised' => strtolower("{$title} word {$i}"),
@@ -271,10 +281,10 @@ class PracticeLockTest extends ClassroomTestCase
             ]);
 
             $exercise = Exercise::create([
-                'exercise_template_id' => \App\Models\ExerciseTemplate::where('code', 'multiple_choice')->value('id'),
+                'exercise_template_id' => ExerciseTemplate::where('code', 'multiple_choice')->value('id'),
                 'language_id' => $language->id,
                 'lesson_id' => $lesson->id,
-                'skill_id' => \App\Models\Skill::first()?->id,
+                'skill_id' => Skill::first()?->id,
                 'cefr_level_id' => $level->id,
                 'stem' => "Which one is \"{$title} word {$i}\"?",
                 'difficulty' => 0.0,
@@ -282,7 +292,7 @@ class PracticeLockTest extends ClassroomTestCase
             ]);
 
             foreach ([['right', true], ['wrong', false]] as $p => [$text, $correct]) {
-                \App\Models\ExerciseOption::create([
+                ExerciseOption::create([
                     'exercise_id' => $exercise->id,
                     'position' => $p,
                     'text' => $text,

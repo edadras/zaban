@@ -778,5 +778,7 @@ const Map<String, String> faStrings = <String, String>{
       'هم‌اکنون آغاز می‌شود',
   'items from your class':
       'مورد از کلاس شما',
+  'Classes you attended':
+      'کلاس‌هایی که شرکت کردید',
 };
 

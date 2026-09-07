@@ -6,6 +6,7 @@ use App\Models\ClassSession;
 use App\Models\CoachStudent;
 use App\Models\SchoolMember;
 use App\Services\Classroom\ClassScheduleService;
+use App\Services\Classroom\SchoolService;
 use Carbon\CarbonImmutable;
 
 /**
@@ -79,7 +80,7 @@ class SchoolManagementTest extends ClassroomTestCase
 
     public function test_one_schools_admin_cannot_reach_another(): void
     {
-        $rival = app(\App\Services\Classroom\SchoolService::class)
+        $rival = app(SchoolService::class)
             ->create($this->outsider, 'Rival Institute');
 
         $this->actingAs($this->owner)
@@ -119,12 +120,21 @@ class SchoolManagementTest extends ClassroomTestCase
         $this->assertDatabaseCount('coach_students', 0);
     }
 
+    /**
+     * A coach who leaves takes nothing with them: the learners they looked
+     * after go back to the school's pool rather than to a coach who is gone.
+     *
+     * Their classes have to be dealt with first - see {@see CoachHandoverTest}
+     * for why a class cannot simply be left pointing at somebody who has left.
+     */
     public function test_removing_a_coach_ends_their_learners_assignments(): void
     {
         $this->actingAs($this->owner)
             ->postJson("/api/v1/schools/{$this->school->id}/coaches/{$this->coach->id}/students", [
                 'student_id' => $this->student->id,
             ]);
+
+        $this->group->update(['is_active' => false]);
 
         $member = SchoolMember::where('school_id', $this->school->id)
             ->where('user_id', $this->coach->id)->where('role', 'coach')->firstOrFail();
@@ -259,7 +269,7 @@ class SchoolManagementTest extends ClassroomTestCase
     {
         $this->group->update(['capacity' => 2]);
         $third = $this->makeUser('Third student');
-        app(\App\Services\Classroom\SchoolService::class)
+        app(SchoolService::class)
             ->addMember($this->school, $third, SchoolMember::STUDENT);
 
         $this->actingAs($this->coach)
