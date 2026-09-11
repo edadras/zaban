@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zaban/core/widgets/glow_button.dart';
 import 'package:zaban/features/classroom/data/models/classroom_models.dart';
 import 'package:zaban/features/classroom/presentation/classroom_controller.dart';
 import 'package:zaban/features/classroom/presentation/my_classes_screen.dart';
@@ -51,7 +52,7 @@ void main() {
     await show(tester, const MyClasses());
 
     expect(find.text('You are not in a class yet'), findsOneWidget);
-    expect(find.text('Join the class'), findsNothing);
+    expect(find.widgetWithText(GlowButton, 'Join the class'), findsNothing);
   });
 
   testWidgets('a class that is not open yet has no door', (
@@ -68,7 +69,7 @@ void main() {
     );
 
     expect(find.text('Tuesday B1'), findsWidgets);
-    expect(find.text('Join the class'), findsNothing);
+    expect(find.widgetWithText(GlowButton, 'Join the class'), findsNothing);
   });
 
   testWidgets('a live class can be joined', (WidgetTester tester) async {
@@ -84,7 +85,12 @@ void main() {
 
     // GlassCard shouts its eyebrow.
     expect(find.text('LIVE NOW'), findsOneWidget);
-    expect(find.text('Join the class'), findsOneWidget);
+    // The section is headed "Join the class" too, so this looks for the way
+    // in rather than for the words.
+    expect(
+      find.widgetWithText(GlowButton, 'Join the class'),
+      findsOneWidget,
+    );
   });
 
   /// A first-week learner is shown no heading rather than an empty one.

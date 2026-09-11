@@ -141,9 +141,12 @@ class PanelSchoolTest extends PanelTestCase
 
     public function test_school_creation_is_not_self_serve(): void
     {
+        // The path rather than the route name: the route is gone, and asking
+        // the URL generator for one that does not exist throws instead of
+        // proving anything.
         $this->actingAs($this->coach)
-            ->post(route('panel.schools.store'), ['name' => 'آموزشگاه تازه'])
-            ->assertNotFound();
+            ->post('/panel/schools', ['name' => 'آموزشگاه تازه'])
+            ->assertMethodNotAllowed();
 
         $this->assertDatabaseMissing('schools', ['name' => 'آموزشگاه تازه']);
     }
