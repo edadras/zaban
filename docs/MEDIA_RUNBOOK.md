@@ -142,6 +142,50 @@ its cells rewritten into situations ("a cyclist and a runner moving at visibly
 different paces along the same path") before it was sent. `media:sheet` gives
 you the grouping and the bookkeeping; the scene is still yours to write.
 
+### Text the scanner got wrong can be read again
+
+The first OCR pass rendered pages at a resolution that suited most of a page and
+not all of it. What failed came back through a regular confusion - s->c, e and o
+->a, p->n, g->o, y->u, b->h - so "has an intense dislike of the late King's
+eldest son" arrives as "hac an intanca diclike af tha late Kino's aldest can".
+It is tempting to decode that by eye, and it is decodable, but a decode is still
+invented text in a course someone learns from. The pages are on disk, so read
+them again instead:
+
+```bash
+# body text: re-render the page and read the whole thing
+pdftoppm -f 124 -l 124 -r 400 -gray -png sources/collocations_advanced_2nd.pdf p
+tesseract p-124.png out --psm 6 -l eng
+
+# headings: crop the top band and read that alone
+pdftoppm -f 32 -l 32 -r 500 -gray -png -x 0 -y 0 -W 2800 -H 560 sources/idioms_advanced_2nd.pdf h
+tesseract h-32.png head --psm 7 -l eng
+```
+
+The two passes fail differently and that is the whole trick. A whole-page read
+has to settle on one segmentation for body and display type together, so it
+gets big type wrong - a unit heading comes back "setae ac eae ting ee SOHC REN"
+- while the same band cropped and read on its own with `--psm 7` gives
+"13 Other languages". Body text is the reverse: it wants the full page for
+context. Run both.
+
+Finding the right page is the other half. The damaged string usually will not
+match the OCR text literally, so match on a folded alphabet - collapse each
+confusable group to one letter in both strings - and score pages by character
+5-gram overlap. A whole-page difflib ratio does not discriminate: the target is
+one line against three thousand characters and the cover page wins by accident.
+
+Measured across the corpus this is a scattering, not a bad book: about sixty
+candidate rows in forty-eight thousand, and a third of those are the scan
+reading a hyphenated compound as one long word. Two migrations
+(`repair_ocr_damaged_text_from_source`, `repair_ocr_damaged_headings`) carry
+what was recovered, each line checked against its page.
+
+Twenty-six lesson headings are still damaged and deliberately not repaired: the
+crop came back partial ("23 Learning a", "11 = Structuring and talking abc"), or
+two lessons in one unit located to different pages. Their briefs are skipped
+with that reason. They need a person with the book, not a better heuristic.
+
 **Re-importing needs the old asset gone, not soft-deleted.** `media_assets` has
 a unique index on (disk, path), and the path is the file's own checksum - which
 is the point: the same bytes are the same asset. So replaying a sheet over work
