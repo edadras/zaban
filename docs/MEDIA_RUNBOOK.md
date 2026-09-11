@@ -1,7 +1,14 @@
 # Media backfill runbook
 
-Everything the course needs is planned, prompted and ordered. Nothing has been
-generated. This is what happens on the day the generation window is bought.
+Everything the course needs is planned, prompted and ordered. The loop below has
+now been run for real: the whole cast and the first 103 lesson scenes are
+rendered, imported and attached. What follows is therefore a description of a
+path that works, not a plan for one.
+
+Costs, throughput and what is left are in `MEDIA_BUDGET.md`, measured rather
+than estimated. The short version: the unlimited image tier is not available on
+this account, so every image is paid for; a five-second clip costs as much as
+forty-five lesson stills; render stills and do not buy video yet.
 
 ## What is planned
 
@@ -84,18 +91,79 @@ php artisan media:import results.json            # download, store, link
 `--limit=12` matches the provider's batch size. `--claim` marks the exported
 briefs `generating` so two runs cannot collide.
 
+The plan allows **eight concurrent jobs**. Twelve submitted together is fine —
+the extras queue — but a second batch sent while the first is still running is
+rejected per request over the ceiling, with the failures named in the response.
+Re-submit those rather than treating the round as lost.
+
+A claim that never comes back would otherwise sit at `generating` for ever, and
+`renderable()` skips those, so an abandoned round silently shrinks the queue and
+the lessons it covered never get a picture. `media:manifest` therefore releases
+anything claimed more than `--release=6` hours ago before it exports (pass
+`--release=0` to turn that off). The notice goes to stderr so the manifest on
+stdout can still be piped straight into a runner.
+
 `media:import` reads `{"results": {"<brief id>": "<url>"}}` — the same
 index-in/index-out shape the batch tools return.
 
-At roughly 30s per image with twelve in flight, 2,516 stills is about six hours
-of continuous rendering. Clips are slower and run four at a time rather than
-twelve, so 908 of them is roughly another twelve hours. The rented window is not
-the constraint; the constraint is that its clock starts at purchase, which is
-why the manifest is built first.
+### When the brief cannot be sent as written
+
+An entry may be an object rather than a bare URL, carrying the prompt that was
+actually sent:
+
+```json
+{"results": {"438": {"url": "https://…", "prompt": "One single photograph: …"}}}
+```
+
+This is needed more often than it sounds. Briefs are generated from the course
+data and the course data is OCR: one unit title arrives as a phonetic
+transcription, and the "Expressions" lessons list grammar fragments — "How
+about", "It's up to you" — which are not pictures of anything. The operator
+rewrites those into a situation that can be photographed. The `media_assets` row
+is the only record of how a picture was made, so it stores what was sent and
+keeps the brief's own wording beside it under `brief_prompt` when the two
+differ. Seventy-five of the first 103 scenes went out this way.
+
+Some briefs should not be sent at all. Seven are marked `skipped` with a reason
+on the row: five teach written text — shop signs, on-screen labels, a menu, an
+order form, printed notices — and every brief forbids writing in the image, so
+the artwork could not contain the thing being taught; one teaches word-building,
+which has nothing to photograph; one is a list of nationalities, where a picture
+could only be caricature.
+
+At roughly 30–60s per image and eight at a time, a thousand stills is a few
+hours of continuous rendering. The constraint is not the clock, it is the
+balance: see `MEDIA_BUDGET.md`.
 
 Video also costs delivery, not just render: 908 clips is on the order of 3-4 GB.
 That is a real product cost on mobile data, and a reason to render the manifest
 from the top rather than to the bottom.
+
+## Where this run actually lives, and how to get it back
+
+The 117 images rendered so far are 871 MB of 2K PNGs under
+`storage/app/private/generated/`, with their `media_assets` rows in the local
+database. Neither is in git, and neither survives a rebuilt container. The
+credits are spent either way, so the run is recorded as text instead:
+
+    docs/data/rendered-media.json
+
+That is a `media:import` payload — every brief id, the provider URL it came
+back from, and, where the operator rewrote it, the prompt that was actually
+sent. On a host that keeps its storage:
+
+```bash
+php artisan media:import docs/data/rendered-media.json
+```
+
+and the same 117 images are downloaded, stored and attached again for nothing.
+
+**This has a shelf life.** Provider URLs expire. If they have gone by the time
+this is run, the import fails per file rather than silently, and re-rendering
+those 117 costs 82 credits at today's prices — recoverable, but not free. So the
+real lesson is the obvious one: **run the loop where the storage persists.**
+Doing it in a throwaway container means paying for artwork that the container
+takes with it.
 
 ## Why generation runs outside the application
 
@@ -108,6 +176,12 @@ normal provider chain and nothing else changes.
 
 ## Safety properties
 
+- **Re-planning does not re-bill.** Every brief ends with the same shared list
+  of exclusions, so adding one word to that list changes all 24,000 prompts at
+  once. `media:briefs` leaves briefs that have already been rendered exactly as
+  they are and reports how many now carry an out-of-date prompt; `--rerender`
+  requeues them deliberately, and is charged in full. Without that guard a
+  one-word edit orders the whole catalogue a second time.
 - **Idempotent import.** A 2,500-file run will be interrupted. Re-running
   re-attaches what is already on disk instead of re-downloading, identical
   output for two subjects is stored once by checksum, and a failed download
@@ -122,6 +196,19 @@ normal provider chain and nothing else changes.
   brief still carries a negative its model would ignore.
 
 ## Known limits
+
+- **"Culturally neutral" is unconditional, and sometimes wrong.** Every scene
+  prompt forbids national flags and region-specific signage, which is right
+  almost everywhere and exactly backwards for the UK culture unit, where the
+  lesson *is* the local detail. Those four were sent with the clause removed and
+  a line saying British settings are correct here. The builder has no way to
+  tell the difference; a lesson about a named country needs the operator to
+  notice.
+- **Target words are taken verbatim from `concepts`.** Where the source book
+  prints a phrase, OCR sometimes ran the words together, and the label is then
+  wrong both in the artwork prompt and on screen in front of the learner. Three
+  such labels were found by reading a batch of prompts before paying for them
+  and corrected in a migration. Nothing checks for this.
 
 - `soul_id` is unset on every character. Appearance text holds a character
   together across generations, which is weaker than a trained identity but costs

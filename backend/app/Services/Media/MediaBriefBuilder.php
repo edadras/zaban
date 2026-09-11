@@ -2,9 +2,9 @@
 
 namespace App\Services\Media;
 
+use App\Models\CefrLevel;
 use App\Models\Character;
 use App\Models\Dialogue;
-use App\Models\CefrLevel;
 use App\Models\Lesson;
 use App\Models\MediaBrief;
 use App\Models\VocabularySense;
@@ -40,6 +40,35 @@ class MediaBriefBuilder
 
     /** @var array<int,string>|null parts_of_speech id => code, loaded once per build */
     private ?array $posCodes = null;
+
+    /**
+     * Rendered briefs whose prompt has since changed, counted rather than
+     * requeued.
+     *
+     * The exclusion list is shared by every kind of artwork, so adding a single
+     * word to it changes the prompt of all 24,000 briefs at once - including
+     * every one that has already been rendered and charged for. Requeueing
+     * those would turn a one-word edit into a second bill for the whole
+     * catalogue, and at video prices that is thousands of credits. So the
+     * default is to leave paid work alone and say how much of it is now out of
+     * date; --rerender asks for it deliberately.
+     */
+    private int $stale = 0;
+
+    private bool $rerender = false;
+
+    public function rerenderPaidWork(bool $on = true): static
+    {
+        $this->rerender = $on;
+
+        return $this;
+    }
+
+    /** How many already-rendered briefs this build left behind. */
+    public function staleCount(): int
+    {
+        return $this->stale;
+    }
 
     public function __construct(
         private PromptBuilder $prompts,
@@ -336,7 +365,9 @@ class MediaBriefBuilder
     /**
      * Idempotent: an unchanged request leaves an already-rendered brief alone,
      * so re-running the builder after a partial generation run never discards
-     * work that has been paid for.
+     * work that has been paid for. A *changed* request does not discard it
+     * either - see $stale - because the commonest reason for a change is an
+     * edit to the exclusion list every brief shares.
      */
     private function upsert(
         string $kind,
@@ -359,6 +390,20 @@ class MediaBriefBuilder
             ->first();
 
         if ($existing && $existing->request_hash === $hash) {
+            return 0;
+        }
+
+        // The request changed - but this one has already been rendered, which
+        // cost money. Wiping its result to requeue it charges for that twice,
+        // and would do so for the whole catalogue on any edit to the shared
+        // exclusion list. It stays as it is, and is counted so the operator can
+        // see what an edit has invalidated before paying for it again.
+        if ($existing
+            && ! $this->rerender
+            && in_array($existing->status, [MediaBrief::STATUS_GENERATED, MediaBrief::STATUS_IMPORTED], true)
+        ) {
+            $this->stale++;
+
             return 0;
         }
 

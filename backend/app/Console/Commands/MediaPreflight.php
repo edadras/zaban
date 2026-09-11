@@ -58,7 +58,15 @@ class MediaPreflight extends Command
             .($blocked ? ", {$blocked} clip(s) waiting on the stills they animate" : '')
             .($seconds ? ', '.round($seconds / 60).' minutes of video planned in total' : '')
             .'.');
-        $this->line('The only thing still needed from outside is an account that can render them.');
+        $done = MediaBrief::where('status', MediaBrief::STATUS_IMPORTED)->count();
+
+        if ($done > 0) {
+            $this->line("{$done} generation(s) are already rendered, imported and attached.");
+        }
+
+        // Said here because this is the last screen before money is spent.
+        $this->line('Rendering is charged per image; the unlimited image tier is not active on the '
+            .'course account. docs/MEDIA_BUDGET.md has the measured prices.');
         $this->newLine();
         $this->line('  php artisan media:manifest --limit=12 --claim   # next batch, provider-ready');
         $this->line('  php artisan media:import results.json            # results back in, linked');

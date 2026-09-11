@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Media;
 
+use App\Models\Lesson;
 use App\Services\Media\PromptBuilder;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
@@ -76,7 +77,6 @@ class PromptBuilderTest extends TestCase
      * Roughly three quarters of the extracted "examples" are fragments the PDF
      * parser caught mid-clause. Each one that slips through becomes an image of
      * the fragment, so these are the exact strings the gate exists to stop.
-     *
      */
     #[DataProvider('fragmentProvider')]
     public function test_it_rejects_extraction_fragments(string $fragment): void
@@ -143,5 +143,37 @@ class PromptBuilderTest extends TestCase
 
         $this->assertStringContainsString('It is used like this: "Can I have the bill, please?"', $spec['prompt']);
         $this->assertStringNotContainsString('Meaning: Used in context like', $spec['prompt']);
+    }
+
+    public function test_a_scene_asks_for_one_frame_rather_than_a_set_of_panels(): void
+    {
+        /*
+         * Measured, not assumed: asked to make six ideas obvious, the scene
+         * model returned a five-panel contact sheet both times it was tried.
+         * At the size a lesson card draws it, every panel is too small to read
+         * and the picture is no longer a situation anyone can talk about - so
+         * the single-frame instruction has to lead, not merely be implied.
+         */
+        $lesson = new Lesson(['title' => 'Family words']);
+        $prompt = $this->builder->lessonScene($lesson, ['husband', 'wife', 'children'])['prompt'];
+
+        $this->assertStringContainsString('One single photograph', $prompt);
+        $this->assertStringContainsString('not a collage', $prompt);
+
+        // The phrasing that invited the panels in the first place.
+        $this->assertStringNotContainsString('clearly separated elements', $prompt);
+    }
+
+    public function test_a_montage_is_excluded_from_every_kind_of_artwork(): void
+    {
+        // A vocabulary card and a scene are drawn at the same size by the same
+        // client, so a grid is exactly as unusable on one as on the other.
+        foreach ([
+            $this->builder->lessonScene(new Lesson(['title' => 'Family words'])),
+            $this->builder->vocabularyImage('suitcase', null, 'A2', 'noun'),
+        ] as $spec) {
+            $this->assertStringContainsString('collage', (string) $spec['negative']);
+            $this->assertStringContainsString('contact sheet', (string) $spec['negative']);
+        }
     }
 }

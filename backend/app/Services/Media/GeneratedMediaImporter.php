@@ -66,7 +66,7 @@ class GeneratedMediaImporter
             }
 
             try {
-                $this->import($brief, $url, $localFile);
+                $this->import($brief, $url, $localFile, $this->promptOf($entry));
                 $out['imported']++;
             } catch (\Throwable $e) {
                 $brief->update([
@@ -119,7 +119,25 @@ class GeneratedMediaImporter
         return [$entry['url'] ?? null, $file, null];
     }
 
-    public function import(MediaBrief $brief, ?string $url, ?string $localFile = null): MediaAsset
+    /**
+     * The prompt the runner actually sent, when it differs from the brief's.
+     *
+     * A brief's prompt is generated from the course data, and the course data
+     * is OCR: a unit title comes through as a phonetic transcription, a set of
+     * target words comes through as grammar fragments that cannot be
+     * photographed. An operator working through a batch fixes those as they go.
+     * Recording the brief's wording as the thing that produced the picture
+     * would then be a lie, and this is the one record of how the artwork was
+     * made - so the runner can say what it really sent.
+     */
+    private function promptOf(string|array $entry): ?string
+    {
+        $prompt = is_array($entry) ? ($entry['prompt'] ?? null) : null;
+
+        return is_string($prompt) && trim($prompt) !== '' ? trim($prompt) : null;
+    }
+
+    public function import(MediaBrief $brief, ?string $url, ?string $localFile = null, ?string $sentPrompt = null): MediaAsset
     {
         $bytes = $localFile !== null
             ? (string) file_get_contents($localFile)
@@ -130,7 +148,7 @@ class GeneratedMediaImporter
         // by checksum means identical output is stored once and shared.
         $existing = MediaAsset::where('checksum', $checksum)->first();
 
-        $asset = $existing ?: $this->store($brief, $bytes, $checksum);
+        $asset = $existing ?: $this->store($brief, $bytes, $checksum, $sentPrompt);
 
         DB::transaction(function () use ($brief, $asset, $url) {
             $this->attach($brief, $asset);
@@ -164,7 +182,7 @@ class GeneratedMediaImporter
         return $bytes;
     }
 
-    private function store(MediaBrief $brief, string $bytes, string $checksum): MediaAsset
+    private function store(MediaBrief $brief, string $bytes, string $checksum, ?string $sentPrompt = null): MediaAsset
     {
         // Sharded by checksum prefix: 2,500+ files in one directory is a
         // filesystem problem, and the shard is stable across re-imports.
@@ -194,7 +212,10 @@ class GeneratedMediaImporter
                 'brief_id' => $brief->id,
                 'kind' => $brief->kind,
                 'model' => $brief->model,
-                'prompt' => $brief->prompt,
+                'prompt' => $sentPrompt ?? $brief->prompt,
+                // Kept alongside it when the two differ, so the edit is visible
+                // rather than silently replacing the plan.
+                'brief_prompt' => $sentPrompt !== null && $sentPrompt !== $brief->prompt ? $brief->prompt : null,
                 'aspect_ratio' => $brief->aspect_ratio,
                 'resolution' => $brief->resolution,
             ],

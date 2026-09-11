@@ -59,6 +59,39 @@ class GeneratedMediaImportTest extends TestCase
         ]);
     }
 
+    public function test_the_prompt_actually_sent_is_what_gets_recorded(): void
+    {
+        Http::fake(['*' => Http::response($this->pngBytes(), 200)]);
+
+        $character = Character::create(['slug' => 'maya', 'name' => 'Maya']);
+        $brief = $this->briefFor($character);
+
+        // Briefs are generated from OCR'd course data, so an operator working
+        // through a batch corrects the unusable ones as they go. This row is the
+        // only record of how the picture was made; it has to say what was sent.
+        app(GeneratedMediaImporter::class)->importMany([
+            $brief->id => ['url' => 'https://cdn.example/x.png', 'prompt' => 'Portrait of Maya, corrected.'],
+        ]);
+
+        $asset = $brief->fresh()->mediaAsset;
+        $this->assertSame('Portrait of Maya, corrected.', $asset->metadata['prompt']);
+        $this->assertSame('Portrait of Maya.', $asset->metadata['brief_prompt'], 'the plan it departed from stays visible');
+    }
+
+    public function test_an_unedited_import_records_the_brief_as_written(): void
+    {
+        Http::fake(['*' => Http::response($this->pngBytes(), 200)]);
+
+        $character = Character::create(['slug' => 'daniel', 'name' => 'Daniel']);
+        $brief = $this->briefFor($character);
+
+        app(GeneratedMediaImporter::class)->importMany([$brief->id => 'https://cdn.example/x.png']);
+
+        $asset = $brief->fresh()->mediaAsset;
+        $this->assertSame('Portrait of Maya.', $asset->metadata['prompt']);
+        $this->assertNull($asset->metadata['brief_prompt'], 'nothing departed from, nothing to note');
+    }
+
     public function test_it_stores_the_file_and_links_it_to_its_subject(): void
     {
         $png = $this->pngBytes();

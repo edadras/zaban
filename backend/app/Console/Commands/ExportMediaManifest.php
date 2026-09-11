@@ -23,6 +23,7 @@ class ExportMediaManifest extends Command
         {--limit=12 : how many briefs to export (12 matches the provider batch size)}
         {--kind= : restrict to one kind}
         {--claim : mark the exported briefs as generating so parallel runs do not collide}
+        {--release=6 : first return anything claimed more than this many hours ago and never imported}
         {--pretty : human-readable JSON}';
 
     protected $description = 'Export the next pending briefs as a provider-ready batch';
@@ -51,8 +52,37 @@ class ExportMediaManifest extends Command
         }
     }
 
+    /**
+     * Un-claim whatever an earlier round walked away from.
+     *
+     * --claim marks a brief `generating` so two runners cannot render the same
+     * image twice. Nothing clears that mark if the round never finishes - a
+     * cancelled batch, a lost connection, an operator who stopped for the day -
+     * and `renderable()` does not return a `generating` brief. So every
+     * abandoned round quietly shrinks the queue, and the artwork it covered is
+     * never made: the manifest still says 2,400 to go while the count of what
+     * can actually be exported falls. Over a run this long that is how a
+     * hundred lessons end up permanently without a picture.
+     */
+    private function release(int $hours): int
+    {
+        return MediaBrief::where('status', MediaBrief::STATUS_GENERATING)
+            ->whereNull('media_asset_id')
+            ->where('updated_at', '<', now()->subHours($hours))
+            ->update(['status' => MediaBrief::STATUS_PENDING]);
+    }
+
     public function handle(): int
     {
+        $hours = (int) $this->option('release');
+
+        if ($hours > 0 && ($released = $this->release($hours)) > 0) {
+            // stderr: stdout is the manifest and is piped straight into a runner.
+            $this->output->getErrorOutput()->writeln(
+                "Returned {$released} abandoned brief(s) to the queue.",
+            );
+        }
+
         $query = MediaBrief::renderable();
 
         if ($kind = $this->option('kind')) {

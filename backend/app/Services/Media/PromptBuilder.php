@@ -4,7 +4,6 @@ namespace App\Services\Media;
 
 use App\Models\CefrLevel;
 use App\Models\Lesson;
-use Illuminate\Support\Str;
 
 /**
  * Builds media prompts from teaching parameters rather than free text (spec 19).
@@ -20,7 +19,8 @@ class PromptBuilder
     /** Never rendered into generated artwork. */
     private const NEGATIVE = 'text, letters, words, captions, watermark, signature, logo, '
         .'subtitles, numbers, distorted hands, extra limbs, deformed faces, gore, nudity, '
-        .'brand names, low quality, blurry';
+        .'brand names, low quality, blurry, collage, grid of images, split screen, '
+        .'multiple panels, photo montage, diptych, triptych, contact sheet, storyboard';
 
     public function lessonScene(Lesson $lesson, array $targetWords = []): array
     {
@@ -31,9 +31,15 @@ class PromptBuilder
         $context = trim(($unit?->title ? $unit->title.' - ' : '').$lesson->title);
 
         $prompt = collect([
-            'A clear, uncluttered illustrative scene for an English language lesson.',
+            // "One single photograph" first and in those words. Asked for a
+            // scene that makes several ideas obvious, these models reach for a
+            // grid of small panels - which is the one composition a lesson card
+            // cannot use: at card size every panel is too small to read, and
+            // the picture stops being a situation the learner can talk about.
+            'One single photograph: a clear, uncluttered scene for an English language lesson.',
+            'A single continuous frame, not a collage and not divided into panels.',
             "Teaching context: {$context}.",
-            $words !== '' ? "The scene should make these ideas visually obvious: {$words}." : null,
+            $words !== '' ? "These ideas should be obvious within that one scene: {$words}." : null,
             $this->levelGuidance($level?->code),
             'Everyday setting, natural lighting, warm and neutral palette.',
             'Culturally neutral: no religious symbols, no national flags, no region-specific signage.',
@@ -279,7 +285,7 @@ class PromptBuilder
     {
         return match ($cefr) {
             'Pre-A1', 'A1' => 'Very simple: one obvious subject, minimal background detail, nothing ambiguous.',
-            'A2' => 'Simple and concrete: a small number of clearly separated elements.',
+            'A2' => 'Simple and concrete: a few elements, clearly readable, all in the same room.',
             'B1' => 'A realistic everyday situation with a few interacting elements.',
             'B2' => 'A richer situation with context the viewer can infer from.',
             'C1', 'C2' => 'A nuanced, layered scene that rewards close reading.',

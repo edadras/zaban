@@ -14,48 +14,103 @@ course is normally narration, and none of it has to be generated.
 
 ## What still needs generating
 
+Counted from `media_briefs`, which is the manifest the render loop actually
+works through. (Earlier versions of this table were estimated from the contents
+pages and were roughly half the real figure.)
+
 | Need | Count | Type |
-|---|---|---|
-| Lesson scene artwork | 983 | image |
-| Conversation scenario artwork | 12 | image |
-| Unit intro video (one per unit) | 362 | video |
-| Lesson video (one per lesson) | 1,130 | video |
+|---|---:|---|
+| Lesson scene artwork | 2,421 | image |
+| Vocabulary card artwork | 1,384 | image |
+| Dialogue clips | 80 | video |
+| Lesson clips | 1,846 | video |
 
-## How a Plus plan maps onto that
+A further 18,496 briefs are recorded as `skipped` with a reason rather than
+dropped: senses with no example sentence that survives the quality gate, and
+lessons that teach the language itself, where there is no footage of a suffix.
 
-The 365-day unlimited tier on Plus covers **image** models only — Seedream 5.0
-Lite, Flux.2 Pro (1K), Seedream 4.5, Nano Banana, Kling O1 Image, GPT Image.
-Soul V2 and Cinema are a 3,000-generation allowance, not unlimited. No video
-model appears in that list, so video is paid for out of the monthly credits.
+## What it costs, measured
 
-**Images: comfortably covered.** 995 generations against an unlimited tier, and
-they are a *one-off*, not a per-learner cost: `MediaGenerationService` caches by
-request hash, so one lesson's artwork is generated once and served to every
-learner who ever takes that lesson. Ten thousand students do not multiply this
-number.
+Prices below were read from the provider on 11 September 2026 by asking for a
+cost without submitting a job, on the account the course actually uses. They are
+not estimates.
 
-**Video: not covered by the unlimited tier.** 362 unit videos — let alone 1,130
-lesson videos — come out of the credit balance, and 1,000 credits per month will
-not fund that in one pass.
+| Kind | Model | Shape | Credits each |
+|---|---|---|---:|
+| Character portrait | `nano_banana_pro` | 1:1, 2K | 2.0 |
+| Lesson scene | `gpt_image_2` | 16:9, 2K, quality low | 0.5 |
+| Vocabulary card | `gpt_image_2` | 1:1, 2K, quality low | 0.5 |
+| Any 5-second clip | `seedance_2_0` | 16:9, 1080p | 22.5 |
+
+Against the 5,745 briefs in the manifest that is **about 45,300 credits** for the
+whole plan — 1,930 of it images, 43,400 of it video.
+
+### The unlimited tier does not apply to this account
+
+The 365-day unlimited image tier is a **free-trial** allowance. On this Plus
+subscription the provider reports it as unavailable: every image model in the
+catalogue says `supports_unlim: true` and `unlim.available: false`. So images are
+paid for out of credits at the prices above, and the earlier reading of this
+document — "images: comfortably covered" — is wrong in practice. Re-check before
+planning a large run: if the allowance is ever live, the image half becomes free
+and the arithmetic below changes completely.
+
+### Quality tier is not worth paying for
+
+`gpt_image_2` at `quality: medium` costs 2.0 credits against 0.5 for `low` — four
+times the price. The two were rendered from the same lesson prompt and compared:
+at the size a lesson card draws them there was no visible difference. Low is what
+the run uses, and four times as many lessons get a picture for the same money.
+
+### Throughput
+
+Eight concurrent jobs, plan-wide. A batch of twelve is accepted, but a second
+batch submitted alongside it is rejected with a rate-limit error per request over
+the ceiling. Render in rounds of about twelve and re-submit whatever bounces;
+an image takes roughly 30-60 seconds.
 
 ## The recommendation
 
-Do not put a generated video on every lesson. It is the most expensive asset per
-minute of learner attention, and the course already has real audio for every
-single unit.
+**Video, at 22.5 credits for five seconds, buys forty-five lesson stills.** That
+is the trade, and at this balance it is not close. A whole credit balance of 838
+buys 37 clips — just over three minutes of footage — or 1,670 lesson scenes.
 
-Spend video where it changes the learning, not where it decorates it:
+The twelve conversation scenarios were the one case the older version of this
+document argued for video. They no longer need it: those scenarios are now acted
+out in the browser as interactive 3D scenes with real recorded voices, where the
+learner speaks their way through. A five-second clip in front of that is
+decoration.
 
-1. **12 conversation scenario intros.** These set up a roleplay the learner then
-   speaks their way through, so the video does actual teaching work.
-2. **~30 unit intros for the highest-traffic units**, chosen from real usage once
-   the platform has learners rather than guessed up front.
-3. **Everything else: image + the book's own audio.** A still scene with real
-   recorded narration is not a downgrade from a generated video — for
-   listening practice it is often better, because the audio is authentic.
+So: **render stills; do not buy video yet.** Revisit only when a specific lesson
+is demonstrably failing without motion, and then buy that one clip.
 
-That is roughly 40-50 videos, which a monthly credit balance can absorb, spread
-over the first months rather than spent at once.
+Within stills, `media_briefs.priority` already orders the queue by usefulness -
+cast, then lesson scenes, then vocabulary cards, lower CEFR first inside each
+band. Render from the top and stop whenever the budget says stop; whatever got
+made is the more useful half.
+
+## What has actually been rendered
+
+| Kind | Rendered | Planned | Credits spent |
+|---|---:|---:|---:|
+| Character portraits | 14 | 14 | 28.0 |
+| Lesson scenes | 103 | 2,421 | 51.5 |
+| Everything else | 0 | — | 0 |
+
+Plus 2.5 credits on the two quality probes. **82 credits spent, 756.66 left.**
+
+Those files were rendered in a throwaway container and are not in git.
+`docs/data/rendered-media.json` re-imports the whole run for nothing while the
+provider URLs are still live — see `MEDIA_RUNBOOK.md`.
+The cast is complete; the lesson scenes are the first 103 of the queue in
+priority order, which is the opening of the elementary book.
+
+Seven lesson briefs were marked `skipped` rather than rendered, with the reason
+stored on the row: five teach written text (shop signs, on-screen labels, a
+menu, an order form, printed notices) and every brief forbids writing in the
+image, so the artwork could not contain the thing being taught; one teaches
+word-building, which has nothing to photograph; and one is a list of
+nationalities, where a picture could only be caricature.
 
 ## Guard rails already in the code
 

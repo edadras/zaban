@@ -10,7 +10,8 @@ class BuildMediaBriefs extends Command
 {
     protected $signature = 'media:briefs
         {--kind= : lesson_scene, vocabulary_card, character_portrait, dialogue_video or lesson_video}
-        {--show : print the manifest summary and exit without building}';
+        {--show : print the manifest summary and exit without building}
+        {--rerender : also requeue briefs already rendered whose prompt has since changed (this is charged again)}';
 
     protected $description = 'Plan every image the course needs, before any of it is paid for';
 
@@ -23,6 +24,8 @@ class BuildMediaBriefs extends Command
         }
 
         $kind = $this->option('kind');
+
+        $builder->rerenderPaidWork((bool) $this->option('rerender'));
 
         $written = match ($kind) {
             'lesson_scene' => ['lesson_scene' => $builder->buildLessonScenes()],
@@ -42,6 +45,13 @@ class BuildMediaBriefs extends Command
 
         foreach ($written as $k => $n) {
             $this->line(str_pad($k, 22).': '.$n.' brief(s) written or refreshed');
+        }
+
+        if (($stale = $builder->staleCount()) > 0) {
+            $this->newLine();
+            $this->warn("{$stale} brief(s) have already been rendered from an older prompt and were left alone.");
+            $this->line('Their artwork still serves the content. Re-run with --rerender to render them again,');
+            $this->line('which is charged in full - so it is worth being sure the new prompt is better first.');
         }
 
         $this->newLine();
@@ -69,8 +79,15 @@ class BuildMediaBriefs extends Command
             $this->line("{$blocked} clip(s) are waiting on the still they animate, and will unblock as those import.");
         }
 
+        $done = MediaBrief::where('status', MediaBrief::STATUS_IMPORTED)->count();
+
+        if ($done > 0) {
+            $this->line("{$done} already rendered and attached to the content.");
+        }
+
         if ($renderable > 0) {
-            $this->line('Nothing has been generated or charged yet - run media:manifest to export the batch.');
+            $this->line('Run media:manifest to export the next batch. Rendering is charged per image - '
+                .'see docs/MEDIA_BUDGET.md for what the remainder costs.');
         }
     }
 }
