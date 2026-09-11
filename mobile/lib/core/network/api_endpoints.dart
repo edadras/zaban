@@ -159,6 +159,7 @@ class ApiEndpoints {
   static String roomToken(int sessionId) =>
       '/class-sessions/$sessionId/room/token';
   static String roomHand(int sessionId) => '/class-sessions/$sessionId/room/hand';
+  static String roomChat(int sessionId) => '/class-sessions/$sessionId/room/chat';
   static String classRecording(int sessionId) =>
       '/class-sessions/$sessionId/recording';
   static String roomAnswer(int sessionId, int questionId) =>

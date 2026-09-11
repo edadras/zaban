@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Panel;
 use App\Models\AuditLog;
 use App\Models\School;
 use App\Models\User;
+use App\Services\Classroom\ClassroomException;
+use App\Services\Classroom\SchoolService;
+use App\Support\PanelAccess;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 /**
  * The platform, as opposed to a school.
@@ -15,9 +20,18 @@ use Illuminate\Support\Facades\DB;
  * school's owner never sees, and the numbers here are read from the same tables
  * the admin API reads - the page is a second window onto them, not a second
  * source of truth.
+ *
+ * School onboarding also lives here: only the site administrator registers a
+ * school and its manager; the manager then runs that school from the school
+ * half of the panel.
  */
 class PlatformController extends PanelController
 {
+    public function __construct(PanelAccess $access, private readonly SchoolService $schools)
+    {
+        parent::__construct($access);
+    }
+
     public function overview()
     {
         $this->allow($this->me()->isAdmin(), 'این بخش برای مدیران سامانه است.');
@@ -39,6 +53,88 @@ class PlatformController extends PanelController
                 ->where('created_at', '>=', now()->subDays(30))
                 ->sum('estimated_cost'), 2),
         ]);
+    }
+
+    public function schools()
+    {
+        $this->allow($this->me()->isAdmin(), 'این بخش برای مدیران سامانه است.');
+
+        $schools = School::with('owner')
+            ->withCount([
+                'members as coach_count' => fn ($q) => $q->where('role', 'coach')->where('status', 'active'),
+                'members as student_count' => fn ($q) => $q->where('role', 'student')->where('status', 'active'),
+                'classGroups',
+            ])
+            ->orderBy('name')
+            ->get();
+
+        return view('panel.platform.schools', [
+            'schools' => $schools,
+            'canRegister' => $this->me()->role === 'admin',
+        ]);
+    }
+
+    public function storeSchool(Request $request)
+    {
+        $this->allow($this->me()->role === 'admin', 'ثبت آموزشگاه تنها از عهدهٔ مدیر سامانه برمی‌آید.');
+
+        $email = mb_strtolower((string) $request->input('owner_email'));
+        $ownerExists = User::where('email', $email)->exists();
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:160'],
+            'description' => ['nullable', 'string', 'max:2000'],
+            'timezone' => ['nullable', 'string', 'max:64'],
+            'owner_name' => ['required', 'string', 'max:120'],
+            'owner_email' => ['required', 'email', 'max:190'],
+            'owner_password' => [
+                Rule::requiredIf(! $ownerExists),
+                'nullable',
+                'string',
+                'confirmed',
+                Password::defaults(),
+            ],
+        ]);
+
+        try {
+            $result = $this->schools->registerForPlatform(
+                $data['name'],
+                $data['owner_name'],
+                $data['owner_email'],
+                $data['owner_password'] ?? null,
+                [
+                    'description' => $data['description'] ?? null,
+                    'timezone' => $data['timezone'] ?? 'Asia/Tehran',
+                ],
+            );
+        } catch (ClassroomException $e) {
+            return back()->withInput()->withErrors(['owner_email' => match ($e->getMessage()) {
+                'That account is suspended.' => 'این حساب معلق است.',
+                'A password is required when the manager does not have an account yet.' => 'برای مدیر تازه‌کار گذرواژه لازم است.',
+                default => $e->getMessage(),
+            }]);
+        }
+
+        AuditLog::create([
+            'user_id' => $this->me()->id,
+            'action' => 'school.register',
+            'auditable_type' => School::class,
+            'auditable_id' => $result['school']->id,
+            'before' => null,
+            'after' => [
+                'school' => $result['school']->name,
+                'owner_id' => $result['owner']->id,
+                'owner_email' => $result['owner']->email,
+                'created_owner' => $result['created_owner'],
+            ],
+            'ip_address' => $request->ip(),
+        ]);
+
+        $status = $result['created_owner']
+            ? 'آموزشگاه و حساب مدیر ساخته شد. مدیر می‌تواند وارد پنل شود.'
+            : 'آموزشگاه ساخته شد و به حساب موجود مدیر سپرده شد.';
+
+        return redirect()->route('panel.platform.schools')->with('status', $status);
     }
 
     public function users(Request $request)

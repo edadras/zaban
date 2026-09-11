@@ -27,6 +27,7 @@
                 مدیریت اپلیکیشن انجام می‌شوند؛ این صفحه همان اعداد را از همان جدول‌ها می‌خواند.
             </p>
             <div class="flex flex-wrap gap-2 pt-1">
+                <a class="btn-ghost" href="{{ route('panel.platform.schools') }}">ثبت آموزشگاه</a>
                 <a class="btn-ghost" href="{{ route('panel.platform.users') }}">کاربران</a>
                 <a class="btn-ghost" href="{{ route('panel.platform.audit') }}">گزارش تغییرات</a>
             </div>

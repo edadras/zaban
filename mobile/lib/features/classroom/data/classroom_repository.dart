@@ -52,6 +52,12 @@ class ClassroomRepository {
         decode: Decode.none,
       );
 
+  Future<RoomChatMessage> postChat(int sessionId, String body) => _client.post(
+        ApiEndpoints.roomChat(sessionId),
+        body: <String, dynamic>{'body': body},
+        decode: Decode.object(RoomChatMessage.fromJson),
+      );
+
   /// Answering. A poll sends the option indexes it chose; an open question
   /// sends text. Whether it was right is the server's to decide.
   Future<Map<String, dynamic>> answer({

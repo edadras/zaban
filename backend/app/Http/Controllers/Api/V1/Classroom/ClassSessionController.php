@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Classroom;
 
+use App\Events\Classroom\ClassroomEvent;
 use App\Http\Controllers\Api\V1\ApiController;
 use App\Models\ClassGroup;
 use App\Models\ClassMaterial;
@@ -153,7 +154,14 @@ class ClassSessionController extends ApiController
             $request->file('file'),
         );
 
-        return $this->created($this->presentMaterial($material->fresh('media')));
+        $payload = $this->presentMaterial($material->fresh('media'));
+
+        event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_ADDED, [
+            'material_id' => $material->id,
+            'material' => $payload,
+        ]));
+
+        return $this->created($payload);
     }
 
     public function removeMaterial(Request $request, ClassSession $session, ClassMaterial $material)
@@ -161,7 +169,19 @@ class ClassSessionController extends ApiController
         $this->assertCoach($request, $session);
         $this->assertMaterialBelongs($session, $material);
 
+        $id = $material->id;
+        $wasShared = $material->shared_at !== null;
         $material->delete();
+
+        if ($wasShared) {
+            event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_CLOSED, [
+                'material_id' => $id,
+            ]));
+        }
+
+        event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_REMOVED, [
+            'material_id' => $id,
+        ]));
 
         return $this->ok(['deleted' => true]);
     }

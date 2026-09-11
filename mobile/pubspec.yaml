@@ -64,6 +64,7 @@ dependencies:
   intl: ^0.20.2
   url_launcher: ^6.3.1
   file_picker: ^8.1.7
+  pdfrx: ^2.4.8
 
 dev_dependencies:
   flutter_test:

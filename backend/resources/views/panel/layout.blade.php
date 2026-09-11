@@ -68,6 +68,9 @@
                     <x-panel.nav :href="route('panel.platform.overview')" :active="request()->routeIs('panel.platform.overview')">
                         نمای کلی
                     </x-panel.nav>
+                    <x-panel.nav :href="route('panel.platform.schools')" :active="request()->routeIs('panel.platform.schools*')">
+                        آموزشگاه‌ها
+                    </x-panel.nav>
                     <x-panel.nav :href="route('panel.platform.users')" :active="request()->routeIs('panel.platform.users')">
                         کاربران
                     </x-panel.nav>

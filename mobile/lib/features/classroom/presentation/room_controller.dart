@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,6 +33,7 @@ class LiveRoom {
     this.answering = false,
     this.answeredQuestionId,
     this.answerWasCorrect,
+    this.draftStroke,
   });
 
   final RoomState state;
@@ -51,6 +53,9 @@ class LiveRoom {
   final int? answeredQuestionId;
   final bool? answerWasCorrect;
 
+  /// In-progress whiteboard stroke from the coach (LiveKit data), before commit.
+  final RoomStroke? draftStroke;
+
   LiveRoom copyWith({
     RoomState? state,
     lk.Room? media,
@@ -61,7 +66,9 @@ class LiveRoom {
     bool? answering,
     int? answeredQuestionId,
     bool? answerWasCorrect,
+    RoomStroke? draftStroke,
     bool clearAnswer = false,
+    bool clearDraft = false,
   }) {
     return LiveRoom(
       state: state ?? this.state,
@@ -75,6 +82,7 @@ class LiveRoom {
           clearAnswer ? null : (answeredQuestionId ?? this.answeredQuestionId),
       answerWasCorrect:
           clearAnswer ? null : (answerWasCorrect ?? this.answerWasCorrect),
+      draftStroke: clearDraft ? null : (draftStroke ?? this.draftStroke),
     );
   }
 }
@@ -95,6 +103,7 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   /// ending does not look like a network failure worth retrying.
   bool _leaving = false;
   bool _reconnecting = false;
+  int _lastMediaSignalTs = 0;
 
   StreamSubscription<RealtimeEvent>? _live;
   String? _channel;
@@ -133,13 +142,19 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
   Future<LiveRoom> _connectMedia(LiveRoom room, RoomCredentials key) async {
     try {
       final media = lk.Room(
-        roomOptions: const lk.RoomOptions(adaptiveStream: true, dynacast: true),
+        roomOptions: const lk.RoomOptions(
+          // Same lesson as the coach panel: adaptive/dynacast pause layers and
+          // left both sides looking at a black tile after a brief blip.
+          adaptiveStream: false,
+          dynacast: false,
+        ),
       );
 
       // A room key lasts six hours and a class may be scheduled for eight, so
       // a dropped connection is re-made with a fresh key rather than this one.
       _mediaEvents = media.createListener()
-        ..on<lk.RoomDisconnectedEvent>((_) => _reconnect());
+        ..on<lk.RoomDisconnectedEvent>((_) => _reconnect())
+        ..on<lk.DataReceivedEvent>(_onStageData);
 
       await media.connect(key.url, key.token);
       _media = media;
@@ -245,13 +260,183 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
     await realtime.subscribe(channel);
   }
 
-  void _onLiveEvent(RealtimeEvent event) {
-    if (event.type == 'session.ended') _poll?.cancel();
+  static const String _stageTopic = 'zaban.stage';
 
-    // Every one of these means "the room changed, here is how". Asking the
-    // server what it looks like now beats patching a copy of it here, and at
-    // socket speed one round trip is not worth avoiding.
+  void _onStageData(lk.DataReceivedEvent event) {
+    if (event.topic != null && event.topic != _stageTopic) return;
+    try {
+      final decoded = jsonDecode(utf8.decode(event.data));
+      if (decoded is! Map) return;
+      _applyStageSignal(Map<String, dynamic>.from(decoded));
+    } catch (_) {
+      // Ignore malformed stage packets.
+    }
+  }
+
+  void _applyStageSignal(Map<String, dynamic> msg) {
+    final current = state.value;
+    if (current == null) return;
+    final type = msg['t'] as String?;
+
+    if (type == 'page') {
+      final page = (msg['page'] as num?)?.toInt() ?? 1;
+      final stage = (current.state.stage ?? const RoomStage()).copyWith(page: page);
+      state = AsyncData(current.copyWith(state: current.state.copyWith(stage: stage)));
+      return;
+    }
+
+    if (type == 'mode') {
+      final mode = msg['mode'] as String? ?? 'material';
+      final stage = (current.state.stage ?? const RoomStage()).copyWith(mode: mode);
+      state = AsyncData(current.copyWith(state: current.state.copyWith(stage: stage)));
+      return;
+    }
+
+    if (type == 'media') {
+      final kind = msg['kind'] as String? ?? 'control';
+      final ts = (msg['ts'] as num?)?.toInt() ?? 0;
+      if (ts > 0 && ts < _lastMediaSignalTs) {
+        return; // Stale LiveKit packet.
+      }
+      if (ts > _lastMediaSignalTs) _lastMediaSignalTs = ts;
+
+      final wasPlaying = current.state.stage?.media?.playing ?? false;
+      final playing = msg['playing'] == true;
+      // After the coach pauses, in-flight unreliable ticks must not resume video.
+      if (kind == 'tick' && !wasPlaying && playing) {
+        return;
+      }
+      if (kind == 'tick' && !wasPlaying) {
+        return;
+      }
+
+      final clock = RoomMediaClock(
+        playing: playing,
+        positionMs: (msg['position_ms'] as num?)?.toInt() ?? 0,
+        updatedAt: msg['updated_at'] != null
+            ? DateTime.tryParse(msg['updated_at'].toString())
+            : DateTime.now().toUtc(),
+      );
+      final stage = (current.state.stage ?? const RoomStage()).copyWith(media: clock);
+      state = AsyncData(current.copyWith(state: current.state.copyWith(stage: stage)));
+      return;
+    }
+
+    if (type == 'wb.draft') {
+      final raw = msg['stroke'];
+      if (raw is Map) {
+        state = AsyncData(
+          current.copyWith(draftStroke: RoomStroke.fromJson(Map<String, dynamic>.from(raw))),
+        );
+      }
+      return;
+    }
+
+    if (type == 'wb.stroke') {
+      final raw = msg['stroke'];
+      if (raw is! Map) return;
+      final stroke = RoomStroke.fromJson(Map<String, dynamic>.from(raw));
+      final existing = current.state.stage?.whiteboard?.strokes ?? const <RoomStroke>[];
+      final stage = (current.state.stage ?? const RoomStage()).copyWith(
+        mode: 'whiteboard',
+        whiteboard: RoomWhiteboard(strokes: <RoomStroke>[...existing, stroke]),
+      );
+      state = AsyncData(
+        current.copyWith(
+          state: current.state.copyWith(stage: stage),
+          clearDraft: true,
+        ),
+      );
+      return;
+    }
+
+    if (type == 'wb.clear') {
+      final stage = (current.state.stage ?? const RoomStage()).copyWith(
+        mode: 'whiteboard',
+        whiteboard: const RoomWhiteboard(strokes: <RoomStroke>[]),
+      );
+      state = AsyncData(
+        current.copyWith(
+          state: current.state.copyWith(stage: stage),
+          clearDraft: true,
+        ),
+      );
+    }
+  }
+
+  void _onLiveEvent(RealtimeEvent event) {
+    if (event.type == 'session.ended') {
+      _poll?.cancel();
+      refresh();
+      return;
+    }
+
+    final current = state.value;
+    if (current == null) {
+      refresh();
+      return;
+    }
+
+    // Apply stage / chat from the socket immediately — a full GET /room round
+    // trip is what made learners lag several seconds behind the coach.
+    if (event.type == 'stage.updated' || event.type == 'whiteboard.updated') {
+      final raw = _asStringKeyedMap(event.data['stage']);
+      if (raw != null) {
+        final incoming = RoomStage.fromJson(raw);
+        final local = current.state.stage;
+        // A delayed HTTP persist of a play-tick must not override a LiveKit pause.
+        final merged = _mergeStagePreferLocalPause(local, incoming);
+        state = AsyncData(
+          current.copyWith(
+            state: current.state.copyWith(stage: merged),
+          ),
+        );
+        return;
+      }
+    }
+
+    if (event.type == 'chat.message') {
+      final raw = _asStringKeyedMap(event.data['message']);
+      if (raw != null) {
+        final message = RoomChatMessage.fromJson(raw);
+        if (!current.state.chat.any((RoomChatMessage m) => m.id == message.id)) {
+          state = AsyncData(
+            current.copyWith(
+              state: current.state.copyWith(
+                chat: <RoomChatMessage>[...current.state.chat, message],
+              ),
+            ),
+          );
+        }
+        return;
+      }
+    }
+
     refresh();
+  }
+
+  Map<String, dynamic>? _asStringKeyedMap(Object? raw) {
+    if (raw is Map<String, dynamic>) return raw;
+    if (raw is Map) return Map<String, dynamic>.from(raw);
+    return null;
+  }
+
+  /// Keep a local pause if Echo brings back an older "still playing" snapshot.
+  RoomStage _mergeStagePreferLocalPause(RoomStage? local, RoomStage incoming) {
+    if (local?.media == null || incoming.media == null) return incoming;
+    final localMedia = local!.media!;
+    final remote = incoming.media!;
+    if (!localMedia.playing && remote.playing) {
+      final localAt = localMedia.updatedAt;
+      final remoteAt = remote.updatedAt;
+      if (localAt != null && remoteAt != null && !remoteAt.isAfter(localAt)) {
+        return incoming.copyWith(media: localMedia);
+      }
+      if (localAt != null && remoteAt == null) {
+        return incoming.copyWith(media: localMedia);
+      }
+    }
+    return incoming;
   }
 
   /// Slow, because the socket does the work. This is what notices a socket
@@ -311,6 +496,23 @@ class RoomController extends AutoDisposeFamilyAsyncNotifier<LiveRoom, int> {
     await _repository.raiseHand(sessionId, raised: raised);
 
     await refresh();
+  }
+
+  Future<void> sendChat(String body) async {
+    final sessionId = _sessionId;
+    final current = state.value;
+    if (sessionId == null || current == null) return;
+
+    final message = await _repository.postChat(sessionId, body);
+    if (!current.state.chat.any((RoomChatMessage m) => m.id == message.id)) {
+      state = AsyncData(
+        current.copyWith(
+          state: current.state.copyWith(
+            chat: <RoomChatMessage>[...current.state.chat, message],
+          ),
+        ),
+      );
+    }
   }
 
   Future<void> answer({String? body, List<int>? selectedOptions}) async {

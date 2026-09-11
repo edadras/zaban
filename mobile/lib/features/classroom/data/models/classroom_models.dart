@@ -113,6 +113,8 @@ abstract class RoomState with _$RoomState {
     int? sharedMaterialId,
     RoomQuestion? openQuestion,
     ClassRecording? recording,
+    RoomStage? stage,
+    @Default(<RoomChatMessage>[]) List<RoomChatMessage> chat,
   }) = _RoomState;
 
   factory RoomState.fromJson(Map<String, dynamic> json) =>
@@ -196,6 +198,90 @@ abstract class RoomMaterial with _$RoomMaterial {
 
   factory RoomMaterial.fromJson(Map<String, dynamic> json) =>
       _$RoomMaterialFromJson(json);
+}
+
+@freezed
+abstract class RoomStage with _$RoomStage {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory RoomStage({
+    @Default('material') String mode,
+    @Default(1) int page,
+    RoomMediaClock? media,
+    RoomWhiteboard? whiteboard,
+  }) = _RoomStage;
+
+  factory RoomStage.fromJson(Map<String, dynamic> json) =>
+      _$RoomStageFromJson(json);
+}
+
+@freezed
+abstract class RoomMediaClock with _$RoomMediaClock {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory RoomMediaClock({
+    @Default(false) bool playing,
+    @Default(0) int positionMs,
+    DateTime? updatedAt,
+  }) = _RoomMediaClock;
+
+  factory RoomMediaClock.fromJson(Map<String, dynamic> json) =>
+      _$RoomMediaClockFromJson(json);
+}
+
+@freezed
+abstract class RoomWhiteboard with _$RoomWhiteboard {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory RoomWhiteboard({
+    @Default(<RoomStroke>[]) List<RoomStroke> strokes,
+  }) = _RoomWhiteboard;
+
+  factory RoomWhiteboard.fromJson(Map<String, dynamic> json) =>
+      _$RoomWhiteboardFromJson(json);
+}
+
+@freezed
+abstract class RoomStroke with _$RoomStroke {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory RoomStroke({
+    String? id,
+    @Default('#111827') String color,
+    @Default(3) double width,
+    @JsonKey(fromJson: roomStrokePointsFromJson)
+    @Default(<List<double>>[])
+    List<List<double>> points,
+  }) = _RoomStroke;
+
+  factory RoomStroke.fromJson(Map<String, dynamic> json) =>
+      _$RoomStrokeFromJson(json);
+}
+
+List<List<double>> roomStrokePointsFromJson(Object? raw) {
+  if (raw is! List) return const <List<double>>[];
+  return raw
+      .whereType<List<dynamic>>()
+      .map(
+        (List<dynamic> point) => point
+            .whereType<num>()
+            .map((num n) => n.toDouble())
+            .toList(growable: false),
+      )
+      .where((List<double> point) => point.length >= 2)
+      .map((List<double> point) => <double>[point[0], point[1]])
+      .toList(growable: false);
+}
+
+@freezed
+abstract class RoomChatMessage with _$RoomChatMessage {
+  @JsonSerializable(fieldRename: FieldRename.snake)
+  const factory RoomChatMessage({
+    required int id,
+    required int userId,
+    String? name,
+    @Default('') String body,
+    DateTime? createdAt,
+  }) = _RoomChatMessage;
+
+  factory RoomChatMessage.fromJson(Map<String, dynamic> json) =>
+      _$RoomChatMessageFromJson(json);
 }
 
 /// A question the coach put to the room.

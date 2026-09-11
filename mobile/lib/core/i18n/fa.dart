@@ -726,6 +726,12 @@ const Map<String, String> faStrings = <String, String>{
       'مربی صدایتان را بسته است',
   'My classes':
       'کلاس‌های من',
+  'Classes':
+      'کلاس‌ها',
+  'Class schedule':
+      'برنامه کلاس',
+  'Class schedule and live lessons':
+      'برنامه کلاس و ورود به کلاس آنلاین',
   'My coach':
       'مربی من',
   'Next up':
@@ -740,10 +746,32 @@ const Map<String, String> faStrings = <String, String>{
       'اعلان‌ها',
   'On screen':
       'روی صفحه',
+  'Open PDF':
+      'باز کردن PDF',
   'Open the file your coach shared from the class page.':
       'فایلی که مربی به اشتراک گذاشته را از صفحهٔ کلاس باز کنید.',
+  'Page {page}':
+      'صفحه {page}',
+  'Playback follows your coach':
+      'پخش با مربی هماهنگ است',
   'Raise hand':
       'بالا بردن دست',
+  'Whiteboard':
+      'وایت‌برد',
+  'Enlarge':
+      'بزرگ‌نمایی',
+  'Class chat':
+      'چت کلاس',
+  'No messages yet':
+      'هنوز پیامی نیست',
+  'Message the class':
+      'پیام به کلاس',
+  'Follow the page your coach is on. Tap to open the PDF.':
+      'همان صفحه‌ای را ببینید که مربی ورق زده؛ برای باز کردن PDF بزنید.',
+  'Coach is playing audio':
+      'مربی در حال پخش صوت است',
+  'Coach paused the audio':
+      'مربی صوت را متوقف کرده است',
   'Starting':
       'در حال شروع',
   'The class has ended':

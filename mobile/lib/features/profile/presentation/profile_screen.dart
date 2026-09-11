@@ -96,6 +96,13 @@ class ProfileScreen extends ConsumerWidget {
                     ),
                   ),
                 const SizedBox(height: Spacing.lg),
+                _row(
+                  context,
+                  icon: Icons.groups_outlined,
+                  title: context.t('Classes'),
+                  subtitle: context.t('Class schedule and live lessons'),
+                  onTap: () => context.go(AppRoute.classes.path),
+                ),
                 subscription.maybeWhen(
                   data: (SubscriptionState state) => _row(
                     context,

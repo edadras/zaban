@@ -575,11 +575,15 @@ the app; this is not a second copy of it.
 * **Who may open it.** Anyone who is an active owner, admin or coach at a
   school, or who carries a platform role. Session authentication, not bearer
   tokens. A learner who signs in is refused and signed straight back out.
+* **How a school starts.** Only the platform administrator registers a school
+  and its manager (`/panel/platform/schools`). That creates the school and,
+  when needed, the manager's account. The manager then signs in, adds coaches,
+  and runs classes. Schools are not self-serve from the school half of the panel.
 * **What it does.** Schools and their people, coach↔learner assignment, classes
   and their weekly timetables, session preparation (uploading video, PDF, image
   and audio, writing text, picking a lesson out of the corpus), the live class
   console, attendance, and the practice lock. Platform accounts also get an
-  overview, user management and the audit log.
+  overview, school registration, user management and the audit log.
 * **Authorisation.** The panel calls the classroom services directly rather than
   its own API over HTTP, so there is one set of rules however a school comes in.
   A platform administrator is *not* automatically a school's manager: the

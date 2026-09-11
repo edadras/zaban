@@ -56,6 +56,7 @@ class PanelPagesTest extends PanelTestCase
 
         foreach ([
             route('panel.platform.overview'),
+            route('panel.platform.schools'),
             route('panel.platform.users'),
             route('panel.platform.users').'?q=coach&role=learner&status=active',
             route('panel.platform.audit'),

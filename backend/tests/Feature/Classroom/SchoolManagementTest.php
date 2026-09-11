@@ -288,4 +288,39 @@ class SchoolManagementTest extends ClassroomTestCase
         $this->assertSame([$this->outsider->id], $response->json('data.rejected'));
         $this->assertSame([], $response->json('data.enrolled'));
     }
+
+    public function test_a_school_owner_cannot_self_register_another_school(): void
+    {
+        $this->actingAs($this->owner)
+            ->postJson('/api/v1/schools', [
+                'name' => 'Unauthorized School',
+                'owner_name' => 'Someone',
+                'owner_email' => 'someone@example.test',
+                'owner_password' => 'SecretPass123!',
+            ])
+            ->assertStatus(403);
+
+        $this->assertDatabaseMissing('schools', ['name' => 'Unauthorized School']);
+    }
+
+    public function test_the_platform_admin_registers_a_school_via_api(): void
+    {
+        $admin = $this->makeUser('Api admin');
+        $admin->update(['role' => 'admin']);
+
+        $this->actingAs($admin)
+            ->postJson('/api/v1/schools', [
+                'name' => 'Registered Institute',
+                'owner_name' => 'New Manager',
+                'owner_email' => 'new-manager@example.test',
+                'owner_password' => 'SecretPass123!',
+            ])
+            ->assertCreated()
+            ->assertJsonPath('data.name', 'Registered Institute')
+            ->assertJsonPath('data.owner.email', 'new-manager@example.test')
+            ->assertJsonPath('data.owner.created', true);
+
+        $this->assertDatabaseHas('users', ['email' => 'new-manager@example.test']);
+        $this->assertDatabaseHas('schools', ['name' => 'Registered Institute']);
+    }
 }

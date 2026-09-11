@@ -71,7 +71,15 @@ class MediaController extends ApiController
             // Signed links already expire; caching privately for the link's life
             // avoids re-downloading a track the learner replays.
             'Cache-Control' => 'private, max-age='.(self::LINK_TTL_MINUTES * 60),
+            // In-app PDF (pdfrx) and canvas viewers need CORS + range on web.
+            'Access-Control-Allow-Origin' => '*',
+            'Access-Control-Expose-Headers' => 'Accept-Ranges, Content-Length, Content-Range',
         ];
+        // Coach panel embeds PDFs in <object>/<iframe>; attachment forces download/flip issues.
+        if (str_contains((string) $media->mime, 'pdf')) {
+            $headers['Content-Disposition'] = 'inline; filename="material.pdf"';
+            $headers['Content-Type'] = 'application/pdf';
+        }
         if ($status === 206) {
             $headers['Content-Range'] = "bytes {$start}-{$end}/{$size}";
         }

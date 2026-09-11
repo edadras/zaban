@@ -13,8 +13,10 @@ use App\Models\Concept;
 use App\Models\Exercise;
 use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\ClassroomService;
+use App\Services\Classroom\MaterialService;
 use App\Services\Classroom\PracticeLockService;
 use App\Services\Classroom\RecordingService;
+use App\Services\Classroom\RoomStageService;
 use App\Services\Classroom\SchoolService;
 use Illuminate\Http\Request;
 
@@ -33,6 +35,8 @@ class ClassRoomController extends ApiController
         private readonly PracticeLockService $locks,
         private readonly SchoolService $schools,
         private readonly RecordingService $recordings,
+        private readonly RoomStageService $stage,
+        private readonly MaterialService $materials,
     ) {}
 
     /**
@@ -73,6 +77,8 @@ class ClassRoomController extends ApiController
                 ->map(fn (ClassMaterial $m) => $this->presentMaterial($m)),
             'recording' => $this->recordings->present($session),
             'shared_material_id' => $shared?->id,
+            'stage' => $this->stage->publicStage($this->stage->current($session)),
+            'chat' => $this->stage->recentChat($session),
             'open_question' => $this->openQuestionFor($session, $request->user()->id, $isCoach),
         ]);
     }
@@ -187,6 +193,125 @@ class ClassRoomController extends ApiController
         $this->classroom->closeMaterial($session, $material);
 
         return $this->ok(['closed' => true]);
+    }
+
+    /**
+     * Coach drives the shared screen: PDF page, video playhead, whiteboard mode.
+     */
+    public function updateStage(Request $request, ClassSession $session)
+    {
+        $this->assertCoach($request, $session);
+
+        $data = $request->validate([
+            'mode' => ['nullable', 'string', 'in:material,whiteboard'],
+            'page' => ['nullable', 'integer', 'min:1', 'max:5000'],
+            'media' => ['nullable', 'array'],
+            'media.playing' => ['nullable', 'boolean'],
+            'media.position_ms' => ['nullable', 'integer', 'min:0', 'max:86400000'],
+        ]);
+
+        $patch = array_filter([
+            'mode' => $data['mode'] ?? null,
+            'page' => $data['page'] ?? null,
+            'media' => $data['media'] ?? null,
+        ], fn ($value) => $value !== null);
+
+        if ($patch === []) {
+            throw new ClassroomException('Nothing to change on the stage.');
+        }
+
+        return $this->ok(['stage' => $this->stage->update($session, $patch)]);
+    }
+
+    public function postChat(Request $request, ClassSession $session)
+    {
+        $this->assertInvited($request, $session);
+
+        $data = $request->validate([
+            'body' => ['required', 'string', 'max:1000'],
+        ]);
+
+        $message = $this->stage->postChat($session, $request->user(), $data['body']);
+
+        return $this->created($this->stage->presentChat($message));
+    }
+
+    public function whiteboard(Request $request, ClassSession $session)
+    {
+        $this->assertCoach($request, $session);
+
+        $data = $request->validate([
+            'action' => ['required', 'string', 'in:stroke,clear'],
+            'stroke' => ['required_if:action,stroke', 'nullable', 'array'],
+            'stroke.id' => ['nullable', 'string', 'max:40'],
+            'stroke.color' => ['nullable', 'string', 'max:7'],
+            'stroke.width' => ['nullable', 'numeric', 'min:1', 'max:24'],
+            'stroke.points' => ['required_if:action,stroke', 'nullable', 'array', 'min:2', 'max:800'],
+        ]);
+
+        $stage = $data['action'] === 'clear'
+            ? $this->stage->clearWhiteboard($session)
+            : $this->stage->appendStroke($session, $data['stroke'] ?? []);
+
+        return $this->ok(['stage' => $stage]);
+    }
+
+    /** Add shelf content without leaving the live room. */
+    public function addMaterial(Request $request, ClassSession $session)
+    {
+        $this->assertCoach($request, $session);
+
+        $data = $request->validate([
+            'kind' => ['required', 'string', 'in:'.implode(',', ClassMaterial::KINDS)],
+            'title' => ['required', 'string', 'max:200'],
+            'body' => ['nullable', 'string', 'max:20000'],
+            'lesson_id' => ['nullable', 'integer', 'exists:lessons,id'],
+            'exercise_id' => ['nullable', 'integer', 'exists:exercises,id'],
+            'media_asset_id' => ['nullable', 'integer', 'exists:media_assets,id'],
+            'file' => ['nullable', 'file', 'max:204800'],
+            'position' => ['nullable', 'integer', 'min:0', 'max:999'],
+        ]);
+
+        $material = $this->materials->add(
+            $session,
+            $request->user(),
+            $data,
+            $request->file('file'),
+        )->fresh('media');
+
+        $payload = $this->presentMaterial($material);
+
+        event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_ADDED, [
+            'material_id' => $material->id,
+            'material' => $payload,
+        ]));
+
+        return $this->created($payload);
+    }
+
+    public function removeMaterial(Request $request, ClassSession $session, ClassMaterial $material)
+    {
+        $this->assertCoach($request, $session);
+
+        if ($material->class_session_id !== $session->id) {
+            throw new ClassroomException('That material belongs to another class.', 404);
+        }
+
+        $id = $material->id;
+        $wasShared = $material->shared_at !== null;
+        $material->delete();
+
+        if ($wasShared) {
+            event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_CLOSED, [
+                'material_id' => $id,
+            ]));
+        }
+
+        event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_REMOVED, [
+            'material_id' => $id,
+        ]));
+
+        return $this->ok(['deleted' => true]);
     }
 
     // ----------------------------------------------------------- questions

@@ -78,6 +78,7 @@ class PanelAccessTest extends PanelTestCase
     public function test_the_platform_section_is_not_a_schools_to_open(): void
     {
         $this->actingAs($this->coach)->get(route('panel.platform.overview'))->assertForbidden();
+        $this->actingAs($this->coach)->get(route('panel.platform.schools'))->assertForbidden();
         $this->actingAs($this->coach)->get(route('panel.platform.users'))->assertForbidden();
     }
 

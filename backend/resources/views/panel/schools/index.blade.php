@@ -6,12 +6,15 @@
 
     <div class="grid gap-6 lg:grid-cols-3">
 
-        <section class="card lg:col-span-2">
+        <section class="card {{ $isPlatformAdmin ? 'lg:col-span-3' : 'lg:col-span-2' }}">
             <div class="card-head"><h2 class="card-title">آموزشگاه‌هایی که مدیریت می‌کنید</h2></div>
 
             @if ($managed->isEmpty())
                 <p class="px-5 py-8 text-center text-sm text-ink-400">
-                    هنوز آموزشگاهی نساخته‌اید.
+                    هنوز آموزشگاهی به شما سپرده نشده است.
+                    @if ($isPlatformAdmin)
+                        از بخش سامانه → آموزشگاه‌ها یک آموزشگاه و مدیرش را ثبت کنید.
+                    @endif
                 </p>
             @else
                 <ul class="divide-y divide-ink-100">
@@ -47,26 +50,14 @@
             @endif
         </section>
 
-        <section class="card h-fit">
-            <div class="card-head"><h2 class="card-title">آموزشگاه تازه</h2></div>
-            <form method="POST" action="{{ route('panel.schools.store') }}" class="space-y-4 p-5">
-                @csrf
-                <div>
-                    <label class="label" for="name">نام</label>
-                    <input class="field" id="name" name="name" value="{{ old('name') }}" required maxlength="160">
-                </div>
-                <div>
-                    <label class="label" for="timezone">منطقهٔ زمانی</label>
-                    <input class="field" id="timezone" name="timezone" dir="ltr"
-                           value="{{ old('timezone', 'Asia/Tehran') }}" maxlength="64">
-                </div>
-                <div>
-                    <label class="label" for="description">توضیح</label>
-                    <textarea class="field" id="description" name="description" rows="3">{{ old('description') }}</textarea>
-                </div>
-                <button class="btn-primary w-full">ساختن</button>
-            </form>
-        </section>
+        @unless ($isPlatformAdmin)
+            <section class="card h-fit">
+                <div class="card-head"><h2 class="card-title">آموزشگاه تازه</h2></div>
+                <p class="px-5 py-6 text-sm text-ink-500">
+                    ساخت آموزشگاه فقط توسط مدیر سامانه انجام می‌شود. پس از ثبت، مدیر آموزشگاه از همین پنل افراد و مربیان را مدیریت می‌کند.
+                </p>
+            </section>
+        @endunless
 
     </div>
 

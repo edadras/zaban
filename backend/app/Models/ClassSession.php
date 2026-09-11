@@ -34,7 +34,7 @@ class ClassSession extends Model
 
     protected $fillable = [
         'class_group_id', 'coach_id', 'schedule_rule_id', 'title', 'agenda',
-        'starts_at', 'ends_at', 'status', 'room_name', 'started_at',
+        'starts_at', 'ends_at', 'status', 'stage', 'room_name', 'started_at',
         'ended_at_actual', 'notified_at', 'recording_media_asset_id',
         'recording_egress_id', 'recording_status', 'recording_started_at',
         'recording_ended_at', 'recording_duration_ms', 'recording_error',
@@ -50,6 +50,7 @@ class ClassSession extends Model
             'notified_at' => 'datetime',
             'recording_started_at' => 'datetime',
             'recording_ended_at' => 'datetime',
+            'stage' => 'array',
         ];
     }
 
@@ -95,6 +96,11 @@ class ClassSession extends Model
         return $this->hasMany(ClassQuestion::class);
     }
 
+    public function chatMessages(): HasMany
+    {
+        return $this->hasMany(ClassChatMessage::class);
+    }
+
     public function isLive(): bool
     {
         return $this->status === self::LIVE;
@@ -103,13 +109,26 @@ class ClassSession extends Model
     /**
      * The window in which a learner may knock on the door.
      *
-     * Fifteen minutes before the hour so nobody is locked out for being early,
-     * and until the scheduled end plus an hour so a class that overruns does
-     * not start turning people away mid-explanation.
+     * Once the coach has opened the room (`live`), the door stays open until
+     * they end it — even if the timetable said the hour was later. Without
+     * that, starting a class early leaves every learner looking at a card with
+     * no "Join" button.
+     *
+     * For a class still only scheduled: fifteen minutes before the hour so
+     * nobody is locked out for being early, and until the scheduled end plus
+     * an hour so a class that overruns does not start turning people away.
      */
     public function isJoinable(): bool
     {
         if (in_array($this->status, [self::ENDED, self::CANCELLED], true)) {
+            return false;
+        }
+
+        if ($this->status === self::LIVE) {
+            return true;
+        }
+
+        if ($this->starts_at === null || $this->ends_at === null) {
             return false;
         }
 

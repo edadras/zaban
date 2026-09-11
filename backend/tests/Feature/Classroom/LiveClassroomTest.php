@@ -255,6 +255,105 @@ class LiveClassroomTest extends ClassroomTestCase
             ->where('is_present', true)->count());
     }
 
+    /** A coach who opens early must not leave learners with a locked door. */
+    public function test_a_live_class_is_joinable_before_its_timetabled_hour(): void
+    {
+        $session = $this->makeSession(now()->addDays(5));
+
+        $this->assertFalse($session->isJoinable());
+
+        $this->actingAs($this->coach)
+            ->postJson("/api/v1/class-sessions/{$session->id}/start")
+            ->assertOk();
+
+        $this->assertTrue($session->fresh()->isJoinable());
+
+        $this->actingAs($this->student)
+            ->getJson('/api/v1/my/classes')
+            ->assertOk()
+            ->assertJsonPath('data.upcoming.0.is_joinable', true)
+            ->assertJsonPath('data.upcoming.0.status', ClassSession::LIVE);
+    }
+
+    public function test_coach_can_drive_stage_and_class_chat(): void
+    {
+        $session = $this->makeSession();
+        $this->actingAs($this->coach)->postJson("/api/v1/class-sessions/{$session->id}/start");
+        $material = $this->makeMaterial($session, 'Deck');
+
+        $this->actingAs($this->coach)
+            ->postJson("/api/v1/class-sessions/{$session->id}/room/materials/{$material->id}/share")
+            ->assertOk();
+
+        Event::fake([ClassroomEvent::class]);
+
+        $this->actingAs($this->coach)
+            ->postJson("/api/v1/class-sessions/{$session->id}/room/stage", ['page' => 3])
+            ->assertOk()
+            ->assertJsonPath('data.stage.page', 3);
+
+        $this->actingAs($this->coach)
+            ->postJson("/api/v1/class-sessions/{$session->id}/room/stage", [
+                'media' => ['playing' => true, 'position_ms' => 1500],
+            ])
+            ->assertOk()
+            ->assertJsonPath('data.stage.media.playing', true)
+            ->assertJsonPath('data.stage.media.position_ms', 1500);
+
+        $this->actingAs($this->student)
+            ->postJson("/api/v1/class-sessions/{$session->id}/room/chat", ['body' => 'سلام کلاس'])
+            ->assertCreated()
+            ->assertJsonPath('data.body', 'سلام کلاس');
+
+        $this->actingAs($this->coach)
+            ->postJson("/api/v1/class-sessions/{$session->id}/room/whiteboard", [
+                'action' => 'stroke',
+                'stroke' => [
+                    'color' => '#112233',
+                    'width' => 4,
+                    'points' => [[0.1, 0.1], [0.4, 0.5], [0.7, 0.2]],
+                ],
+            ])
+            ->assertOk()
+            ->assertJsonPath('data.stage.mode', 'whiteboard');
+
+        $room = $this->actingAs($this->student)
+            ->getJson("/api/v1/class-sessions/{$session->id}/room")
+            ->assertOk();
+
+        $this->assertSame('whiteboard', $room->json('data.stage.mode'));
+        $this->assertNotEmpty($room->json('data.chat'));
+        $this->assertSame('سلام کلاس', $room->json('data.chat.0.body'));
+    }
+
+    public function test_coach_can_add_and_remove_material_inside_the_room(): void
+    {
+        $session = $this->makeSession();
+        $this->actingAs($this->coach)->postJson("/api/v1/class-sessions/{$session->id}/start");
+
+        Event::fake([ClassroomEvent::class]);
+
+        $created = $this->actingAs($this->coach)
+            ->postJson("/api/v1/class-sessions/{$session->id}/room/materials", [
+                'kind' => 'text',
+                'title' => 'یادداشت زنده',
+                'body' => 'در کلاس اضافه شد',
+            ])
+            ->assertCreated()
+            ->json('data');
+
+        $this->assertDatabaseHas('class_materials', [
+            'id' => $created['id'],
+            'title' => 'یادداشت زنده',
+        ]);
+
+        $this->actingAs($this->coach)
+            ->deleteJson("/api/v1/class-sessions/{$session->id}/room/materials/{$created['id']}")
+            ->assertOk();
+
+        $this->assertDatabaseMissing('class_materials', ['id' => $created['id']]);
+    }
+
     // ------------------------------------------------------------- helpers
 
     /** @return array{0: ClassSession, 1: ClassParticipant} */

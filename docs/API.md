@@ -463,15 +463,17 @@ any editor into every school and keep every school's own owner out.
 
 | Method | Path |
 |---|---|
-| GET / POST | `/schools` |
+| GET / POST | `/schools` — create is platform-admin only and requires `owner_*` |
 | GET / PATCH | `/schools/{school}` |
 | GET / POST | `/schools/{school}/members` |
 | DELETE | `/schools/{school}/members/{member}` |
 | GET / POST | `/schools/{school}/coaches/{coach}/students` |
 | DELETE | `/schools/{school}/coaches/{coach}/students/{student}` |
 
-A member is added by email and only an account that already exists is attached —
-an unknown address is `404 no_such_account`, never a user with a password nobody
+A school is registered by a platform administrator with the manager's name,
+email and (when the account is new) password. Everyday membership is still
+added by email and only an account that already exists is attached — an
+unknown address is `404 no_such_account`, never a user with a password nobody
 chose. Adding somebody as a coach does not touch `users.role`: teaching at one
 school and studying at another are both true at once. A school cannot be left
 without an owner (`409`), and a coach who still teaches an active class cannot
@@ -528,6 +530,11 @@ it and there is not a second way to hand a file to a learner.
 | POST | `/class-sessions/{session}/room/mute-all` |
 | DELETE | `/class-sessions/{session}/room/participants/{participant}` |
 | POST | `/class-sessions/{session}/room/materials/{material}/share`, `/close` |
+| POST | `/class-sessions/{session}/room/materials` |
+| DELETE | `/class-sessions/{session}/room/materials/{material}` |
+| POST | `/class-sessions/{session}/room/stage` |
+| POST | `/class-sessions/{session}/room/chat` |
+| POST | `/class-sessions/{session}/room/whiteboard` |
 | GET | `/class-sessions/{session}/room/askable` |
 | POST | `/class-sessions/{session}/room/questions` |
 | POST | `/class-sessions/{session}/room/questions/{question}/answer`, `/close` |
@@ -542,7 +549,12 @@ able to hear and see and to say nothing; the coach hands out the microphone. The
 permission is a row here, not a message to the media server, so a learner who is
 muted and then reloads comes back muted. `GET /room` gives a coach their whole
 shelf and a learner only what is on screen, and the open question without its
-answers or its correct option.
+answers or its correct option. The same payload also carries `stage` (PDF page,
+video playhead, whiteboard strokes) and recent `chat` lines so late joiners
+catch up. Coach-only `POST /room/stage` patches that cursor; everyone in the
+room may `POST /room/chat`; coach-only `POST /room/whiteboard` appends or
+clears strokes. Live shelf edits use `POST|DELETE /room/materials` and
+broadcast `material.added` / `material.removed`.
 
 `askable` lists the corpus questions *today's shelf* can be asked — the
 exercises belonging to the lessons the coach put on it, not the whole bank.

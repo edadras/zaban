@@ -5,7 +5,7 @@ namespace App\Events\Classroom;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -20,7 +20,7 @@ use Illuminate\Queue\SerializesModels;
  * shown a material still fetches it through the API, so there is one place that
  * decides whether they may have it.
  */
-class ClassroomEvent implements ShouldBroadcast
+class ClassroomEvent implements ShouldBroadcastNow
 {
     use Dispatchable;
     use InteractsWithSockets;
@@ -34,6 +34,11 @@ class ClassroomEvent implements ShouldBroadcast
     public const HAND_RAISED = 'hand.raised';
     public const MATERIAL_SHARED = 'material.shared';
     public const MATERIAL_CLOSED = 'material.closed';
+    public const MATERIAL_ADDED = 'material.added';
+    public const MATERIAL_REMOVED = 'material.removed';
+    public const STAGE_UPDATED = 'stage.updated';
+    public const WHITEBOARD_UPDATED = 'whiteboard.updated';
+    public const CHAT_MESSAGE = 'chat.message';
     public const QUESTION_OPENED = 'question.opened';
     public const QUESTION_CLOSED = 'question.closed';
     public const ANSWER_RECEIVED = 'answer.received';

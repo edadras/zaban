@@ -144,10 +144,20 @@ class _Body extends ConsumerWidget {
                 const SizedBox(height: Spacing.lg),
               ],
 
-              if (shared != null) ...<Widget>[
-                MaterialStage(material: shared),
+              if (shared != null || state.stage?.mode == 'whiteboard') ...<Widget>[
+                MaterialStage(
+                  material: shared,
+                  stage: state.stage,
+                  draftStroke: room.draftStroke,
+                ),
                 const SizedBox(height: Spacing.lg),
               ],
+
+              _RoomChat(
+                sessionId: sessionId,
+                messages: state.chat,
+              ),
+              const SizedBox(height: Spacing.lg),
 
               _Roster(participants: state.participants),
             ],
@@ -327,6 +337,105 @@ class _Roster extends StatelessWidget {
                   ],
                 ),
               ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _RoomChat extends ConsumerStatefulWidget {
+  const _RoomChat({required this.sessionId, required this.messages});
+
+  final int sessionId;
+  final List<RoomChatMessage> messages;
+
+  @override
+  ConsumerState<_RoomChat> createState() => _RoomChatState();
+}
+
+class _RoomChatState extends ConsumerState<_RoomChat> {
+  final TextEditingController _input = TextEditingController();
+  bool _sending = false;
+
+  @override
+  void dispose() {
+    _input.dispose();
+    super.dispose();
+  }
+
+  Future<void> _send() async {
+    final body = _input.text.trim();
+    if (body.isEmpty || _sending) return;
+    setState(() => _sending = true);
+    try {
+      await ref.read(roomControllerProvider(widget.sessionId).notifier).sendChat(body);
+      _input.clear();
+    } finally {
+      if (mounted) setState(() => _sending = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GlassCard(
+      title: context.t('Class chat'),
+      child: Padding(
+        padding: const EdgeInsets.only(top: Spacing.sm),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 220),
+              child: ListView(
+                shrinkWrap: true,
+                children: <Widget>[
+                  if (widget.messages.isEmpty)
+                    Text(
+                      context.t('No messages yet'),
+                      style: TextStyle(color: context.colors.textSecondary),
+                    ),
+                  for (final RoomChatMessage message in widget.messages)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: Spacing.sm),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            message.name ?? '—',
+                            style: TextStyle(
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                              color: context.colors.textSecondary,
+                            ),
+                          ),
+                          Text(message.body),
+                        ],
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            const SizedBox(height: Spacing.sm),
+            TextField(
+              controller: _input,
+              textInputAction: TextInputAction.send,
+              decoration: InputDecoration(
+                hintText: context.t('Message the class'),
+                filled: true,
+              ),
+              onSubmitted: (_) => _send(),
+            ),
+            const SizedBox(height: Spacing.sm),
+            SizedBox(
+              width: double.infinity,
+              height: 48,
+              child: FilledButton.icon(
+                onPressed: _sending ? null : _send,
+                icon: const Icon(Icons.send_rounded),
+                label: Text(context.t('Send')),
+              ),
+            ),
           ],
         ),
       ),

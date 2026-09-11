@@ -3,8 +3,11 @@
 namespace Tests\Feature\Panel;
 
 use App\Models\CoachStudent;
+use App\Models\School;
 use App\Models\SchoolMember;
+use App\Models\User;
 use App\Services\Classroom\SchoolService;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Running a school from a browser.
@@ -136,15 +139,49 @@ class PanelSchoolTest extends PanelTestCase
             ->assertSee($this->student->name);
     }
 
-    public function test_a_new_school_belongs_to_whoever_made_it(): void
+    public function test_school_creation_is_not_self_serve(): void
     {
         $this->actingAs($this->coach)
             ->post(route('panel.schools.store'), ['name' => 'آموزشگاه تازه'])
+            ->assertNotFound();
+
+        $this->assertDatabaseMissing('schools', ['name' => 'آموزشگاه تازه']);
+    }
+
+    public function test_the_platform_admin_registers_a_school_and_its_manager(): void
+    {
+        $admin = $this->makeUser('Platform admin');
+        $admin->update(['role' => 'admin']);
+
+        $this->actingAs($admin)
+            ->post(route('panel.platform.schools.store'), [
+                'name' => 'آموزشگاه تازه',
+                'owner_name' => 'مدیر تازه',
+                'owner_email' => 'manager@example.test',
+                'owner_password' => 'SecretPass123!',
+                'owner_password_confirmation' => 'SecretPass123!',
+            ])
+            ->assertRedirect(route('panel.platform.schools'))
             ->assertSessionHas('status');
 
+        $owner = User::where('email', 'manager@example.test')->first();
+        $this->assertNotNull($owner);
         $this->assertDatabaseHas('schools', [
             'name' => 'آموزشگاه تازه',
-            'owner_user_id' => $this->coach->id,
+            'owner_user_id' => $owner->id,
         ]);
+        $this->assertDatabaseHas('school_members', [
+            'user_id' => $owner->id,
+            'role' => 'owner',
+        ]);
+
+        $this->assertTrue(
+            Auth::attempt(['email' => 'manager@example.test', 'password' => 'SecretPass123!'])
+        );
+        Auth::logout();
+
+        $this->actingAs($owner)
+            ->get(route('panel.schools.people', School::where('name', 'آموزشگاه تازه')->first()))
+            ->assertOk();
     }
 }

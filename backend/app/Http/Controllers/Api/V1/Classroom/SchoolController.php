@@ -40,15 +40,46 @@ class SchoolController extends ApiController
 
     public function store(Request $request)
     {
+        // Schools are not self-serve. Only a platform administrator may register
+        // one, and they must name the manager who will run it afterwards.
+        if ($request->user()->role !== 'admin') {
+            throw new ClassroomException('Only a platform administrator may register a school.', 403);
+        }
+
+        $email = mb_strtolower((string) $request->input('owner_email'));
+        $ownerExists = User::where('email', $email)->exists();
+
         $data = $request->validate([
             'name' => ['required', 'string', 'max:160'],
             'timezone' => ['nullable', 'string', 'max:64'],
             'description' => ['nullable', 'string', 'max:2000'],
+            'owner_name' => ['required', 'string', 'max:120'],
+            'owner_email' => ['required', 'email', 'max:190'],
+            'owner_password' => [
+                \Illuminate\Validation\Rule::requiredIf(! $ownerExists),
+                'nullable',
+                'string',
+                'min:8',
+            ],
         ]);
 
-        $school = $this->schools->create($request->user(), $data['name'], $data);
+        $result = $this->schools->registerForPlatform(
+            $data['name'],
+            $data['owner_name'],
+            $data['owner_email'],
+            $data['owner_password'] ?? null,
+            $data,
+        );
 
-        return $this->created($this->present($school));
+        return $this->created([
+            ...$this->present($result['school']),
+            'owner' => [
+                'id' => $result['owner']->id,
+                'name' => $result['owner']->name,
+                'email' => $result['owner']->email,
+                'created' => $result['created_owner'],
+            ],
+        ]);
     }
 
     public function show(Request $request, School $school)

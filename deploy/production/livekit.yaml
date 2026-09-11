@@ -1,0 +1,17 @@
+# LiveKit SFU for Zaban classroom A/V.
+# Signaling is proxied at https://live.zaban.edadras.com ; media uses host UDP/TCP.
+port: 7880
+bind_addresses:
+  - ""
+log_level: info
+rtc:
+  tcp_port: 7881
+  port_range_start: 50100
+  port_range_end: 50200
+  use_external_ip: true
+  node_ip: 185.231.111.184
+  # Prefer UDP; TCP 7881 is the fallback path through strict NATs.
+  allow_tcp_fallback: true
+keys:
+  # Replaced by deploy script with the live keys written into app.env.
+  APIzabanlearn: REPLACE_ME

@@ -27,11 +27,13 @@ class MyClassesScreen extends ConsumerWidget {
     final async = ref.watch(myClassesProvider);
 
     return ZabanScaffold(
-      title: context.t('My classes'),
-      leading: IconButton(
-        icon: const Icon(Icons.arrow_back_rounded),
-        onPressed: () => Navigator.of(context).maybePop(),
-      ),
+      title: context.t('Classes'),
+      leading: Navigator.of(context).canPop()
+          ? IconButton(
+              icon: const Icon(Icons.arrow_back_rounded),
+              onPressed: () => Navigator.of(context).maybePop(),
+            )
+          : null,
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.notifications_none_rounded),
@@ -56,6 +58,10 @@ class MyClassesScreen extends ConsumerWidget {
             );
           }
 
+          final liveOrOpen = data.upcoming
+              .where((UpcomingClass s) => s.isLive || s.isJoinable)
+              .toList();
+
           return RefreshIndicator(
             onRefresh: () async => ref.invalidate(myClassesProvider),
             child: ListView(
@@ -74,10 +80,27 @@ class MyClassesScreen extends ConsumerWidget {
                         const SizedBox(height: Spacing.lg),
                       ],
 
-                      if (data.upcoming.isNotEmpty) ...<Widget>[
-                        SectionHeader(title: context.t('Next up')),
+                      if (liveOrOpen.isNotEmpty) ...<Widget>[
+                        SectionHeader(title: context.t('Join the class')),
                         const SizedBox(height: Spacing.sm),
-                        for (final UpcomingClass session in data.upcoming)
+                        for (final UpcomingClass session in liveOrOpen)
+                          Padding(
+                            padding:
+                                const EdgeInsets.only(bottom: Spacing.md),
+                            child: _UpcomingCard(session: session),
+                          ),
+                        const SizedBox(height: Spacing.lg),
+                      ],
+
+                      if (data.upcoming
+                          .where((UpcomingClass s) =>
+                              !s.isLive && !s.isJoinable)
+                          .isNotEmpty) ...<Widget>[
+                        SectionHeader(title: context.t('Class schedule')),
+                        const SizedBox(height: Spacing.sm),
+                        for (final UpcomingClass session in data.upcoming
+                            .where((UpcomingClass s) =>
+                                !s.isLive && !s.isJoinable))
                           Padding(
                             padding:
                                 const EdgeInsets.only(bottom: Spacing.md),
@@ -237,7 +260,7 @@ class _UpcomingCard extends StatelessWidget {
           .whereType<String>()
           .where((String s) => s.isNotEmpty)
           .join(' · '),
-      child: session.isJoinable
+      child: (session.isJoinable || session.isLive)
           ? Padding(
               padding: const EdgeInsets.only(top: Spacing.md),
               child: GlowButton(

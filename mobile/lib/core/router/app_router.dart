@@ -211,11 +211,6 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, __) => const NotificationsScreen(),
       ),
       GoRoute(
-        path: AppRoute.classes.path,
-        name: AppRoute.classes.name,
-        builder: (_, __) => const MyClassesScreen(),
-      ),
-      GoRoute(
         path: AppRoute.classRoom.path,
         name: AppRoute.classRoom.name,
         builder: (BuildContext _, GoRouterState state) => ClassRoomScreen(
@@ -375,6 +370,15 @@ final routerProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
+                path: AppRoute.classes.path,
+                name: AppRoute.classes.name,
+                builder: (_, __) => const MyClassesScreen(),
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
                 path: AppRoute.learn.path,
                 name: AppRoute.learn.name,
                 builder: (_, __) => const LearnStudioScreen(),
@@ -467,6 +471,12 @@ class _AppShell extends ConsumerWidget {
           icon: Icons.bolt_outlined,
           selectedIcon: Icons.bolt_rounded,
           route: '/home',
+        ),
+        ShellDestination(
+          label: context.t('Classes'),
+          icon: Icons.groups_outlined,
+          selectedIcon: Icons.groups_rounded,
+          route: '/classes',
         ),
         ShellDestination(
           label: context.t('Learn'),

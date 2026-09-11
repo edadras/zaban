@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -13,9 +14,11 @@ import 'package:zaban/features/classroom/data/models/classroom_models.dart';
 import 'package:zaban/features/classroom/presentation/board_controller.dart';
 import 'package:zaban/features/classroom/presentation/classroom_controller.dart';
 
-/// The school, on the home screen — and nothing at all for a learner who has
-/// no school. Most people using this app are not in a class, and a permanent
-/// empty "Classes" card would be furniture rather than information.
+/// The school, on the home screen.
+///
+/// Always visible so a learner can find the class timetable and the join
+/// button without hunting — even before they are on a roll, and even when the
+/// next session is still only scheduled.
 class ClassStrip extends ConsumerWidget {
   const ClassStrip({super.key});
 
@@ -23,14 +26,21 @@ class ClassStrip extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final async = ref.watch(myClassesProvider);
 
-    return async.maybeWhen(
-      orElse: () => const SizedBox.shrink(),
+    return async.when(
+      loading: () => const SizedBox.shrink(),
+      error: (Object _, StackTrace __) => Padding(
+        padding: const EdgeInsets.only(bottom: Spacing.xxl),
+        child: GlassCard(
+          leading: const Icon(Icons.groups_outlined),
+          title: context.t('Classes'),
+          subtitle: context.t('Class schedule and live lessons'),
+          onTap: () => context.go(AppRoute.classes.path),
+        ),
+      ),
       data: (MyClasses data) {
-        if (data.classes.isEmpty && data.practiceLock == null) {
-          return const SizedBox.shrink();
-        }
-
-        final next = data.upcoming.firstOrNull;
+        final live = data.upcoming.where((UpcomingClass s) => s.isLive).firstOrNull
+            ?? data.upcoming.where((UpcomingClass s) => s.isJoinable).firstOrNull;
+        final next = live ?? data.upcoming.firstOrNull;
 
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -47,7 +57,7 @@ class ClassStrip extends ConsumerWidget {
             ],
             if (next != null)
               GlassCard(
-                accent: next.isLive,
+                accent: next.isLive || next.isJoinable,
                 eyebrow: next.isLive
                     ? context.t('Live now')
                     : context.t('Your next class'),
@@ -56,8 +66,8 @@ class ClassStrip extends ConsumerWidget {
                     ? next.coach
                     : DateFormat('EEEE HH:mm')
                         .format(next.startsAt!.toLocal()),
-                onTap: () => context.push(AppRoute.classes.path),
-                child: next.isJoinable
+                onTap: () => context.go(AppRoute.classes.path),
+                child: (next.isJoinable || next.isLive)
                     ? Padding(
                         padding: const EdgeInsets.only(top: Spacing.md),
                         child: GlowButton(
@@ -69,15 +79,35 @@ class ClassStrip extends ConsumerWidget {
                           ),
                         ),
                       )
-                    : null,
+                    : Padding(
+                        padding: const EdgeInsets.only(top: Spacing.md),
+                        child: OutlinedButton.icon(
+                          icon: const Icon(Icons.calendar_month_outlined, size: 18),
+                          label: Text(context.t('Class schedule')),
+                          onPressed: () => context.go(AppRoute.classes.path),
+                        ),
+                      ),
               )
             else
               GlassCard(
                 leading: const Icon(Icons.groups_outlined),
-                title: context.t('My classes'),
-                subtitle: data.classes.map((ClassGroupSummary c) => c.title)
-                    .join('، '),
-                onTap: () => context.push(AppRoute.classes.path),
+                title: context.t('Classes'),
+                subtitle: data.classes.isEmpty
+                    ? context.t(
+                        'When a school adds you to one, its timetable appears here.',
+                      )
+                    : data.classes
+                        .map((ClassGroupSummary c) => c.title)
+                        .join('، '),
+                onTap: () => context.go(AppRoute.classes.path),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: Spacing.md),
+                  child: OutlinedButton.icon(
+                    icon: const Icon(Icons.calendar_month_outlined, size: 18),
+                    label: Text(context.t('Class schedule')),
+                    onPressed: () => context.go(AppRoute.classes.path),
+                  ),
+                ),
               ),
             const _HomeworkDue(),
             const SizedBox(height: Spacing.xxl),
@@ -89,9 +119,6 @@ class ClassStrip extends ConsumerWidget {
 }
 
 /// Homework still owed, and nothing at all when there is none.
-///
-/// A permanent "no homework" card is furniture; a learner who owes three
-/// pieces on Thursday needs to be told on Wednesday.
 class _HomeworkDue extends ConsumerWidget {
   const _HomeworkDue();
 

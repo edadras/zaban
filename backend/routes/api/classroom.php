@@ -97,6 +97,16 @@ Route::middleware(['auth:sanctum'])->prefix('v1')->name('classroom.')->group(fun
         [ClassRoomController::class, 'shareMaterial'])->name('room.share');
     Route::post('class-sessions/{session}/room/materials/{material}/close',
         [ClassRoomController::class, 'closeMaterial'])->name('room.close');
+    Route::post('class-sessions/{session}/room/stage',
+        [ClassRoomController::class, 'updateStage'])->name('room.stage');
+    Route::post('class-sessions/{session}/room/chat',
+        [ClassRoomController::class, 'postChat'])->name('room.chat');
+    Route::post('class-sessions/{session}/room/whiteboard',
+        [ClassRoomController::class, 'whiteboard'])->name('room.whiteboard');
+    Route::post('class-sessions/{session}/room/materials',
+        [ClassRoomController::class, 'addMaterial'])->name('room.materials.store');
+    Route::delete('class-sessions/{session}/room/materials/{material}',
+        [ClassRoomController::class, 'removeMaterial'])->name('room.materials.destroy');
 
     // What today's shelf can be asked, so a coach picks a corpus question
     // rather than retyping one the system already holds.

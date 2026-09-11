@@ -34,6 +34,7 @@ class ClassroomService
     public function __construct(
         private readonly LiveRoomProvider $rooms,
         private readonly RecordingService $recordings,
+        private readonly RoomStageService $stage,
     ) {}
 
     /**
@@ -279,12 +280,16 @@ class ClassroomService
             $session->materials()->whereKeyNot($material->id)
                 ->whereNotNull('shared_at')->update(['shared_at' => null]);
             $material->forceFill(['shared_at' => now()])->save();
+            $this->stage->resetForShare($session);
         });
+
+        $session->refresh();
 
         event(new ClassroomEvent($session->id, ClassroomEvent::MATERIAL_SHARED, [
             'material_id' => $material->id,
             'kind' => $material->kind,
             'title' => $material->title,
+            'stage' => $this->stage->publicStage($this->stage->current($session)),
         ]));
 
         return $material->refresh();

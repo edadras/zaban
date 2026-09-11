@@ -14,12 +14,10 @@ use Illuminate\Support\Str;
 /**
  * Who belongs to a school, and in what capacity.
  *
- * Two things this deliberately does not do.
- *
- * It never creates an account for somebody. A coach is added by email, and only
- * an account that already exists is attached - inventing a user with a password
- * nobody chose is how a system ends up with accounts its owner cannot explain.
- * The controller reports the miss and the school invites them instead.
+ * Everyday membership never invents an account: a coach is added by email, and
+ * only an account that already exists is attached. The one exception is
+ * platform registration below - the site administrator deliberately hands a
+ * school manager credentials so they can open the panel.
  *
  * And it never touches `users.role`. Being a coach is a fact about a person at
  * a school, not about the person; the platform role stays what it was, so an
@@ -48,6 +46,73 @@ class SchoolService
             ]);
 
             return $school;
+        });
+    }
+
+    /**
+     * Platform administrator registers a school and its manager together.
+     *
+     * Schools are not self-serve: only this path (and tests that call create
+     * directly) should invent one. A missing manager account is created on
+     * purpose here; day-to-day "add coach" still refuses unknown emails.
+     *
+     * @return array{school: School, owner: User, created_owner: bool}
+     */
+    public function registerForPlatform(
+        string $schoolName,
+        string $ownerName,
+        string $ownerEmail,
+        ?string $ownerPassword = null,
+        array $attributes = [],
+    ): array {
+        $email = mb_strtolower(trim($ownerEmail));
+
+        return DB::transaction(function () use ($schoolName, $ownerName, $email, $ownerPassword, $attributes) {
+            $owner = User::where('email', $email)->first();
+            $createdOwner = false;
+
+            if ($owner === null) {
+                if ($ownerPassword === null || $ownerPassword === '') {
+                    throw new ClassroomException(
+                        'A password is required when the manager does not have an account yet.',
+                        422,
+                    );
+                }
+
+                $owner = User::create([
+                    'name' => $ownerName,
+                    'email' => $email,
+                    'password' => $ownerPassword,
+                    'role' => 'learner',
+                    'status' => 'active',
+                    'timezone' => $attributes['timezone'] ?? 'Asia/Tehran',
+                    'locale' => $attributes['locale'] ?? 'fa',
+                    'email_verified_at' => now(),
+                ]);
+                $createdOwner = true;
+            } else {
+                if ($owner->status === 'suspended') {
+                    throw new ClassroomException('That account is suspended.', 422);
+                }
+
+                $owner->fill([
+                    'name' => $ownerName !== '' ? $ownerName : $owner->name,
+                ]);
+
+                if ($ownerPassword !== null && $ownerPassword !== '') {
+                    $owner->password = $ownerPassword;
+                }
+
+                $owner->save();
+            }
+
+            $school = $this->create($owner, $schoolName, $attributes);
+
+            return [
+                'school' => $school,
+                'owner' => $owner->fresh(),
+                'created_owner' => $createdOwner,
+            ];
         });
     }
 

@@ -29,21 +29,8 @@ class SchoolController extends PanelController
         return view('panel.schools.index', [
             'managed' => $this->access->managedSchools($user)->load('owner')->loadCount('classGroups'),
             'coaching' => $this->access->coachingSchools($user),
+            'isPlatformAdmin' => $user->role === 'admin',
         ]);
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:160'],
-            'description' => ['nullable', 'string', 'max:2000'],
-            'timezone' => ['nullable', 'string', 'max:64'],
-        ]);
-
-        $school = $this->schools->create($this->me(), $data['name'], $data);
-
-        return redirect()->route('panel.schools.show', $school)
-            ->with('status', 'آموزشگاه ساخته شد.');
     }
 
     public function show(School $school)

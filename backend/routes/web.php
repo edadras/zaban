@@ -39,8 +39,8 @@ Route::prefix('panel')->name('panel.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('home');
 
         // ----------------------------------------------------------- schools
+        // Creating a school is a platform-admin action (see platform.schools).
         Route::get('schools', [SchoolController::class, 'index'])->name('schools.index');
-        Route::post('schools', [SchoolController::class, 'store'])->name('schools.store');
         Route::get('schools/{school}', [SchoolController::class, 'show'])->name('schools.show');
         Route::patch('schools/{school}', [SchoolController::class, 'update'])->name('schools.update');
 
@@ -139,6 +139,8 @@ Route::prefix('panel')->name('panel.')->group(function () {
         // --------------------------------------------------------- platform
         Route::prefix('platform')->name('platform.')->group(function () {
             Route::get('/', [PlatformController::class, 'overview'])->name('overview');
+            Route::get('schools', [PlatformController::class, 'schools'])->name('schools');
+            Route::post('schools', [PlatformController::class, 'storeSchool'])->name('schools.store');
             Route::get('users', [PlatformController::class, 'users'])->name('users');
             Route::patch('users/{user}', [PlatformController::class, 'updateUser'])->name('users.update');
             Route::get('audit', [PlatformController::class, 'audit'])->name('audit');

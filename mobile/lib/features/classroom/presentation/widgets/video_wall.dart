@@ -170,12 +170,12 @@ class _Tile extends StatelessWidget {
 
   /// The first video this person is actually sending.
   ///
-  /// `videoTrackPublications` is typed against the base track on a plain
-  /// `Participant` — the local and remote subclasses narrow it — so the cast
-  /// is done here rather than in the signature.
+  /// Include a muted publication too: after a brief SFU blip the track can
+  /// stay attached but muted for a moment, and filtering it out left a blank
+  /// tile that looked like a permanent black screen.
   lk.VideoTrack? _video() {
     final publication = person.videoTrackPublications.firstWhereOrNull(
-      (lk.TrackPublication<lk.Track> p) => p.track != null && !p.muted,
+      (lk.TrackPublication<lk.Track> p) => p.track != null,
     );
 
     final track = publication?.track;
