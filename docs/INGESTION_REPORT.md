@@ -88,7 +88,8 @@ affect unit resolution.
 | upper_int | 2/7869 (0.03%) | [99] |
 | advanced | 21/9174 (0.23%) | [1, 8, 9, 10, 24, 75] |
 
-Two known issues, both routed to admin review rather than silently accepted:
+Three known issues. The first two are routed to admin review rather than silently
+accepted; the third has been corrected.
 
 1. **10 unit titles (2.8%) could not be resolved** from the text layer. Those pages use
    a heading layout none of the four variants covers; they need page-image understanding
@@ -96,6 +97,35 @@ Two known issues, both routed to admin review rather than silently accepted:
 2. **41 lines lost inter-word spacing** during extraction (e.g. `Ahandhasfive`),
    concentrated in the Elementary edition's justified exercise text. Affected lines are
    flagged for vision fallback; at 0.0–0.51% the rate does not threaten the unit map.
+3. **190 footnote glosses had been paired with the wrong word** and are now corrected.
+   A page carries two or three lettered sections, and each one numbers its own
+   footnotes from 1. The gloss reader took the page whole, so section A's terms were
+   paired against section B's list, number for number: the flashcard for *cram* showed
+   "diagram that lays out ideas for a topic and how they are connected to one another",
+   which is the book's gloss for *mind map*. `PageGlossParser` now cuts the page to the
+   lesson's own section before reading anything — the scope the book numbers within —
+   and the same pass recovered **466 senses that had no definition at all**, footnotes
+   the old forward-only scan walked past because the scanner moves a margin column to
+   the foot of the page. Migrations `..._000800` and `..._000900` carry the corrections
+   and put the flashcards back in step with them.
+
+Two defects found in the same review are **reported but not fixed**, because both are
+product decisions rather than extraction faults:
+
+- **1,662 `listen_and_choose` blocks offer nothing to choose.** The builder writes
+  `config.concept_ids`; the client reads `config.options` / `config.choices`, and no
+  stage converts one into the other. None of the blocks carries a graded exercise
+  either, so every "Listen and choose what you hear" step in the app is a play button
+  and a Continue button. A real choice item needs audio cut per item — the recording
+  attached is the whole lesson, and all six candidate words are in it — so either the
+  block says what it really is (listen and follow the text) or per-item audio gets cut
+  first. Inventing a key over a 1:24 track would be guessing.
+- **10,582 flashcards show an example sentence where the meaning should be.** The
+  builder falls back to the example when a sense has no definition, under the label
+  "Tap the card to reveal the meaning", so *heart* reveals "The moment I met Rob, I
+  could see he was a man after my own heart." The 466 definitions recovered above
+  reduce this; the rest needs either more glosses or a label that matches what the
+  card actually shows.
 
 Exercise/answer asymmetries (Pre-Int units 17, 18, 99; Upper-Int unit 9) reflect
 open-ended tasks that legitimately have no fixed key. They are marked as productive

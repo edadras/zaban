@@ -226,6 +226,7 @@ class BuildActivities extends Command
         $this->line('▸ reading the footnote glosses');
 
         $pages = $this->loadPageText();
+        $sections = $this->loadSectionLetters();
         $terms = $this->loadTaughtTerms();
         // A sense whose only gloss was set aside is treated as undefined, so a
         // footnote can supply the one the book actually printed against it.
@@ -252,7 +253,11 @@ class BuildActivities extends Command
                 continue;
             }
 
-            $parsed = $this->footnotes->parse($pageText, $lessonTerms);
+            // Three lessons can share a page, each its own lettered section
+            // numbering its footnotes from one. Without the letter the parser
+            // reads the page whole and a section's terms take the next
+            // section's list, number for number.
+            $parsed = $this->footnotes->parse($pageText, $lessonTerms, $sections[$lessonId] ?? null);
 
             foreach ($parsed['glosses'] as $term => $gloss) {
                 $senseId = $senseByLessonTerm[$lessonId][$term] ?? null;
@@ -1367,6 +1372,23 @@ class BuildActivities extends Command
             })
             ->whereNull('lessons.deleted_at')
             ->pluck('source_pages.text', 'lessons.id')
+            ->all();
+    }
+
+    /**
+     * The lettered section each lesson is on its page.
+     *
+     * The scanner keeps it, and it is the scope the book numbers its footnotes
+     * within, so it is what tells "1" on section A from "1" on section B.
+     *
+     * @return array<int, string>
+     */
+    private function loadSectionLetters(): array
+    {
+        return DB::table('lessons')
+            ->whereNull('deleted_at')
+            ->whereNotNull('source_section')
+            ->pluck('source_section', 'id')
             ->all();
     }
 

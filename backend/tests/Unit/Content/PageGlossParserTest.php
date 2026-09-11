@@ -150,4 +150,105 @@ class PageGlossParserTest extends TestCase
         $this->assertSame(['glosses' => [], 'strip' => []], $this->parser->parse(null, ['word']));
         $this->assertSame(['glosses' => [], 'strip' => []], $this->parser->parse('text', []));
     }
+
+    /**
+     * A page holds two or three sections, and each numbers its footnotes from
+     * one. Read whole, section A's words take section B's list - the gloss the
+     * book prints against "mind map" was what the card for "cram" showed.
+     */
+    private function twoSectionPage(): string
+    {
+        return implode("\n", [
+            '     1          Cramming for success',
+            '          A     Study and exams',
+            '                Before an exam, some students cram1 for it. Even if you are a genius2,',
+            '                you will have to do some revision.',
+            '                1',
+            '                 study in a very concentrated way for a short time 2 an exceptionally clever person',
+            '',
+            '          B     Academic writing',
+            '                It is a good idea to start with a mind map1 when preparing an essay.',
+            '                Always write a first draft2 before writing up the final version.',
+            '                1',
+            '                 diagram that lays out ideas for a topic 2 first, rough version',
+        ]);
+    }
+
+    public function test_a_section_reads_its_own_footnotes_and_not_the_next_one_s(): void
+    {
+        $result = $this->parser->parse(
+            $this->twoSectionPage(),
+            ['cram', 'genius'],
+            'A',
+        );
+
+        $this->assertSame([
+            'cram' => 'study in a very concentrated way for a short time',
+            'genius' => 'an exceptionally clever person',
+        ], $result['glosses']);
+    }
+
+    public function test_the_later_section_reads_its_own_list_too(): void
+    {
+        $result = $this->parser->parse(
+            $this->twoSectionPage(),
+            ['mind map', 'first draft'],
+            'B',
+        );
+
+        $this->assertSame([
+            'mind map' => 'diagram that lays out ideas for a topic',
+            'first draft' => 'first, rough version',
+        ], $result['glosses']);
+    }
+
+    public function test_without_the_letter_the_page_is_still_read_whole(): void
+    {
+        // The books that do not letter their sections, and every page the
+        // scanner set differently, have to keep working.
+        $result = $this->parser->parse($this->page(), $this->terms(), null);
+
+        $this->assertSame('hiring (new staff)', $result['glosses']['recruiting'] ?? null);
+    }
+
+    public function test_a_letter_that_is_not_on_the_page_does_not_narrow_it(): void
+    {
+        // Better to read too wide than to read nothing: a section that cannot
+        // be found is a scanning difference, not an empty section.
+        $result = $this->parser->parse($this->page(), $this->terms(), 'Q');
+
+        $this->assertSame('improve or increase', $result['glosses']['boost'] ?? null);
+    }
+
+    public function test_it_reads_a_list_the_scanner_split_across_the_page(): void
+    {
+        // The margin column is set beside the prose and the reflow moves it to
+        // the foot, so the list at the foot can start at 3 and the rest arrive
+        // after the page number. Reading only forwards from the "1" stopped at
+        // the first gap and left half the section unglossed.
+        $page = implode("\n", [
+            '     9          Higher study',
+            '          C     Academic life',
+            '                Academics carry out research1 and read journals2.',
+            '                You can access it online3 or use an inter-library loan4.',
+            '                3',
+            '                 get hold of it on the internet 4 how libraries exchange books',
+            '                8    English Vocabulary in Use',
+            '                1',
+            '                 less formal is do research 2 magazines with academic articles',
+        ]);
+
+        $result = $this->parser->parse(
+            $page,
+            ['research', 'journals', 'access it online', 'inter-library loan'],
+            'C',
+        );
+
+        $this->assertSame([
+            'research' => 'less formal is do research',
+            'journals' => 'magazines with academic articles',
+            'access it online' => 'get hold of it on the internet',
+            'inter-library loan' => 'how libraries exchange books',
+        ], $result['glosses']);
+    }
 }
