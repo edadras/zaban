@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AiProvider extends Model
 {
@@ -27,7 +28,7 @@ class AiProvider extends Model
         ];
     }
 
-    public function models(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function models(): HasMany
     {
         return $this->hasMany(AiModel::class);
     }

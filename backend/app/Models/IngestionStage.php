@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class IngestionStage extends Model
 {
@@ -30,7 +31,7 @@ class IngestionStage extends Model
         ];
     }
 
-    public function job(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function job(): BelongsTo
     {
         return $this->belongsTo(IngestionJob::class, 'ingestion_job_id');
     }

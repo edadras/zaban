@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Module extends Model
 {
@@ -16,12 +18,12 @@ class Module extends Model
         'position',
     ];
 
-    public function courseVersion(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function courseVersion(): BelongsTo
     {
         return $this->belongsTo(CourseVersion::class, 'course_version_id');
     }
 
-    public function units(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function units(): HasMany
     {
         return $this->hasMany(Unit::class);
     }

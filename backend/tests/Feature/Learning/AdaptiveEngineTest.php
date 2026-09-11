@@ -2,7 +2,11 @@
 
 namespace Tests\Feature\Learning;
 
+use App\Models\CefrLevel;
 use App\Models\Exercise;
+use App\Models\ExerciseTemplate;
+use App\Models\Language;
+use App\Models\Skill;
 use App\Services\Learning\DifficultyService;
 use Database\Seeders\ReferenceDataSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -117,13 +121,13 @@ class AdaptiveEngineTest extends TestCase
 
     private function makeExercise(float $difficulty): Exercise
     {
-        $template = \App\Models\ExerciseTemplate::where('code', 'multiple_choice')->firstOrFail();
+        $template = ExerciseTemplate::where('code', 'multiple_choice')->firstOrFail();
 
         return Exercise::create([
             'exercise_template_id' => $template->id,
-            'language_id' => \App\Models\Language::where('code', 'en')->value('id'),
-            'skill_id' => \App\Models\Skill::where('code', 'vocabulary')->value('id'),
-            'cefr_level_id' => \App\Models\CefrLevel::where('code', 'B1')->value('id'),
+            'language_id' => Language::where('code', 'en')->value('id'),
+            'skill_id' => Skill::where('code', 'vocabulary')->value('id'),
+            'cefr_level_id' => CefrLevel::where('code', 'B1')->value('id'),
             'stem' => 'test item',
             'difficulty' => $difficulty,
             'discrimination' => 1.0,

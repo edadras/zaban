@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Passage extends Model
@@ -36,7 +37,7 @@ class Passage extends Model
         ];
     }
 
-    public function segments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function segments(): HasMany
     {
         return $this->hasMany(PassageSegment::class);
     }

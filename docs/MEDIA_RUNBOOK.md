@@ -120,8 +120,40 @@ php artisan media:import results.json          # {"sheets": [{url, cols, rows, c
 
 0.083 credits a lesson instead of 0.5. `MEDIA_BUDGET.md` has the arithmetic and
 the resolution trade; the short version is that a 3x3 cell is about 1080x810 and
-the client draws these at roughly 1200x900, so nothing visible is lost, while
-4x4 cells at 810x610 are visibly soft.
+the client draws a lesson scene at roughly 1200x900, so nothing visible is lost,
+while 4x4 cells at 810x610 would be visibly soft at that size.
+
+**Vocabulary cards take 4x4.** They are drawn much smaller than a lesson scene,
+so sixteen to a sheet is the right density for them - 0.047 a card - and the
+whole set of 1,274 came back cut cleanly. A sheet asks for the look its cells
+need rather than one house style: a lesson scene is documentary photography with
+shallow focus, a vocabulary card is one object on plain paper with everything in
+focus. Asking a card for the scene style is not cosmetic; the object comes back
+as the part that is out of focus. Because the style is chosen by kind, a sheet
+that mixes kinds is refused rather than given half the wrong look.
+
+Two things about the cell text are worth knowing before composing a sheet by
+hand. The line printed per cell is the brief's `scene`, which is deliberately
+only the part that tells that cell apart - the sheet states the shared style
+once, so sixteen cards do not spend the prompt restating one lighting setup. And
+the extracted word lists are not scenes: "rate, pace, velocity, at a speed" is a
+glossary, not something a photographer could shoot. Every sheet in this run had
+its cells rewritten into situations ("a cyclist and a runner moving at visibly
+different paces along the same path") before it was sent. `media:sheet` gives
+you the grouping and the bookkeeping; the scene is still yours to write.
+
+**Re-importing needs the old asset gone, not soft-deleted.** `media_assets` has
+a unique index on (disk, path), and the path is the file's own checksum - which
+is the point: the same bytes are the same asset. So replaying a sheet over work
+that is still there fails on that index, and `MediaAsset` soft-deletes, so an
+ordinary `delete()` leaves the row and the collision behind. Use `forceDelete()`
+on the trashed rows before replaying. Found by replaying a sheet to check the
+record was good; the record was fine, the clearing was not.
+
+Some prompts come back refused rather than rendered - a medical or crime cell
+can trip the provider's safety filter. The guard handles it correctly: the sheet
+imports nothing and its cells return to the queue untouched. Soften the cell
+that caused it and resubmit that one sheet.
 
 The `cells` list is the only thing tying a cell to a lesson - there is no signal
 in the image - so it goes back into `media:import` untouched, in the order it

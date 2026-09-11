@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Services\Classroom\ClassroomException;
 use App\Services\Classroom\SchoolService;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * The school as its owner and admins see it: a roll of coaches, a roll of
@@ -56,7 +57,7 @@ class SchoolController extends ApiController
             'owner_name' => ['required', 'string', 'max:120'],
             'owner_email' => ['required', 'email', 'max:190'],
             'owner_password' => [
-                \Illuminate\Validation\Rule::requiredIf(! $ownerExists),
+                Rule::requiredIf(! $ownerExists),
                 'nullable',
                 'string',
                 'min:8',

@@ -91,7 +91,7 @@ class PageGlossParser
      * only reads as a marker on "trial run" if you already know that is a term.
      *
      * @param  array<int, string>  $terms
-     * @return array<int, string>  marker number => term
+     * @return array<int, string> marker number => term
      */
     private function markersInBody(string $flat, array $terms): array
     {
@@ -171,7 +171,7 @@ class PageGlossParser
      * speaker label, or simply the length beyond which this is no longer a
      * gloss.
      *
-     * @return array{0: array<int, string>, 1: string}  entries, and the text they consumed
+     * @return array{0: array<int, string>, 1: string} entries, and the text they consumed
      */
     private function entries(string $region, int $highest): array
     {

@@ -6,6 +6,7 @@ use App\AI\AiOrchestrator;
 use App\AI\Support\TextRequest;
 use App\AI\Support\TextResult;
 use App\Http\Resources\Exam\ExamAttemptResource;
+use App\Models\CefrLevel;
 use App\Models\ExamScore;
 use App\Models\LearnerError;
 use App\Models\LearnerSkillState;
@@ -49,7 +50,7 @@ class AiEstimateTest extends ExamTestCase
                         ]),
                         'errors' => [
                             ['error_type' => 'article', 'subtype' => 'missing_definite',
-                             'input' => 'in beginning', 'expected' => 'in the beginning', 'severity' => 2],
+                                'input' => 'in beginning', 'expected' => 'in the beginning', 'severity' => 2],
                         ],
                         'summary' => 'Overall a competent response.',
                     ]);
@@ -243,7 +244,7 @@ class AiEstimateTest extends ExamTestCase
         $this->mock(AiOrchestrator::class, fn ($m) => $m->shouldNotReceive('text'));
 
         $user = $this->learner();
-        $b2 = \App\Models\CefrLevel::where('code', 'B2')->firstOrFail();
+        $b2 = CefrLevel::where('code', 'B2')->firstOrFail();
 
         // The learner already has a measured level from placement and daily
         // practice; the exam layer reuses it rather than starting from zero.

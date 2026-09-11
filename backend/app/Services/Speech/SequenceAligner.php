@@ -14,8 +14,11 @@ namespace App\Services\Speech;
 class SequenceAligner
 {
     public const MATCH = 'match';
+
     public const SUBSTITUTE = 'substitute';
+
     public const DELETE = 'delete';   // present in A, absent from B
+
     public const INSERT = 'insert';   // absent from A, present in B
 
     /**

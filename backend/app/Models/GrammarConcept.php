@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class GrammarConcept extends Model
@@ -20,7 +21,7 @@ class GrammarConcept extends Model
         'category',
     ];
 
-    public function rules(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function rules(): HasMany
     {
         return $this->hasMany(GrammarRule::class);
     }

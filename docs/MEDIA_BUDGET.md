@@ -114,28 +114,49 @@ band. Render from the top.
 
 ## What has actually been rendered
 
-| Kind | Rendered | Planned | Credits |
+Every still the course can use is rendered and attached. Nothing image-shaped
+is left in the queue.
+
+| Kind | Rendered | Skipped, with a reason | Credits |
 |---|---:|---:|---:|
-| Character portraits | 14 | 14 | 28.0 |
-| Lesson scenes, one at a time | 103 | — | 51.5 |
-| Lesson scenes, on ten sheets | 90 | — | 7.5 |
+| Character portraits | 14 | — | 28.0 |
+| Lesson scenes, one at a time | 118 | — | 59.0 |
+| Lesson scenes, on 3x3 sheets | 859 | 1,444 | 71.6 |
+| Vocabulary cards, on 4x4 sheets | 1,274 | 18,031 | 60.0 |
 | Probes and comparisons | — | — | 4.0 |
-| **Total** | **207** | 5,745 | **91.0** |
+| **Total** | **2,265** | **19,475** | **~218** |
 
-**747.66 credits left.** The cast is complete. The 193 lesson scenes are the
-first of the queue in priority order, which is the elementary book.
+**620.66 credits left**, against the 45,300 the same 2,265 images would have
+cost one at a time at video prices, or 1,133 as single stills. The contact
+sheet is the whole reason this was affordable: 0.083 credits a lesson scene and
+0.047 a vocabulary card, instead of 0.5 each.
 
-Seven lesson briefs are marked `skipped` with the reason on the row, and locked
-so re-planning leaves them alone: five teach written text (shop signs, on-screen
-labels, a menu, an order form, printed notices) and every brief forbids writing
-in the image, so the artwork could not contain the thing being taught; one
-teaches word-building; one is a list of nationalities, where a picture could
-only be caricature.
+The skipped column is not failure, it is judgement, and every row carries the
+reason in `skip_reason`:
+
+- **18,031 vocabulary cards** have no example sentence good enough to ground an
+  image, or a headword with nothing visible in it ("have to", "very well",
+  "around"). A card built from the headword alone illustrates the wrong sense;
+  a card for a particle illustrates the model's guess.
+- **1,444 lesson scenes**: grammar and pronunciation drills, which are about
+  form rather than situation; the units whose OCR came back unreadable, which
+  is a content defect and not an artwork one; word-form units (suffixes,
+  prefixes, compounds, countability); and written connectives, where the lesson
+  is the wording itself.
+
+All of it is reversible: `media:skip --unskip <ids>` puts any of them back.
 
 Those files were rendered in a throwaway container and are not in git.
 `docs/data/rendered-media.json` replays the whole run - single images and
 sheets alike - for nothing while the provider URLs are still live. It has been
 tested by clearing a sheet and re-importing it. See `MEDIA_RUNBOOK.md`.
+
+### Video is still not worth it
+
+1,926 clips remain planned and unrendered. At the measured video price they
+cost thousands of credits against the 620 in the account, and they animate
+stills that already teach the lesson. The recommendation in this document has
+not changed: render stills, skip video, and revisit only if the pricing does.
 
 ## Guard rails already in the code
 

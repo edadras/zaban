@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LearnerSkillState extends Model
 {
@@ -29,12 +30,12 @@ class LearnerSkillState extends Model
         ];
     }
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }
 
-    public function cefrLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function cefrLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'cefr_level_id');
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ExamSectionAttempt extends Model
 {
@@ -31,7 +32,7 @@ class ExamSectionAttempt extends Model
         ];
     }
 
-    public function section(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function section(): BelongsTo
     {
         return $this->belongsTo(ExamSection::class, 'exam_section_id');
     }

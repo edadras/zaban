@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class VocabularyItem extends Model
@@ -22,27 +24,27 @@ class VocabularyItem extends Model
         'word_family_id',
     ];
 
-    public function language(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
     }
 
-    public function senses(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function senses(): HasMany
     {
         return $this->hasMany(VocabularySense::class);
     }
 
-    public function forms(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function forms(): HasMany
     {
         return $this->hasMany(WordForm::class);
     }
 
-    public function cefrLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function cefrLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'cefr_level_id');
     }
 
-    public function partOfSpeech(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function partOfSpeech(): BelongsTo
     {
         return $this->belongsTo(PartOfSpeech::class, 'primary_part_of_speech_id');
     }

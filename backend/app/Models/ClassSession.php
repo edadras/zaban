@@ -13,8 +13,11 @@ class ClassSession extends Model
     use HasFactory;
 
     public const SCHEDULED = 'scheduled';
+
     public const LIVE = 'live';
+
     public const ENDED = 'ended';
+
     public const CANCELLED = 'cancelled';
 
     // The life of a recording, from the coach pressing record to a file that

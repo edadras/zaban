@@ -3,8 +3,10 @@
 namespace Tests\Feature\Exam;
 
 use App\AI\AiOrchestrator;
+use App\Models\ExerciseAttempt;
 use App\Services\Exam\ExamException;
 use App\Services\Exam\ExamService;
+use App\Services\Exam\ScoringService;
 use Illuminate\Support\Carbon;
 
 /**
@@ -97,7 +99,7 @@ class SectionTimingTest extends ExamTestCase
             $this->assertSame(409, $e->status);
         }
 
-        $this->assertSame(0, \App\Models\ExerciseAttempt::where('user_id', $user->id)->count());
+        $this->assertSame(0, ExerciseAttempt::where('user_id', $user->id)->count());
     }
 
     public function test_practice_mode_records_the_overrun_but_still_accepts_the_answer(): void
@@ -160,7 +162,7 @@ class SectionTimingTest extends ExamTestCase
             'answers' => [$exercise->id => ['selected' => $exercise->options->firstWhere('is_correct', true)->id]],
         ], 700);
 
-        $finished = $exams->finish($attempt->fresh('sectionAttempts.section'), app(\App\Services\Exam\ScoringService::class));
+        $finished = $exams->finish($attempt->fresh('sectionAttempts.section'), app(ScoringService::class));
 
         $report = $finished->time_management;
         $this->assertArrayHasKey('listening', $report['sections']);

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LearnerReview extends Model
 {
@@ -27,7 +28,7 @@ class LearnerReview extends Model
         ];
     }
 
-    public function learnerConcept(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function learnerConcept(): BelongsTo
     {
         return $this->belongsTo(LearnerConcept::class, 'learner_concept_id');
     }

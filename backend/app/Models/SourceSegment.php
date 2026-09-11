@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SourceSegment extends Model
 {
@@ -27,17 +29,17 @@ class SourceSegment extends Model
         return ['bbox' => 'array', 'classification_confidence' => 'float'];
     }
 
-    public function document(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function document(): BelongsTo
     {
         return $this->belongsTo(SourceDocument::class, 'source_document_id');
     }
 
-    public function page(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function page(): BelongsTo
     {
         return $this->belongsTo(SourcePage::class, 'source_page_id');
     }
 
-    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function children(): HasMany
     {
         return $this->hasMany(self::class, 'parent_id');
     }

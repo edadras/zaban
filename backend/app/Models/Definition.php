@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Definition extends Model
 {
@@ -29,7 +30,7 @@ class Definition extends Model
         'generation_method',
     ];
 
-    public function sense(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function sense(): BelongsTo
     {
         return $this->belongsTo(VocabularySense::class, 'vocabulary_sense_id');
     }

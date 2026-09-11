@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Subskill extends Model
 {
@@ -16,7 +17,7 @@ class Subskill extends Model
         'position',
     ];
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }

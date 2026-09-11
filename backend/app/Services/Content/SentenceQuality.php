@@ -19,7 +19,9 @@ namespace App\Services\Content;
 class SentenceQuality
 {
     private const MIN_CHARS = 15;
+
     private const MAX_CHARS = 220;
+
     private const MIN_WORDS = 4;
 
     /** Words that must survive alongside the blank for the gap to be inferable. */

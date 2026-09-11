@@ -3,6 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Lesson extends Model
@@ -43,32 +48,32 @@ class Lesson extends Model
         );
     }
 
-    public function unit(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
     }
 
-    public function blocks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function blocks(): HasMany
     {
         return $this->hasMany(LessonBlock::class);
     }
 
-    public function exercises(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function exercises(): HasMany
     {
         return $this->hasMany(Exercise::class);
     }
 
-    public function concepts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function concepts(): BelongsToMany
     {
         return $this->belongsToMany(Concept::class, 'lesson_concept');
     }
 
-    public function review(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function review(): MorphOne
     {
         return $this->morphOne(ContentReview::class, 'reviewable');
     }
 
-    public function audioMappings(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function audioMappings(): MorphMany
     {
         return $this->morphMany(AudioMapping::class, 'mappable');
     }

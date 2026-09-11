@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SourcePage extends Model
 {
@@ -24,12 +26,12 @@ class SourcePage extends Model
         return ['used_vision' => 'boolean'];
     }
 
-    public function file(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function file(): BelongsTo
     {
         return $this->belongsTo(SourceFile::class, 'source_file_id');
     }
 
-    public function segments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function segments(): HasMany
     {
         return $this->hasMany(SourceSegment::class, 'source_page_id');
     }

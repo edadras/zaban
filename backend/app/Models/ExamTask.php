@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ExamTask extends Model
@@ -23,7 +24,7 @@ class ExamTask extends Model
         'generation_method',
     ];
 
-    public function taskType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function taskType(): BelongsTo
     {
         return $this->belongsTo(ExamTaskType::class, 'exam_task_type_id');
     }

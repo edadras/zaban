@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LessonAttempt extends Model
 {
@@ -30,7 +31,7 @@ class LessonAttempt extends Model
         ];
     }
 
-    public function lesson(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function lesson(): BelongsTo
     {
         return $this->belongsTo(Lesson::class);
     }

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AudioAsset extends Model
 {
@@ -29,12 +31,12 @@ class AudioAsset extends Model
         ];
     }
 
-    public function mediaAsset(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function mediaAsset(): BelongsTo
     {
         return $this->belongsTo(MediaAsset::class, 'media_asset_id');
     }
 
-    public function mappings(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function mappings(): HasMany
     {
         return $this->hasMany(AudioMapping::class);
     }

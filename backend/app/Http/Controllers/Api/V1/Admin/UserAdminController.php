@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Api\V1\ApiController;
 use App\Models\AuditLog;
+use App\Models\ManualPaymentSubmission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +43,7 @@ class UserAdminController extends ApiController
         $user->load(['profile', 'settings', 'learnerProfile.cefrLevel', 'subscriptions.plan']);
 
         $subscription = $user->subscriptions->sortByDesc('id')->first();
-        $manualPayments = \App\Models\ManualPaymentSubmission::with('plan')
+        $manualPayments = ManualPaymentSubmission::with('plan')
             ->where('user_id', $user->id)
             ->orderByDesc('id')
             ->limit(20)

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LearnerError extends Model
 {
@@ -36,12 +37,12 @@ class LearnerError extends Model
         ];
     }
 
-    public function concept(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function concept(): BelongsTo
     {
         return $this->belongsTo(Concept::class);
     }
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Writing;
 
+use App\Services\Writing\HandwritingRecogniser;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class WritingAttemptResource extends JsonResource
@@ -26,7 +27,7 @@ class WritingAttemptResource extends JsonResource
                 'confidence' => $this->recognition_confidence,
                 'confirmed' => (bool) $this->text_confirmed,
                 'needs_careful_check' => $this->recognition_confidence !== null
-                    && $this->recognition_confidence < \App\Services\Writing\HandwritingRecogniser::LOW_CONFIDENCE,
+                    && $this->recognition_confidence < HandwritingRecogniser::LOW_CONFIDENCE,
             ]),
 
             'scores' => $this->when($this->status === 'scored', fn () => [

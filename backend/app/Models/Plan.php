@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
@@ -31,12 +32,12 @@ class Plan extends Model
         ];
     }
 
-    public function prices(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function prices(): HasMany
     {
         return $this->hasMany(PlanPrice::class);
     }
 
-    public function entitlements(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function entitlements(): HasMany
     {
         return $this->hasMany(PlanEntitlement::class);
     }

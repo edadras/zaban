@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ConversationSession extends Model
 {
@@ -32,12 +34,12 @@ class ConversationSession extends Model
         ];
     }
 
-    public function scenario(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function scenario(): BelongsTo
     {
         return $this->belongsTo(ConversationScenario::class, 'conversation_scenario_id');
     }
 
-    public function turns(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function turns(): HasMany
     {
         return $this->hasMany(ConversationTurn::class);
     }

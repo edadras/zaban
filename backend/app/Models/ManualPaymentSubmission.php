@@ -10,9 +10,13 @@ class ManualPaymentSubmission extends Model
     protected $table = 'manual_payment_submissions';
 
     public const STATUS_PENDING_TRANSFER = 'pending_transfer';
+
     public const STATUS_PENDING_REVIEW = 'pending_review';
+
     public const STATUS_APPROVED = 'approved';
+
     public const STATUS_REJECTED = 'rejected';
+
     public const STATUS_CANCELLED = 'cancelled';
 
     protected $fillable = [

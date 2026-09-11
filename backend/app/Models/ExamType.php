@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ExamType extends Model
 {
@@ -31,12 +32,12 @@ class ExamType extends Model
         ];
     }
 
-    public function sections(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function sections(): HasMany
     {
         return $this->hasMany(ExamSection::class);
     }
 
-    public function bands(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function bands(): HasMany
     {
         return $this->hasMany(ExamScoreBand::class);
     }

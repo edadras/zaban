@@ -116,7 +116,7 @@ class LessonReadingBuilder
                     // Carried per word rather than fetched per tap: the reader
                     // works offline once the lesson is open.
                     'meanings' => empty($entry['meanings'] ?? null)
-                        ? new \stdClass()
+                        ? new \stdClass
                         : $entry['meanings'],
                 ];
 

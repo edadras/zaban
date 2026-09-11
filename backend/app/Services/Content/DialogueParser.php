@@ -99,5 +99,4 @@ class DialogueParser
 
         return trim(preg_replace('/\s+/u', ' ', (string) $t));
     }
-
 }

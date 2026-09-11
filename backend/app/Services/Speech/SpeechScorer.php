@@ -23,6 +23,7 @@ class SpeechScorer
 
     /** Lexical diversity below/above which the vocabulary score bottoms out / tops out. */
     private const TTR_FLOOR = 0.15;
+
     private const TTR_CEILING = 0.55;
 
     /** Type-token ratio is unstable on short samples, so it is only reported above this length. */

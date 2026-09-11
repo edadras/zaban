@@ -3,6 +3,8 @@
 namespace Tests\Feature\Learning;
 
 use App\Models\LearnerProfile;
+use App\Models\User;
+use App\Models\VocabularySense;
 use App\Services\Learning\AdaptiveLearningService;
 use App\Services\Learning\SessionShape;
 use Database\Seeders\ReferenceDataSeeder;
@@ -112,7 +114,7 @@ class SessionShapeTest extends TestCase
 
     public function test_the_api_describes_the_shape_of_the_session(): void
     {
-        $user = \App\Models\User::find($this->userId);
+        $user = User::find($this->userId);
 
         $response = $this->actingAs($user)->getJson('/api/v1/session/next');
 
@@ -157,7 +159,7 @@ class SessionShapeTest extends TestCase
      */
     public function test_a_wrong_answer_comes_back_with_the_word_it_was_teaching(): void
     {
-        $user = \App\Models\User::find($this->userId);
+        $user = User::find($this->userId);
 
         $exerciseId = DB::table('exercises')->where('lesson_id', $this->lessonId)->value('id');
         $conceptId = DB::table('exercise_concepts')->where('exercise_id', $exerciseId)->value('concept_id');
@@ -257,7 +259,7 @@ class SessionShapeTest extends TestCase
                 'cefr_level_id' => $levelId, 'created_at' => now(), 'updated_at' => now(),
             ]);
             $conceptId = DB::table('concepts')->insertGetId([
-                'conceptable_type' => \App\Models\VocabularySense::class,
+                'conceptable_type' => VocabularySense::class,
                 'conceptable_id' => $senseId, 'language_id' => $languageId,
                 'cefr_level_id' => $levelId, 'label' => $word, 'difficulty' => 0.0,
                 'importance' => 0.5, 'is_active' => true,
@@ -279,7 +281,7 @@ class SessionShapeTest extends TestCase
                 'language_id' => $languageId,
                 'lesson_id' => $this->lessonId,
                 'cefr_level_id' => $levelId,
-                'stem' => "They will ______ ten people this year.",
+                'stem' => 'They will ______ ten people this year.',
                 'instructions' => 'Complete the sentence.',
                 'difficulty' => 0.0, 'discrimination' => 1.0, 'guessing' => 0.0,
                 'status' => 'approved', 'generation_method' => 'derived_example',

@@ -11,6 +11,7 @@ use App\Models\ExamScore;
 use App\Models\SpeechAttempt;
 use App\Services\Exam\AiExaminerService;
 use App\Services\Exam\ExamService;
+use App\Services\Exam\ScoringService;
 use Mockery;
 
 /**
@@ -230,7 +231,7 @@ class AiExaminerTest extends ExamTestCase
         $this->assertTrue($result['is_ai_estimated']);
 
         // The rubric call carried the measured pronunciation signal as evidence.
-        $rubric = collect($this->requests)->firstWhere('feature', \App\Services\Exam\ScoringService::FEATURE_RUBRIC);
+        $rubric = collect($this->requests)->firstWhere('feature', ScoringService::FEATURE_RUBRIC);
         $this->assertNotNull($rubric);
         $this->assertStringContainsString('Measured speech signals', $rubric->prompt);
         $this->assertStringContainsString('Examiner questions asked', $rubric->prompt);

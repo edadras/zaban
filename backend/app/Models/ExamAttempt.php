@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ExamAttempt extends Model
 {
@@ -33,17 +35,17 @@ class ExamAttempt extends Model
         ];
     }
 
-    public function examType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function examType(): BelongsTo
     {
         return $this->belongsTo(ExamType::class, 'exam_type_id');
     }
 
-    public function sectionAttempts(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function sectionAttempts(): HasMany
     {
         return $this->hasMany(ExamSectionAttempt::class);
     }
 
-    public function scores(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function scores(): HasMany
     {
         return $this->hasMany(ExamScore::class);
     }

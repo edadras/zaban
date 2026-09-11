@@ -13,7 +13,9 @@ class ClassQuestion extends Model
     use HasFactory;
 
     public const OPEN = 'open';
+
     public const POLL = 'poll';
+
     public const EXERCISE = 'exercise';
 
     protected $fillable = [

@@ -4,7 +4,6 @@ namespace App\Services\Classroom;
 
 use App\Events\Classroom\ClassroomEvent;
 use App\Models\ClassChatMessage;
-use App\Models\ClassMaterial;
 use App\Models\ClassSession;
 use App\Models\User;
 use Illuminate\Support\Str;

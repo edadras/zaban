@@ -18,8 +18,11 @@ class SchoolMember extends Model
     use HasFactory;
 
     public const OWNER = 'owner';
+
     public const ADMIN = 'admin';
+
     public const COACH = 'coach';
+
     public const STUDENT = 'student';
 
     /** The roles that may run a school. */

@@ -14,6 +14,7 @@ use App\Models\ExamSection;
 final class SectionScoring
 {
     public const MODE_OBJECTIVE = 'objective';
+
     public const MODE_RUBRIC = 'rubric';
 
     private function __construct(private readonly array $config) {}

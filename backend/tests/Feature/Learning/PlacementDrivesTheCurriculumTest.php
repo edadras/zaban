@@ -3,6 +3,7 @@
 namespace Tests\Feature\Learning;
 
 use App\Models\LearnerProfile;
+use App\Models\VocabularySense;
 use App\Services\Learning\AdaptiveLearningService;
 use App\Services\Learning\CoursePlacementService;
 use Database\Seeders\ReferenceDataSeeder;
@@ -386,7 +387,7 @@ class PlacementDrivesTheCurriculumTest extends TestCase
         ]);
 
         return DB::table('concepts')->insertGetId([
-            'conceptable_type' => \App\Models\VocabularySense::class,
+            'conceptable_type' => VocabularySense::class,
             'conceptable_id' => $senseId,
             'language_id' => $languageId,
             'cefr_level_id' => $levelId,

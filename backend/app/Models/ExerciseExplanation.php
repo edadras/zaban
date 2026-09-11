@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ExerciseExplanation extends Model
 {
@@ -12,7 +13,7 @@ class ExerciseExplanation extends Model
         'exercise_id', 'language_id', 'cefr_level_id', 'text', 'generation_method',
     ];
 
-    public function exercise(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);
     }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ExerciseHint extends Model
 {
@@ -10,7 +11,7 @@ class ExerciseHint extends Model
 
     protected $fillable = ['exercise_id', 'level', 'text'];
 
-    public function exercise(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);
     }

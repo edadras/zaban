@@ -388,7 +388,7 @@ class AiExaminerService
         }
 
         return array_values(array_filter(
-            array_map(fn ($line) => trim(ltrim(trim($line), "-*0123456789. ")), preg_split('/\R/u', $source) ?: []),
+            array_map(fn ($line) => trim(ltrim(trim($line), '-*0123456789. ')), preg_split('/\R/u', $source) ?: []),
             fn ($line) => $line !== '',
         ));
     }

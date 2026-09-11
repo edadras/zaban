@@ -3,13 +3,16 @@
 namespace App\Services\Learning;
 
 use App\Models\Concept;
+use App\Models\ConversationScenario;
 use App\Models\Exercise;
+use App\Models\ExerciseAttempt;
+use App\Models\Language;
 use App\Models\LearnerConcept;
-use App\Models\LearnerError;
 use App\Models\LearnerProfile;
-use App\Models\PracticeLock;
 use App\Models\LearningSession;
 use App\Models\Lesson;
+use App\Models\LessonBlock;
+use App\Models\PracticeLock;
 use App\Models\SessionActivity;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -46,7 +49,7 @@ class AdaptiveLearningService
     public function buildNextSession(int $userId, ?int $minutes = null, ?string $focus = null): LearningSession
     {
         $profile = LearnerProfile::firstOrCreate(['user_id' => $userId], [
-            'language_id' => \App\Models\Language::where('code', 'en')->value('id'),
+            'language_id' => Language::where('code', 'en')->value('id'),
         ]);
         $minutes = $minutes ?: $this->plannedMinutes($userId);
         $focus = $this->normalizeFocus($focus);
@@ -242,7 +245,7 @@ class AdaptiveLearningService
 
         return $blocks->map(fn ($block) => [
             'type' => 'lesson_block',
-            'subject_type' => \App\Models\LessonBlock::class,
+            'subject_type' => LessonBlock::class,
             'subject_id' => $block->id,
             'concept_id' => $block->config['concept_id'] ?? null,
             'priority' => 50.0,
@@ -337,7 +340,7 @@ class AdaptiveLearningService
             foreach ($blocks as $block) {
                 $out->push([
                     'type' => $block->type === 'listen_and_choose' ? 'listening' : 'speaking',
-                    'subject_type' => \App\Models\LessonBlock::class,
+                    'subject_type' => LessonBlock::class,
                     'subject_id' => $block->id,
                     'concept_id' => null,
                     'priority' => 40.0,
@@ -570,7 +573,7 @@ class AdaptiveLearningService
 
         return collect([[
             'type' => 'conversation',
-            'subject_type' => \App\Models\ConversationScenario::class,
+            'subject_type' => ConversationScenario::class,
             'subject_id' => $scenario->id,
             'concept_id' => null,
             'priority' => 35.0,
@@ -716,7 +719,7 @@ class AdaptiveLearningService
         foreach ($lesson->blocks()->orderBy('position')->limit($count)->get() as $block) {
             $out->push([
                 'type' => 'lesson_block',
-                'subject_type' => \App\Models\LessonBlock::class,
+                'subject_type' => LessonBlock::class,
                 'subject_id' => $block->id,
                 'concept_id' => null,
                 'priority' => 50.0,
@@ -749,7 +752,7 @@ class AdaptiveLearningService
 
         return collect($blocks)->map(fn ($b) => [
             'type' => 'speaking',
-            'subject_type' => \App\Models\LessonBlock::class,
+            'subject_type' => LessonBlock::class,
             'subject_id' => $b->id,
             'concept_id' => null,
             'priority' => 40.0,
@@ -805,7 +808,7 @@ class AdaptiveLearningService
     private function fallbackActivities(int $userId, int $count): Collection
     {
         $ability = $this->difficulty->abilityFor($userId);
-        $seen = \App\Models\ExerciseAttempt::where('user_id', $userId)->pluck('exercise_id')->all();
+        $seen = ExerciseAttempt::where('user_id', $userId)->pluck('exercise_id')->all();
 
         foreach ([1.0, 2.0, 4.0, 99.0] as $window) {
             $candidates = $this->answerable(

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AiGeneration extends Model
 {
@@ -32,12 +33,12 @@ class AiGeneration extends Model
         ];
     }
 
-    public function request(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function request(): BelongsTo
     {
         return $this->belongsTo(AiRequest::class, 'ai_request_id');
     }
 
-    public function mediaAsset(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function mediaAsset(): BelongsTo
     {
         return $this->belongsTo(MediaAsset::class, 'media_asset_id');
     }

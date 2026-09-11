@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class PlacementSession extends Model
 {
@@ -34,22 +36,22 @@ class PlacementSession extends Model
         ];
     }
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function skillStates(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function skillStates(): HasMany
     {
         return $this->hasMany(PlacementSkillState::class);
     }
 
-    public function responses(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function responses(): HasMany
     {
         return $this->hasMany(PlacementResponse::class);
     }
 
-    public function resultLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function resultLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'result_cefr_level_id');
     }

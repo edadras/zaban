@@ -5,6 +5,7 @@ namespace App\Services\Learning;
 use App\Models\Exercise;
 use App\Models\LearnerProfile;
 use App\Models\LearnerSkillState;
+use Illuminate\Support\Collection;
 
 /**
  * Item selection against learner ability.
@@ -16,6 +17,7 @@ use App\Models\LearnerSkillState;
 class DifficultyService
 {
     public const TARGET_MIN = 0.70;
+
     public const TARGET_MAX = 0.85;
 
     /** How often to deliberately overshoot the band with a stretch item. */
@@ -53,7 +55,7 @@ class DifficultyService
      * Pick the item whose predicted success sits closest to the middle of the
      * target band, occasionally reaching higher so progress stays visible.
      *
-     * @param  \Illuminate\Support\Collection<int, Exercise>  $candidates
+     * @param  Collection<int, Exercise>  $candidates
      */
     public function choose($candidates, float $ability, bool $allowChallenge = true): ?Exercise
     {

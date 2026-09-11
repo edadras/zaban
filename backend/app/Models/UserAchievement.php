@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserAchievement extends Model
 {
@@ -21,7 +22,7 @@ class UserAchievement extends Model
         ];
     }
 
-    public function achievement(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function achievement(): BelongsTo
     {
         return $this->belongsTo(Achievement::class);
     }

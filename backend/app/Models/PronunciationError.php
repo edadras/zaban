@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PronunciationError extends Model
 {
@@ -34,7 +35,7 @@ class PronunciationError extends Model
         ];
     }
 
-    public function phoneme(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function phoneme(): BelongsTo
     {
         return $this->belongsTo(Phoneme::class);
     }

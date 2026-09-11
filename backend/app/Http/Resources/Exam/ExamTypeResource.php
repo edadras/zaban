@@ -3,10 +3,11 @@
 namespace App\Http\Resources\Exam;
 
 use App\Models\ExamScoreBand;
+use App\Models\ExamType;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\ExamType */
+/** @mixin ExamType */
 class ExamTypeResource extends JsonResource
 {
     public function toArray(Request $request): array

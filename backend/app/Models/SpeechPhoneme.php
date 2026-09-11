@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SpeechPhoneme extends Model
 {
@@ -27,12 +28,12 @@ class SpeechPhoneme extends Model
         ];
     }
 
-    public function word(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function word(): BelongsTo
     {
         return $this->belongsTo(SpeechWord::class, 'speech_word_id');
     }
 
-    public function expectedPhoneme(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function expectedPhoneme(): BelongsTo
     {
         return $this->belongsTo(Phoneme::class, 'expected_phoneme_id');
     }

@@ -3,13 +3,13 @@
 namespace App\Providers;
 
 use App\AI\AiOrchestrator;
+use App\AI\ProviderRegistry;
 use App\AI\Providers\AnthropicTextProvider;
 use App\AI\Providers\EspeakTtsProvider;
 use App\AI\Providers\HiggsfieldProvider;
 use App\AI\Providers\OpenAiTextProvider;
 use App\AI\Providers\PlaceholderImageProvider;
 use App\AI\Providers\WhisperSpeechProvider;
-use App\AI\ProviderRegistry;
 use Illuminate\Support\ServiceProvider;
 
 class AiServiceProvider extends ServiceProvider

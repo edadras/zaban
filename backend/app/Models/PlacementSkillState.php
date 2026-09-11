@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PlacementSkillState extends Model
 {
@@ -33,12 +34,12 @@ class PlacementSkillState extends Model
         ];
     }
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }
 
-    public function session(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function session(): BelongsTo
     {
         return $this->belongsTo(PlacementSession::class, 'placement_session_id');
     }

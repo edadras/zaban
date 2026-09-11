@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class AiModel extends Model
 {
@@ -36,7 +37,7 @@ class AiModel extends Model
         ];
     }
 
-    public function provider(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function provider(): BelongsTo
     {
         return $this->belongsTo(AiProvider::class, 'ai_provider_id');
     }

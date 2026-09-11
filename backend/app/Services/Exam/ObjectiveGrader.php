@@ -249,6 +249,7 @@ class ObjectiveGrader
         if ($length === 0) {
             return 0.0;
         }
+
         // levenshtein() is byte-based; on multibyte input that only makes the
         // tolerance stricter, never looser, so it is safe as a near-miss check.
         return 1 - (levenshtein($a, $b) / $length);

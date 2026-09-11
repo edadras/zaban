@@ -2,11 +2,12 @@
 
 namespace App\Http\Resources\Exam;
 
+use App\Models\ExamSection;
 use App\Services\Exam\SectionScoring;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\ExamSection */
+/** @mixin ExamSection */
 class ExamSectionResource extends JsonResource
 {
     public function toArray(Request $request): array

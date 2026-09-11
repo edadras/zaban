@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class AudioMapping extends Model
 {
@@ -29,12 +31,12 @@ class AudioMapping extends Model
         ];
     }
 
-    public function audioAsset(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function audioAsset(): BelongsTo
     {
         return $this->belongsTo(AudioAsset::class, 'audio_asset_id');
     }
 
-    public function mappable(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    public function mappable(): MorphTo
     {
         return $this->morphTo();
     }

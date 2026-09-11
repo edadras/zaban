@@ -107,7 +107,7 @@ class CoursePlacementService
      * grammar book and a B1 pronunciation book waiting for them and no reason
      * to work through the elementary ones first.
      *
-     * @return array<string, int>  series => course version id
+     * @return array<string, int> series => course version id
      */
     public function strandsForAbility(?float $ability): array
     {

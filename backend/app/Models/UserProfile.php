@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserProfile extends Model
 {
@@ -29,17 +30,17 @@ class UserProfile extends Model
         ];
     }
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function nativeLanguage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function nativeLanguage(): BelongsTo
     {
         return $this->belongsTo(Language::class, 'native_language_id');
     }
 
-    public function targetLanguage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function targetLanguage(): BelongsTo
     {
         return $this->belongsTo(Language::class, 'target_language_id');
     }

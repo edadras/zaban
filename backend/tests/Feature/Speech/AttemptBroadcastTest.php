@@ -3,6 +3,7 @@
 namespace Tests\Feature\Speech;
 
 use App\Events\AttemptScored;
+use App\Models\User;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Support\Facades\Broadcast;
 use Tests\TestCase;
@@ -47,7 +48,7 @@ class AttemptBroadcastTest extends TestCase
 
     public function test_a_learner_may_only_listen_to_their_own_channel(): void
     {
-        $mine = new \App\Models\User(['id' => 7]);
+        $mine = new User(['id' => 7]);
         $mine->id = 7;
 
         $callback = Broadcast::getChannels()['user.{id}'] ?? null;

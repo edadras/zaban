@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class ContentReview extends Model
 {
@@ -31,7 +32,7 @@ class ContentReview extends Model
         ];
     }
 
-    public function reviewable(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    public function reviewable(): MorphTo
     {
         return $this->morphTo();
     }

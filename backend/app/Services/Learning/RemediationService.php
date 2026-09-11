@@ -6,6 +6,7 @@ use App\Models\Concept;
 use App\Models\Exercise;
 use App\Models\LearnerConcept;
 use App\Models\LearnerError;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -171,7 +172,7 @@ class RemediationService
             ->update(['resolved_at' => now()]);
     }
 
-    /** @return \Illuminate\Support\Collection<int, LearnerError> */
+    /** @return Collection<int, LearnerError> */
     public function unresolved(int $userId, int $limit = 25)
     {
         return LearnerError::with('concept')

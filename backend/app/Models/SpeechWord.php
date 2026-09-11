@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SpeechWord extends Model
 {
@@ -30,12 +32,12 @@ class SpeechWord extends Model
         ];
     }
 
-    public function attempt(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function attempt(): BelongsTo
     {
         return $this->belongsTo(SpeechAttempt::class, 'speech_attempt_id');
     }
 
-    public function phonemes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function phonemes(): HasMany
     {
         return $this->hasMany(SpeechPhoneme::class);
     }

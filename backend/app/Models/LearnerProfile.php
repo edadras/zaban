@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LearnerProfile extends Model
 {
@@ -40,17 +41,17 @@ class LearnerProfile extends Model
         ];
     }
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function cefrLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function cefrLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'current_cefr_level_id');
     }
 
-    public function courseVersion(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function courseVersion(): BelongsTo
     {
         return $this->belongsTo(CourseVersion::class, 'active_course_version_id');
     }

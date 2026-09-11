@@ -26,8 +26,11 @@ class MasteryEngineTest extends TestCase
     use RefreshDatabase;
 
     private MasteryService $mastery;
+
     private SpacedRepetitionService $srs;
+
     private User $user;
+
     private Concept $concept;
 
     protected function setUp(): void

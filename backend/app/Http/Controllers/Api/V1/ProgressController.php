@@ -6,6 +6,7 @@ use App\Models\DailyProgress;
 use App\Models\LearnerConcept;
 use App\Models\LearnerProfile;
 use App\Models\LearnerSkillState;
+use App\Models\Skill;
 use App\Models\SkillSnapshot;
 use App\Services\Learning\MasteryService;
 use App\Services\Learning\RemediationService;
@@ -121,7 +122,7 @@ class ProgressController extends ApiController
         $states = LearnerSkillState::with(['skill', 'cefrLevel'])
             ->where('user_id', $userId)->get()->keyBy('skill_id');
 
-        return \App\Models\Skill::orderBy('position')->get()->map(function ($skill) use ($states) {
+        return Skill::orderBy('position')->get()->map(function ($skill) use ($states) {
             $s = $states->get($skill->id);
 
             return [

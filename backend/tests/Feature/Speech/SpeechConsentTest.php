@@ -5,6 +5,7 @@ namespace Tests\Feature\Speech;
 use App\Jobs\Speech\ProcessSpeechAttempt;
 use App\Models\MediaAsset;
 use App\Models\SpeechAttempt;
+use App\Models\User;
 use App\Services\Speech\SpeechConsentException;
 use App\Services\Speech\SpeechRetentionService;
 use Illuminate\Http\UploadedFile;
@@ -45,7 +46,7 @@ class SpeechConsentTest extends SpeechTestCase
 
     public function test_missing_settings_row_counts_as_no_consent(): void
     {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
 
         $this->assertFalse(app(SpeechRetentionService::class)->hasConsent($user->id));
     }

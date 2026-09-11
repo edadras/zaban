@@ -5,6 +5,7 @@ namespace App\Services\Content;
 use App\Models\ContentReview;
 use App\Models\Exercise;
 use App\Models\Lesson;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
@@ -74,7 +75,7 @@ class ValidationService
         );
 
         $checks['has_concept'] = $this->check(
-            \Illuminate\Support\Facades\DB::table('exercise_concepts')
+            DB::table('exercise_concepts')
                 ->where('exercise_id', $exercise->id)->exists(),
             'The item is not linked to any concept, so the adaptive engine cannot use it.',
         );

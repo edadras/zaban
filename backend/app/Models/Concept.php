@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Concept extends Model
 {
@@ -29,23 +32,23 @@ class Concept extends Model
         ];
     }
 
-    public function conceptable(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    public function conceptable(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }
 
-    public function prerequisites(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function prerequisites(): BelongsToMany
     {
         return $this->belongsToMany(self::class, 'concept_prerequisites', 'concept_id', 'prerequisite_concept_id')
             ->withPivot(['strength', 'is_blocking']);
     }
 
-    public function lessons(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function lessons(): BelongsToMany
     {
         return $this->belongsToMany(Lesson::class, 'lesson_concept');
     }

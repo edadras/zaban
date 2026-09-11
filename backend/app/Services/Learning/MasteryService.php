@@ -5,6 +5,7 @@ namespace App\Services\Learning;
 use App\Models\Concept;
 use App\Models\LearnerConcept;
 use App\Models\ReviewHistory;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -22,10 +23,15 @@ class MasteryService
 {
     /** Band ceilings from spec section 12. */
     public const UNKNOWN = 0.00;
+
     public const INTRODUCED = 0.20;
+
     public const DEVELOPING = 0.40;
+
     public const COMPETENT = 0.60;
+
     public const STRONG = 0.80;
+
     public const MASTERED = 0.95;
 
     /** A retrieval only counts as "spaced" once this much time has passed. */
@@ -206,7 +212,7 @@ class MasteryService
         return round((float) ($avg ?? 0), 4);
     }
 
-    /** @return \Illuminate\Support\Collection<int, LearnerConcept> */
+    /** @return Collection<int, LearnerConcept> */
     public function weakest(int $userId, int $limit = 20)
     {
         return LearnerConcept::with('concept')

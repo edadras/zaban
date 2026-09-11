@@ -33,7 +33,7 @@ final class RoomPermissions
 
     public static function listener(): self
     {
-        return new self();
+        return new self;
     }
 
     public function with(?bool $audio = null, ?bool $video = null): self

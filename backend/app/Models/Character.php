@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Character extends Model
 {
@@ -22,7 +23,7 @@ class Character extends Model
         'model_3d_status',
     ];
 
-    public function referenceImage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function referenceImage(): BelongsTo
     {
         return $this->belongsTo(MediaAsset::class, 'reference_media_asset_id');
     }

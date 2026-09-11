@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
+use App\Models\Language;
 use App\Models\LearnerProfile;
 use App\Support\ApiResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -32,7 +33,7 @@ abstract class ApiController extends Controller
     {
         return LearnerProfile::firstOrCreate(
             ['user_id' => $request->user()->id],
-            ['language_id' => \App\Models\Language::where('code', 'en')->value('id')],
+            ['language_id' => Language::where('code', 'en')->value('id')],
         );
     }
 }

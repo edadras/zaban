@@ -29,6 +29,7 @@ class PlacementService
 
     /** Everyone starts near B1: the middle of the ladder minimises expected items. */
     private const START_ABILITY = 0.0;
+
     private const START_SE = 1.5;
 
     public function __construct(

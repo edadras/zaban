@@ -304,7 +304,7 @@ class AiOrchestrator
         $row = AiProvider::firstOrCreate(
             ['code' => $provider->code()],
             ['name' => ucfirst($provider->code()), 'capabilities' => $provider->capabilities(),
-             'driver' => $provider::class, 'is_active' => true],
+                'driver' => $provider::class, 'is_active' => true],
         );
         $modelId = $model ? AiModel::where('ai_provider_id', $row->id)->where('code', $model)->value('id') : null;
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DialogueTurn extends Model
 {
@@ -27,12 +28,12 @@ class DialogueTurn extends Model
         ];
     }
 
-    public function character(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function character(): BelongsTo
     {
         return $this->belongsTo(Character::class);
     }
 
-    public function dialogue(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function dialogue(): BelongsTo
     {
         return $this->belongsTo(Dialogue::class);
     }

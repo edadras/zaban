@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SourceFile extends Model
 {
@@ -23,7 +24,7 @@ class SourceFile extends Model
         'status',
     ];
 
-    public function document(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function document(): BelongsTo
     {
         return $this->belongsTo(SourceDocument::class, 'source_document_id');
     }

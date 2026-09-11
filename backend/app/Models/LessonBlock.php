@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LessonBlock extends Model
 {
@@ -30,17 +31,17 @@ class LessonBlock extends Model
         ];
     }
 
-    public function lesson(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function lesson(): BelongsTo
     {
         return $this->belongsTo(Lesson::class);
     }
 
-    public function exercise(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);
     }
 
-    public function mediaAsset(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function mediaAsset(): BelongsTo
     {
         return $this->belongsTo(MediaAsset::class, 'media_asset_id');
     }

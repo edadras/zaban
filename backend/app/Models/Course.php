@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
@@ -30,22 +32,22 @@ class Course extends Model
         ];
     }
 
-    public function language(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
     }
 
-    public function versions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function versions(): HasMany
     {
         return $this->hasMany(CourseVersion::class);
     }
 
-    public function fromLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function fromLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'from_cefr_level_id');
     }
 
-    public function toLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function toLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'to_cefr_level_id');
     }

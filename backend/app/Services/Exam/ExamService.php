@@ -36,7 +36,9 @@ use Illuminate\Support\Facades\DB;
 class ExamService
 {
     public const MODE_PRACTICE = 'practice';
+
     public const MODE_MOCK = 'mock';
+
     public const MODE_SECTION = 'section';
 
     public const MODES = [self::MODE_PRACTICE, self::MODE_MOCK, self::MODE_SECTION];

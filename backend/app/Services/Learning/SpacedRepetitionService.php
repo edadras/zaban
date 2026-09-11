@@ -17,7 +17,9 @@ use Illuminate\Support\Collection;
 class SpacedRepetitionService
 {
     private const MIN_EASE = 1.3;
+
     private const MAX_EASE = 2.8;
+
     private const LAPSE_INTERVAL_DAYS = 1;
 
     /** Early steps in days; afterwards the interval is ease-scaled. */

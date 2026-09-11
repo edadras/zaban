@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class SessionActivity extends Model
 {
@@ -35,17 +37,17 @@ class SessionActivity extends Model
         ];
     }
 
-    public function session(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function session(): BelongsTo
     {
         return $this->belongsTo(LearningSession::class, 'learning_session_id');
     }
 
-    public function subject(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    public function subject(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function concept(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function concept(): BelongsTo
     {
         return $this->belongsTo(Concept::class);
     }

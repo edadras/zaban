@@ -47,7 +47,7 @@ class OrchestratorTest extends TestCase
      */
     public function test_a_successful_call_is_written_to_the_ledger_with_a_valid_duration(): void
     {
-        $fake = new FakeTextProvider();
+        $fake = new FakeTextProvider;
         $this->useProviders(['fake-text' => $fake], ['fake-text']);
         $user = User::factory()->create();
 
@@ -75,7 +75,7 @@ class OrchestratorTest extends TestCase
 
     public function test_an_identical_request_is_served_from_cache_and_not_paid_for_twice(): void
     {
-        $fake = new FakeTextProvider();
+        $fake = new FakeTextProvider;
         $this->useProviders(['fake-text' => $fake], ['fake-text']);
         $orchestrator = app(AiOrchestrator::class);
 
@@ -94,7 +94,7 @@ class OrchestratorTest extends TestCase
     public function test_a_failing_provider_falls_through_to_the_next_in_the_chain(): void
     {
         $broken = new FakeTextProvider(failWith: 'provider exploded');
-        $working = new BackupTextProvider();
+        $working = new BackupTextProvider;
 
         $this->app->instance(FakeTextProvider::class, $broken);
         $this->app->instance(BackupTextProvider::class, $working);

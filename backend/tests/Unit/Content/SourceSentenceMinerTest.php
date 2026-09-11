@@ -56,7 +56,7 @@ class SourceSentenceMinerTest extends TestCase
     public function test_it_drops_the_superscript_gloss_markers(): void
     {
         $prose = $this->miner->reflow(
-            "          When companies are recruiting1, they often have a set of criteria2 to apply.",
+            '          When companies are recruiting1, they often have a set of criteria2 to apply.',
         );
 
         $this->assertStringContainsString('recruiting,', $prose);

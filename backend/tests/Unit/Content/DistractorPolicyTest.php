@@ -89,7 +89,7 @@ class DistractorPolicyTest extends TestCase
         $result = $this->policy->choose(
             'income tax',
             'money paid to the government from earnings',
-            "Compound nouns like haircut and ______ are stressed on the first part.",
+            'Compound nouns like haircut and ______ are stressed on the first part.',
             [
                 ['term' => 'haircut', 'definition' => 'an act of cutting hair', 'module_id' => 2],
                 ['term' => 'kettle', 'definition' => 'a container for boiling water', 'module_id' => 2],

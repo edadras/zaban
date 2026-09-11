@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ExamScoreBand extends Model
 {
@@ -23,7 +24,7 @@ class ExamScoreBand extends Model
         ];
     }
 
-    public function cefrLevel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function cefrLevel(): BelongsTo
     {
         return $this->belongsTo(CefrLevel::class, 'cefr_level_id');
     }

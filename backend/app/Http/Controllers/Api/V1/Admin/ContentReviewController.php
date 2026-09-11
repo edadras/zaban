@@ -209,7 +209,7 @@ class ContentReviewController extends ApiController
             'difficulty' => (float) $e->difficulty,
             'generation_method' => $e->generation_method,
             'source' => ['document_id' => $e->source_document_id, 'page' => $e->source_page,
-                         'reference' => $e->source_reference],
+                'reference' => $e->source_reference],
             // The reviewer needs to see the key; the learner never does.
             'options' => $e->options()->orderBy('position')->get()
                 ->map(fn ($o) => ['text' => $o->text, 'is_correct' => (bool) $o->is_correct])->values(),
@@ -229,7 +229,7 @@ class ContentReviewController extends ApiController
             'summary' => $l->summary,
             'generation_method' => $l->generation_method,
             'source' => ['document_id' => $l->source_document_id, 'page' => $l->source_page,
-                         'section' => $l->source_section],
+                'section' => $l->source_section],
             'blocks' => $l->blocks()->orderBy('position')->get()
                 ->map(fn ($b) => ['type' => $b->type, 'title' => $b->title, 'config' => $b->config])->values(),
             'concepts' => $l->concepts()->pluck('label'),

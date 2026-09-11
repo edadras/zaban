@@ -2,13 +2,14 @@
 
 namespace App\Http\Resources\Exam;
 
+use App\Models\ExamAttempt;
 use App\Models\ExamSectionAttempt;
 use App\Services\Exam\ExamEstimate;
 use App\Services\Exam\ExamService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/** @mixin \App\Models\ExamAttempt */
+/** @mixin ExamAttempt */
 class ExamAttemptResource extends JsonResource
 {
     public function toArray(Request $request): array

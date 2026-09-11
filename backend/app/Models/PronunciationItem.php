@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PronunciationItem extends Model
 {
@@ -18,7 +19,7 @@ class PronunciationItem extends Model
         'media_asset_id',
     ];
 
-    public function item(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function item(): BelongsTo
     {
         return $this->belongsTo(VocabularyItem::class, 'vocabulary_item_id');
     }

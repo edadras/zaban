@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ExamSection extends Model
 {
@@ -26,17 +28,17 @@ class ExamSection extends Model
         ];
     }
 
-    public function examType(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function examType(): BelongsTo
     {
         return $this->belongsTo(ExamType::class, 'exam_type_id');
     }
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }
 
-    public function taskTypes(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function taskTypes(): HasMany
     {
         return $this->hasMany(ExamTaskType::class);
     }

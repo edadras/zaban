@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\Definition;
 use App\Models\Exercise;
 use App\Models\ExerciseAttempt;
 use App\Models\LearnerProfile;
+use App\Models\LearnerSkillState;
+use App\Models\VocabularySense;
+use App\Services\Content\SentenceQuality;
 use App\Services\Learning\DifficultyService;
 use App\Services\Learning\MasteryService;
 use App\Services\Learning\ProgressService;
@@ -27,7 +31,7 @@ class ExerciseController extends ApiController
         private DifficultyService $difficulty,
         private RemediationService $remediation,
         private ProgressService $progress,
-        private \App\Services\Content\SentenceQuality $quality,
+        private SentenceQuality $quality,
     ) {}
 
     public function show(Request $request, Exercise $exercise)
@@ -177,17 +181,17 @@ class ExerciseController extends ApiController
         }
 
         $concept = DB::table('concepts')->where('id', $conceptId)->first();
-        if (! $concept || $concept->conceptable_type !== \App\Models\VocabularySense::class) {
+        if (! $concept || $concept->conceptable_type !== VocabularySense::class) {
             return null;
         }
 
         $gloss = DB::table('definitions')
             ->where('vocabulary_sense_id', $concept->conceptable_id)
-            ->where('generation_method', '!=', \App\Models\Definition::AMBIGUOUS)
+            ->where('generation_method', '!=', Definition::AMBIGUOUS)
             ->value('text');
 
         $example = DB::table('examples')
-            ->where('exemplifiable_type', \App\Models\VocabularySense::class)
+            ->where('exemplifiable_type', VocabularySense::class)
             ->where('exemplifiable_id', $concept->conceptable_id)
             ->orderByRaw('CHAR_LENGTH(text) ASC')
             ->value('text');
@@ -239,8 +243,8 @@ class ExerciseController extends ApiController
             // Open-ended item: it needs AI or human grading, so do not pretend
             // to have scored it.
             return ['correct' => false, 'score' => 0.0, 'expected' => null,
-                    'feedback' => (object) ['requires_review' => true,
-                                   'message' => 'This response needs review before it can be scored.']];
+                'feedback' => (object) ['requires_review' => true,
+                    'message' => 'This response needs review before it can be scored.']];
         }
 
         $given = (string) (is_array($response) ? ($response['value'] ?? reset($response)) : $response);
@@ -259,7 +263,7 @@ class ExerciseController extends ApiController
             }
         }
 
-        return $best + ['feedback' => new \stdClass()];
+        return $best + ['feedback' => new \stdClass];
     }
 
     /** Tolerate a single typo, but not a different word. */
@@ -306,7 +310,7 @@ class ExerciseController extends ApiController
         $profile->update(['ability' => $ability, 'ability_se' => $se]);
 
         if ($exercise->skill_id) {
-            $skill = \App\Models\LearnerSkillState::firstOrCreate(
+            $skill = LearnerSkillState::firstOrCreate(
                 ['user_id' => $userId, 'skill_id' => $exercise->skill_id],
                 ['ability' => 0, 'ability_se' => 1.5],
             );

@@ -22,9 +22,13 @@ namespace App\Services\Learning;
 class SessionShape
 {
     public const WARM_UP = 'warm_up';
+
     public const STUDY = 'study';
+
     public const PRACTISE = 'practise';
+
     public const USE = 'use';
+
     public const CONSOLIDATE = 'consolidate';
 
     /**

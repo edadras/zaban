@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class XpTransaction extends Model
 {
@@ -16,7 +17,7 @@ class XpTransaction extends Model
         'source_id',
     ];
 
-    public function source(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    public function source(): MorphTo
     {
         return $this->morphTo();
     }

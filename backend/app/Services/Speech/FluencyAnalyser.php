@@ -17,6 +17,7 @@ class FluencyAnalyser
 
     /** Comfortable conversational range for English, in words per minute. */
     public const RATE_TARGET_MIN = 110.0;
+
     public const RATE_TARGET_MAX = 170.0;
 
     public function __construct(private TextTokeniser $tokeniser) {}

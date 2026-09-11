@@ -26,7 +26,7 @@ class PhonemeSeeder extends Seeder
         $language = Language::firstOrCreate(
             ['code' => 'en'],
             ['name' => 'English', 'native_name' => 'English', 'direction' => 'ltr',
-             'is_learnable' => true, 'is_interface' => true],
+                'is_learnable' => true, 'is_interface' => true],
         );
 
         $phonemes = $this->seedPhonemes($language->id);

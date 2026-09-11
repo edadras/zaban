@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ExerciseOption extends Model
 {
@@ -24,7 +25,7 @@ class ExerciseOption extends Model
         ];
     }
 
-    public function exercise(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function exercise(): BelongsTo
     {
         return $this->belongsTo(Exercise::class);
     }

@@ -11,9 +11,13 @@ namespace App\Services\Speech;
 class WordAligner
 {
     public const CORRECT = 'correct';
+
     public const MISPRONOUNCED = 'mispronounced';
+
     public const OMITTED = 'omitted';
+
     public const INSERTED = 'inserted';
+
     public const SUBSTITUTED = 'substituted';
 
     public function __construct(private SequenceAligner $aligner) {}

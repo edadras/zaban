@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Dialogue extends Model
@@ -26,7 +27,7 @@ class Dialogue extends Model
         'source_sequence',
     ];
 
-    public function turns(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function turns(): HasMany
     {
         return $this->hasMany(DialogueTurn::class);
     }

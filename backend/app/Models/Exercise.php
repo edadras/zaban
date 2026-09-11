@@ -2,7 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Exercise extends Model
@@ -23,7 +28,7 @@ class Exercise extends Model
 
     protected $table = 'exercises';
 
-    /** @param  \Illuminate\Database\Eloquent\Builder<self>  $query */
+    /** @param  Builder<self>  $query */
     public function scopeServable($query)
     {
         return $query->whereIn('exercises.status', self::SERVABLE_STATUSES);
@@ -74,47 +79,47 @@ class Exercise extends Model
         ];
     }
 
-    public function template(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function template(): BelongsTo
     {
         return $this->belongsTo(ExerciseTemplate::class, 'exercise_template_id');
     }
 
-    public function skill(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function skill(): BelongsTo
     {
         return $this->belongsTo(Skill::class);
     }
 
-    public function lesson(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function lesson(): BelongsTo
     {
         return $this->belongsTo(Lesson::class);
     }
 
-    public function options(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function options(): HasMany
     {
         return $this->hasMany(ExerciseOption::class);
     }
 
-    public function hints(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function hints(): HasMany
     {
         return $this->hasMany(ExerciseHint::class)->orderBy('level');
     }
 
-    public function explanations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function explanations(): HasMany
     {
         return $this->hasMany(ExerciseExplanation::class);
     }
 
-    public function answers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function answers(): HasMany
     {
         return $this->hasMany(ExerciseAnswer::class);
     }
 
-    public function concepts(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function concepts(): BelongsToMany
     {
         return $this->belongsToMany(Concept::class, 'exercise_concepts');
     }
 
-    public function review(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function review(): MorphOne
     {
         return $this->morphOne(ContentReview::class, 'reviewable');
     }

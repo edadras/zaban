@@ -4,6 +4,7 @@ namespace App\Services\Writing;
 
 use App\AI\AiOrchestrator;
 use App\AI\Support\TextRequest;
+use App\Models\MediaAsset;
 use App\Models\WritingAttempt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -117,7 +118,7 @@ class HandwritingRecogniser
         return true;
     }
 
-    private function read(\App\Models\MediaAsset $asset): ?string
+    private function read(MediaAsset $asset): ?string
     {
         try {
             $disk = Storage::disk($asset->disk);

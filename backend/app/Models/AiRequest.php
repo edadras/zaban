@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AiRequest extends Model
 {
@@ -42,17 +44,17 @@ class AiRequest extends Model
         ];
     }
 
-    public function provider(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function provider(): BelongsTo
     {
         return $this->belongsTo(AiProvider::class, 'ai_provider_id');
     }
 
-    public function aiModel(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function aiModel(): BelongsTo
     {
         return $this->belongsTo(AiModel::class, 'ai_model_id');
     }
 
-    public function generation(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function generation(): HasMany
     {
         return $this->hasMany(AiGeneration::class);
     }

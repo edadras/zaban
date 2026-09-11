@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ConversationTurn extends Model
 {
@@ -27,7 +28,7 @@ class ConversationTurn extends Model
         ];
     }
 
-    public function session(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function session(): BelongsTo
     {
         return $this->belongsTo(ConversationSession::class, 'conversation_session_id');
     }

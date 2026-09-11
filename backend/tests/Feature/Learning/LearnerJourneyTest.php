@@ -15,6 +15,7 @@ use App\Models\Lesson;
 use App\Models\Module;
 use App\Models\Skill;
 use App\Models\Unit;
+use App\Models\User;
 use App\Models\VocabularyItem;
 use App\Models\VocabularySense;
 use Database\Seeders\ReferenceDataSeeder;
@@ -154,7 +155,7 @@ class LearnerJourneyTest extends TestCase
 
     public function test_grading_never_trusts_the_client(): void
     {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
         $exercise = Exercise::has('options')->first();
         $wrong = $exercise->options()->where('is_correct', false)->first();
 
@@ -175,7 +176,7 @@ class LearnerJourneyTest extends TestCase
 
     public function test_answer_keys_are_never_sent_to_the_client(): void
     {
-        $user = \App\Models\User::factory()->create();
+        $user = User::factory()->create();
         $exercise = Exercise::has('options')->first();
 
         $response = $this->actingAs($user)->getJson("/api/v1/exercises/{$exercise->id}");
@@ -273,7 +274,7 @@ class LearnerJourneyTest extends TestCase
             $fb = Exercise::create([
                 'exercise_template_id' => $cloze->id, 'language_id' => $en->id, 'lesson_id' => $lesson->id,
                 'skill_id' => $vocab->id, 'cefr_level_id' => $a2->id,
-                'stem' => "I put the ______ on the shelf.",
+                'stem' => 'I put the ______ on the shelf.',
                 'instructions' => 'Complete the sentence.',
                 'difficulty' => -1.2 + ($i * 0.3), 'discrimination' => 1.0,
                 'status' => 'published', 'generation_method' => 'authored', 'copyright_status' => 'owned',

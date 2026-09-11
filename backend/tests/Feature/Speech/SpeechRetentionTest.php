@@ -6,7 +6,6 @@ use App\Jobs\Speech\PurgeExpiredSpeechAudio;
 use App\Models\MediaAsset;
 use App\Models\Phoneme;
 use App\Models\PronunciationError;
-use App\Models\SpeechAttempt;
 use App\Models\SpeechPhoneme;
 use App\Models\SpeechWord;
 use App\Services\Speech\SpeechRetentionService;

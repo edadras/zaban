@@ -27,6 +27,7 @@ use Illuminate\Support\Str;
 class DistractorPolicy
 {
     public const PROVEN = 'proven';
+
     public const PLAUSIBLE = 'plausible';
 
     /** Definitions sharing more than this share of their content words describe the same idea. */

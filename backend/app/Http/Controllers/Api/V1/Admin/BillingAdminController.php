@@ -9,6 +9,7 @@ use App\Models\Subscription;
 use App\Models\SubscriptionTransaction;
 use App\Models\User;
 use App\Services\Billing\ManualTransferService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -179,7 +180,7 @@ class BillingAdminController extends ApiController
         return $this->ok($this->transfers->present($updated));
     }
 
-    public function receipt(Request $request, ManualPaymentSubmission $submission): StreamedResponse|\Illuminate\Http\JsonResponse
+    public function receipt(Request $request, ManualPaymentSubmission $submission): StreamedResponse|JsonResponse
     {
         if (! $submission->receipt_path || ! Storage::disk(ManualTransferService::DISK)->exists($submission->receipt_path)) {
             return $this->fail('receipt_missing', 'No receipt on file.', 404);

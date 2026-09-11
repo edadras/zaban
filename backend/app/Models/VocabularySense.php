@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class VocabularySense extends Model
 {
@@ -18,27 +22,27 @@ class VocabularySense extends Model
         'domain',
     ];
 
-    public function item(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function item(): BelongsTo
     {
         return $this->belongsTo(VocabularyItem::class, 'vocabulary_item_id');
     }
 
-    public function definitions(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function definitions(): HasMany
     {
         return $this->hasMany(Definition::class);
     }
 
-    public function translations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function translations(): HasMany
     {
         return $this->hasMany(Translation::class);
     }
 
-    public function examples(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    public function examples(): MorphMany
     {
         return $this->morphMany(Example::class, 'exemplifiable');
     }
 
-    public function concept(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function concept(): MorphOne
     {
         return $this->morphOne(Concept::class, 'conceptable');
     }

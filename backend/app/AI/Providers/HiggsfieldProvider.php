@@ -153,7 +153,9 @@ class HiggsfieldProvider implements AiMediaProviderInterface
      */
     private function mirror(string $url, string $kind): ?string
     {
-        $ext = match ($kind) { 'video' => 'mp4', 'audio' => 'mp3', default => 'png' };
+        $ext = match ($kind) {
+            'video' => 'mp4', 'audio' => 'mp3', default => 'png'
+        };
         $path = 'ai/'.$kind.'/'.hash('sha256', $url).'.'.$ext;
         if (Storage::disk(config('ai.storage_disk', 'local'))->exists($path)) {
             return $path;

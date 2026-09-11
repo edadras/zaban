@@ -6,6 +6,7 @@ use App\Models\MediaAsset;
 use App\Models\SpeechAttempt;
 use App\Models\UserSetting;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -39,7 +40,7 @@ class SpeechRetentionService
         return $days !== null ? (int) $days : self::DEFAULT_RETENTION_DAYS;
     }
 
-    public function deleteAfterFor(int $userId): \Illuminate\Support\Carbon
+    public function deleteAfterFor(int $userId): Carbon
     {
         return now()->addDays($this->retentionDays($userId));
     }

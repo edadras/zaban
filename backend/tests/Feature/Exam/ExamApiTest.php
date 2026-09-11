@@ -4,6 +4,7 @@ namespace Tests\Feature\Exam;
 
 use App\AI\AiOrchestrator;
 use App\Services\Exam\ExamService;
+use App\Services\Exam\ScoringService;
 use Laravel\Sanctum\Sanctum;
 
 /** The HTTP surface end to end: profiles, a sitting, results and progress. */
@@ -162,7 +163,7 @@ class ExamApiTest extends ExamTestCase
         $exams->submitResponse($attempt->fresh('sectionAttempts.section'), $task, [
             'answers' => [$exercise->id => ['selected' => $exercise->options->firstWhere('is_correct', true)->id]],
         ]);
-        $exams->finish($attempt->fresh('sectionAttempts.section'), app(\App\Services\Exam\ScoringService::class));
+        $exams->finish($attempt->fresh('sectionAttempts.section'), app(ScoringService::class));
 
         $response = $this->getJson('/api/v1/exams/progress')->assertOk();
 

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class IngestionJob extends Model
 {
@@ -27,12 +29,12 @@ class IngestionJob extends Model
         ];
     }
 
-    public function document(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function document(): BelongsTo
     {
         return $this->belongsTo(SourceDocument::class, 'source_document_id');
     }
 
-    public function stages(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function stages(): HasMany
     {
         return $this->hasMany(IngestionStage::class);
     }
