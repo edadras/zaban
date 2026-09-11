@@ -6,6 +6,8 @@ import { Voice } from './voice.js';
 import { Director } from './director.js';
 import { SceneApi } from './api.js';
 import { SceneUi } from './ui.js';
+import { SceneKit, KIT_PATHS } from './kit.js';
+import { RiggedActor } from './actor.js';
 
 /**
  * The scene player.
@@ -19,8 +21,9 @@ import { SceneUi } from './ui.js';
  * no credential and decides nothing about whether an answer was right.
  */
 class ScenePlayer {
-    constructor(bootstrap) {
+    constructor(bootstrap, kit) {
         this.data = bootstrap;
+        this.kit = kit;
         this.beatsData = bootstrap.beats || [];
         this.cleared = new Set();
         this.slow = false;
@@ -55,22 +58,49 @@ class ScenePlayer {
 
         this.camera = new THREE.PerspectiveCamera(42, 16 / 9, 0.1, 100);
 
-        this.room = new Room(scene.environment, scene.light);
-        this.three.add(this.room.group);
-        for (const prop of scene.props || []) {
-            this.room.addProp(prop);
+        // The modelled room when the kit has one, and the room the player
+        // builds itself when it has not. The modelled one arrives furnished, so
+        // the scene's own prop list is only used with the built-in room.
+        const modelledRoom = this.kit.room(scene.environment);
+
+        if (modelledRoom) {
+            this.three.add(modelledRoom);
+            this.room = new Room(scene.environment, scene.light);
+            // Keep the lighting, drop the geometry: a room needs lights and the
+            // modelled one carries none that survive glTF.
+            this.three.add(this.room.lightsOnly());
+        } else {
+            this.room = new Room(scene.environment, scene.light);
+            this.three.add(this.room.group);
+            for (const prop of scene.props || []) {
+                this.room.addProp(prop);
+            }
         }
 
         this.characters = {};
         this.names = {};
         for (const member of scene.cast || []) {
-            const character = new Character(member);
+            const modelled = this.kit.character(member.character || 'learner');
+            const character = modelled
+                ? new RiggedActor(modelled, member)
+                : new Character(member);
+
             this.characters[member.role] = character;
             this.names[member.role] = member.name_fa || member.name || member.role;
             this.three.add(character.root);
         }
 
         this.cameras = new CameraDirector(this.camera, this.characters);
+
+        /*
+         * Handles for checking the stage from outside the page - what is where,
+         * and what the camera can see of it. Framing is the one thing that
+         * cannot be asserted from the server, and guessing at it from a
+         * screenshot wastes more time than exposing two references.
+         */
+        window.__THREE__ = THREE;
+        window.__THREE_SCENE__ = this.three;
+        window.__THREE_CAMERA__ = this.camera;
         this.cameras.jump('wide', (scene.cast?.[0] || {}).role);
 
         this.resize();
@@ -83,6 +113,10 @@ class ScenePlayer {
         this.renderer.setSize(width, height, false);
         this.camera.aspect = width / Math.max(1, height);
         this.camera.updateProjectionMatrix();
+
+        // How far back the camera stands depends on the shape of the stage, so
+        // a resize has to reconsider the shot rather than only the projection.
+        this.cameras?.reframe();
     }
 
     // ------------------------------------------------------------------ ui
@@ -217,6 +251,12 @@ class ScenePlayer {
 
 const bootstrap = window.__SCENE__;
 if (bootstrap) {
-    // eslint-disable-next-line no-new
-    new ScenePlayer(bootstrap);
+    // The kit is fetched before the first frame so the scene is never drawn
+    // twice - once with the built-in figures and again with the modelled ones.
+    // It never rejects: a kit that will not load leaves the player with the
+    // geometry it builds itself, which still teaches the lesson.
+    new SceneKit(bootstrap.kit || KIT_PATHS).load().then((kit) => {
+        // eslint-disable-next-line no-new
+        new ScenePlayer(bootstrap, kit);
+    });
 }

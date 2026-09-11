@@ -117,6 +117,50 @@ class ScenePlayerLinkTest extends TestCase
         $this->assertStringNotContainsString('I have a booking.', $html);
     }
 
+    public function test_the_modelled_kit_is_offered_only_when_it_is_actually_there(): void
+    {
+        $html = $this->get($this->signed('scene.play'))->assertOk()->content();
+        $bootstrap = $this->bootstrapOf($html);
+
+        foreach (config('scene.kit') as $what => $path) {
+            $offered = $bootstrap['kit'][$what] ?? null;
+            $present = file_exists(public_path(ltrim((string) $path, '/')));
+
+            if ($present) {
+                $this->assertNotNull($offered, "the {$what} kit is on disk and should be offered");
+                $this->assertStringContainsString((string) $path, $offered);
+            } else {
+                // A player handed a URL for a file that is not there would draw
+                // nothing while it waited for a 404.
+                $this->assertNull($offered, "the {$what} kit is not on disk and must not be offered");
+            }
+        }
+    }
+
+    public function test_a_missing_kit_does_not_stop_a_scene_opening(): void
+    {
+        config(['scene.kit' => ['cast' => '/scene-kit/nothing-here.glb', 'rooms' => null]]);
+
+        $bootstrap = $this->bootstrapOf(
+            $this->get($this->signed('scene.play'))->assertOk()->content(),
+        );
+
+        $this->assertNull($bootstrap['kit']['cast']);
+        // And the scene itself is still fully described, so the player can draw
+        // it with the figures and the room it builds itself.
+        $this->assertSame('link-test', $bootstrap['scene']['slug']);
+        $this->assertCount(2, $bootstrap['scene']['cast']);
+    }
+
+    /** The bootstrap object the page hands the player. */
+    private function bootstrapOf(string $html): array
+    {
+        $this->assertMatchesRegularExpression('/window\.__SCENE__ = (.+);<\/script>/', $html);
+        preg_match('/window\.__SCENE__ = (.+);<\/script>/', $html, $matches);
+
+        return json_decode(html_entity_decode($matches[1]), true, 512, JSON_THROW_ON_ERROR);
+    }
+
     public function test_the_page_carries_no_bearer_token(): void
     {
         $html = $this->get($this->signed('scene.play'))->assertOk()->content();

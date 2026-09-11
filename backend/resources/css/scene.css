@@ -24,6 +24,14 @@
 
 * { box-sizing: border-box; }
 
+/*
+ * A `display` of any kind beats the `hidden` attribute, so the panels below -
+ * the debrief, the choices, the answer row - would all have been visible from
+ * the moment the page loaded. The debrief in particular covers the stage with a
+ * dimming backdrop, which made the whole scene look unlit.
+ */
+[hidden] { display: none !important; }
+
 body.scene-body {
     margin: 0;
     background: var(--scene-bg);

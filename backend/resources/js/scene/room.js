@@ -104,6 +104,22 @@ export class Room {
         return { ambient, key, fill };
     }
 
+    /**
+     * The lights without the walls.
+     *
+     * A modelled room brings its own geometry but no usable lighting: lamps and
+     * world settings do not survive a glTF export, so the room still has to be
+     * lit from here.
+     */
+    lightsOnly() {
+        const group = new THREE.Group();
+        group.name = 'room-lighting';
+        for (const light of Object.values(this.lights)) {
+            group.add(light);
+        }
+        return group;
+    }
+
     /** Furniture. Each prop is one small object placed by the scene data. */
     addProp({ id, type, x = 0, z = 0, rotation = 0 }) {
         const build = this.builders()[type];

@@ -89,14 +89,86 @@ repository under `sources/audio/scenes/`, so a fresh installation has scenes
 that speak rather than scenes that have to be voiced before anyone can use them.
 `scene:voice --from-disk` re-attaches those files after a reseed.
 
+## The look: board first, then model
+
+Nothing is modelled before it is drawn. Each situation gets a production visual
+bible - a single wide board carrying the two characters as full-body turnarounds
+with three facial studies each, the room as an isometric cutaway, and the
+reusable props - and the 3D is built to match it. `sources/boards/` holds the
+eight, one per scene, generated on the studio account.
+
+The order matters more than it looks. A board is one image and costs a minute;
+a rig is an afternoon. Settling what Aiko wears, how tall the room is and what
+is on the walls while it is still a picture means the modelling has an answer to
+work to instead of a series of guesses, and the eight scenes end up looking like
+one production rather than eight.
+
+The boards are also the record. When a colour or a garment is wrong in the 3D,
+the board says what it should have been.
+
+## The modelled kit
+
+Two files, both authored in the 3D scene builder and exported as glTF:
+
+| File | Holds |
+|---|---|
+| `public/scene-kit/cast.glb` | nine rigged characters - the eight people the learner talks to, and the figure that stands in for the learner |
+| `public/scene-kit/rooms.glb` | the eight rooms, furnished, each under a root named `Room_<environment>` |
+
+Each character is one skinned mesh on a shared 21-bone skeleton, with eleven
+shape keys: eight mouth positions, a smile, a frown and a blink. The skeleton is
+shared deliberately - a motion authored once reads on all nine - and the weights
+are rigid, one body part to one bone, which is what this level of stylisation
+wants and costs nothing to evaluate.
+
+Motion is one eighteen-second action per rig holding nine two-second motions end
+to end: idle, walking, sitting, standing, talking, listening, pointing,
+thinking, greeting. The player cuts them apart by name and closes each loop by
+sampling the opening frame. One long action rather than nine separate ones
+because the export settings are not ours to set, and a single action survives
+whatever the exporter does with them.
+
+Both files are optional. `config/scene.php` names them, the page offers a URL
+only for a file that is actually on disk, and a player with neither draws the
+figures and rooms it builds itself. That is not a degraded mode anyone should be
+ashamed of - it is how the scenes ran before the kit existed, and a scene with
+plain geometry still teaches the lesson.
+
+### Rebuilding it
+
+`config/scene.php` records the two scene-builder projects the kit came from, so
+the files can be rebuilt rather than only copied. The build scripts are in the
+projects' history; each is a single committed operation that clears the scene
+and constructs everything from primitives, so re-running the latest one
+reproduces the file exactly.
+
+Two things about that export are worth knowing before touching it:
+
+- **The figures face the other way.** The kit is authored with faces towards +Y
+  and the up-axis conversion turns that into -Z, the opposite of the way the
+  player's own figures face. `RiggedActor` turns the model a half-turn inside a
+  wrapper, and places the wrapper rather than the rig, so the rig's exported
+  rotation and its height scale both survive.
+- **Bindings must be written onto the geometry, not tracked alongside it.** An
+  earlier build remembered which vertices and faces each body part occupied as
+  index ranges, and those ranges did not survive the write to the mesh: shoes
+  ended up at chest height. Weights now go into the bmesh deform layer as each
+  vertex is made and a face's material is set on the face itself.
+
 ## The player
 
 `resources/js/scene/` — Three.js, one bundle of its own so no other page
-downloads a 3D renderer. The figures are built from primitives rather than
-shipped as scanned humans: a stylised person who arrives in a few kilobytes and
-moves correctly teaches more than a photoreal one that never finishes
-downloading over a bad connection. Where a rig exists for a cast member
-(`characters.model_3d_url`, status `ready`) the loader uses it instead.
+downloads a 3D renderer. The kit is fetched before the first frame, so a scene
+is never drawn twice; when it is missing or will not parse, the player builds
+the figures and the room itself. The built-in figures are primitives on purpose:
+a stylised person who arrives in a few kilobytes and moves correctly teaches
+more than a photoreal one that never finishes downloading over a bad connection.
+
+Shots say what they want in frame rather than how far away to stand. The stage
+is whatever shape the page gives it - a tall panel on a phone held upright, a
+shallow strip on a laptop - and a fixed distance that frames a face on one of
+those cuts the head off on the other, so each shot names a height in metres and
+the distance is computed from the camera's own field of view.
 
 The mouth is driven by the sound itself, through a Web Audio analyser, which
 works for a recorded human voice as well as a rendered one. It is amplitude, not
@@ -131,3 +203,8 @@ to the line after it.
 
 Then `php artisan scene:voice --scene=<slug>` to give it voices, and
 `/panel/scenes` to listen to them.
+
+A new situation also wants a board and a room. Draw the board first, add a
+`Room_<environment>` to the rooms project to match it, and give the palette a
+matching entry in `resources/js/scene/room.js` so the built-in fallback still
+looks like the right kind of place.

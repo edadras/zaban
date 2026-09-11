@@ -54,6 +54,18 @@ class ScenePlayController extends Controller
         $until = now()->addMinutes(self::LINK_MINUTES);
 
         $bootstrap = $this->presenter->playable($scene, $session);
+
+        /*
+         * The modelled cast and rooms, when they have been built and put in
+         * place. Absent, the player draws the figures and the room itself, so
+         * an installation without the kit still plays every scene.
+         */
+        $bootstrap['kit'] = collect(config('scene.kit', []))
+            ->map(fn (?string $path) => $path && file_exists(public_path(ltrim($path, '/')))
+                ? asset($path)
+                : null)
+            ->all();
+
         $bootstrap['endpoints'] = [
             'state' => URL::temporarySignedRoute('scene.state', $until, ['session' => $session->id]),
             'answer' => URL::temporarySignedRoute('scene.answer', $until, ['session' => $session->id]),
