@@ -6515,16 +6515,7 @@
     "index": 1,
     "width": 447,
     "height": 321,
-    "bytes": 30215,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0010_02.jpg",
-    "page": 10,
-    "index": 2,
-    "width": 610,
-    "height": 209,
-    "bytes": 10724,
+    "bytes": 44727,
     "is_page_scan": false
    },
    {
@@ -6533,43 +6524,7 @@
     "index": 1,
     "width": 295,
     "height": 280,
-    "bytes": 18436,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0014_01.png",
-    "page": 14,
-    "index": 1,
-    "width": 165,
-    "height": 247,
-    "bytes": 1982,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0014_02.png",
-    "page": 14,
-    "index": 2,
-    "width": 171,
-    "height": 277,
-    "bytes": 2047,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0014_03.png",
-    "page": 14,
-    "index": 3,
-    "width": 183,
-    "height": 373,
-    "bytes": 2257,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0014_04.png",
-    "page": 14,
-    "index": 4,
-    "width": 183,
-    "height": 188,
-    "bytes": 1895,
+    "bytes": 24885,
     "is_page_scan": false
    },
    {
@@ -6578,7 +6533,7 @@
     "index": 1,
     "width": 386,
     "height": 201,
-    "bytes": 20359,
+    "bytes": 25931,
     "is_page_scan": false
    },
    {
@@ -6587,7 +6542,7 @@
     "index": 1,
     "width": 176,
     "height": 116,
-    "bytes": 7050,
+    "bytes": 8875,
     "is_page_scan": false
    },
    {
@@ -6596,7 +6551,7 @@
     "index": 2,
     "width": 174,
     "height": 142,
-    "bytes": 9340,
+    "bytes": 12136,
     "is_page_scan": false
    },
    {
@@ -6605,7 +6560,7 @@
     "index": 3,
     "width": 175,
     "height": 126,
-    "bytes": 6045,
+    "bytes": 7621,
     "is_page_scan": false
    },
    {
@@ -6614,7 +6569,7 @@
     "index": 4,
     "width": 176,
     "height": 120,
-    "bytes": 8082,
+    "bytes": 11044,
     "is_page_scan": false
    },
    {
@@ -6623,16 +6578,7 @@
     "index": 5,
     "width": 162,
     "height": 122,
-    "bytes": 5243,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0019_01.jpg",
-    "page": 19,
-    "index": 1,
-    "width": 857,
-    "height": 250,
-    "bytes": 15084,
+    "bytes": 5940,
     "is_page_scan": false
    },
    {
@@ -6641,7 +6587,7 @@
     "index": 1,
     "width": 157,
     "height": 107,
-    "bytes": 5400,
+    "bytes": 7598,
     "is_page_scan": false
    },
    {
@@ -6650,7 +6596,7 @@
     "index": 2,
     "width": 159,
     "height": 111,
-    "bytes": 6513,
+    "bytes": 7926,
     "is_page_scan": false
    },
    {
@@ -6659,7 +6605,7 @@
     "index": 3,
     "width": 159,
     "height": 110,
-    "bytes": 4740,
+    "bytes": 5759,
     "is_page_scan": false
    },
    {
@@ -6668,7 +6614,7 @@
     "index": 4,
     "width": 159,
     "height": 107,
-    "bytes": 4876,
+    "bytes": 6595,
     "is_page_scan": false
    },
    {
@@ -6677,7 +6623,7 @@
     "index": 5,
     "width": 159,
     "height": 109,
-    "bytes": 5936,
+    "bytes": 7458,
     "is_page_scan": false
    },
    {
@@ -6686,7 +6632,7 @@
     "index": 6,
     "width": 159,
     "height": 108,
-    "bytes": 8783,
+    "bytes": 10332,
     "is_page_scan": false
    },
    {
@@ -6695,7 +6641,7 @@
     "index": 1,
     "width": 219,
     "height": 310,
-    "bytes": 14680,
+    "bytes": 17383,
     "is_page_scan": false
    },
    {
@@ -6704,7 +6650,7 @@
     "index": 2,
     "width": 219,
     "height": 321,
-    "bytes": 11626,
+    "bytes": 16767,
     "is_page_scan": false
    },
    {
@@ -6713,7 +6659,7 @@
     "index": 3,
     "width": 223,
     "height": 284,
-    "bytes": 11478,
+    "bytes": 13440,
     "is_page_scan": false
    },
    {
@@ -6722,7 +6668,7 @@
     "index": 4,
     "width": 219,
     "height": 328,
-    "bytes": 18339,
+    "bytes": 28161,
     "is_page_scan": false
    },
    {
@@ -6731,7 +6677,7 @@
     "index": 5,
     "width": 290,
     "height": 205,
-    "bytes": 12137,
+    "bytes": 17958,
     "is_page_scan": false
    },
    {
@@ -6740,7 +6686,7 @@
     "index": 6,
     "width": 290,
     "height": 259,
-    "bytes": 22246,
+    "bytes": 28501,
     "is_page_scan": false
    },
    {
@@ -6749,7 +6695,7 @@
     "index": 1,
     "width": 279,
     "height": 132,
-    "bytes": 11978,
+    "bytes": 14216,
     "is_page_scan": false
    },
    {
@@ -6758,7 +6704,7 @@
     "index": 2,
     "width": 279,
     "height": 132,
-    "bytes": 10907,
+    "bytes": 15331,
     "is_page_scan": false
    },
    {
@@ -6767,7 +6713,7 @@
     "index": 3,
     "width": 279,
     "height": 132,
-    "bytes": 6924,
+    "bytes": 10278,
     "is_page_scan": false
    },
    {
@@ -6776,7 +6722,7 @@
     "index": 1,
     "width": 474,
     "height": 316,
-    "bytes": 50156,
+    "bytes": 66468,
     "is_page_scan": false
    },
    {
@@ -6785,7 +6731,7 @@
     "index": 1,
     "width": 157,
     "height": 108,
-    "bytes": 4821,
+    "bytes": 6609,
     "is_page_scan": false
    },
    {
@@ -6794,7 +6740,7 @@
     "index": 2,
     "width": 159,
     "height": 111,
-    "bytes": 7323,
+    "bytes": 9002,
     "is_page_scan": false
    },
    {
@@ -6803,7 +6749,7 @@
     "index": 3,
     "width": 153,
     "height": 111,
-    "bytes": 6135,
+    "bytes": 8199,
     "is_page_scan": false
    },
    {
@@ -6812,43 +6758,34 @@
     "index": 4,
     "width": 152,
     "height": 111,
-    "bytes": 6575,
+    "bytes": 7999,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0039_01.png",
+    "path": "sources/images/advanced/p0039_01.jpg",
     "page": 39,
     "index": 1,
-    "width": 557,
-    "height": 147,
-    "bytes": 1637,
+    "width": 287,
+    "height": 108,
+    "bytes": 5421,
     "is_page_scan": false
    },
    {
     "path": "sources/images/advanced/p0039_02.jpg",
     "page": 39,
     "index": 2,
-    "width": 287,
-    "height": 108,
-    "bytes": 4725,
+    "width": 263,
+    "height": 180,
+    "bytes": 8017,
     "is_page_scan": false
    },
    {
     "path": "sources/images/advanced/p0039_03.jpg",
     "page": 39,
     "index": 3,
-    "width": 263,
-    "height": 180,
-    "bytes": 6168,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0039_04.jpg",
-    "page": 39,
-    "index": 4,
     "width": 197,
     "height": 239,
-    "bytes": 5778,
+    "bytes": 7448,
     "is_page_scan": false
    },
    {
@@ -6857,7 +6794,7 @@
     "index": 1,
     "width": 440,
     "height": 306,
-    "bytes": 21735,
+    "bytes": 35872,
     "is_page_scan": false
    },
    {
@@ -6866,7 +6803,7 @@
     "index": 1,
     "width": 306,
     "height": 367,
-    "bytes": 37620,
+    "bytes": 48467,
     "is_page_scan": false
    },
    {
@@ -6875,7 +6812,7 @@
     "index": 1,
     "width": 365,
     "height": 288,
-    "bytes": 37434,
+    "bytes": 41689,
     "is_page_scan": false
    },
    {
@@ -6884,7 +6821,7 @@
     "index": 1,
     "width": 292,
     "height": 218,
-    "bytes": 10937,
+    "bytes": 12209,
     "is_page_scan": false
    },
    {
@@ -6893,7 +6830,7 @@
     "index": 1,
     "width": 601,
     "height": 414,
-    "bytes": 42035,
+    "bytes": 56895,
     "is_page_scan": false
    },
    {
@@ -6902,7 +6839,7 @@
     "index": 2,
     "width": 601,
     "height": 416,
-    "bytes": 55750,
+    "bytes": 100018,
     "is_page_scan": false
    },
    {
@@ -6911,7 +6848,7 @@
     "index": 1,
     "width": 157,
     "height": 110,
-    "bytes": 5280,
+    "bytes": 7333,
     "is_page_scan": false
    },
    {
@@ -6920,7 +6857,7 @@
     "index": 2,
     "width": 155,
     "height": 111,
-    "bytes": 5835,
+    "bytes": 7320,
     "is_page_scan": false
    },
    {
@@ -6929,7 +6866,7 @@
     "index": 3,
     "width": 149,
     "height": 111,
-    "bytes": 6762,
+    "bytes": 8225,
     "is_page_scan": false
    },
    {
@@ -6938,7 +6875,7 @@
     "index": 4,
     "width": 159,
     "height": 110,
-    "bytes": 4809,
+    "bytes": 7200,
     "is_page_scan": false
    },
    {
@@ -6947,7 +6884,7 @@
     "index": 5,
     "width": 159,
     "height": 112,
-    "bytes": 7045,
+    "bytes": 8567,
     "is_page_scan": false
    },
    {
@@ -6956,7 +6893,7 @@
     "index": 6,
     "width": 159,
     "height": 109,
-    "bytes": 5395,
+    "bytes": 6881,
     "is_page_scan": false
    },
    {
@@ -6965,7 +6902,7 @@
     "index": 1,
     "width": 176,
     "height": 115,
-    "bytes": 4499,
+    "bytes": 6330,
     "is_page_scan": false
    },
    {
@@ -6974,7 +6911,7 @@
     "index": 1,
     "width": 508,
     "height": 339,
-    "bytes": 56679,
+    "bytes": 72840,
     "is_page_scan": false
    },
    {
@@ -6983,7 +6920,7 @@
     "index": 1,
     "width": 362,
     "height": 134,
-    "bytes": 20437,
+    "bytes": 26604,
     "is_page_scan": false
    },
    {
@@ -6992,7 +6929,7 @@
     "index": 1,
     "width": 217,
     "height": 144,
-    "bytes": 11401,
+    "bytes": 15393,
     "is_page_scan": false
    },
    {
@@ -7001,7 +6938,7 @@
     "index": 2,
     "width": 217,
     "height": 135,
-    "bytes": 5477,
+    "bytes": 9517,
     "is_page_scan": false
    },
    {
@@ -7010,7 +6947,7 @@
     "index": 3,
     "width": 207,
     "height": 138,
-    "bytes": 19371,
+    "bytes": 23644,
     "is_page_scan": false
    },
    {
@@ -7019,7 +6956,7 @@
     "index": 4,
     "width": 180,
     "height": 110,
-    "bytes": 10273,
+    "bytes": 11557,
     "is_page_scan": false
    },
    {
@@ -7028,7 +6965,7 @@
     "index": 1,
     "width": 423,
     "height": 255,
-    "bytes": 42515,
+    "bytes": 55991,
     "is_page_scan": false
    },
    {
@@ -7037,7 +6974,7 @@
     "index": 2,
     "width": 426,
     "height": 241,
-    "bytes": 22380,
+    "bytes": 32888,
     "is_page_scan": false
    },
    {
@@ -7046,7 +6983,7 @@
     "index": 1,
     "width": 182,
     "height": 277,
-    "bytes": 22585,
+    "bytes": 26957,
     "is_page_scan": false
    },
    {
@@ -7055,7 +6992,7 @@
     "index": 2,
     "width": 298,
     "height": 200,
-    "bytes": 14675,
+    "bytes": 21487,
     "is_page_scan": false
    },
    {
@@ -7064,7 +7001,7 @@
     "index": 3,
     "width": 309,
     "height": 155,
-    "bytes": 14095,
+    "bytes": 18639,
     "is_page_scan": false
    },
    {
@@ -7073,7 +7010,7 @@
     "index": 4,
     "width": 267,
     "height": 203,
-    "bytes": 11723,
+    "bytes": 17726,
     "is_page_scan": false
    },
    {
@@ -7082,7 +7019,7 @@
     "index": 5,
     "width": 369,
     "height": 205,
-    "bytes": 30445,
+    "bytes": 32241,
     "is_page_scan": false
    },
    {
@@ -7091,7 +7028,7 @@
     "index": 6,
     "width": 304,
     "height": 206,
-    "bytes": 15880,
+    "bytes": 23156,
     "is_page_scan": false
    },
    {
@@ -7100,7 +7037,7 @@
     "index": 7,
     "width": 143,
     "height": 138,
-    "bytes": 1641,
+    "bytes": 2598,
     "is_page_scan": false
    },
    {
@@ -7118,7 +7055,7 @@
     "index": 9,
     "width": 128,
     "height": 206,
-    "bytes": 14960,
+    "bytes": 17481,
     "is_page_scan": false
    },
    {
@@ -7127,7 +7064,7 @@
     "index": 1,
     "width": 361,
     "height": 470,
-    "bytes": 32476,
+    "bytes": 42002,
     "is_page_scan": false
    },
    {
@@ -7136,7 +7073,7 @@
     "index": 1,
     "width": 172,
     "height": 113,
-    "bytes": 4758,
+    "bytes": 6057,
     "is_page_scan": false
    },
    {
@@ -7145,7 +7082,7 @@
     "index": 2,
     "width": 194,
     "height": 150,
-    "bytes": 8061,
+    "bytes": 10218,
     "is_page_scan": false
    },
    {
@@ -7154,7 +7091,7 @@
     "index": 3,
     "width": 176,
     "height": 113,
-    "bytes": 10703,
+    "bytes": 13021,
     "is_page_scan": false
    },
    {
@@ -7163,7 +7100,7 @@
     "index": 4,
     "width": 194,
     "height": 154,
-    "bytes": 17356,
+    "bytes": 18872,
     "is_page_scan": false
    },
    {
@@ -7172,7 +7109,7 @@
     "index": 5,
     "width": 182,
     "height": 124,
-    "bytes": 12722,
+    "bytes": 16330,
     "is_page_scan": false
    },
    {
@@ -7181,7 +7118,7 @@
     "index": 1,
     "width": 373,
     "height": 421,
-    "bytes": 57287,
+    "bytes": 69867,
     "is_page_scan": false
    },
    {
@@ -7190,7 +7127,7 @@
     "index": 2,
     "width": 373,
     "height": 358,
-    "bytes": 68442,
+    "bytes": 84896,
     "is_page_scan": false
    },
    {
@@ -7199,7 +7136,7 @@
     "index": 1,
     "width": 476,
     "height": 357,
-    "bytes": 40912,
+    "bytes": 53068,
     "is_page_scan": false
    },
    {
@@ -7208,7 +7145,7 @@
     "index": 1,
     "width": 286,
     "height": 429,
-    "bytes": 20668,
+    "bytes": 33182,
     "is_page_scan": false
    },
    {
@@ -7217,7 +7154,7 @@
     "index": 1,
     "width": 358,
     "height": 242,
-    "bytes": 29127,
+    "bytes": 42238,
     "is_page_scan": false
    },
    {
@@ -7226,7 +7163,7 @@
     "index": 1,
     "width": 259,
     "height": 203,
-    "bytes": 9959,
+    "bytes": 13770,
     "is_page_scan": false
    },
    {
@@ -7235,7 +7172,7 @@
     "index": 2,
     "width": 405,
     "height": 265,
-    "bytes": 9345,
+    "bytes": 17489,
     "is_page_scan": false
    },
    {
@@ -7244,7 +7181,7 @@
     "index": 1,
     "width": 173,
     "height": 144,
-    "bytes": 5836,
+    "bytes": 7109,
     "is_page_scan": false
    },
    {
@@ -7253,7 +7190,7 @@
     "index": 1,
     "width": 362,
     "height": 277,
-    "bytes": 33649,
+    "bytes": 43864,
     "is_page_scan": false
    },
    {
@@ -7262,7 +7199,7 @@
     "index": 1,
     "width": 901,
     "height": 123,
-    "bytes": 26954,
+    "bytes": 34468,
     "is_page_scan": false
    },
    {
@@ -7271,7 +7208,7 @@
     "index": 2,
     "width": 151,
     "height": 184,
-    "bytes": 10847,
+    "bytes": 14475,
     "is_page_scan": false
    },
    {
@@ -7280,7 +7217,7 @@
     "index": 3,
     "width": 301,
     "height": 184,
-    "bytes": 39270,
+    "bytes": 44808,
     "is_page_scan": false
    },
    {
@@ -7289,7 +7226,7 @@
     "index": 4,
     "width": 571,
     "height": 194,
-    "bytes": 10979,
+    "bytes": 17190,
     "is_page_scan": false
    },
    {
@@ -7298,7 +7235,7 @@
     "index": 1,
     "width": 285,
     "height": 319,
-    "bytes": 23315,
+    "bytes": 40746,
     "is_page_scan": false
    },
    {
@@ -7307,25 +7244,16 @@
     "index": 1,
     "width": 244,
     "height": 324,
-    "bytes": 24862,
+    "bytes": 32923,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0090_01.png",
+    "path": "sources/images/advanced/p0090_01.jpg",
     "page": 90,
     "index": 1,
-    "width": 894,
-    "height": 130,
-    "bytes": 1403,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0090_02.jpg",
-    "page": 90,
-    "index": 2,
     "width": 232,
     "height": 290,
-    "bytes": 24147,
+    "bytes": 28355,
     "is_page_scan": false
    },
    {
@@ -7334,7 +7262,7 @@
     "index": 1,
     "width": 532,
     "height": 381,
-    "bytes": 22421,
+    "bytes": 41146,
     "is_page_scan": false
    },
    {
@@ -7343,7 +7271,7 @@
     "index": 2,
     "width": 217,
     "height": 320,
-    "bytes": 5957,
+    "bytes": 9664,
     "is_page_scan": false
    },
    {
@@ -7352,61 +7280,7 @@
     "index": 1,
     "width": 249,
     "height": 333,
-    "bytes": 26289,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0100_01.png",
-    "page": 100,
-    "index": 1,
-    "width": 288,
-    "height": 164,
-    "bytes": 2451,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0100_02.png",
-    "page": 100,
-    "index": 2,
-    "width": 313,
-    "height": 173,
-    "bytes": 2490,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0100_03.png",
-    "page": 100,
-    "index": 3,
-    "width": 296,
-    "height": 164,
-    "bytes": 2467,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0100_04.png",
-    "page": 100,
-    "index": 4,
-    "width": 360,
-    "height": 173,
-    "bytes": 2588,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0100_05.png",
-    "page": 100,
-    "index": 5,
-    "width": 288,
-    "height": 143,
-    "bytes": 2400,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0100_06.png",
-    "page": 100,
-    "index": 6,
-    "width": 318,
-    "height": 143,
-    "bytes": 2427,
+    "bytes": 35454,
     "is_page_scan": false
    },
    {
@@ -7415,7 +7289,7 @@
     "index": 1,
     "width": 361,
     "height": 380,
-    "bytes": 33944,
+    "bytes": 45606,
     "is_page_scan": false
    },
    {
@@ -7424,7 +7298,7 @@
     "index": 1,
     "width": 172,
     "height": 117,
-    "bytes": 5728,
+    "bytes": 6990,
     "is_page_scan": false
    },
    {
@@ -7433,7 +7307,7 @@
     "index": 1,
     "width": 326,
     "height": 319,
-    "bytes": 23732,
+    "bytes": 33025,
     "is_page_scan": false
    },
    {
@@ -7442,7 +7316,7 @@
     "index": 1,
     "width": 338,
     "height": 417,
-    "bytes": 45716,
+    "bytes": 53309,
     "is_page_scan": false
    },
    {
@@ -7451,7 +7325,7 @@
     "index": 1,
     "width": 234,
     "height": 241,
-    "bytes": 14207,
+    "bytes": 18642,
     "is_page_scan": false
    },
    {
@@ -7460,7 +7334,7 @@
     "index": 1,
     "width": 388,
     "height": 259,
-    "bytes": 24084,
+    "bytes": 33824,
     "is_page_scan": false
    },
    {
@@ -7469,7 +7343,7 @@
     "index": 1,
     "width": 190,
     "height": 285,
-    "bytes": 16725,
+    "bytes": 24594,
     "is_page_scan": false
    },
    {
@@ -7478,7 +7352,7 @@
     "index": 2,
     "width": 266,
     "height": 178,
-    "bytes": 18527,
+    "bytes": 21980,
     "is_page_scan": false
    },
    {
@@ -7487,7 +7361,7 @@
     "index": 3,
     "width": 246,
     "height": 177,
-    "bytes": 9812,
+    "bytes": 13458,
     "is_page_scan": false
    },
    {
@@ -7496,7 +7370,7 @@
     "index": 4,
     "width": 266,
     "height": 177,
-    "bytes": 14849,
+    "bytes": 20749,
     "is_page_scan": false
    },
    {
@@ -7505,7 +7379,7 @@
     "index": 5,
     "width": 229,
     "height": 288,
-    "bytes": 24529,
+    "bytes": 30893,
     "is_page_scan": false
    },
    {
@@ -7514,16 +7388,7 @@
     "index": 6,
     "width": 360,
     "height": 284,
-    "bytes": 23423,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0114_01.png",
-    "page": 114,
-    "index": 1,
-    "width": 550,
-    "height": 447,
-    "bytes": 2620,
+    "bytes": 30704,
     "is_page_scan": false
    },
    {
@@ -7532,7 +7397,7 @@
     "index": 1,
     "width": 188,
     "height": 327,
-    "bytes": 16050,
+    "bytes": 20504,
     "is_page_scan": false
    },
    {
@@ -7541,7 +7406,7 @@
     "index": 1,
     "width": 420,
     "height": 317,
-    "bytes": 26081,
+    "bytes": 39760,
     "is_page_scan": false
    },
    {
@@ -7550,7 +7415,7 @@
     "index": 1,
     "width": 166,
     "height": 122,
-    "bytes": 8320,
+    "bytes": 11444,
     "is_page_scan": false
    },
    {
@@ -7559,7 +7424,7 @@
     "index": 2,
     "width": 182,
     "height": 172,
-    "bytes": 9540,
+    "bytes": 12903,
     "is_page_scan": false
    },
    {
@@ -7568,7 +7433,7 @@
     "index": 3,
     "width": 183,
     "height": 179,
-    "bytes": 8605,
+    "bytes": 11781,
     "is_page_scan": false
    },
    {
@@ -7577,7 +7442,7 @@
     "index": 4,
     "width": 166,
     "height": 101,
-    "bytes": 4795,
+    "bytes": 6355,
     "is_page_scan": false
    },
    {
@@ -7586,7 +7451,7 @@
     "index": 1,
     "width": 395,
     "height": 265,
-    "bytes": 58458,
+    "bytes": 66115,
     "is_page_scan": false
    },
    {
@@ -7595,52 +7460,7 @@
     "index": 1,
     "width": 312,
     "height": 348,
-    "bytes": 18155,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0124_02.png",
-    "page": 124,
-    "index": 2,
-    "width": 183,
-    "height": 136,
-    "bytes": 2230,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0124_03.png",
-    "page": 124,
-    "index": 3,
-    "width": 281,
-    "height": 104,
-    "bytes": 2042,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0124_04.png",
-    "page": 124,
-    "index": 4,
-    "width": 252,
-    "height": 106,
-    "bytes": 2003,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0124_05.png",
-    "page": 124,
-    "index": 5,
-    "width": 250,
-    "height": 134,
-    "bytes": 2370,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0124_06.png",
-    "page": 124,
-    "index": 6,
-    "width": 204,
-    "height": 107,
-    "bytes": 1321,
+    "bytes": 25235,
     "is_page_scan": false
    },
    {
@@ -7649,7 +7469,7 @@
     "index": 1,
     "width": 249,
     "height": 162,
-    "bytes": 15144,
+    "bytes": 19066,
     "is_page_scan": false
    },
    {
@@ -7658,7 +7478,7 @@
     "index": 2,
     "width": 242,
     "height": 161,
-    "bytes": 10545,
+    "bytes": 14758,
     "is_page_scan": false
    },
    {
@@ -7667,7 +7487,7 @@
     "index": 3,
     "width": 242,
     "height": 162,
-    "bytes": 20895,
+    "bytes": 26818,
     "is_page_scan": false
    },
    {
@@ -7676,7 +7496,7 @@
     "index": 4,
     "width": 247,
     "height": 165,
-    "bytes": 14305,
+    "bytes": 14881,
     "is_page_scan": false
    },
    {
@@ -7685,7 +7505,7 @@
     "index": 5,
     "width": 244,
     "height": 167,
-    "bytes": 12202,
+    "bytes": 19219,
     "is_page_scan": false
    },
    {
@@ -7694,7 +7514,7 @@
     "index": 1,
     "width": 487,
     "height": 276,
-    "bytes": 61623,
+    "bytes": 72139,
     "is_page_scan": false
    },
    {
@@ -7703,7 +7523,7 @@
     "index": 1,
     "width": 364,
     "height": 243,
-    "bytes": 30375,
+    "bytes": 35193,
     "is_page_scan": false
    },
    {
@@ -7712,7 +7532,7 @@
     "index": 1,
     "width": 119,
     "height": 136,
-    "bytes": 5298,
+    "bytes": 6893,
     "is_page_scan": false
    },
    {
@@ -7730,7 +7550,7 @@
     "index": 3,
     "width": 143,
     "height": 134,
-    "bytes": 6682,
+    "bytes": 7803,
     "is_page_scan": false
    },
    {
@@ -7739,7 +7559,7 @@
     "index": 4,
     "width": 137,
     "height": 133,
-    "bytes": 7633,
+    "bytes": 8942,
     "is_page_scan": false
    },
    {
@@ -7748,7 +7568,7 @@
     "index": 5,
     "width": 126,
     "height": 130,
-    "bytes": 7198,
+    "bytes": 7956,
     "is_page_scan": false
    },
    {
@@ -7757,7 +7577,7 @@
     "index": 6,
     "width": 118,
     "height": 118,
-    "bytes": 4481,
+    "bytes": 6568,
     "is_page_scan": false
    },
    {
@@ -7766,7 +7586,7 @@
     "index": 1,
     "width": 592,
     "height": 436,
-    "bytes": 104553,
+    "bytes": 115317,
     "is_page_scan": false
    },
    {
@@ -7775,7 +7595,7 @@
     "index": 1,
     "width": 262,
     "height": 176,
-    "bytes": 13966,
+    "bytes": 16879,
     "is_page_scan": false
    },
    {
@@ -7784,7 +7604,7 @@
     "index": 1,
     "width": 177,
     "height": 175,
-    "bytes": 10768,
+    "bytes": 11698,
     "is_page_scan": false
    },
    {
@@ -7793,7 +7613,7 @@
     "index": 1,
     "width": 419,
     "height": 347,
-    "bytes": 53783,
+    "bytes": 64434,
     "is_page_scan": false
    },
    {
@@ -7802,43 +7622,7 @@
     "index": 1,
     "width": 342,
     "height": 280,
-    "bytes": 40466,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0168_01.png",
-    "page": 168,
-    "index": 1,
-    "width": 522,
-    "height": 104,
-    "bytes": 2486,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0168_02.png",
-    "page": 168,
-    "index": 2,
-    "width": 460,
-    "height": 109,
-    "bytes": 2445,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0168_03.png",
-    "page": 168,
-    "index": 3,
-    "width": 313,
-    "height": 104,
-    "bytes": 2291,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0168_04.png",
-    "page": 168,
-    "index": 4,
-    "width": 493,
-    "height": 132,
-    "bytes": 2582,
+    "bytes": 49419,
     "is_page_scan": false
    },
    {
@@ -7847,7 +7631,7 @@
     "index": 1,
     "width": 205,
     "height": 188,
-    "bytes": 11075,
+    "bytes": 14821,
     "is_page_scan": false
    },
    {
@@ -7856,7 +7640,7 @@
     "index": 2,
     "width": 213,
     "height": 199,
-    "bytes": 13200,
+    "bytes": 17140,
     "is_page_scan": false
    },
    {
@@ -7865,7 +7649,7 @@
     "index": 1,
     "width": 527,
     "height": 349,
-    "bytes": 31805,
+    "bytes": 48813,
     "is_page_scan": false
    },
    {
@@ -7874,7 +7658,7 @@
     "index": 1,
     "width": 176,
     "height": 302,
-    "bytes": 19183,
+    "bytes": 24151,
     "is_page_scan": false
    },
    {
@@ -7883,7 +7667,7 @@
     "index": 1,
     "width": 894,
     "height": 337,
-    "bytes": 39311,
+    "bytes": 57400,
     "is_page_scan": false
    },
    {
@@ -7892,7 +7676,7 @@
     "index": 1,
     "width": 271,
     "height": 130,
-    "bytes": 7917,
+    "bytes": 10931,
     "is_page_scan": false
    },
    {
@@ -7901,7 +7685,7 @@
     "index": 2,
     "width": 203,
     "height": 130,
-    "bytes": 2689,
+    "bytes": 3750,
     "is_page_scan": false
    },
    {
@@ -7910,7 +7694,7 @@
     "index": 3,
     "width": 271,
     "height": 130,
-    "bytes": 8487,
+    "bytes": 11812,
     "is_page_scan": false
    },
    {
@@ -7919,7 +7703,7 @@
     "index": 4,
     "width": 203,
     "height": 130,
-    "bytes": 5940,
+    "bytes": 8446,
     "is_page_scan": false
    },
    {
@@ -7928,7 +7712,7 @@
     "index": 1,
     "width": 535,
     "height": 356,
-    "bytes": 132855,
+    "bytes": 143495,
     "is_page_scan": false
    },
    {
@@ -7937,7 +7721,7 @@
     "index": 1,
     "width": 853,
     "height": 569,
-    "bytes": 106527,
+    "bytes": 140851,
     "is_page_scan": false
    },
    {
@@ -7946,7 +7730,7 @@
     "index": 1,
     "width": 156,
     "height": 234,
-    "bytes": 11315,
+    "bytes": 13731,
     "is_page_scan": false
    },
    {
@@ -7955,7 +7739,7 @@
     "index": 2,
     "width": 102,
     "height": 107,
-    "bytes": 4321,
+    "bytes": 5037,
     "is_page_scan": false
    },
    {
@@ -7964,7 +7748,7 @@
     "index": 3,
     "width": 156,
     "height": 105,
-    "bytes": 5765,
+    "bytes": 7774,
     "is_page_scan": false
    },
    {
@@ -7973,7 +7757,7 @@
     "index": 4,
     "width": 156,
     "height": 161,
-    "bytes": 5928,
+    "bytes": 7778,
     "is_page_scan": false
    },
    {
@@ -7982,7 +7766,7 @@
     "index": 5,
     "width": 158,
     "height": 108,
-    "bytes": 4433,
+    "bytes": 5233,
     "is_page_scan": false
    },
    {
@@ -7991,214 +7775,70 @@
     "index": 1,
     "width": 259,
     "height": 397,
-    "bytes": 26651,
+    "bytes": 31514,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0200_02.png",
+    "path": "sources/images/advanced/p0200_02.jpg",
     "page": 200,
     "index": 2,
-    "width": 652,
-    "height": 377,
-    "bytes": 1294,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0200_03.png",
-    "page": 200,
-    "index": 3,
-    "width": 641,
-    "height": 364,
-    "bytes": 1242,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0200_04.jpg",
-    "page": 200,
-    "index": 4,
     "width": 183,
     "height": 219,
-    "bytes": 7098,
+    "bytes": 8657,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0200_05.jpg",
+    "path": "sources/images/advanced/p0200_03.jpg",
     "page": 200,
-    "index": 5,
+    "index": 3,
     "width": 183,
     "height": 146,
-    "bytes": 9656,
+    "bytes": 10520,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0200_06.png",
-    "page": 200,
-    "index": 6,
-    "width": 643,
-    "height": 366,
-    "bytes": 1256,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_01.png",
+    "path": "sources/images/advanced/p0201_01.jpg",
     "page": 201,
     "index": 1,
-    "width": 127,
-    "height": 127,
-    "bytes": 2308,
+    "width": 128,
+    "height": 128,
+    "bytes": 2463,
     "is_page_scan": false
    },
    {
     "path": "sources/images/advanced/p0201_02.png",
     "page": 201,
     "index": 2,
-    "width": 128,
-    "height": 106,
-    "bytes": 815,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_03.jpg",
-    "page": 201,
-    "index": 3,
-    "width": 128,
-    "height": 128,
-    "bytes": 1903,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_04.png",
-    "page": 201,
-    "index": 4,
     "width": 142,
     "height": 130,
     "bytes": 6859,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0201_05.png",
+    "path": "sources/images/advanced/p0201_03.png",
     "page": 201,
-    "index": 5,
-    "width": 144,
-    "height": 155,
-    "bytes": 324,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_06.png",
-    "page": 201,
-    "index": 6,
+    "index": 3,
     "width": 143,
     "height": 128,
     "bytes": 7773,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0201_07.jpg",
+    "path": "sources/images/advanced/p0201_04.jpg",
     "page": 201,
-    "index": 7,
+    "index": 4,
     "width": 142,
     "height": 145,
-    "bytes": 2404,
+    "bytes": 3107,
     "is_page_scan": false
    },
    {
-    "path": "sources/images/advanced/p0201_08.png",
+    "path": "sources/images/advanced/p0201_05.jpg",
     "page": 201,
-    "index": 8,
-    "width": 142,
-    "height": 135,
-    "bytes": 305,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_09.png",
-    "page": 201,
-    "index": 9,
-    "width": 142,
-    "height": 124,
-    "bytes": 280,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_10.png",
-    "page": 201,
-    "index": 10,
-    "width": 143,
-    "height": 138,
-    "bytes": 347,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_11.png",
-    "page": 201,
-    "index": 11,
-    "width": 143,
-    "height": 138,
-    "bytes": 347,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_12.jpg",
-    "page": 201,
-    "index": 12,
-    "width": 124,
-    "height": 146,
-    "bytes": 1395,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0201_13.jpg",
-    "page": 201,
-    "index": 13,
+    "index": 5,
     "width": 145,
     "height": 146,
-    "bytes": 3155,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0203_01.png",
-    "page": 203,
-    "index": 1,
-    "width": 421,
-    "height": 130,
-    "bytes": 2532,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0203_02.png",
-    "page": 203,
-    "index": 2,
-    "width": 291,
-    "height": 230,
-    "bytes": 2647,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0203_03.png",
-    "page": 203,
-    "index": 3,
-    "width": 304,
-    "height": 205,
-    "bytes": 2574,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0203_04.png",
-    "page": 203,
-    "index": 4,
-    "width": 232,
-    "height": 205,
-    "bytes": 2519,
-    "is_page_scan": false
-   },
-   {
-    "path": "sources/images/advanced/p0203_05.png",
-    "page": 203,
-    "index": 5,
-    "width": 404,
-    "height": 130,
-    "bytes": 2488,
+    "bytes": 4018,
     "is_page_scan": false
    },
    {
@@ -8207,7 +7847,7 @@
     "index": 1,
     "width": 213,
     "height": 250,
-    "bytes": 13729,
+    "bytes": 14990,
     "is_page_scan": false
    },
    {
@@ -8216,7 +7856,7 @@
     "index": 2,
     "width": 242,
     "height": 197,
-    "bytes": 6508,
+    "bytes": 7505,
     "is_page_scan": false
    },
    {
@@ -8225,7 +7865,7 @@
     "index": 3,
     "width": 376,
     "height": 244,
-    "bytes": 24054,
+    "bytes": 29028,
     "is_page_scan": false
    },
    {
@@ -8234,7 +7874,7 @@
     "index": 4,
     "width": 167,
     "height": 245,
-    "bytes": 9105,
+    "bytes": 12372,
     "is_page_scan": false
    },
    {
@@ -8243,7 +7883,7 @@
     "index": 5,
     "width": 185,
     "height": 167,
-    "bytes": 6591,
+    "bytes": 10460,
     "is_page_scan": false
    },
    {
@@ -8261,7 +7901,7 @@
     "index": 2,
     "width": 318,
     "height": 404,
-    "bytes": 31634,
+    "bytes": 36950,
     "is_page_scan": false
    },
    {
@@ -8270,10 +7910,10 @@
     "index": 3,
     "width": 313,
     "height": 402,
-    "bytes": 31370,
+    "bytes": 37462,
     "is_page_scan": false
    }
   ],
-  "skipped": 2934
+  "skipped": 2974
  }
 }

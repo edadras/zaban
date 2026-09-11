@@ -22,6 +22,9 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+import numpy as np
+from PIL import Image, ImageChops
+
 ROOT = Path('/home/user/zaban')
 OUT = ROOT / 'sources' / 'images'
 
@@ -37,6 +40,15 @@ MIN_W = MIN_H = 100
 # Ignore alpha masks; they are companions to a real image, not content themselves.
 SKIP_TYPES = {'smask', 'stencil'}
 
+# A spot illustration that barely varies is not an illustration. The Advanced
+# PDF draws its tinted panels and drop shadows as image objects big enough to
+# clear the threshold above, and twenty-four of them reached the app as LOOK
+# steps: a learner was shown a grey rectangle and asked to look at it. Page
+# scans are exempt - a nearly blank page is still the page, and the vision
+# fallback wants it.
+FLAT_STD = 12.0
+FLAT_COLOURS = 60
+
 
 def listing(pdf):
     out = subprocess.run(['pdfimages', '-list', str(pdf)],
@@ -51,6 +63,34 @@ def listing(pdf):
             'width': int(parts[3]), 'height': int(parts[4]),
         })
     return rows
+
+
+def looks_flat(path):
+    """Is this a panel or a shadow rather than a picture?"""
+    with Image.open(path) as im:
+        a = np.asarray(to_srgb(im)).astype(np.int16)
+    h, w, _ = a.shape
+    core = a[h // 8:h - h // 8 or None, w // 8:w - w // 8 or None]
+    if core.size == 0:
+        return True
+    colours = len(np.unique(core.reshape(-1, 3)[::7], axis=0))
+    return float(core.std()) < FLAT_STD and colours < FLAT_COLOURS
+
+
+def to_srgb(im):
+    """
+    An Adobe CMYK JPEG carries its channels inverted.
+
+    pdfimages hands these straight through, and nothing downstream can read
+    them: a browser will not decode Adobe CMYK at all, and a decoder that tries
+    renders the negative - the books' cartoon faces arrived as black skin and
+    glowing white hair. Inverting before the conversion is what the APP14
+    marker means.
+    """
+    if im.mode != 'CMYK':
+        return im.convert('RGB')
+
+    return ImageChops.invert(im).convert('RGB')
 
 
 def extract(book, pdf_rel):
@@ -85,12 +125,24 @@ def extract(book, pdf_rel):
         if (page, num) not in keep:
             f.unlink(missing_ok=True)
             continue
+        meta = next((r for r in rows if r['page'] == page and r['num'] == num), {})
+        page_scan = (meta.get('width', 0) >= 700 and meta.get('height', 0) >= 900)
+
+        if not page_scan and looks_flat(f):
+            f.unlink(missing_ok=True)
+            continue
+
         by_page[page] += 1
         idx = by_page[page]
         rel_name = f'p{page:04d}_{idx:02d}.{ext}'
         target = dest / rel_name
         f.rename(target)
-        meta = next((r for r in rows if r['page'] == page and r['num'] == num), {})
+
+        # Everything leaves here in sRGB, whatever the page held.
+        with Image.open(target) as im:
+            if im.mode == 'CMYK':
+                rgb = to_srgb(im)
+                rgb.save(target, 'JPEG', quality=92, subsampling=0)
         manifest.append({
             'path': f'sources/images/{book}/{rel_name}',
             'page': page,
@@ -99,7 +151,7 @@ def extract(book, pdf_rel):
             'height': meta.get('height'),
             'bytes': target.stat().st_size,
             # A scan covering most of the page is the page itself, not a spot illustration.
-            'is_page_scan': (meta.get('width', 0) >= 700 and meta.get('height', 0) >= 900),
+            'is_page_scan': page_scan,
         })
     shutil.rmtree(tmp, ignore_errors=True)
     return {'book': book, 'images': manifest, 'skipped': len(rows) - len(manifest)}

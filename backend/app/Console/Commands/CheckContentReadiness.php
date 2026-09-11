@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Exercise;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Checks whether the imported content can actually drive the platform described
@@ -121,6 +122,22 @@ class CheckContentReadiness extends Command
             ->join('lesson_blocks', 'lesson_blocks.lesson_id', '=', 'lessons.id')
             ->where('lesson_blocks.type', 'image_scene')->distinct()->count('lessons.id');
         $checks[] = ['lesson: has artwork', $withImage, $lessons, ''];
+
+        // A block is not artwork until the bytes are where its row says they
+        // are. Fifty lessons once passed the check above while showing an empty
+        // frame: the extractor had written the file into the working tree and
+        // nothing had put it on the disk the app reads from.
+        $artwork = DB::table('lesson_blocks')
+            ->join('media_assets', 'media_assets.id', '=', 'lesson_blocks.media_asset_id')
+            ->where('lesson_blocks.type', 'image_scene')
+            ->get(['lesson_blocks.id', 'media_assets.disk', 'media_assets.path']);
+
+        $onDisk = $artwork->filter(
+            fn ($row) => Storage::disk($row->disk ?: 'local')->fileExists($row->path),
+        )->count();
+
+        $checks[] = ['artwork: the file is on the disk its row names', $onDisk, $artwork->count(),
+            'a lesson shows an empty frame where the picture should be'];
 
         $pagesWithScan = DB::table('source_pages')->whereNotNull('page_image_media_asset_id')->count();
         $checks[] = ['source page: has a page image for vision fallback', $pagesWithScan,

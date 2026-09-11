@@ -88,8 +88,8 @@ affect unit resolution.
 | upper_int | 2/7869 (0.03%) | [99] |
 | advanced | 21/9174 (0.23%) | [1, 8, 9, 10, 24, 75] |
 
-Three known issues. The first two are routed to admin review rather than silently
-accepted; the third has been corrected.
+Four known issues. The first two are routed to admin review rather than silently
+accepted; the last two have been corrected.
 
 1. **10 unit titles (2.8%) could not be resolved** from the text layer. Those pages use
    a heading layout none of the four variants covers; they need page-image understanding
@@ -108,6 +108,21 @@ accepted; the third has been corrected.
    the old forward-only scan walked past because the scanner moves a margin column to
    the foot of the page. Migrations `..._000800` and `..._000900` carry the corrections
    and put the flashcards back in step with them.
+4. **40 tinted panels were being shown to learners as artwork, and 154 photographs
+   as negatives.** The Advanced book is a vector PDF: its panels and drop shadows are
+   image objects large enough to clear the extractor's size threshold, so a lesson
+   reached a LOOK step, asked the learner to look, and showed a blank grey box. Its
+   photographs are Adobe CMYK JPEGs, which store their channels inverted — a browser
+   will not decode that format at all, and a decoder that tries renders the negative.
+   `tools/extract_images.py` now rejects an image that barely varies (page scans
+   excepted — a nearly blank page is still the page) and writes everything in sRGB.
+   Migration `..._001000` brings the catalogue into line with the manifest that run
+   produced and, for the first time, copies the files onto the disk the app reads
+   from: 144 of these blocks had a row and no file behind it, because the extractor
+   writes into the working tree and nothing had ever carried the result across.
+   `content:import` now does that copy as a matter of course, and
+   `content:readiness` has a row for it, because the old artwork check counted blocks
+   rather than pictures and passed while fifty lessons showed an empty frame.
 
 Two defects found in the same review are **reported but not fixed**, because both are
 product decisions rather than extraction faults:

@@ -31,6 +31,7 @@ use App\Models\VocabularyItem;
 use App\Models\VocabularySense;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
@@ -877,6 +878,12 @@ class ImportCurriculum extends Command
             ->groupBy('source_page');
 
         foreach ($images as $img) {
+            // The extractor writes into the working tree; the media disk is
+            // where the app reads from. Without this step the row exists and
+            // the file does not, and the lesson shows an empty frame where the
+            // book's artwork should be.
+            $this->placeOnTheMediaDisk($img['path']);
+
             $media = MediaAsset::updateOrCreate(
                 ['disk' => 'local', 'path' => $img['path']],
                 [
@@ -914,6 +921,35 @@ class ImportCurriculum extends Command
                 $counts['image_blocks']++;
             }
         }
+    }
+
+    /**
+     * Copy an extracted file onto the disk the media assets are read from.
+     *
+     * `tools/extract_images.py` emits into `sources/images/` in the working
+     * tree, which is where the manifest points and where the audit reads from.
+     * The app reads the same relative path off the `local` disk, so the bytes
+     * have to be in both places; only the copy is skipped when it is already
+     * there, so a re-import stays cheap.
+     */
+    private function placeOnTheMediaDisk(string $path): void
+    {
+        if (Storage::disk('local')->fileExists($path)) {
+            return;
+        }
+
+        $source = base_path('..').'/'.$path;
+        if (! is_file($source)) {
+            return;
+        }
+
+        $handle = fopen($source, 'rb');
+        if ($handle === false) {
+            return;
+        }
+
+        Storage::disk('local')->writeStream($path, $handle);
+        fclose($handle);
     }
 
     /** Register every mp3 in the book's inventory, mapped or not. */
