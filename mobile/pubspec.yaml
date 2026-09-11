@@ -83,7 +83,26 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-  # Fonts are intentionally not bundled: the theme falls back to the platform UI
-  # font unless a family is supplied (see README "Typography").
   assets:
     - assets/
+  # One bundled family, and only as a last resort.
+  #
+  # On a phone the theme still uses the platform's own UI font - that is the
+  # intent and it has not changed. The web build has no platform font at all:
+  # CanvasKit carries none and downloads Roboto from fonts.gstatic.com, so on a
+  # network that cannot reach Google - which is most of the audience this app
+  # is written for - every label, heading and button rendered as nothing at
+  # all. The app drew its cards and its buttons and said not one word.
+  #
+  # Vazirmatn sits at the end of both fallback lists in ZabanTypography: unused
+  # wherever a real UI font exists, and the reason the web build has words
+  # where it does not. Persian and Latin in one face, SIL OFL, ~360KB.
+  fonts:
+    - family: Vazirmatn
+      fonts:
+        - asset: assets/fonts/Vazirmatn-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Vazirmatn-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Vazirmatn-Bold.ttf
+          weight: 700

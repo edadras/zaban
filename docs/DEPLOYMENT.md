@@ -174,6 +174,33 @@ timeout so an in-flight job finishes rather than being killed mid-write.
 
 ---
 
+### The web client reaches no third-party host
+
+Worth stating because it was not true until it was tested, and the failure was
+silent in both halves.
+
+A Flutter web build, left alone, fetches two things from Google at runtime: the
+CanvasKit renderer from `gstatic.com`, and the Roboto typeface from
+`fonts.gstatic.com`. Neither failure produces an error a user could act on.
+Without the renderer the page stays blank - there is nothing loaded that could
+draw a message. With the renderer but without the font, the app draws its
+cards, its fields and its buttons and renders not one character of text.
+
+For learners in Iran that is not an edge case, it is the common case. So:
+
+- `web/flutter_bootstrap.js` sets `canvasKitBaseUrl` to the copy already inside
+  the build, and
+- one font family (Vazirmatn, SIL OFL, Persian and Latin) is bundled in
+  `assets/fonts/` and sits last in both fallback lists in `ZabanTypography`.
+
+On a phone neither is reached: the platform's own renderer and font win, and
+the app looks exactly as it did. Both are pinned by
+`mobile/test/core/theme/web_typography_test.dart`, because an unused font is
+exactly the kind of thing that gets tidied away by someone testing on a phone.
+
+If a future build adds a third-party URL, load the deployed site once with the
+network policy your learners have, not the one you have.
+
 ## 4. Database migration
 
 ```bash

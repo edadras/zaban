@@ -14,13 +14,25 @@ class ZabanTypography {
   /// pass its name here to override the whole scale at once — see the README.
   static const String? fontFamily = null;
 
+  /// The platform's own faces first, and the one face we ship last.
+  ///
+  /// [bundledFamily] is never reached on a phone: SF Pro or Roboto resolves
+  /// long before it. It exists for the web build, which has no platform font
+  /// whatsoever - CanvasKit carries none and fetches Roboto from Google - and
+  /// so rendered the entire interface without a single visible character on
+  /// any network that could not reach gstatic.com.
   static const List<String> fontFamilyFallback = <String>[
     'SF Pro Display',
     'Inter',
     'Roboto',
     'Segoe UI',
     'Noto Sans',
+    bundledFamily,
   ];
+
+  /// The one family bundled with the app; see `pubspec.yaml`. Persian and
+  /// Latin in one face, which is what this audience needs from a last resort.
+  static const String bundledFamily = 'Vazirmatn';
 
   /// The face the *language* is set in, as opposed to the interface.
   ///
@@ -39,6 +51,11 @@ class ZabanTypography {
   /// generic mapping is poor.
   static const String readingFamily = 'serif';
 
+  /// Ends in the bundled sans on purpose.
+  ///
+  /// Prose wants a serif and gets one wherever the platform has one. The web
+  /// build has neither a serif nor a sans of its own, and prose set in the
+  /// bundled sans is a small loss next to prose that does not appear.
   static const List<String> readingFamilyFallback = <String>[
     'New York',
     'Charter',
@@ -46,6 +63,7 @@ class ZabanTypography {
     'Noto Serif',
     'Source Serif 4',
     'Times New Roman',
+    bundledFamily,
   ];
 
   /// Long-form text, at the size and leading prose needs.

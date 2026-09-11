@@ -17,7 +17,15 @@ function _zabanWebGlOk() {
   }
 }
 
-var _zabanConfig = {};
+// Draw with the renderer bundled in this build, not the copy on Google's CDN.
+//
+// `flutter build web` ships CanvasKit into `canvaskit/` and then fetches it
+// from gstatic.com anyway unless it is told otherwise. For learners in Iran
+// that is not a detail: a network that cannot reach gstatic - and many cannot
+// - gets a blank page and no error at all, because the renderer never arrives
+// and there is nothing left to draw the error with. The local copy is already
+// in the build, costs no extra download, and works behind the service worker.
+var _zabanConfig = { canvasKitBaseUrl: "canvaskit/" };
 if (!_zabanWebGlOk()) {
   _zabanConfig.canvasKitForceCpuOnly = true;
 }
