@@ -8,6 +8,8 @@
  * which is a truer mouth than a timer guessing at syllables, and it works for a
  * recorded human voice as well as a rendered one.
  */
+import { visemeFor } from '../speaker/mouth.js';
+
 export class Voice {
     constructor() {
         this.audio = null;
@@ -191,11 +193,10 @@ export class Voice {
      * claim to be a viseme track.
      */
     shape() {
-        if (!this.speaking) return 'sil';
-        if (this.level > 0.62) return 'aa';
-        if (this.level > 0.38) return 'E';
-        if (this.level > 0.18) return 'oh';
-        return 'PP';
+        // Shared with the standalone speaker, so a coach's avatar and a
+        // character in a scene cannot end up moving their mouths differently
+        // for the same sound.
+        return this.speaking ? visemeFor(this.level) : 'sil';
     }
 
     get analysing() {

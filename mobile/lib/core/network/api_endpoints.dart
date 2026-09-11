@@ -80,6 +80,16 @@ class ApiEndpoints {
   static String examTaskResponse(int attemptId, int taskId) =>
       '/exams/attempts/$attemptId/tasks/$taskId/response';
   static String examFinish(int attemptId) => '/exams/attempts/$attemptId/finish';
+
+  /// The AI examiner's interview: one question at a time, with the clocks the
+  /// real test runs on. Separate from the task flow because a speaking section
+  /// is a conversation rather than a form.
+  static String examSpeaking(int attemptId) =>
+      '/exams/attempts/$attemptId/speaking';
+  static String examSpeakingResponse(int attemptId) =>
+      '/exams/attempts/$attemptId/speaking/response';
+  static String examSpeakingScore(int attemptId) =>
+      '/exams/attempts/$attemptId/speaking/score';
   static String examResults(int attemptId) =>
       '/exams/attempts/$attemptId/results';
   static const String examProgress = '/exams/progress';

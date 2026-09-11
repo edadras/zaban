@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zaban/features/lesson/data/models/exercise.dart';
 import 'package:zaban/features/lesson/data/models/media_ref.dart';
+import 'package:zaban/features/lesson/data/models/speaker_ref.dart';
 
 part 'lesson_block.freezed.dart';
 part 'lesson_block.g.dart';
@@ -30,6 +31,10 @@ abstract class LessonBlock with _$LessonBlock {
     Exercise? exercise,
     MediaRef? media,
     MediaRef? audio,
+
+    /// The talking figure for this block, when one is worth showing. Sent by
+    /// the server on the blocks where hearing a line said is the exercise.
+    SpeakerRef? speaker,
     @Default(60) int estimatedSeconds,
     @Default(false) bool isOptional,
   }) = _LessonBlock;

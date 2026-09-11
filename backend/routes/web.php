@@ -12,6 +12,7 @@ use App\Http\Controllers\Panel\RoomController;
 use App\Http\Controllers\Panel\SceneReviewController;
 use App\Http\Controllers\Panel\SchoolController;
 use App\Http\Controllers\Scene\ScenePlayController;
+use App\Http\Controllers\Speaker\SpeakerShowController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('panel.login'));
@@ -175,3 +176,14 @@ Route::prefix('scene')->name('scene.')->group(function () {
     Route::post('{session}/answer', [ScenePlayController::class, 'answer'])->name('answer');
     Route::post('{session}/finish', [ScenePlayController::class, 'finish'])->name('finish');
 });
+
+/*
+ * One person, talking.
+ *
+ * The same cast and the same signed-link arrangement as the scene player, with
+ * the room taken away. A lesson uses it for the speaker whose recording is
+ * about to be repeated, the speaking exam for the examiner sitting opposite,
+ * and a class for a coach with their camera off - three places that all wanted
+ * a face that moves when there is sound, and now share one.
+ */
+Route::get('speaker/{character}', SpeakerShowController::class)->name('speaker.show');

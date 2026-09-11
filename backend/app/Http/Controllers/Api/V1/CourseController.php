@@ -6,12 +6,14 @@ use App\Models\Course;
 use App\Models\Lesson;
 use App\Models\Unit;
 use App\Services\Media\MediaPresenter;
+use App\Support\SpeakerLink;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CourseController extends ApiController
 {
     public function __construct(private MediaPresenter $media) {}
+
     public function index(Request $request)
     {
         $courses = Course::with(['fromLevel', 'toLevel'])
@@ -124,6 +126,10 @@ class CourseController extends ApiController
                 'audio' => $this->media->presentId(
                     $b->config['audio_media_asset_id'] ?? null,
                 ),
+                // A face for the voice, on the blocks where seeing a mouth is
+                // the point. Null everywhere else, and the client shows the
+                // block exactly as it did before.
+                'speaker' => SpeakerLink::forBlock($b),
                 'exercise_id' => $b->exercise_id,
                 'estimated_seconds' => $b->estimated_seconds,
                 'is_optional' => (bool) $b->is_optional,

@@ -18,6 +18,7 @@ import {
     VideoPresets,
 } from 'livekit-client';
 import Echo from 'laravel-echo';
+import * as avatars from './room-avatars.js';
 import Pusher from 'pusher-js';
 
 const config = window.__ROOM__;
@@ -955,6 +956,11 @@ async function connectMedia() {
                         ?.querySelector('video')?.classList.remove('opacity-40');
                 }
             })
+            .on(RoomEvent.ActiveSpeakersChanged, (speakers) => {
+                // The server's view of who is talking, not our own guess at
+                // it: a muted microphone must never move a mouth.
+                avatars.setActiveSpeakers(speakers);
+            })
             .on(RoomEvent.ParticipantDisconnected, () => pruneTiles())
             .on(RoomEvent.LocalTrackPublished, (publication) => {
                 if (publication.track) attach(publication.track, room.localParticipant.identity, true);
@@ -1145,6 +1151,12 @@ function attach(track, identity, isLocal = false) {
         tile.append(element);
     }
 
+    /*
+     * A face for whoever has no camera. Nobody with video gets one, so the
+     * renderer is never downloaded in a class where everybody is on camera.
+     */
+    avatars.updateAvatar(tile, identity, track, { isLocal }).catch(() => {});
+
     layoutTiles();
 }
 
@@ -1152,6 +1164,14 @@ function pruneTiles() {
     el.tiles.querySelectorAll('[data-identity]').forEach((tile) => {
         if (!tile.querySelector('video, audio')) tile.remove();
     });
+
+    // A figure outlives nothing: whoever has left takes theirs with them, and
+    // a renderer left running in a detached node is a leak that lasts as long
+    // as the class does.
+    avatars.prune(
+        [...el.tiles.querySelectorAll('[data-identity]')].map((tile) => tile.dataset.identity),
+    );
+
     layoutTiles();
 }
 

@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\ConversationScenario;
 use App\Models\Exercise;
 use App\Models\LearningSession;
+use App\Models\LessonBlock;
 use App\Models\SessionActivity;
 use App\Services\Learning\AdaptiveLearningService;
 use App\Services\Learning\ProgressService;
 use App\Services\Learning\SessionShape;
 use App\Services\Learning\SpacedRepetitionService;
 use App\Services\Media\MediaPresenter;
+use App\Support\SpeakerLink;
 use Illuminate\Http\Request;
 
 /**
@@ -221,13 +224,13 @@ class SessionController extends ApiController
     private function estimateSeconds($activities): int
     {
         $blockIds = $activities
-            ->where('subject_type', \App\Models\LessonBlock::class)
+            ->where('subject_type', LessonBlock::class)
             ->pluck('subject_id')
             ->filter();
 
         $blockSeconds = $blockIds->isEmpty()
             ? 0
-            : (int) \App\Models\LessonBlock::whereIn('id', $blockIds)->sum('estimated_seconds');
+            : (int) LessonBlock::whereIn('id', $blockIds)->sum('estimated_seconds');
 
         $questions = $activities->count() - $blockIds->count();
 
@@ -258,7 +261,7 @@ class SessionController extends ApiController
                     // Correctness is never sent to the client - grading is server-side.
                     ->map(fn ($o) => ['id' => $o->id, 'position' => $o->position, 'text' => $o->text])->values(),
             ],
-            \App\Models\LessonBlock::class => [
+            LessonBlock::class => [
                 'kind' => 'lesson_block',
                 'id' => $subject->id,
                 'type' => $subject->type,
@@ -273,9 +276,12 @@ class SessionController extends ApiController
                 'audio' => $this->media->presentId(
                     $subject->config['audio_media_asset_id'] ?? null,
                 ),
+                // Same block, same face, whether it is reached through the
+                // lesson or served as the next thing in a session.
+                'speaker' => SpeakerLink::forBlock($subject),
                 'estimated_seconds' => $subject->estimated_seconds,
             ],
-            \App\Models\ConversationScenario::class => [
+            ConversationScenario::class => [
                 'kind' => 'conversation_scenario',
                 'id' => $subject->id,
                 'title' => $subject->title,

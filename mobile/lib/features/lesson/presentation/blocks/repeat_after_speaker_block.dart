@@ -8,6 +8,7 @@ import 'package:zaban/features/lesson/data/models/media_ref.dart';
 import 'package:zaban/features/lesson/presentation/blocks/block_scope.dart';
 import 'package:zaban/features/lesson/presentation/widgets/audio_player_button.dart';
 import 'package:zaban/features/lesson/presentation/widgets/block_frame.dart';
+import 'package:zaban/features/lesson/presentation/widgets/speaker_view.dart';
 
 /// `repeat_after_speaker` — hear the reference, then say it.
 ///
@@ -48,6 +49,20 @@ class RepeatAfterSpeakerBlock extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          /*
+           * The speaker, where the server offered one and the platform can
+           * draw it. For a pronunciation drill this is not decoration: seeing
+           * the mouth is half of what the learner is copying, and it is the
+           * one place in the product where a moving figure teaches something
+           * the audio alone does not.
+           *
+           * The plain audio button stays underneath either way, so a learner
+           * on a slow connection or a desktop still does the exercise.
+           */
+          if (block.speaker != null && speakerIsShowable) ...<Widget>[
+            SpeakerView(speaker: block.speaker!),
+            const SizedBox(height: Spacing.lg),
+          ],
           if (audioUrl != null)
             Center(child: AudioPlayerButton(
               url: audioUrl,

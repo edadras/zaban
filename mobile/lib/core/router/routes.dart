@@ -46,6 +46,9 @@ enum AppRoute {
   examAttempt('/exam/attempt/:attemptId', 'examAttempt'),
   examResult('/exam/result/:attemptId', 'examResult'),
 
+  /// The speaking test, run as an interview rather than a form.
+  examInterview('/exam/attempt/:attemptId/speaking', 'examInterview'),
+
   plans('/plans', 'plans'),
   manualRialPay('/plans/rial/:planCode', 'manualRialPay'),
 
@@ -79,6 +82,8 @@ enum AppRoute {
   String scenePath(int sessionId) => '/conversation/scenes/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';
   String examResultPath(int attemptId) => '/exam/result/$attemptId';
+  String examInterviewPath(int attemptId) =>
+      '/exam/attempt/$attemptId/speaking';
   String manualRialPayPath(String planCode) => '/plans/rial/$planCode';
   String adminUserPath(int userId) => '/admin/users/$userId';
 }

@@ -3,6 +3,7 @@ import 'package:zaban/core/network/api_client.dart';
 import 'package:zaban/core/network/api_endpoints.dart';
 import 'package:zaban/core/network/network_providers.dart';
 import 'package:zaban/features/exam/data/models/exam_models.dart';
+import 'package:zaban/features/exam/data/models/interview_models.dart';
 
 /// Exam preparation.
 ///
@@ -85,6 +86,25 @@ class ExamRepository {
   Future<ExamResult> results(int attemptId) => _client.get(
         ApiEndpoints.examResults(attemptId),
         decode: Decode.object(ExamResult.fromJson),
+      );
+
+  // -------------------------------------------------- the speaking interview
+
+  /// The next thing the examiner says, with the clocks that go with it.
+  Future<ExamInterview> interview(int attemptId) => _client.get(
+        ApiEndpoints.examSpeaking(attemptId),
+        decode: Decode.object(ExamInterview.fromJson),
+      );
+
+  /// Hand over one recorded answer and get the next turn back.
+  ///
+  /// The recording is uploaded through the speech feature first; the exam only
+  /// ever sees the id of the stored attempt, so there is one upload path in the
+  /// product rather than two.
+  Future<ExamInterview> answer(int attemptId, int speechAttemptId) => _client.post(
+        ApiEndpoints.examSpeakingResponse(attemptId),
+        body: <String, dynamic>{'speech_attempt_id': speechAttemptId},
+        decode: Decode.object(ExamInterview.fromJson),
       );
 }
 

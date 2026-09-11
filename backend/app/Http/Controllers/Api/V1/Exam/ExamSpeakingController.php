@@ -6,6 +6,7 @@ use App\Http\Requests\Api\Exam\SubmitSpeakingResponseRequest;
 use App\Models\ExamAttempt;
 use App\Services\Exam\AiExaminerService;
 use App\Services\Exam\ExamEstimate;
+use App\Support\SpeakerLink;
 use Illuminate\Http\Request;
 
 /**
@@ -51,6 +52,32 @@ class ExamSpeakingController extends ExamController
             'section_attempt_id' => $sectionAttempt?->id,
             'section' => $sectionAttempt?->section?->code,
             'estimate' => ExamEstimate::label(aiEstimated: true),
+            'examiner' => $this->examinerFor($state),
         ];
+    }
+
+    /**
+     * The examiner, sitting opposite, for as long as the interview is running.
+     *
+     * What a candidate has to rehearse is not the questions - those are on the
+     * screen already - it is being looked at while they answer. A face that
+     * waits through a pause is the part of a speaking test that a text box
+     * cannot practise, and it is the same examiner they met in the two exam
+     * scenes in conversation practice, so the room is at least familiar.
+     *
+     * Silent unless the question has a recording behind it. A figure mouthing
+     * along to nothing would be a claim about speech that is not being made;
+     * the question stays on screen and under their chin either way.
+     *
+     * @param  array<string, mixed>  $state
+     * @return array{url: string, expires_in: int}|null
+     */
+    private function examinerFor(array $state): ?array
+    {
+        if (($state['complete'] ?? false) || ! isset($state['question'])) {
+            return null;
+        }
+
+        return SpeakerLink::examiner(null, (string) $state['question']);
     }
 }

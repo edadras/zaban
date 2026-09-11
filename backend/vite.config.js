@@ -18,6 +18,11 @@ export default defineConfig({
                 // renderer that no other page should have to download.
                 'resources/css/scene.css',
                 'resources/js/scene/main.js',
+                // One talking figure, shared by lessons, the speaking exam and
+                // a coach with no camera. Its own bundle for the same reason:
+                // it carries the renderer and the rig loader.
+                'resources/css/speaker.css',
+                'resources/js/speaker/main.js',
             ],
             refresh: true,
             fonts: [

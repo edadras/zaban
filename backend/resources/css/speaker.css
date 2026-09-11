@@ -1,0 +1,100 @@
+/*
+ * The standalone speaker.
+ *
+ * A figure, a line and a button, sized to be dropped into whatever box the host
+ * gives it: a strip inside a lesson card, a panel beside an exam question, a
+ * tile in a classroom. So it has no page chrome of its own and no fixed height
+ * - it fills its frame and the host decides how big that is.
+ *
+ * Written by hand for the same reason the scene player is: it loads on its own
+ * inside the app and must not drag the website's stylesheet with it.
+ */
+
+:root {
+    --speaker-ink: #f2f5f8;
+    --speaker-dim: #a5b1c0;
+    --speaker-bg: #10131a;
+    --speaker-edge: #262d3c;
+    --speaker-accent: #6ea8ff;
+}
+
+* { box-sizing: border-box; }
+
+/* A `display` of any kind beats the `hidden` attribute; the note below would
+   otherwise sit on the page from the moment it loaded. */
+[hidden] { display: none !important; }
+
+html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--speaker-bg);
+    color: var(--speaker-ink);
+    font-family: Vazirmatn, 'Segoe UI', system-ui, sans-serif;
+}
+
+.speaker {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+}
+
+/* The figure takes whatever is left after the words, and never less than a
+   face: below this the head is too small to read a mouth on. */
+.speaker-stage {
+    flex: 1 1 auto;
+    min-height: 140px;
+    position: relative;
+}
+
+.speaker-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.speaker-words {
+    padding: 0.75rem 1rem 0;
+    text-align: center;
+}
+
+/* The English line reads left to right inside a right-to-left page: a sentence
+   a learner is about to say has to look the way they will meet it. */
+.speaker-caption {
+    direction: ltr;
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.speaker-note {
+    margin: 0.5rem 0 0;
+    color: var(--speaker-dim);
+    font-size: 0.85rem;
+}
+
+.speaker-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem 1rem;
+}
+
+.speaker-controls button {
+    font: inherit;
+    color: var(--speaker-ink);
+    background: #1b2230;
+    border: 1px solid var(--speaker-edge);
+    border-radius: 999px;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+}
+
+.speaker-controls button:hover { border-color: var(--speaker-accent); }
+
+.speaker-controls .is-primary {
+    background: var(--speaker-accent);
+    border-color: var(--speaker-accent);
+    color: #0b1220;
+    font-weight: 600;
+}

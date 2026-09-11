@@ -193,6 +193,50 @@ The trade, stated: the link is good for one run of one scene until it expires,
 and anyone holding it can play that scene as that learner. It authorises nothing
 else, and it is the same trade the signed media links already make.
 
+## One person, talking
+
+The scenes put two people in a room. Three other places wanted one person and
+no room at all, and the interesting thing is that they wanted the same one:
+
+- a lesson's **repeat-after-speaker** drill, where seeing the mouth is half of
+  what the learner is copying;
+- the **speaking exam**, where what has to be rehearsed is being looked at
+  while you answer;
+- a **live class**, where a coach with their camera off is otherwise a name on
+  a black rectangle.
+
+So `resources/js/speaker/` is the acted-scene rig with the room taken away: one
+character from the same `cast.glb`, framed head and shoulders, with its mouth
+moved by whatever is making the sound. `mouth.js` holds the amplitude-to-viseme
+mapping and the scene player now imports it too, so a coach's avatar and a
+character in a scene cannot drift into moving their mouths differently for the
+same sound.
+
+Reached the same way as the player: `SpeakerLink` mints a short-lived signed
+link naming one character, at most one audio asset and a window inside it. The
+window matters more than it looks - the course's audio is one track per
+exercise, so a figure handed the whole file says its line and then stands in
+silence for the rest of the recording.
+
+Three callers, differing only in where the sound comes from:
+
+| Caller | Character | Sound |
+|---|---|---|
+| `repeat_after_speaker`, `listen_and_choose` | `speaker.presenter` | the block's recording, windowed |
+| the speaking interview | `speaker.examiner` | the question, when one has been rendered |
+| a coach with no camera | `speaker.coach` | their live microphone track |
+
+The third is the only one that does not use the signed page: the classroom
+console imports the stage directly, and does it with a dynamic `import()` so a
+class where everybody has a camera on never downloads a 3D renderer at all.
+
+Two rules it keeps, because breaking either would make it a liar. A figure is
+only offered where a face is the point - a reading passage does not get one.
+And the mouth only moves to sound that is really there: a block with no
+recording gets no speaker, the examiner is silent unless the question has been
+voiced, and a coach's avatar is driven by the server's view of who is speaking
+rather than by loudness, so a muted microphone can never mouth along.
+
 ## Proving the player works
 
 The PHP suite covers the server: what it accepts, how it grades, what it

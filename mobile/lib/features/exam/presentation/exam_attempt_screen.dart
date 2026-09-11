@@ -195,6 +195,10 @@ class _ExamAttemptScreenState extends ConsumerState<ExamAttemptScreen> {
                               recording: _recording,
                               recordings: _speechAttemptIds.length,
                               onToggle: _toggleRecording,
+                              onInterview: () => context.push(
+                                AppRoute.examInterview
+                                    .examInterviewPath(widget.attemptId),
+                              ),
                             ),
                           const SizedBox(height: Spacing.xl),
                           GlowButton(
@@ -380,11 +384,18 @@ class _SpeakingTask extends StatelessWidget {
     required this.recording,
     required this.recordings,
     required this.onToggle,
+    this.onInterview,
   });
 
   final bool recording;
   final int recordings;
   final VoidCallback onToggle;
+
+  /// Sit the test as the examiner actually runs it, rather than attaching
+  /// recordings to a form. Offered rather than forced: the interview needs a
+  /// working microphone and a quiet few minutes, and a candidate who has
+  /// neither should still be able to finish the section.
+  final VoidCallback? onInterview;
 
   @override
   Widget build(BuildContext context) {
@@ -404,6 +415,15 @@ class _SpeakingTask extends StatelessWidget {
             size: GlowButtonSize.large,
             onPressed: onToggle,
           ),
+          if (onInterview != null && !recording) ...<Widget>[
+            const SizedBox(height: Spacing.sm),
+            GlowButton(
+              label: context.t('Sit it as an interview'),
+              icon: Icons.record_voice_over_outlined,
+              variant: GlowButtonVariant.ghost,
+              onPressed: onInterview,
+            ),
+          ],
           if (recordings > 0) ...<Widget>[
             const SizedBox(height: Spacing.md),
             Text(

@@ -33,6 +33,7 @@ import 'package:zaban/features/conversation/presentation/scene_player_screen.dar
 import 'package:zaban/features/conversation/presentation/scenes_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_attempt_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_home_screen.dart';
+import 'package:zaban/features/exam/presentation/exam_interview_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_result_screen.dart';
 import 'package:zaban/features/home/presentation/home_screen.dart';
 import 'package:zaban/features/home/presentation/session/session_runner_screen.dart';
@@ -267,6 +268,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         name: AppRoute.examAttempt.name,
         builder: (BuildContext context, GoRouterState state) =>
             ExamAttemptScreen(
+          attemptId: int.parse(state.pathParameters['attemptId']!),
+        ),
+      ),
+      GoRoute(
+        path: AppRoute.examInterview.path,
+        name: AppRoute.examInterview.name,
+        builder: (BuildContext context, GoRouterState state) =>
+            ExamInterviewScreen(
           attemptId: int.parse(state.pathParameters['attemptId']!),
         ),
       ),
