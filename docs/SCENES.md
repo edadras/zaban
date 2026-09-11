@@ -84,7 +84,7 @@ cast member has a fixed `characters.voice_id`, so a character sounds the same
 across every scene they appear in, the way they already look the same across
 every illustration.
 
-The eight scenes that ship are voiced this way and their audio is in the
+The thirteen scenes that ship are voiced this way and their audio is in the
 repository under `sources/audio/scenes/`, so a fresh installation has scenes
 that speak rather than scenes that have to be voiced before anyone can use them.
 `scene:voice --from-disk` re-attaches those files after a reseed.
@@ -95,13 +95,14 @@ Nothing is modelled before it is drawn. Each situation gets a production visual
 bible - a single wide board carrying the two characters as full-body turnarounds
 with three facial studies each, the room as an isometric cutaway, and the
 reusable props - and the 3D is built to match it. `sources/boards/` holds the
-eight, one per scene, generated on the studio account.
+eight, one per situation drawn from scratch; the five later scenes reuse the
+rooms and cast those boards settled rather than inventing new ones.
 
 The order matters more than it looks. A board is one image and costs a minute;
 a rig is an afternoon. Settling what Aiko wears, how tall the room is and what
 is on the walls while it is still a picture means the modelling has an answer to
-work to instead of a series of guesses, and the eight scenes end up looking like
-one production rather than eight.
+work to instead of a series of guesses, and the scenes end up looking like one
+production rather than a set of unrelated ones.
 
 The boards are also the record. When a colour or a garment is wrong in the 3D,
 the board says what it should have been.
@@ -176,9 +177,9 @@ phonetics: loud is open, quiet is nearly closed. It reads correctly at
 conversational distance and is not a viseme track, and the interface does not
 claim otherwise.
 
-Eight situations share one room in different palettes with different furniture.
-That is a limit worth stating plainly: these are recognisable spaces, not eight
-modelled interiors.
+Thirteen situations share eight rooms, each in its own palette with its own
+furniture. That is a limit worth stating plainly: these are recognisable spaces,
+not thirteen modelled interiors.
 
 ### How the page is reached
 
@@ -191,6 +192,32 @@ and every call the page makes carries the same signature.
 The trade, stated: the link is good for one run of one scene until it expires,
 and anyone holding it can play that scene as that learner. It authorises nothing
 else, and it is the same trade the signed media links already make.
+
+## What ships
+
+Thirteen scenes, spread across the levels and tied to the roleplay scenario the
+learner already sees in conversation practice.
+
+| Slug | Situation | Scenario | Level | Room |
+|---|---|---|---|---|
+| `cafe-catching-up` | Catching up with a friend | catching-up | A2 | cafe |
+| `hotel-check-in` | Checking in at the hotel | hotel-check-in | A2 | hotel |
+| `restaurant-ordering` | Ordering a meal | restaurant | A2 | restaurant |
+| `shop-faulty-return` | Taking something back | shopping-return | A2 | shop |
+| `airport-lost-luggage` | Lost luggage | airport-lost-luggage | B1 | airport |
+| `clinic-sore-throat` | At the doctor: a sore throat | doctor-appointment | B1 | clinic |
+| `phone-broadband-fault` | Phoning about a fault | phone-enquiry | B1 | office |
+| `travel-booking` | Booking a trip | booking-travel | B1 | office |
+| `classroom-extension` | Asking for an extension | university-tutor | B2 | classroom |
+| `exam-speaking-discussion` | Speaking exam: the discussion | exam-interview | B2 | classroom |
+| `exam-speaking-interview` | Speaking exam: the interview | exam-interview | B2 | classroom |
+| `meeting-status-update` | Giving an update in a meeting | team-meeting | B2 | office |
+| `office-job-interview` | A job interview | job-interview | B2 | office |
+
+The two exam scenes are the speaking test itself, in its own order: the warm-up
+questions, the long turn off a task card, and the discussion that follows. They
+are graded like any other scene, so a candidate can sit the shape of the test
+before they sit the test.
 
 ## Adding a scene
 
