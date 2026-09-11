@@ -193,6 +193,31 @@ The trade, stated: the link is good for one run of one scene until it expires,
 and anyone holding it can play that scene as that learner. It authorises nothing
 else, and it is the same trade the signed media links already make.
 
+## Proving the player works
+
+The PHP suite covers the server: what it accepts, how it grades, what it
+withholds. That is only half of it, and the half that cannot see the page.
+
+`npm test` in `backend/` runs the player's own tests on Node's built-in runner -
+no extra dependency, no browser. Two modules are worth testing this way because
+they are pure: `SceneApi`, which decides what goes on the wire, and `Director`,
+which decides what happens next. Both had a fault the server-side tests were
+structurally unable to catch, because those tests build the request themselves
+and so only ever proved the server right about a body the page never sent:
+
+- the answer endpoint was called without `beat_id`, so every answer came back
+  422 - a scene that played perfectly and could not be answered;
+- a rejected answer cleared the beat being waited on, so the learner's second
+  try was handed to nobody and the scene stopped dead on a turn it would never
+  take again.
+
+Beyond that, the scenes are driven in a real browser: each one loaded through
+its signed link, played from the first line to the debrief, with every learner
+turn answered - deliberately wrong first, to exercise the grading - and the
+three-try reveal taken in full on one of them. That run is what a release should
+be judged on, because it is the only thing that exercises the bundle, the kit,
+the audio and the endpoints together.
+
 ## What ships
 
 Thirteen scenes, spread across the levels and tied to the roleplay scenario the

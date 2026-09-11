@@ -141,7 +141,7 @@ class ScenePlayer {
             stage: (beat) => this.stageBeat(beat),
             rest: () => this.restCharacters(),
             onLine: (beat) => this.ui.line(beat, this.names[beat.role]),
-            onTurn: (beat) => this.ui.turn(beat),
+            onTurn: (beat, again) => this.ui.turn(beat, again),
             onPlaying: (on) => this.ui.playing(on),
             onIdle: () => this.ui.playing(false),
             onComplete: () => this.finish(),

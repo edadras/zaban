@@ -11,8 +11,15 @@ export class SceneApi {
         this.endpoints = endpoints;
     }
 
+    /**
+     * Grade one line.
+     *
+     * The beat travels in the body, not the URL: the endpoint is signed once
+     * for the whole run, so putting the beat in the path would either break the
+     * signature or need a fresh link for every line.
+     */
     async answer(beatId, payload) {
-        return this.post(this.endpoints.answer.replace('__BEAT__', String(beatId)), payload);
+        return this.post(this.endpoints.answer, { beat_id: beatId, ...payload });
     }
 
     async finish() {

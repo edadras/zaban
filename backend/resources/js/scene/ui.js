@@ -33,6 +33,7 @@ export class SceneUi {
         this.handlers = { onPlay, onReplay, onSlow, onAnswer, onFinish, onRestart };
         this.slow = false;
         this.subtitles = 'both';
+        this.shown = { html: '', translation: '' };
         this.vocabulary = [];
         this.recogniser = null;
         this.listening = false;
@@ -171,12 +172,24 @@ export class SceneUi {
     }
 
     line(beat, speakerName) {
+        // Kept so the subtitle button can repaint the same line in a different
+        // mode. Without it, cycling to English on a line the learner still owes
+        // would reveal an empty box where the withheld sentence is not.
+        this.shown = {
+            html: beat.text ? `<b>${escapeHtml(speakerName || '')}:</b> ${this.highlight(beat.text)}` : '',
+            translation: beat.translation_fa || '',
+        };
+        this.paint();
+    }
+
+    /** Show as much of the current line as the chosen subtitle mode allows. */
+    paint() {
+        const { html = '', translation = '' } = this.shown || {};
         this.el.subtitles.hidden = this.subtitles === 'off';
-        const text = beat.text || '';
-        this.el.line.innerHTML = text ? `<b>${escapeHtml(speakerName || '')}:</b> ${this.highlight(text)}` : '';
-        this.el.line.hidden = this.subtitles === 'fa' || !text;
-        this.el.translation.textContent = beat.translation_fa || '';
-        this.el.translation.hidden = this.subtitles === 'en' || !beat.translation_fa;
+        this.el.line.innerHTML = html;
+        this.el.line.hidden = this.subtitles === 'fa' || !html;
+        this.el.translation.textContent = translation;
+        this.el.translation.hidden = this.subtitles === 'en' || !translation;
     }
 
     highlight(text) {
@@ -198,24 +211,32 @@ export class SceneUi {
     cycleSubtitles() {
         const order = ['both', 'en', 'fa', 'off'];
         this.subtitles = order[(order.indexOf(this.subtitles) + 1) % order.length];
-        this.el.subtitles.hidden = this.subtitles === 'off';
-        this.el.line.hidden = this.subtitles === 'fa';
-        this.el.translation.hidden = this.subtitles === 'en';
+        this.paint();
     }
 
     // ---------------------------------------------------------- the turn
 
-    turn(beat) {
+    /**
+     * Ask for a line.
+     *
+     * `again` is another go at the same line after a miss, and it deliberately
+     * leaves the verdict, the hint and the count of tries where they are:
+     * clearing them would wipe the one thing the learner needs to read before
+     * their next attempt, in the same instant it appeared.
+     */
+    turn(beat, again = false) {
         this.beat = beat;
         this.el.turn.hidden = false;
         this.el['turn-label'].textContent = INTERACTION_LABEL[beat.interaction] || '';
         this.el.prompt.textContent = beat.prompt_fa || '';
         this.el['prompt-en'].textContent = beat.prompt || '';
         this.el['prompt-en'].hidden = !beat.prompt;
-        this.el.verdict.hidden = true;
-        this.el.hint.hidden = true;
+        if (!again) {
+            this.el.verdict.hidden = true;
+            this.el.hint.hidden = true;
+            this.tries(0);
+        }
         this.el.input.value = '';
-        this.tries(0);
 
         if (beat.interaction === 'choose') {
             this.el.answer.hidden = true;

@@ -121,6 +121,11 @@ jobs:
 
       - run: npm ci
 
+      # The scene player's own unit tests. The PHP suite proves the server is
+      # right about a request; these prove the page sends that request, which
+      # is where the answer endpoint was once silently broken.
+      - run: npm test
+
       # The admin and coach website is Blade and Tailwind rather than Flutter,
       # so nothing else in this workflow would notice a stylesheet that no
       # longer compiles or a room console that no longer bundles.

@@ -126,12 +126,16 @@ export class Director {
         if (!this.waiting) return;
 
         const beat = this.waiting;
-        this.waiting = null;
 
         if (!verdict.accepted && !verdict.revealed) {
-            this.hooks.onTurn(beat);
+            // Still their line. The beat stays the one being waited on - drop
+            // it here and the next thing they say is answered by nobody, which
+            // leaves the scene stopped on a turn it will not take again.
+            this.hooks.onTurn(beat, true);
             return;
         }
+
+        this.waiting = null;
 
         const token = ++this.run;
         this.playing = true;
