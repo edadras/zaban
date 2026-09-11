@@ -108,9 +108,14 @@ class PlatformController extends PanelController
                 ],
             );
         } catch (ClassroomException $e) {
-            return back()->withInput()->withErrors(['owner_email' => match ($e->getMessage()) {
-                'That account is suspended.' => 'این حساب معلق است.',
-                'A password is required when the manager does not have an account yet.' => 'برای مدیر تازه‌کار گذرواژه لازم است.',
+            // Matched on a prefix rather than the whole sentence: the English
+            // wording is allowed to be improved without this silently falling
+            // through to an untranslated message in a Persian panel.
+            return back()->withInput()->withErrors(['owner_email' => match (true) {
+                str_starts_with($e->getMessage(), 'That account is suspended') => 'این حساب معلق است.',
+                str_starts_with($e->getMessage(), 'A password is required') => 'برای مدیر تازه‌کار گذرواژه لازم است.',
+                str_starts_with($e->getMessage(), 'That email already belongs to an account') => 'این ایمیل از قبل حساب دارد. برای سپردن آموزشگاه به همان حساب، گذرواژه را خالی بگذارید؛ '
+                        .'اگر قصدتان ساختن حساب تازه بود، نشانی را دوباره بررسی کنید.',
                 default => $e->getMessage(),
             }]);
         }

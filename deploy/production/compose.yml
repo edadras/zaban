@@ -18,6 +18,11 @@ x-app: &app
     - ../../sources:/srv/zaban/sources:ro
     - ../../sources:/srv/zaban/backend/storage/app/private/sources:ro
     - /opt/zaban-whisper:/opt/zaban-whisper:ro
+    # Where the egress worker writes a finished class recording. The worker
+    # sees it as /recordings; this is the same volume, at the path
+    # LIVE_RECORDING_LOCAL_DIR defaults to, so the application can pick the
+    # file up and turn it into a media asset.
+    - recordings:/srv/zaban/backend/storage/app/recordings
   networks: [private]
   mem_limit: 2g
   cpus: 2
@@ -116,6 +121,35 @@ services:
     logging:
       driver: json-file
       options: {max-size: 10m, max-file: '3'}
+  # Recording a class. Without this service the SFU accepts the request to
+  # record, queues it, and no worker ever takes it: the class sits marked as
+  # recording and no file is ever produced.
+  #
+  # It composites with a headless Chrome, which is why it wants a real core and
+  # a larger /dev/shm than Docker's 64MB default - a browser given the default
+  # crashes part way through a long class and takes the recording with it.
+  livekit-egress:
+    image: livekit/egress:v1.9.1
+    restart: unless-stopped
+    environment:
+      EGRESS_CONFIG_FILE: /etc/egress.yaml
+    volumes:
+      - ./egress.yaml:/etc/egress.yaml:ro
+      - recordings:/recordings
+    # Chrome's own sandbox needs these; the container runs nothing but the
+    # compositor and is not reachable from outside the private network.
+    cap_add: [SYS_ADMIN]
+    security_opt: [seccomp:unconfined]
+    shm_size: 1gb
+    networks: [private]
+    depends_on:
+      redis: {condition: service_healthy}
+      livekit: {condition: service_started}
+    mem_limit: 2g
+    cpus: 2
+    logging:
+      driver: json-file
+      options: {max-size: 10m, max-file: '3'}
 networks:
   private: {}
   edge:
@@ -124,3 +158,7 @@ networks:
 volumes:
   mysql-data: {}
   redis-data: {}
+  # Shared by the egress worker that writes recordings and the app containers
+  # that read them. Named rather than a bind mount so it survives a checkout
+  # being moved, and so the worker owns the permissions on it.
+  recordings: {}

@@ -56,6 +56,18 @@ class SchoolService
      * directly) should invent one. A missing manager account is created on
      * purpose here; day-to-day "add coach" still refuses unknown emails.
      *
+     * An email that already belongs to somebody is where this has to be
+     * careful, because registering a school is not a way to take an account
+     * over. Their password is never touched and their name is never changed:
+     * the school gets the name that was typed, the person keeps theirs. All
+     * that happens is that the existing account is handed the new school.
+     *
+     * And a password supplied for an email that already exists is refused
+     * outright rather than quietly ignored. Supplying one means the
+     * administrator believed they were opening a new account - most often
+     * because they mistyped the address - and the last thing that should
+     * follow from a typo is a stranger silently made owner of a school.
+     *
      * @return array{school: School, owner: User, created_owner: bool}
      */
     public function registerForPlatform(
@@ -95,15 +107,16 @@ class SchoolService
                     throw new ClassroomException('That account is suspended.', 422);
                 }
 
-                $owner->fill([
-                    'name' => $ownerName !== '' ? $ownerName : $owner->name,
-                ]);
-
                 if ($ownerPassword !== null && $ownerPassword !== '') {
-                    $owner->password = $ownerPassword;
+                    throw new ClassroomException(
+                        'That email already belongs to an account. Leave the password blank to hand the school to it, '
+                        .'or check the address if you meant to open a new account.',
+                        422,
+                    );
                 }
 
-                $owner->save();
+                // Deliberately nothing else. The account is someone's, and the
+                // only change this makes to it is the school membership below.
             }
 
             $school = $this->create($owner, $schoolName, $attributes);

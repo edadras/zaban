@@ -556,6 +556,56 @@ Work through this before the platform carries real users.
 - [ ] Never trust amounts or subscription state from the payload alone; confirm
       against the gateway API.
 
+**Host access**
+
+The application can be perfect and still be lost at this line. One password on
+one root account is the whole system: the database, every learner's personal
+data, the recordings of children's classes, and the keys to everything the
+platform talks to.
+
+- [ ] **Root has no password login.** Key-only, and the key has a passphrase.
+- [ ] **Any password that has ever been typed into a chat window, pasted into a
+      ticket, sent over email or Telegram, or shared with a contractor is
+      burned.** Rotate it, do not reason about who probably saw it.
+- [ ] Deploy as an unprivileged user with `sudo`, not as root.
+- [ ] SSH is behind the firewall's allow-list, or a VPN, or at minimum
+      `fail2ban`.
+- [ ] `PermitRootLogin` is `prohibit-password` or `no`, and
+      `PasswordAuthentication` is `no`.
+
+Rotating and closing it off, in the order that does not lock you out — **keep
+the current session open until the last step has been tested from a new one**:
+
+```bash
+# 1. From your own machine: put your public key on the server, while password
+#    login still works.
+ssh-copy-id -i ~/.ssh/id_ed25519.pub root@learn.edadras.com
+
+# 2. Prove the key works, in a second terminal. Do not close the first.
+ssh -i ~/.ssh/id_ed25519 root@learn.edadras.com 'echo key login works'
+
+# 3. On the server: change the password anyway. A key does not retire a
+#    password that is still accepted at the console or by a rescue system.
+passwd root
+
+# 4. Turn password login off.
+sudo tee /etc/ssh/sshd_config.d/10-hardening.conf >/dev/null <<'EOF'
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PermitRootLogin prohibit-password
+EOF
+sudo sshd -t && sudo systemctl reload ssh
+
+# 5. From a third terminal, confirm a password is now refused and the key is
+#    not. Only then close the session you started with.
+ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no \
+    root@learn.edadras.com   # must fail
+```
+
+Rotating the host password is also the moment to rotate what that host holds:
+`APP_KEY` (with `APP_PREVIOUS_KEYS`), `LIVEKIT_API_SECRET`, the database
+password, and any provider key in `app.env`.
+
 **Secrets**
 - [ ] No secret in Git. `backend/.env` is git-ignored; `.env.example` contains no
       real values.
@@ -658,27 +708,66 @@ floor to 13.0.
 
 ### Recording a class
 
-Off unless `LIVE_RECORDING=true`, and needs LiveKit's **egress** service running
-alongside LiveKit itself. The coach presses record in the console, or
+Off unless `LIVE_RECORDING=true`. The coach presses record in the console, or
 `LIVE_RECORDING_AUTOSTART=true` starts it with the class; ending the class stops
 the recording before the room is torn down, because an egress against a deleted
 room produces a truncated file.
 
+**Three pieces have to agree, and `deploy/production/` now ships all three.**
+They are listed because getting one wrong fails silently in the worst possible
+way — the class is marked as recording, the coach is told it is being recorded,
+and no file is ever produced:
+
+1. **`livekit-egress`** in `compose.yml` — the worker that actually records.
+   It joins the room as an invisible participant and composites it with a
+   headless Chrome, which is why it is given `SYS_ADMIN`, a 1GB `/dev/shm` and
+   a real core. Without this service the SFU accepts the request, queues it,
+   and nobody ever takes it.
+2. **`redis:` in `livekit.yaml`** — how the SFU hands the job to the worker.
+   The SFU will start without it and simply never dispatch anything.
+3. **`webhook:` in `livekit.yaml`** — how the finished file gets back. Without
+   it the recording completes, the file is written, and the application is
+   never told: the class stays "recording" for ever and the video is never
+   turned into something a learner can watch.
+
+Both `livekit.yaml` and `egress.yaml` carry `REPLACE_ME` where the API secret
+goes. **Fill in both** with `LIVEKIT_API_SECRET` from `app.env` — there are two
+of them now, and a worker with the wrong secret authenticates against nothing:
+
+```bash
+cd deploy/production
+secret="$(grep -E '^LIVEKIT_API_SECRET=' app.env | cut -d= -f2-)"
+sed -i "s|REPLACE_ME|${secret}|" livekit.yaml egress.yaml
+docker compose up -d livekit livekit-egress
+```
+
 Two ways the file comes back.
 
-* **`LIVE_RECORDING_OUTPUT=file`** (the default, and needs nothing bought).
-  LiveKit writes to `LIVE_RECORDING_DIR` as it sees it; this application reads
-  `LIVE_RECORDING_LOCAL_DIR`. The usual arrangement is one Docker volume
-  mounted into both containers at possibly different paths.
+* **`LIVE_RECORDING_OUTPUT=file`** (the default, and needs nothing bought). The
+  worker writes to `LIVE_RECORDING_DIR` as it sees it (`/recordings`); the
+  application reads `LIVE_RECORDING_LOCAL_DIR`. The `recordings` volume in
+  `compose.yml` is mounted into both at those two paths, so the defaults work
+  with nothing else set.
 * **`LIVE_RECORDING_OUTPUT=s3`.** Point `FILESYSTEM_DISK` at the same bucket, or
   the finished file cannot be served back.
 
-LiveKit then calls `POST /api/v1/webhooks/live`. Configure that URL in
-LiveKit's `webhook.urls` with the same API key. **The endpoint verifies the
+LiveKit then calls `POST /api/v1/webhooks/live`. **The endpoint verifies the
 signature LiveKit puts on the body before reading a single field** — without
 that it would be a way for anyone who learns an egress id to mark a class
 recorded and point it at a file of their choosing. It is idempotent: LiveKit
 retries a delivery it did not get a 2xx for.
+
+**Checking it actually works**, which is worth doing once rather than finding
+out from a coach: start a class, press record, and
+
+```bash
+docker compose logs -f livekit-egress     # a job is picked up
+docker compose exec app ls -l storage/app/recordings   # the file appears
+docker compose logs app | grep webhooks/live           # the webhook lands
+```
+
+A recording that never reaches the third line is the failure this section
+exists to prevent.
 
 The finished recording becomes an ordinary `media_asset`, so it is served by the
 same signed, short-lived streaming route as everything else the app plays.

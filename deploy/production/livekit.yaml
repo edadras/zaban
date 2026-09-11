@@ -15,3 +15,22 @@ rtc:
 keys:
   # Replaced by deploy script with the live keys written into app.env.
   APIzabanlearn: REPLACE_ME
+
+# Recording needs the SFU and the egress workers to find each other, and Redis
+# is how they do it. Without this block the server has no egress to hand a
+# recording to: StartRoomCompositeEgress is accepted and then nothing happens,
+# which is the worst of both worlds - the class believes it is being recorded.
+redis:
+  address: redis:6379
+
+# And this is how the finished recording gets back to the application.
+#
+# `api_key` names one of the keys above; the application checks the signature
+# against the matching secret and refuses anything unsigned, so the URL being
+# public costs nothing. Without these urls the egress completes, writes the
+# file, and nobody is ever told - the class stays "recording" for good and the
+# video is never turned into something a learner can watch.
+webhook:
+  api_key: APIzabanlearn
+  urls:
+    - https://learn.edadras.com/api/v1/webhooks/live

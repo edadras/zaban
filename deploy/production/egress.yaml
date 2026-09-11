@@ -1,0 +1,39 @@
+# LiveKit egress: the worker that turns a live class into a video file.
+#
+# The application never talks to this directly. It asks the SFU for a room
+# composite egress over the admin API; the SFU puts the job on Redis, a worker
+# here picks it up, joins the room as an invisible participant, composites it
+# with a headless browser and writes the file. When it finishes, the SFU posts
+# the `egress_ended` webhook the application is waiting for.
+#
+# Which means all three have to agree on two things: the same Redis, and the
+# same API key and secret. If any of them disagrees, recording fails in the
+# quietest possible way - the class is marked as recording and no file ever
+# appears.
+
+# Matches the key in livekit.yaml. Both REPLACE_ME values are filled in at
+# deploy time with the secret from app.env - see docs/DEPLOYMENT.md; there are
+# two of them now and missing the second one is the easiest way to get an
+# egress that authenticates against nothing.
+api_key: APIzabanlearn
+api_secret: REPLACE_ME
+
+# Inside the compose network, so the worker joins the room without going out
+# through Caddy and back. Plain ws:// is correct here: this never leaves the
+# private network.
+ws_url: ws://livekit:7880
+
+redis:
+  address: redis:6379
+
+log_level: info
+
+# Liveness, so `docker compose ps` says something true about a worker whose
+# browser has wedged.
+health_port: 8090
+
+# One class at a time per worker: compositing is a headless Chrome and it wants
+# a whole core. A school running two classes at once needs a second replica
+# rather than a second job in this one.
+cpu_cost:
+  room_composite_cpu_cost: 2
