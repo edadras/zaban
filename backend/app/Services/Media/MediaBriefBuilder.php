@@ -55,6 +55,9 @@ class MediaBriefBuilder
      */
     private int $stale = 0;
 
+    /** Briefs a person deliberately skipped, left alone. */
+    private int $locked = 0;
+
     private bool $rerender = false;
 
     public function rerenderPaidWork(bool $on = true): static
@@ -68,6 +71,12 @@ class MediaBriefBuilder
     public function staleCount(): int
     {
         return $this->stale;
+    }
+
+    /** How many deliberately-skipped briefs this build left alone. */
+    public function lockedCount(): int
+    {
+        return $this->locked;
     }
 
     public function __construct(
@@ -389,7 +398,30 @@ class MediaBriefBuilder
             ->where('subject_id', $subject->getKey())
             ->first();
 
+        /*
+         * Somebody decided this one is not worth rendering, for a reason no
+         * rule here can see - the lesson teaches shop signs, and the artwork
+         * would have to contain the words it teaches. Re-planning must not put
+         * it back in the queue to be paid for.
+         */
+        if ($existing?->skip_locked) {
+            $this->locked++;
+
+            return 0;
+        }
+
         if ($existing && $existing->request_hash === $hash) {
+            /*
+             * `scene` is derived from the same inputs as the prompt, so it is
+             * deliberately not part of the request hash - a brief rendered
+             * before the column existed is not out of date, it is merely
+             * missing a field. Fill it in without disturbing anything else;
+             * requeueing a rendered brief to add a note to it would be absurd.
+             */
+            if ($existing->scene === null && ($spec['scene'] ?? null) !== null) {
+                $existing->updateQuietly(['scene' => $spec['scene']]);
+            }
+
             return 0;
         }
 
@@ -418,6 +450,7 @@ class MediaBriefBuilder
             [
                 'model' => $model,
                 'prompt' => $spec['prompt'],
+                'scene' => $spec['scene'] ?? null,
                 'negative' => $spec['negative'] ?? null,
                 'aspect_ratio' => $spec['aspect_ratio'],
                 'resolution' => $resolution,
@@ -444,7 +477,12 @@ class MediaBriefBuilder
             ->where('subject_id', $subject->getKey())
             ->first();
 
-        // Never downgrade something already rendered into a skip.
+        // Never downgrade something already rendered into a skip, and never
+        // overwrite the reason a person gave with a rule's own wording.
+        if ($existing?->skip_locked) {
+            return 0;
+        }
+
         if ($existing && in_array($existing->status, [MediaBrief::STATUS_GENERATED, MediaBrief::STATUS_IMPORTED], true)) {
             return 0;
         }

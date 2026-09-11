@@ -47,6 +47,12 @@ class BuildMediaBriefs extends Command
             $this->line(str_pad($k, 22).': '.$n.' brief(s) written or refreshed');
         }
 
+        if (($locked = $builder->lockedCount()) > 0) {
+            $this->newLine();
+            $this->line("{$locked} brief(s) are deliberately skipped and were left alone.");
+            $this->line('media:skip --unskip puts one back in the queue.');
+        }
+
         if (($stale = $builder->staleCount()) > 0) {
             $this->newLine();
             $this->warn("{$stale} brief(s) have already been rendered from an older prompt and were left alone.");

@@ -36,14 +36,15 @@ class MediaBrief extends Model
     public const STATUS_SKIPPED = 'skipped';
 
     protected $fillable = [
-        'kind', 'subject_type', 'subject_id', 'model', 'prompt', 'negative',
+        'kind', 'subject_type', 'subject_id', 'model', 'prompt', 'scene', 'negative',
         'aspect_ratio', 'resolution', 'duration_seconds', 'source_brief_id',
-        'priority', 'status', 'skip_reason',
+        'priority', 'status', 'skip_reason', 'skip_locked',
         'request_hash', 'external_job_id', 'result_url', 'media_asset_id',
         'error', 'attempts', 'generated_at',
     ];
 
     protected $casts = [
+        'skip_locked' => 'boolean',
         'priority' => 'integer',
         'attempts' => 'integer',
         'duration_seconds' => 'integer',

@@ -24,7 +24,10 @@ use Illuminate\Support\Facades\Storage;
  */
 class GeneratedMediaImporter
 {
-    public function __construct(private string $disk = 'local') {}
+    public function __construct(
+        private SheetSlicer $slicer = new SheetSlicer,
+        private string $disk = 'local',
+    ) {}
 
     /**
      * @param  array<int,string|array>  $entries  brief id => result URL, or a
@@ -142,6 +145,20 @@ class GeneratedMediaImporter
         $bytes = $localFile !== null
             ? (string) file_get_contents($localFile)
             : $this->fetch((string) $url);
+
+        return $this->importBytes($brief, $bytes, $url ?? $localFile, $sentPrompt);
+    }
+
+    /**
+     * The same import, for an image we already hold.
+     *
+     * A cell cut out of a contact sheet has no URL of its own - it never
+     * existed as a file the provider served - so it arrives here as bytes. The
+     * `$source` recorded against it is the sheet it came from, which is what
+     * makes the round traceable: nine lessons pointing at one generation.
+     */
+    public function importBytes(MediaBrief $brief, string $bytes, ?string $source = null, ?string $sentPrompt = null): MediaAsset
+    {
         $checksum = hash('sha256', $bytes);
 
         // The same prompt can legitimately be rendered for two subjects; storing
@@ -150,19 +167,117 @@ class GeneratedMediaImporter
 
         $asset = $existing ?: $this->store($brief, $bytes, $checksum, $sentPrompt);
 
-        DB::transaction(function () use ($brief, $asset, $url) {
+        DB::transaction(function () use ($brief, $asset, $source) {
             $this->attach($brief, $asset);
 
             $brief->update([
                 'status' => MediaBrief::STATUS_IMPORTED,
                 'media_asset_id' => $asset->id,
-                'result_url' => $url ?? $localFile,
+                'result_url' => $source,
                 'error' => null,
                 'generated_at' => $brief->generated_at ?? now(),
             ]);
         });
 
         return $asset;
+    }
+
+    /**
+     * One generation, nine lessons.
+     *
+     * A sheet is cut and imported as a unit. If the slicer does not recognise
+     * the grid, nothing at all is imported: the alternative is nine lessons
+     * silently given pieces of the wrong pictures, which nobody would notice
+     * until a learner did.
+     *
+     * @param  array{file?:string, url?:string, cols:int, rows:int, cells:array<int,int>, prompt?:string}  $sheet
+     * @return array{imported:int, skipped:int, failed:int, errors:array<int|string,string>}
+     */
+    public function importSheet(array $sheet, ?string $baseDir = null): array
+    {
+        $out = ['imported' => 0, 'skipped' => 0, 'failed' => 0, 'errors' => []];
+        $cells = $sheet['cells'] ?? [];
+        $label = 'sheet '.implode(',', array_slice($cells, 0, 3)).'…';
+
+        $file = isset($sheet['file']) && $baseDir !== null
+            ? $baseDir.'/'.ltrim($sheet['file'], '/')
+            : ($sheet['file'] ?? null);
+
+        try {
+            $bytes = $file !== null && is_readable($file)
+                ? (string) file_get_contents($file)
+                : $this->fetch((string) ($sheet['url'] ?? ''));
+
+            $pieces = $this->slicer->slice(
+                $bytes,
+                (int) $sheet['cols'],
+                (int) $sheet['rows'],
+                MediaBrief::find($cells[0] ?? null)?->aspect_ratio,
+            );
+        } catch (\Throwable $e) {
+            $out['failed'] += count($cells);
+            $out['errors'][$label] = $e->getMessage();
+
+            return $out;
+        }
+
+        if (count($pieces) !== count($cells)) {
+            $out['failed'] += count($cells);
+            $out['errors'][$label] = sprintf(
+                'The sheet cut into %d cells but %d briefs were named. Nothing was imported.',
+                count($pieces),
+                count($cells),
+            );
+
+            return $out;
+        }
+
+        foreach ($cells as $i => $briefId) {
+            $brief = MediaBrief::find($briefId);
+
+            if (! $brief) {
+                $out['failed']++;
+                $out['errors'][$briefId] = 'No such brief.';
+
+                continue;
+            }
+
+            if ($brief->status === MediaBrief::STATUS_IMPORTED && $brief->media_asset_id) {
+                $out['skipped']++;
+
+                continue;
+            }
+
+            try {
+                $this->importBytes(
+                    $brief,
+                    $pieces[$i],
+                    $sheet['url'] ?? $sheet['file'] ?? null,
+                    // What the sheet actually asked for in this cell, so the
+                    // asset still records how its picture was made.
+                    isset($sheet['prompt']) ? $this->cellNote($sheet, $i) : null,
+                );
+                $out['imported']++;
+            } catch (\Throwable $e) {
+                $brief->update(['status' => MediaBrief::STATUS_FAILED, 'error' => $e->getMessage()]);
+                $out['failed']++;
+                $out['errors'][$briefId] = $e->getMessage();
+            }
+        }
+
+        return $out;
+    }
+
+    /** @param array{prompt?:string, cols:int, rows:int} $sheet */
+    private function cellNote(array $sheet, int $index): string
+    {
+        return sprintf(
+            'Cell %d of a %dx%d contact sheet. %s',
+            $index + 1,
+            (int) $sheet['cols'],
+            (int) $sheet['rows'],
+            (string) $sheet['prompt'],
+        );
     }
 
     private function fetch(string $url): string

@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\MediaBrief;
 use App\Services\Media\GeneratedMediaImporter;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 /**
  * Reads {"results": {"<brief id>": "<url>", ...}} from a file or stdin.
@@ -12,6 +13,10 @@ use Illuminate\Console\Command;
  * That shape is exactly what the provider's batch tools return once their jobs
  * are terminal - index in, index out - so a render round is: media:manifest,
  * generate, media:import.
+ *
+ * A payload may also carry "sheets": one contact sheet holding nine lessons'
+ * artwork, exported by media:sheet and cut back apart here. Both keys may
+ * appear together.
  */
 class ImportGeneratedMedia extends Command
 {
@@ -35,13 +40,14 @@ class ImportGeneratedMedia extends Command
 
         $payload = json_decode($raw, true);
 
-        if (! is_array($payload) || ! is_array($payload['results'] ?? null)) {
-            $this->error('Expected JSON of the form {"results": {"<brief id>": "<url>"}}.');
+        if (! is_array($payload) || (! is_array($payload['results'] ?? null) && ! is_array($payload['sheets'] ?? null))) {
+            $this->error('Expected JSON with "results" (one image per brief) or "sheets" (a grid of them).');
 
             return self::FAILURE;
         }
 
-        $results = $payload['results'];
+        $results = $payload['results'] ?? [];
+        $sheets = $payload['sheets'] ?? [];
 
         if ($this->option('dry-run')) {
             $this->table(
@@ -50,7 +56,7 @@ class ImportGeneratedMedia extends Command
                     $b = MediaBrief::find($id);
                     $where = is_array($entry) ? ($entry['file'] ?? $entry['url'] ?? '—') : $entry;
 
-                    return [$id, $b?->kind ?? '—', $b?->status ?? 'MISSING', \Illuminate\Support\Str::limit((string) $where, 60)];
+                    return [$id, $b?->kind ?? '—', $b?->status ?? 'MISSING', Str::limit((string) $where, 60)];
                 })->values()->all(),
             );
 
@@ -67,6 +73,15 @@ class ImportGeneratedMedia extends Command
             : null;
 
         $out = $importer->importMany($results, $baseDir);
+
+        foreach ($sheets as $sheet) {
+            $one = $importer->importSheet($sheet, $baseDir);
+
+            foreach (['imported', 'skipped', 'failed'] as $k) {
+                $out[$k] += $one[$k];
+            }
+            $out['errors'] += $one['errors'];
+        }
 
         $this->info("imported {$out['imported']}, already present {$out['skipped']}, failed {$out['failed']}");
 

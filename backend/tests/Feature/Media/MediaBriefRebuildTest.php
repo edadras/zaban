@@ -129,6 +129,69 @@ class MediaBriefRebuildTest extends TestCase
         $this->assertSame(MediaBrief::STATUS_GENERATING, $brief->fresh()->status);
     }
 
+    public function test_a_deliberate_skip_survives_re_planning(): void
+    {
+        $this->cast();
+        app(MediaBriefBuilder::class)->buildCharacterPortraits();
+        $brief = MediaBrief::firstOrFail();
+
+        $this->artisan('media:skip', [
+            'ids' => [$brief->id],
+            '--reason' => 'teaches written text; artwork may not contain writing',
+        ])->assertExitCode(0);
+
+        // The change that used to undo it: a rebuild after the prompt moved on.
+        $brief->update(['request_hash' => str_repeat('0', 64)]);
+        $second = app(MediaBriefBuilder::class);
+        $second->buildCharacterPortraits();
+
+        $after = $brief->fresh();
+        $this->assertSame(MediaBrief::STATUS_SKIPPED, $after->status);
+        $this->assertStringContainsString('written text', (string) $after->skip_reason);
+        $this->assertSame(1, $second->lockedCount());
+    }
+
+    public function test_a_skip_must_say_why(): void
+    {
+        $this->cast();
+        app(MediaBriefBuilder::class)->buildCharacterPortraits();
+        $brief = MediaBrief::firstOrFail();
+
+        // A permanent decision with no reason is indistinguishable from a slip.
+        $this->artisan('media:skip', ['ids' => [$brief->id]])->assertExitCode(1);
+
+        $this->assertSame(MediaBrief::STATUS_PENDING, $brief->fresh()->status);
+    }
+
+    public function test_a_skip_will_not_throw_away_work_already_paid_for(): void
+    {
+        $builder = app(MediaBriefBuilder::class);
+        $brief = $this->rendered($builder);
+
+        $this->artisan('media:skip', ['ids' => [$brief->id], '--reason' => 'changed my mind'])
+            ->assertExitCode(0);
+
+        // The artwork exists and is attached; skipping it now would take a
+        // picture off a lesson to save money that is already spent.
+        $this->assertSame(MediaBrief::STATUS_IMPORTED, $brief->fresh()->status);
+    }
+
+    public function test_a_skip_can_be_undone(): void
+    {
+        $this->cast();
+        app(MediaBriefBuilder::class)->buildCharacterPortraits();
+        $brief = MediaBrief::firstOrFail();
+
+        $this->artisan('media:skip', ['ids' => [$brief->id], '--reason' => 'on reflection, no'])
+            ->assertExitCode(0);
+        $this->artisan('media:skip', ['ids' => [$brief->id], '--unskip' => true])
+            ->assertExitCode(0);
+
+        $after = $brief->fresh();
+        $this->assertSame(MediaBrief::STATUS_PENDING, $after->status);
+        $this->assertFalse($after->skip_locked);
+    }
+
     public function test_a_brief_that_was_never_rendered_is_always_refreshed(): void
     {
         $builder = app(MediaBriefBuilder::class);

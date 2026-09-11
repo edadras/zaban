@@ -16,11 +16,22 @@ use App\Models\Lesson;
  */
 class PromptBuilder
 {
+    /**
+     * Compositions a single lesson image must never come back as.
+     *
+     * Public because a contact sheet is deliberately every one of these: nine
+     * lessons in one grid. SheetComposer subtracts this list from the briefs'
+     * own exclusions, so a sheet does not carry an instruction not to be a
+     * sheet - which is the kind of contradiction a model resolves by ignoring
+     * whichever half it likes.
+     */
+    public const MONTAGE_EXCLUSIONS = 'collage, grid of images, split screen, multiple panels, '
+        .'photo montage, diptych, triptych, contact sheet, storyboard';
+
     /** Never rendered into generated artwork. */
     private const NEGATIVE = 'text, letters, words, captions, watermark, signature, logo, '
         .'subtitles, numbers, distorted hands, extra limbs, deformed faces, gore, nudity, '
-        .'brand names, low quality, blurry, collage, grid of images, split screen, '
-        .'multiple panels, photo montage, diptych, triptych, contact sheet, storyboard';
+        .'brand names, low quality, blurry, '.self::MONTAGE_EXCLUSIONS;
 
     public function lessonScene(Lesson $lesson, array $targetWords = []): array
     {
@@ -30,6 +41,17 @@ class PromptBuilder
         $words = collect($targetWords)->take(6)->implode(', ');
         $context = trim(($unit?->title ? $unit->title.' - ' : '').$lesson->title);
 
+        /*
+         * The scene itself, with none of the house style around it. Kept apart
+         * because a sheet of nine scenes states the style once and then just
+         * numbers these - see SheetComposer.
+         */
+        $scene = collect([
+            "Teaching context: {$context}.",
+            $words !== '' ? "These ideas should be obvious within that one scene: {$words}." : null,
+            $this->levelGuidance($level?->code),
+        ])->filter()->implode(' ');
+
         $prompt = collect([
             // "One single photograph" first and in those words. Asked for a
             // scene that makes several ideas obvious, these models reach for a
@@ -38,9 +60,7 @@ class PromptBuilder
             // the picture stops being a situation the learner can talk about.
             'One single photograph: a clear, uncluttered scene for an English language lesson.',
             'A single continuous frame, not a collage and not divided into panels.',
-            "Teaching context: {$context}.",
-            $words !== '' ? "These ideas should be obvious within that one scene: {$words}." : null,
-            $this->levelGuidance($level?->code),
+            $scene,
             'Everyday setting, natural lighting, warm and neutral palette.',
             'Culturally neutral: no religious symbols, no national flags, no region-specific signage.',
             'Age-appropriate for a general adult audience.',
@@ -50,8 +70,19 @@ class PromptBuilder
 
         return [
             'prompt' => $prompt,
+            'scene' => $scene,
             'negative' => self::NEGATIVE,
-            'aspect_ratio' => '16:9',
+            /*
+             * 4:3 because that is the box the client draws this in, and the
+             * only one. A 16:9 scene is cropped to 4:3 on display, which threw
+             * away a third of every image's width - off-centre, since the crop
+             * is centred on the frame rather than on the subject - and paid for
+             * the pixels anyway. It matters most on a contact sheet, where
+             * cells are already small: nine 4:3 cells on a 4K sheet are about
+             * 1080x810 each and all of it is used, where nine 16:9 cells leave
+             * about 807x605 after the client's crop.
+             */
+            'aspect_ratio' => '4:3',
         ];
     }
 
@@ -80,18 +111,27 @@ class PromptBuilder
             : 'One unambiguous subject, plain uncluttered background, centred composition. '
                 .'Clean product-photography lighting.';
 
-        $prompt = collect([
+        $scene = collect([
             $depictsSituation
                 ? "A single clear image conveying the English word \"{$term}\"."
                 : "A single clear subject illustrating the English word \"{$term}\".",
             $context ? "It is used like this: {$context}" : null,
             $framing,
             $this->levelGuidance($cefr),
+        ])->filter()->implode(' ');
+
+        $prompt = collect([
+            $scene,
             'Culturally neutral and age-appropriate.',
             'No text, letters or numbers in the image.',
         ])->filter()->implode(' ');
 
-        return ['prompt' => $prompt, 'negative' => self::NEGATIVE, 'aspect_ratio' => '1:1'];
+        return [
+            'prompt' => $prompt,
+            'scene' => $scene,
+            'negative' => self::NEGATIVE,
+            'aspect_ratio' => '1:1',
+        ];
     }
 
     /**
