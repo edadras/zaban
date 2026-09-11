@@ -1,0 +1,211 @@
+/*
+ * The acted-scene player.
+ *
+ * Written by hand rather than through the panel's utility classes: this page is
+ * loaded on its own, often inside the app rather than the website, and it must
+ * not drag a stylesheet built for a different surface along with it.
+ *
+ * Right-to-left Persian around a left-to-right English line. The stage is given
+ * the room it needs on a phone held upright, which is where most of this will
+ * actually be used.
+ */
+
+:root {
+    --scene-ink: #f2f5f8;
+    --scene-dim: #a5b1c0;
+    --scene-bg: #0e1119;
+    --scene-panel: #171c27;
+    --scene-edge: #262d3c;
+    --scene-accent: #6ea8ff;
+    --scene-good: #4ac08a;
+    --scene-off: #e8975c;
+    --scene-shown: #b48cf2;
+}
+
+* { box-sizing: border-box; }
+
+body.scene-body {
+    margin: 0;
+    background: var(--scene-bg);
+    color: var(--scene-ink);
+    font-family: Vazirmatn, 'Segoe UI', system-ui, sans-serif;
+    direction: rtl;
+    min-height: 100vh;
+}
+
+.scene-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 0 2rem;
+}
+
+#scene-stage {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #0b0e14;
+    overflow: hidden;
+}
+
+#scene-stage canvas { display: block; width: 100%; height: 100%; }
+
+#scene-ui { padding: 0 1rem; }
+
+.scene-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 0 0.5rem;
+}
+
+.scene-title h1 { margin: 0; font-size: 1.15rem; font-weight: 700; }
+.scene-title p { margin: 0.25rem 0 0; color: var(--scene-dim); font-size: 0.85rem; }
+
+.scene-meta { display: flex; gap: 0.4rem; flex-shrink: 0; }
+
+.scene-chip {
+    background: var(--scene-panel);
+    border: 1px solid var(--scene-edge);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    color: var(--scene-dim);
+    white-space: nowrap;
+}
+
+.scene-subtitles {
+    background: var(--scene-panel);
+    border: 1px solid var(--scene-edge);
+    border-radius: 0.9rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.75rem;
+    min-height: 3.6rem;
+}
+
+.scene-line { margin: 0; font-size: 1.05rem; line-height: 1.6; text-align: left; }
+.scene-line b { color: var(--scene-accent); font-weight: 600; }
+.scene-line mark { background: rgba(110, 168, 255, 0.22); color: inherit; border-radius: 0.2rem; padding: 0 0.15rem; }
+.scene-translation { margin: 0.4rem 0 0; color: var(--scene-dim); font-size: 0.9rem; }
+
+.scene-turn {
+    background: var(--scene-panel);
+    border: 1px solid var(--scene-accent);
+    border-radius: 0.9rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.scene-turn-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--scene-accent);
+    margin-bottom: 0.5rem;
+}
+
+.scene-tries { color: var(--scene-off); }
+.scene-prompt { margin: 0 0 0.3rem; font-size: 1rem; }
+.scene-prompt-en { margin: 0 0 0.75rem; color: var(--scene-dim); font-size: 0.85rem; text-align: left; }
+
+.scene-choices { display: grid; gap: 0.5rem; }
+
+.scene-choices button {
+    display: block;
+    width: 100%;
+    text-align: right;
+    background: #1e2533;
+    border: 1px solid var(--scene-edge);
+    border-radius: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    color: var(--scene-ink);
+    font: inherit;
+    cursor: pointer;
+}
+
+.scene-choices button:hover:not(:disabled) { border-color: var(--scene-accent); }
+.scene-choices button span { display: block; text-align: left; }
+.scene-choices button i { display: block; color: var(--scene-dim); font-size: 0.8rem; font-style: normal; margin-top: 0.2rem; }
+
+.scene-answer { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.scene-answer input {
+    flex: 1 1 12rem;
+    min-width: 0;
+    background: #1e2533;
+    border: 1px solid var(--scene-edge);
+    border-radius: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    color: var(--scene-ink);
+    font: inherit;
+    text-align: left;
+}
+
+.scene-mic, .scene-send, .scene-controls button, .scene-debrief-actions button {
+    background: #1e2533;
+    border: 1px solid var(--scene-edge);
+    border-radius: 0.7rem;
+    padding: 0.65rem 1rem;
+    color: var(--scene-ink);
+    font: inherit;
+    cursor: pointer;
+}
+
+.scene-mic.is-live { border-color: var(--scene-good); color: var(--scene-good); }
+.scene-primary { background: var(--scene-accent) !important; color: #0b0e14 !important; border-color: var(--scene-accent) !important; font-weight: 600; }
+button:disabled { opacity: 0.5; cursor: default; }
+.scene-controls button.is-on { border-color: var(--scene-accent); color: var(--scene-accent); }
+
+.scene-hint { margin: 0.75rem 0 0; color: var(--scene-off); font-size: 0.9rem; }
+.scene-note { margin: 0.5rem 0 0; color: var(--scene-dim); font-size: 0.8rem; }
+.scene-verdict { margin: 0.75rem 0 0; font-size: 0.95rem; }
+.scene-verdict.is-good { color: var(--scene-good); }
+.scene-verdict.is-off { color: var(--scene-off); }
+.scene-verdict.is-shown { color: var(--scene-shown); }
+
+.scene-controls { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+
+.scene-vocab { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.scene-word {
+    background: var(--scene-panel);
+    border: 1px solid var(--scene-edge);
+    border-radius: 0.6rem;
+    padding: 0.35rem 0.6rem;
+    font-size: 0.8rem;
+}
+.scene-word b { color: var(--scene-accent); font-weight: 600; }
+.scene-word i { color: var(--scene-dim); font-style: normal; margin-right: 0.4rem; }
+
+.scene-debrief {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 10, 15, 0.86);
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    z-index: 20;
+}
+
+.scene-debrief-card {
+    background: var(--scene-panel);
+    border: 1px solid var(--scene-edge);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    max-width: 30rem;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.scene-debrief-card h2 { margin: 0 0 0.75rem; font-size: 1.1rem; }
+.scene-debrief-card h3 { margin: 1rem 0 0.4rem; font-size: 0.9rem; color: var(--scene-dim); }
+.scene-score { font-size: 2.2rem; font-weight: 700; color: var(--scene-accent); margin: 0; }
+.scene-good li, .scene-practise li { margin-bottom: 0.35rem; font-size: 0.88rem; }
+.scene-practise i { display: block; color: var(--scene-dim); font-style: normal; font-size: 0.8rem; }
+.scene-debrief-actions { display: flex; gap: 0.5rem; margin-top: 1.25rem; }
+
+.scene-error { margin: 0.75rem 0 0; color: #ef7676; font-size: 0.85rem; }
+
+@media (max-width: 640px) {
+    .scene-top { flex-direction: column; }
+    #scene-stage { aspect-ratio: 4 / 3; }
+}

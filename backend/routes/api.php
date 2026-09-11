@@ -5,11 +5,12 @@ use App\Http\Controllers\Api\V1\ConversationController;
 use App\Http\Controllers\Api\V1\CourseController;
 use App\Http\Controllers\Api\V1\ExerciseController;
 use App\Http\Controllers\Api\V1\MediaController;
-use App\Http\Controllers\Api\V1\PlacementController;
 use App\Http\Controllers\Api\V1\OnboardingController;
+use App\Http\Controllers\Api\V1\PlacementController;
 use App\Http\Controllers\Api\V1\ProfileController;
 use App\Http\Controllers\Api\V1\ProgressController;
 use App\Http\Controllers\Api\V1\ReviewController;
+use App\Http\Controllers\Api\V1\SceneController;
 use App\Http\Controllers\Api\V1\SessionController;
 use Illuminate\Support\Facades\Route;
 
@@ -93,11 +94,31 @@ Route::prefix('v1')->group(function () {
         // the tighter 'ai' limiter.
         Route::get('conversation/scenarios', [ConversationController::class, 'scenarios']);
         Route::post('conversation/start', [ConversationController::class, 'start']);
-        Route::get('conversation/{session}', [ConversationController::class, 'show']);
+        /*
+         * Numeric, or `conversation/scenes` below would be read as a session id
+         * and answered with a 404 for a session nobody asked for.
+         */
+        Route::get('conversation/{session}', [ConversationController::class, 'show'])
+            ->whereNumber('session');
         Route::post('conversation/{session}/respond', [ConversationController::class, 'respond'])
+            ->whereNumber('session')
             ->middleware('throttle:ai');
         Route::post('conversation/{session}/finish', [ConversationController::class, 'finish'])
+            ->whereNumber('session')
             ->middleware('throttle:ai');
+
+        /*
+         * Acted scenes: the same situations, played out in a room.
+         *
+         * No model call per line - the words are authored and the judging is
+         * lexical - so these sit on the ordinary limiter rather than the AI one.
+         */
+        Route::get('conversation/scenes', [SceneController::class, 'index']);
+        Route::get('conversation/scenes/{scene}', [SceneController::class, 'show'])->whereNumber('scene');
+        Route::post('conversation/scenes/start', [SceneController::class, 'start']);
+        Route::get('conversation/scene-sessions/{session}', [SceneController::class, 'session']);
+        Route::post('conversation/scene-sessions/{session}/beats/{beat}/answer', [SceneController::class, 'answer']);
+        Route::post('conversation/scene-sessions/{session}/finish', [SceneController::class, 'finish']);
 
         // media resolution: blocks reference assets by id, the client asks for
         // a short-lived signed playback URL

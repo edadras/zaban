@@ -29,6 +29,8 @@ import 'package:zaban/features/classroom/presentation/my_classes_screen.dart';
 import 'package:zaban/features/classroom/presentation/notifications_screen.dart';
 import 'package:zaban/features/conversation/presentation/conversation_screen.dart';
 import 'package:zaban/features/conversation/presentation/scenarios_screen.dart';
+import 'package:zaban/features/conversation/presentation/scene_player_screen.dart';
+import 'package:zaban/features/conversation/presentation/scenes_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_attempt_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_home_screen.dart';
 import 'package:zaban/features/exam/presentation/exam_result_screen.dart';
@@ -401,6 +403,29 @@ final routerProvider = Provider<GoRouter>((ref) {
                 name: AppRoute.conversation.name,
                 builder: (_, __) => const ScenariosScreen(),
                 routes: <RouteBase>[
+                  /*
+                   * Before ':sessionId', or 'scenes' is read as a session id
+                   * and the list of scenes is answered with a parse failure.
+                   */
+                  GoRoute(
+                    path: 'scenes',
+                    name: AppRoute.scenes.name,
+                    builder: (_, __) => const ScenesScreen(),
+                    routes: <RouteBase>[
+                      GoRoute(
+                        path: ':sessionId',
+                        name: AppRoute.scene.name,
+                        parentNavigatorKey: _rootNavigatorKey,
+                        builder: (BuildContext context, GoRouterState state) =>
+                            ScenePlayerScreen(
+                          sessionId: int.parse(state.pathParameters['sessionId']!),
+                          launch: state.extra is SceneLaunch
+                              ? state.extra! as SceneLaunch
+                              : null,
+                        ),
+                      ),
+                    ],
+                  ),
                   GoRoute(
                     path: ':sessionId',
                     name: AppRoute.conversationSession.name,

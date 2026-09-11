@@ -9,7 +9,9 @@ use App\Http\Controllers\Panel\LoginController;
 use App\Http\Controllers\Panel\NotificationController;
 use App\Http\Controllers\Panel\PlatformController;
 use App\Http\Controllers\Panel\RoomController;
+use App\Http\Controllers\Panel\SceneReviewController;
 use App\Http\Controllers\Panel\SchoolController;
+use App\Http\Controllers\Scene\ScenePlayController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect()->route('panel.login'));
@@ -145,5 +147,31 @@ Route::prefix('panel')->name('panel.')->group(function () {
             Route::patch('users/{user}', [PlatformController::class, 'updateUser'])->name('users.update');
             Route::get('audit', [PlatformController::class, 'audit'])->name('audit');
         });
+
+        /*
+         * The acted scenes. Listening, not authoring: the scripts live in the
+         * repository, and what a person has to do here is hear whether each
+         * line sounds like the line it claims to be.
+         */
+        Route::prefix('scenes')->name('scenes.')->group(function () {
+            Route::get('/', [SceneReviewController::class, 'index'])->name('index');
+            Route::get('{scene}', [SceneReviewController::class, 'show'])->name('show');
+            Route::post('{scene}/beats/{beat}/review', [SceneReviewController::class, 'review'])->name('review');
+        });
     });
+});
+
+/*
+ * The acted-scene player.
+ *
+ * Outside the panel and outside the API: the page runs in a web view inside the
+ * app as well as in a browser, and it is reached through a short-lived signed
+ * link rather than a session or a bearer token. Every call it makes is signed
+ * the same way, so the page itself holds no credential.
+ */
+Route::prefix('scene')->name('scene.')->group(function () {
+    Route::get('{session}/play', [ScenePlayController::class, 'play'])->name('play');
+    Route::get('{session}/state', [ScenePlayController::class, 'state'])->name('state');
+    Route::post('{session}/answer', [ScenePlayController::class, 'answer'])->name('answer');
+    Route::post('{session}/finish', [ScenePlayController::class, 'finish'])->name('finish');
 });

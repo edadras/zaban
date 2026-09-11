@@ -74,6 +74,9 @@
                     <x-panel.nav :href="route('panel.platform.users')" :active="request()->routeIs('panel.platform.users')">
                         کاربران
                     </x-panel.nav>
+                    <x-panel.nav :href="route('panel.scenes.index')" :active="request()->routeIs('panel.scenes.*')">
+                        صحنه‌ها
+                    </x-panel.nav>
                     <x-panel.nav :href="route('panel.platform.audit')" :active="request()->routeIs('panel.platform.audit')">
                         گزارش تغییرات
                     </x-panel.nav>

@@ -31,6 +31,20 @@ return Application::configure(basePath: dirname(__DIR__))
         // panel, so an unauthenticated browser belongs at its login page. API
         // requests never reach here: they answer 401 in JSON above.
         $middleware->redirectGuestsTo(fn () => route('panel.login'));
+
+        /*
+         * The scene player's own calls.
+         *
+         * It is a page rather than an API client, so its requests go through
+         * the web group - but it authenticates by the signature on every URL,
+         * not by a session, and it therefore has no session cookie to derive a
+         * CSRF token from. The signature is what a forged cross-site request
+         * would have to produce, and cannot.
+         */
+        $middleware->validateCsrfTokens(except: [
+            'scene/*/answer',
+            'scene/*/finish',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

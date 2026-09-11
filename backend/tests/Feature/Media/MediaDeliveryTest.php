@@ -36,6 +36,41 @@ class MediaDeliveryTest extends TestCase
         ]);
     }
 
+    public function test_a_corpus_recording_left_in_the_source_tree_still_streams(): void
+    {
+        /*
+         * The whole corpus was ingested with repository-relative paths -
+         * `sources/audio/...`, beside the books it came out of - while
+         * everything generated since is written to a storage disk. Asking the
+         * disk alone finds barely any of it, and for a long time that meant
+         * every listening block in the course answered 404.
+         */
+        $path = 'sources/audio/delivery-test/u01.mp3';
+        $absolute = base_path('../'.$path);
+
+        @mkdir(dirname($absolute), 0777, true);
+        file_put_contents($absolute, str_repeat('b', 2048));
+
+        try {
+            $asset = MediaAsset::create([
+                'disk' => 'local', 'path' => $path, 'type' => 'audio', 'mime' => 'audio/mpeg',
+                'bytes' => 2048, 'origin' => 'ingested', 'copyright_status' => 'owned',
+            ]);
+
+            $url = $this->actingAs(User::factory()->create())
+                ->getJson("/api/v1/media/{$asset->id}")
+                ->assertOk()->json('data.url');
+
+            $this->get($url)
+                ->assertOk()
+                ->assertHeader('Content-Type', 'audio/mpeg')
+                ->assertHeader('Content-Length', '2048');
+        } finally {
+            @unlink($absolute);
+            @rmdir(dirname($absolute));
+        }
+    }
+
     public function test_an_asset_resolves_to_a_playable_signed_url(): void
     {
         $asset = $this->asset();

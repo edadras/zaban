@@ -14,6 +14,10 @@ export default defineConfig({
                 'resources/css/panel.css',
                 'resources/js/panel.js',
                 'resources/js/room.js',
+                // The acted-scene player. Its own bundle: it carries a 3D
+                // renderer that no other page should have to download.
+                'resources/css/scene.css',
+                'resources/js/scene/main.js',
             ],
             refresh: true,
             fonts: [

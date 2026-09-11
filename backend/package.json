@@ -19,6 +19,7 @@
     "dependencies": {
         "laravel-echo": "^2.4.0",
         "livekit-client": "2.16.1",
-        "pusher-js": "^8.6.0"
+        "pusher-js": "^8.6.0",
+        "three": "^0.180.0"
     }
 }

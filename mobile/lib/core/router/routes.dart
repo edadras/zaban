@@ -21,6 +21,10 @@ enum AppRoute {
   conversation('/conversation', 'conversation'),
   conversationSession('/conversation/:sessionId', 'conversationSession'),
 
+  /// Acted scenes, inside conversation practice.
+  scenes('/conversation/scenes', 'scenes'),
+  scene('/conversation/scenes/:sessionId', 'scene'),
+
   progress('/progress', 'progress'),
   speech('/speech', 'speech'),
 
@@ -71,6 +75,8 @@ enum AppRoute {
   String homeworkTaskPath(int assignmentId) => '/homework/$assignmentId';
   String bookPath(int bookId) => '/admin/curriculum/$bookId';
   String conversationPath(int sessionId) => '/conversation/$sessionId';
+
+  String scenePath(int sessionId) => '/conversation/scenes/$sessionId';
   String examAttemptPath(int attemptId) => '/exam/attempt/$attemptId';
   String examResultPath(int attemptId) => '/exam/result/$attemptId';
   String manualRialPayPath(String planCode) => '/plans/rial/$planCode';

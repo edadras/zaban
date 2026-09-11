@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\MediaAsset;
+use App\Support\MediaPath;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -55,11 +55,23 @@ class MediaController extends ApiController
     {
         abort_unless($request->hasValidSignature(), 403, 'This media link has expired.');
 
-        $disk = Storage::disk($media->disk === 'remote' ? config('filesystems.default') : $media->disk);
-        abort_unless($disk->exists($media->path), 404, 'Media file not found.');
+        /*
+         * The corpus was ingested with repository-relative paths and everything
+         * since is written to a disk, so asking the disk alone finds barely any
+         * of it. MediaPath knows both conventions.
+         */
+        if (MediaPath::onDisk($media)) {
+            $disk = MediaPath::disk($media);
+            $size = $disk->size($media->path);
+            $stream = $disk->readStream($media->path);
+        } else {
+            $file = MediaPath::absolute($media);
+            abort_unless($file !== null, 404, 'Media file not found.');
+            $size = filesize($file) ?: 0;
+            $stream = fopen($file, 'rb');
+        }
 
-        $size = $disk->size($media->path);
-        $stream = $disk->readStream($media->path);
+        abort_unless($stream !== false, 404, 'Media file not found.');
 
         [$start, $end, $status] = $this->range($request, $size);
         $length = $end - $start + 1;

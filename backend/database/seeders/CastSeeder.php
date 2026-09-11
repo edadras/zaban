@@ -51,19 +51,27 @@ class CastSeeder extends Seeder
                     'persona' => $c['persona'],
                     'accent' => $c['accent'],
                     'appearance_prompt' => $c['appearance'].' '.self::HOUSE_LOOK,
+                    /*
+                     * The voice the character speaks in, everywhere. Without it
+                     * a person who looks the same across two hundred lessons
+                     * sounds like a different person in each one, and the point
+                     * of having a cast is lost.
+                     */
+                    'voice_id' => $c['voice'] ?? null,
                 ],
             );
         }
     }
 
     /**
-     * @return list<array{slug:string,name:string,accent:string,persona:string,appearance:string}>
+     * @return list<array{slug:string,name:string,accent:string,persona:string,appearance:string,voice:string}>
      */
     private function cast(): array
     {
         return [
             [
                 'slug' => 'maya',
+                'voice' => '7367e919-3069-5a0b-939e-dfb1c0fd91b4',
                 'name' => 'Maya',
                 'accent' => 'en-GB',
                 'persona' => 'The learner\'s counterpart: a woman in her early thirties who is '
@@ -73,6 +81,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'daniel',
+                'voice' => '6705e465-7b52-5915-a1d8-b1222885e01d',
                 'name' => 'Daniel',
                 'accent' => 'en-GB',
                 'persona' => 'A traveller and office worker in his early thirties; the second half of '
@@ -82,6 +91,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'grace',
+                'voice' => '731b4ffe-e95e-59f4-8c00-81608936091f',
                 'name' => 'Grace',
                 'accent' => 'en-GB',
                 'persona' => 'A hotel receptionist and, more broadly, the person behind any counter: '
@@ -91,6 +101,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'tomas',
+                'voice' => 'bd072316-f77c-588b-b6e5-e46b9b03d008',
                 'name' => 'Tomas',
                 'accent' => 'en-GB',
                 'persona' => 'A shopkeeper and market trader; appears wherever buying, prices and '
@@ -100,6 +111,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'aiko',
+                'voice' => '57ccb351-84d7-54ba-afd4-26b566ca6023',
                 'name' => 'Aiko',
                 'accent' => 'en-US',
                 'persona' => 'A doctor and pharmacist; carries the health, body and illness vocabulary.',
@@ -108,6 +120,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'omar',
+                'voice' => '563f728c-e249-5a85-97ab-8461e8c09da6',
                 'name' => 'Omar',
                 'accent' => 'en-GB',
                 'persona' => 'A teacher and course tutor; appears in study, education and exam material.',
@@ -116,6 +129,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'lena',
+                'voice' => '3c2b83c0-2e0a-5ae8-998a-a5fe71b7eccd',
                 'name' => 'Lena',
                 'accent' => 'en-GB',
                 'persona' => 'A colleague and manager; carries workplace, meetings and career vocabulary.',
@@ -124,6 +138,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'samuel',
+                'voice' => '30fc8796-ceb6-4a66-b3a7-4a145ef7f346',
                 'name' => 'Samuel',
                 'accent' => 'en-GB',
                 'persona' => 'A neighbour and older relative; carries home, family, weather and '
@@ -133,6 +148,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'nadia',
+                'voice' => '7a6845a2-5865-5669-a0ca-8fc8d8e96528',
                 'name' => 'Nadia',
                 'accent' => 'en-GB',
                 'persona' => 'A student in her early twenties; carries university, technology and '
@@ -142,6 +158,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'peter',
+                'voice' => 'e2a2d2e6-9ed2-59cd-82af-feaa27f8a678',
                 'name' => 'Peter',
                 'accent' => 'en-GB',
                 'persona' => 'A driver, guard and general public-transport figure; carries travel, '
@@ -151,6 +168,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'ines',
+                'voice' => 'a00bc7f3-0236-5e76-ac65-90137ce0f5a4',
                 'name' => 'Ines',
                 'accent' => 'en-US',
                 'persona' => 'A chef and café owner; carries food, cooking and restaurant vocabulary.',
@@ -159,6 +177,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'joseph',
+                'voice' => 'e6f9b893-51b1-51d3-afe9-9e0482cb7ac1',
                 'name' => 'Joseph',
                 'accent' => 'en-GB',
                 'persona' => 'A child of about nine; appears in family, school and play scenes where '
@@ -168,6 +187,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'clara',
+                'voice' => '1550321e-7f5b-526e-b001-02328b03e9bc',
                 'name' => 'Clara',
                 'accent' => 'en-GB',
                 'persona' => 'A nurse and carer; appears alongside Aiko in health settings and in '
@@ -177,6 +197,7 @@ class CastSeeder extends Seeder
             ],
             [
                 'slug' => 'raj',
+                'voice' => '3c9d6053-6334-592c-8997-4e325286af3f',
                 'name' => 'Raj',
                 'accent' => 'en-GB',
                 'persona' => 'An engineer and repairer; carries tools, machines, describing-problems '

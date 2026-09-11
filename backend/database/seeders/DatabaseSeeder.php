@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             CastSeeder::class,
             ProductionPromptSeeder::class,
             ConversationScenarioSeeder::class,
+            SceneSeeder::class,
         ]);
 
         // User::factory(10)->create();

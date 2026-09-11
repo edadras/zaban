@@ -9,6 +9,7 @@ use App\Models\ExerciseAttempt;
 use App\Models\Language;
 use App\Models\LearnerProfile;
 use App\Models\LearningSession;
+use App\Models\SceneSession;
 use App\Models\SpeechAttempt;
 use App\Models\UserSetting;
 use App\Models\XpTransaction;
@@ -41,6 +42,10 @@ class ProgressService
     public const XP_EXAM_BASE = 50;
 
     public const XP_SPEECH_SCORED = 15;
+
+    public const XP_SCENE_BASE = 20;
+
+    public const XP_SCENE_PER_LINE = 4;
 
     /** Record one graded exercise against today's counters and the XP ledger. */
     public function recordExerciseAttempt(ExerciseAttempt $attempt): void
@@ -130,6 +135,33 @@ class ProgressService
 
             $this->addStudySeconds($session->user_id, $seconds, $xp);
             $this->awardXp($session->user_id, $xp, 'conversation_complete', $session);
+            $this->touchStudyDay($session->user_id);
+        });
+    }
+
+    /**
+     * An acted scene the learner has played through.
+     *
+     * Paid per line they produced rather than per scene, because watching one
+     * and performing one are not the same amount of work and should not earn
+     * the same.
+     */
+    public function recordSceneCompleted(SceneSession $session): void
+    {
+        if ($session->status !== 'completed') {
+            return;
+        }
+        if ($this->alreadyAwarded($session->user_id, $session, 'scene_complete')) {
+            return;
+        }
+
+        DB::transaction(function () use ($session) {
+            $cleared = (int) ($session->summary['lines_cleared'] ?? 0);
+            $xp = self::XP_SCENE_BASE + ($cleared * self::XP_SCENE_PER_LINE);
+            $seconds = max(60, (int) ($session->scene?->estimated_seconds ?? 240));
+
+            $this->addStudySeconds($session->user_id, $seconds, $xp);
+            $this->awardXp($session->user_id, $xp, 'scene_complete', $session);
             $this->touchStudyDay($session->user_id);
         });
     }

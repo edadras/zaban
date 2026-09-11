@@ -142,6 +142,16 @@ class ApiEndpoints {
   static String conversationFinish(int sessionId) =>
       '/conversation/$sessionId/finish';
 
+  // ------------------------------------------------------- acted scenes
+  /// Conversation practice with a room around it. Starting a run answers with
+  /// the whole scene plus a signed link to the page that draws it.
+  static const String scenes = '/conversation/scenes';
+  static const String sceneStart = '/conversation/scenes/start';
+  static String scene(int id) => '/conversation/scenes/$id';
+  static String sceneSession(int id) => '/conversation/scene-sessions/$id';
+  static String sceneFinish(int id) =>
+      '/conversation/scene-sessions/$id/finish';
+
   // ----------------------------------------------------------- onboarding
   static const String onboardingOptions = '/onboarding/options';
   static const String onboarding = '/onboarding';

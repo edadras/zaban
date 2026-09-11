@@ -58,6 +58,23 @@ class ScenariosScreen extends ConsumerWidget {
                       context.t('Speak or type your way through a real situation. The tutor stays in role and corrects afterwards.'),
                       style: context.text.bodyMedium,
                     ),
+                    const SizedBox(height: Spacing.lg),
+                    // The way into the acted scenes. Same situations, played
+                    // out in a room rather than typed into a transcript.
+                    GlassCard(
+                      eyebrow: 'SCENES',
+                      title: context.t('Walk into the situation'),
+                      subtitle: context.t(
+                        'Watch the conversation happen, then take one of the parts and say the lines yourself.',
+                      ),
+                      subtitleIsContent: true,
+                      footer: GlowButton(
+                        label: 'Open scenes',
+                        expand: true,
+                        variant: GlowButtonVariant.ghost,
+                        onPressed: () => context.push(AppRoute.scenes.path),
+                      ),
+                    ),
                     const SizedBox(height: Spacing.xl),
                     ResponsiveGrid(
                       minTileWidth: 320,
