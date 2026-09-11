@@ -6,7 +6,7 @@ use App\Models\ExamTask;
 use App\Models\ExamTaskType;
 use App\Models\ProductionPrompt;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 /**
  * Put the authored prompts behind the exam papers.
@@ -153,7 +153,7 @@ class BuildExamTasks extends Command
     }
 
     /**
-     * @param  \Illuminate\Support\Collection<int, ExamTaskType>  $candidates
+     * @param  Collection<int, ExamTaskType>  $candidates
      */
     private function pick($candidates, ?string $kind): ?ExamTaskType
     {

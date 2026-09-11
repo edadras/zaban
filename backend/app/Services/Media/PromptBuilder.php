@@ -111,17 +111,26 @@ class PromptBuilder
             : 'One unambiguous subject, plain uncluttered background, centred composition. '
                 .'Clean product-photography lighting.';
 
+        /*
+         * `scene` is only the part that tells this card apart from every other:
+         * the word, and the sentence it is grounded in. The framing and the
+         * level guidance are the same for every card on a contact sheet, and a
+         * sheet states them once - sixteen repetitions of "plain uncluttered
+         * background" crowd out the sixteen words the sheet is actually for.
+         * The single-image prompt below is unchanged: same sentences, same
+         * order.
+         */
         $scene = collect([
             $depictsSituation
                 ? "A single clear image conveying the English word \"{$term}\"."
                 : "A single clear subject illustrating the English word \"{$term}\".",
             $context ? "It is used like this: {$context}" : null,
-            $framing,
-            $this->levelGuidance($cefr),
         ])->filter()->implode(' ');
 
         $prompt = collect([
             $scene,
+            $framing,
+            $this->levelGuidance($cefr),
             'Culturally neutral and age-appropriate.',
             'No text, letters or numbers in the image.',
         ])->filter()->implode(' ');
@@ -344,6 +353,10 @@ class PromptBuilder
         // Contractions arrive split by the extractor: "ve got", "haven't got".
         'its', 'ive', 'ves', 've', 'll', 'dont', 'doesnt', 'didnt', 'havent',
         'hasnt', 'isnt', 'arent', 'wasnt', 'werent', 'cant', 'wont', 'some', 'any',
+        // Particles, which arrive as headwords on their own ("around", "about")
+        // and as the whole of a phrasal headword ("up and down", "out and
+        // about"). A picture of "around" is a picture of the model's guess.
+        'about', 'around', 'down', 'out', 'into', 'off', 'over', 'through',
     ];
 
     /**
@@ -396,6 +409,24 @@ class PromptBuilder
         // Two is the threshold because one surviving word is usually the one
         // the extractor happened to catch whole, not the lesson's subject.
         return $kept->count() >= 2 ? $kept->implode(', ') : '';
+    }
+
+    /**
+     * Is there anything here for a picture to be of?
+     *
+     * A vocabulary card is one image standing for one headword, so a headword
+     * with nothing visible in it - "have to", "very well", "It's got" - buys a
+     * picture of whatever the model guesses, attached to the word for ever. The
+     * grounding sentence does not rescue it: "I'll meet you at around 6
+     * o'clock" is a fine sentence and still leaves "around" unphotographable.
+     *
+     * Public because the decision belongs with the prompts - the same judgement
+     * decides which of a lesson's target words are worth naming in its scene -
+     * and the brief builder needs it before it queues anything to be paid for.
+     */
+    public function illustratable(string $headword): bool
+    {
+        return $this->carriesSomethingVisible($headword);
     }
 
     /**

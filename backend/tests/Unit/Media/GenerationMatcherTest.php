@@ -76,7 +76,7 @@ class GenerationMatcherTest extends TestCase
         // Newlines do not survive a textarea, and a trailing space is invisible.
         $brief = $this->brief(self::PROMPT);
         $mangled = "  A clear, uncluttered illustrative scene for an English\nlanguage lesson.   "
-            ."Teaching context: In the kitchen - Things we use in the kitchen.  ";
+            .'Teaching context: In the kitchen - Things we use in the kitchen.  ';
 
         $out = $this->matcher->match([['id' => 'g1', 'prompt' => $mangled, 'url' => 'https://cdn/1.png']]);
 

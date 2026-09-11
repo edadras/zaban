@@ -75,12 +75,12 @@ class SheetCompositionTest extends TestCase
         ]);
     }
 
-    private function brief(int $n, string $ratio = '4:3'): MediaBrief
+    private function brief(int $n, string $ratio = '4:3', ?string $kind = null): MediaBrief
     {
         $lesson = $this->lesson($n);
 
         return MediaBrief::create([
-            'kind' => MediaBrief::KIND_LESSON_SCENE,
+            'kind' => $kind ?? MediaBrief::KIND_LESSON_SCENE,
             'subject_type' => $lesson->getMorphClass(),
             'subject_id' => $lesson->id,
             'model' => 'gpt_image_2',
@@ -375,5 +375,50 @@ class SheetCompositionTest extends TestCase
         $this->assertSame(0, $second['imported']);
         $this->assertSame(9, $second['skipped']);
         $this->assertSame(9, MediaAsset::count());
+    }
+
+    public function test_a_sheet_asks_for_the_look_the_cards_on_it_need(): void
+    {
+        $composer = app(SheetComposer::class);
+
+        $scenes = $composer->compose($this->briefs(4))['prompt'];
+        $cards = $composer->compose(collect(range(1, 4))->map(
+            fn (int $n) => $this->brief($n, '4:3', MediaBrief::KIND_VOCABULARY_CARD),
+        ))['prompt'];
+
+        // A vocabulary card is one object on plain paper. Asked for in the
+        // documentary style a lesson scene wants, the object is the part that
+        // comes back out of focus.
+        $this->assertStringContainsString('documentary photography', $scenes);
+        $this->assertStringNotContainsString('documentary photography', $cards);
+        $this->assertStringContainsString('product-photography lighting', $cards);
+        $this->assertStringContainsString('plain', $cards);
+    }
+
+    public function test_the_look_is_stated_once_not_once_per_cell(): void
+    {
+        $prompt = app(SheetComposer::class)->compose(collect(range(1, 16))->map(
+            fn (int $n) => $this->brief($n, '4:3', MediaBrief::KIND_VOCABULARY_CARD),
+        ))['prompt'];
+
+        // Sixteen repetitions of the lighting would crowd out the sixteen
+        // words the sheet is actually for.
+        $this->assertSame(1, substr_count($prompt, 'product-photography lighting'));
+    }
+
+    public function test_a_sheet_will_not_mix_kinds_of_brief(): void
+    {
+        $mixed = collect([
+            $this->brief(1),
+            $this->brief(2, '4:3', MediaBrief::KIND_VOCABULARY_CARD),
+            $this->brief(3),
+            $this->brief(4),
+        ]);
+
+        // There is one house style per sheet and it is chosen by kind, so a
+        // mixed sheet has no style to ask for - better to refuse than to
+        // silently give half the cells the wrong one.
+        $this->expectException(\InvalidArgumentException::class);
+        app(SheetComposer::class)->compose($mixed);
     }
 }

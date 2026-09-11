@@ -6,6 +6,7 @@ use App\Models\MediaBrief;
 use App\Services\Media\GeneratedMediaImporter;
 use App\Services\Media\GenerationMatcher;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 
 /**
  * Takes a dump of the Higgsfield account's generation history and files every
@@ -62,7 +63,7 @@ class SyncWebGenerations extends Command
             $this->warn('Not placed - their prompts match no brief:');
 
             foreach (array_slice($outcome['unmatched'], 0, 5) as $item) {
-                $this->line('  '.\Illuminate\Support\Str::limit((string) ($item['prompt'] ?? '(no prompt)'), 90));
+                $this->line('  '.Str::limit((string) ($item['prompt'] ?? '(no prompt)'), 90));
             }
 
             if (count($outcome['unmatched']) > 5) {

@@ -71,11 +71,17 @@ class ImportCurriculum extends Command
     ];
 
     private array $cefr = [];
+
     private array $stats = [];
+
     private array $skills = [];
+
     private int $languageId;
+
     private int $vocabSkillId;
+
     private int $skillId;
+
     private string $conceptSource = 'headword';
 
     public function handle(): int
@@ -196,17 +202,17 @@ class ImportCurriculum extends Command
         }
         if ($audioRel !== null) {
             SourceFile::updateOrCreate(
-            ['source_document_id' => $doc->id, 'path' => $audioRel],
-            [
-                'disk' => 'local',
-                'original_name' => basename($audioRel),
-                'relative_path' => $audioRel,
-                'kind' => 'audio',
-                'mime' => 'inode/directory',
-                'bytes' => $audioBytes,
-                'checksum' => '',
-                'status' => 'processed',
-            ],
+                ['source_document_id' => $doc->id, 'path' => $audioRel],
+                [
+                    'disk' => 'local',
+                    'original_name' => basename($audioRel),
+                    'relative_path' => $audioRel,
+                    'kind' => 'audio',
+                    'mime' => 'inode/directory',
+                    'bytes' => $audioBytes,
+                    'checksum' => '',
+                    'status' => 'processed',
+                ],
             );
         }
 
@@ -244,10 +250,10 @@ class ImportCurriculum extends Command
         );
 
         $counts = ['units' => 0, 'lessons' => 0, 'vocab' => 0, 'senses' => 0,
-                   'definitions' => 0, 'examples' => 0, 'concepts' => 0,
-                   'exercises' => 0, 'audio' => 0, 'pages' => 0, 'segments' => 0,
-                   'chars' => 0, 'images' => 0, 'image_blocks' => 0,
-                   'items' => 0, 'options' => 0];
+            'definitions' => 0, 'examples' => 0, 'concepts' => 0,
+            'exercises' => 0, 'audio' => 0, 'pages' => 0, 'segments' => 0,
+            'chars' => 0, 'images' => 0, 'image_blocks' => 0,
+            'items' => 0, 'options' => 0];
 
         // Every page of the book is stored verbatim first. Whatever the structural
         // parser does or does not recognise, no source text is ever unrepresented.
@@ -926,7 +932,7 @@ class ImportCurriculum extends Command
                 'origin' => 'ingested',
                 'copyright_status' => 'owned',
                 'metadata' => ['archive_path' => $a['path'], 'unit' => $a['unit'] ?? null,
-                               'section' => $a['section'] ?? null],
+                    'section' => $a['section'] ?? null],
             ]);
             AudioAsset::create([
                 'media_asset_id' => $media->id,
@@ -1313,9 +1319,9 @@ class ImportCurriculum extends Command
         $rows = [];
         foreach ($this->stats as $book => $c) {
             $rows[] = [$book, $c['pages'], $c['units'], $c['lessons'], $c['segments'],
-                       $c['vocab'], $c['senses'], $c['definitions'], $c['examples'],
-                       $c['exercises'], $c['items'], $c['audio'], $c['images'],
-                       number_format($c['chars'])];
+                $c['vocab'], $c['senses'], $c['definitions'], $c['examples'],
+                $c['exercises'], $c['items'], $c['audio'], $c['images'],
+                number_format($c['chars'])];
         }
         $totals = ['TOTAL'];
         for ($i = 1; $i <= 12; $i++) {
@@ -1325,7 +1331,7 @@ class ImportCurriculum extends Command
         $rows[] = $totals;
         $this->table(
             ['book', 'pages', 'units', 'lessons', 'segments', 'new vocab', 'senses',
-             'defs', 'examples', 'drills', 'items', 'audio', 'images', 'source chars'],
+                'defs', 'examples', 'drills', 'items', 'audio', 'images', 'source chars'],
             $rows,
         );
     }

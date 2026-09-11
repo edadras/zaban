@@ -6,6 +6,7 @@ use App\Models\Module;
 use App\Models\Unit;
 use App\Services\Content\TableOfContentsParser;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -88,7 +89,7 @@ class RebuildModules extends Command
      * the contents page wrapped awkwardly still land in the right group rather
      * than being dropped.
      *
-     * @return array<int,\Illuminate\Support\Collection>
+     * @return array<int,Collection>
      */
     private function assign($units, array $themes): array
     {
@@ -112,7 +113,7 @@ class RebuildModules extends Command
 
     private function apply(int $versionId, array $themes, array $assignment, $units): void
     {
-        DB::transaction(function () use ($versionId, $themes, $assignment, $units) {
+        DB::transaction(function () use ($versionId, $themes, $assignment) {
             $old = Module::where('course_version_id', $versionId)->pluck('id');
 
             /*

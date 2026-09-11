@@ -48,6 +48,29 @@ class SheetComposer
         16 => ['cols' => 4, 'rows' => 4],
     ];
 
+    /**
+     * The look every cell on the sheet shares, stated once instead of sixteen
+     * times.
+     *
+     * A single-image brief carries its own house style, and a sheet that
+     * repeated it per cell would spend most of the prompt restating the
+     * lighting. But the style is not one style: a lesson scene wants
+     * documentary photography of a situation, a vocabulary card wants one
+     * object lit cleanly on plain paper. Asking for the wrong one is not
+     * cosmetic - sixteen moody, shallow-focus vocabulary cards are sixteen
+     * pictures where the object is the part that is out of focus.
+     *
+     * @var array<string,string>
+     */
+    private const STYLES = [
+        MediaBrief::KIND_LESSON_SCENE => 'natural available light, warm and neutral palette, '
+            .'documentary photography, shallow depth of field',
+        MediaBrief::KIND_VOCABULARY_CARD => 'one unambiguous subject centred on a plain, '
+            .'uncluttered background, clean even product-photography lighting, everything in focus',
+        MediaBrief::KIND_CHARACTER_PORTRAIT => 'natural available light, warm and neutral palette, '
+            .'head and shoulders, plain background',
+    ];
+
     /** Never rendered into a sheet, on top of whatever the briefs exclude. */
     private const SHEET_NEGATIVE = 'irregular layout, uneven cells, cells of different sizes, '
         .'overlapping panels, a scene crossing a gutter, torn edges, scrapbook, polaroid frames, '
@@ -101,6 +124,12 @@ class SheetComposer
             throw new \InvalidArgumentException('A sheet cannot mix cell shapes.');
         }
 
+        // One sheet, one house style - and the style is chosen by kind, so a
+        // sheet of two kinds has no one style to ask for.
+        if ($briefs->pluck('kind')->unique()->count() > 1) {
+            throw new \InvalidArgumentException('A sheet cannot mix kinds of brief.');
+        }
+
         $scenes = $briefs->values()
             ->map(fn (MediaBrief $b, int $i) => ($i + 1).'. '.$this->oneLine($b))
             ->implode("\n");
@@ -120,8 +149,8 @@ class SheetComposer
                 $grid['rows'],
             ),
             sprintf('Reading left to right, top to bottom, the %d cells are:', $cells)."\n".$scenes,
-            'Every cell: natural available light, warm and neutral palette, documentary photography, '
-            .'shallow depth of field. Culturally neutral: no religious symbols, no national flags, '
+            'Every cell: '.$this->style($briefs).'. '
+            .'Culturally neutral: no religious symbols, no national flags, '
             .'no region-specific signage. Age-appropriate for a general adult audience. '
             .'No writing of any kind anywhere in the image.',
             'Do not include any of the following: '.$this->exclusions($briefs).'.',
@@ -134,6 +163,18 @@ class SheetComposer
             'rows' => $grid['rows'],
             'cells' => $briefs->pluck('id')->all(),
         ];
+    }
+
+    /**
+     * The shared look for this sheet, taken from what the briefs are for.
+     *
+     * An unknown kind falls back to the documentary style rather than refusing:
+     * a sheet in a style that is merely not ideal is better than no sheet, and
+     * the mixed-kind guard above already stops the ambiguous case.
+     */
+    private function style(Collection $briefs): string
+    {
+        return self::STYLES[$briefs->first()->kind] ?? self::STYLES[MediaBrief::KIND_LESSON_SCENE];
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Services\Media;
 
 use App\AI\AiOrchestrator;
 use App\AI\Support\MediaRequest;
+use App\Models\Character;
 use App\Models\Lesson;
 use App\Models\LessonBlock;
 use App\Models\MediaAsset;
@@ -107,7 +108,7 @@ class MediaGenerationService
      * A portrait of a recurring character, anchored to its stable identity so it
      * is recognisably the same person every time.
      */
-    public function characterPortrait(\App\Models\Character $character, bool $force = false): array
+    public function characterPortrait(Character $character, bool $force = false): array
     {
         if ($character->reference_media_asset_id && ! $force) {
             return ['status' => 'exists', 'media_asset_id' => $character->reference_media_asset_id];
@@ -154,7 +155,7 @@ class MediaGenerationService
      * synthesised speech - and it deliberately does not generate video. The
      * video step is the expensive one and is left to the caller to decide on.
      */
-    public function characterLine(\App\Models\Character $character, string $text): array
+    public function characterLine(Character $character, string $text): array
     {
         $portrait = $this->characterPortrait($character);
         if ($portrait['status'] === 'failed') {

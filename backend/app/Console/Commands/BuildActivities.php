@@ -16,6 +16,7 @@ use App\Services\Content\PageGlossParser;
 use App\Services\Content\SentenceQuality;
 use App\Services\Content\SourceSentenceMiner;
 use Illuminate\Console\Command;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -1025,9 +1026,9 @@ class BuildActivities extends Command
                             [
                                 'title' => $term,
                                 'config' => ['front' => $term, 'back' => $back,
-                                             'example' => $example,
-                                             'concept_id' => $concept->id,
-                                             'audio_media_asset_id' => $audio],
+                                    'example' => $example,
+                                    'concept_id' => $concept->id,
+                                    'audio_media_asset_id' => $audio],
                                 'estimated_seconds' => 12,
                             ],
                         );
@@ -1045,7 +1046,7 @@ class BuildActivities extends Command
                             'title' => 'Listen',
                             'instructions' => 'Listen and choose what you hear.',
                             'config' => ['audio_media_asset_id' => $audio,
-                                         'concept_ids' => $concepts->pluck('id')->take(6)->all()],
+                                'concept_ids' => $concepts->pluck('id')->take(6)->all()],
                             'estimated_seconds' => 45,
                         ],
                     );
@@ -1057,9 +1058,9 @@ class BuildActivities extends Command
                             'title' => 'Repeat',
                             'instructions' => 'Listen, then say it yourself.',
                             'config' => ['audio_media_asset_id' => $audio,
-                                         'targets' => $concepts->pluck('label')
-                                             ->filter(fn ($l) => $this->isActivityWorthy($l))
-                                             ->take(8)->values()->all()],
+                                'targets' => $concepts->pluck('label')
+                                    ->filter(fn ($l) => $this->isActivityWorthy($l))
+                                    ->take(8)->values()->all()],
                             'estimated_seconds' => 60,
                         ],
                     );
@@ -1151,7 +1152,7 @@ class BuildActivities extends Command
      * unit 1 and unit 3 bears on it too. The item is filed under the first, and
      * without this the second never gets to ask it.
      *
-     * @param  \Illuminate\Support\Collection  $conceptsByUnit  unit id -> its concepts
+     * @param  Collection  $conceptsByUnit  unit id -> its concepts
      */
     private function linkStudyGuideToEveryUnitItNames($conceptsByUnit, $now): void
     {

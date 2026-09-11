@@ -146,6 +146,65 @@ class PromptBuilderTest extends TestCase
         $this->assertStringNotContainsString('Meaning: Used in context like', $spec['prompt']);
     }
 
+    #[DataProvider('unillustratableHeadwords')]
+    public function test_a_headword_with_nothing_visible_in_it_is_not_worth_a_card(string $headword): void
+    {
+        $this->assertFalse(
+            $this->builder->illustratable($headword),
+            "\"{$headword}\" buys a picture of the model's guess, attached to that word for ever",
+        );
+    }
+
+    public static function unillustratableHeadwords(): array
+    {
+        // All real headwords from the catalogue, all with a perfectly good
+        // grounding sentence behind them - which is why the sentence check does
+        // not catch them.
+        return array_map(fn (string $w) => [$w], [
+            'have to', 'very well', "It's got", 'how about', 'up and down',
+            'got used to', 'out and about', 've got to', 'that', 'around',
+        ]);
+    }
+
+    #[DataProvider('illustratableHeadwords')]
+    public function test_an_ordinary_word_still_gets_a_card(string $headword): void
+    {
+        $this->assertTrue($this->builder->illustratable($headword));
+    }
+
+    public static function illustratableHeadwords(): array
+    {
+        // The filter must not take the phrasal verbs and everyday collocations
+        // with it: each of these has one word a camera can point at.
+        return array_map(fn (string $w) => [$w], [
+            'honeymoon', 'hairdresser', 'got married', 'had a baby',
+            'is wearing', 'take a message', 'go to school', 'dark hair',
+        ]);
+    }
+
+    public function test_a_cards_scene_line_is_only_what_tells_it_apart(): void
+    {
+        $spec = $this->builder->vocabularyImage('bill', '"Can I have the bill, please?"', 'A2', 'noun');
+
+        /*
+         * `scene` is the line a contact sheet prints per cell. Sixteen cards
+         * repeating "plain uncluttered background, clean product-photography
+         * lighting, simple and concrete" would spend most of the sheet's prompt
+         * restating one lighting setup, crowding out the sixteen words the
+         * sheet is for. The sheet states the look once; the cell says which
+         * word it is.
+         */
+        $this->assertStringContainsString('"bill"', $spec['scene']);
+        $this->assertStringContainsString('Can I have the bill, please?', $spec['scene']);
+        $this->assertStringNotContainsString('product-photography', $spec['scene']);
+        $this->assertStringNotContainsString('uncluttered background', $spec['scene']);
+
+        // And the single-image prompt still asks for all of it.
+        $this->assertStringContainsString('product-photography', $spec['prompt']);
+        $this->assertStringContainsString('Simple and concrete', $spec['prompt']);
+        $this->assertStringContainsString('No text, letters or numbers', $spec['prompt']);
+    }
+
     public function test_a_scene_asks_for_one_frame_rather_than_a_set_of_panels(): void
     {
         /*

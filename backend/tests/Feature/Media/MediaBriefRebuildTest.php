@@ -192,6 +192,26 @@ class MediaBriefRebuildTest extends TestCase
         $this->assertFalse($after->skip_locked);
     }
 
+    public function test_a_reworded_scene_reaches_a_rendered_brief_without_requeueing_it(): void
+    {
+        $builder = app(MediaBriefBuilder::class);
+        $brief = $this->rendered($builder);
+
+        // What a change to the scene line looks like from here: the prompt that
+        // was paid for is identical, only the one-line description a contact
+        // sheet prints per cell has been reworded.
+        $brief->update(['scene' => 'something written before the wording improved']);
+
+        $second = app(MediaBriefBuilder::class);
+        $second->buildCharacterPortraits();
+
+        $after = $brief->fresh();
+        $this->assertNotSame('something written before the wording improved', $after->scene);
+        $this->assertSame(MediaBrief::STATUS_IMPORTED, $after->status, 'and it must not be reordered for it');
+        $this->assertSame('https://cdn.example/maya.png', $after->result_url);
+        $this->assertSame(0, $second->staleCount());
+    }
+
     public function test_a_brief_that_was_never_rendered_is_always_refreshed(): void
     {
         $builder = app(MediaBriefBuilder::class);

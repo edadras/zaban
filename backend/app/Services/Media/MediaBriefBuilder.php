@@ -182,6 +182,21 @@ class MediaBriefBuilder
                     continue;
                 }
 
+                if (! $this->prompts->illustratable($headword)) {
+                    // "have to", "very well", "It's got". A grounding sentence
+                    // does not help: the sentence is fine and the word still
+                    // has nothing in it to point a camera at, so the card would
+                    // be a picture of the model's guess, attached to that word
+                    // for ever.
+                    $n += $this->skip(
+                        MediaBrief::KIND_VOCABULARY_CARD,
+                        $sense,
+                        'Nothing in the headword a picture can be of; a card here would illustrate a guess.',
+                    );
+
+                    continue;
+                }
+
                 $context = $this->groundingFor($sense);
 
                 if ($context === null) {
@@ -413,13 +428,14 @@ class MediaBriefBuilder
         if ($existing && $existing->request_hash === $hash) {
             /*
              * `scene` is derived from the same inputs as the prompt, so it is
-             * deliberately not part of the request hash - a brief rendered
-             * before the column existed is not out of date, it is merely
-             * missing a field. Fill it in without disturbing anything else;
-             * requeueing a rendered brief to add a note to it would be absurd.
+             * deliberately not part of the request hash - a brief whose scene
+             * changed while its prompt did not is not out of date, it merely
+             * describes itself better. Keep it current without disturbing
+             * anything else; requeueing a rendered brief to reword a note on it
+             * would be absurd.
              */
-            if ($existing->scene === null && ($spec['scene'] ?? null) !== null) {
-                $existing->updateQuietly(['scene' => $spec['scene']]);
+            if ($existing->scene !== ($spec['scene'] ?? null)) {
+                $existing->updateQuietly(['scene' => $spec['scene'] ?? null]);
             }
 
             return 0;

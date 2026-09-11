@@ -6,9 +6,10 @@ use App\Models\Character;
 use App\Models\Dialogue;
 use App\Models\DialogueTurn;
 use App\Models\Lesson;
-use Illuminate\Console\Command;
 use App\Services\Content\DialogueParser;
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 /**
  * Recovers the two-speaker exchanges buried in the source pages.
@@ -204,7 +205,7 @@ class ExtractDialogues extends Command
 
     private function summarise(array $run): string
     {
-        return \Illuminate\Support\Str::limit(
+        return Str::limit(
             collect($run)->pluck('text')->implode(' '),
             400,
         );

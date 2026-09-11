@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Language;
 use App\Models\Translation;
+use App\Models\VocabularySense;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
@@ -153,7 +154,7 @@ class ImportTranslations extends Command
 
         $total = Translation::where('language_id', $language->id)->count();
         $taught = DB::table('concepts')
-            ->where('conceptable_type', \App\Models\VocabularySense::class)
+            ->where('conceptable_type', VocabularySense::class)
             ->where('is_active', true)
             ->distinct()->count('label');
 
@@ -162,7 +163,7 @@ class ImportTranslations extends Command
                 $j->on('translations.vocabulary_sense_id', '=', 'concepts.conceptable_id')
                     ->where('translations.language_id', '=', $language->id);
             })
-            ->where('concepts.conceptable_type', \App\Models\VocabularySense::class)
+            ->where('concepts.conceptable_type', VocabularySense::class)
             ->where('concepts.is_active', true)
             ->distinct()->count('concepts.label');
 

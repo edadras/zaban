@@ -49,7 +49,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('version')->default(1);
             $table->string('name');
             $table->string('purpose', 64);                    // lesson_generation|exercise_generation|tutor|
-                                                              // speech_feedback|media_image|exam_scoring
+            // speech_feedback|media_image|exam_scoring
             $table->longText('system_template')->nullable();
             $table->longText('user_template');
             $table->longText('negative_template')->nullable()->comment('media providers');

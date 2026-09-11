@@ -34,7 +34,7 @@ return new class extends Migration
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->string('code', 32)->unique();           // reading, listening, speaking, writing,
-                                                            // vocabulary, grammar, pronunciation
+            // vocabulary, grammar, pronunciation
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('is_productive')->default(false); // speaking/writing need AI grading

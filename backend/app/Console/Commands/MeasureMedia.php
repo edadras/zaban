@@ -183,7 +183,7 @@ class MeasureMedia extends Command
     }
 
     /**
-     * @return array{0:int,1:int,2:int,3:int}|null  offset, kbps, Hz, samples per frame
+     * @return array{0:int,1:int,2:int,3:int}|null offset, kbps, Hz, samples per frame
      */
     private function firstFrameHeader($handle, int $from, int $size): ?array
     {

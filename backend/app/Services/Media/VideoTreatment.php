@@ -58,7 +58,7 @@ class VideoTreatment
 
     /**
      * @return array{tier:string, motion:string, seconds:int}|null null when the
-     *                                                            lesson should have no video at all
+     *                                                             lesson should have no video at all
      */
     public function forLesson(string $title, ?string $unitTitle = null): ?array
     {
