@@ -120,36 +120,41 @@ is left in the queue.
 | Kind | Rendered | Skipped, with a reason | Credits |
 |---|---:|---:|---:|
 | Character portraits | 14 | — | 28.0 |
-| Lesson scenes, one at a time | 118 | — | 59.0 |
-| Lesson scenes, on 3x3 sheets | 859 | 1,444 | 71.6 |
-| Vocabulary cards, on 4x4 sheets | 1,274 | 18,031 | 60.0 |
+| Lesson scenes, singly | 118 | — | 59.0 |
+| Lesson scenes, on sheets | 1,245 | 1,058 | 103.5 |
+| Vocabulary cards, on sheets | 1,274 | 18,031 | 60.0 |
 | Probes and comparisons | — | — | 4.0 |
-| **Total** | **2,265** | **19,475** | **~218** |
+| **Total** | **2,651** | **19,089** | **~255** |
 
-**620.66 credits left**, against the 45,300 the same 2,265 images would have
-cost one at a time at video prices, or 1,133 as single stills. The contact
-sheet is the whole reason this was affordable: 0.083 credits a lesson scene and
-0.047 a vocabulary card, instead of 0.5 each.
+**About 570 credits left**, against the 1,325 the same 2,651 images would have
+cost one at a time, or the 53,000 they would have cost at video prices. The
+contact sheet is the whole reason this was affordable: 0.083 credits a lesson
+scene and 0.047 a vocabulary card, instead of 0.5 each.
 
-The skipped column is not failure, it is judgement, and every row carries the
-reason in `skip_reason`:
+The skipped column is judgement, not failure, and every row carries its reason
+in `skip_reason`:
 
 - **18,031 vocabulary cards** have no example sentence good enough to ground an
   image, or a headword with nothing visible in it ("have to", "very well",
-  "around"). A card built from the headword alone illustrates the wrong sense;
-  a card for a particle illustrates the model's guess.
-- **1,444 lesson scenes**: grammar and pronunciation drills, which are about
-  form rather than situation; the units whose OCR came back unreadable, which
-  is a content defect and not an artwork one; word-form units (suffixes,
-  prefixes, compounds, countability); and written connectives, where the lesson
-  is the wording itself.
+  "around"). A card built from the headword alone illustrates the wrong sense; a
+  card for a particle illustrates the model's guess.
+- **1,058 lesson scenes**: grammar and pronunciation drills, which teach form
+  rather than situation; word-form units (suffixes, prefixes, compounds,
+  countability); written connectives, where the lesson is the wording itself;
+  and 26 whose headings are still unreadable after re-reading the page.
 
 All of it is reversible: `media:skip --unskip <ids>` puts any of them back.
 
+An earlier version of this table said 2,265, and 426 lesson scenes were skipped
+as coming from "badly OCR'd" books. That was a blanket judgement about three
+books rather than a look at the rows: scoring them properly, 386 were sound and
+have since been rendered. What was actually damaged was twenty-one lines and
+twenty-six headings, repaired from the source pages - see MEDIA_RUNBOOK.md.
+
 Those files were rendered in a throwaway container and are not in git.
-`docs/data/rendered-media.json` replays the whole run - single images and
-sheets alike - for nothing while the provider URLs are still live. It has been
-tested by clearing a sheet and re-importing it. See `MEDIA_RUNBOOK.md`.
+`docs/data/rendered-media.json` replays the whole run - single images and sheets
+alike - for nothing while the provider URLs are still live. It has been tested
+by clearing a sheet and re-importing it. See `MEDIA_RUNBOOK.md`.
 
 ### Video is still not worth it
 
