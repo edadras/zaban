@@ -69,11 +69,38 @@ batch submitted alongside it is rejected with a rate-limit error per request ove
 the ceiling. Render in rounds of about twelve and re-submit whatever bounces;
 an image takes roughly 30-60 seconds.
 
+## Nine lessons per generation
+
+A generation costs the same whether it returns one scene or nine. A 4:3 sheet
+at 4K comes back 3312x2480, so a 3x3 grid of nine lesson scenes costs 0.75
+credits - **0.083 per lesson instead of 0.5**, six times less. `media:sheet`
+composes the sheet, `media:import` cuts it back apart on its own seams.
+
+The trade is resolution, and it was measured rather than assumed. A cell is
+about 1080x810. The client draws lesson artwork in a 4:3 box no wider than 720
+logical points, which on a high-density phone is roughly 1200x900 physical, so a
+cell is within ten percent of what is actually displayed. A 4x4 sheet was tried
+too: cells drop to about 810x610, which is visibly soft. Three by three is the
+point where the saving stops being free.
+
+That changes what the remainder costs:
+
+| Kind | Left to render | One at a time | On sheets |
+|---|---:|---:|---:|
+| Lesson scenes | 2,221 | 1,110 | **185** |
+| Vocabulary cards | 1,384 | 692 | **87** (16 to a sheet) |
+| **Total** | **3,605** | **1,802** | **272** |
+
+So every remaining image in the course is now about 272 credits against a
+balance of 748 - affordable, where the one-at-a-time route was not.
+
 ## The recommendation
 
-**Video, at 22.5 credits for five seconds, buys forty-five lesson stills.** That
-is the trade, and at this balance it is not close. A whole credit balance of 838
-buys 37 clips — just over three minutes of footage — or 1,670 lesson scenes.
+**Render stills on sheets. Do not buy video yet.**
+
+Video is 22.5 credits for five seconds, which is 270 lesson stills at sheet
+prices. The whole balance buys 33 clips - under three minutes of footage - or
+every remaining image in the course three times over.
 
 The twelve conversation scenarios were the one case the older version of this
 document argued for video. They no longer need it: those scenarios are now acted
@@ -81,36 +108,34 @@ out in the browser as interactive 3D scenes with real recorded voices, where the
 learner speaks their way through. A five-second clip in front of that is
 decoration.
 
-So: **render stills; do not buy video yet.** Revisit only when a specific lesson
-is demonstrably failing without motion, and then buy that one clip.
-
 Within stills, `media_briefs.priority` already orders the queue by usefulness -
 cast, then lesson scenes, then vocabulary cards, lower CEFR first inside each
-band. Render from the top and stop whenever the budget says stop; whatever got
-made is the more useful half.
+band. Render from the top.
 
 ## What has actually been rendered
 
-| Kind | Rendered | Planned | Credits spent |
+| Kind | Rendered | Planned | Credits |
 |---|---:|---:|---:|
 | Character portraits | 14 | 14 | 28.0 |
-| Lesson scenes | 103 | 2,421 | 51.5 |
-| Everything else | 0 | — | 0 |
+| Lesson scenes, one at a time | 103 | — | 51.5 |
+| Lesson scenes, on ten sheets | 90 | — | 7.5 |
+| Probes and comparisons | — | — | 4.0 |
+| **Total** | **207** | 5,745 | **91.0** |
 
-Plus 2.5 credits on the two quality probes. **82 credits spent, 756.66 left.**
+**747.66 credits left.** The cast is complete. The 193 lesson scenes are the
+first of the queue in priority order, which is the elementary book.
+
+Seven lesson briefs are marked `skipped` with the reason on the row, and locked
+so re-planning leaves them alone: five teach written text (shop signs, on-screen
+labels, a menu, an order form, printed notices) and every brief forbids writing
+in the image, so the artwork could not contain the thing being taught; one
+teaches word-building; one is a list of nationalities, where a picture could
+only be caricature.
 
 Those files were rendered in a throwaway container and are not in git.
-`docs/data/rendered-media.json` re-imports the whole run for nothing while the
-provider URLs are still live — see `MEDIA_RUNBOOK.md`.
-The cast is complete; the lesson scenes are the first 103 of the queue in
-priority order, which is the opening of the elementary book.
-
-Seven lesson briefs were marked `skipped` rather than rendered, with the reason
-stored on the row: five teach written text (shop signs, on-screen labels, a
-menu, an order form, printed notices) and every brief forbids writing in the
-image, so the artwork could not contain the thing being taught; one teaches
-word-building, which has nothing to photograph; and one is a list of
-nationalities, where a picture could only be caricature.
+`docs/data/rendered-media.json` replays the whole run - single images and
+sheets alike - for nothing while the provider URLs are still live. It has been
+tested by clearing a sheet and re-importing it. See `MEDIA_RUNBOOK.md`.
 
 ## Guard rails already in the code
 

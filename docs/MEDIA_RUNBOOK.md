@@ -106,6 +106,47 @@ stdout can still be piped straight into a runner.
 `media:import` reads `{"results": {"<brief id>": "<url>"}}` — the same
 index-in/index-out shape the batch tools return.
 
+### Nine at a time
+
+One generation can carry nine lessons. `media:sheet` groups the next briefs into
+a contact sheet and composes one prompt for all of them; `media:import` cuts the
+returned sheet back apart and attaches each cell to its own lesson.
+
+```bash
+php artisan media:sheet --cells=9 --sheets=4 --claim > sheets.json
+#   ... render each sheet's prompt at its aspect_ratio and resolution ...
+php artisan media:import results.json          # {"sheets": [{url, cols, rows, cells, prompt}]}
+```
+
+0.083 credits a lesson instead of 0.5. `MEDIA_BUDGET.md` has the arithmetic and
+the resolution trade; the short version is that a 3x3 cell is about 1080x810 and
+the client draws these at roughly 1200x900, so nothing visible is lost, while
+4x4 cells at 810x610 are visibly soft.
+
+The `cells` list is the only thing tying a cell to a lesson - there is no signal
+in the image - so it goes back into `media:import` untouched, in the order it
+came out. If the slicer cannot find the grid it was told to expect, the whole
+sheet is refused and nothing is imported: nine lessons quietly given slivers of
+each other's artwork is worse than a failed round, because nobody would find out
+until a learner did.
+
+A sheet is only exported when it is full. Asking for nine cells while naming
+four scenes is how a sheet comes back as something the slicer refuses.
+
+### When a brief should not be rendered at all
+
+Reading a batch before paying for it turns up lessons no picture can teach:
+shop signs, an on-screen order form, a printed menu. The artwork would have to
+contain the words it teaches, and every brief forbids writing in the image.
+
+```bash
+php artisan media:skip 487 490 491 --reason="teaches written text; artwork may not contain writing"
+```
+
+This locks the decision. A plain status update does not survive the next
+`media:briefs`, which put seven of them straight back in the queue; a locked
+skip is left alone and reported instead.
+
 ### When the brief cannot be sent as written
 
 An entry may be an object rather than a bare URL, carrying the prompt that was
@@ -141,7 +182,7 @@ from the top rather than to the bottom.
 
 ## Where this run actually lives, and how to get it back
 
-The 117 images rendered so far are 871 MB of 2K PNGs under
+The images rendered so far are about a gigabyte of PNGs under
 `storage/app/private/generated/`, with their `media_assets` rows in the local
 database. Neither is in git, and neither survives a rebuilt container. The
 credits are spent either way, so the run is recorded as text instead:
@@ -150,17 +191,22 @@ credits are spent either way, so the run is recorded as text instead:
 
 That is a `media:import` payload — every brief id, the provider URL it came
 back from, and, where the operator rewrote it, the prompt that was actually
-sent. On a host that keeps its storage:
+sent. Sheet cells are regrouped into `sheets` entries rather than listed one by
+one, because nine briefs share a single URL and importing that URL against one
+of them would give that lesson the whole contact sheet. On a host that keeps its
+storage:
 
 ```bash
 php artisan media:import docs/data/rendered-media.json
 ```
 
-and the same 117 images are downloaded, stored and attached again for nothing.
+and the same 207 images are downloaded, cut where they need cutting, and
+attached again for nothing. It has been tested the only way that means
+anything: by clearing a sheet's nine lessons and replaying them from the file.
 
 **This has a shelf life.** Provider URLs expire. If they have gone by the time
 this is run, the import fails per file rather than silently, and re-rendering
-those 117 costs 82 credits at today's prices — recoverable, but not free. So the
+those 207 costs 91 credits at today's prices — recoverable, but not free. So the
 real lesson is the obvious one: **run the loop where the storage persists.**
 Doing it in a throwaway container means paying for artwork that the container
 takes with it.
@@ -204,6 +250,21 @@ normal provider chain and nothing else changes.
   a line saying British settings are correct here. The builder has no way to
   tell the difference; a lesson about a named country needs the operator to
   notice.
+- **Some target words are not things.** They come straight out of the book, and
+  the extractor cannot tell a heading from a headword: the conjunctions unit
+  arrives as "example, use, and, but, or, because", the irregular-verb units as
+  "got, It's got, ve got, haven't got", and cross-references get caught
+  mid-word as "Unit 32: T, ravelling". Handed to an image model those produce a
+  confidently meaningless picture. `PromptBuilder` now drops the entries that
+  contain nothing a camera could point at, and falls back to asking for a
+  moment in which the language would be used when almost nothing survives. The
+  test is deliberately conservative in the other direction: a coarser filter
+  throws away "adjectives describing appearance" and "expressions about
+  clothes", and both photograph perfectly well.
+- **The irregular-verb units cannot be told apart.** Two lessons inside
+  "Have / had / had" are both titled, in the source, just "Have". There is no
+  per-lesson distinction in the data to draw a distinct picture from, so
+  several lessons in those units get similar artwork.
 - **Target words are taken verbatim from `concepts`.** Where the source book
   prints a phrase, OCR sometimes ran the words together, and the label is then
   wrong both in the artwork prompt and on screen in front of the learner. Three

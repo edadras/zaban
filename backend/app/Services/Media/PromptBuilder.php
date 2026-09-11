@@ -48,7 +48,7 @@ class PromptBuilder
          */
         $scene = collect([
             "Teaching context: {$context}.",
-            $words !== '' ? "These ideas should be obvious within that one scene: {$words}." : null,
+            $this->ideas($unit?->title, $words),
             $this->levelGuidance($level?->code),
         ])->filter()->implode(' ');
 
@@ -315,6 +315,114 @@ class PromptBuilder
         $spec['negative_folded'] = true;
 
         return $spec;
+    }
+
+    /**
+     * Grammar words the book prints as labels, not as things to look at.
+     *
+     * They arrive in the target-word list because the extractor cannot tell a
+     * heading from a headword, and a picture of "example, use" is nothing.
+     */
+    private const METALANGUAGE = [
+        'example', 'examples', 'use', 'uses', 'used', 'note', 'notes', 'section',
+        'verb', 'verbs', 'noun', 'nouns', 'adjective', 'adjectives', 'adverb', 'adverbs',
+        'preposition', 'prepositions', 'expression', 'expressions', 'grammar', 'meaning',
+        'singular', 'plural', 'countable', 'uncountable', 'formal', 'informal',
+    ];
+
+    /**
+     * Words that are real English but cannot be photographed on their own.
+     *
+     * A scene can show somebody hesitating, but not the word "because".
+     */
+    private const FUNCTION_WORDS = [
+        'and', 'but', 'or', 'because', 'so', 'if', 'than', 'also', 'only', 'like',
+        'then', 'now', 'here', 'there', 'back', 'to', 'from', 'in', 'on', 'at', 'by',
+        'of', 'with', 'for', 'the', 'a', 'an', 'is', 'are', 'was', 'were', 'do', 'does',
+        'did', 'have', 'has', 'had', 'got', 'be', 'been', 'me', 'you', 'it', 'that',
+        'this', 'what', 'how', 'when', 'where', 'why', 'not', 'very', 'well',
+        // Contractions arrive split by the extractor: "ve got", "haven't got".
+        'its', 'ive', 'ves', 've', 'll', 'dont', 'doesnt', 'didnt', 'havent',
+        'hasnt', 'isnt', 'arent', 'wasnt', 'werent', 'cant', 'wont', 'some', 'any',
+    ];
+
+    /**
+     * What the picture should make obvious - or, sometimes, that it cannot.
+     *
+     * Target words come straight out of the book, and a good many of them are
+     * not things: "example, use, and, but, or, because" for the conjunctions
+     * unit, "got, It's got, ve got, haven't got" for the irregular verbs,
+     * "Unit 32: T, ravelling" where a cross-reference was caught mid-word.
+     * Handed to an image model those produce a confidently meaningless picture,
+     * because there is nothing in them to photograph.
+     *
+     * What those lessons can usefully show is not the words but an ordinary
+     * moment in which somebody would say them, which is what this falls back
+     * to. The test is deliberately conservative: a lesson keeps its word list
+     * unless almost nothing in it can be pictured, because a coarser filter
+     * catches "adjectives describing appearance" and "words and expressions
+     * about clothes", and both of those photograph perfectly well.
+     */
+    private function ideas(?string $unitTitle, string $words): ?string
+    {
+        $usable = $this->depictable($words);
+
+        if ($usable !== '') {
+            return "These ideas should be obvious within that one scene: {$usable}.";
+        }
+
+        // A verb's three principal parts as a unit title - "Have / had / had" -
+        // names the verb the lesson is about, which is better than nothing.
+        if (preg_match('/^\s*(\w+)\s*\/\s*\w+\s*\/\s*\w+/u', (string) $unitTitle, $m)) {
+            return 'An ordinary everyday moment in which someone would naturally use the verb '
+                ."\"{$m[1]}\" - the situation, not the word.";
+        }
+
+        return 'An ordinary everyday situation in which this language would be used, '
+            .'shown as a moment rather than as words.';
+    }
+
+    /** The target words that are actually things a photograph could contain. */
+    private function depictable(string $words): string
+    {
+        $kept = collect(explode(', ', $words))
+            ->map(fn (string $w) => trim($w))
+            ->reject(fn (string $w) => $w === '' || mb_strlen($w) < 3)
+            // "Unit 32: T", "Unit 41" - a cross-reference the extractor caught,
+            // sometimes mid-word, which is never part of the lesson's meaning.
+            ->reject(fn (string $w) => (bool) preg_match('/\bUnit\s*\d+/iu', $w))
+            ->reject(fn (string $w) => ! $this->carriesSomethingVisible($w));
+
+        // Two is the threshold because one surviving word is usually the one
+        // the extractor happened to catch whole, not the lesson's subject.
+        return $kept->count() >= 2 ? $kept->implode(', ') : '';
+    }
+
+    /**
+     * Does this entry contain a single word a camera could point at?
+     *
+     * Tested word by word, because the entries are often phrases: "haven't got"
+     * and "It's got" are both entirely function words and photograph as
+     * nothing, while "ask someone the way" and "go swimming" each carry one
+     * that does.
+     */
+    private function carriesSomethingVisible(string $entry): bool
+    {
+        $words = preg_split('/[^\p{L}]+/u', mb_strtolower($entry), -1, PREG_SPLIT_NO_EMPTY) ?: [];
+
+        foreach ($words as $word) {
+            if (mb_strlen($word) < 3) {
+                continue;
+            }
+
+            if (! in_array($word, self::FUNCTION_WORDS, true)
+                && ! in_array($word, self::METALANGUAGE, true)
+            ) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

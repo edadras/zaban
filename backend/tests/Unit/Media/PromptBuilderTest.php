@@ -3,6 +3,7 @@
 namespace Tests\Unit\Media;
 
 use App\Models\Lesson;
+use App\Models\Unit;
 use App\Services\Media\PromptBuilder;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
@@ -162,6 +163,93 @@ class PromptBuilderTest extends TestCase
 
         // The phrasing that invited the panels in the first place.
         $this->assertStringNotContainsString('clearly separated elements', $prompt);
+    }
+
+    public function test_a_verb_paradigm_lesson_is_asked_for_a_moment_not_its_words(): void
+    {
+        /*
+         * The irregular-verb units carry target words straight out of the book,
+         * and they are function-word fragments: "got, It's got, ve got, haven't
+         * got". Handed to an image model those produce a confidently
+         * meaningless picture - there is nothing there to photograph.
+         */
+        $unit = new Unit(['title' => 'Have / had / had']);
+        $lesson = new Lesson(['title' => 'What can you have?']);
+        $lesson->setRelation('unit', $unit);
+
+        $prompt = $this->builder->lessonScene($lesson, ['got', "It's got", "haven't got"])['prompt'];
+
+        $this->assertStringContainsString('naturally use the verb "Have"', $prompt);
+        $this->assertStringNotContainsString("haven't got", $prompt);
+    }
+
+    public function test_an_ordinary_lesson_still_gets_its_target_words(): void
+    {
+        // The rule is narrow on purpose. "Adjectives describing appearance" and
+        // "clothes and fashion" read as grammar to a coarser filter and are
+        // both perfectly photographable.
+        $unit = new Unit(['title' => 'Clothes']);
+        $lesson = new Lesson(['title' => 'Words and expressions about clothes']);
+        $lesson->setRelation('unit', $unit);
+
+        $prompt = $this->builder->lessonScene($lesson, ['jacket', 'scarf', 'gloves'])['prompt'];
+
+        $this->assertStringContainsString('jacket, scarf, gloves', $prompt);
+        $this->assertStringNotContainsString('naturally use the verb', $prompt);
+    }
+
+    #[DataProvider('unphotographableWordLists')]
+    public function test_a_word_list_with_nothing_to_photograph_asks_for_a_moment(array $words): void
+    {
+        $lesson = new Lesson(['title' => 'Basic conjunctions']);
+        $lesson->setRelation('unit', new Unit(['title' => 'Conjunctions and connecting words']));
+
+        $prompt = $this->builder->lessonScene($lesson, $words)['prompt'];
+
+        // A picture of "example, use, and, but, or" is a picture of nothing,
+        // and the model returns something confidently meaningless.
+        $this->assertStringContainsString('ordinary everyday situation', $prompt);
+        $this->assertStringNotContainsString('should be obvious within that one scene', $prompt);
+    }
+
+    public static function unphotographableWordLists(): array
+    {
+        return [
+            'grammar labels' => [['example', 'use', 'and', 'but', 'or', 'because']],
+            'contractions the extractor split' => [["It's got", 've got', "haven't got"]],
+            'a cross-reference caught mid-word' => [['Unit 32: T', 'ravelling']],
+            'closed-class words' => [['now', 'then', 'here', 'there']],
+        ];
+    }
+
+    #[DataProvider('photographableWordLists')]
+    public function test_a_word_list_with_something_in_it_is_kept(array $words, string $expected): void
+    {
+        $lesson = new Lesson(['title' => 'Things in the kitchen']);
+        $lesson->setRelation('unit', new Unit(['title' => 'In the kitchen']));
+
+        $prompt = $this->builder->lessonScene($lesson, $words)['prompt'];
+
+        // The filter has to stay conservative: a coarser one throws away
+        // "adjectives describing appearance" and "expressions about clothes",
+        // and both of those photograph perfectly well.
+        $this->assertStringContainsString($expected, $prompt);
+    }
+
+    public static function photographableWordLists(): array
+    {
+        return [
+            'plain nouns' => [['cupboard', 'fridge', 'microwave'], 'cupboard, fridge, microwave'],
+            'a phrase with one real word' => [['ask someone the way', 'go swimming'], 'ask someone the way'],
+            'labels mixed with things' => [['example', 'use', 'carrots', 'beans'], 'carrots, beans'],
+        ];
+    }
+
+    public function test_a_scene_is_asked_for_in_the_shape_the_client_draws_it(): void
+    {
+        // The one place that displays this artwork puts it in a 4:3 box. A 16:9
+        // scene is cropped there, off-centre, after being paid for in full.
+        $this->assertSame('4:3', $this->builder->lessonScene(new Lesson(['title' => 'Anything']))['aspect_ratio']);
     }
 
     public function test_a_montage_is_excluded_from_every_kind_of_artwork(): void
