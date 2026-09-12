@@ -45,7 +45,7 @@ written as if it were done.
 | `higgsfield` | image/video/audio generation | `isAvailable()` false → chain falls through → placeholder or nothing |
 | `whisper-cli` + a ggml model | speech-to-text | speech features are unavailable |
 | forced aligner (e.g. MFA) | phoneme-level pronunciation scoring | alignment returns an explicit "not configured" failure, never an approximation |
-| `git-lfs` | fetching `sources/audio` and `sources/images` | ingestion has no source media |
+| `git-lfs` | fetching `sources/audio`, `sources/images` and the rendered media under `backend/storage/app/private/generated` | ingestion has no source media, and every lesson picture and word clip is a pointer file the app cannot open |
 
 The Docker image (`docker/php/Dockerfile`) installs everything except
 `higgsfield` and `whisper-cli`. Those two carry credentials and multi-gigabyte

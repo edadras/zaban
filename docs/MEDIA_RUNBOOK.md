@@ -295,10 +295,17 @@ render-order decision. Nothing is taken off a card for it.
 
 ## Where this run actually lives, and how to get it back
 
-The images rendered so far are about a gigabyte of PNGs under
+The images rendered so far are 2.6 GB of PNGs under
 `storage/app/private/generated/`, with their `media_assets` rows in the local
-database. Neither is in git, and neither survives a rebuilt container. The
-credits are spent either way, so the run is recorded as text instead:
+database.
+
+**The files are in the repository now, through LFS.** They were not, for a long
+time: Laravel ignores its private disk wholesale, which is right for the caches
+and the queue and wrong for this - the renders cost about 255 credits and lived
+on one machine, so a rebuilt container took them with it. `generated/` is carved
+out of that ignore rule, and `git lfs pull` brings the pictures down with the
+source books. The database rows still have to be rebuilt on a fresh host, which
+is what the manifest below is for.
 
     docs/data/rendered-media.json
 
