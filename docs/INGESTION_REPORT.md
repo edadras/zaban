@@ -88,8 +88,8 @@ affect unit resolution.
 | upper_int | 2/7869 (0.03%) | [99] |
 | advanced | 21/9174 (0.23%) | [1, 8, 9, 10, 24, 75] |
 
-Four known issues. The first two are routed to admin review rather than silently
-accepted; the last two have been corrected.
+Seven known issues. The first two are routed to admin review rather than silently
+accepted; the rest have been corrected.
 
 1. **10 unit titles (2.8%) could not be resolved** from the text layer. Those pages use
    a heading layout none of the four variants covers; they need page-image understanding
@@ -117,30 +117,40 @@ accepted; the last two have been corrected.
    `tools/extract_images.py` now rejects an image that barely varies (page scans
    excepted — a nearly blank page is still the page) and writes everything in sRGB.
    Migration `..._001000` brings the catalogue into line with the manifest that run
-   produced and, for the first time, copies the files onto the disk the app reads
-   from: 144 of these blocks had a row and no file behind it, because the extractor
-   writes into the working tree and nothing had ever carried the result across.
-   `content:import` now does that copy as a matter of course, and
-   `content:readiness` has a row for it, because the old artwork check counted blocks
-   rather than pictures and passed while fifty lessons showed an empty frame.
+   produced. It also copies the extracted files onto the storage disk their rows
+   name, which `content:import` now does as a matter of course — the extractor
+   writes into the working tree and nothing carried the result across, so those
+   rows were being served only through `MediaPath`'s fallback to the repository.
+   Nothing was unreachable; the bytes simply were not where the row said. And
+   `content:readiness` has a row for artwork now, resolved the way the media
+   endpoint resolves it, because the old check counted blocks rather than
+   pictures and read 100% while fifty lessons showed an empty frame.
 
-Two defects found in the same review are **reported but not fixed**, because both are
-product decisions rather than extraction faults:
-
-- **1,662 `listen_and_choose` blocks offer nothing to choose.** The builder writes
-  `config.concept_ids`; the client reads `config.options` / `config.choices`, and no
-  stage converts one into the other. None of the blocks carries a graded exercise
-  either, so every "Listen and choose what you hear" step in the app is a play button
-  and a Continue button. A real choice item needs audio cut per item — the recording
-  attached is the whole lesson, and all six candidate words are in it — so either the
-  block says what it really is (listen and follow the text) or per-item audio gets cut
-  first. Inventing a key over a 1:24 track would be guessing.
-- **10,582 flashcards show an example sentence where the meaning should be.** The
-  builder falls back to the example when a sense has no definition, under the label
-  "Tap the card to reveal the meaning", so *heart* reveals "The moment I met Rob, I
-  could see he was a man after my own heart." The 466 definitions recovered above
-  reduce this; the rest needs either more glosses or a label that matches what the
-  card actually shows.
+5. **1,662 `listen_and_choose` blocks offered nothing to choose, and now 1,087 of
+   them are real items.** The builder wrote `config.concept_ids`, the client reads
+   `config.options`, and no stage converted one into the other; no block carried a
+   graded exercise either, so every one of them was a play button and a Continue
+   button under an instruction describing a different screen. `ListeningItemBuilder`
+   makes an item the recording can answer: the recording is the book reading the
+   page, so the answer is a word printed there and every wrong answer is a word that
+   is not — `DistractorPolicy` already refuses a candidate that appears in the text
+   it is given, so it is given the page. The 575 lessons where those two conditions
+   cannot both be met say "listen to the recording and follow the text above"
+   instead of promising a choice.
+6. **10,582 flashcards showed an example sentence where the meaning should be, and
+   now 235 do.** The builder fell back to the example whenever a sense had no gloss,
+   under the label "Tap the card to reveal the meaning", so *heart* revealed "The
+   moment I met Rob, I could see he was a man after my own heart." The back is now
+   the book's gloss (3,210 cards), else the hand-authored Persian meaning (13,831 —
+   97% of senses carry one, and it is the learner's own language), else the example,
+   where the card says it is showing a use rather than a meaning. The gapped-sentence
+   cards say what they are too.
+7. **Every vocabulary card played the whole unit recording.** Thirty to ninety
+   seconds of the book reading the unit, on a card for one word. `media:voice`
+   renders a clip per word and puts the unit recording aside under
+   `config.unit_audio_media_asset_id`, where the listening step still uses it. The
+   render is deliberate and costs credits, so it runs a batch at a time; the head of
+   the distribution is done and the command reports what is left.
 
 Exercise/answer asymmetries (Pre-Int units 17, 18, 99; Upper-Int unit 9) reflect
 open-ended tasks that legitimately have no fixed key. They are marked as productive

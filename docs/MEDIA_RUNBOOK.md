@@ -256,6 +256,43 @@ Video also costs delivery, not just render: 908 clips is on the order of 3-4 GB.
 That is a real product cost on mobile data, and a reason to render the manifest
 from the top rather than to the bottom.
 
+## A card should say its own word
+
+Every vocabulary card was given the lesson's recording: the book reading the
+whole unit, thirty to ninety seconds of it. Tapping play on "cram" played all of
+it. That recording is right on the listening step, where it still is, and wrong
+on a card.
+
+```bash
+php artisan media:voice                       # what is covered so far
+php artisan media:voice --export --limit=12   # the next words, commonest first
+#   render them, one clip per word, then:
+php artisan media:voice --import=round.json   # [{"word": "...", "url": "..."}, ...]
+```
+
+Twelve at a time, because the generator rate-limits at twelve jobs in flight and
+refuses the thirteenth. The export orders by how many cards carry the word, so
+the first rounds cover the most ground: the first thirty-four words reached four
+hundred and seventy-one cards.
+
+**One clip per word, not a strip of them.** A strip is a quarter of the price and
+it was tried first - eight words in one render, split on the pauses. The pauses
+are not reliably there. The model runs "past papers" and "rote-learning" together
+in one breath, and at every silence threshold from -25 dB to -45 dB the eight
+words came back as four gaps or ten. A split in the wrong place puts the wrong
+pronunciation on a word, which is worse than the unit recording it replaces, so
+the cheaper route is not used.
+
+The unit recording is not discarded when a clip lands on a card. It moves to
+`config.unit_audio_media_asset_id`, so nothing is lost and a card whose clip is
+ever removed falls back to what it had before.
+
+Words the export skips are listed in the command: the bare particles the
+phrasal-verb books teach ("up", "out", "into"), which a learner can already say,
+and the language the books use to talk about language - a page headed "Language
+help" leaves "Language" and "help" behind as if they were the lesson. That is a
+render-order decision. Nothing is taken off a card for it.
+
 ## Where this run actually lives, and how to get it back
 
 The images rendered so far are about a gigabyte of PNGs under
