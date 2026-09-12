@@ -181,6 +181,14 @@ class BuildActivities extends Command
             }
         }
 
+        // The placement bank is a selection over the items the stages before it
+        // build, so rebuilding those and not it leaves the bank pointing at
+        // options that have changed underneath it. Running one stage should not
+        // be a way to get that wrong.
+        if (in_array('vocabulary', $only, true) && ! in_array('placement', $only, true)) {
+            $only[] = 'placement';
+        }
+
         foreach ($stages as $name => $stage) {
             if ($only === [] || in_array($name, $only, true)) {
                 $stage();
@@ -1590,10 +1598,23 @@ class BuildActivities extends Command
             ])
             ->get();
 
+        // A heading is not a word. The books' section titles reach the
+        // catalogue as headwords, and offered as a wrong answer "Synonyms and
+        // antonyms" gives the item away to a learner who knows no English -
+        // it is plainly not the kind of thing the other three options are.
+        $headings = DB::table('lessons')->whereNull('deleted_at')->pluck('title')
+            ->merge(DB::table('units')->pluck('title'))
+            ->map(fn ($t) => Str::lower(trim((string) $t)))
+            ->filter()->flip();
+
         $pool = [];
         $seen = [];
         foreach ($rows as $r) {
             if (isset($seen[$r->concept_id]) || ! $this->isActivityWorthy($r->term)) {
+                continue;
+            }
+
+            if ($headings->has(Str::lower(trim((string) $r->term)))) {
                 continue;
             }
             $seen[$r->concept_id] = true;

@@ -34,6 +34,9 @@ use Illuminate\Support\Str;
  */
 class ListeningItemBuilder
 {
+    /** Every lesson and unit title, lowercased, loaded once. */
+    private ?Collection $headings = null;
+
     public function __construct(
         private DistractorPolicy $distractors,
         private SentenceQuality $quality,
@@ -61,6 +64,7 @@ class ListeningItemBuilder
             $term = trim((string) $concept->label);
 
             if (! $this->distractors->isUsableTerm($term)
+                || $this->isAHeading($term)
                 || ! $this->quality->containsTerm($pageText, $term)) {
                 continue;
             }
@@ -139,6 +143,26 @@ class ListeningItemBuilder
         );
 
         return $exercise;
+    }
+
+    /**
+     * Is this a section title that reached the catalogue as a headword?
+     *
+     * The answer has to be a word the book teaches. "Synonyms and antonyms" is
+     * printed on the page and is in the recording, so both of this item's tests
+     * pass, and it is still the lesson's own heading rather than anything a
+     * learner is meant to have learnt.
+     */
+    private function isAHeading(string $term): bool
+    {
+        if ($this->headings === null) {
+            $this->headings = DB::table('lessons')->whereNull('deleted_at')->pluck('title')
+                ->merge(DB::table('units')->pluck('title'))
+                ->map(fn ($t) => Str::lower(trim((string) $t)))
+                ->filter()->flip();
+        }
+
+        return $this->headings->has(Str::lower(trim($term)));
     }
 
     /** The gloss the catalogue carries for this concept, if it carries one. */
