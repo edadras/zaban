@@ -3,9 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\Exercise;
+use App\Models\MediaAsset;
+use App\Support\MediaPath;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Checks whether the imported content can actually drive the platform described
@@ -123,20 +124,18 @@ class CheckContentReadiness extends Command
             ->where('lesson_blocks.type', 'image_scene')->distinct()->count('lessons.id');
         $checks[] = ['lesson: has artwork', $withImage, $lessons, ''];
 
-        // A block is not artwork until the bytes are where its row says they
-        // are. Fifty lessons once passed the check above while showing an empty
-        // frame: the extractor had written the file into the working tree and
-        // nothing had put it on the disk the app reads from.
-        $artwork = DB::table('lesson_blocks')
-            ->join('media_assets', 'media_assets.id', '=', 'lesson_blocks.media_asset_id')
-            ->where('lesson_blocks.type', 'image_scene')
-            ->get(['lesson_blocks.id', 'media_assets.disk', 'media_assets.path']);
+        // A block is not artwork until there are bytes behind it. Ask the same
+        // way the media endpoint does: the corpus was ingested with
+        // repository-relative paths and everything generated since is on a
+        // disk, so only MediaPath finds both.
+        $artwork = MediaAsset::query()
+            ->whereIn('id', DB::table('lesson_blocks')->where('type', 'image_scene')
+                ->whereNotNull('media_asset_id')->distinct()->pluck('media_asset_id'))
+            ->get();
 
-        $onDisk = $artwork->filter(
-            fn ($row) => Storage::disk($row->disk ?: 'local')->fileExists($row->path),
-        )->count();
+        $readable = $artwork->filter(fn (MediaAsset $a) => MediaPath::absolute($a) !== null)->count();
 
-        $checks[] = ['artwork: the file is on the disk its row names', $onDisk, $artwork->count(),
+        $checks[] = ['artwork: the picture behind the block can be opened', $readable, $artwork->count(),
             'a lesson shows an empty frame where the picture should be'];
 
         $pagesWithScan = DB::table('source_pages')->whereNotNull('page_image_media_asset_id')->count();

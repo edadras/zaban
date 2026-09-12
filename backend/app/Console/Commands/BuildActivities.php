@@ -12,6 +12,7 @@ use App\Models\Lesson;
 use App\Models\VocabularySense;
 use App\Services\Content\DistractorPolicy;
 use App\Services\Content\LessonReadingBuilder;
+use App\Services\Content\ListeningItemBuilder;
 use App\Services\Content\PageGlossParser;
 use App\Services\Content\SentenceQuality;
 use App\Services\Content\SourceSentenceMiner;
@@ -30,7 +31,7 @@ use Illuminate\Support\Str;
  */
 class BuildActivities extends Command
 {
-    protected $signature = 'content:build-activities {--fresh} {--limit=0}';
+    protected $signature = 'content:build-activities {--fresh} {--limit=0} {--only=}';
 
     protected $description = 'Derive interactive blocks and gradable exercises from imported content';
 
@@ -59,6 +60,9 @@ class BuildActivities extends Command
     /** Distractor candidates by CEFR level id, loaded once. */
     private array $pool = [];
 
+    /** Sense id => language code => meaning, loaded once. */
+    private array $meanings = [];
+
     /**
      * How many sentences the corpus index keeps for one word.
      *
@@ -80,6 +84,7 @@ class BuildActivities extends Command
         private SourceSentenceMiner $miner,
         private LessonReadingBuilder $reading,
         private PageGlossParser $footnotes,
+        private ListeningItemBuilder $listening,
     ) {
         parent::__construct();
     }
@@ -140,19 +145,47 @@ class BuildActivities extends Command
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }
 
-        $this->pruneMisAnchoredGlosses();
-        $this->harvestFootnoteGlosses();
-        $this->deactivateNonTerms();
-        $this->linkSourceExercisesToConcepts();
-        $this->spreadDifficulty();
-        $this->buildFromVocabulary();
-        $this->buildReadingViews();
-        $this->classifyLessons();
-        $this->indexCorpusSentences();
-        $this->buildPatternActivities();
-        $this->nameTheSectionsTheScannerCouldNotRead();
-        $this->deriveWordFamilyPrerequisites();
-        $this->markPlacementBank();
+        // Named so one stage can be re-run on a corpus that is already built.
+        // A full pass is the normal way in; a stage that has been corrected
+        // should not have to drag every other stage through the database with
+        // it, and some of them overwrite text that has since been repaired by
+        // hand.
+        $stages = [
+            'glosses' => fn () => $this->pruneMisAnchoredGlosses(),
+            'footnotes' => fn () => $this->harvestFootnoteGlosses(),
+            'terms' => fn () => $this->deactivateNonTerms(),
+            'link' => fn () => $this->linkSourceExercisesToConcepts(),
+            'difficulty' => fn () => $this->spreadDifficulty(),
+            'vocabulary' => fn () => $this->buildFromVocabulary(),
+            'reading' => fn () => $this->buildReadingViews(),
+            'classify' => fn () => $this->classifyLessons(),
+            'corpus' => fn () => $this->indexCorpusSentences(),
+            'patterns' => fn () => $this->buildPatternActivities(),
+            'titles' => fn () => $this->nameTheSectionsTheScannerCouldNotRead(),
+            'prerequisites' => fn () => $this->deriveWordFamilyPrerequisites(),
+            'placement' => fn () => $this->markPlacementBank(),
+        ];
+
+        $only = array_values(array_filter(array_map(
+            'trim',
+            explode(',', (string) $this->option('only')),
+        )));
+
+        if ($only !== []) {
+            $unknown = array_diff($only, array_keys($stages));
+            if ($unknown !== []) {
+                $this->error('No such stage: '.implode(', ', $unknown));
+                $this->line('Stages: '.implode(', ', array_keys($stages)));
+
+                return self::FAILURE;
+            }
+        }
+
+        foreach ($stages as $name => $stage) {
+            if ($only === [] || in_array($name, $only, true)) {
+                $stage();
+            }
+        }
 
         $this->newLine();
         $this->info('Done. Re-run `php artisan content:readiness` to see the effect.');
@@ -332,7 +365,10 @@ class BuildActivities extends Command
             ->reject(fn ($label) => $this->distractors->isUsableTerm((string) $label))
             ->keys();
 
-        DB::table('concepts')->update(['is_active' => true]);
+        // A word retired for a reason someone wrote down stays retired. This
+        // stage recomputes is_active from scratch, so without the exemption a
+        // misread set aside by hand comes back on the next build.
+        DB::table('concepts')->whereNull('retired_reason')->update(['is_active' => true]);
 
         if ($headings->isNotEmpty()) {
             $headings->chunk(1000)->each(
@@ -340,7 +376,9 @@ class BuildActivities extends Command
             );
         }
 
+        $retired = DB::table('concepts')->whereNotNull('retired_reason')->count();
         $this->line('   headings set aside: '.$headings->count().' of '.$labels->count().' headwords');
+        $this->line("   kept off for a recorded reason: {$retired}");
     }
 
     /**
@@ -526,8 +564,23 @@ class BuildActivities extends Command
             ));
             $text = (string) ($block->config['text'] ?? '');
 
+            // Positions are unique per lesson across every kind of block, and
+            // the illustrations from a heavily illustrated page reach down into
+            // this range. Step over anything already held by another kind.
+            $held = DB::table('lesson_blocks')->where('lesson_id', $lesson->id)
+                ->pluck('type', 'position')->all();
+            $slot = function (string $type) use (&$held, &$position) {
+                while (isset($held[$position]) && $held[$position] !== $type) {
+                    $position++;
+                }
+                $held[$position] = $type;
+
+                return $position++;
+            };
+
             $position = 1;
             $made = 0;
+            $written = [];
             foreach ($forms as $form) {
                 if ($made >= self::CARDS_PER_PATTERN_LESSON) {
                     break;
@@ -538,26 +591,42 @@ class BuildActivities extends Command
                 }
 
                 $lesson->blocks()->updateOrCreate(
-                    ['type' => 'flashcard', 'position' => $position++],
+                    ['type' => 'flashcard', 'position' => $slot('flashcard')],
                     [
                         'title' => null,
+                        // This card is the other way round from a vocabulary
+                        // card: the sentence is on the front with a gap in it,
+                        // and the back is the word that fills it. Asked to
+                        // "reveal the meaning" the learner is looking for
+                        // something the card does not have.
+                        'instructions' => 'Recall the missing word, then tap the card to check.',
                         'config' => [
                             'front' => $this->quality->blank($sentence, $form) ?? $sentence,
                             'back' => $form,
+                            'back_kind' => 'pattern_form',
                             'source' => 'pattern_form',
                         ],
                         'estimated_seconds' => 20,
                     ],
                 );
+                $written[] = $position - 1;
                 $cards++;
                 $made++;
             }
+
+            // Same reason as the vocabulary cards: a pattern lesson that yields
+            // fewer sentences than last time must not leave the old ones behind.
+            $lesson->blocks()
+                ->where('type', 'flashcard')
+                ->where('position', '<', 200)
+                ->whereNotIn('position', $written ?: [-1])
+                ->delete();
 
             // The recording is the book reading these very sentences aloud, and
             // a pronunciation unit asks for exactly this.
             if ($forms !== [] && $this->hasAudio($lesson)) {
                 $lesson->blocks()->updateOrCreate(
-                    ['type' => 'repeat_after_speaker', 'position' => $position++],
+                    ['type' => 'repeat_after_speaker', 'position' => $slot('repeat_after_speaker')],
                     [
                         'title' => null,
                         'config' => [
@@ -875,34 +944,48 @@ class BuildActivities extends Command
         $this->line('▸ deriving activities from taught vocabulary');
 
         $this->pool = $this->loadDistractorPool();
+        $this->meanings = $this->loadMeanings();
         $pages = $this->loadPageText();
         $glosses = $this->loadGlosses();
         $this->indexCorpusSentences();
 
         $limit = (int) $this->option('limit');
+        // A lesson with no active words still has the book reading it aloud,
+        // and listening to the unit and saying it back is real practice. Those
+        // lessons used to fall out of this loop and end up holding nothing but
+        // text and a picture.
         $lessons = Lesson::with([
             'concepts' => fn ($q) => $q->where('concepts.is_active', true)->with('conceptable'),
             'unit',
         ])
-            ->whereHas('concepts', fn ($q) => $q->where('concepts.is_active', true))
+            ->where(fn ($q) => $q
+                ->whereHas('concepts', fn ($c) => $c->where('concepts.is_active', true))
+                ->orWhereHas('audioMappings'))
             ->orderBy('id');
         if ($limit > 0) {
             $lessons->limit($limit);
         }
 
         $made = ['cloze' => 0, 'mcq_proven' => 0, 'mcq_plausible' => 0, 'flashcard' => 0,
-            'listen' => 0, 'speak' => 0, 'from_corpus' => 0];
+            'listen' => 0, 'listen_gradable' => 0, 'speak' => 0, 'from_corpus' => 0,
+            'flashcard_definition' => 0, 'flashcard_translation' => 0, 'flashcard_example' => 0];
         $skipped = ['no_usable_example' => 0, 'no_safe_distractors' => 0];
 
         $lessons->chunk(100, function ($chunk) use (&$made, &$skipped, $pages, $glosses) {
             foreach ($chunk as $lesson) {
                 $concepts = $lesson->concepts;
-                if ($concepts->isEmpty()) {
-                    continue;
-                }
-
                 $moduleId = $lesson->unit?->module_id;
                 $siblings = $this->siblingCandidates($concepts, $moduleId);
+
+                // A lesson's positions are unique across every kind of block,
+                // and the ranges the builder reaches for have drifted into one
+                // another - a page with a hundred illustrations puts an
+                // image_scene at 211, right where the eleventh card wants to
+                // go. Knowing which slots are already held by something else
+                // lets a card step over them instead of colliding.
+                $held = DB::table('lesson_blocks')->where('lesson_id', $lesson->id)
+                    ->pluck('type', 'position')->all();
+                $written = [];
                 $pageText = $pages[$lesson->id] ?? null;
                 $pageGlosses = $glosses[$lesson->id] ?? [];
                 $mined = null;
@@ -1023,39 +1106,105 @@ class BuildActivities extends Command
                         }
                     }
 
-                    // --- flashcard block: term on one side, gloss or example on the other ---
-                    $back = $definition ?: $example;
+                    // --- flashcard block: term on one side, its meaning on the other ---
+                    //
+                    // The card asks the learner to recall a meaning, so the back
+                    // has to be one. Ten thousand cards used to fall through to
+                    // the example sentence and still say "reveal the meaning",
+                    // so "heart" revealed "The moment I met Rob, I could see he
+                    // was a man after my own heart." The book's own gloss comes
+                    // first; where it never printed one, the hand-authored
+                    // Persian meaning is a meaning, and the learner's own
+                    // language at that. The example is the last resort, and the
+                    // card then says what it really shows.
+                    $meanings = $this->meanings[(int) $concept->conceptable_id] ?? [];
+                    $persian = $meanings['fa'] ?? null;
+
+                    [$back, $kind] = match (true) {
+                        (bool) $definition => [$definition, 'definition'],
+                        (bool) $persian => [$persian, 'translation'],
+                        (bool) $example => [$example, 'example'],
+                        default => [null, null],
+                    };
+
                     if ($back) {
+                        $slot = 200 + $position;
+                        while (isset($held[$slot]) && $held[$slot] !== 'flashcard') {
+                            $slot++;
+                        }
+                        $held[$slot] = 'flashcard';
+                        $written[] = $slot;
+
                         $lesson->blocks()->updateOrCreate(
-                            ['type' => 'flashcard', 'position' => 200 + $position],
+                            ['type' => 'flashcard', 'position' => $slot],
                             [
                                 'title' => $term,
+                                'instructions' => match ($kind) {
+                                    'definition' => 'Tap the card to reveal the meaning.',
+                                    'translation' => 'Tap the card to reveal the meaning.',
+                                    default => 'Tap the card to see how the word is used.',
+                                },
                                 'config' => ['front' => $term, 'back' => $back,
+                                    'back_kind' => $kind,
                                     'example' => $example,
+                                    'meanings' => $meanings ?: null,
                                     'concept_id' => $concept->id,
                                     'audio_media_asset_id' => $audio],
                                 'estimated_seconds' => 12,
                             ],
                         );
                         $made['flashcard']++;
+                        $made['flashcard_'.$kind]++;
                     }
 
                     $position++;
                 }
 
+                // A lesson that teaches fewer words than it used to leaves cards
+                // behind in the slots it no longer writes, and they are not
+                // harmless: they are the last build's reading of a word the
+                // catalogue has since corrected or retired. "mara" and "de)"
+                // were both still on a card this way.
+                $lesson->blocks()
+                    ->where('type', 'flashcard')
+                    ->where('position', '>=', 200)
+                    ->whereNotIn('position', $written ?: [-1])
+                    ->delete();
+
                 // --- audio-driven blocks, once per lesson, using the book's own recording ---
                 if ($audio) {
+                    // The choice has to be answerable from the recording alone,
+                    // which means the answer is a word the book prints on this
+                    // page - the recording is the book reading it - and the
+                    // wrong answers are words that are not printed there. Given
+                    // no such item, the block says listen and follow, which is
+                    // what it can honestly ask for.
+                    $item = $this->listening->for(
+                        $lesson,
+                        $concepts,
+                        fn (Concept $c) => $this->candidatesFor($c, $siblings),
+                        $moduleId,
+                        (string) ($pages[$lesson->id] ?? ''),
+                        $this->templates['listen_and_choose'],
+                    );
+
                     $lesson->blocks()->updateOrCreate(
                         ['type' => 'listen_and_choose', 'position' => 300],
                         [
                             'title' => 'Listen',
-                            'instructions' => 'Listen and choose what you hear.',
+                            'instructions' => $item
+                                ? 'Listen to the recording, then choose the word you heard.'
+                                : 'Listen to the recording and follow the text above.',
+                            'exercise_id' => $item?->id,
                             'config' => ['audio_media_asset_id' => $audio,
                                 'concept_ids' => $concepts->pluck('id')->take(6)->all()],
                             'estimated_seconds' => 45,
                         ],
                     );
                     $made['listen']++;
+                    if ($item) {
+                        $made['listen_gradable']++;
+                    }
 
                     $lesson->blocks()->updateOrCreate(
                         ['type' => 'repeat_after_speaker', 'position' => 301],

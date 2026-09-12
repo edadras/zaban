@@ -115,4 +115,16 @@ class DistractorPolicyTest extends TestCase
         $this->assertNotNull($result);
         $this->assertSame(DistractorPolicy::PLAUSIBLE, $result['grade']);
     }
+
+    public function test_half_a_bracket_is_half_a_phrase_and_not_an_option(): void
+    {
+        // The books print an optional part in brackets - "(a) lot of" - and a
+        // bold run cut inside one leaves "lot of)". As a wrong answer it gives
+        // the item away to a learner who knows no English at all.
+        $this->assertFalse($this->policy->isUsableTerm('lot of)'));
+        $this->assertFalse($this->policy->isUsableTerm('get (something'));
+        // A whole bracket is the book's own notation and stays usable.
+        $this->assertTrue($this->policy->isUsableTerm('a lot (of)'));
+        $this->assertTrue($this->policy->isUsableTerm('day shift'));
+    }
 }

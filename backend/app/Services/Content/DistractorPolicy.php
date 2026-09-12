@@ -140,6 +140,15 @@ class DistractorPolicy
             return false;
         }
 
+        // Half a bracket is half a phrase. The books print optional parts in
+        // brackets - "(a) lot of", "(not) be a matter" - and where the bold run
+        // was cut inside one, what arrives is the tail: "lot of)". Offered as a
+        // wrong answer it tells the learner which option is the odd one out
+        // without their knowing any English.
+        if (substr_count($t, '(') !== substr_count($t, ')')) {
+            return false;
+        }
+
         return str_word_count($t) <= 4;
     }
 
