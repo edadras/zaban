@@ -293,6 +293,40 @@ and the language the books use to talk about language - a page headed "Language
 help" leaves "Language" and "help" behind as if they were the lesson. That is a
 render-order decision. Nothing is taken off a card for it.
 
+## Putting it back on a host that has never seen it
+
+The files travel in the repository. The rows that point at them do not, and
+that is the gap a deploy falls into: `content:import` and
+`content:build-activities` know nothing about generation, so a fresh host comes
+up with every picture on disk and every lesson showing an empty frame, and every
+flashcard playing the whole unit recording.
+
+```bash
+git lfs pull                 # the bytes
+php artisan media:adopt      # what each one belongs to
+```
+
+`media:import` is the wrong tool for this. It fetches from the provider's URLs,
+which expire, and it needs the brief rows, which are also only in a database.
+Nothing has to be fetched here - the bytes are already on the disk.
+
+The manifest is `docs/data/generated-media.json`, and it is keyed on the content
+rather than on any row id: a scene by the document, page and section it
+illustrates plus its position, a card by the headword and the sentence it shows,
+a portrait by the character's slug, a word clip by the word. Those survive a
+re-import. Primary keys do not, which is why the older manifest - brief id to
+provider URL - could not be used for this.
+
+Re-export it from a host that has the rows:
+
+```bash
+php artisan media:adopt --export
+```
+
+Running `media:adopt` twice is the same as running it once, and it says how many
+files the manifest names that are not on the disk, which is the symptom of a
+`git lfs pull` that has not been run.
+
 ## Where this run actually lives, and how to get it back
 
 The images rendered so far are 2.6 GB of PNGs under

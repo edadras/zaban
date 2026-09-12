@@ -241,6 +241,15 @@ php artisan content:import
 # 3. Derive interactive blocks and gradable items from what was imported
 php artisan content:build-activities
 
+# 3a. Reconnect the rendered media. NOT optional, and the step a deploy is
+#     most likely to miss: the pictures and the word clips travel in the
+#     repository, but the rows that point at them do not, and neither
+#     content:import nor content:build-activities knows anything about
+#     generation. Without this the lessons show empty frames and every
+#     flashcard plays the whole unit recording. Needs no network and costs
+#     nothing - the bytes are already on disk from `git lfs pull`.
+php artisan media:adopt
+
 # 3b. Build the exam papers from the authored production prompts. Writing and
 #     speaking only — see the command's own output for why reading and
 #     listening are empty.
