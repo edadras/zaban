@@ -15,6 +15,3 @@ __pycache__/
 # Page images rendered for OCR, and the archives they came from. The OCR
 # output itself (sources/ocr) is kept: it costs hours to regenerate.
 sources/incoming/
-
-# Rendered word clips: media, not source. `media:voice` fetches them.
-/backend/storage/app/private/

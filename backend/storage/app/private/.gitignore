@@ -1,2 +1,8 @@
 *
 !.gitignore
+
+# Everything the renders produced. This is not scratch: 2,651 pictures and the
+# word clips behind the flashcards, and it cannot be rebuilt without paying for
+# it again. The rest of this disk is genuinely temporary and stays ignored.
+!generated/
+!generated/**
