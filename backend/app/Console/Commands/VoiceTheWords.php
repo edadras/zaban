@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\MediaAsset;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Process;
 
@@ -31,9 +32,11 @@ use Symfony\Component\Process\Process;
 class VoiceTheWords extends Command
 {
     protected $signature = 'media:voice
+        {--render : read the words aloud and attach them, end to end}
         {--export : write the words still waiting for a voice}
-        {--import= : a json file of {word, url} from the render}
-        {--limit=200 : how many words to export}';
+        {--import= : a json file of {word, url} from a render done elsewhere}
+        {--limit=200 : how many words to take}
+        {--reserve=2000 : characters to leave unspent in the speech account}';
 
     protected $description = 'Give each vocabulary card the sound of its own word';
 
@@ -44,6 +47,10 @@ class VoiceTheWords extends Command
     {
         if ($this->option('import')) {
             return $this->import((string) $this->option('import'));
+        }
+
+        if ($this->option('render')) {
+            return $this->render((int) $this->option('limit'), (int) $this->option('reserve'));
         }
 
         if ($this->option('export')) {
@@ -142,6 +149,176 @@ class VoiceTheWords extends Command
         $this->line($path);
 
         return self::SUCCESS;
+    }
+
+    /**
+     * Read the words aloud and hang each one on its cards, in one pass.
+     *
+     * The export/import pair exists because the image generator is reached
+     * through the operator's own tooling and cannot be driven from here. Speech
+     * can: it is one HTTP call per word against an account whose key is in the
+     * environment, so twelve thousand words are a command rather than a
+     * thousand hand-offs.
+     *
+     * The account bills by the character and cannot be extended past its limit,
+     * so the budget is checked first and a reserve is left unspent. Running out
+     * halfway through would leave the cards in two states with nothing saying
+     * which.
+     */
+    private function render(int $limit, int $reserve): int
+    {
+        $key = (string) config('services.elevenlabs.key');
+        if ($key === '') {
+            $this->error('No speech key configured. Set ELEVENLABS_API_KEY.');
+
+            return self::FAILURE;
+        }
+
+        $budget = $this->charactersLeft($key);
+        if ($budget === null) {
+            $this->error('The speech account did not answer; not spending anything blind.');
+
+            return self::FAILURE;
+        }
+
+        $spendable = max(0, $budget - $reserve);
+        $this->line("characters available: {$budget}, holding back {$reserve}");
+
+        $waiting = $this->waiting($limit);
+        if ($waiting === []) {
+            $this->info('Every card already says its own word.');
+
+            return self::SUCCESS;
+        }
+
+        $disk = Storage::disk('local');
+        $spent = 0;
+        $stored = 0;
+        $attached = 0;
+        $failed = 0;
+        $stoppedShort = false;
+
+        $bar = $this->output->createProgressBar(count($waiting));
+        $bar->start();
+
+        $done = 0;
+
+        foreach ($waiting as $item) {
+            $word = $item['word'];
+
+            // The estimate is the word's own length, which is the most the
+            // account can charge; the flash models bill half of it. Rather than
+            // model the rate, ask the account how much is actually left every
+            // so often and carry on from that. Guessing high stops a thousand
+            // words early, and guessing low overruns a limit that cannot be
+            // extended.
+            if ($done > 0 && $done % 500 === 0) {
+                $fresh = $this->charactersLeft($key);
+                if ($fresh !== null) {
+                    $spendable = max(0, $fresh - $reserve);
+                    $spent = 0;
+                }
+            }
+
+            $cost = mb_strlen($word);
+
+            if ($spent + $cost > $spendable) {
+                $stoppedShort = true;
+                break;
+            }
+
+            $mp3 = $this->speak($key, $word);
+            $spent += $cost;
+            $done++;
+
+            if ($mp3 === null) {
+                $failed++;
+                $bar->advance();
+
+                continue;
+            }
+
+            $path = self::DIRECTORY.'/'.self::key($word).'.mp3';
+            $disk->put($path, $mp3);
+
+            $asset = MediaAsset::updateOrCreate(
+                ['disk' => 'local', 'path' => $path],
+                [
+                    'type' => 'audio',
+                    'mime' => 'audio/mpeg',
+                    'bytes' => strlen($mp3),
+                    'duration_ms' => $this->durationMs($disk->path($path)),
+                    'origin' => 'generated',
+                    'copyright_status' => 'owned',
+                    'metadata' => ['word' => $word, 'source' => 'voice_the_words'],
+                ],
+            );
+            $stored++;
+            $attached += $this->attach($word, (int) $asset->id);
+            $bar->advance();
+        }
+
+        $bar->finish();
+        $this->newLine(2);
+
+        if ($stoppedShort) {
+            $this->warn('Stopped on the character budget rather than spending into the reserve.');
+        }
+
+        $left = $this->charactersLeft($key);
+        $this->info("words voiced: {$stored}, cards now saying their own word: {$attached}, failed: {$failed}");
+        $this->line('characters left in the speech account: '.($left ?? 'unknown'));
+        $this->line($this->coverage());
+
+        return self::SUCCESS;
+    }
+
+    /** What the speech account has left this cycle, or null if it will not say. */
+    private function charactersLeft(string $key): ?int
+    {
+        try {
+            $response = Http::withHeaders(['xi-api-key' => $key])
+                ->timeout(30)
+                ->get('https://api.elevenlabs.io/v1/user/subscription');
+        } catch (\Throwable) {
+            return null;
+        }
+
+        if (! $response->successful()) {
+            return null;
+        }
+
+        return max(0, (int) $response->json('character_limit') - (int) $response->json('character_count'));
+    }
+
+    /**
+     * One word, read aloud, trimmed and encoded small.
+     *
+     * A card is tapped far more often than a lesson is opened, so the clip is
+     * mono at a low bitrate: a word comes out around seven kilobytes, which is
+     * the difference between a card that plays instantly on a phone connection
+     * and one that does not.
+     */
+    private function speak(string $key, string $word): ?string
+    {
+        try {
+            $response = Http::withHeaders(['xi-api-key' => $key])
+                ->timeout(90)
+                ->retry(2, 1500, throw: false)
+                ->post('https://api.elevenlabs.io/v1/text-to-speech/'
+                    .config('services.elevenlabs.voice').'?output_format=mp3_22050_32', [
+                        'text' => $word,
+                        'model_id' => config('services.elevenlabs.model'),
+                    ]);
+        } catch (\Throwable) {
+            return null;
+        }
+
+        if (! $response->successful() || strlen($response->body()) < 512) {
+            return null;
+        }
+
+        return $this->trim($response->body()) ?? $response->body();
     }
 
     /**
@@ -251,24 +428,33 @@ class VoiceTheWords extends Command
         return $touched;
     }
 
-    /** Download, cut the leading and trailing silence, and encode small. */
+    /** Download a rendered clip and trim it. */
     private function fetchAndTrim(string $url): ?string
     {
-        $source = tempnam(sys_get_temp_dir(), 'word').'.wav';
+        $bytes = @file_get_contents($url);
+
+        return $bytes === false || $bytes === '' ? null : ($this->trim($bytes) ?? $bytes);
+    }
+
+    /**
+     * Cut the silence the models leave at either end, and encode small.
+     *
+     * Returns null when ffmpeg will not have it, and the caller keeps the
+     * original: a clip with a little silence on it is still the word.
+     */
+    private function trim(string $bytes): ?string
+    {
+        $source = tempnam(sys_get_temp_dir(), 'word');
         $target = tempnam(sys_get_temp_dir(), 'word').'.mp3';
 
         try {
-            $bytes = @file_get_contents($url);
-            if ($bytes === false || $bytes === '') {
-                return null;
-            }
             file_put_contents($source, $bytes);
 
-            $trim = 'silenceremove=start_periods=1:start_silence=0.05:start_threshold=-45dB:detection=rms';
+            $silence = 'silenceremove=start_periods=1:start_silence=0.05:start_threshold=-45dB:detection=rms';
             $process = new Process([
                 'ffmpeg', '-v', 'error', '-y', '-i', $source,
-                '-af', "{$trim},areverse,{$trim},areverse",
-                '-codec:a', 'libmp3lame', '-b:a', '64k', '-ar', '24000', '-ac', '1',
+                '-af', "{$silence},areverse,{$silence},areverse",
+                '-codec:a', 'libmp3lame', '-b:a', '48k', '-ar', '24000', '-ac', '1',
                 $target,
             ]);
             $process->setTimeout(120);
@@ -300,10 +486,19 @@ class VoiceTheWords extends Command
     {
         $cards = DB::table('lesson_blocks')->where('type', 'flashcard')
             ->whereNotNull(DB::raw("JSON_EXTRACT(config, '$.back_kind')"))->count();
-        $spoken = DB::table('lesson_blocks')->where('type', 'flashcard')
-            ->whereNotNull(DB::raw("JSON_EXTRACT(config, '$.unit_audio_media_asset_id')"))->count();
 
-        return "cards saying their own word: {$spoken} of {$cards}";
+        // A card says its own word when the asset it points at is one of the
+        // clips, not when it merely remembers where the unit recording went.
+        $spoken = DB::table('lesson_blocks as lb')
+            ->join('media_assets as ma', 'ma.id', '=', DB::raw("JSON_EXTRACT(lb.config, '$.audio_media_asset_id')"))
+            ->where('lb.type', 'flashcard')
+            ->where('ma.path', 'like', self::DIRECTORY.'/%')
+            ->count();
+
+        $words = DB::table('media_assets')->where('path', 'like', self::DIRECTORY.'/%')
+            ->whereNull('deleted_at')->count();
+
+        return "words voiced: {$words}; cards saying their own word: {$spoken} of {$cards}";
     }
 
     /** A stable file name for a word, so a re-render lands on the same clip. */

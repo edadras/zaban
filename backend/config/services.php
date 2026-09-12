@@ -35,4 +35,17 @@ return [
         ],
     ],
 
+
+    /*
+     * The voice behind the vocabulary cards. Reading a word aloud is the one
+     * thing the books' own recordings cannot do - they are whole units - so
+     * this is a separate account from the image generator, and its key lives
+     * only in the environment.
+     */
+    'elevenlabs' => [
+        'key' => env('ELEVENLABS_API_KEY'),
+        'voice' => env('ELEVENLABS_VOICE', 'Xb7hH8MSUJpSbSDYk0k2'),
+        'model' => env('ELEVENLABS_MODEL', 'eleven_flash_v2_5'),
+    ],
+
 ];

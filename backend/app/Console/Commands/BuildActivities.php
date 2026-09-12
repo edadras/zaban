@@ -63,6 +63,9 @@ class BuildActivities extends Command
     /** Sense id => language code => meaning, loaded once. */
     private array $meanings = [];
 
+    /** VoiceTheWords key => media asset id, for words that have been voiced. */
+    private array $wordClips = [];
+
     /**
      * How many sentences the corpus index keeps for one word.
      *
@@ -953,6 +956,7 @@ class BuildActivities extends Command
 
         $this->pool = $this->loadDistractorPool();
         $this->meanings = $this->loadMeanings();
+        $this->wordClips = $this->loadWordClips();
         $pages = $this->loadPageText();
         $glosses = $this->loadGlosses();
         $this->indexCorpusSentences();
@@ -1152,12 +1156,19 @@ class BuildActivities extends Command
                                     'translation' => 'Tap the card to reveal the meaning.',
                                     default => 'Tap the card to see how the word is used.',
                                 },
+                                // A card says its own word where one has been
+                                // recorded, and the unit recording where one has
+                                // not. Both are kept: the listening step wants
+                                // the unit, and a rebuild that forgot the clip
+                                // put thirty seconds of the whole lesson back on
+                                // a card for one word.
                                 'config' => ['front' => $term, 'back' => $back,
                                     'back_kind' => $kind,
                                     'example' => $example,
                                     'meanings' => $meanings ?: null,
                                     'concept_id' => $concept->id,
-                                    'audio_media_asset_id' => $audio],
+                                    'audio_media_asset_id' => $this->wordClips[VoiceTheWords::key($term)] ?? $audio,
+                                    'unit_audio_media_asset_id' => $audio],
                                 'estimated_seconds' => 12,
                             ],
                         );
@@ -1546,6 +1557,25 @@ class BuildActivities extends Command
             ->whereNull('deleted_at')
             ->whereNotNull('source_section')
             ->pluck('source_section', 'id')
+            ->all();
+    }
+
+    /**
+     * The words that have been given a voice of their own.
+     *
+     * Keyed the way `media:voice` names its files, so a card and a clip find
+     * each other by the word itself rather than by anything the build has to
+     * remember between runs.
+     *
+     * @return array<string, int>
+     */
+    private function loadWordClips(): array
+    {
+        return DB::table('media_assets')
+            ->whereNull('deleted_at')
+            ->where('path', 'like', VoiceTheWords::DIRECTORY.'/%')
+            ->pluck('id', 'path')
+            ->mapWithKeys(fn ($id, $path) => [pathinfo($path, PATHINFO_FILENAME) => (int) $id])
             ->all();
     }
 
